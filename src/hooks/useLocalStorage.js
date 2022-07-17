@@ -15,8 +15,7 @@ function useLocalStorage(key, initialValue) {
       return initialValue;
     }
   });
-​
-// Une fonction de modification, qui modifiera le state, et le local storage correspondant
+​// Une fonction de modification, qui modifiera le state, et le local storage correspondant
   function setValue(value) {
     try {
       // Modifier le state
