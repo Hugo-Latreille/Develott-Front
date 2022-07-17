@@ -1,27 +1,41 @@
 import "./styles.scss";
 
-function Login({ forwardRef }) {
+function Login({ values, setValues, handleSubmit }) {
 	return (
-		<div className="base-container">
+		<form className="base-container" onSubmit={handleSubmit}>
 			<div className="header">Login</div>
 			<div className="content">
 				<div className="form">
 					<div className="form-group">
-						<input type="text" name="username" placeholder="" />
+						<input
+							type="text"
+							name="username"
+							value={values.username}
+							onChange={(e) =>
+								setValues({ ...values, [e.target.name]: e.target.value })
+							}
+						/>
 						<div className="label">Username</div>
 					</div>
 					<div className="form-group">
-						<input type="password" name="password" placeholder="" />
+						<input
+							type="password"
+							name="password"
+							value={values.password}
+							onChange={(e) =>
+								setValues({ ...values, [e.target.name]: e.target.value })
+							}
+						/>
 						<div className="label">Password</div>
 					</div>
 				</div>
 			</div>
 			<div className="footer">
-				<button type="button" className="btn">
+				<button type="submit" className="btn">
 					Login
 				</button>
 			</div>
-		</div>
+		</form>
 	);
 }
 export default Login;

@@ -28,7 +28,7 @@
 				.label {
 					font-size: 20px;
 					position: absolute;
-					top: 10px;
+					top: -17px;
 					left: 8px;
 					pointer-events: none;
 					transition: 0.5s;
@@ -50,7 +50,7 @@
 
 					&:focus ~ .label {
 						color: #33658f;
-						transform: translateX(15px) translateY(-14px);
+						transform: translateX(15px) translateY(15px);
 						font-size: 15px;
 						padding: 0 10px;
 						background-color: white;
