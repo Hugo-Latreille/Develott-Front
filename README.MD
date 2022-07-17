@@ -16,4 +16,4 @@ Le frontend de l'app Develott
 - [@Clément](https://github.com/daddykoala) - Lead dev back
 - [@Hugo](https://github.com/Hugo-Latreille) - Lead dev front
 - [@Léa](https://github.com/Lea-Bramoulle) - Product Owner, développeuse Frontend
-- [@Pierre-Antoine](https://github.com/Pierreantoine-p) - Git Master, developpeur Backend
+- [@Pierre-Antoine](https://github.com/Pierreantoine-p) - Git Master, développeur Backend
