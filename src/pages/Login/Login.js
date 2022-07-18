@@ -1,6 +1,10 @@
 import "./styles.scss";
 
 function Login({ values, setValues, handleSubmit }) {
+	const github = () => {
+		window.open("http://localhost:3002/github", "_self");
+	};
+
 	return (
 		<form className="base-container" onSubmit={handleSubmit}>
 			<div className="header">Login</div>
@@ -35,6 +39,9 @@ function Login({ values, setValues, handleSubmit }) {
 					Login
 				</button>
 			</div>
+			<button type="button" className="btn" onClick={github}>
+				Github
+			</button>
 		</form>
 	);
 }
