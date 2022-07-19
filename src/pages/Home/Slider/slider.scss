@@ -1,0 +1,127 @@
+.slider-container {
+  width: 80%;
+  margin: -4rem auto 0 auto;
+  padding: 8rem 0;
+}
+
+.slide {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 4rem;
+  border-radius: 8px;
+  box-shadow: rgba(65, 70, 245, 0.08) 0px 15px 10px -5px,
+    rgba(113, 73, 245, 0.04) 0px 10px 10px -5px;
+}
+
+.slide-img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  position: relative;
+}
+
+.img-content {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.img-content-btns {
+  display: flex;
+  align-items: flex-end;
+}
+
+.stack-button {
+  background-color: #fff;
+  padding: 0.6rem;
+  margin-left: 0.5rem;
+  border-radius: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.img-content-stacks {
+  background-color: #fff;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  border-radius: 10px;
+  transition-duration: 2s;
+}
+
+.img-content-stacks i {
+  font-size: 1rem;
+  margin: 0.3rem 0.4rem;
+}
+
+.slider-main-content {
+  padding: 1rem;
+}
+
+.slider-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
+.slider-title:hover {
+  color: #7149f5;
+  transition-duration: 0.5s;
+}
+
+.slider-desc {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.slider-desc a {
+  font-weight: bolder;
+  color: grey;
+}
+
+.slider-desc a:hover {
+  color: #7149f5;
+  transition-duration: 0.5s;
+}
+
+.slider-content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.slider-user-container {
+  display: flex;
+  align-items: center;
+}
+
+.slider-avatar {
+  height: 2rem;
+  width: auto;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.slider-date {
+  color: grey;
+  font-size: 0.6rem;
+}
+
+.slider-user-name {
+  color: grey;
+  font-size: 0.6rem;
+  font-weight: bolder;
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+
+.color-prmary {
+  color: #23467d;
+}

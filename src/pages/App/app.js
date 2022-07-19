@@ -1,8 +1,8 @@
 import "./../../styles/_reset.css";
 import "./app.scss";
 import Navbar from "../../components/Navbar/navbar";
-// import Slider from "../Slider";
-import SearchBar from "../../components/SearchBar/searchBar";
+import Slider from "../Home/Slider/slider";
+// import SearchBar from "../../components/SearchBar/searchBar";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           </div>
         </div>
       </div>
-      {/* <Slider /> */}
+      <Slider />
     </div>
   );
 }
