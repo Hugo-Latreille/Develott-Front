@@ -1,0 +1,27 @@
+.navbar {
+  width: 80%;
+  margin: auto;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 4rem;
+  width: auto;
+}
+
+.main-button {
+  color: white;
+  border: solid 2px white;
+  font-weight: bolder;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  /* background: rgb(99, 172, 176);
+    background-color: linear-gradient(
+      128deg,
+      rgba(99, 172, 176, 1) 0%,
+      rgba(29, 54, 121, 1) 100%
+    ); */
+}
