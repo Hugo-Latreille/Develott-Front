@@ -2,7 +2,7 @@ import Input from "./Input";
 import "./styles.scss";
 import { useSelector } from "react-redux";
 
-function Login() {
+function Login({ onSubmit }) {
 	const github = () => {
 		window.open("http://localhost:3002/github", "_self");
 	};
@@ -10,7 +10,7 @@ function Login() {
 	const { username, password } = useSelector((state) => state.login);
 
 	return (
-		<form className="base-container">
+		<form className="base-container" onSubmit={onSubmit}>
 			<div className="header">Login</div>
 			<div className="content">
 				<div className="form">

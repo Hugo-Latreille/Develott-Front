@@ -15,12 +15,16 @@ export const loginSlice = createSlice({
 		handleChange: (state, action) => {
 			state[action.payload.name] = action.payload.value;
 		},
+		clearInputs: () => {
+			return initialState;
+		},
 		toggleLoggingActive: (state) => {
 			state.isLoggingActive = !state.isLoggingActive;
 		},
 	},
 });
 
-export const { handleChange, toggleLoggingActive } = loginSlice.actions;
+export const { handleChange, toggleLoggingActive, clearInputs } =
+	loginSlice.actions;
 
 export default loginSlice.reducer;

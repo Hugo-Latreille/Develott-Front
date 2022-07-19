@@ -3,41 +3,43 @@ import Login from "./Login";
 import Register from "./Register";
 //* RTK
 import { useSelector, useDispatch } from "react-redux";
-import { toggleLoggingActive } from "./loginSlice";
+import { clearInputs, toggleLoggingActive } from "./loginSlice";
 //* React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function LoginIndex() {
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	if (handleValidation()) {
-	// 		// console.log(loginValues);
-	// 		// setLoginValues({ username: "", password: "" });
-	// 		toast.success("C'est okay", toastOptions);
-	// 	}
-	// };
+	const dispatch = useDispatch();
+	const { username, password } = useSelector((state) => state.login);
+	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
 
-	// const handleValidation = () => {
-	// 	const { username, password } = loginValues;
-	// 	if (username === "") {
-	// 		toast.error("Email is required", toastOptions);
-	// 		return false;
-	// 	}
-	// 	if (password === "") {
-	// 		toast.error("Password is required", toastOptions);
-	// 		return false;
-	// 	}
-	// 	return true;
-	// };
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (handleValidation()) {
+			toast.success("C'est okay", toastOptions);
+			dispatch(clearInputs());
+		}
+	};
 
-	// const toastOptions = {
-	// 		position: "top-right",
-	// 		autoClose: 800,
-	// 		pauseOnHover: true,
-	// 		draggable: true,
-	// 		theme: "light",
-	// 	};
+	const handleValidation = () => {
+		if (username === "") {
+			toast.error("Email is required", toastOptions);
+			return false;
+		}
+		if (password === "") {
+			toast.error("Password is required", toastOptions);
+			return false;
+		}
+		return true;
+	};
+
+	const toastOptions = {
+		position: "top-right",
+		autoClose: 800,
+		pauseOnHover: true,
+		draggable: true,
+		theme: "light",
+	};
 
 	// useEffect(() => {
 	// 	const getUser = () => {
@@ -64,15 +66,12 @@ function LoginIndex() {
 	// 	getUser();
 	// }, [isLoggingActive]);
 
-	const dispatch = useDispatch();
-	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
-
 	return (
 		<>
 			<div className="App">
 				<div className="login">
 					<div className="container">
-						{isLoggingActive && <Login />}
+						{isLoggingActive && <Login onSubmit={handleSubmit} />}
 						{!isLoggingActive && <Register />}
 					</div>
 					<RightSide
