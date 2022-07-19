@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import LoginIndex from "./pages/Login/LoginIndex";
+import App from "./pages/App/app";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
-	<LoginIndex />
-	// </React.StrictMode>
+  // <React.StrictMode>
+  // <LoginIndex />
+  <App />
+  // </React.StrictMode>
 );
