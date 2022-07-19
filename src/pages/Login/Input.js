@@ -10,7 +10,9 @@ function Input({ name, value, label }) {
 				type="text"
 				name={name}
 				value={value}
-				onChange={() => dispatch(handleChange({ name, value }))}
+				onChange={(e) =>
+					dispatch(handleChange({ name, value: e.target.value }))
+				}
 			/>
 			<div className="label">{label}</div>
 		</div>
