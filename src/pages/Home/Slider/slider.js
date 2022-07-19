@@ -57,6 +57,7 @@ function Slider() {
             <img
               src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
               className="slide-img"
+              alt="project image presentation"
             />
             <div class="img-content">
               <div className="img-content-btns">
