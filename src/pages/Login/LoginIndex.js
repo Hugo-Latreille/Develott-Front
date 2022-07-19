@@ -7,8 +7,13 @@ import { clearInputs, toggleLoggingActive } from "./loginSlice";
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGetAllUsersQuery } from "./loginApi";
 
 function LoginIndex() {
+	const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
+
+	console.log(allUsers);
+
 	const dispatch = useDispatch();
 	const { username, password } = useSelector((state) => state.login);
 	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
