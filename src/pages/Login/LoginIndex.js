@@ -64,21 +64,15 @@ function LoginIndex() {
 	// 	getUser();
 	// }, [isLoggingActive]);
 
-	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
 	const dispatch = useDispatch();
+	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
 
 	return (
 		<>
 			<div className="App">
 				<div className="login">
 					<div className="container">
-						{isLoggingActive && (
-							<Login
-							// values={loginValues}
-							// setValues={setLoginValues}
-							// handleSubmit={handleSubmit}
-							/>
-						)}
+						{isLoggingActive && <Login />}
 						{!isLoggingActive && <Register />}
 					</div>
 					<RightSide

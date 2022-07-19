@@ -13,8 +13,8 @@ export const loginSlice = createSlice({
 	initialState,
 	reducers: {
 		handleChange: (state, action) => {
-			// state[action.payload.name] = action.payload.payload;
-			state.username = action.payload;
+			// state[action.payload.name] = action.payload.value;
+			console.log(action.payload);
 		},
 		toggleLoggingActive: (state) => {
 			state.isLoggingActive = !state.isLoggingActive;
