@@ -1,10 +1,10 @@
 import "./longinIndex.scss";
 import Login from "./Login";
 import Register from "./Register";
-//* RTK
+//? RTK
 import { useSelector, useDispatch } from "react-redux";
 import { clearInputs, toggleLoggingActive } from "./loginSlice";
-//* React-Toastify
+//? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
