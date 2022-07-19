@@ -1,70 +1,71 @@
 import "./longinIndex.scss";
-import { useEffect, useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
+//* RTK
+import { useSelector, useDispatch } from "react-redux";
+import { toggleLoggingActive } from "./loginSlice";
+//* React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function LoginIndex() {
-	const [isLoggingActive, setIsLoggingActive] = useState(true);
-	const [loginValues, setLoginValues] = useState({
-		username: "",
-		password: "",
-	});
-	const toastOptions = {
-		position: "top-right",
-		autoClose: 800,
-		pauseOnHover: true,
-		draggable: true,
-		theme: "light",
-	};
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
+	// 	if (handleValidation()) {
+	// 		// console.log(loginValues);
+	// 		// setLoginValues({ username: "", password: "" });
+	// 		toast.success("C'est okay", toastOptions);
+	// 	}
+	// };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (handleValidation()) {
-			console.log(loginValues);
-			setLoginValues({ username: "", password: "" });
-			toast.success("C'est okay", toastOptions);
-		}
-	};
+	// const handleValidation = () => {
+	// 	const { username, password } = loginValues;
+	// 	if (username === "") {
+	// 		toast.error("Email is required", toastOptions);
+	// 		return false;
+	// 	}
+	// 	if (password === "") {
+	// 		toast.error("Password is required", toastOptions);
+	// 		return false;
+	// 	}
+	// 	return true;
+	// };
 
-	const handleValidation = () => {
-		const { username, password } = loginValues;
-		if (username === "") {
-			toast.error("Email is required", toastOptions);
-			return false;
-		}
-		if (password === "") {
-			toast.error("Password is required", toastOptions);
-			return false;
-		}
-		return true;
-	};
+	// const toastOptions = {
+	// 		position: "top-right",
+	// 		autoClose: 800,
+	// 		pauseOnHover: true,
+	// 		draggable: true,
+	// 		theme: "light",
+	// 	};
 
-	useEffect(() => {
-		const getUser = () => {
-			fetch("http://localhost:3002/login/success", {
-				method: "GET",
-				credentials: "include",
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
-					"Access-Control-Allow-Credentials": true,
-				},
-			})
-				.then((response) => {
-					if (response.status === 200) return response.json();
-					throw new Error("authentication error");
-				})
-				.then((resObject) => {
-					console.log(resObject.user);
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		};
-		getUser();
-	}, [isLoggingActive]);
+	// useEffect(() => {
+	// 	const getUser = () => {
+	// 		fetch("http://localhost:3002/login/success", {
+	// 			method: "GET",
+	// 			credentials: "include",
+	// 			headers: {
+	// 				Accept: "application/json",
+	// 				"Content-Type": "application/json",
+	// 				"Access-Control-Allow-Credentials": true,
+	// 			},
+	// 		})
+	// 			.then((response) => {
+	// 				if (response.status === 200) return response.json();
+	// 				throw new Error("authentication error");
+	// 			})
+	// 			.then((resObject) => {
+	// 				console.log(resObject.user);
+	// 			})
+	// 			.catch((err) => {
+	// 				console.log(err);
+	// 			});
+	// 	};
+	// 	getUser();
+	// }, [isLoggingActive]);
+
+	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
+	const dispatch = useDispatch();
 
 	return (
 		<>
@@ -73,15 +74,15 @@ function LoginIndex() {
 					<div className="container">
 						{isLoggingActive && (
 							<Login
-								values={loginValues}
-								setValues={setLoginValues}
-								handleSubmit={handleSubmit}
+							// values={loginValues}
+							// setValues={setLoginValues}
+							// handleSubmit={handleSubmit}
 							/>
 						)}
 						{!isLoggingActive && <Register />}
 					</div>
 					<RightSide
-						handleClick={() => setIsLoggingActive(!isLoggingActive)}
+						handleClick={() => dispatch(toggleLoggingActive())}
 						isLoggingActive={isLoggingActive}
 					/>
 				</div>

@@ -1,12 +1,12 @@
 import "./styles.scss";
 
-function Login({ values, setValues, handleSubmit }) {
+function Login({ values, setValues }) {
 	const github = () => {
 		window.open("http://localhost:3002/github", "_self");
 	};
 
 	return (
-		<form className="base-container" onSubmit={handleSubmit}>
+		<form className="base-container">
 			<div className="header">Login</div>
 			<div className="content">
 				<div className="form">
@@ -14,10 +14,9 @@ function Login({ values, setValues, handleSubmit }) {
 						<input
 							type="text"
 							name="username"
-							value={values.username}
-							onChange={(e) =>
-								setValues({ ...values, [e.target.name]: e.target.value })
-							}
+							// value={}
+							// onChange={()
+							// }
 						/>
 						<div className="label">Username</div>
 					</div>
@@ -25,10 +24,8 @@ function Login({ values, setValues, handleSubmit }) {
 						<input
 							type="password"
 							name="password"
-							value={values.password}
-							onChange={(e) =>
-								setValues({ ...values, [e.target.name]: e.target.value })
-							}
+							// value={}
+							// onChange={}							}
 						/>
 						<div className="label">Password</div>
 					</div>

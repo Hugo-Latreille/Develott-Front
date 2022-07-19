@@ -1,4 +1,4 @@
-function Register({ forwardRef }) {
+function Register() {
 	return (
 		<div className="base-container">
 			<div className="header">Register</div>
