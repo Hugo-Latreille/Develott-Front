@@ -3,6 +3,7 @@ import "./app.scss";
 import Navbar from "../../components/Navbar/navbar";
 import Slider from "../Home/Slider/slider";
 import Hero from "../Home/Hero/hero";
+import About from "../Home/About/about";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Hero />
       </div>
       <Slider />
+      <About />
     </div>
   );
 }

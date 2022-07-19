@@ -1,6 +1,6 @@
 .slider-container {
-  width: 80%;
-  margin: -4rem auto 0 auto;
+  //   background-image: url("./../../../assets/images/background-blob.png");
+  margin: auto;
   padding: 8rem 0;
 }
 
@@ -9,8 +9,7 @@
   background-color: #fff;
   margin-bottom: 4rem;
   border-radius: 8px;
-  box-shadow: rgba(65, 70, 245, 0.08) 0px 15px 10px -5px,
-    rgba(113, 73, 245, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .slide-img {

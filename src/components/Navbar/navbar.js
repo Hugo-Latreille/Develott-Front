@@ -12,6 +12,7 @@ function Navbar() {
       />
       <SearchBar />
       <div className="navbar-link">
+        {/* TO DO : AJOUTER LIEN DARK/LIGHT MODE */}
         <a href="#" className="main-button">
           Se connecter
         </a>
