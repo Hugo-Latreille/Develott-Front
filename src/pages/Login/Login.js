@@ -2,38 +2,20 @@ import Input from "./Input";
 import "./styles.scss";
 import { useSelector } from "react-redux";
 
-function Login({ values, setValues, handleSubmit }) {
+function Login({ onSubmit }) {
 	const github = () => {
 		window.open("http://localhost:3002/github", "_self");
 	};
 
+	const { username, password } = useSelector((state) => state.login);
+
 	return (
-		<form className="base-container" onSubmit={handleSubmit}>
+		<form className="base-container" onSubmit={onSubmit}>
 			<div className="header">Login</div>
 			<div className="content">
 				<div className="form">
-					<div className="form-group">
-						<input
-							type="text"
-							name="username"
-							value={values.username}
-							onChange={(e) =>
-								setValues({ ...values, [e.target.name]: e.target.value })
-							}
-						/>
-						<div className="label">Username</div>
-					</div>
-					<div className="form-group">
-						<input
-							type="password"
-							name="password"
-							value={values.password}
-							onChange={(e) =>
-								setValues({ ...values, [e.target.name]: e.target.value })
-							}
-						/>
-						<div className="label">Password</div>
-					</div>
+					<Input name="username" value={username} label="Username" />
+					<Input name="password" value={password} label="Password" />
 				</div>
 			</div>
 			<div className="footer">

@@ -1,14 +1,20 @@
 import "./longinIndex.scss";
 import Login from "./Login";
 import Register from "./Register";
-//* RTK
+//? RTK
 import { useSelector, useDispatch } from "react-redux";
 import { clearInputs, toggleLoggingActive } from "./loginSlice";
-//* React-Toastify
+//? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGetAllUsersQuery, useCreateUserMutation } from "./loginApi";
 
 function LoginIndex() {
+	const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
+	const [createUser, { isLoading: test }] = useCreateUserMutation();
+
+	console.log(allUsers);
+
 	const dispatch = useDispatch();
 	const { username, password } = useSelector((state) => state.login);
 	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
@@ -17,6 +23,7 @@ function LoginIndex() {
 		e.preventDefault();
 		if (handleValidation()) {
 			toast.success("C'est okay", toastOptions);
+			createUser(username, password);
 			dispatch(clearInputs());
 		}
 	};
