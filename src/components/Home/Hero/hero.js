@@ -2,7 +2,7 @@ import "./hero.scss";
 
 function Hero() {
   return (
-    <div className="hero-container">
+    <div className="hero-container container">
       <div className="hero-left">
         <h1 className="hero-title">Rejoignez la table ronde du code</h1>
         <p className="hero-baseline">

@@ -1,4 +1,5 @@
 import "./presentation.scss";
+import Footer from "../../../components/Footer/footer";
 
 function Presentation() {
   return (
@@ -28,6 +29,7 @@ function Presentation() {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

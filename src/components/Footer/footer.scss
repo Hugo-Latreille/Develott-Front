@@ -1,12 +1,27 @@
 .footer {
-  background-image: url("./../../assets/images/footer-bg2.png");
-  background-position: center top;
-  margin-top: 5rem;
+  background-color: rgba(0, 0, 0, 0.04);
 
   &-container {
     padding: 5rem 0;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
+    color: white;
+
+    &-column {
+      width: 24%;
+      text-align: left;
+    }
+  }
+
+  &-logo {
+    height: 4rem;
+    width: auto;
+    margin-left: -1.5rem;
+    margin-top: -1.2rem;
+  }
+
+  & p {
+    padding: 0.2rem;
   }
 }
