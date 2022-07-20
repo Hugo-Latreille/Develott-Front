@@ -1,0 +1,51 @@
+@use "./../../styles/vars";
+
+.connexion {
+  background-color: vars.$backgroundLight;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-container {
+    width: 50%;
+    min-height: 80%;
+    margin: auto;
+    background-color: #fff;
+    display: flex;
+
+    &-navigation {
+      position: relative;
+      width: 30%;
+      height: 100%;
+      background-image: url("./../../assets/images/footer-bg2.png");
+      background-size: cover;
+    }
+  }
+
+  &-logo {
+    width: 100%;
+    margin: 2rem auto;
+  }
+}
+
+.navigation-links {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 30%;
+
+  & span {
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.link-is-active {
+  background-color: white;
+  border-radius: 25px 0 0 25px;
+  color: vars.$primaryColor !important ;
+}

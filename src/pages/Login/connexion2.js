@@ -1,4 +1,4 @@
-import "./connexion.scss";
+import "./longinIndex.scss";
 import Login from "./Login";
 import Register from "./Register";
 //? RTK
@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGetAllUsersQuery, useCreateUserMutation } from "./loginApi";
 
-function Connexion() {
+function Connexion2() {
   const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
   const [createUser, { isLoading: test }] = useCreateUserMutation();
 
@@ -74,24 +74,9 @@ function Connexion() {
   // }, [isLoggingActive]);
 
   return (
-    <div className="connexion">
-      <div className="connexion-container">
-        <div className="connexion-container-navigation">
-          <img
-            className="connexion-logo"
-            src={require(`./../../assets/images/v3-large-white.png`)}
-            alt="logo Develott"
-          />
-          <div className="navigation-links">
-            <span className="link-is-active">Connexion</span>
-            <span>Inscription</span>
-          </div>
-        </div>
-        <div className="connexion-container-form">
-          {isLoggingActive && <Login onSubmit={handleSubmit} />}
-          {!isLoggingActive && <Register />}
-        </div>
-        {/* <div className="login">
+    <>
+      <div className="App">
+        <div className="login">
           <div className="container">
             {isLoggingActive && <Login onSubmit={handleSubmit} />}
             {!isLoggingActive && <Register />}
@@ -100,10 +85,10 @@ function Connexion() {
             handleClick={() => dispatch(toggleLoggingActive())}
             isLoggingActive={isLoggingActive}
           />
-        </div> */}
+        </div>
       </div>
       <ToastContainer />
-    </div>
+    </>
   );
 }
 
@@ -120,4 +105,4 @@ const RightSide = ({ handleClick, isLoggingActive }) => {
   );
 };
 
-export default Connexion;
+export default Connexion2;
