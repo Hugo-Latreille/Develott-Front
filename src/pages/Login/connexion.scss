@@ -1,11 +1,14 @@
 @use "./../../styles/vars";
 
 .connexion {
-  background-color: vars.$backgroundLight;
+  background-color: rgba(91, 112, 131, 0.4);
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
 
   &-container {
     width: 50%;

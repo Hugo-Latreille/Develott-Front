@@ -27,8 +27,8 @@ function Register() {
           </div>
           <Input name="email" label="Email" />
           <Input name="password" label="Mot de passe" />
-          <Input name="password" label="Mot de passe" />
-          <button type="submit" className="main-button-bg-colored">
+          <Input name="password" label="`Confirmer le mot de passe" />
+          <button type="submit" className="main-button-colored">
             Se connecter
           </button>
         </div>

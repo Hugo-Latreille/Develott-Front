@@ -20,7 +20,7 @@ function Login({ onSubmit }) {
           </div>
         </div>
         <div className="login-form-buttons">
-          <button type="submit" className="main-button-bg-colored">
+          <button type="submit" className="main-button-colored">
             Se connecter
           </button>
           <a href="#" className="secondary-button-colored" onClick={github}>
