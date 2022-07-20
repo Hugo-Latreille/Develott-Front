@@ -9,14 +9,14 @@
 	flex-direction: row;
   flex-wrap: wrap;
 	justify-content: center;
-  margin-top: 5%;
+  margin-top: 7%;
   margin-right: 2%;
   margin-left: 2%;
 }
 
 
 .card {
-  width: fit-content;
+  width: 20%;
   margin-left: 1%;
   margin-right: 1%;
   background-color: #fff;
@@ -56,6 +56,11 @@
     justify-content: right;
     border-radius: 10px;
     transition-duration: 2s;
+    border: solid 1px black;
+  }
+
+  &_stacks_title {
+    margin-bottom: 10%;
   }
 }
   
@@ -141,8 +146,13 @@
 
   }
   
+  .icone_test {
+    display: flex;
+  }
   
-  
+  i {
+    margin-bottom: 8%;
+  }
   
   
   

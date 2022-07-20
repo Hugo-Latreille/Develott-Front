@@ -12,6 +12,7 @@ function ProjectList() {
 
   const handleToggleTechnos = () => {
     setToggleTechnos(!toggleTechnos);
+    setToggleJobs(!toggleJobs);
   };
 
   return (
@@ -24,33 +25,35 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleJobs}>
+            {/* <span className="icone_button" onClick={handleToggleJobs}>
               {" "}
               <i class="fad fa-users color-prmary"></i>{" "}
-            </span>
+            </span> */}
             <span className="icone_button" onClick={handleToggleTechnos}>
               {" "}
               <i class="fad fa-tools color-prmary"></i>{" "}
             </span>
           </div>
-          {toggleTechnos === true && (
-            <div className="icone_content_stacks">
-              <i>Technos</i>
-              <i class="devicon-javascript-plain colored">Javascript</i>
-              <i class="devicon-nodejs-plain colored">Node.js</i>
-              <i class="devicon-postgresql-plain colored">Postgresql</i>
-              <i class="devicon-react-original colored">React</i>
-            </div>
-          )}
-          {toggleJobs === true && (
-            <div className="icone_content_stacks">
-              <i class="fad fa-database"></i>
-              <i class="fad fa-code"></i>
-              <i class="fad fa-code-branch"></i>
-              <i class="fad fa-crop-alt"></i>
-              <i class="fad fa-angle-right  color-prmary"></i>
-            </div>
-          )}
+          <div className="icone_test">
+            {toggleTechnos === true && (
+              <div className="icone_content_stacks">
+                <span className="icone_content_stacks_title">Technos</span>
+                <i class="devicon-javascript-plain">Javascript</i>
+                <i class="devicon-nodejs-plain colored">Node.js</i>
+                <i class="devicon-postgresql-plain colored">Postgresql</i>
+                <i class="devicon-react-original colored">React</i>
+              </div>
+            )}
+            {toggleJobs === true && (
+              <div className="icone_content_stacks">
+                <span className="icone_content_stacks_title">Jobs</span>
+                <i class="devicon-postgresql-plain colored">LeadDevBack</i>
+                <i class="devicon-react-original colored">LeadDevFront</i>
+                <i class="devicon-github-plain colored">GitMaster</i>
+                <i class="devicon-aftereffects-plain colored">UXDesigner</i>
+              </div>
+            )}
+          </div>
         </div>
         <div className="card_main">
           <h1 className="card_main_title">Develott</h1>
@@ -101,11 +104,11 @@ function ProjectList() {
           )}
           {toggleJobs === true && (
             <div className="icone_content_stacks">
-              <i class="fad fa-database"></i>
-              <i class="fad fa-code"></i>
-              <i class="fad fa-code-branch"></i>
-              <i class="fad fa-crop-alt"></i>
-              <i class="fad fa-angle-right  color-prmary"></i>
+              <span className="icone_content_stacks_title">Jobs</span>
+              <i class="devicon-postgresql-plain colored">LeadDevBack</i>
+              <i class="devicon-react-original colored">LeadDevFront</i>
+              <i class="devicon-github-plain colored">GitMaster</i>
+              <i class="devicon-aftereffects-plain colored">UXDesigner</i>
             </div>
           )}
         </div>
