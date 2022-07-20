@@ -1,3 +1,5 @@
+@use "./../../styles/vars";
+
 .slider-container {
   //   background-image: url("./../../../assets/images/background-blob.png");
   margin: auto;
@@ -90,7 +92,7 @@
 }
 
 .slider-title:hover {
-  color: #7149f5;
+  color: vars.$primaryColor;
   transition-duration: 0.5s;
 }
 
@@ -105,7 +107,7 @@
 }
 
 .slider-desc a:hover {
-  color: #7149f5;
+  color: vars.$primaryColor;
   transition-duration: 0.5s;
 }
 

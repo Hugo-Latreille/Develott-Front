@@ -1,3 +1,4 @@
+@use "./../../styles/vars";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
 
 .app {
@@ -41,7 +42,7 @@ p {
   padding: 0.8rem 1.6rem;
   border-radius: 25px;
   background-color: transparent;
-  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0.5rem;
@@ -54,7 +55,7 @@ p {
   padding: 0.8rem 1.6rem;
   margin: 0.5rem;
   border-radius: 25px;
-  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  background: vars.$linearGradient;
 }
 
 .container {
