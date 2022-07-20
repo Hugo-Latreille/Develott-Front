@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
+
+.project {
+  font-family: "Montserrat", sans-serif;
+}
+
+.hero {
+  background-image: url("./../../assets/images/hero-background.png");
+  height: 80vh;
+  background-position: center bottom;
+
+&-container {
+  width: 80%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+ }
+
+}
+
+
