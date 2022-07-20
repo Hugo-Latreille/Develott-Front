@@ -1,7 +1,9 @@
+@use "./../../styles/vars";
+
 .slider-container {
-  width: 80%;
-  margin: -4rem auto 0 auto;
-  padding: 8rem 0;
+  //   background-image: url("./../../../assets/images/background-blob.png");
+  margin: auto;
+  padding: 4rem 0 0 0;
 }
 
 .slide {
@@ -9,8 +11,7 @@
   background-color: #fff;
   margin-bottom: 4rem;
   border-radius: 8px;
-  box-shadow: rgba(65, 70, 245, 0.08) 0px 15px 10px -5px,
-    rgba(113, 73, 245, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .slide-img {
@@ -43,20 +44,40 @@
   cursor: pointer;
 }
 
+.icons-container {
+  display: flex;
+  justify-content: flex-end;
+}
 .img-content-stacks {
   background-color: #fff;
   margin-top: 0.5rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: right;
+  align-items: center;
+  border-radius: 10px;
+  transition-duration: 2s;
+}
+
+.img-content-jobs {
+  background-color: #fff;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 10px;
   transition-duration: 2s;
 }
 
 .img-content-stacks i {
   font-size: 1rem;
-  margin: 0.3rem 0.4rem;
+  margin: 0.3rem;
+}
+
+.img-content-jobs i {
+  font-size: 1rem;
+  margin: 0.3rem;
 }
 
 .slider-main-content {
@@ -71,7 +92,7 @@
 }
 
 .slider-title:hover {
-  color: #7149f5;
+  color: vars.$primaryColor;
   transition-duration: 0.5s;
 }
 
@@ -86,7 +107,7 @@
 }
 
 .slider-desc a:hover {
-  color: #7149f5;
+  color: vars.$primaryColor;
   transition-duration: 0.5s;
 }
 

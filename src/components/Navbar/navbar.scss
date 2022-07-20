@@ -1,3 +1,5 @@
+@use "./../../styles/vars";
+
 .navbar {
   width: 80%;
   margin: auto;
@@ -5,23 +7,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &-logo {
+    height: 4rem;
+    width: auto;
+  }
 }
 
-.navbar-logo {
-  height: 4rem;
-  width: auto;
-}
+@media screen and (width < 600px) {
+  .navbar {
+    &-logo {
+      display: none;
+    }
 
-.main-button {
-  color: white;
-  border: solid 2px white;
-  font-weight: bolder;
-  padding: 0.8rem 1.6rem;
-  border-radius: 25px;
-  /* background: rgb(99, 172, 176);
-    background-color: linear-gradient(
-      128deg,
-      rgba(99, 172, 176, 1) 0%,
-      rgba(29, 54, 121, 1) 100%
-    ); */
+    &-link {
+      display: none;
+    }
+  }
 }

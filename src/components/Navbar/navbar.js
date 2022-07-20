@@ -10,9 +10,10 @@ function Navbar() {
         src={require(`./../../assets/images/v3-large-white.png`)}
         alt="logo Develott"
       />
-      <SearchBar />
+      <SearchBar className="navbar-searchbar" />
       <div className="navbar-link">
-        <a href="#" className="main-button">
+        {/* TO DO : AJOUTER LIEN DARK/LIGHT MODE */}
+        <a href="#" className="main-button-white">
           Se connecter
         </a>
       </div>
