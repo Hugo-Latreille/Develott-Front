@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import "./slider.scss";
 
 // import required modules
-import { FreeMode, Pagination } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 function Slider() {
   const [toggleJobs, setToggleJobs] = useState(false);
@@ -47,10 +48,11 @@ function Slider() {
           }}
           spaceBetween={30}
           freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[FreeMode, Pagination]}
+          //   pagination={{
+          //     type: "progressbar",
+          //   }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -71,25 +73,27 @@ function Slider() {
                     <i class="fad fa-tools color-prmary"></i>{" "}
                   </span>
                 </div>
-                {toggleTechnos === true && (
-                  <div className="img-content-stacks">
-                    <i class="devicon-javascript-plain colored"></i>
-                    <i class="devicon-nodejs-plain colored"></i>
-                    <i class="devicon-postgresql-plain colored"></i>
-                    <i class="devicon-react-original colored"></i>
-                    {/* <i class="devicon-redux-original colored"></i> */}
-                    <i class="fad fa-angle-right  color-prmary"></i>
-                  </div>
-                )}
-                {toggleJobs === true && (
-                  <div className="img-content-stacks">
-                    <i class="fad fa-database"></i>
-                    <i class="fad fa-code"></i>
-                    <i class="fad fa-code-branch"></i>
-                    <i class="fad fa-crop-alt"></i>
-                    <i class="fad fa-angle-right  color-prmary"></i>
-                  </div>
-                )}
+                <div className="icons-container">
+                  {toggleTechnos === true && (
+                    <div className="img-content-stacks">
+                      <i class="devicon-javascript-plain colored"></i>
+                      <i class="devicon-nodejs-plain colored"></i>
+                      <i class="devicon-postgresql-plain colored"></i>
+                      <i class="devicon-react-original colored"></i>
+                      {/* <i class="devicon-redux-original colored"></i> */}
+                      <i class="fad fa-angle-right  color-prmary"></i>
+                    </div>
+                  )}
+                  {toggleJobs === true && (
+                    <div className="img-content-jobs">
+                      <i class="fad fa-database"></i>
+                      <i class="fad fa-code"></i>
+                      <i class="fad fa-code-branch"></i>
+                      <i class="fad fa-crop-alt"></i>
+                      <i class="fad fa-angle-right  color-prmary"></i>
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="slider-main-content">
                 <h1 className="slider-title">Develott</h1>

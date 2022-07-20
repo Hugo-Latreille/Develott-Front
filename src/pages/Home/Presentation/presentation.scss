@@ -1,0 +1,30 @@
+.presentation {
+  background-image: url("./../../../assets/images/footer-bg2.png");
+  background-size: cover;
+  margin-top: 4rem;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+    color: white;
+
+    &-left {
+      width: 50%;
+      padding-right: 5rem;
+    }
+
+    &-right {
+      width: 50%;
+    }
+  }
+
+  &-img {
+    width: 100%;
+  }
+
+  &-text {
+    padding-bottom: 4rem;
+  }
+}

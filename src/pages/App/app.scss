@@ -11,14 +11,56 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.main-button-white {
+  color: white;
+  border: solid 2px white;
+  font-weight: bolder;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+}
+
+.main-button-bg-white {
+  color: #8291f5;
+  border: solid 2px white;
+  font-weight: bolder;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.main-button-colored {
+  color: white;
+  border: solid 2px #32518d;
+  font-weight: bolder;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  background-color: transparent;
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-button-bg-colored {
+  color: #fff;
+  border: solid 2px white;
+  font-weight: bolder;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+}
+
 .container {
   width: 80%;
   margin: auto;
 }
 
+.mr-1 {
+  margin-right: 1rem;
+}
+
 .hero {
   background-image: url("./../../assets/images/hero-background.png");
-  height: 80vh;
+  height: 85vh;
   background-position: center bottom;
 
   &-container {

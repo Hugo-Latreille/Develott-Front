@@ -1,0 +1,12 @@
+.footer {
+  background-image: url("./../../assets/images/footer-bg2.png");
+  background-position: center top;
+  margin-top: 5rem;
+
+  &-container {
+    padding: 5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
