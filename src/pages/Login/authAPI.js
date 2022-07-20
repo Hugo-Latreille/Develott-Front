@@ -1,6 +1,6 @@
 import { emptySplitApi } from "../../API/APIslice";
 
-const loginApi = emptySplitApi.injectEndpoints({
+const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllUsers: builder.query({
 			query: () => "users",
@@ -10,6 +10,7 @@ const loginApi = emptySplitApi.injectEndpoints({
 				return {
 					url: "user/create",
 					method: "POST",
+					header: "Content-Type: application/x-www-form-urlencoded",
 					body: {
 						firstname,
 						lastname,
@@ -22,4 +23,4 @@ const loginApi = emptySplitApi.injectEndpoints({
 	}),
 });
 
-export const { useGetAllUsersQuery, useCreateUserMutation } = loginApi;
+export const { useGetAllUsersQuery, useCreateUserMutation } = authAPI;

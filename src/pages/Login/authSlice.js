@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+	id: "",
 	firstname: "",
 	lastname: "",
 	password: "",
@@ -11,18 +12,19 @@ const initialState = {
 	test: false,
 };
 
-export const loginSlice = createSlice({
+export const authSlice = createSlice({
 	name: "login",
 	initialState,
 	reducers: {
 		handleChange: (state, action) => {
 			state[action.payload.name] = action.payload.value;
 		},
-		// handleTest: (state) => {
-		// 	state.test = !state.test;
-		// },
-		clearInputs: () => {
-			return initialState;
+		clearInputs: (state) => {
+			state.firstname = "";
+			state.lastname = "";
+			state.password = "";
+			state.passwordConfirm = "";
+			state.email = "";
 		},
 		toggleLoggingActive: (state) => {
 			state.isLoggingActive = !state.isLoggingActive;
@@ -31,6 +33,6 @@ export const loginSlice = createSlice({
 });
 
 export const { handleChange, toggleLoggingActive, clearInputs, handleTest } =
-	loginSlice.actions;
+	authSlice.actions;
 
-export default loginSlice.reducer;
+export default authSlice.reducer;

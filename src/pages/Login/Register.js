@@ -1,35 +1,50 @@
-import { useDispatch, useSelector } from "react-redux";
 import Input from "../../components/Input/Input";
-import { useCreateUserMutation } from "./loginApi";
-import { clearInputs } from "./loginSlice";
+import { useSelector } from "react-redux";
 
-function Register() {
-	const dispatch = useDispatch();
-	const [createUser] = useCreateUserMutation();
+function Register({ onSubmit }) {
 	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
-		(state) => state.login
+		(state) => state.auth
 	);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		//! faire les vérifications, notamment password et confirm password
-		createUser({ firstname, lastname, email, password });
-		dispatch(clearInputs());
-	};
-
 	return (
-		<form className="base-container" onSubmit={handleSubmit}>
+		<form className="base-container" onSubmit={onSubmit}>
 			<div className="header">Register</div>
 			<div className="content">
 				<div className="form">
-					<Input name="firstname" value={firstname} label="Prénom" />
-					<Input name="lastname" value={lastname} label="Nom" />
-					<Input name="email" value={email} label="Email" />
-					<Input name="password" value={password} label="Mot de passe" />
+					<Input
+						name="firstname"
+						value={firstname}
+						label="Prénom"
+						type="text"
+						required={true}
+					/>
+					<Input
+						name="lastname"
+						value={lastname}
+						label="Nom"
+						type="text"
+						required={true}
+					/>
+					<Input
+						name="email"
+						value={email}
+						label="Email"
+						type="email"
+						required={true}
+					/>
+					<Input
+						name="password"
+						value={password}
+						label="Mot de passe"
+						type="password"
+						required={true}
+					/>
 					<Input
 						name="passwordConfirm"
 						value={passwordConfirm}
 						label="Confirmez votre mot de passe"
+						type="password"
+						required={true}
 					/>
 				</div>
 			</div>

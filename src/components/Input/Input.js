@@ -1,15 +1,17 @@
 import { useDispatch } from "react-redux";
-import { handleChange } from "../../pages/Login/loginSlice";
+import { handleChange } from "../../pages/Login/authSlice";
+//! TODO : ajouter PropTypes
 
-function Input({ name, value, label }) {
+function Input({ name, value, label, type, required }) {
 	const dispatch = useDispatch();
 
 	return (
 		<div className="form-group">
 			<input
-				type="text"
+				type={type}
 				name={name}
 				value={value}
+				required={required}
 				onChange={(e) =>
 					dispatch(handleChange({ name, value: e.target.value }))
 				}
