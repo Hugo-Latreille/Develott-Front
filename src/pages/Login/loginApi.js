@@ -5,7 +5,19 @@ const loginApi = emptySplitApi.injectEndpoints({
 		getAllUsers: builder.query({
 			query: () => "users",
 		}),
+		createUser: builder.mutation({
+			query: ({ username, password }) => {
+				return {
+					url: "users",
+					method: "POST",
+					body: {
+						username,
+						password,
+					},
+				};
+			},
+		}),
 	}),
 });
 
-export const { useGetAllUsersQuery } = loginApi;
+export const { useGetAllUsersQuery, useCreateUserMutation } = loginApi;
