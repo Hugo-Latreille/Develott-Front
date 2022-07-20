@@ -5,7 +5,7 @@ function About() {
     <div className="about">
       <div className="container">
         <div className="about-container">
-          <h2 className="about-title">Prêts ? Recherchez... Dévelottez !</h2>
+          <h2 className="about-title">Lorem ipsum dolor sit amet</h2>
           <div className="about-container-card">
             <img
               className="about-img"

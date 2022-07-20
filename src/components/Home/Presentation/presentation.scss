@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 4rem 0;
     color: white;
 
@@ -26,5 +27,26 @@
 
   &-text {
     padding-bottom: 4rem;
+  }
+}
+
+@media screen and (width < 600px) {
+  .presentation {
+    &-container {
+      &-left {
+        width: 100%;
+        padding-right: 0;
+      }
+
+      &-right {
+        width: 100%;
+      }
+    }
+
+    &-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }

@@ -21,6 +21,7 @@ p {
   font-weight: bolder;
   padding: 0.8rem 1.6rem;
   border-radius: 25px;
+  margin: 0.5rem;
 }
 
 .main-button-bg-white {
@@ -30,6 +31,7 @@ p {
   padding: 0.8rem 1.6rem;
   border-radius: 25px;
   background-color: white;
+  margin: 0.5rem;
 }
 
 .main-button-colored {
@@ -42,6 +44,7 @@ p {
   background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0.5rem;
 }
 
 .main-button-bg-colored {
@@ -49,6 +52,7 @@ p {
   border: solid 2px white;
   font-weight: bolder;
   padding: 0.8rem 1.6rem;
+  margin: 0.5rem;
   border-radius: 25px;
   background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
 }
@@ -56,8 +60,4 @@ p {
 .container {
   width: 80%;
   margin: auto;
-}
-
-.mr-1 {
-  margin-right: 1rem;
 }

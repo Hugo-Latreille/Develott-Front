@@ -16,9 +16,6 @@ function Footer() {
           </p>
         </div>
         <div className="footer-container-column">
-          <p> © 2022 - Made with ♡</p>
-        </div>
-        <div className="footer-container-column">
           <p>
             <a href="#">Voir tous les projets</a>
           </p>
@@ -31,6 +28,12 @@ function Footer() {
           <p>
             <a href="#">S'inscrire / Se connecter</a>
           </p>
+        </div>
+        <div className="footer-container-column">
+          <p> © 2022 - Made with ♡</p>
+          <p> Projet d'Apothéose</p>
+          <p> Ecole O'clock</p>
+          <p> Team Cassini</p>
         </div>
       </div>
     </div>

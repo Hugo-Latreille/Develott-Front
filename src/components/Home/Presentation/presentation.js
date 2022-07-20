@@ -1,5 +1,5 @@
 import "./presentation.scss";
-import Footer from "../../../components/Footer/footer";
+import Footer from "../../Footer/footer";
 
 function Presentation() {
   return (
@@ -14,12 +14,14 @@ function Presentation() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor.
           </p>
-          <a href="#" className="main-button-white mr-1">
-            Parcourir les projets
-          </a>
-          <a href="#" className="main-button-bg-white mr-1">
-            S'inscrire
-          </a>
+          <div className="presentation-links">
+            <a href="#" className="main-button-white">
+              Parcourir les projets
+            </a>
+            <a href="#" className="main-button-bg-white">
+              S'inscrire
+            </a>
+          </div>
         </div>
         <div className="presentation-container-right">
           <img

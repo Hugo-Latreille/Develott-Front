@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     color: white;
 
     &-column {
@@ -23,5 +24,12 @@
 
   & p {
     padding: 0.2rem;
+  }
+}
+
+@media screen and (width < 600px) {
+  .footer-container-column {
+    width: 100%;
+    margin-bottom: 2rem;
   }
 }

@@ -9,6 +9,9 @@ function Hero() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
         </p>
+        <a href="#" className="main-button-bg-white">
+          Découvrir les projets
+        </a>
       </div>
       <div className="hero-right">
         <img

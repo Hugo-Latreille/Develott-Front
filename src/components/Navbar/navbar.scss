@@ -5,9 +5,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &-logo {
+    height: 4rem;
+    width: auto;
+  }
 }
 
-.navbar-logo {
-  height: 4rem;
-  width: auto;
+@media screen and (width < 600px) {
+  .navbar {
+    &-logo {
+      display: none;
+    }
+
+    &-link {
+      display: none;
+    }
+  }
 }
