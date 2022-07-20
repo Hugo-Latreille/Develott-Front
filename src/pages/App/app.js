@@ -1,4 +1,3 @@
-import "./../../styles/_reset.css";
 import "./app.scss";
 
 import { Routes, Route } from "react-router-dom";
@@ -8,16 +7,16 @@ import Login from "../Login/Login";
 import Register from "../Login/Register";
 
 function App() {
-  return (
-    <div className="app">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </div>
-  );
+	return (
+		<div className="app">
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="*" element={<Home />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;

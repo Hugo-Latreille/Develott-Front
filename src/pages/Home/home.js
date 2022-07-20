@@ -8,18 +8,18 @@ import Presentation from "../../components/Home/Presentation/presentation";
 // import Testimonial from "../Home/Tertimonial/testimonial";
 
 function Home() {
-  return (
-    <>
-      <div className="hero">
-        <Navbar />
-        <Hero />
-      </div>
-      <Slider />
-      <About />
-      <Presentation />
-      {/* <Testimonial />git  */}
-    </>
-  );
+	return (
+		<>
+			<div className="hero">
+				<Navbar />
+				<Hero />
+			</div>
+			<Slider />
+			<About />
+			<Presentation />
+			{/* <Testimonial />git  */}
+		</>
+	);
 }
 
 export default Home;

@@ -6,12 +6,14 @@ const loginApi = emptySplitApi.injectEndpoints({
 			query: () => "users",
 		}),
 		createUser: builder.mutation({
-			query: ({ username, password }) => {
+			query: ({ firstname, lastname, email, password }) => {
 				return {
-					url: "users",
+					url: "user/create",
 					method: "POST",
 					body: {
-						username,
+						firstname,
+						lastname,
+						email,
 						password,
 					},
 				};
