@@ -9,7 +9,7 @@
 
   &-container {
     width: 50%;
-    min-height: 80%;
+    min-height: 60%;
     margin: auto;
     background-color: #fff;
     display: flex;
@@ -20,6 +20,11 @@
       height: 100%;
       background-image: url("./../../assets/images/footer-bg2.png");
       background-size: cover;
+    }
+
+    &-form {
+      width: 70%;
+      height: 100%;
     }
   }
 
@@ -41,6 +46,7 @@
     margin-bottom: 1rem;
     color: white;
     font-weight: bold;
+    cursor: pointer;
   }
 }
 

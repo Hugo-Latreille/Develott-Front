@@ -1,6 +1,8 @@
 import "./connexion.scss";
 import Login from "./Login";
 import Register from "./Register";
+
+import React, { useState } from "react";
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
 import { clearInputs, toggleLoggingActive } from "./loginSlice";
@@ -10,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGetAllUsersQuery, useCreateUserMutation } from "./loginApi";
 
 function Connexion() {
+  const [activeForm, setActiveForm] = useState("login");
+
   const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
   const [createUser, { isLoading: test }] = useCreateUserMutation();
 
@@ -48,6 +52,15 @@ function Connexion() {
     theme: "light",
   };
 
+  // STATE LOGIN SIGN UP
+
+  const handleSwitchSignUp = () => {
+    setActiveForm("signup");
+  };
+  const handleSwitchLogin = () => {
+    setActiveForm("login");
+  };
+
   // useEffect(() => {
   // 	const getUser = () => {
   // 		fetch("http://localhost:3002/login/success", {
@@ -83,13 +96,23 @@ function Connexion() {
             alt="logo Develott"
           />
           <div className="navigation-links">
-            <span className="link-is-active">Connexion</span>
-            <span>Inscription</span>
+            <span
+              className={activeForm === "login" ? "link-is-active" : ""}
+              onClick={handleSwitchLogin}
+            >
+              Connexion
+            </span>
+            <span
+              className={activeForm === "signup" ? "link-is-active" : ""}
+              onClick={handleSwitchSignUp}
+            >
+              Inscription
+            </span>
           </div>
         </div>
         <div className="connexion-container-form">
-          {isLoggingActive && <Login onSubmit={handleSubmit} />}
-          {!isLoggingActive && <Register />}
+          {activeForm === "login" && <Login onSubmit={handleSubmit} />}
+          {activeForm === "signup" && <Register />}
         </div>
         {/* <div className="login">
           <div className="container">

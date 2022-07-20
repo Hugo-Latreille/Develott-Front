@@ -1,35 +1,37 @@
+import Input from "../../components/Input/Input";
+import "./register.scss";
+
 function Register() {
   return (
-    <div className="base-container">
-      <div className="header">Register</div>
-      <div className="content">
+    // <div className="register-container">
+    //   {/* <h2>Inscription</h2> */}
+    //   <form className="register-form">
+    //     <div className="register-form-inputs">
+    //       <div className="form">
+    //         <
+    //       </div>
+    //     </div>
+    //     <div className="form-form-buttons">
+    //       <button type="submit" className="main-button-bg-colored">
+    //         S'inscrire
+    //       </button>
+    //     </div>
+    //   </form>
+    // </div>
+    <div className="register-container">
+      <div className="content ">
         <div className="form">
-          <div className="form-group">
-            <label htmlFor="username">Prénom</label>
-            <input type="text" name="firstName" placeholder="" />
+          <div className="inputs-container">
+            <Input name="text" label="Prénom" />
+            <Input name="text" label="Nom" />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Nom</label>
-            <input type="text" name="name" placeholder="" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="text" name="email" placeholder="" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Mot de passe</label>
-            <input type="text" name="password" placeholder="" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Confirmer le mot de passe</label>
-            <input type="text" name="password" placeholder="" />
-          </div>
+          <Input name="email" label="Email" />
+          <Input name="password" label="Mot de passe" />
+          <Input name="password" label="Mot de passe" />
+          <button type="submit" className="main-button-bg-colored">
+            Se connecter
+          </button>
         </div>
-      </div>
-      <div className="footer">
-        <button type="button" className="btn">
-          Register
-        </button>
       </div>
     </div>
   );

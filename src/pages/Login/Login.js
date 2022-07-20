@@ -11,7 +11,7 @@ function Login({ onSubmit }) {
 
   return (
     <div className="login-container">
-      <h2>Se connecter</h2>
+      {/* <h2>Se connecter</h2> */}
       <form className="login-form" onSubmit={onSubmit}>
         <div className="login-form-inputs">
           <div className="form">
@@ -21,15 +21,19 @@ function Login({ onSubmit }) {
         </div>
         <div className="login-form-buttons">
           <button type="submit" className="main-button-bg-colored">
-            Login
+            Se connecter
           </button>
           <a href="#" className="secondary-button-colored" onClick={github}>
             <i class="fab fa-github"></i> Github
           </a>
+          <a
+            href="#"
+            className="third-button-colored width-100"
+            onClick={github}
+          >
+            Mot de passe oublié ?
+          </a>
         </div>
-        <a href="#" className="third-button-colored" onClick={github}>
-          Mot de passe oublié ?
-        </a>
       </form>
     </div>
   );

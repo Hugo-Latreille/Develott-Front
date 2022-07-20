@@ -75,9 +75,9 @@ function Connexion2() {
 
   return (
     <>
-      <div className="App">
-        <div className="login">
-          <div className="container">
+      <div className="">
+        <div className="">
+          <div className="">
             {isLoggingActive && <Login onSubmit={handleSubmit} />}
             {!isLoggingActive && <Register />}
           </div>

@@ -1,0 +1,23 @@
+@use "./../../styles/vars";
+
+.register-container {
+  margin: 3.4rem 3.4rem 0 3.4rem;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  padding-top: 2rem;
+}
+
+.inputs-container {
+  display: flex;
+  justify-content: space-between;
+}
+.inputs-container .form-group {
+  width: 48%;
+}
