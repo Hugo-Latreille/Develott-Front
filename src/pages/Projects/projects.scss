@@ -2,22 +2,14 @@
 
 .project {
   font-family: "Montserrat", sans-serif;
+  
+  &_hero {
+    background-image: url("./../../assets/images/hero-background.png");
+    height: 80vh;
+    background-position: center bottom;
+  
+  }
 }
 
-.hero {
-  background-image: url("./../../assets/images/hero-background.png");
-  height: 80vh;
-  background-position: center bottom;
-
-&-container {
-  width: 80%;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
- }
-
-}
 
 

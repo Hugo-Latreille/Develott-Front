@@ -5,7 +5,7 @@ import Cards from "../../components/Cards/cards";
 function Projects() {
   return (
     <div className="project">
-      <div className="hero">
+      <div className="project_hero">
         <Navbar />
         <Cards />
       </div>
