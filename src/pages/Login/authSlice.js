@@ -10,6 +10,7 @@ const initialState = {
 	isLogged: false,
 	isLoggingActive: true,
 	test: false,
+	token: null,
 };
 
 export const authSlice = createSlice({
@@ -29,10 +30,25 @@ export const authSlice = createSlice({
 		toggleLoggingActive: (state) => {
 			state.isLoggingActive = !state.isLoggingActive;
 		},
+		setCredentials: (state, action) => {
+			const { email, accessToken } = action.payload;
+			state.email = email;
+			state.token = accessToken;
+		},
+		logOut: (state, action) => {
+			state.email = null;
+			state.token = null;
+		},
 	},
 });
 
-export const { handleChange, toggleLoggingActive, clearInputs, handleTest } =
-	authSlice.actions;
+export const {
+	handleChange,
+	toggleLoggingActive,
+	clearInputs,
+	handleTest,
+	setCredentials,
+	logOut,
+} = authSlice.actions;
 
 export default authSlice.reducer;
