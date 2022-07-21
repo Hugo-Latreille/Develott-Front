@@ -33,13 +33,38 @@
 
   &-user {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
 
-    & p {
+    &-name {
       padding: 0.5rem 1rem;
       text-decoration: underline;
+      margin-right: 4rem;
+    }
+
+    &-links {
+      display: flex;
+      justify-content: flex-end;
+
+      & p {
+        padding: 0 0.4rem;
+        color: vars.$grey;
+        cursor: pointer;
+      }
+
+      & p:hover {
+        color: rgb(87, 86, 86);
+      }
+    }
+  }
+
+  &-jobs {
+    margin: 3rem 0;
+
+    & p {
+      color: vars.$lightGrey;
     }
   }
 
@@ -118,10 +143,6 @@
 
       & p {
         padding: 0.5rem 1rem;
-
-        & i {
-          padding-right: 0.5rem;
-        }
       }
     }
 
@@ -143,4 +164,8 @@
       }
     }
   }
+}
+
+.success {
+  color: rgba(103, 182, 103, 0.959);
 }

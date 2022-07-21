@@ -20,7 +20,38 @@ function Project() {
                 className="slider-avatar"
                 src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
               />
-              <p>Uller Hank</p>
+              <p className="project-user-name">Uller Hank</p>
+              <div className="project-user-links">
+                <p>
+                  <i class="fab fa-github"></i>
+                </p>
+                <p>
+                  <i class="fab fa-linkedin"></i>
+                </p>
+                <p>
+                  <i class="fas fa-laptop-code"></i>
+                </p>
+              </div>
+              <div className="project-jobs">
+                <h3 lassName="project-jobs-title">Profil(s) recherché(s)</h3>
+                <p>
+                  <i class="fas fa-check-circle success"></i> Développeur
+                  Back-End
+                </p>
+                <p>
+                  <i class="fas fa-check-circle success"></i> Développeur
+                  Back-End
+                </p>
+                <p>
+                  <i class="fas fa-check-circle"></i> Développeur Front-End
+                </p>
+                <p>
+                  <i class="fas fa-check-circle"></i> UX-UI Designer
+                </p>
+                <p>
+                  <i class="fas fa-check-circle success"></i> Scrum Master
+                </p>
+              </div>
             </div>
           </div>
           <div className="project-container-right">
