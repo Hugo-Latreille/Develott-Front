@@ -1,6 +1,8 @@
 import "./presentation.scss";
 import Footer from "../../Footer/footer";
 
+import { Link } from "react-router-dom";
+
 function Presentation() {
   return (
     <div className="presentation">
@@ -15,12 +17,12 @@ function Presentation() {
             eiusmod tempor.
           </p>
           <div className="presentation-links">
-            <a href="#" className="main-button-white">
+            <Link to="/projets" className="main-button-white">
               Parcourir les projets
-            </a>
-            <a href="#" className="main-button-bg-white">
+            </Link>
+            <Link to="/projets" className="main-button-bg-white">
               S'inscrire
-            </a>
+            </Link>
           </div>
         </div>
         <div className="presentation-container-right">

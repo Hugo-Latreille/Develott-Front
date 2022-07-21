@@ -1,4 +1,5 @@
 import "./hero.scss";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -9,9 +10,9 @@ function Hero() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
         </p>
-        <a href="#" className="main-button-bg-white">
+        <Link to="/projets" className="main-button-bg-white">
           Découvrir les projets
-        </a>
+        </Link>
       </div>
       <div className="hero-right">
         <img

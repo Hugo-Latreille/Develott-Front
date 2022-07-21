@@ -10,8 +10,6 @@
   flex-wrap: wrap;
 	justify-content: center;
   margin-top: 7%;
-  margin-right: 2%;
-  margin-left: 2%;
 }
 
 
@@ -88,7 +86,9 @@
     }
 
     &_title:hover {
-      color: #7149f5;
+      background: vars.$linearGradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       transition-duration: 0.5s;
     }
 
@@ -103,7 +103,9 @@
     }
 
     &_desc_link:hover {
-      color: #7149f5;
+      background: vars.$linearGradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       transition-duration: 0.5s;
     }
   }
