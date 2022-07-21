@@ -15,11 +15,11 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
 	let result = await baseQuery(args, api, extraOptions);
-	if (result?.error?.originalStatus === 403) {
+	if (result.error && result.error.status === 403) {
 		console.log("on envoie le refresh token");
 		//envoyer le refresh token pour renouveler l'access token
 		const refreshResult = await baseQuery(
-			"/user/refreshToken",
+			"user/refreshToken",
 			api,
 			extraOptions
 		);
@@ -31,13 +31,19 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 			// On relance la query originale avec le nouvel access token
 			result = await baseQuery(args, api, extraOptions);
 		} else {
+			console.log("401");
 			api.dispatch(logOut());
 		}
-		return result;
 	}
+	return result;
 };
 
 export const emptySplitApi = createApi({
 	baseQuery: baseQueryWithReauth,
 	endpoints: (builder) => ({}),
 });
+
+// export const emptySplitApi = createApi({
+// 	baseQuery,
+// 	endpoints: (builder) => ({}),
+// });

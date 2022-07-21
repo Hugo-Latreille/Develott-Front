@@ -9,13 +9,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //? RTK Query
 import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "./authSlice";
 
 function LoginIndex() {
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate();
 	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 	const [createUser] = useCreateUserMutation();
-	const [userLogin] = useUserLoginMutation();
+	const [userLogin, result] = useUserLoginMutation();
 	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
 		(state) => state.auth
 	);
@@ -30,9 +32,27 @@ function LoginIndex() {
 		}
 	};
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
-		userLogin({ email, password });
+		try {
+			const userData = await userLogin({ email, password }).unwrap();
+			// await userLogin({ email, password });
+
+			// console.log(result);
+			console.log(userData);
+			// dispatch(setCredentials({ ...userData, email }));
+			// navigate("/");
+		} catch (err) {
+			if (!err?.originalStatus) {
+				console.log("No Server Response");
+			} else if (err.originalStatus === 400) {
+				console.log("Missing Username or Password");
+			} else if (err.originalStatus === 401) {
+				console.log("Unauthorized");
+			} else {
+				console.log("Login Failed");
+			}
+		}
 	};
 
 	const handleValidation = () => {
