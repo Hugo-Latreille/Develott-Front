@@ -2,6 +2,9 @@
 
 .project {
   height: 100vh;
+  background-image: url("./../../assets/images/background-blob2.png");
+  background-size: cover;
+  background-position: center;
 
   &-container {
     display: flex;
@@ -13,6 +16,7 @@
       width: 30%;
       background-color: #fff;
       height: 80vh;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     &-right {
@@ -44,6 +48,7 @@
     background-color: #fff;
     margin-bottom: 2rem;
     padding: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     &-see-more {
       text-align: right;
@@ -78,7 +83,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: 4rem;
     &-title {
       width: 100%;
     }

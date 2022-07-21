@@ -1,0 +1,22 @@
+@use "./../../styles/vars";
+
+.create-project {
+  background-color: rgba(91, 112, 131, 0.65);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+
+  &-container {
+    width: 50%;
+    min-height: 60%;
+    margin: auto;
+    background-color: #fff;
+    display: flex;
+    border-radius: 10px;
+    position: relative;
+  }
+}
