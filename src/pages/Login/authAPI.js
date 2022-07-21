@@ -2,9 +2,6 @@ import { emptySplitApi } from "../../API/APIslice";
 
 const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getAllUsers: builder.query({
-			query: () => "users",
-		}),
 		createUser: builder.mutation({
 			query: ({ firstname, lastname, email, password }) => {
 				return {
@@ -33,6 +30,10 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+		authTest: builder.query({
+			query: () => "home",
+			keepUnusedDataFor: 5,
+		}),
 	}),
 });
 
@@ -40,4 +41,5 @@ export const {
 	useGetAllUsersQuery,
 	useCreateUserMutation,
 	useUserLoginMutation,
+	useAuthTestQuery,
 } = authAPI;

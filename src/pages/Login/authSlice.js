@@ -9,8 +9,7 @@ const initialState = {
 	email: "",
 	isLogged: false,
 	isLoggingActive: true,
-	test: false,
-	token: null,
+	token: "",
 };
 
 export const authSlice = createSlice({
@@ -32,6 +31,7 @@ export const authSlice = createSlice({
 		},
 		setCredentials: (state, action) => {
 			const { email, accessToken } = action.payload;
+			console.log(accessToken, email);
 			state.email = email;
 			state.token = accessToken;
 		},

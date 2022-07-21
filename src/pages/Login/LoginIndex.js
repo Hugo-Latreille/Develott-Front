@@ -17,7 +17,7 @@ function LoginIndex() {
 	const navigate = useNavigate();
 	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 	const [createUser] = useCreateUserMutation();
-	const [userLogin, result] = useUserLoginMutation();
+	const [userLogin, { isLoading }] = useUserLoginMutation();
 	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
 		(state) => state.auth
 	);
@@ -36,12 +36,11 @@ function LoginIndex() {
 		e.preventDefault();
 		try {
 			const userData = await userLogin({ email, password }).unwrap();
-			// await userLogin({ email, password });
-
-			// console.log(result);
-			console.log(userData);
-			// dispatch(setCredentials({ ...userData, email }));
-			// navigate("/");
+			console.log(userData.accessToken);
+			dispatch(
+				setCredentials({ accessToken: userData.accessToken, email: email })
+			);
+			navigate("/welcome");
 		} catch (err) {
 			if (!err?.originalStatus) {
 				console.log("No Server Response");
@@ -108,6 +107,7 @@ function LoginIndex() {
 					<div className="container">
 						{isLoggingActive && <Login onSubmit={handleLogin} />}
 						{!isLoggingActive && <Register onSubmit={handleRegister} />}
+						{isLoading && <p>Loading...</p>}
 					</div>
 					<RightSide
 						handleClick={() => dispatch(toggleLoggingActive())}

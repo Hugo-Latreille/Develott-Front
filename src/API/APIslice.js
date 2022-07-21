@@ -25,9 +25,11 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 		);
 		console.log(refreshResult);
 		if (refreshResult?.data) {
-			const userId = api.getState().auth.userId;
+			const email = api.getState().auth.email;
 			//on enregistre le nouveau token
-			api.dispatch(setCredentials({ ...refreshResult.data, userId }));
+			api.dispatch(
+				setCredentials({ accessToken: refreshResult.data, email: email })
+			);
 			// On relance la query originale avec le nouvel access token
 			result = await baseQuery(args, api, extraOptions);
 		} else {
@@ -42,8 +44,3 @@ export const emptySplitApi = createApi({
 	baseQuery: baseQueryWithReauth,
 	endpoints: (builder) => ({}),
 });
-
-// export const emptySplitApi = createApi({
-// 	baseQuery,
-// 	endpoints: (builder) => ({}),
-// });
