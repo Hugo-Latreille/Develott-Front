@@ -1,10 +1,9 @@
 @use "./../../../styles/vars";
 
 .hero {
-  background-image: url("./../../../assets/images/hero-background.png");
+  background-image: url("./../../../assets/images/hero-background55.png");
   height: 85vh;
   background-position: center bottom;
-
 
   &-container {
     margin: 2rem auto;
@@ -62,6 +61,3 @@
     }
   }
 }
-
-
-

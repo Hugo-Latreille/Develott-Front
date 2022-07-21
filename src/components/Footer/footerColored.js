@@ -1,8 +1,8 @@
-import "./footer.scss";
+import "./footerColored.scss";
 
-function Footer() {
+function FooterColored() {
   return (
-    <div className="footer">
+    <div className="footer-colored">
       <div className="footer-container container">
         <div className="footer-container-column">
           <img
@@ -40,4 +40,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterColored;

@@ -1,4 +1,4 @@
-@use 'src/styles/vars';
+@use "src/styles/vars";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
 
 .project {
@@ -6,12 +6,8 @@
   background-color: vars.$backgroundLight;
 
   &_hero {
-    background-image: url("./../../assets/images/hero-background.png");
+    background-image: url("./../../assets/images/hero-background55.png");
     height: 80vh;
     background-position: center bottom;
-  
   }
 }
-
-
-
