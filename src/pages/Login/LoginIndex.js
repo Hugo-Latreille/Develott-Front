@@ -8,13 +8,14 @@ import { clearInputs, toggleLoggingActive } from "./authSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //? RTK Query
-import { useCreateUserMutation } from "./authAPI";
+import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
 
 function LoginIndex() {
 	const dispatch = useDispatch();
 
 	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 	const [createUser] = useCreateUserMutation();
+	const [userLogin] = useUserLoginMutation();
 	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
 		(state) => state.auth
 	);
@@ -29,9 +30,9 @@ function LoginIndex() {
 		}
 	};
 
-	const handleSubmit = (e) => {
+	const handleLogin = (e) => {
 		e.preventDefault();
-		console.log("Login ok");
+		userLogin({ email, password });
 	};
 
 	const handleValidation = () => {
@@ -85,7 +86,7 @@ function LoginIndex() {
 			<div className="App">
 				<div className="login">
 					<div className="container">
-						{isLoggingActive && <Login onSubmit={handleSubmit} />}
+						{isLoggingActive && <Login onSubmit={handleLogin} />}
 						{!isLoggingActive && <Register onSubmit={handleRegister} />}
 					</div>
 					<RightSide

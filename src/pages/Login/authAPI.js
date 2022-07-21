@@ -20,7 +20,24 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+		userLogin: builder.mutation({
+			query: ({ email, password }) => {
+				return {
+					url: "user/login",
+					method: "POST",
+					// header: "Content-Type: application/x-www-form-urlencoded",
+					body: {
+						email,
+						password,
+					},
+				};
+			},
+		}),
 	}),
 });
 
-export const { useGetAllUsersQuery, useCreateUserMutation } = authAPI;
+export const {
+	useGetAllUsersQuery,
+	useCreateUserMutation,
+	useUserLoginMutation,
+} = authAPI;
