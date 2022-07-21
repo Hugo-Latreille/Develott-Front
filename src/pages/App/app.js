@@ -10,6 +10,7 @@ import Projects from "../Projects/projects";
 import Connexion from "../Login/connexion";
 import NotFound from "./../../components/NotFound/notFound";
 import Project from "../Project/project";
+import Profil from "../Profiles/profiles";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/connexion2" element={<Connexion />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profil" element={<Profil />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {background && (
