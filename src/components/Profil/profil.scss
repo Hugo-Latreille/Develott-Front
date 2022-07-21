@@ -1,0 +1,141 @@
+.profil {
+
+    display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+    margin-top: 2%;
+
+    &_desc {
+        // background-color: azure;
+        margin-bottom: 5%;
+        width: 35%;
+    }
+
+    &_technos {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 20%;
+    }
+
+    &_projets {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 20%;
+    }
+}
+
+.name_container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+
+    &_user {
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    
+    &_avatar {
+    width: 50%;
+    }
+}
+
+.desc_container {
+
+    background-color: aliceblue;
+    padding: 4%;
+    border-radius: 5%;
+
+    &_main {
+        text-align: center;
+        margin-bottom: 5%;
+    }
+
+    &_title {
+        margin-top: 10%;
+
+    }
+
+    &_description {
+        margin-bottom: 5%;
+        font-size: large;
+
+    }
+
+    &_email {
+    font-size: large;
+
+    }
+
+    &_password {
+        
+
+    }
+
+    &_github {
+        font-size: large;
+
+    }
+
+    &_linkedin {
+        font-size: large;
+
+    }
+
+    &_icon_container {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    &_icon {
+        width: 5%;
+        height: fit-content;
+        margin-right: 2%;
+    }
+
+}
+
+.big_title {
+    font-size: large;
+    background-color: aliceblue;
+    padding: 2%;
+    margin-bottom: 6%;
+    border-radius: 5%;
+}
+
+.icone_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15%;
+
+}
+
+i {
+    font-size: 10em;
+}
+
+.project_container {
+    text-align: center;
+        margin-bottom: 5%;
+
+    &_main {
+        background-color: aliceblue;
+        padding: 4%;
+        border-radius: 5%;
+    }    
+}
+
+.card_project {
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: rgb(65 70 245 / 8%) 0px 15px 10px -5px, rgb(113 73 245 / 4%) 0px 10px 10px -5px;
+    position: relative;
+}
