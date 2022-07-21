@@ -31,6 +31,9 @@ function Register() {
           <button type="submit" className="main-button-colored">
             Se connecter
           </button>
+          <a href="#" className="third-button-colored width-100">
+            Déjà inscrit ?
+          </a>
         </div>
       </div>
     </div>

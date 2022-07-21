@@ -55,6 +55,12 @@
       margin-bottom: 0.5rem;
     }
 
+    &-title:hover {
+      background: vars.$linearGradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     &-subDesc {
       margin-bottom: 1rem;
     }

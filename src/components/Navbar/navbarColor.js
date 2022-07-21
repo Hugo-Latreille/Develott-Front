@@ -8,11 +8,14 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <img
-        className="navbar-logo"
-        src={require(`./../../assets/images/v3-large-colorize.png`)}
-        alt="logo Develott"
-      />
+      <Link to="/">
+        <img
+          className="navbar-logo"
+          src={require(`./../../assets/images/v3-large-colorize.png`)}
+          alt="logo Develott"
+        />
+      </Link>
+
       <div className="navbar-link">
         {/* TO DO : AJOUTER LIEN DARK/LIGHT MODE */}
         <Link
