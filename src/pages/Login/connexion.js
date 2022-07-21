@@ -58,7 +58,7 @@ function Connexion() {
     theme: "light",
   };
 
-  // STATE LOGIN SIGN UP
+  // STATE LOGIN SIGN UP AJOUT Léa
 
   const handleSwitchSignUp = () => {
     setActiveForm("signup");
@@ -92,9 +92,11 @@ function Connexion() {
           </div>
         </div>
         <div className="connexion-container-form">
+          <button className="close-modal" onClick={() => navigate(-1)}>
+            <i class="fas fa-times-circle"></i>
+          </button>
           {activeForm === "login" && <Login onSubmit={handleSubmit} />}
           {activeForm === "signup" && <Register />}
-          <button onClick={() => navigate(-1)}>Close</button>
         </div>
       </div>
       <ToastContainer />

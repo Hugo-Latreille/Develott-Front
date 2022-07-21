@@ -12,17 +12,17 @@ import NotFound from "./../../components/NotFound/notFound";
 import Project from "../Project/project";
 
 function App() {
-  // const location = useLocation();
-  // const background = location.state && location.state.background;
+  const location = useLocation();
+  const background = location.state && location.state.background;
 
   return (
     <div className="app">
-      <Routes>
-        {/* <Route path="/" element={<Home />}>
-          <Route path="modal" element={<Connexion />} />
-        </Route> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/connexion" element={<Connexion />} />
+      <Routes location={background || location}>
+        <Route path="/" element={<Home />}>
+          <Route path="connexion" element={<Connexion />} />
+        </Route>
+        {/* <Route path="/" element={<Home />} />
+        <Route path="/connexion" element={<Connexion />} /> */}
         <Route path="/projets" element={<Projects />} />
         <Route path="/projet/1" element={<Project />} />
         <Route path="/connexion2" element={<Connexion />} />
@@ -30,6 +30,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {background && (
+        <Routes>
+          <Route path="connexion" element={<Connexion />} />
+        </Routes>
+      )}
     </div>
   );
 }

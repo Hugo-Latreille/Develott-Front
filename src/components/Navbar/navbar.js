@@ -23,8 +23,8 @@ function Navbar() {
         >
           Se connecter
         </Link>
-        <Outlet />
       </div>
+      <Outlet />
     </div>
   );
 }
