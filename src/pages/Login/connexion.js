@@ -2,106 +2,116 @@ import "./connexion.scss";
 import Login from "./Login";
 import Register from "./Register";
 
-import React, { useState } from "react";
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
-import { clearInputs, toggleLoggingActive } from "./loginSlice";
+import { clearInputs, setCredentials, toggleLoggingActive } from "./authSlice";
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useGetAllUsersQuery, useCreateUserMutation } from "./loginApi";
+import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
 
 // ajout léa
 import { useNavigate } from "react-router-dom";
 
 function Connexion() {
-  //ajout léa
-  const [activeForm, setActiveForm] = useState("login");
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+	const [userLogin] = useUserLoginMutation();
+	const [createUser] = useCreateUserMutation();
+	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
+		(state) => state.auth
+	);
+	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 
-  const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
-  const [createUser, { isLoading: test }] = useCreateUserMutation();
+	const handleLogin = async (e) => {
+		e.preventDefault();
+		try {
+			const userData = await userLogin({ email, password }).unwrap();
+			console.log(userData);
+			dispatch(
+				setCredentials({ accessToken: userData.accessToken, email: email })
+			);
+			navigate("/welcome");
+		} catch (err) {
+			if (!err?.originalStatus) {
+				console.log("No Server Response");
+			} else if (err.originalStatus === 400) {
+				console.log("Missing Username or Password");
+			} else if (err.originalStatus === 401) {
+				console.log("Unauthorized");
+			} else {
+				console.log("Login Failed");
+			}
+		}
+	};
 
-  console.log(allUsers);
+	const handleRegister = (e) => {
+		//* TODO Try/Catch + redirect
+		e.preventDefault();
+		if (handleValidation()) {
+			toast.success("C'est okay", toastOptions);
+			createUser({ firstname, lastname, email, password });
+			dispatch(clearInputs());
+		}
+	};
 
-  const dispatch = useDispatch();
-  const { username, password } = useSelector((state) => state.login);
-  const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
+	const handleValidation = () => {
+		if (firstname === "" || lastname === "") {
+			toast.error("Email is required", toastOptions);
+			return false;
+		}
+		//* TODO verification password regex
+		if (password !== passwordConfirm) {
+			toast.error("Les mots de passe ne correspondent pas", toastOptions);
+			return false;
+		}
+		return true;
+	};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (handleValidation()) {
-      toast.success("C'est okay", toastOptions);
-      createUser(username, password);
-      dispatch(clearInputs());
-    }
-  };
+	const toastOptions = {
+		position: "top-right",
+		autoClose: 800,
+		pauseOnHover: true,
+		draggable: true,
+		theme: "light",
+	};
 
-  const handleValidation = () => {
-    if (username === "") {
-      toast.error("Email is required", toastOptions);
-      return false;
-    }
-    if (password === "") {
-      toast.error("Password is required", toastOptions);
-      return false;
-    }
-    return true;
-  };
-
-  const toastOptions = {
-    position: "top-right",
-    autoClose: 800,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "light",
-  };
-
-  // STATE LOGIN SIGN UP AJOUT Léa
-
-  const handleSwitchSignUp = () => {
-    setActiveForm("signup");
-  };
-  const handleSwitchLogin = () => {
-    setActiveForm("login");
-  };
-
-  return (
-    <div className="connexion">
-      <div className="connexion-container">
-        <div className="connexion-container-navigation">
-          <img
-            className="connexion-logo"
-            src={require(`./../../assets/images/v3-large-white.png`)}
-            alt="logo Develott"
-          />
-          <div className="navigation-links">
-            <span
-              className={activeForm === "login" ? "link-is-active" : ""}
-              onClick={handleSwitchLogin}
-            >
-              Connexion
-            </span>
-            <span
-              className={activeForm === "signup" ? "link-is-active" : ""}
-              onClick={handleSwitchSignUp}
-            >
-              Inscription
-            </span>
-          </div>
-        </div>
-        <div className="connexion-container-form">
-          <button className="close-modal" onClick={() => navigate(-1)}>
-            <i class="fas fa-times-circle"></i>
-          </button>
-          {activeForm === "login" && <Login onSubmit={handleSubmit} />}
-          {activeForm === "signup" && <Register />}
-        </div>
-      </div>
-      <ToastContainer />
-    </div>
-  );
+	return (
+		<div className="connexion">
+			<div className="connexion-container">
+				<div className="connexion-container-navigation">
+					<img
+						className="connexion-logo"
+						src={require(`./../../assets/images/v3-large-white.png`)}
+						alt="logo Develott"
+					/>
+					<div className="navigation-links">
+						<span
+							className={isLoggingActive ? "link-is-active" : ""}
+							onClick={() => dispatch(toggleLoggingActive())}
+						>
+							Connexion
+						</span>
+						<span
+							className={!isLoggingActive ? "link-is-active" : ""}
+							onClick={() => dispatch(toggleLoggingActive())}
+						>
+							Inscription
+						</span>
+					</div>
+				</div>
+				<div className="connexion-container-form">
+					<button className="close-modal" onClick={() => navigate(-1)}>
+						<i className="fas fa-times-circle"></i>
+					</button>
+					{isLoggingActive && <Login onSubmit={handleLogin} />}
+					{!isLoggingActive && <Register onSubmit={handleRegister} />}
+				</div>
+			</div>
+			<ToastContainer />
+		</div>
+	);
 }
 
 export default Connexion;
