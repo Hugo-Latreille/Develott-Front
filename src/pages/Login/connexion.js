@@ -28,10 +28,11 @@ function Connexion() {
 		e.preventDefault();
 		try {
 			const userData = await userLogin({ email, password }).unwrap();
+			console.log(userData);
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);
-			// navigate("/welcome");
+			navigate("/welcome");
 		} catch (err) {
 			if (!err?.originalStatus) {
 				console.log("No Server Response");
