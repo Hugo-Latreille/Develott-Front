@@ -19,11 +19,7 @@ function Connexion() {
 	const [activeForm, setActiveForm] = useState("login");
 
 	const navigate = useNavigate();
-
-	const { data: allUsers } = useGetAllUsersQuery();
 	const [createUser] = useCreateUserMutation();
-
-	console.log(allUsers);
 
 	const dispatch = useDispatch();
 	const { email, password } = useSelector((state) => state.auth);
@@ -60,12 +56,7 @@ function Connexion() {
 
 	// STATE LOGIN SIGN UP AJOUT Léa
 
-	const handleSwitchSignUp = () => {
-		setActiveForm("signup");
-	};
-	const handleSwitchLogin = () => {
-		setActiveForm("login");
-	};
+	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 
 	return (
 		<div className="connexion">
@@ -78,14 +69,14 @@ function Connexion() {
 					/>
 					<div className="navigation-links">
 						<span
-							className={activeForm === "login" ? "link-is-active" : ""}
-							onClick={handleSwitchLogin}
+							className={isLoggingActive ? "link-is-active" : ""}
+							onClick={() => dispatch(toggleLoggingActive())}
 						>
 							Connexion
 						</span>
 						<span
-							className={activeForm === "signup" ? "link-is-active" : ""}
-							onClick={handleSwitchSignUp}
+							className={!isLoggingActive ? "link-is-active" : ""}
+							onClick={() => dispatch(toggleLoggingActive())}
 						>
 							Inscription
 						</span>
@@ -93,10 +84,10 @@ function Connexion() {
 				</div>
 				<div className="connexion-container-form">
 					<button className="close-modal" onClick={() => navigate(-1)}>
-						<i class="fas fa-times-circle"></i>
+						<i className="fas fa-times-circle"></i>
 					</button>
-					{/* {activeForm === "login" && <Login onSubmit={handleSubmit} />} */}
-					{activeForm === "signup" && <Register />}
+					{isLoggingActive && <Login onSubmit={handleSubmit} />}
+					{!isLoggingActive && <Register />}
 				</div>
 			</div>
 			<ToastContainer />

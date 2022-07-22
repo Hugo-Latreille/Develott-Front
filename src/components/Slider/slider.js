@@ -157,7 +157,7 @@ function Slider() {
 								src="https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148279574.jpg?t=st=1657989532~exp=1657990132~hmac=08608f29d21284c783fd75aeffcf6524583b99dcc59a6a7793a305f39890f587&w=996"
 								className="slide-img"
 							/>
-							<div class="img-content">
+							<div className="img-content">
 								<div className="img-content-btns">
 									<span className="stack-button">
 										{" "}
@@ -268,7 +268,7 @@ function Slider() {
 								src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
 								className="slide-img"
 							/>
-							<div class="img-content">
+							<div className="img-content">
 								<div className="img-content-btns">
 									<span className="stack-button">
 										{" "}

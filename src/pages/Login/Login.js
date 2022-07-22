@@ -37,7 +37,7 @@ function Login({ onSubmit }) {
 						Se connecter
 					</button>
 					<a href="#" className="secondary-button-colored" onClick={github}>
-						<i class="fab fa-github"></i> Github
+						<i className="fab fa-github"></i> Github
 					</a>
 					<a href="#" className="third-button-colored width-100">
 						Mot de passe oublié ?
