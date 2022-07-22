@@ -15,7 +15,8 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
 	let result = await baseQuery(args, api, extraOptions);
-	if (result.error && result.error.status === 403) {
+	console.log(result);
+	if (result.error && result.error.originalStatus === 403) {
 		console.log("on envoie le refresh token");
 		//envoyer le refresh token pour renouveler l'access token
 		const refreshResult = await baseQuery(
@@ -23,12 +24,15 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 			api,
 			extraOptions
 		);
-		console.log(refreshResult);
+		console.log("refreshResult", refreshResult);
 		if (refreshResult?.data) {
 			const email = api.getState().auth.email;
 			//on enregistre le nouveau token
 			api.dispatch(
-				setCredentials({ accessToken: refreshResult.data, email: email })
+				setCredentials({
+					accessToken: refreshResult.data.accessToken,
+					email: email,
+				})
 			);
 			// On relance la query originale avec le nouvel access token
 			result = await baseQuery(args, api, extraOptions);

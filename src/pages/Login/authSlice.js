@@ -31,7 +31,6 @@ export const authSlice = createSlice({
 		},
 		setCredentials: (state, action) => {
 			const { email, accessToken } = action.payload;
-			console.log(accessToken, email);
 			state.email = email;
 			state.token = accessToken;
 		},

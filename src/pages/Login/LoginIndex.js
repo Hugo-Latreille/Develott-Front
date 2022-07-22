@@ -36,7 +36,6 @@ function LoginIndex() {
 		e.preventDefault();
 		try {
 			const userData = await userLogin({ email, password }).unwrap();
-			console.log(userData.accessToken);
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);

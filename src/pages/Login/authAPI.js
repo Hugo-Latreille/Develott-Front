@@ -32,7 +32,7 @@ const authAPI = emptySplitApi.injectEndpoints({
 		}),
 		authTest: builder.query({
 			query: () => "home",
-			keepUnusedDataFor: 5,
+			keepUnusedDataFor: 1,
 		}),
 	}),
 });

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AuthTest = () => {
 	const { data, isLoading, isSuccess, isError, error } = useAuthTestQuery();
-	console.log(data);
+
 	return (
 		<div>
 			{isLoading && <p>Loading...</p>}
