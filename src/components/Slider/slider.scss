@@ -92,7 +92,9 @@
 }
 
 .slider-title:hover {
-  color: vars.$primaryColor;
+  background: vars.$linearGradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 
@@ -107,7 +109,9 @@
 }
 
 .slider-desc a:hover {
-  color: vars.$primaryColor;
+  background: vars.$linearGradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 

@@ -1,4 +1,4 @@
-@use 'src/styles/vars';
+@use "src/styles/vars";
 
 .color-prmary {
   color: vars.$iconColor;
@@ -6,26 +6,26 @@
 
 .cards {
   display: flex;
-	flex-direction: row;
+  flex-direction: row;
   flex-wrap: wrap;
-	justify-content: center;
+  justify-content: center;
   margin-top: 7%;
-  margin-right: 2%;
-  margin-left: 2%;
+  background-image: url("./../../assets/images/background-blob2.png");
+  background-size: contain;
+  background-position: center bottom;
+  padding-bottom: 6rem;
 }
-
 
 .card {
   width: 20%;
-  margin-left: 1%;
-  margin-right: 1%;
+  margin: 2rem 1rem;
   background-color: #fff;
   margin-bottom: 4rem;
   border-radius: 8px;
   box-shadow: rgba(65, 70, 245, 0.08) 0px 15px 10px -5px,
     rgba(113, 73, 245, 0.04) 0px 10px 10px -5px;
   position: relative;
-  
+
   &_img {
     width: 100%;
     height: 12rem;
@@ -41,7 +41,7 @@
   flex-direction: column;
   align-items: unset;
   position: absolute;
-  
+
   &_btns {
     display: flex;
     align-items: flex-end;
@@ -63,96 +63,87 @@
     margin-bottom: 10%;
   }
 }
-  
-  
-  
-  .icone_button {
-    background-color: #fff;
-    padding: 0.6rem;
-    margin-left: 0.5rem;
-    border-radius: 50px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+.icone_button {
+  background-color: #fff;
+  padding: 0.6rem;
+  margin-left: 0.5rem;
+  border-radius: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.card_main {
+  padding: 1rem;
+
+  &_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
     cursor: pointer;
   }
-  
-  
-  
-  .card_main {
-    padding: 1rem;
 
-    &_title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      padding-bottom: 1rem;
-      cursor: pointer;
-    }
-
-    &_title:hover {
-      color: #7149f5;
-      transition-duration: 0.5s;
-    }
-
-    &_desc {
-      font-size: 0.8rem;
-      color: grey;
-    }
-
-    &_desc_link {
-      font-weight: bolder;
-      color: grey;
-    }
-
-    &_desc_link:hover {
-      color: #7149f5;
-      transition-duration: 0.5s;
-    }
+  &_title:hover {
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: 0.5s;
   }
-  
-  
-  
-  
-  
-  
-  .card_desc {
+
+  &_desc {
+    font-size: 0.8rem;
+    color: grey;
+  }
+
+  &_desc_link {
+    font-weight: bolder;
+    color: grey;
+  }
+
+  &_desc_link:hover {
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: 0.5s;
+  }
+}
+
+.card_desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+
+  &_user {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-top: 2rem;
-
-    &_user {
-      display: flex;
-      align-items: center;
-    }
-
-    &_user_avatar {
-      height: 2rem;
-      width: auto;
-      cursor: pointer;
-      border-radius: 50px;
-    }
-
-    &_user_name {
-      color: grey;
-      font-size: 0.6rem;
-      font-weight: bolder;
-      padding-left: 0.5rem;
-      cursor: pointer;
-    }
-
-    &_user_date {
-      color: grey;
-      font-size: 0.6rem;
-    }
-
   }
-  
-  .icone_test {
-    display: flex;
+
+  &_user_avatar {
+    height: 2rem;
+    width: auto;
+    cursor: pointer;
+    border-radius: 50px;
   }
-  
-  i {
-    margin-bottom: 8%;
+
+  &_user_name {
+    color: grey;
+    font-size: 0.6rem;
+    font-weight: bolder;
+    padding-left: 0.5rem;
+    cursor: pointer;
   }
-  
-  
-  
+
+  &_user_date {
+    color: grey;
+    font-size: 0.6rem;
+  }
+}
+
+.icone_test {
+  display: flex;
+}
+
+i {
+  margin-bottom: 8%;
+}

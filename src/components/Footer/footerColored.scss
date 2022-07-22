@@ -1,7 +1,7 @@
 @use "./../../styles/vars";
 
-.footer {
-  background-color: rgba(0, 0, 0, 0.1);
+.footer-colored {
+  background: url("./../../assets/images/footer-bg2.png");
 
   &-container {
     padding: 5rem 0;
