@@ -27,6 +27,7 @@ function App() {
         <Route path="/projets" element={<Projects />} />
         <Route path="/projet/1" element={<Project />} />
         <Route path="/projet/create" element={<CreateProject />} />
+        <Route path="la-charte" element={<Home />} />
         {/* <Route path="/connexion2" element={<Connexion />} /> */}
         {/* <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} /> */}
