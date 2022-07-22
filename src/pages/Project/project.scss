@@ -2,6 +2,9 @@
 
 .project {
   height: 100vh;
+  background-image: url("./../../assets/images/background-blob2.png");
+  background-size: cover;
+  background-position: center;
 
   &-container {
     display: flex;
@@ -13,6 +16,7 @@
       width: 30%;
       background-color: #fff;
       height: 80vh;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     &-right {
@@ -29,13 +33,38 @@
 
   &-user {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
 
-    & p {
+    &-name {
       padding: 0.5rem 1rem;
       text-decoration: underline;
+      margin-right: 4rem;
+    }
+
+    &-links {
+      display: flex;
+      justify-content: flex-end;
+
+      & p {
+        padding: 0 0.4rem;
+        color: vars.$grey;
+        cursor: pointer;
+      }
+
+      & p:hover {
+        color: rgb(87, 86, 86);
+      }
+    }
+  }
+
+  &-jobs {
+    margin: 3rem 0;
+
+    & p {
+      color: vars.$lightGrey;
     }
   }
 
@@ -44,6 +73,7 @@
     background-color: #fff;
     margin-bottom: 2rem;
     padding: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     &-see-more {
       text-align: right;
@@ -78,7 +108,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: 4rem;
     &-title {
       width: 100%;
     }
@@ -112,10 +143,6 @@
 
       & p {
         padding: 0.5rem 1rem;
-
-        & i {
-          padding-right: 0.5rem;
-        }
       }
     }
 
@@ -137,4 +164,8 @@
       }
     }
   }
+}
+
+.success {
+  color: rgba(103, 182, 103, 0.959);
 }

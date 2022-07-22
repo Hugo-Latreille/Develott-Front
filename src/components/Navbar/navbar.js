@@ -1,10 +1,16 @@
 import "./navbar.scss";
 import { Link, useLocation, Outlet } from "react-router-dom";
+import { useState } from "react";
 
 import SearchBar from "../SearchBar/searchBar";
 
-function Navbar() {
+function Navbar({ toggleModal }) {
   const location = useLocation();
+  const [isModalOpen, setIsModalopen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalopen(true);
+  };
 
   return (
     <div className="navbar">
@@ -23,6 +29,7 @@ function Navbar() {
           to="/connexion"
           className="main-button-white"
           state={{ background: location }}
+          onClick={toggleModal}
         >
           Se connecter
         </Link>

@@ -9,8 +9,12 @@ import Register from "../Login/Register";
 import Projects from "../Projects/projects";
 import Connexion from "../Login/connexion";
 import NotFound from "./../../components/NotFound/notFound";
-import Project from "../Project/project";
-import Profil from "../Profiles/profiles";
+
+import Project from "./../Project/project";
+import Profil from "../Profiles/profiles"
+import { useState } from "react";
+import CreateProject from "../Project/createProject";
+
 
 function App() {
   const location = useLocation();
@@ -22,14 +26,16 @@ function App() {
         <Route path="/" element={<Home />}>
           <Route path="connexion" element={<Connexion />} />
         </Route>
-        {/* <Route path="/" element={<Home />} />
-        <Route path="/connexion" element={<Connexion />} /> */}
         <Route path="/projets" element={<Projects />} />
         <Route path="/projet/1" element={<Project />} />
-        <Route path="/connexion2" element={<Connexion />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profil" element={<Profil />} />
+
+        <Route path="/projet/create" element={<CreateProject />} />
+        <Route path="la-charte" element={<Home />} />
+        {/* <Route path="/connexion2" element={<Connexion />} /> */}
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/profil" element={<Profil />} /> */}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       {background && (
