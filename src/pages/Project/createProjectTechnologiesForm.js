@@ -14,18 +14,30 @@ function CreateProjectTechnologiesForm() {
       <div className="form-technologies-container form-technologies-container-70">
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Languages</h3>
-          <p>
-            <i class="devicon-javascript-plain colored"></i> Javascript
-          </p>
-          <p>
-            <i class="devicon-html5-plain colored"></i> Html5
-          </p>
-          <p>
-            <i class="devicon-sass-plain colored"></i> Html5
-          </p>
-          <p>
-            <i class="devicon-postgresql-plain colored"></i> PostgreSql
-          </p>
+          <div className="form-technologies-items">
+            <p>
+              <i class="devicon-javascript-plain colored"></i> Javascript
+            </p>
+            <i class="fal fa-backspace form-technologies-delete"></i>
+          </div>
+          <div className="form-technologies-items">
+            <p>
+              <i class="devicon-html5-plain colored"></i> html5
+            </p>
+            <i class="fal fa-backspace form-technologies-delete"></i>
+          </div>
+          <div className="form-technologies-items">
+            <p>
+              <i class="devicon-css3-plain colored"></i> Css3
+            </p>
+            <i class="fal fa-backspace form-technologies-delete"></i>
+          </div>
+          <div className="form-technologies-items">
+            <p>
+              <i class="devicon-sass-plain colored"></i> sass
+            </p>
+            <i class="fal fa-backspace form-technologies-delete"></i>
+          </div>
         </div>
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Frameworks</h3>

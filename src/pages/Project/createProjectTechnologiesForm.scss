@@ -20,6 +20,23 @@
     color: grey;
     font-size: 0.8rem;
   }
+
+  &-items {
+    display: flex;
+
+    & i {
+      padding-right: 0.5rem;
+    }
+    & p {
+      width: 70%;
+      font-size: 0.9rem;
+    }
+  }
+
+  &-delete {
+    opacity: 0.3;
+    cursor: pointer;
+  }
 }
 
 .form-technologies-container {
