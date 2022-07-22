@@ -3,38 +3,64 @@ import Login from "./Login";
 import Register from "./Register";
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
-import { clearInputs, toggleLoggingActive } from "./loginSlice";
+import { clearInputs, toggleLoggingActive } from "./authSlice";
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useGetAllUsersQuery, useCreateUserMutation } from "./loginApi";
+//? RTK Query
+import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "./authSlice";
 
 function LoginIndex() {
-	const { data: allUsers, error, isLoading } = useGetAllUsersQuery();
-	const [createUser, { isLoading: test }] = useCreateUserMutation();
-
-	console.log(allUsers);
-
 	const dispatch = useDispatch();
-	const { username, password } = useSelector((state) => state.login);
-	const isLoggingActive = useSelector((state) => state.login.isLoggingActive);
+	const navigate = useNavigate();
+	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
+	const [createUser] = useCreateUserMutation();
+	const [userLogin, { isLoading }] = useUserLoginMutation();
+	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
+		(state) => state.auth
+	);
 
-	const handleSubmit = (e) => {
+	const handleRegister = (e) => {
+		//* TODO Try/Catch + redirect
 		e.preventDefault();
 		if (handleValidation()) {
 			toast.success("C'est okay", toastOptions);
-			createUser(username, password);
+			createUser({ firstname, lastname, email, password });
 			dispatch(clearInputs());
 		}
 	};
 
+	const handleLogin = async (e) => {
+		e.preventDefault();
+		try {
+			const userData = await userLogin({ email, password }).unwrap();
+			dispatch(
+				setCredentials({ accessToken: userData.accessToken, email: email })
+			);
+			navigate("/welcome");
+		} catch (err) {
+			if (!err?.originalStatus) {
+				console.log("No Server Response");
+			} else if (err.originalStatus === 400) {
+				console.log("Missing Username or Password");
+			} else if (err.originalStatus === 401) {
+				console.log("Unauthorized");
+			} else {
+				console.log("Login Failed");
+			}
+		}
+	};
+
 	const handleValidation = () => {
-		if (username === "") {
+		if (firstname === "" || lastname === "") {
 			toast.error("Email is required", toastOptions);
 			return false;
 		}
-		if (password === "") {
-			toast.error("Password is required", toastOptions);
+		//* TODO verification password regex
+		if (password !== passwordConfirm) {
+			toast.error("Les mots de passe ne correspondent pas", toastOptions);
 			return false;
 		}
 		return true;
@@ -78,8 +104,9 @@ function LoginIndex() {
 			<div className="App">
 				<div className="login">
 					<div className="container">
-						{isLoggingActive && <Login onSubmit={handleSubmit} />}
-						{!isLoggingActive && <Register />}
+						{isLoggingActive && <Login onSubmit={handleLogin} />}
+						{!isLoggingActive && <Register onSubmit={handleRegister} />}
+						{isLoading && <p>Loading...</p>}
 					</div>
 					<RightSide
 						handleClick={() => dispatch(toggleLoggingActive())}
