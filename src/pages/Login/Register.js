@@ -8,21 +8,6 @@ function Register({ onSubmit }) {
 		(state) => state.auth
 	);
 	return (
-		// <div className="register-container">
-		//   {/* <h2>Inscription</h2> */}
-		//   <form className="register-form">
-		//     <div className="register-form-inputs">
-		//       <div className="form">
-		//         <
-		//       </div>
-		//     </div>
-		//     <div className="form-form-buttons">
-		//       <button type="submit" className="main-button-bg-colored">
-		//         S'inscrire
-		//       </button>
-		//     </div>
-		//   </form>
-		// </div>
 		<div className="register-container">
 			<div className="content ">
 				<form className="form" onSubmit={onSubmit}>

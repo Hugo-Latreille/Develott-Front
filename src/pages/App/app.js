@@ -24,8 +24,8 @@ function App() {
 						<Route path="connexion" element={<Connexion />} />
 					</Route>
 					<Route element={<RequireAuth />}>
-						<Route path="/welcome" element={<Welcome />} />
-						<Route path="/authTest" element={<AuthTest />} />
+						<Route path="welcome" element={<Welcome />} />
+						<Route path="authTest" element={<AuthTest />} />
 						<Route path="projets" element={<Projects />} />
 						<Route path="projet/1" element={<Project />} />
 						<Route path="projet/create" element={<CreateProject />} />
