@@ -2,61 +2,79 @@ import "./connexion.scss";
 import Login from "./Login";
 import Register from "./Register";
 
-import React, { useState } from "react";
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
-import { clearInputs, toggleLoggingActive } from "./authSlice";
+import { clearInputs, setCredentials, toggleLoggingActive } from "./authSlice";
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useGetAllUsersQuery, useCreateUserMutation } from "./authAPI";
+import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
 
 // ajout léa
 import { useNavigate } from "react-router-dom";
 
 function Connexion() {
-	//ajout léa
-	const [activeForm, setActiveForm] = useState("login");
-
 	const navigate = useNavigate();
-	const [createUser] = useCreateUserMutation();
-
 	const dispatch = useDispatch();
-	const { email, password } = useSelector((state) => state.auth);
 
-	const handleSubmit = (e) => {
+	const [userLogin] = useUserLoginMutation();
+	const [createUser] = useCreateUserMutation();
+	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
+		(state) => state.auth
+	);
+	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
+
+	const handleLogin = async (e) => {
 		e.preventDefault();
-		console.log("ok");
-		// if (handleValidation()) {
-		// 	toast.success("C'est okay", toastOptions);
-		// 	createUser(email, password);
-		// 	dispatch(clearInputs());
-		// }
+		try {
+			const userData = await userLogin({ email, password }).unwrap();
+			dispatch(
+				setCredentials({ accessToken: userData.accessToken, email: email })
+			);
+			// navigate("/welcome");
+		} catch (err) {
+			if (!err?.originalStatus) {
+				console.log("No Server Response");
+			} else if (err.originalStatus === 400) {
+				console.log("Missing Username or Password");
+			} else if (err.originalStatus === 401) {
+				console.log("Unauthorized");
+			} else {
+				console.log("Login Failed");
+			}
+		}
 	};
 
-	// const handleValidation = () => {
-	// 	if (username === "") {
-	// 		toast.error("Email is required", toastOptions);
-	// 		return false;
-	// 	}
-	// 	if (password === "") {
-	// 		toast.error("Password is required", toastOptions);
-	// 		return false;
-	// 	}
-	// 	return true;
-	// };
+	const handleRegister = (e) => {
+		//* TODO Try/Catch + redirect
+		e.preventDefault();
+		if (handleValidation()) {
+			toast.success("C'est okay", toastOptions);
+			createUser({ firstname, lastname, email, password });
+			dispatch(clearInputs());
+		}
+	};
 
-	// const toastOptions = {
-	// 	position: "top-right",
-	// 	autoClose: 800,
-	// 	pauseOnHover: true,
-	// 	draggable: true,
-	// 	theme: "light",
-	// };
+	const handleValidation = () => {
+		if (firstname === "" || lastname === "") {
+			toast.error("Email is required", toastOptions);
+			return false;
+		}
+		//* TODO verification password regex
+		if (password !== passwordConfirm) {
+			toast.error("Les mots de passe ne correspondent pas", toastOptions);
+			return false;
+		}
+		return true;
+	};
 
-	// STATE LOGIN SIGN UP AJOUT Léa
-
-	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
+	const toastOptions = {
+		position: "top-right",
+		autoClose: 800,
+		pauseOnHover: true,
+		draggable: true,
+		theme: "light",
+	};
 
 	return (
 		<div className="connexion">
@@ -86,8 +104,8 @@ function Connexion() {
 					<button className="close-modal" onClick={() => navigate(-1)}>
 						<i className="fas fa-times-circle"></i>
 					</button>
-					{isLoggingActive && <Login onSubmit={handleSubmit} />}
-					{!isLoggingActive && <Register />}
+					{isLoggingActive && <Login onSubmit={handleLogin} />}
+					{!isLoggingActive && <Register onSubmit={handleRegister} />}
 				</div>
 			</div>
 			<ToastContainer />

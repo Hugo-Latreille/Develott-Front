@@ -27,23 +27,22 @@ function Register({ onSubmit }) {
 			<div className="content ">
 				<form className="form" onSubmit={onSubmit}>
 					<div className="inputs-container">
-						<Input name="text" label="Prénom" />
-						<Input name="text" label="Nom" />
+						<Input
+							name="firstname"
+							value={firstname}
+							label="Prénom"
+							type="text"
+							required={true}
+						/>
+						<Input
+							name="lastname"
+							value={lastname}
+							label="Nom"
+							type="text"
+							required={true}
+						/>
 					</div>
-					<Input
-						name="firstname"
-						value={firstname}
-						label="Prénom"
-						type="text"
-						required={true}
-					/>
-					<Input
-						name="lastname"
-						value={lastname}
-						label="Nom"
-						type="text"
-						required={true}
-					/>
+
 					<Input
 						name="email"
 						value={email}
