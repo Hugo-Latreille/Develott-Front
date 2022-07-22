@@ -1,22 +1,51 @@
 @use "./../../styles/vars";
 
 .create-project {
-  background-color: rgba(91, 112, 131, 0.65);
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  width: 100vw;
+}
+
+.form-informations {
+  background-color: #fff;
+  height: 120vh;
+  margin-bottom: 4rem;
 
   &-container {
-    width: 50%;
-    min-height: 60%;
-    margin: auto;
-    background-color: #fff;
+    padding: 4rem;
     display: flex;
-    border-radius: 10px;
-    position: relative;
+    justify-content: space-between;
+  }
+}
+
+.form {
+  &-title {
+    font-weight: lighter;
+    font-size: 1.6rem;
+    color: vars.$grey;
+    margin-bottom: 0.5rem;
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &-left {
+    width: 24%;
+    border-right: solid 1px vars.$primaryColor;
+  }
+
+  &-right {
+    width: 75%;
+    height: 30rem;
+    padding: 0 4rem;
+
+    &-container {
+      display: flex;
+
+      &-left {
+        width: 50%;
+      }
+      &-right .form-group-project {
+        width: 50%;
+      }
+    }
   }
 }

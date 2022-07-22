@@ -6,8 +6,8 @@ import FooterColored from "./../../components/Footer/footerColored";
 function Project() {
   return (
     <>
+      <NavbarColor />
       <div className="project">
-        <NavbarColor />
         <div className="project-container container">
           <div className="project-container-left">
             <img
