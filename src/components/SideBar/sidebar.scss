@@ -1,0 +1,58 @@
+@use "./../../styles/vars";
+
+.sidebar {
+    background-color: black;
+    color: white;
+    height: 100vh;
+
+    &_icon {
+        color: white;
+    }
+}
+
+.top_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+}
+
+.logo_nav {
+    font-size: 18px;
+    line-height: 0;
+}
+
+.search_dashbar {
+    display: flex;
+    align-items: center;
+    margin : 10px 0;
+    height: 30px;
+    padding: 10px;
+}
+
+.search_dashbar input {
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+.sidebar_navlink {
+    display: flex;
+    color: white;
+    gap: 10px;
+    border-right: 4px solid transparent;
+    padding: 5px 10px;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar_navlink:hover {
+    border-right: 4px solid white;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    background: rgba(207, 207, 207, 0.307);
+}
