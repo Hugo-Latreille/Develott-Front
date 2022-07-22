@@ -1,6 +1,11 @@
 import "./createProjectInformationsForm.scss";
 
+import { useState } from "react";
+
 import InputProject from "../../components/Input/ProjectInput";
+
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function CreateProjectInformationsForm() {
   return (
@@ -19,6 +24,11 @@ function CreateProjectInformationsForm() {
           className="form-right-container-right"
         />
       </div>
+      <Editor
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+      />
     </form>
   );
 }
