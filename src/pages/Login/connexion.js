@@ -39,6 +39,7 @@ function Connexion() {
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);
+			dispatch(toggleLoggingModalOpen());
 			navigate("/projets");
 		} catch (err) {
 			if (!err?.originalStatus) {

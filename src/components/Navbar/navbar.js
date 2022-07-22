@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/searchBar";
 import { useDispatch } from "react-redux";
 import { toggleLoggingModalOpen } from "../../pages/Login/authSlice";
 
-function Navbar({ toggleModal }) {
+function Navbar() {
 	const location = useLocation();
 
 	const dispatch = useDispatch();
