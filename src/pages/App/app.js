@@ -16,23 +16,6 @@ function App() {
 	const location = useLocation();
 	const background = location.state && location.state.background;
 
-	// function App() {
-	// 	return (
-	// 		<div className="app">
-	// 			<Routes>
-	// 				<Route path="/" element={<Layout />}>
-	// 					<Route index element={<Home />} />
-	// 					<Route path="/auth" element={<LoginIndex />} />
-
-	// 					<Route element={<RequireAuth />}>
-	// 						<Route path="/welcome" element={<Welcome />} />
-	// 						<Route path="/authTest" element={<AuthTest />} />
-	// 					</Route>
-	// 				</Route>
-	// 			</Routes>
-	// 		</div>
-	// 	);
-
 	return (
 		<div className="app">
 			<Routes location={background || location}>
