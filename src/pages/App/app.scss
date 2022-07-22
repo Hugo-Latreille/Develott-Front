@@ -2,120 +2,120 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
 
 .app {
-  font-family: "Montserrat", sans-serif;
-  background-color: vars.$backgroundLight;
+	font-family: "Montserrat", sans-serif;
+	background-color: vars.$backgroundLight;
 }
 
 body {
-  background-color: vars.$backgroundLight;
+	background-color: vars.$backgroundLight;
 }
 
 h2 {
-  font-size: 2rem;
-  font-weight: bolder;
-  margin-bottom: 2rem;
+	font-size: 2rem;
+	font-weight: bolder;
+	margin-bottom: 2rem;
 }
 
 h3 {
-  // font-size: 1.5rem;
-  font-weight: bolder;
-  margin-bottom: 2rem;
+	// font-size: 1.5rem;
+	font-weight: bolder;
+	margin-bottom: 2rem;
 }
 
 p {
-  line-height: 1.2rem;
+	line-height: 1.2rem;
 }
 
 .main-button-white {
-  color: white;
-  border: solid 2px white;
-  font-weight: bolder;
-  padding: 0.8rem 1.6rem;
-  border-radius: 25px;
-  margin: 0.5rem;
+	color: white;
+	border: solid 2px white;
+	font-weight: bolder;
+	padding: 0.8rem 1.6rem;
+	border-radius: 25px;
+	margin: 0.5rem;
 }
 
 .main-button-bg-white {
-  color: #8291f5;
-  border: solid 2px white;
-  font-weight: bolder;
-  padding: 0.8rem 1.6rem;
-  border-radius: 25px;
-  background-color: white;
-  margin: 0.5rem;
+	color: #8291f5;
+	border: solid 2px white;
+	font-weight: bolder;
+	padding: 0.8rem 1.6rem;
+	border-radius: 25px;
+	background-color: white;
+	margin: 0.5rem;
 }
 
 .main-button-colored {
-  color: white;
-  border: solid 2px #32518d;
-  font-weight: bolder;
-  padding: 0.8rem 1.6rem;
-  border-radius: 25px;
-  background-color: transparent;
-  background: vars.$linearGradient;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0.5rem;
+	color: white;
+	border: solid 2px #32518d;
+	font-weight: bolder;
+	padding: 0.8rem 1.6rem;
+	border-radius: 25px;
+	background-color: transparent;
+	background: vars.$linearGradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin: 0.5rem;
 }
 
 .main-button-bg-colored {
-  color: #fff;
-  border: solid 2px white;
-  font-weight: bolder;
-  padding: 1rem 1.8rem;
-  margin: 0.5rem;
-  border-radius: 25px;
-  background: vars.$linearGradient;
+	color: #fff;
+	border: solid 2px white;
+	font-weight: bolder;
+	padding: 1rem 1.8rem;
+	margin: 0.5rem;
+	border-radius: 25px;
+	background: vars.$linearGradient;
 }
 
 .secondary-button-colored {
-  background: vars.$linearGradient;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 1rem;
-  font-weight: bolder;
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+	background: vars.$linearGradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 1rem;
+	font-weight: bolder;
+	text-decoration: underline;
+	text-underline-offset: 0.3rem;
 }
 
 .secondary-button-white {
-  color: white;
-  font-size: 0.8rem;
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+	color: white;
+	font-size: 0.8rem;
+	text-decoration: underline;
+	text-underline-offset: 0.3rem;
 }
 
 .thrid-button-white {
-  color: white;
-  font-size: 0.8rem;
-  padding-left: 1rem;
+	color: white;
+	font-size: 0.8rem;
+	padding-left: 1rem;
 }
 
 .third-button-colored {
-  color: #32518d;
-  font-size: 0.8rem;
-  padding-left: 1rem;
+	color: #32518d;
+	font-size: 0.8rem;
+	padding-left: 1rem;
 }
 
 .container {
-  width: 80%;
-  margin: auto;
+	width: 80%;
+	margin: auto;
 }
 
 .width-100 {
-  width: 100%;
+	width: 100%;
 }
 
 .close-modal {
-  background-color: white;
-  border: none;
-  padding: 1rem;
-  background: vars.$linearGradient;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.9;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 0;
-  right: 0;
+	background-color: white;
+	border: none;
+	padding: 1rem;
+	background: vars.$linearGradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	opacity: 0.9;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 0;
+	right: 0;
 }

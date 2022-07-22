@@ -10,6 +10,7 @@ const initialState = {
 	isLogged: false,
 	isLoggingActive: true,
 	token: "",
+	loggingModalOpen: false,
 };
 
 export const authSlice = createSlice({
@@ -38,6 +39,9 @@ export const authSlice = createSlice({
 			state.email = "";
 			state.token = "";
 		},
+		toggleLoggingModalOpen: (state) => {
+			state.loggingModalOpen = !state.loggingModalOpen;
+		},
 	},
 });
 
@@ -48,6 +52,7 @@ export const {
 	handleTest,
 	setCredentials,
 	logOut,
+	toggleLoggingModalOpen,
 } = authSlice.actions;
 
 export default authSlice.reducer;

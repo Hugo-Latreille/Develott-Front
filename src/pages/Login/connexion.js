@@ -1,10 +1,16 @@
 import "./connexion.scss";
+import "./../App/app.scss";
 import Login from "./Login";
 import Register from "./Register";
 
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
-import { clearInputs, setCredentials, toggleLoggingActive } from "./authSlice";
+import {
+	clearInputs,
+	setCredentials,
+	toggleLoggingActive,
+	toggleLoggingModalOpen,
+} from "./authSlice";
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +18,7 @@ import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
 
 // ajout léa
 import { useNavigate } from "react-router-dom";
+import ReactDOM from "react-dom";
 
 function Connexion() {
 	const navigate = useNavigate();
@@ -32,7 +39,8 @@ function Connexion() {
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);
-			navigate("/welcome");
+			dispatch(toggleLoggingModalOpen());
+			navigate("/projets");
 		} catch (err) {
 			if (!err?.originalStatus) {
 				console.log("No Server Response");
@@ -77,7 +85,7 @@ function Connexion() {
 		theme: "light",
 	};
 
-	return (
+	return ReactDOM.createPortal(
 		<div className="connexion">
 			<div className="connexion-container">
 				<div className="connexion-container-navigation">
@@ -102,7 +110,13 @@ function Connexion() {
 					</div>
 				</div>
 				<div className="connexion-container-form">
-					<button className="close-modal" onClick={() => navigate(-1)}>
+					<button
+						className="close-modal"
+						onClick={() => {
+							dispatch(toggleLoggingModalOpen());
+							navigate(-1);
+						}}
+					>
 						<i className="fas fa-times-circle"></i>
 					</button>
 					{isLoggingActive && <Login onSubmit={handleLogin} />}
@@ -110,7 +124,8 @@ function Connexion() {
 				</div>
 			</div>
 			<ToastContainer />
-		</div>
+		</div>,
+		document.getElementById("modal-root")
 	);
 }
 

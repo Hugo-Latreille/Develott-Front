@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 const RequireAuth = () => {
 	const token = useSelector((state) => state.auth.token);
 	const location = useLocation();
+	console.log(token);
 
 	return token ? (
 		<Outlet />
 	) : (
-		<Navigate to="/connexion" state={{ from: location }} replace />
+		<Navigate to="/" state={{ from: location }} replace />
 	);
 };
 export default RequireAuth;

@@ -11,10 +11,21 @@ import Layout from "../../utils/Layout/Layout";
 import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
 	const location = useLocation();
 	const background = location.state && location.state.background;
+	const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
+
+	useEffect(() => {
+		if (modalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [modalIsOpen]);
 
 	return (
 		<div className="app">
