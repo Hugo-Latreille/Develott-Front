@@ -28,7 +28,38 @@ function CreateProjectInformationsForm() {
         wrapperClassName="wrapper-class"
         editorClassName="editor-class"
         toolbarClassName="toolbar-class"
+        toolbar={{
+          options: [
+            "inline",
+            "blockType",
+            "fontSize",
+            "list",
+            "textAlign",
+            "colorPicker",
+            "link",
+            "emoji",
+            "history",
+          ],
+          inline: { inDropdown: true },
+          list: { inDropdown: true },
+          textAlign: { inDropdown: true },
+          link: { inDropdown: false },
+          image: { component: undefined },
+          blockType: {
+            inDropdown: true,
+            options: ["Normal", "Blockquote", "Code"],
+            className: undefined,
+            component: undefined,
+            dropdownClassName: undefined,
+          },
+        }}
       />
+      <button
+        type="submit"
+        className="main-button-colored create-project-button"
+      >
+        Valider
+      </button>
     </form>
   );
 }

@@ -1,12 +1,10 @@
 @use "./../../styles/vars";
 
 .create-project {
-  height: 100vh;
 }
 
 .create-project {
   background-color: #fff;
-  height: 120vh;
   margin-bottom: 4rem;
 
   &-container {
@@ -49,8 +47,12 @@
 }
 
 .public-DraftEditor-content {
-  max-height: 14rem;
+  max-height: 13rem;
   overflow-y: scroll;
   background-color: vars.$backgroundLight;
-  padding: 2rem;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+.create-project-button {
+  margin-top: 1rem;
 }
