@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const RequireAuth = () => {
 	const token = useSelector((state) => state.auth.token);
 	const location = useLocation();
+	console.log(token);
 
 	return token ? (
 		<Outlet />
