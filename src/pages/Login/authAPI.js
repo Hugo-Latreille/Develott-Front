@@ -34,6 +34,9 @@ const authAPI = emptySplitApi.injectEndpoints({
 			query: () => "home",
 			keepUnusedDataFor: 1,
 		}),
+		userLogout: builder.mutation({
+			query: () => "user/logout",
+		}),
 	}),
 });
 
@@ -42,4 +45,5 @@ export const {
 	useCreateUserMutation,
 	useUserLoginMutation,
 	useAuthTestQuery,
+	useUserLogoutMutation,
 } = authAPI;

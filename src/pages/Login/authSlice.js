@@ -35,8 +35,8 @@ export const authSlice = createSlice({
 			state.token = accessToken;
 		},
 		logOut: (state, action) => {
-			state.email = null;
-			state.token = null;
+			state.email = "";
+			state.token = "";
 		},
 	},
 });
