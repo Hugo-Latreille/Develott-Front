@@ -2,7 +2,7 @@
 
 .create-project {
   background-color: #fff;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 
   &-container {
     padding: 4rem;
@@ -15,9 +15,6 @@
     font-size: 1.4rem;
     color: vars.$grey;
     margin-bottom: 0.5rem;
-    background: vars.$linearGradient;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   &-desc {
@@ -31,6 +28,7 @@
 
   &-step {
     margin-bottom: 4rem;
+    color: vars.$grey;
   }
 
   &-right {
@@ -61,4 +59,18 @@
 .create-project-button {
   margin-top: 1rem;
   width: 100%;
+}
+
+.step-active {
+  font-weight: bold;
+
+  & h2 {
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.step-inactive {
+  opacity: 0.7;
 }

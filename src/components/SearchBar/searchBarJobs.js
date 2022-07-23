@@ -45,6 +45,8 @@ function SearchBarJobs() {
     <div className="input-container">
       <div>
         <ReactSearchAutocomplete
+          showItemsOnFocus={true}
+          autoFocus={true}
           items={jobsData}
           onSearch={handleOnSearch}
           onHover={handleOnHover}
@@ -58,7 +60,7 @@ function SearchBarJobs() {
           showIcon={true}
           placeholder="Developpeur Back-End, UX-UI Designer, devOps... "
           showNoResults
-          showItemsOnFocus={true}
+          showNoResultsText="Pas de résultats."
         />
       </div>
     </div>

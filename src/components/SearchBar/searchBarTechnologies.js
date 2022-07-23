@@ -60,9 +60,11 @@ function SearchBarTechnologies() {
           formatResult={formatResult}
           maxResults={5}
           showIcon={true}
-          placeholder="Developpeur Back-End, UX-UI Designer, devOps... "
+          placeholder="Javascript, PHP, React... "
           showNoResults
-          showItemsOnFocus={false}
+          showNoResultsText="Pas de résultats."
+          autoFocus={true}
+          showItemsOnFocus={true}
         />
       </div>
     </div>

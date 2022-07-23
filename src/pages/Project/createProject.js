@@ -34,7 +34,13 @@ function CreateProject() {
       <div className="create-project container">
         <div className="create-project-container ">
           <div className="create-project-left">
-            <div className="create-project-step">
+            <div
+              className={
+                activeForm === "informations"
+                  ? "create-project-step step-active"
+                  : "create-project-step"
+              }
+            >
               <h2
                 className="create-project-title"
                 onClick={handleDisplayInformationsForm}
@@ -47,7 +53,11 @@ function CreateProject() {
               </p>
             </div>
             <div
-              className="create-project-step"
+              className={
+                activeForm === "technologies"
+                  ? "create-project-step step-active"
+                  : "create-project-step"
+              }
               onClick={handleDisplayTechnologiesForm}
             >
               <h2 className="create-project-title">Technologies</h2>
@@ -57,7 +67,11 @@ function CreateProject() {
               </p>
             </div>
             <div
-              className="create-project-step"
+              className={
+                activeForm === "jobs"
+                  ? "create-project-step step-active"
+                  : "create-project-step"
+              }
               onClick={handleDisplayJobsForm}
             >
               <h2 className="create-project-title">Profils recherchés</h2>
