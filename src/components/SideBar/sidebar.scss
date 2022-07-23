@@ -1,5 +1,12 @@
 @use "./../../styles/vars";
 
+.sidebar_container {
+    display: flex;
+    height: 100%;
+    
+
+}
+
 .sidebar {
     background-color: black;
     color: white;
@@ -28,6 +35,10 @@
     margin : 10px 0;
     height: 30px;
     padding: 10px;
+
+    &_icon {
+        font-size: 1.2rem;
+    }
 }
 
 .search_dashbar input {
@@ -55,4 +66,19 @@ a {
     border-right: 4px solid white;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     background: rgba(207, 207, 207, 0.307);
+}
+
+.side_icon {
+    font-size: 1.5rem;
+}
+
+.side_text {
+    white-space: nowrap;
+    font-size: 20px;
+    margin-bottom: 10%;
+}
+
+.side_main {
+    height: 100%;
+    overflow-y: auto; // You can use scroll too
 }
