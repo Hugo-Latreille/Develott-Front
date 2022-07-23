@@ -3,12 +3,14 @@
 .sidebar_container {
     display: flex;
     height: 100%;
+    z-index: 1000;
+    position: fixed;
     
 
 }
 
 .sidebar {
-    background-color: black;
+    background-color: rgb(97, 151, 252);
     color: white;
     height: 100vh;
 
@@ -65,17 +67,21 @@ a {
 .sidebar_navlink:hover {
     border-right: 4px solid white;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    background: rgba(207, 207, 207, 0.307);
+    background: vars.$linearGradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .side_icon {
+    margin-top: 4%;
     font-size: 1.5rem;
 }
 
 .side_text {
     white-space: nowrap;
     font-size: 20px;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .side_main {

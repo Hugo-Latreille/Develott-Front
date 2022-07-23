@@ -3,6 +3,7 @@ import { FaHome, FaUser, FaBars } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog, BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import Logo from "../../assets/images/v3-logo-colorize.png";
 import "./sidebar.scss";
 import { useState } from "react";
 
@@ -66,6 +67,22 @@ function Sidebar({ children }) {
       },
     },
   };
+  const logoAnimation = {
+    hidden: {
+      width: "1rem",
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    show: {
+      width: "1.5rem",
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
   return (
     <div className="sidebar_container">
       <motion.div
@@ -92,7 +109,16 @@ function Sidebar({ children }) {
             </motion.h1>
           )}
           <div className="bars">
-            <FaBars onClick={toggle} />
+            <motion.img
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={logoAnimation}
+              className="bars_logo"
+              src={Logo}
+              alt="logo"
+              onClick={toggle}
+            />
           </div>
         </div>
         <div className="search_dashbar">
