@@ -15,8 +15,6 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
-
-// ajout léa
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -66,16 +64,6 @@ function Connexion() {
 		//* TODO Try/Catch + redirect
 		e.preventDefault();
 
-		const validatePassword = new RegExp(
-			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/
-		);
-
-		if (!validatePassword.test(password)) {
-			return toast.error(
-				"Votre password doit avoir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial",
-				toastOptions
-			);
-		}
 		if (handleValidation()) {
 			toast.success(
 				"On y est presque ! Vérifiez vos emails pour valider votre inscription",
@@ -87,15 +75,22 @@ function Connexion() {
 	};
 
 	const handleValidation = () => {
-		if (firstname === "" || lastname === "") {
-			toast.error("Email is required", toastOptions);
-			return false;
-		}
 		//* TODO verification password regex
 		if (password !== passwordConfirm) {
 			toast.error("Les mots de passe ne correspondent pas", toastOptions);
 			return false;
 		}
+		const validatePassword = new RegExp(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/
+		);
+		if (!validatePassword.test(password)) {
+			toast.error(
+				"Votre password doit avoir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial",
+				toastOptions
+			);
+			return false;
+		}
+
 		return true;
 	};
 

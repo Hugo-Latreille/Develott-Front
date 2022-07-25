@@ -36,17 +36,17 @@ function App() {
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
 					</Route>
-					{/* <Route element={<RequireAuth />}> */}
-					<Route path="welcome" element={<Welcome />} />
-					<Route path="authTest" element={<AuthTest />} />
-					<Route path="projets" element={<Projects />} />
-					<Route path="projet/1" element={<Project />} />
-					<Route path="projet/create" element={<CreateProject />} />
-					<Route path="la-charte" element={<Home />} />
-					<Route path="profil" element={<Profil />} />
-					<Route path="*" element={<NotFound />} />
+					<Route element={<RequireAuth />}>
+						<Route path="welcome" element={<Welcome />} />
+						<Route path="authTest" element={<AuthTest />} />
+						<Route path="projets" element={<Projects />} />
+						<Route path="projet/1" element={<Project />} />
+						<Route path="projet/create" element={<CreateProject />} />
+						<Route path="la-charte" element={<Home />} />
+						<Route path="profil" element={<Profil />} />
+						<Route path="*" element={<NotFound />} />
+					</Route>
 				</Route>
-				{/* </Route> */}
 			</Routes>
 			{/* </Sidebar> */}
 			{background && (
