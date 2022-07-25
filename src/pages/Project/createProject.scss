@@ -1,22 +1,78 @@
 @use "./../../styles/vars";
 
 .create-project {
-  background-color: rgba(91, 112, 131, 0.65);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  width: 100vw;
+  background-color: #fff;
+  margin-bottom: 5rem;
 
   &-container {
-    width: 50%;
-    min-height: 60%;
-    margin: auto;
-    background-color: #fff;
+    padding: 4rem;
     display: flex;
-    border-radius: 10px;
-    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+
+  &-title {
+    font-weight: lighter;
+    font-size: 1.4rem;
+    color: vars.$grey;
+    margin-bottom: 0.5rem;
+  }
+
+  &-desc {
+    padding-right: 2rem;
+  }
+
+  &-left {
+    width: 24%;
+    border-right: solid 1px vars.$primaryColor;
+  }
+
+  &-step {
+    margin-bottom: 4rem;
+    color: vars.$grey;
+    cursor: pointer;
+  }
+
+  &-right {
+    width: 75%;
+    height: auto;
+    padding: 0 4rem;
+
+    &-container {
+      display: flex;
+
+      &-left {
+        width: 50%;
+      }
+      &-right .form-group-project {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.public-DraftEditor-content {
+  max-height: 13rem;
+  overflow-y: scroll;
+  background-color: vars.$backgroundLight;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+.create-project-button {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.step-active {
+  font-weight: bold;
+
+  & h2 {
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.step-inactive {
+  opacity: 0.7;
 }
