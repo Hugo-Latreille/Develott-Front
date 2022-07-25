@@ -3,7 +3,9 @@
 .hero {
   background-image: url("./../../../assets/images/hero-background55.png");
   height: 85vh;
+  min-height: 600px;
   background-position: center bottom;
+  background-size: cover;
 
   &-container {
     margin: 2rem auto;
@@ -14,12 +16,12 @@
   }
 
   &-left {
-    width: 50%;
+    width: 45%;
     padding-right: 5rem;
   }
 
   &-right {
-    width: 50%;
+    width: 48%;
   }
 
   &-title {

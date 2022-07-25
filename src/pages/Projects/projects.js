@@ -2,16 +2,19 @@ import "./projects.scss";
 import Navbar from "../../components/Navbar/navbar";
 import Cards from "../../components/Cards/cards";
 import FooterColored from "../../components/Footer/footerColored";
+import Sidebar from "../../components/SideBar/sidebar";
 
 function Projects() {
   return (
-    <div className="project">
-      <div className="project_hero">
-        <Navbar />
-        <Cards />
-        <FooterColored />
+    <Sidebar>
+      <div className="projects">
+        <div className="projects_hero">
+          <Navbar />
+          <Cards />
+          <FooterColored />
+        </div>
       </div>
-    </div>
+    </Sidebar>
   );
 }
 

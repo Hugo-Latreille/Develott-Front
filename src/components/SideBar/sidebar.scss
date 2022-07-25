@@ -1,93 +1,90 @@
 @use "./../../styles/vars";
 
 .sidebar_container {
-    display: flex;
-    height: 100%;
-    z-index: 1000;
-    position: fixed;
-    
-
+  display: flex;
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
 }
 
 .sidebar {
-    background-color: rgb(97, 151, 252);
-    color: white;
-    height: 100vh;
+  background-image: url("./../../assets/images/footer-bg2.png");
+  // background-color: rgb(97, 151, 252);
+  color: white;
+  height: 100vh;
 
-    &_icon {
-        color: white;
-    }
+  &_icon {
+    color: white;
+  }
 }
 
 .top_section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
 }
 
 .logo_nav {
-    font-size: 18px;
-    line-height: 0;
+  font-size: 18px;
+  line-height: 0;
 }
 
 .search_dashbar {
-    display: flex;
-    align-items: center;
-    margin : 10px 0;
-    height: 30px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  height: 30px;
+  padding: 10px;
 
-    &_icon {
-        font-size: 1.2rem;
-    }
+  &_icon {
+    font-size: 1.2rem;
+  }
 }
 
 .search_dashbar input {
-    border: none;
-    margin-left: 10px;
-    border-radius: 5px;
-    background-color: white;
-
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .sidebar_navlink {
-    display: flex;
-    color: white;
-    gap: 10px;
-    border-right: 4px solid transparent;
-    padding: 5px 10px;
-    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  display: flex;
+  color: white;
+  gap: 10px;
+  border-right: 4px solid transparent;
+  padding: 5px 10px;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .sidebar_navlink:hover {
-    border-right: 4px solid white;
-    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    background-color: rgba(255, 255, 255, 0.348);
-   
+  border-right: 4px solid white;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgba(255, 255, 255, 0.348);
 }
 
 .side_icon {
-    margin-top: 4%;
-    font-size: 1.5rem;
+  margin-top: 4%;
+  font-size: 1.5rem;
 }
 
 .side_text {
-    white-space: nowrap;
-    font-size: 20px;
-    margin-bottom: 5%;
-    margin-top: 5%;
+  white-space: nowrap;
+  font-size: 1em;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 .side_main {
-    height: 100%;
-    overflow-y: auto; // You can use scroll too
+  height: 100%;
+  overflow-y: auto; // You can use scroll too
 }
 
 .bars_logo {
-    cursor: pointer;
+  cursor: pointer;
 }
