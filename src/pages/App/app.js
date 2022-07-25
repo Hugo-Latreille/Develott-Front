@@ -33,7 +33,7 @@ function App() {
       {/* <Sidebar> */}
       <Routes location={background || location}>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Project />}>
+          <Route path="/" element={<Home />}>
             <Route path="connexion" element={<Connexion />} />
           </Route>
           <Route element={<RequireAuth />}>

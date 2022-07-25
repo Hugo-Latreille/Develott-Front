@@ -7,8 +7,8 @@ import Sidebar from "../../components/SideBar/sidebar";
 function Projects() {
   return (
     <Sidebar>
-      <div className="project">
-        <div className="project_hero">
+      <div className="projects">
+        <div className="projects_hero">
           <Navbar />
           <Cards />
           <FooterColored />

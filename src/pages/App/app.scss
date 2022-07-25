@@ -30,6 +30,11 @@ p {
   font-size: 0.8rem;
 }
 
+.span-strong {
+  font-weight: bold;
+  cursor: help;
+}
+
 .main-button-white {
   color: white;
   border: solid 2px white;
@@ -123,4 +128,12 @@ p {
   top: 0;
   right: 0;
   cursor: pointer;
+}
+
+.small-icon {
+  font-size: 0.6rem;
+}
+
+.span-small {
+  font-size: 0.6rem;
 }
