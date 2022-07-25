@@ -2,22 +2,27 @@ import "./connexion.scss";
 import "./../App/app.scss";
 //? RTK
 import { useSelector, useDispatch } from "react-redux";
-
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { toggleLoggingModalOpen } from "./authSlice";
 import Input from "../../components/Input/Input";
+import { useForgotPasswordMutation } from "./authAPI";
 
 function ForgotPassword() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.auth);
+	const [forgotPassword] = useForgotPasswordMutation();
 	const handlePassword = (e) => {
 		e.preventDefault();
+		forgotPassword({ email });
+		toast.success(
+			"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
+			toastOptions
+		);
 	};
 
 	const toastOptions = {

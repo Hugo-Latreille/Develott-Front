@@ -7,17 +7,46 @@ import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { toggleLoggingModalOpen } from "./authSlice";
 import Input from "../../components/Input/Input";
+import { useNewPasswordMutation } from "./authAPI";
 
 function NewPassword() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { password, passwordConfirm } = useSelector((state) => state.auth);
+	const [newPassword] = useNewPasswordMutation();
+	const { userId } = useParams();
+
 	const handlePassword = (e) => {
 		e.preventDefault();
+		if (handleValidation()) {
+			console.log(password, userId);
+			newPassword({ password, userId });
+			toast.success("Votre mot de passe a bien été modifié", toastOptions);
+		}
+	};
+
+	const handleValidation = () => {
+		//* TODO verification password regex
+		if (password !== passwordConfirm) {
+			toast.error("Les mots de passe ne correspondent pas", toastOptions);
+			return false;
+		}
+		const validatePassword = new RegExp(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/
+		);
+		if (!validatePassword.test(password)) {
+			toast.error(
+				"Votre password doit avoir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial",
+				toastOptions
+			);
+			return false;
+		}
+
+		return true;
 	};
 
 	const toastOptions = {

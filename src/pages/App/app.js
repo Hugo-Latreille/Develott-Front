@@ -37,7 +37,7 @@ function App() {
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
-						<Route path="newpassword" element={<NewPassword />} />
+						<Route path="newpassword/:userId" element={<NewPassword />} />
 						<Route path="forgotpassword" element={<ForgotPassword />} />
 					</Route>
 					<Route element={<RequireAuth />}>

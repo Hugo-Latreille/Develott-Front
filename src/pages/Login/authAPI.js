@@ -30,6 +30,29 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+		forgotPassword: builder.mutation({
+			query: ({ email }) => {
+				return {
+					url: "user/forgotPassword",
+					method: "POST",
+					body: {
+						email,
+					},
+				};
+			},
+		}),
+		newPassword: builder.mutation({
+			query: ({ password, userId }) => {
+				return {
+					url: "user/newPassword",
+					method: "POST",
+					body: {
+						password,
+						userId,
+					},
+				};
+			},
+		}),
 		githubLogin: builder.query({
 			query: () => "login/success",
 		}),
@@ -50,4 +73,6 @@ export const {
 	useAuthTestQuery,
 	useGithubLoginQuery,
 	useUserLogoutMutation,
+	useForgotPasswordMutation,
+	useNewPasswordMutation,
 } = authAPI;
