@@ -11,7 +11,7 @@
     padding: 5rem 0;
 
     &-card {
-      width: 30%;
+      width: 26%;
       height: 15rem;
       padding: 2rem;
       margin: 2rem 0;
@@ -45,6 +45,8 @@
 
 @media screen and (width < 600px) {
   .about {
+    &-container {
+    }
     &-container-card {
       width: 100%;
     }
