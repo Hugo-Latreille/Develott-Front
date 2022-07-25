@@ -1,9 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaHome, FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
-import { BiCog, BiSearch } from "react-icons/bi";
+import { BiCog } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/images/v3-logo-colorize.png";
+import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ const routes = [
   },
   {
     path: "/",
-    name: "Parametres",
+    name: "parametres",
     icon: <BiCog />,
   },
   {
@@ -33,24 +34,6 @@ const routes = [
 function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      width: "85px",
-      padding: "5px 15px",
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
   const showAnimation = {
     hidden: {
       width: 0,
@@ -79,7 +62,7 @@ function Sidebar({ children }) {
       width: "1.5rem",
       opacity: 1,
       transition: {
-        duration: 0.2,
+        duration: 0.5,
       },
     },
   };
@@ -87,11 +70,11 @@ function Sidebar({ children }) {
     <div className="sidebar_container">
       <motion.div
         animate={{
-          width: isOpen ? "200px" : "40px",
+          width: isOpen ? "150px" : "40px",
           transition: {
             duration: 0.5,
             type: "spring",
-            damping: 11,
+            damping: 12,
           },
         }}
         className="sidebar"
@@ -109,37 +92,51 @@ function Sidebar({ children }) {
             </motion.h1>
           )}
           <div className="bars">
-            <AnimatePresence>
-              <motion.img
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-                variants={logoAnimation}
-                className="bars_logo"
-                src={Logo}
-                alt="logo"
-                onClick={toggle}
-              />
-            </AnimatePresence>
-          </div>
-        </div>
-        <div className="search_dashbar">
-          <div className="search_dashbar_icon">
-            <BiSearch />
-          </div>
-          <AnimatePresence>
             {isOpen && (
-              <motion.input
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-                variants={inputAnimation}
-                type="text"
-                placeholder="Recherche..."
-              />
+              <AnimatePresence>
+                <motion.img
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileTap={{
+                    scale: 0.8,
+                    rotate: -90,
+                    borderRadius: "100%",
+                  }}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={logoAnimation}
+                  className="bars_logo"
+                  src={Logo}
+                  alt="logo"
+                  onClick={toggle}
+                />
+              </AnimatePresence>
             )}
-          </AnimatePresence>
+
+            {!isOpen && (
+              <AnimatePresence>
+                <motion.img
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileTap={{
+                    scale: 0.8,
+                    rotate: -90,
+                    borderRadius: "100%",
+                  }}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={logoAnimation}
+                  className="bars_logo"
+                  src={LogoW}
+                  alt="logo"
+                  onClick={toggle}
+                />
+              </AnimatePresence>
+            )}
+          </div>
+          {isOpen && <div className="anim">anim</div>}
         </div>
+        <div className="space"></div>
         <section className="sidebar_icon">
           {routes.map((route) => (
             <NavLink
