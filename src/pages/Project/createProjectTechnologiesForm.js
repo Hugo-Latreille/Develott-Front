@@ -12,6 +12,16 @@ function CreateProjectTechnologiesForm() {
     setTechnologiesData([...technologiesData, item]);
   };
 
+  const handleRemoveTechnology = (name) => {
+    console.log("ddsd");
+
+    const updateTechnologiesData = technologiesData.filter((technologie) => {
+      return technologie.name !== name;
+    });
+
+    setTechnologiesData([...updateTechnologiesData]);
+  };
+
   const languagesData = technologiesData.filter((technology) =>
     technology.tags.includes("language")
   );
@@ -45,12 +55,15 @@ function CreateProjectTechnologiesForm() {
             <span className="form-technologies-empty">vide...</span>
           )}
           {languagesData.map((techno) => (
-            <div className="form-technologies-items">
+            <div key={techno.name} className="form-technologies-items">
               <p>
                 <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
                 {techno.name}
               </p>
-              <i className="fal fa-backspace form-technologies-delete"></i>
+              <i
+                className="fal fa-backspace form-technologies-delete"
+                onClick={() => handleRemoveTechnology(techno.name)}
+              ></i>
             </div>
           ))}
         </div>
@@ -60,12 +73,15 @@ function CreateProjectTechnologiesForm() {
             <span className="form-technologies-empty">vide...</span>
           )}
           {frameworksData.map((techno) => (
-            <div className="form-technologies-items">
+            <div key={techno.name} className="form-technologies-items">
               <p>
                 <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
                 {techno.name}
               </p>
-              <i className="fal fa-backspace form-technologies-delete"></i>
+              <i
+                className="fal fa-backspace form-technologies-delete"
+                onClick={() => handleRemoveTechnology(techno.name)}
+              ></i>
             </div>
           ))}
         </div>
@@ -75,12 +91,15 @@ function CreateProjectTechnologiesForm() {
             <span className="form-technologies-empty">vide...</span>
           )}
           {othersData.map((techno) => (
-            <div className="form-technologies-items">
+            <div key={techno.name} className="form-technologies-items">
               <p>
                 <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
                 {techno.name}
               </p>
-              <i className="fal fa-backspace form-technologies-delete"></i>
+              <i
+                className="fal fa-backspace form-technologies-delete"
+                onClick={() => handleRemoveTechnology(techno.name)}
+              ></i>
             </div>
           ))}
         </div>

@@ -11,11 +11,19 @@ function CreateProjectJobsForm() {
     setJobsData([...jobsData, item]);
   };
 
+  // const handleRemoveJobsData = (id) => {
+  //   console.log("coucou");
+
+  //   const updateJobsData = jobsData.filter((job) => job.id !== id);
+
+  //   setJobsData([...updateJobsData]);
+  // };
+
   const jobsDataFrist = [];
   const jobsDataElse = [];
 
   jobsData.forEach((element, index) => {
-    if (index < 4) {
+    if (index < 3) {
       jobsDataFrist.push(element);
     } else {
       jobsDataElse.push(element);
@@ -40,23 +48,23 @@ function CreateProjectJobsForm() {
           {jobsData.length === 0 && (
             <span className="form-technologies-empty">vide...</span>
           )}
-          {jobsDataFrist.map((techno) => (
-            <div className="form-technologies-items">
-              <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
-                {techno.name}
-              </p>
-              <i className="fal fa-backspace form-technologies-delete"></i>
+          {jobsDataFrist.map((job) => (
+            <div key={job.id} className="form-technologies-items">
+              <p>{job.name}</p>
+              <i
+                className="fal fa-backspace form-technologies-delete"
+                // onClick={() => handleRemoveJobsData(job.id)}
+              ></i>
             </div>
           ))}
         </div>
         <div className="form-jobs-container-content">
           <h3 className="form-jobs-title-2"> </h3>
-          {jobsDataElse.map((techno) => (
-            <div className="form-technologies-items">
+          {jobsDataElse.map((job) => (
+            <div krey={job.id} className="form-technologies-items">
               <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
-                {techno.name}
+                <i className={`devicon-${job.name}-plain colored`}></i>{" "}
+                {job.name}
               </p>
               <i className="fal fa-backspace form-technologies-delete"></i>
             </div>
