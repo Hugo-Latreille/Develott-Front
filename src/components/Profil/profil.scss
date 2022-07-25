@@ -155,10 +155,10 @@
 
   &_project {
     background-color: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 2rem 0.5rem;
     margin-bottom: 5%;
     height: 82vh;
+    overflow-y: scroll;
   }
 }
 
@@ -216,4 +216,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.card_main_title-project {
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.card_img {
+  height: 10rem;
 }

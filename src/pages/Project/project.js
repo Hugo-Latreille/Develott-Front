@@ -22,7 +22,7 @@ function Project() {
                   className="slider-avatar"
                   src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
                 />
-                <p className="project-user-name">Uller Hank</p>
+                <p className="project-user-name">Uller Mr</p>
                 <div className="project-user-links">
                   <p>
                     <i class="fab fa-github"></i>

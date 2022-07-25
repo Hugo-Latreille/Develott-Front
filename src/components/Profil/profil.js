@@ -75,51 +75,53 @@ function Profil() {
                 </p>
                 <p>
                   <i class="devicon-html5-plain colored"></i>
-                  hjkhkjh
+                  Javascript
                 </p>
                 <p>
                   <i class="devicon-css3-plain colored"></i>
-                  hjkhkjh
+                  Css3
                 </p>
                 <p>
                   <i class="devicon-postgresql-plain colored"></i>
-                  hjkhkjh
+                  PostgreSql
                 </p>
               </div>
               <div className="project-technologies-frameworks">
                 <h4>Frameworks</h4>
                 <p>
-                  <i class="devicon-bootstrap-plain colored"></i> kllkj
+                  <i class="devicon-bootstrap-plain colored"></i>
+                  Bootstrap
                 </p>
                 <p>
                   <i class="devicon-react-plain colored"></i>
-                  hjkhkjh
+                  React
                 </p>
                 <p>
                   <i class="devicon-redux-plain colored"></i>
-                  hjkhkjh
+                  Redux
                 </p>
                 <p>
                   <i class="devicon-rails-plain colored"></i>
-                  hjkhkjh
+                  Rails
                 </p>
               </div>
               <div className="project-technologies-others">
                 <h4>Autres</h4>
                 <p>
-                  <i class="devicon-github-plain colored"></i> kllkj
+                  <i class="devicon-github-plain colored"></i>
+                  Github
                 </p>
                 <p>
                   <i class="devicon-trello-plain colored"></i>
-                  hjkhkjh
+                  Trello
                 </p>
                 <p>
                   <i class="devicon-illustrator-plain colored"></i>
-                  hjkhkjh
+                  Illustrator
                 </p>
                 <p>
                   <i class="devicon-canva-plain colored"></i>
-                  hjkhkjh
+                  Canva
                 </p>
               </div>
             </div>
@@ -137,7 +139,23 @@ function Profil() {
               className="card_img"
             />
             <div className="card_main">
-              <h1 className="card_main_title">Develott</h1>
+              <h3 className="card_main_title-project">Develott</h3>
+              <p className="card_main_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod...{" "}
+                <a className="card_main_desc_link" href="#">
+                  voir plus.
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="card_project">
+            <img
+              src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
+              className="card_img"
+            />
+            <div className="card_main">
+              <h3 className="card_main_title-project">Develott</h3>
               <p className="card_main_desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod...{" "}
