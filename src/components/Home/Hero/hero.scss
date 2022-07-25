@@ -12,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   &-left {
@@ -47,6 +46,10 @@
   .hero {
     height: 90vh;
     margin-bottom: 4rem;
+
+    &-container {
+      flex-wrap: wrap;
+    }
 
     &-left {
       width: 100%;
