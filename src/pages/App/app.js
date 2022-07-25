@@ -14,6 +14,8 @@ import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import NewPassword from "../Login/NewPassword";
+import ForgotPassword from "../Login/ForgotPassword";
 
 function App() {
 	const location = useLocation();
@@ -35,6 +37,8 @@ function App() {
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
+						<Route path="newpassword" element={<NewPassword />} />
+						<Route path="forgotpassword" element={<ForgotPassword />} />
 					</Route>
 					<Route element={<RequireAuth />}>
 						<Route path="welcome" element={<Welcome />} />
