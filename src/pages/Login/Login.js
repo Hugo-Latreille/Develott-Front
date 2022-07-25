@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 function Login({ onSubmit }) {
 	const github = () => {
-		window.open("http://localhost:3002/github", "_self");
+		window.open("http://localhost:3001/v1/auth/github", "_self");
 	};
 
 	const { email, password } = useSelector((state) => state.auth);

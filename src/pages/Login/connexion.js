@@ -36,6 +36,14 @@ function Connexion() {
 		try {
 			const userData = await userLogin({ email, password }).unwrap();
 			console.log(userData);
+
+			if (userData.foundUser.validate === false) {
+				return toast.error(
+					"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
+					toastOptions
+				);
+			}
+
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);
@@ -57,8 +65,22 @@ function Connexion() {
 	const handleRegister = (e) => {
 		//* TODO Try/Catch + redirect
 		e.preventDefault();
+
+		const validatePassword = new RegExp(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/
+		);
+
+		if (!validatePassword.test(password)) {
+			return toast.error(
+				"Votre password doit avoir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial",
+				toastOptions
+			);
+		}
 		if (handleValidation()) {
-			toast.success("C'est okay", toastOptions);
+			toast.success(
+				"On y est presque ! Vérifiez vos emails pour valider votre inscription",
+				toastOptions
+			);
 			createUser({ firstname, lastname, email, password });
 			dispatch(clearInputs());
 		}
@@ -79,7 +101,7 @@ function Connexion() {
 
 	const toastOptions = {
 		position: "top-right",
-		autoClose: 800,
+		autoClose: 6000,
 		pauseOnHover: true,
 		draggable: true,
 		theme: "light",

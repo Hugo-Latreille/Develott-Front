@@ -30,6 +30,9 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+		githubLogin: builder.query({
+			query: () => "login/success",
+		}),
 		authTest: builder.query({
 			query: () => "home",
 			keepUnusedDataFor: 1,
@@ -45,5 +48,6 @@ export const {
 	useCreateUserMutation,
 	useUserLoginMutation,
 	useAuthTestQuery,
+	useGithubLoginQuery,
 	useUserLogoutMutation,
 } = authAPI;
