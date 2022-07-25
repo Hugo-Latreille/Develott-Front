@@ -7,17 +7,17 @@ function CreateProjectJobsForm() {
   const [jobsData, setJobsData] = useState([]);
 
   const handleEditJobsData = (item) => {
-    console.log("coucou");
     setJobsData([...jobsData, item]);
   };
 
-  // const handleRemoveJobsData = (id) => {
-  //   console.log("coucou");
+  const handleRemoveJob = (id) => {
+    console.log(jobsData);
+    const updatejobsData = jobsData.filter((job) => {
+      return job.id !== id;
+    });
 
-  //   const updateJobsData = jobsData.filter((job) => job.id !== id);
-
-  //   setJobsData([...updateJobsData]);
-  // };
+    setJobsData([...updatejobsData]);
+  };
 
   const jobsDataFrist = [];
   const jobsDataElse = [];
@@ -53,7 +53,7 @@ function CreateProjectJobsForm() {
               <p>{job.name}</p>
               <i
                 className="fal fa-backspace form-technologies-delete"
-                // onClick={() => handleRemoveJobsData(job.id)}
+                onClick={() => handleRemoveJob(job.id)}
               ></i>
             </div>
           ))}

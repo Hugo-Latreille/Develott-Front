@@ -5,13 +5,13 @@ import datas from "../../assets/data/technologiesData.json";
 
 function SearchBarJobs({ jobsArray, handleJobs }) {
   const jobsData = [
-    { name: "Developpeur Back-End" },
-    { name: "Developpeur Front-End" },
-    { name: "Developpeur Mobile" },
-    { name: "Developpeur FullStack" },
-    { name: "Graphiste" },
-    { name: "UX Designer" },
-    { name: "DevOps" },
+    { id: 1, name: "Developpeur Back-End" },
+    { id: 2, name: "Developpeur Front-End" },
+    { id: 3, name: "Developpeur Mobile" },
+    { id: 4, name: "Developpeur FullStack" },
+    { id: 5, name: "Graphiste" },
+    { id: 6, name: "UX Designer" },
+    { id: 7, name: "DevOps" },
   ];
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter

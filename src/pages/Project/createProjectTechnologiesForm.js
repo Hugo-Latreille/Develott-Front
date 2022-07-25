@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function CreateProjectTechnologiesForm() {
   const [technologiesData, setTechnologiesData] = useState([]);
+  const [isInformationsFormSubmit, setIsInformationsFormSubmit] =
+    useState(false);
 
   const handleEditTechnologiesData = (item) => {
     console.log("coucou");
