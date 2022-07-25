@@ -1,0 +1,60 @@
+.form-technologies {
+  display: flex;
+  height: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &-title {
+    color: grey;
+    margin-bottom: 2rem;
+  }
+
+  &-disclaimer {
+    color: grey;
+    font-size: 0.8rem;
+    margin-bottom: 4rem;
+    margin-top: 1.5rem;
+  }
+
+  &-empty {
+    color: grey;
+    font-size: 0.8rem;
+  }
+
+  &-items {
+    display: flex;
+
+    & i {
+      padding-right: 0.5rem;
+    }
+    & p {
+      width: 70%;
+      font-size: 0.9rem;
+    }
+  }
+
+  &-delete {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+}
+
+.form-technologies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-content {
+    width: 30%;
+    height: 90%;
+    overflow-y: scroll;
+
+    & p {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &-70 {
+    height: 60%;
+  }
+}

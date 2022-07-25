@@ -11,19 +11,22 @@ body {
 }
 
 h2 {
-	font-size: 2rem;
-	font-weight: bolder;
-	margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bolder;
 }
 
 h3 {
-	// font-size: 1.5rem;
-	font-weight: bolder;
-	margin-bottom: 2rem;
+  // font-size: 1.5rem;
+  font-weight: bolder;
 }
 
 p {
 	line-height: 1.2rem;
+}
+
+.p-light {
+  color: grey;
+  font-size: 0.8rem;
 }
 
 .main-button-white {

@@ -63,6 +63,10 @@
   &-jobs {
     margin: 3rem 0;
 
+    &-container {
+      margin-top: 1.5rem;
+    }
+
     & p {
       color: vars.$lightGrey;
     }
@@ -168,4 +172,51 @@
 
 .success {
   color: rgba(103, 182, 103, 0.959);
+}
+
+@media screen and (width < 600px) {
+  .project {
+    height: 100%;
+  }
+  .project-container {
+    &-left {
+      width: 100%;
+      height: auto;
+    }
+
+    &-right {
+      min-width: 100% !important;
+      height: auto;
+    }
+  }
+
+  .project-jobs {
+    &-title {
+      padding-bottom: 2rem;
+    }
+  }
+
+  .project-description {
+    height: auto;
+    margin-top: 2rem;
+  }
+
+  .project-technologies {
+    margin-bottom: 2rem;
+    height: auto;
+
+    &-languages {
+      width: 100%;
+    }
+
+    &-frameworks {
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    &-others {
+      margin-top: 2rem;
+      width: 100%;
+    }
+  }
 }
