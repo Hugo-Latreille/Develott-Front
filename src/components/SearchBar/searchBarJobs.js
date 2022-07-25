@@ -3,7 +3,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import datas from "../../assets/data/technologiesData.json";
 
-function SearchBarJobs() {
+function SearchBarJobs({ jobsArray, handleJobs }) {
   const jobsData = [
     { name: "Developpeur Back-End" },
     { name: "Developpeur Front-End" },
@@ -26,7 +26,8 @@ function SearchBarJobs() {
 
   const handleOnSelect = (item) => {
     // the item selected
-    console.log(item);
+    console.log(jobsArray);
+    handleJobs(item);
   };
 
   const handleOnFocus = () => {

@@ -1,6 +1,5 @@
 import "./createProjectTechnologiesForm.scss";
 
-import InputProject from "../../components/Input/ProjectInput";
 import SearchBarProjects from "./../../components/SearchBar/searchBarTechnologies";
 
 import { useState } from "react";
