@@ -1,3 +1,5 @@
+@use "./../../styles/vars";
+
 .form-jobs {
   display: flex;
   height: 30rem;
@@ -5,15 +7,16 @@
   justify-content: space-between;
 
   &-title {
-    color: grey;
+    color: vars.$darkGrey;
     margin-bottom: 2rem;
   }
 
   &-disclaimer {
-    color: grey;
+    color: rgb(99, 98, 98);
     font-size: 0.8rem;
     margin-bottom: 4rem;
     margin-top: 1.5rem;
+    line-height: 1.2rem;
   }
 
   &-empty {

@@ -56,6 +56,7 @@ function SearchBarTechnologies() {
           onFocus={handleOnFocus}
           styling={{
             zIndex: 1,
+            backgroundColor: "white",
           }}
           formatResult={formatResult}
           maxResults={5}

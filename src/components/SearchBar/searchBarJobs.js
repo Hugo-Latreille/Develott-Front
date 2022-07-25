@@ -56,7 +56,7 @@ function SearchBarJobs() {
             zIndex: 1,
           }}
           formatResult={formatResult}
-          maxResults={5}
+          //   maxResults={5}
           showIcon={true}
           placeholder="Developpeur Back-End, UX-UI Designer, devOps... "
           showNoResults

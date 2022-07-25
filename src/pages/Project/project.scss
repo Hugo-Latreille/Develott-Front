@@ -63,6 +63,10 @@
   &-jobs {
     margin: 3rem 0;
 
+    &-container {
+      margin-top: 1.5rem;
+    }
+
     & p {
       color: vars.$lightGrey;
     }
