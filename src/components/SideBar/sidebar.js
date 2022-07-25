@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { FaHome, FaUser, FaBars } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiCog, BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
@@ -109,16 +109,18 @@ function Sidebar({ children }) {
             </motion.h1>
           )}
           <div className="bars">
-            <motion.img
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              variants={logoAnimation}
-              className="bars_logo"
-              src={Logo}
-              alt="logo"
-              onClick={toggle}
-            />
+            <AnimatePresence>
+              <motion.img
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={logoAnimation}
+                className="bars_logo"
+                src={Logo}
+                alt="logo"
+                onClick={toggle}
+              />
+            </AnimatePresence>
           </div>
         </div>
         <div className="search_dashbar">

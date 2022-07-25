@@ -2,7 +2,7 @@ import "./navbar.scss";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import SearchBar from "../SearchBar/searchBar";
-import ToggleDark from "../ToggleDarkmode/toggle";
+// import ToggleDark from "../ToggleDarkmode/toggle";
 import { useDispatch } from "react-redux";
 import { toggleLoggingModalOpen } from "../../pages/Login/authSlice";
 
@@ -20,7 +20,7 @@ function Navbar() {
           alt="logo Develott"
         />
       </Link>
-      <ToggleDark />
+      {/* <ToggleDark /> */}
 
       <SearchBar className="navbar-searchbar" />
       <div className="navbar-link">
