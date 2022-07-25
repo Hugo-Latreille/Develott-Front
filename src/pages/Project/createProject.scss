@@ -2,8 +2,10 @@
 
 .create-project {
   background-color: #fff;
-  min-height: 80vh;
-  margin-top: 5rem;
+  min-height: 700px;
+  height: auto;
+  margin-top: 3.5rem;
+
   &-container {
     padding: 4rem;
     display: flex;
@@ -50,11 +52,14 @@
   }
 }
 
+.DraftEditor-editorContainer {
+  min-height: 10rem;
+}
 .public-DraftEditor-content {
-  max-height: 13rem;
+  max-height: 14rem;
   overflow-y: scroll;
   background-color: vars.$backgroundLight;
-  padding: 2rem 2rem 4rem 2rem;
+  padding: 1rem 2rem 4rem 1rem;
 }
 
 .create-project-button {

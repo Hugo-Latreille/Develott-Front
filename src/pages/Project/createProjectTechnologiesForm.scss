@@ -23,6 +23,7 @@
 
   &-items {
     display: flex;
+    align-items: center;
 
     & i {
       padding-right: 0.5rem;
@@ -48,10 +49,6 @@
     width: 30%;
     height: 90%;
     overflow-y: scroll;
-
-    & p {
-      padding-bottom: 1rem;
-    }
   }
 
   &-70 {
