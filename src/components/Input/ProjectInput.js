@@ -1,7 +1,7 @@
 import "./inputProject.scss";
 
 import { useDispatch } from "react-redux";
-import { handleChange } from "../../pages/Login/loginSlice";
+import { handleChange } from "./../../pages/Login/authSlice";
 
 function InputProject({ name, value, label }) {
   const dispatch = useDispatch();
