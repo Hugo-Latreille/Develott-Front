@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { toggleLoggingModalOpen } from "./authSlice";
+import { clearInputs, toggleLoggingModalOpen } from "./authSlice";
 import Input from "../../components/Input/Input";
 import { useNewPasswordMutation } from "./authAPI";
 
@@ -25,7 +25,9 @@ function NewPassword() {
 		if (handleValidation()) {
 			console.log(password, userId);
 			newPassword({ password, userId });
+			dispatch(clearInputs());
 			toast.success("Votre mot de passe a bien été modifié", toastOptions);
+			navigate("/connexion");
 		}
 	};
 
