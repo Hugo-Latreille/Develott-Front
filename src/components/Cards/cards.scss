@@ -184,6 +184,13 @@
   cursor: pointer;
 }
 
+.span-strong {
+  background-color: hsla(254, 85%, 72%, 0.1);
+  border-radius: 25px;
+  padding: 0.3rem 0.5rem;
+  margin-right: 0.25rem;
+}
+
 @media screen and (width < 600px) {
   .card {
     width: 100%;

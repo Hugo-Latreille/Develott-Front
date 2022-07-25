@@ -94,7 +94,7 @@ function ProjectList() {
             >
               4{" "}
             </span>
-            co-équipier(s) recherché(s)
+            Co-équipier(s) recherché(s)
           </p>
           <div className="card_desc">
             <div className="card_desc_user">

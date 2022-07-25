@@ -2,6 +2,10 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { Link } from "react-router-dom";
+
+import { AnimatePresence, motion } from "framer-motion";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -14,6 +18,24 @@ import "./slider.scss";
 import { Navigation, Pagination } from "swiper";
 
 function Slider() {
+  const inputAnimation = {
+    hidden: {
+      width: 0,
+      padding: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.4,
+      },
+    },
+    show: {
+      width: "auto",
+      padding: "8px 20px",
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+      },
+    },
+  };
   const [toggleJobs, setToggleJobs] = useState(false);
   const [toggleTechnos, setToggleTechnos] = useState(false);
 
@@ -58,56 +80,68 @@ function Slider() {
           <SwiperSlide>
             <div className="slide">
               <img
-                src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
+                src="https://img.freepik.com/free-vector/realistic-ui-ux-landing-page-template_52683-68898.jpg?t=st=1657989378~exp=1657989978~hmac=7dbf26d36ff7850abde76f313dbb1a591b368ffb72079a26be1dda0f2e93256e&w=996"
                 className="slide-img"
-                alt="project image presentation"
               />
               <div className="img-content">
                 <div className="img-content-btns">
-                  <span className="stack-button" onClick={handleToggleJobs}>
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button" onClick={handleToggleTechnos}>
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
-                </div>
-                <div className="icons-container">
-                  {toggleTechnos === true && (
-                    <div className="img-content-stacks">
-                      <i className="devicon-javascript-plain colored"></i>
-                      <i className="devicon-nodejs-plain colored"></i>
-                      <i className="devicon-postgresql-plain colored"></i>
-                      <i className="devicon-react-original colored"></i>
-                      {/* <i className="devicon-redux-original colored"></i> */}
-                      <i className="fad fa-angle-right  color-prmary"></i>
-                    </div>
-                  )}
-                  {toggleJobs === true && (
-                    <div className="img-content-jobs">
-                      <i className="fad fa-database"></i>
-                      <i className="fad fa-code"></i>
-                      <i className="fad fa-code-branch"></i>
-                      <i className="fad fa-crop-alt"></i>
-                      <i className="fad fa-angle-right  color-prmary"></i>
-                    </div>
-                  )}
+                  <div className="icone_content_btns">
+                    <span
+                      className="icone_button"
+                      onClick={handleToggleTechnos}
+                    >
+                      <i class="fal fa-heart"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div className="card_technologies_container">
+                <div className="icone_button" onClick={handleToggleTechnos}>
+                  <img
+                    src={require("./../../assets/images/v3-logo-colorize.png")}
+                  />
+                </div>
+              </div>
+              <AnimatePresence>
+                {toggleTechnos && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    variants={inputAnimation}
+                    className="card_technologies_container_icons"
+                  >
+                    <i class="devicon-javascript-plain colored icon-techno"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="fal fa-chevron-right icon-next"></i>{" "}
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
+                <h1 className="slider-title">Réseau social like</h1>
                 <p className="slider-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod... <a href="#">voir plus.</a>
+                </p>
+                <p className="card_main_profiles">
+                  <span
+                    title="Developpeur Front-End, DevOps, UX Designer"
+                    className="span-strong"
+                  >
+                    4{" "}
+                  </span>
+                  Co-équipier(s) recherché(s)
                 </p>
                 <div className="slider-content-container">
                   <div className="slider-user-container">
                     <img
                       className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+                      src="https://korben.info/app/uploads/2020/03/avatar-hexatar.png"
                     />
-                    <span className="slider-user-name">John D'oeuf</span>
+                    <span className="slider-user-name">Uleur hank</span>
                   </div>
                   <span className="slider-date">Le 12 mars 2022</span>
                 </div>
@@ -117,26 +151,60 @@ function Slider() {
           <SwiperSlide>
             <div className="slide">
               <img
-                src="https://img.freepik.com/free-vector/realistic-ui-ux-landing-page-template_52683-68898.jpg?t=st=1657989378~exp=1657989978~hmac=7dbf26d36ff7850abde76f313dbb1a591b368ffb72079a26be1dda0f2e93256e&w=996"
+                src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
                 className="slide-img"
               />
               <div className="img-content">
                 <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
+                  <div className="icone_content_btns">
+                    <span
+                      className="icone_button"
+                      onClick={handleToggleTechnos}
+                    >
+                      <i class="fal fa-heart"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div className="card_technologies_container">
+                <div className="icone_button" onClick={handleToggleTechnos}>
+                  <img
+                    src={require("./../../assets/images/v3-logo-colorize.png")}
+                  />
+                </div>
+              </div>
+              <AnimatePresence>
+                {toggleTechnos && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    variants={inputAnimation}
+                    className="card_technologies_container_icons"
+                  >
+                    <i class="devicon-javascript-plain colored icon-techno"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="fal fa-chevron-right icon-next"></i>{" "}
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="slider-main-content">
                 <h1 className="slider-title">Réseau social like</h1>
                 <p className="slider-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod... <a href="#">voir plus.</a>
+                </p>
+                <p className="card_main_profiles">
+                  <span
+                    title="Developpeur Front-End, DevOps, UX Designer"
+                    className="span-strong"
+                  >
+                    4{" "}
+                  </span>
+                  Co-équipier(s) recherché(s)
                 </p>
                 <div className="slider-content-container">
                   <div className="slider-user-container">
@@ -159,29 +227,63 @@ function Slider() {
               />
               <div className="img-content">
                 <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
+                  <div className="icone_content_btns">
+                    <span
+                      className="icone_button"
+                      onClick={handleToggleTechnos}
+                    >
+                      <i class="fal fa-heart"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div className="card_technologies_container">
+                <div className="icone_button" onClick={handleToggleTechnos}>
+                  <img
+                    src={require("./../../assets/images/v3-logo-colorize.png")}
+                  />
+                </div>
+              </div>
+              <AnimatePresence>
+                {toggleTechnos && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    variants={inputAnimation}
+                    className="card_technologies_container_icons"
+                  >
+                    <i class="devicon-javascript-plain colored icon-techno"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="fal fa-chevron-right icon-next"></i>{" "}
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="slider-main-content">
-                <h1 className="slider-title">Panel d'administration</h1>
+                <h1 className="slider-title">Réseau social like</h1>
                 <p className="slider-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod... <a href="#">voir plus.</a>
+                </p>
+                <p className="card_main_profiles">
+                  <span
+                    title="Developpeur Front-End, DevOps, UX Designer"
+                    className="span-strong"
+                  >
+                    4{" "}
+                  </span>
+                  Co-équipier(s) recherché(s)
                 </p>
                 <div className="slider-content-container">
                   <div className="slider-user-container">
                     <img
                       className="slider-avatar"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_a4ESrgV1fyKimFM4LDdSFJodqGzUDlLaPA&usqp=CAU"
+                      src="https://korben.info/app/uploads/2020/03/avatar-hexatar.png"
                     />
-                    <span className="slider-user-name">John D'oeuf</span>
+                    <span className="slider-user-name">Uleur hank</span>
                   </div>
                   <span className="slider-date">Le 12 mars 2022</span>
                 </div>
@@ -196,29 +298,63 @@ function Slider() {
               />
               <div className="img-content">
                 <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
+                  <div className="icone_content_btns">
+                    <span
+                      className="icone_button"
+                      onClick={handleToggleTechnos}
+                    >
+                      <i class="fal fa-heart"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div className="card_technologies_container">
+                <div className="icone_button" onClick={handleToggleTechnos}>
+                  <img
+                    src={require("./../../assets/images/v3-logo-colorize.png")}
+                  />
+                </div>
+              </div>
+              <AnimatePresence>
+                {toggleTechnos && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    variants={inputAnimation}
+                    className="card_technologies_container_icons"
+                  >
+                    <i class="devicon-javascript-plain colored icon-techno"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="fal fa-chevron-right icon-next"></i>{" "}
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="slider-main-content">
-                <h1 className="slider-title">Site e-commerce Ruby</h1>
+                <h1 className="slider-title">Réseau social like</h1>
                 <p className="slider-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod... <a href="#">voir plus.</a>
+                </p>
+                <p className="card_main_profiles">
+                  <span
+                    title="Developpeur Front-End, DevOps, UX Designer"
+                    className="span-strong"
+                  >
+                    4{" "}
+                  </span>
+                  Co-équipier(s) recherché(s)
                 </p>
                 <div className="slider-content-container">
                   <div className="slider-user-container">
                     <img
                       className="slider-avatar"
-                      src="https://www.jardins-du-taillefer.fr/wp-content/uploads/2021/02/avatar.png"
+                      src="https://korben.info/app/uploads/2020/03/avatar-hexatar.png"
                     />
-                    <span className="slider-user-name">John D'oeuf</span>
+                    <span className="slider-user-name">Uleur hank</span>
                   </div>
                   <span className="slider-date">Le 12 mars 2022</span>
                 </div>
@@ -228,182 +364,68 @@ function Slider() {
           <SwiperSlide>
             <div className="slide">
               <img
-                src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
+                src="https://img.freepik.com/free-psd/whatsapp-messenger-template-mobile-phone-ui-ux-app-presentation-mockup_106244-1512.jpg?t=st=1658753998~exp=1658754598~hmac=cc07d20adc270f09bbbdac5a54f6fe157673ed5fff2e6a7ecffdf58914405209&w=900"
                 className="slide-img"
               />
               <div className="img-content">
                 <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
-                <p className="slider-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod... <a href="#">voir plus.</a>
-                </p>
-                <div className="slider-content-container">
-                  <div className="slider-user-container">
-                    <img
-                      className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                    />
-                    <span className="slider-user-name">John D'oeuf</span>
+                  <div className="icone_content_btns">
+                    <span
+                      className="icone_button"
+                      onClick={handleToggleTechnos}
+                    >
+                      <i class="fal fa-heart"></i>
+                    </span>
                   </div>
-                  <span className="slider-date">Le 12 mars 2022</span>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <img
-                src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
-                className="slide-img"
-              />
-              <div className="img-content">
-                <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
+              <div className="card_technologies_container">
+                <div className="icone_button" onClick={handleToggleTechnos}>
+                  <img
+                    src={require("./../../assets/images/v3-logo-colorize.png")}
+                  />
                 </div>
               </div>
+              <AnimatePresence>
+                {toggleTechnos && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    variants={inputAnimation}
+                    className="card_technologies_container_icons"
+                  >
+                    <i class="devicon-javascript-plain colored icon-techno"></i>
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="devicon-react-original colored"></i>
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <i class="fal fa-chevron-right icon-next"></i>{" "}
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
+                <h1 className="slider-title">Réseau social like</h1>
                 <p className="slider-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod... <a href="#">voir plus.</a>
+                </p>
+                <p className="card_main_profiles">
+                  <span
+                    title="Developpeur Front-End, DevOps, UX Designer"
+                    className="span-strong"
+                  >
+                    4{" "}
+                  </span>
+                  Co-équipier(s) recherché(s)
                 </p>
                 <div className="slider-content-container">
                   <div className="slider-user-container">
                     <img
                       className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+                      src="https://korben.info/app/uploads/2020/03/avatar-hexatar.png"
                     />
-                    <span className="slider-user-name">John D'oeuf</span>
-                  </div>
-                  <span className="slider-date">Le 12 mars 2022</span>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <img
-                src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
-                className="slide-img"
-              />
-              <div className="img-content">
-                <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
-                <p className="slider-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod... <a href="#">voir plus.</a>
-                </p>
-                <div className="slider-content-container">
-                  <div className="slider-user-container">
-                    <img
-                      className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                    />
-                    <span className="slider-user-name">John D'oeuf</span>
-                  </div>
-                  <span className="slider-date">Le 12 mars 2022</span>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <img
-                src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
-                className="slide-img"
-              />
-              <div className="img-content">
-                <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
-                <p className="slider-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod... <a href="#">voir plus.</a>
-                </p>
-                <div className="slider-content-container">
-                  <div className="slider-user-container">
-                    <img
-                      className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                    />
-                    <span className="slider-user-name">John D'oeuf</span>
-                  </div>
-                  <span className="slider-date">Le 12 mars 2022</span>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <img
-                src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
-                className="slide-img"
-              />
-              <div className="img-content">
-                <div className="img-content-btns">
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-users color-prmary"></i>{" "}
-                  </span>
-                  <span className="stack-button">
-                    {" "}
-                    <i className="fad fa-tools color-prmary"></i>{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slider-main-content">
-                <h1 className="slider-title">Develott</h1>
-                <p className="slider-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod... <a href="#">voir plus.</a>
-                </p>
-                <div className="slider-content-container">
-                  <div className="slider-user-container">
-                    <img
-                      className="slider-avatar"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                    />
-                    <span className="slider-user-name">John D'oeuf</span>
+                    <span className="slider-user-name">Uleur hank</span>
                   </div>
                   <span className="slider-date">Le 12 mars 2022</span>
                 </div>
