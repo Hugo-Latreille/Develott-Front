@@ -1,15 +1,15 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
-
 import NavbarColor from "../../components/Navbar/navbarColor";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
-function Project() {
-  return (
-    <>
-      <Sidebar>
-        <div className="project">
-          {/* <NavbarColor /> */}
 
+function Project() {
+	return (
+		<>
+			<Sidebar>
+				<div className="project">
+					{/* <NavbarColor /> */}
           <div className="project-container ">
             <div className="project-container-left">
               <img
@@ -139,6 +139,7 @@ function Project() {
       </Sidebar>
     </>
   );
+
 }
 
 export default Project;

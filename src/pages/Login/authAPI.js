@@ -1,4 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
+import { setCredentials } from "./authSlice";
 
 const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -30,6 +31,42 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+		forgotPassword: builder.mutation({
+			query: ({ email }) => {
+				return {
+					url: "user/forgotPassword",
+					method: "POST",
+					body: {
+						email,
+					},
+				};
+			},
+		}),
+		newPassword: builder.mutation({
+			query: ({ password, userId }) => {
+				return {
+					url: "user/newPassword",
+					method: "POST",
+					body: {
+						password,
+						userId,
+					},
+				};
+			},
+		}),
+		githubLogin: builder.query({
+			query: () => "login/success",
+			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+				queryFulfilled
+					.then((result) => {
+						console.log(result);
+						const accessToken = result.data.accessToken;
+						const email = result.data.foundUser.email;
+						dispatch(setCredentials({ accessToken, email }));
+					})
+					.catch(({ error }) => {});
+			},
+		}),
 		authTest: builder.query({
 			query: () => "home",
 			keepUnusedDataFor: 1,
@@ -45,5 +82,8 @@ export const {
 	useCreateUserMutation,
 	useUserLoginMutation,
 	useAuthTestQuery,
+	useGithubLoginQuery,
 	useUserLogoutMutation,
+	useForgotPasswordMutation,
+	useNewPasswordMutation,
 } = authAPI;

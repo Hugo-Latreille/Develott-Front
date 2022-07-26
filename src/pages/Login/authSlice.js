@@ -38,6 +38,7 @@ export const authSlice = createSlice({
 		logOut: (state, action) => {
 			state.email = "";
 			state.token = "";
+			state.isLogged = false;
 		},
 		toggleLoggingModalOpen: (state) => {
 			state.loggingModalOpen = !state.loggingModalOpen;

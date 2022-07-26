@@ -15,8 +15,6 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
-
-// ajout léa
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -36,6 +34,14 @@ function Connexion() {
 		try {
 			const userData = await userLogin({ email, password }).unwrap();
 			console.log(userData);
+
+			if (userData.foundUser.validate === false) {
+				return toast.error(
+					"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
+					toastOptions
+				);
+			}
+
 			dispatch(
 				setCredentials({ accessToken: userData.accessToken, email: email })
 			);
@@ -57,29 +63,40 @@ function Connexion() {
 	const handleRegister = (e) => {
 		//* TODO Try/Catch + redirect
 		e.preventDefault();
+
 		if (handleValidation()) {
-			toast.success("C'est okay", toastOptions);
+			toast.success(
+				"On y est presque ! Vérifiez vos emails pour valider votre inscription",
+				toastOptions
+			);
 			createUser({ firstname, lastname, email, password });
 			dispatch(clearInputs());
 		}
 	};
 
 	const handleValidation = () => {
-		if (firstname === "" || lastname === "") {
-			toast.error("Email is required", toastOptions);
-			return false;
-		}
 		//* TODO verification password regex
 		if (password !== passwordConfirm) {
 			toast.error("Les mots de passe ne correspondent pas", toastOptions);
 			return false;
 		}
+		const validatePassword = new RegExp(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/
+		);
+		if (!validatePassword.test(password)) {
+			toast.error(
+				"Votre password doit avoir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial",
+				toastOptions
+			);
+			return false;
+		}
+
 		return true;
 	};
 
 	const toastOptions = {
 		position: "top-right",
-		autoClose: 800,
+		autoClose: 6000,
 		pauseOnHover: true,
 		draggable: true,
 		theme: "light",
