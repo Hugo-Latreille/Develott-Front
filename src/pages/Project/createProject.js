@@ -11,7 +11,7 @@ import CreateProjectJobsForm from "./createProjectJobsForm";
 // import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveForm } from "./projectSlice";
+import { setActiveForm } from "./createProjectSlice";
 
 function CreateProject() {
   const activeForm = useSelector((state) => state.project.activeForm);

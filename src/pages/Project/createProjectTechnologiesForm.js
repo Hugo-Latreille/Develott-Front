@@ -4,7 +4,7 @@ import SearchBarProjects from "./../../components/SearchBar/searchBarTechnologie
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeTechnologyData } from "./projectSlice";
+import { removeTechnologyData } from "./createProjectSlice";
 
 function CreateProjectTechnologiesForm() {
   const technologiesData = useSelector(

@@ -4,7 +4,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import jobsDataArray from "./../../assets/data/jobsData.json";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setJobsData } from "./../../pages/Project/projectSlice";
+import { setJobsData } from "../../pages/Project/createProjectSlice";
 
 function SearchBarJobs() {
   const jobsData = useSelector((state) => state.project.jobsData);

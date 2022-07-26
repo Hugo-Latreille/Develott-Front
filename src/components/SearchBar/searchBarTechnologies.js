@@ -4,7 +4,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setTechnologiesData } from "./../../pages/Project/projectSlice";
+import { setTechnologiesData } from "../../pages/Project/createProjectSlice";
 
 function SearchBarTechnologies() {
   const technologiesData = useSelector(

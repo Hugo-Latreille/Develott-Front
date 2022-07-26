@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import SearchBarJobs from "../../components/SearchBar/searchBarJobs";
 
-import { removeJobData } from "./projectSlice";
+import { removeJobData } from "./createProjectSlice";
 
 function CreateProjectJobsForm() {
   const jobsData = useSelector((state) => state.project.jobsData);
