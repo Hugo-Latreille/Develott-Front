@@ -35,7 +35,7 @@ function App() {
       {/* <Sidebar> */}
       <Routes location={background || location}>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={<Projects />}>
             <Route path="connexion" element={<Connexion />} />
             <Route path="newpassword/:userId" element={<NewPassword />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
