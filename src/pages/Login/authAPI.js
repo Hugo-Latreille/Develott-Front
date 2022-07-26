@@ -1,4 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
+import { setCredentials } from "./authSlice";
 
 const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -55,6 +56,16 @@ const authAPI = emptySplitApi.injectEndpoints({
 		}),
 		githubLogin: builder.query({
 			query: () => "login/success",
+			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+				queryFulfilled
+					.then((result) => {
+						console.log(result);
+						const accessToken = result.data.accessToken;
+						const email = result.data.foundUser.email;
+						dispatch(setCredentials({ accessToken, email }));
+					})
+					.catch(({ error }) => {});
+			},
 		}),
 		authTest: builder.query({
 			query: () => "home",
