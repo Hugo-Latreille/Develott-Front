@@ -14,9 +14,7 @@ import { useEffect } from "react";
 
 function Home() {
 	const navigate = useNavigate();
-	const { isSuccess } = useGithubLoginQuery({
-		// 	// refetchOnMountOrArgChange: true,
-	});
+	const { isSuccess } = useGithubLoginQuery();
 
 	useEffect(() => {
 		if (isSuccess) {
