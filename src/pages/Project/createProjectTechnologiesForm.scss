@@ -1,3 +1,5 @@
+@use "./../../styles/vars";
+
 .form-technologies {
   display: flex;
   height: 30rem;
@@ -5,15 +7,16 @@
   justify-content: space-between;
 
   &-title {
-    color: grey;
+    color: vars.$darkGrey;
     margin-bottom: 2rem;
   }
 
   &-disclaimer {
-    color: grey;
+    color: vars.$darkGrey;
     font-size: 0.8rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     margin-top: 1.5rem;
+    line-height: 1.1rem;
   }
 
   &-empty {
@@ -23,6 +26,7 @@
 
   &-items {
     display: flex;
+    align-items: center;
 
     & i {
       padding-right: 0.5rem;
@@ -46,15 +50,11 @@
 
   &-content {
     width: 30%;
-    height: 90%;
+    min-height: 100%;
     overflow-y: scroll;
-
-    & p {
-      padding-bottom: 1rem;
-    }
   }
 
   &-70 {
-    height: 60%;
+    min-height: 60%;
   }
 }

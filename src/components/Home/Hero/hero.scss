@@ -7,13 +7,13 @@
 	background-position: center bottom;
 	background-size: cover;
 
-	&-container {
-		margin: 2rem auto;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		// flex-wrap: wrap;
-	}
+  &-container {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 
 	&-left {
 		width: 45%;
@@ -51,10 +51,15 @@
 			flex-wrap: wrap;
 		}
 
-		&-left {
-			width: 100%;
-			padding-right: 0;
-		}
+    &-container {
+      flex-wrap: wrap;
+    }
+
+    &-left {
+      width: 100%;
+      padding-right: 0;
+    }
+
 
 		&-right {
 			width: 80%;

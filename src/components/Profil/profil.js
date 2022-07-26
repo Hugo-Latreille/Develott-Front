@@ -5,10 +5,9 @@ import "../Cards/cards.scss";
 
 function Profil() {
   return (
-    <div className="profil container">
+    <div className="profil ">
       <div className="profil_desc">
         <div className="name_container">
-          <span className="name_container_user">Bruce Wayne</span>
           <img
             className="name_container_avatar"
             src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
@@ -16,119 +15,123 @@ function Profil() {
           />
         </div>
         <div className="desc_container_description">
-          <h4 className="desc_container_titlefirst">
-            <i class="far fa-crown"></i> Rôle
-          </h4>
-          <p className="desc_container_role">Lead Dev Front</p>
-          <h4 className="desc_container_title">
-            <i class="fal fa-envelope"></i> E-Mail
-          </h4>
-          <a className="desc_container_email">batman@batmail.batfr</a>
-          <h4 className="desc_container_title">
+          <div className="desc_container_description-user">
+            <span className="name_container_user">Bruce Wayne</span>
+
+            <p className="desc_container_role">Lead Dev Front</p>
+            <p className="desc_container_title">
+              <i class="fal fa-map-marked"></i> Montpellier
+            </p>
+          </div>
+          <div className="desc_container_description-links">
+            <p className="desc_container_title">
+              <i class="fal fa-envelope"></i> batman@batmail.batfr
+            </p>
+
+            <p className="desc_container_title">
+              <i class="fab fa-github"></i> <a href="#"> Superman-Suck</a>
+            </p>
+
+            <p className="desc_container_title">
+              <i class="fab fa-linkedin"></i> <a href="#"> Bruce Wayne</a>
+            </p>
+
+            <p className="desc_container_title">
+              <i class="far fa-laptop"></i> <a href="#"> brucewayne.com</a>
+            </p>
+          </div>
+
+          <p className="desc_container_title">
             <i class="fal fa-key"></i> Mot de Passe
-          </h4>
-          <a href="#" className="desc_container_password">
-            Changer mon mot de passe
-          </a>
-          <h4 className="desc_container_title">
-            <i class="fab fa-github"></i> Github
-          </h4>
-          <a href="#" className="desc_container_github">
-            supermansuck
-          </a>
-          <h4 className="desc_container_title">
-            <i class="fab fa-linkedin"></i> Linkedin
-          </h4>
-          <a href="#" className="desc_container_linkedin">
-            Bruce Wayne
-          </a>
-        </div>
-      </div>
-      <div className="profil_technos">
-        <div className="desc_container">
-          <h4 className="desc_container_main">Description</h4>
-          <p>
-            Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise
-            situation. Moi, si je devais résumer ma vie aujourd’hui avec vous,
-            je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu
-            la main, peut-être à un moment où je ne pouvais pas, où j’étais seul
-            chez moi. Et c’est assez curieux de se dire que les hasards, les
-            rencontres forgent une destinée...
-            <a className="card_main_desc_link" href="#">
-              voir plus.
-            </a>
           </p>
         </div>
-        <div className="desc_container_technos">
-          <div className="big_title">
-            <h4 className="desc_container_main">Technos</h4>
+      </div>
+      <div className="profil-middle">
+        <div className="profil_technos">
+          <div className="desc_container">
+            <h4 className="desc_container_main">Bruce en quelques mots...</h4>
+            <p>
+              Vous savez, moi je ne crois pas qu’il y ait de bonne ou de
+              mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui
+              avec vous, je dirais que c’est d’abord des rencontres. <br />
+              <br />
+              Des gens qui m’ont tendu la main, peut-être à un moment où je ne
+              pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de
+              se dire que les hasards, les rencontres forgent une destinée...
+              <a className="card_main_desc_link" href="#">
+                voir plus.
+              </a>
+            </p>
           </div>
-          <div className="icone_container">
-            <i
-              title="Javascript"
-              className="devicon-javascript-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Javascript</p>
-            </i>
-
-            <i
-              title="Node.js"
-              className="devicon-nodejs-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Node.js</p>
-            </i>
-            <i
-              title="Postgresql"
-              className="devicon-postgresql-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Postgresql</p>
-            </i>
-            <i
-              title="React"
-              className="devicon-react-original colored technos_logo"
-            >
-              <p className="icone_container_text">React</p>
-            </i>
-            <i
-              title="Angular.js"
-              className="devicon-angularjs-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Angular.js</p>
-            </i>
-            <i
-              title="C++"
-              className="devicon-cplusplus-plain colored technos_logo"
-            >
-              <p className="icone_container_text">C++</p>
-            </i>
-            <i
-              title="Docker"
-              className="devicon-docker-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Docker</p>
-            </i>
-            <i
-              title="After-Effects"
-              className="devicon-aftereffects-plain colored technos_logo"
-            >
-              <p className="icone_container_text">After Effects</p>
-            </i>
-            <i title="Hugo" className="devicon-hugo-plain colored technos_logo">
-              <p className="icone_container_text">Hugo</p>
-            </i>
-            <i
-              title="Pandas"
-              className="devicon-pandas-plain colored technos_logo"
-            >
-              <p className="icone_container_text">Pandas</p>
-            </i>
+          <div className="desc_container_technos">
+            <div className="big_title">
+              <h4 className="desc_container_main">Compétences</h4>
+            </div>
+            <div className="user-technologies">
+              <div className="project-technologies-languages">
+                <h4>Langages</h4>
+                <p>
+                  <i class="devicon-javascript-plain colored"></i> kllkj
+                </p>
+                <p>
+                  <i class="devicon-html5-plain colored"></i>
+                  Javascript
+                </p>
+                <p>
+                  <i class="devicon-css3-plain colored"></i>
+                  Css3
+                </p>
+                <p>
+                  <i class="devicon-postgresql-plain colored"></i>
+                  PostgreSql
+                </p>
+              </div>
+              <div className="project-technologies-frameworks">
+                <h4>Frameworks</h4>
+                <p>
+                  <i class="devicon-bootstrap-plain colored"></i>
+                  Bootstrap
+                </p>
+                <p>
+                  <i class="devicon-react-plain colored"></i>
+                  React
+                </p>
+                <p>
+                  <i class="devicon-redux-plain colored"></i>
+                  Redux
+                </p>
+                <p>
+                  <i class="devicon-rails-plain colored"></i>
+                  Rails
+                </p>
+              </div>
+              <div className="project-technologies-others">
+                <h4>Autres</h4>
+                <p>
+                  <i class="devicon-github-plain colored"></i>
+                  Github
+                </p>
+                <p>
+                  <i class="devicon-trello-plain colored"></i>
+                  Trello
+                </p>
+                <p>
+                  <i class="devicon-illustrator-plain colored"></i>
+                  Illustrator
+                </p>
+                <p>
+                  <i class="devicon-canva-plain colored"></i>
+                  Canva
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="profil_projets">
         <div className="desc_container_project">
           <div className="big_title">
-            <h4 className="desc_container_main">Mon Projet</h4>
+            <h4 className="desc_container_main">Projet(s)</h4>
           </div>
           <div className="card_project">
             <img
@@ -136,7 +139,23 @@ function Profil() {
               className="card_img"
             />
             <div className="card_main">
-              <h1 className="card_main_title">Develott</h1>
+              <h3 className="card_main_title-project">Develott</h3>
+              <p className="card_main_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod...{" "}
+                <a className="card_main_desc_link" href="#">
+                  voir plus.
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="card_project">
+            <img
+              src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
+              className="card_img"
+            />
+            <div className="card_main">
+              <h3 className="card_main_title-project">Develott</h3>
               <p className="card_main_desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod...{" "}

@@ -3,7 +3,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import datas from "../../assets/data/technologiesData.json";
 
-function SearchBarTechnologies() {
+function SearchBarTechnologies({ technologiesArray, handleTechnologies }) {
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
@@ -18,11 +18,14 @@ function SearchBarTechnologies() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item);
+    handleTechnologies(item);
   };
 
   const handleOnFocus = () => {
     console.log("Focused");
   };
+
+  console.log(technologiesArray);
 
   const formatResult = (item) => {
     return (
@@ -40,10 +43,6 @@ function SearchBarTechnologies() {
     (element) =>
       element.tags.includes("framework") || element.tags.includes("language")
   );
-
-  console.log(technologies);
-
-  console.log(technologies);
 
   return (
     <div className="input-container-projects">
