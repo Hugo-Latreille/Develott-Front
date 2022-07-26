@@ -11,12 +11,17 @@
     margin-bottom: 2rem;
   }
 
+  &-title-2 {
+    color: vars.$darkGrey;
+    margin-bottom: 4.7rem;
+  }
+
   &-disclaimer {
     color: rgb(99, 98, 98);
     font-size: 0.8rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     margin-top: 1.5rem;
-    line-height: 1.2rem;
+    line-height: 1.1rem;
   }
 
   &-empty {
@@ -31,7 +36,7 @@
       padding-right: 0.5rem;
     }
     & p {
-      width: 70%;
+      width: 80%;
       font-size: 0.9rem;
     }
   }
@@ -49,15 +54,16 @@
 
   &-content {
     width: 50%;
-    height: 90%;
+    min-height: 100%;
     overflow-y: scroll;
 
     & p {
-      padding-bottom: 1rem;
+      padding-bottom: 0rem;
     }
   }
 
   &-70 {
-    height: 60%;
+    height: 80%;
+    margin-bottom: 2rem;
   }
 }

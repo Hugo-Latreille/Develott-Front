@@ -1,6 +1,7 @@
 import "./createProject.scss";
 import NavbarColor from "../../components/Navbar/navbarColor";
 import FooterColored from "./../../components/Footer/footerColored";
+import Sidebar from "../../components/SideBar/sidebar";
 
 import CreateProjectInformationsForm from "./createProjectInformationsForm";
 import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
@@ -29,67 +30,73 @@ function CreateProject() {
   };
 
   return (
-    <>
-      <NavbarColor />
-      <div className="create-project container">
-        <div className="create-project-container ">
-          <div className="create-project-left">
-            <div
-              className={
-                activeForm === "informations"
-                  ? "create-project-step step-active"
-                  : "create-project-step"
-              }
-            >
-              <h2
-                className="create-project-title"
-                onClick={handleDisplayInformationsForm}
+    <Sidebar>
+      <div className="testt">
+        {/* <NavbarColor /> */}
+        <div className="create-project container">
+          <div className="create-project-container ">
+            <div className="create-project-left">
+              <div
+                className={
+                  activeForm === "informations"
+                    ? "create-project-step step-active"
+                    : "create-project-step"
+                }
               >
-                Informations
-              </h2>
-              <p className="create-project-desc p-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
+                <h2
+                  className="create-project-title"
+                  onClick={handleDisplayInformationsForm}
+                >
+                  Informations
+                </h2>
+                <p className="create-project-desc p-light">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+              <div
+                className={
+                  activeForm === "technologies"
+                    ? "create-project-step step-active"
+                    : "create-project-step"
+                }
+                onClick={handleDisplayTechnologiesForm}
+              >
+                <h2 className="create-project-title">Technologies</h2>
+                <p className="create-project-desc p-light">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+              <div
+                className={
+                  activeForm === "jobs"
+                    ? "create-project-step step-active"
+                    : "create-project-step"
+                }
+                onClick={handleDisplayJobsForm}
+              >
+                <h2 className="create-project-title">Profils recherchés</h2>
+                <p className="create-project-desc p-light">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
             </div>
-            <div
-              className={
-                activeForm === "technologies"
-                  ? "create-project-step step-active"
-                  : "create-project-step"
-              }
-              onClick={handleDisplayTechnologiesForm}
-            >
-              <h2 className="create-project-title">Technologies</h2>
-              <p className="create-project-desc p-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
+            <div className="create-project-right">
+              {activeForm === "informations" && (
+                <CreateProjectInformationsForm />
+              )}
+              {activeForm === "technologies" && (
+                <CreateProjectTechnologiesForm />
+              )}
+              {activeForm === "jobs" && <CreateProjectJobsForm />}
             </div>
-            <div
-              className={
-                activeForm === "jobs"
-                  ? "create-project-step step-active"
-                  : "create-project-step"
-              }
-              onClick={handleDisplayJobsForm}
-            >
-              <h2 className="create-project-title">Profils recherchés</h2>
-              <p className="create-project-desc p-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-            </div>
-          </div>
-          <div className="create-project-right">
-            {activeForm === "informations" && <CreateProjectInformationsForm />}
-            {activeForm === "technologies" && <CreateProjectTechnologiesForm />}
-            {activeForm === "jobs" && <CreateProjectJobsForm />}
           </div>
         </div>
       </div>
       <FooterColored />
-    </>
+    </Sidebar>
   );
 }
 

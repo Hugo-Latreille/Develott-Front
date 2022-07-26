@@ -1,15 +1,15 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
-
 import NavbarColor from "../../components/Navbar/navbarColor";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
-function Project() {
-  return (
-    <>
-      <Sidebar>
-        <div className="project">
-          {/* <NavbarColor /> */}
 
+function Project() {
+	return (
+		<>
+			<Sidebar>
+				<div className="project">
+					{/* <NavbarColor /> */}
           <div className="project-container ">
             <div className="project-container-left">
               <img
@@ -22,7 +22,7 @@ function Project() {
                   className="slider-avatar"
                   src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
                 />
-                <p className="project-user-name">Uller Hank</p>
+                <p className="project-user-name">Uller Mr</p>
                 <div className="project-user-links">
                   <p>
                     <i class="fab fa-github"></i>
@@ -139,6 +139,7 @@ function Project() {
       </Sidebar>
     </>
   );
+
 }
 
 export default Project;

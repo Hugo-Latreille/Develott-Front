@@ -393,6 +393,76 @@ function ProjectList() {
       {/* UNE CARTE  */}
       <div className="card">
         <img
+          src="https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148279574.jpg?t=st=1657989532~exp=1657990132~hmac=08608f29d21284c783fd75aeffcf6524583b99dcc59a6a7793a305f39890f587&w=996"
+          className="card_img"
+        />
+        <div class="icone_content">
+          <div className="icone_content_btns">
+            <span className="icone_button" onClick={handleToggleTechnos}>
+              <i class="fal fa-heart"></i>
+            </span>
+          </div>
+        </div>
+        <div className="card_technologies_container">
+          <div className="icone_button" onClick={handleToggleTechnos}>
+            <img src={require("./../../assets/images/v3-logo-colorize.png")} />
+          </div>
+        </div>
+        <AnimatePresence>
+          {toggleTechnos && (
+            <motion.div
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={inputAnimation}
+              className="card_technologies_container_icons"
+            >
+              <i class="devicon-javascript-plain colored icon-techno"></i>
+              <i class="devicon-nodejs-plain colored"></i>
+              <i class="devicon-postgresql-plain colored"></i>
+              <i class="devicon-react-original colored"></i>
+              <i class="devicon-postgresql-plain colored"></i>
+              <i class="fal fa-chevron-right icon-next"></i>{" "}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <div className="card_main">
+          <Link to="/projet/1">
+            <h1 className="card_main_title">Develott</h1>
+          </Link>
+          <p className="card_main_desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod...{" "}
+            <a className="card_main_desc_link" href="#">
+              voir plus.
+            </a>
+          </p>
+          <p className="card_main_profiles">
+            <span
+              title="Developpeur Front-End, DevOps, UX Designer"
+              className="span-strong"
+            >
+              4{" "}
+            </span>
+            co-équipier(s) recherché(s)
+          </p>
+          <div className="card_desc">
+            <div className="card_desc_user">
+              <img
+                className="card_desc_user_avatar"
+                src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+              />
+              <span className="card_desc_user_name">John D'oeuf</span>
+            </div>
+            <span className="card_desc_user_date">Le 12 mars 2022</span>
+          </div>
+        </div>
+      </div>
+      {/* FIN DE LA CARTE */}
+
+      {/* UNE CARTE  */}
+      <div className="card">
+        <img
           src="https://img.freepik.com/free-psd/phone-screen-ui-ux-app-presentation-mockup_165789-263.jpg?t=st=1658753998~exp=1658754598~hmac=f3537ea4a10c5ce2498f1ba19be5ba19a1945803d5d484d557edd29b8e3c1cfe&w=900"
           className="card_img"
         />
