@@ -8,26 +8,16 @@ import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
 
 // ajout léa
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveForm } from "./projectSlice";
 
 function CreateProject() {
-  //ajout léa
-  const navigate = useNavigate();
+  const activeForm = useSelector((state) => state.project.activeForm);
+  const dispatch = useDispatch();
 
-  const [activeForm, setActiveForm] = useState("informations");
-
-  const handleDisplayInformationsForm = () => {
-    setActiveForm("informations");
-  };
-
-  const handleDisplayTechnologiesForm = () => {
-    setActiveForm("technologies");
-  };
-
-  const handleDisplayJobsForm = () => {
-    setActiveForm("jobs");
-  };
+  // const navigate = useNavigate();
 
   return (
     <Sidebar>
@@ -45,7 +35,7 @@ function CreateProject() {
               >
                 <h2
                   className="create-project-title"
-                  onClick={handleDisplayInformationsForm}
+                  onClick={() => dispatch(setActiveForm("informations"))}
                 >
                   Informations
                 </h2>
@@ -60,7 +50,7 @@ function CreateProject() {
                     ? "create-project-step step-active"
                     : "create-project-step"
                 }
-                onClick={handleDisplayTechnologiesForm}
+                onClick={() => dispatch(setActiveForm("technologies"))}
               >
                 <h2 className="create-project-title">Technologies</h2>
                 <p className="create-project-desc p-light">
@@ -74,7 +64,7 @@ function CreateProject() {
                     ? "create-project-step step-active"
                     : "create-project-step"
                 }
-                onClick={handleDisplayJobsForm}
+                onClick={() => dispatch(setActiveForm("jobs"))}
               >
                 <h2 className="create-project-title">Profils recherchés</h2>
                 <p className="create-project-desc p-light">
