@@ -8,7 +8,7 @@ import { removeTechnologyData } from "./createProjectSlice";
 
 function CreateProjectTechnologiesForm() {
   const technologiesData = useSelector(
-    (state) => state.project.technologiesData
+    (state) => state.createProject.technologiesData
   );
 
   const dispatch = useDispatch();

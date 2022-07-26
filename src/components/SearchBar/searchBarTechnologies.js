@@ -8,7 +8,7 @@ import { setTechnologiesData } from "../../pages/Project/createProjectSlice";
 
 function SearchBarTechnologies() {
   const technologiesData = useSelector(
-    (state) => state.project.technologiesData
+    (state) => state.createProject.technologiesData
   );
 
   const dispatch = useDispatch();
