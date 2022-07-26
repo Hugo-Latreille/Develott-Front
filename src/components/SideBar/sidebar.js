@@ -70,7 +70,7 @@ function Sidebar({ children }) {
     <div className="sidebar_container">
       <motion.div
         animate={{
-          width: isOpen ? "150px" : "40px",
+          width: isOpen ? "155px" : "40px",
           transition: {
             duration: 0.5,
             type: "spring",
@@ -95,7 +95,7 @@ function Sidebar({ children }) {
             {isOpen && (
               <AnimatePresence>
                 <motion.img
-                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileHover={{ scale: 1.5, rotate: 180 }}
                   whileTap={{
                     scale: 0.8,
                     rotate: -90,
@@ -116,7 +116,7 @@ function Sidebar({ children }) {
             {!isOpen && (
               <AnimatePresence>
                 <motion.img
-                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  whileHover={{ scale: 1.3, rotate: 180 }}
                   whileTap={{
                     scale: 0.8,
                     rotate: -90,

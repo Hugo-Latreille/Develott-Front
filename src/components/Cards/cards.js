@@ -48,7 +48,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -118,7 +118,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -188,7 +188,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -258,7 +258,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -328,7 +328,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -398,7 +398,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -468,7 +468,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
@@ -537,7 +537,7 @@ function ProjectList() {
         />
         <div class="icone_content">
           <div className="icone_content_btns">
-            <span className="icone_button" onClick={handleToggleTechnos}>
+            <span className="icone_button">
               <i class="fal fa-heart"></i>
             </span>
           </div>
