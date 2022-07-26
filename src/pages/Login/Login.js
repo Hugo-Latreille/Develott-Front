@@ -2,10 +2,11 @@
 import Input from "../../components/Input/Input";
 import "./login.scss";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Login({ onSubmit }) {
 	const github = () => {
-		window.open("http://localhost:3002/github", "_self");
+		window.open("http://localhost:3001/v1/auth/github", "_self");
 	};
 
 	const { email, password } = useSelector((state) => state.auth);
@@ -39,9 +40,12 @@ function Login({ onSubmit }) {
 					<a href="#" className="secondary-button-colored" onClick={github}>
 						<i className="fab fa-github"></i> Github
 					</a>
-					<a href="#" className="third-button-colored width-100">
+					<Link
+						to={"../forgotpassword"}
+						className="third-button-colored width-100"
+					>
 						Mot de passe oublié ?
-					</a>
+					</Link>
 				</div>
 			</form>
 		</div>

@@ -5,17 +5,17 @@ import FooterColored from "../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 
 function Projects() {
-  return (
-    <Sidebar>
-      <div className="projects">
-        <div className="projects_hero">
-          <Navbar />
-          <Cards />
-          <FooterColored />
-        </div>
-      </div>
-    </Sidebar>
-  );
+	return (
+		<Sidebar>
+			<div className="projects">
+				<div className="projects_hero">
+					<Navbar />
+					<Cards />
+					<FooterColored />
+				</div>
+			</div>
+		</Sidebar>
+	);
 }
 
 export default Projects;
