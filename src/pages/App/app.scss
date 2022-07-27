@@ -23,6 +23,7 @@ h3 {
 
 h4 {
   margin:0;
+  font-weight: normal;
 }
 
 p {
@@ -153,4 +154,8 @@ p {
 
 .margin-top2 {
   margin-top: 2rem;
+}
+
+.color-secondary {
+  color: vars.$primaryColor;
 }
