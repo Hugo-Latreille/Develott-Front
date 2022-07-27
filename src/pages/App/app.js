@@ -1,7 +1,6 @@
 import "./app.scss";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../Home/home";
-import Sidebar from "../../components/SideBar/sidebar";
 import Projects from "../Projects/projects";
 import Connexion from "../Login/connexion";
 import NotFound from "./../../components/NotFound/notFound";
@@ -17,19 +16,22 @@ import { useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
+import Erreur from "../404/404";
+
 
 function App() {
-	const location = useLocation();
-	const background = location.state && location.state.background;
-	const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
+  const location = useLocation();
+  const background = location.state && location.state.background;
+  const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
 
-	useEffect(() => {
-		if (modalIsOpen) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "visible";
-		}
-	}, [modalIsOpen]);
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [modalIsOpen]);
+
 
 	return (
 		<div className="app">
@@ -64,6 +66,7 @@ function App() {
 			)}
 		</div>
 	);
+
 }
 
 export default App;

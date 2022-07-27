@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 
 import { AnimatePresence, motion } from "framer-motion";
+import ReactTooltip from "react-tooltip";
 
 // Import Swiper styles
 import "swiper/css";
@@ -48,8 +49,21 @@ function Slider() {
   };
 
   return (
-    <div className="slider-container">
+    <div data-tip data-for="slide" className="slider-container">
+      <ReactTooltip
+        id="slide"
+        place="top"
+        effect="solid"
+        border
+        textColor="white"
+        backgroundColor="black"
+        borderColor="#A2A1FD"
+        arrowColor="#A2A1FD"
+      >
+        Attrapez et glisser pour faire deflié les projets !
+      </ReactTooltip>
       <div className="container">
+        {/* ***************************************PARAMETRES EFFET************************************ */}
         <Swiper
           breakpoints={{
             // when window width is >= 640px
@@ -77,6 +91,7 @@ function Slider() {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
+          {/* ***************************************PARAMETRES EFFET************************************ */}
           <SwiperSlide>
             <div className="slide">
               <img
@@ -127,11 +142,20 @@ function Slider() {
                   do eiusmod... <a href="#">voir plus.</a>
                 </p>
                 <p className="card_main_profiles">
-                  <span
-                    title="Developpeur Front-End, DevOps, UX Designer"
-                    className="span-strong"
-                  >
+                  <span data-tip data-for="co-worker" className="span-strong">
                     4{" "}
+                    <ReactTooltip
+                      id="co-worker"
+                      place="right"
+                      effect="solid"
+                      border
+                      textColor="#000000"
+                      backgroundColor="#A2A1FD"
+                      borderColor="#000000"
+                      arrowColor="#000000"
+                    >
+                      Developpeur Front-End, DevOps, UX Designer
+                    </ReactTooltip>
                   </span>
                   Co-équipier(s) recherché(s)
                 </p>
@@ -198,10 +222,7 @@ function Slider() {
                   do eiusmod... <a href="#">voir plus.</a>
                 </p>
                 <p className="card_main_profiles">
-                  <span
-                    title="Developpeur Front-End, DevOps, UX Designer"
-                    className="span-strong"
-                  >
+                  <span data-tip data-for="co-worker" className="span-strong">
                     4{" "}
                   </span>
                   Co-équipier(s) recherché(s)

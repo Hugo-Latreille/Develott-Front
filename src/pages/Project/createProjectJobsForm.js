@@ -1,23 +1,14 @@
 import "./createProjectJobsForm.scss";
 
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import SearchBarJobs from "../../components/SearchBar/searchBarJobs";
+
+import { removeJobData } from "./createProjectSlice";
+
 function CreateProjectJobsForm() {
-  const [jobsData, setJobsData] = useState([]);
-
-  const handleEditJobsData = (item) => {
-    setJobsData([...jobsData, item]);
-  };
-
-  const handleRemoveJob = (id) => {
-    console.log(jobsData);
-    const updatejobsData = jobsData.filter((job) => {
-      return job.id !== id;
-    });
-
-    setJobsData([...updatejobsData]);
-  };
+  const jobsData = useSelector((state) => state.createProject.jobsData);
+  const dispatch = useDispatch();
 
   const jobsDataFrist = [];
   const jobsDataElse = [];
@@ -32,11 +23,7 @@ function CreateProjectJobsForm() {
 
   return (
     <div className="form-jobs">
-      <SearchBarJobs
-        className="project-from-searchbar"
-        jobsArray={jobsData}
-        handleJobs={handleEditJobsData}
-      />
+      <SearchBarJobs className="project-from-searchbar" />
       <span className="form-jobs-disclaimer">
         Veuillez renseigner les profils recherchés pour constituer votre équipe
         et pour mener à bien votre projet via le champs ci-dessus. Ensuite,
@@ -53,7 +40,7 @@ function CreateProjectJobsForm() {
               <p>{job.name}</p>
               <i
                 className="fal fa-backspace form-technologies-delete"
-                onClick={() => handleRemoveJob(job.id)}
+                onClick={() => dispatch(removeJobData(job.id))}
               ></i>
             </div>
           ))}
@@ -66,7 +53,10 @@ function CreateProjectJobsForm() {
                 <i className={`devicon-${job.name}-plain colored`}></i>{" "}
                 {job.name}
               </p>
-              <i className="fal fa-backspace form-technologies-delete"></i>
+              <i
+                className="fal fa-backspace form-technologies-delete"
+                onClick={() => dispatch(removeJobData(job.id))}
+              ></i>
             </div>
           ))}
         </div>

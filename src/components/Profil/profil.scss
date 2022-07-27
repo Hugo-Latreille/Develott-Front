@@ -10,32 +10,27 @@
 
   &_desc {
     width: 22%;
-    height: 55vh;
+    height: 55%;
   }
 
-  &_technos {
-    height: 42vh;
-  }
 
   &_projets {
     margin-bottom: 5%;
     width: 22%;
-    height: 69vh;
   }
 
   &-middle {
     background-color: #fff;
     width: 54%;
-    height: 90vh;
+    height: 87vh;
+    overflow-y: scroll;
+    padding-top: 2rem;
+
   }
 }
 
 .name_container {
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+
 
   &_user {
     font-size: large;
@@ -45,25 +40,29 @@
   &_avatar {
     width: 90%;
     margin: auto;
+    padding-bottom: 2rem;
   }
 }
 
 .desc_container {
   border-radius: 8px;
   background-color: #fff;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem 1rem;
 
   &_main {
     padding-left: 2rem;
+    padding-bottom: 2rem;
     font-size: 1.4rem;
     font-weight: bold;
-    margin-top: 4rem;
+
   }
 
   & p {
     margin: 0 2rem;
+    font-size: 1rem;
     color: vars.$darkGrey;
     line-height: 1.3rem;
+    min-height:180px;
 
     & i {
       padding-right: 0.5rem;
@@ -130,7 +129,7 @@
   &_technos {
     border-radius: 8px;
     background-color: #fff;
-    padding: 0 2rem;
+    padding: 0 1rem;
     height: 100%;
   }
 
@@ -138,15 +137,14 @@
     // border-radius: 8px;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    padding: 7rem 2rem 5rem 2rem;
-    margin-top: -6rem;
-    height: 100%;
+    padding: 2rem 1rem;
+    height: 150%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     &-user {
-      height: 20%;
+      height: 30%;
     }
     &-links {
       height: 60%;
@@ -159,11 +157,13 @@
     margin-bottom: 5%;
     height: 82vh;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
 .big_title {
   font-size: large;
+  padding-top: 2rem;
 }
 
 .technos_logo {
@@ -211,11 +211,11 @@
 
 .user-technologies {
   background-color: #fff;
-  // height: 40vh;
-  padding: 0 2rem;
+  margin-left: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-height:200px;
 }
 
 .card_main_title-project {
@@ -225,4 +225,26 @@
 
 .card_img {
   height: 10rem;
+}
+
+
+.profile-edition-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & i {
+    cursor: pointer;
+    color:grey;
+  }
+
+  & i:hover {
+    cursor: pointer;
+    color:rgb(78, 78, 78);
+  }
+}
+
+
+.margin0 {
+  margin:0;
 }

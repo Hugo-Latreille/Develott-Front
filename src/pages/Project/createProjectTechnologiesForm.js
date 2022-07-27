@@ -2,27 +2,16 @@ import "./createProjectTechnologiesForm.scss";
 
 import SearchBarProjects from "./../../components/SearchBar/searchBarTechnologies";
 
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { removeTechnologyData } from "./createProjectSlice";
 
 function CreateProjectTechnologiesForm() {
-  const [technologiesData, setTechnologiesData] = useState([]);
-  const [isInformationsFormSubmit, setIsInformationsFormSubmit] =
-    useState(false);
+  const technologiesData = useSelector(
+    (state) => state.createProject.technologiesData
+  );
 
-  const handleEditTechnologiesData = (item) => {
-    console.log("coucou");
-    setTechnologiesData([...technologiesData, item]);
-  };
-
-  const handleRemoveTechnology = (name) => {
-    console.log("ddsd");
-
-    const updateTechnologiesData = technologiesData.filter((technologie) => {
-      return technologie.name !== name;
-    });
-
-    setTechnologiesData([...updateTechnologiesData]);
-  };
+  const dispatch = useDispatch();
 
   const languagesData = technologiesData.filter((technology) =>
     technology.tags.includes("language")
@@ -41,8 +30,8 @@ function CreateProjectTechnologiesForm() {
   return (
     <div className="form-technologies">
       <SearchBarProjects
-        technologiesArray={technologiesData}
-        handleTechnologies={handleEditTechnologiesData}
+        // technologiesArray={technologiesData}
+        // handleTechnologies={handleEditTechnologiesData}
         className="navbar-searchbar"
       />
       <span className="form-technologies-disclaimer">
@@ -64,7 +53,7 @@ function CreateProjectTechnologiesForm() {
               </p>
               <i
                 className="fal fa-backspace form-technologies-delete"
-                onClick={() => handleRemoveTechnology(techno.name)}
+                onClick={() => dispatch(removeTechnologyData(techno.name))}
               ></i>
             </div>
           ))}
@@ -82,7 +71,7 @@ function CreateProjectTechnologiesForm() {
               </p>
               <i
                 className="fal fa-backspace form-technologies-delete"
-                onClick={() => handleRemoveTechnology(techno.name)}
+                onClick={() => dispatch(removeTechnologyData(techno.name))}
               ></i>
             </div>
           ))}
@@ -100,7 +89,7 @@ function CreateProjectTechnologiesForm() {
               </p>
               <i
                 className="fal fa-backspace form-technologies-delete"
-                onClick={() => handleRemoveTechnology(techno.name)}
+                onClick={() => dispatch(removeTechnologyData(techno.name))}
               ></i>
             </div>
           ))}
