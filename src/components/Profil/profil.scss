@@ -50,7 +50,10 @@
 
 .desc_container {
   background-color: #fff;
-  padding: 0 1rem 3rem 1rem;
+  height:37vh;
+  // min-height: 37vh;
+  // max-height: 37vh;
+  padding: 0 1rem 2rem 1rem;
 
   &_main {
     padding-left: 2rem;
@@ -140,13 +143,15 @@
   &_description {
     // background-color: #fff;
     // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    height: 150%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     &-username {
-      padding: 2rem 2rem 1.5rem 2rem;
+      padding: 2rem 2rem 0 2rem;
+      min-height: 37vh;
+      max-height: 37vh;
 
       background-color: #fff;
       margin: 0 auto 1rem auto;
@@ -305,14 +310,11 @@
   width: 100%;
   height:auto;
   flex-wrap: wrap;
-
-
+  
   &_desc {
     width: 100%;
     height: auto;
-    
   }
-
 
   &_projets {
     width: 100%;
@@ -324,6 +326,10 @@
     height: auto;
   }
 
+  .desc_container {
+    height:100%;
+  }
+
   .desc_container_description {
     height: auto;
   }
@@ -333,6 +339,10 @@
     max-height: auto;
     height:100%;
     overflow-y:auto;
+  }
+
+  .user-description-texte {
+    margin-bottom: 2rem;
   }
 }
 }

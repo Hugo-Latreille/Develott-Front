@@ -150,7 +150,7 @@ function Profil() {
                       onClick={() => dispatch(setIsEditDescriptionActive())}
                     ></i>
                   </div>
-                  <p>
+                  <p className="user-description-texte">
                     Vous savez, moi je ne crois pas qu’il y ait de bonne ou de
                     mauvaise situation. Moi, si je devais résumer ma vie
                     aujourd’hui avec vous, je dirais que c’est d’abord des
