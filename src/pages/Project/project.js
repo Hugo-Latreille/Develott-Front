@@ -4,7 +4,6 @@ import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
-
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -18,44 +17,29 @@ import {
 	removeJobData,
 	removeTechnologyData,
 } from "./showProjectSlice";
+import { useParams } from "react-router-dom";
 
 function Project() {
 	const dispatch = useDispatch();
-
-	const displayEditDescriptionForm = useSelector(
-		(state) => state.showProject.displayEditDescriptionForm
-	);
-
-	const displayEditTechnologies = useSelector(
-		(state) => state.showProject.displayEditTechnologies
-	);
-
-	const displayEditJobForm = useSelector(
-		(state) => state.showProject.displayEditJobForm
-	);
-
-	const adaptDescriptionContainer = useSelector(
-		(state) => state.showProject.adaptDescriptionContainer
-	);
-
-	const technologiesData = useSelector(
-		(state) => state.showProject.technologiesData
-	);
+	const { projectId } = useParams();
+	const {
+		displayEditDescriptionForm,
+		displayEditTechnologies,
+		displayEditJobForm,
+		adaptDescriptionContainer,
+		technologiesData,
+		jobsData,
+	} = useSelector((state) => state.showProject);
 
 	const languagesData = technologiesData.filter((technology) =>
 		technology.tags.includes("language")
 	);
-
 	const frameworksData = technologiesData.filter((technology) =>
 		technology.tags.includes("framework")
 	);
-
 	const databasesData = technologiesData.filter((technology) =>
 		technology.tags.includes("database")
 	);
-
-	const jobsData = useSelector((state) => state.showProject.jobsData);
-
 	const othersData = technologiesData.filter(
 		(technology) =>
 			!technology.tags.includes("framework") &&
