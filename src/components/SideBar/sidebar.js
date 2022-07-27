@@ -251,9 +251,7 @@ function Sidebar({ children }) {
           </div>
         </section>
       </motion.div>
-      <main className="side_main" onClick={toggle}>
-        {children}
-      </main>
+      <main className="side_main">{children}</main>
     </div>
   );
 }

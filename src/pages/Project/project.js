@@ -55,22 +55,45 @@ function Project() {
                     </p>
                   </div>
                 </div>
+                <div className="project-dates">
+                  <h3 lassName="project-jobs-title">Dates du projet</h3>
+                  <p>
+                    <i class="far fa-calendar-check success"></i> Dès maintenant
+                  </p>
+                  <p>
+                    <i class="far fa-calendar-exclamation warning"></i> 6
+                    semaines
+                  </p>
+                </div>
               </div>
             </div>
             <div className="project-container-right">
               <div className="project-header">
-                <h1 className="project-header-title">
-                  Develott - La table ronde du code
-                </h1>
-                <p className="project-header-short-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  vel ex quis lorem tempus consequat.
-                </p>
+                <div className="project-header-left">
+                  <h1 className="project-header-title">
+                    Develott - La table ronde du code
+                  </h1>
+                  <p className="project-header-short-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    vel ex quis lorem tempus consequat.
+                  </p>
+                </div>
+                <div className="project-header-right">
+                  <button className="main-button-bg-white">
+                    {" "}
+                    Postuler <i className="far fa-rocket"></i>
+                  </button>
+                </div>
               </div>
               <div className="project-description">
-                <h2 className="project-description-title">
-                  Description du projet
-                </h2>
+                <div className="project-description-container">
+                  <h2 className="project-description-title">
+                    Description du projet
+                  </h2>
+                  <span>
+                    <i className="fas fa-edit"></i>
+                  </span>
+                </div>
                 <p className="project-description-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   vel ex quis lorem tempus consequat. Pellentesque ornare eros
@@ -87,28 +110,28 @@ function Project() {
                   <h4>Langages</h4>
                   <span className="technologies-icon-container">
                     <i
-                      class={`devicon-javascript-plain`}
+                      className={`devicon-javascript-plain`}
                       style={{ backgroundColor: "red" }}
                     ></i>
                     Javascript
                   </span>
                   <span className="technologies-icon-container">
                     <i
-                      class={`devicon-javascript-plain`}
-                      style={{ backgroundColor: "red" }}
+                      className={`devicon-ruby-plain`}
+                      style={{ backgroundColor: "green" }}
                     ></i>
-                    Javascript
+                    ruby
                   </span>
                   <span className="technologies-icon-container">
                     <i
-                      class={`devicon-javascript-plain`}
-                      style={{ backgroundColor: "red" }}
+                      className={`devicon-php-plain`}
+                      style={{ backgroundColor: "blue" }}
                     ></i>
-                    Javascript
+                    php
                   </span>
                   <span className="technologies-icon-container">
                     <i
-                      class={`devicon-javascript-plain`}
+                      className={`devicon-javascript-plain`}
                       style={{ backgroundColor: "red" }}
                     ></i>
                     Javascript
@@ -116,57 +139,60 @@ function Project() {
                 </div>
                 <div className="project-technologies-frameworks">
                   <h4>Frameworks</h4>
-                  <p>
-                    <i class="devicon-bootstrap-plain colored"></i> kllkj
-                  </p>
-                  <p>
-                    <i class="devicon-react-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-redux-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-rails-plain colored"></i>
-                    hjkhkjh
-                  </p>
+                  <span className="technologies-icon-container">
+                    <i
+                      className={`devicon-ruby-plain`}
+                      style={{ backgroundColor: "chartreuse" }}
+                    ></i>
+                    ruby
+                  </span>
+                  <span className="technologies-icon-container">
+                    <i
+                      className={`devicon-php-plain`}
+                      style={{ backgroundColor: "pink" }}
+                    ></i>
+                    php
+                  </span>
                 </div>
                 <div className="project-technologies-database">
                   <h4>Base de donnée</h4>
-                  <p>
-                    <i class="devicon-github-plain colored"></i> kllkj
-                  </p>
-                  <p>
-                    <i class="devicon-trello-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-illustrator-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-canva-plain colored"></i>
-                    hjkhkjh
-                  </p>
+                  <span className="technologies-icon-container">
+                    <i
+                      className={`devicon-mongodb-plain`}
+                      style={{ backgroundColor: "green" }}
+                    ></i>
+                    mongodb
+                  </span>
+                  <span className="technologies-icon-container">
+                    <i
+                      className={`devicon-php-plain`}
+                      style={{ backgroundColor: "blue" }}
+                    ></i>
+                    php
+                  </span>
                 </div>
                 <div className="project-technologies-others">
                   <h4>Autres</h4>
                   <p>
-                    <i class="devicon-github-plain colored"></i> kllkj
+                    <i className="devicon-github-plain colored"></i> kllkj
                   </p>
                   <p>
-                    <i class="devicon-trello-plain colored"></i>
+                    <i className="devicon-trello-plain colored"></i>
                     hjkhkjh
                   </p>
                   <p>
-                    <i class="devicon-illustrator-plain colored"></i>
+                    <i className="devicon-illustrator-plain colored"></i>
                     hjkhkjh
                   </p>
                   <p>
-                    <i class="devicon-canva-plain colored"></i>
+                    <i className="devicon-canva-plain colored"></i>
                     hjkhkjh
                   </p>
+                </div>
+                <div className="project-technologies-edit">
+                  <span>
+                    <i className="fas fa-edit"></i>
+                  </span>
                 </div>
               </div>
             </div>
