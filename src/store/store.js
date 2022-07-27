@@ -4,6 +4,7 @@ import loginReducer from "./../pages/Login/authSlice";
 import { emptySplitApi } from "../API/APIslice";
 import createProjectSlice from "../pages/Project/createProjectSlice";
 import updtateUserProfileSlice from "../pages/Profiles/updtateUserProfileSlice";
+import userProfileSlice from "../pages/Profiles/userProfileSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: loginReducer,
     createProject: createProjectSlice,
     updateProfile: updtateUserProfileSlice,
+    userProfile: userProfileSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(emptySplitApi.middleware),

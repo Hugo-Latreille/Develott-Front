@@ -48,6 +48,10 @@
   }
 }
 
+.desc_container2 {
+  height:auto;
+}
+
 .desc_container {
   background-color: #fff;
   height:37vh;
@@ -302,7 +306,14 @@
   }
 }
 
-
+.user_desc_link {
+  background: vars.$linearGradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
 
 @media screen and (width < 600px) {
   
@@ -343,6 +354,9 @@
 
   .user-description-texte {
     margin-bottom: 2rem;
+    text-align: justify;
+    padding-bottom: 2rem;
   }
 }
 }
+

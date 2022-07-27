@@ -16,6 +16,8 @@ import {
   removeUserTechnologyData,
 } from "./../../pages/Profiles/updtateUserProfileSlice";
 
+import { setDisplayAllDescription } from "./../../pages/Profiles/userProfileSlice";
+
 function Profil() {
   const dispatch = useDispatch();
 
@@ -29,6 +31,10 @@ function Profil() {
 
   const technologiesData = useSelector(
     (state) => state.updateProfile.userTechnologiesData
+  );
+
+  const displayAllDescription = useSelector(
+    (state) => state.userProfile.displayAllDescription
   );
 
   console.log(technologiesData);
@@ -49,7 +55,7 @@ function Profil() {
 
   // TEST TEXTE
   const texte =
-    " Vous savez, moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...";
+    " Vous savez, moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...";
 
   const adaptTextSize = (texte) => {
     const sentenceArray = [];
@@ -124,7 +130,14 @@ function Profil() {
         </div>
         <div className="profil-middle">
           <div className="profil_technos">
-            <div className="desc_container">
+            <div
+              className="desc_container "
+              style={
+                displayAllDescription === true
+                  ? { height: "57vh", overflowY: "scroll" }
+                  : {}
+              }
+            >
               {isEditDescriptionActive === true && (
                 <form className="padding-on-edition">
                   <Editor
@@ -178,10 +191,24 @@ function Profil() {
                     ></i>
                   </div>
                   <p className="user-description-texte">
-                    {adaptTextSize(texte)};
-                    <a className="card_main_desc_link" href="#">
-                      voir plus.
-                    </a>
+                    {displayAllDescription === false && adaptTextSize(texte)}
+                    {displayAllDescription === true && texte}
+                    {displayAllDescription === false && (
+                      <span
+                        className="user_desc_link"
+                        onClick={() => dispatch(setDisplayAllDescription())}
+                      >
+                        ... voir plus.
+                      </span>
+                    )}
+                    {displayAllDescription === true && (
+                      <span
+                        className="user_desc_link"
+                        onClick={() => dispatch(setDisplayAllDescription())}
+                      >
+                        voir moins.
+                      </span>
+                    )}
                   </p>
                 </>
               )}
@@ -278,7 +305,14 @@ function Profil() {
               </div>
             )}
             {isEditTechnologiesActive === false && (
-              <div className="desc_container_technos min-height-technos-container">
+              <div
+                className="desc_container_technos min-height-technos-container"
+                style={
+                  displayAllDescription === true
+                    ? { height: "26vh", overflowY: "scroll" }
+                    : {}
+                }
+              >
                 <div className="profile-edition-btns-container">
                   <h4 className="desc_container_main">Compétences</h4>
                   <i
