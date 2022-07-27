@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setActiveForm } from "./createProjectSlice";
 
 function CreateProject() {
-  const activeForm = useSelector((state) => state.project.activeForm);
+  const activeForm = useSelector((state) => state.createProject.activeForm);
   const dispatch = useDispatch();
 
   // const navigate = useNavigate();

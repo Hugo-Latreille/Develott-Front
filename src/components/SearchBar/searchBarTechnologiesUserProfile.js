@@ -4,11 +4,11 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setTechnologiesData } from "../../pages/Project/createProjectSlice";
+import { setUserTechnologiesData } from "../../pages/Profiles/updtateUserProfileSlice";
 
-function SearchBarTechnologies() {
+function SearchBarTechnologiesUserProfile() {
   const technologiesData = useSelector(
-    (state) => state.createProject.technologiesData
+    (state) => state.updateProfile.userTechnologiesData
   );
 
   const dispatch = useDispatch();
@@ -27,13 +27,14 @@ function SearchBarTechnologies() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item);
+    console.log(technologiesData);
 
     const itemAllreadyExist = technologiesData.find(
       (techno) => techno.name === item.name
     );
 
     if (!itemAllreadyExist) {
-      dispatch(setTechnologiesData(item));
+      dispatch(setUserTechnologiesData(item));
     } else {
       console.log("techno allready add");
     }
@@ -89,4 +90,4 @@ function SearchBarTechnologies() {
   );
 }
 
-export default SearchBarTechnologies;
+export default SearchBarTechnologiesUserProfile;

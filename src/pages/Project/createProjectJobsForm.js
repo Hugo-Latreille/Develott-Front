@@ -7,7 +7,7 @@ import SearchBarJobs from "../../components/SearchBar/searchBarJobs";
 import { removeJobData } from "./createProjectSlice";
 
 function CreateProjectJobsForm() {
-  const jobsData = useSelector((state) => state.project.jobsData);
+  const jobsData = useSelector((state) => state.createProject.jobsData);
   const dispatch = useDispatch();
 
   const jobsDataFrist = [];

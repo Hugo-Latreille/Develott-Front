@@ -1,7 +1,5 @@
 import "./createProjectInformationsForm.scss";
 
-import { useState } from "react";
-
 import InputProject from "../../components/Input/ProjectInput";
 
 import { Editor } from "react-draft-wysiwyg";

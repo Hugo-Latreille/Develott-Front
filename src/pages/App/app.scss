@@ -21,6 +21,10 @@ h3 {
   font-weight: bolder;
 }
 
+h4 {
+  margin:0;
+}
+
 p {
   line-height: 1.2rem;
 }
@@ -28,6 +32,15 @@ p {
 .p-light {
   color: grey;
   font-size: 0.8rem;
+}
+
+.success {
+  color: rgba(117, 197, 117, 0.959);
+}
+
+.danger {
+  color: rgba(194, 82, 82, 0.959);
+
 }
 
 .span-strong {
@@ -136,4 +149,8 @@ p {
 
 .span-small {
   font-size: 0.6rem;
+}
+
+.margin-top2 {
+  margin-top: 2rem;
 }
