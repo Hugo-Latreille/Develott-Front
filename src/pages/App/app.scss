@@ -22,7 +22,7 @@ h2 {
 
 h3 {
   // font-size: 1.5rem;
-  font-weight: bolder;
+  font-weight: normal;
 }
 
 h4 {
@@ -170,4 +170,8 @@ p {
 
 .color-secondary {
   color: vars.$primaryColor;
+}
+
+.cursor-pointer {
+  cursor:pointer;
 }

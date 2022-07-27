@@ -71,6 +71,12 @@
 
     &-container {
       margin-top: 1.5rem;
+
+      &-job {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     & p {
@@ -243,6 +249,10 @@
   margin-right: 0;
 }
 
+.searchbar-project-container {
+  display: flex;
+
+}
 
 @media screen and (width < 600px) {
   .project {
@@ -267,6 +277,7 @@
 
   .project-jobs {
     width: 100%;
+
     &-title {
       padding-bottom: 2rem;
     }

@@ -3,6 +3,7 @@ import "./project.scss";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
+import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
 
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -13,6 +14,8 @@ import {
   setDisplayEditDescription,
   setDisplayAllDescription,
   setDisplayEditTechnologies,
+  setDisplayEditJobs,
+  removeJobData,
   removeTechnologyData,
 } from "./showProjectSlice";
 
@@ -25,6 +28,10 @@ function Project() {
 
   const displayEditTechnologies = useSelector(
     (state) => state.showProject.displayEditTechnologies
+  );
+
+  const displayEditJobForm = useSelector(
+    (state) => state.showProject.displayEditJobForm
   );
 
   const adaptDescriptionContainer = useSelector(
@@ -46,6 +53,8 @@ function Project() {
   const databasesData = technologiesData.filter((technology) =>
     technology.tags.includes("database")
   );
+
+  const jobsData = useSelector((state) => state.showProject.jobsData);
 
   const othersData = technologiesData.filter(
     (technology) =>
@@ -85,26 +94,49 @@ function Project() {
                 </div>
               </div>
               <div className="project-jobs">
-                <h3 className="project-jobs-title">Profil(s) recherché(s)</h3>
-                <div className="project-jobs-container">
-                  <p>
-                    <i class="fas fa-check-circle success"></i> Développeur
-                    Back-End
-                  </p>
-                  <p>
-                    <i class="fas fa-check-circle success"></i> Développeur
-                    Back-End
-                  </p>
-                  <p>
-                    <i class="fas fa-check-circle"></i> Développeur Front-End
-                  </p>
-                  <p>
-                    <i class="fas fa-check-circle"></i> UX-UI Designer
-                  </p>
-                  <p>
-                    <i class="fas fa-check-circle success"></i> Scrum Master
-                  </p>
-                </div>
+                {displayEditJobForm === false && (
+                  <>
+                    <div className="project-description-container">
+                      <h3 className="project-jobs-title">
+                        Profil(s) recherché(s)
+                      </h3>
+                      <span onClick={() => dispatch(setDisplayEditJobs())}>
+                        <i className="fas fa-edit"></i>
+                      </span>
+                    </div>
+                    <div className="project-jobs-container">
+                      {jobsData.map((job) => (
+                        <p>
+                          <i class="fas fa-check-circle success"></i> {job.name}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {displayEditJobForm === true && (
+                  <div className="project-jobs-container">
+                    <SearchBarJobsProject className="searchbar-project-container-searchbar" />
+                    {jobsData.map((job) => (
+                      <div className="project-jobs-container-job">
+                        <p>
+                          <i class="fas fa-check-circle success"></i>
+                          {job.name}
+                        </p>
+                        <span onClick={() => dispatch(removeJobData(job.id))}>
+                          <i class="far fa-backspace cursor-pointer"></i>
+                        </span>
+                      </div>
+                    ))}
+                    <span>
+                      <button
+                        className="main-button-colored"
+                        onClick={() => dispatch(setDisplayEditJobs())}
+                      >
+                        Valider
+                      </button>
+                    </span>
+                  </div>
+                )}
               </div>
               <div className="project-dates">
                 <h3 className="project-jobs-title">Dates du projet</h3>

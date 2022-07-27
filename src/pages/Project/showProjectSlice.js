@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   adaptDescriptionContainer: false,
   displayEditDescriptionForm: false,
+  displayEditJobForm: false,
   displayEditTechnologies: true,
+  displayEditJobs: true,
   technologiesData: [],
   jobsData: [],
 };
@@ -19,11 +21,17 @@ export const showProjectSlice = createSlice({
     setDisplayEditTechnologies: (state, action) => {
       state.displayEditTechnologies = !state.displayEditTechnologies;
     },
+    setDisplayEditJobs: (state, action) => {
+      state.displayEditJobForm = !state.displayEditJobForm;
+    },
     setDisplayAllDescription: (state, action) => {
       state.adaptDescriptionContainer = !state.adaptDescriptionContainer;
     },
     setTechnologiesData: (state, action) => {
       state.technologiesData = [...state.technologiesData, action.payload];
+    },
+    setJobsData: (state, action) => {
+      state.jobsData = [...state.jobsData, action.payload];
     },
     removeTechnologyData: (state, action) => {
       const updateTechnologiesData = state.technologiesData.filter(
@@ -48,6 +56,7 @@ export const showProjectSlice = createSlice({
 export const {
   setDisplayEditDescription,
   setDisplayEditTechnologies,
+  setDisplayEditJobs,
   setDisplayAllDescription,
   setTechnologiesData,
   removeTechnologyData,
