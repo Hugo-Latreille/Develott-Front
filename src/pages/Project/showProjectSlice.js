@@ -4,8 +4,8 @@ const initialState = {
   adaptDescriptionContainer: false,
   displayEditDescriptionForm: false,
   displayEditJobForm: false,
-  displayEditTechnologies: true,
-  displayEditJobs: true,
+  displayEditTechnologies: false,
+  displayEditJobs: false,
   technologiesData: [],
   jobsData: [],
 };
