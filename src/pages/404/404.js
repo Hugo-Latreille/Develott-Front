@@ -2,6 +2,7 @@ import "./404.scss";
 import Profil from "../../components/Profil/profil";
 import Footer from "../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
+import LogoW from "../../assets/images/v3-logo-colorize.png";
 
 function Profiles() {
   return (
@@ -131,14 +132,15 @@ function Profiles() {
                 ></path>
               </svg>
               <div className="circle planet">
-                <div className="craters">
+                <img src={LogoW} alt="logo" className="logo_moon" />
+                {/* <div className="craters">
                   <div className="crater crater--1"></div>
                   <div className="crater crater--2"></div>
                   <div className="crater crater--3"></div>
                   <div className="crater crater--4"></div>
                   <div className="crater crater--5"></div>
                   <div className="crater crater--6"></div>
-                </div>
+                </div> */}
               </div>
               <div className="astronaut-hands">
                 <div className="astronaut-hand hand--left">
@@ -183,9 +185,10 @@ function Profiles() {
                 </div>
               </div>
             </div>
-            <div className="button">Redescendre !</div>
+            <div className="button">Accueil</div>
           </div>
-          <div className="sorry">Perdu ? Page not Found</div>
+          <div className="sorry">Vers l'Infini</div>
+          <div className="sorry_text">Mais c'est pas là</div>
         </div>
       </div>
     </Sidebar>
