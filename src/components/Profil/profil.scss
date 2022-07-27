@@ -244,7 +244,7 @@
 .profile-edition-btns-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   padding-top : 3rem;
 
   & i {
@@ -310,7 +310,7 @@
   width: 100%;
   height:auto;
   flex-wrap: wrap;
-  
+
   &_desc {
     width: 100%;
     height: auto;

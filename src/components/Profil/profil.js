@@ -47,6 +47,33 @@ function Profil() {
       !technology.tags.includes("language")
   );
 
+  // TEST TEXTE
+  const texte =
+    " Vous savez, moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...";
+
+  const adaptTextSize = (texte) => {
+    const sentenceArray = [];
+
+    // pour chaque article, on récupère le texte de l'article dans une variable
+    const wordsArray = [];
+
+    for (let i = 0; i < 100; i++) {
+      // on split la string (texte de l'article) à chaque " ", puis on ajoute chaque mot dans un nouveau tableau
+      const word = texte.split(" ");
+      wordsArray.push(word[i]);
+    }
+
+    console.log(wordsArray);
+    // on transforme notre array de mots (qui en contient 30), en une string.
+    const sentence = wordsArray.join(" ");
+    console.log(sentence);
+
+    //on ajoute ces nouvelles string dans un nouvel array (qui contiendra donc les textes de chacun des articles avec 30 mots suelement)
+    sentenceArray.push(sentence);
+
+    return sentenceArray;
+  };
+
   return (
     <>
       <div className="profil ">
@@ -151,15 +178,7 @@ function Profil() {
                     ></i>
                   </div>
                   <p className="user-description-texte">
-                    Vous savez, moi je ne crois pas qu’il y ait de bonne ou de
-                    mauvaise situation. Moi, si je devais résumer ma vie
-                    aujourd’hui avec vous, je dirais que c’est d’abord des
-                    rencontres. <br />
-                    <br />
-                    Des gens qui m’ont tendu la main, peut-être à un moment où
-                    je ne pouvais pas, où j’étais seul chez moi. Et c’est assez
-                    curieux de se dire que les hasards, les rencontres forgent
-                    une destinée...
+                    {adaptTextSize(texte)};
                     <a className="card_main_desc_link" href="#">
                       voir plus.
                     </a>
