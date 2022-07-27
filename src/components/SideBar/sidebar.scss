@@ -107,7 +107,6 @@ a {
     
     &_details {
     background-color: rgba(255, 255, 255, 0.605);
-    border-radius:12px ;
     display: flex;
     padding: 15px;
     border-radius: 0px 12px 12px 0px;
@@ -145,6 +144,14 @@ a {
   color: white;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
+  &_big {
+    font-size: 1.7rem;
+    margin-top: 0.2em;
+    margin-left: 0.5em;
+    color: white;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+
 }
 
 .logo_unlog:hover {
@@ -158,4 +165,10 @@ a {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   font-size: 1.7em;
+}
+
+.logo_unlog_big:hover {
+  color: black;
+  margin-left: 0;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
