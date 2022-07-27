@@ -3,7 +3,7 @@ import { FaHome, FaUser, FaProjectDiagram } from "react-icons/fa";
 import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
-// import Logo from "../../assets/images/v3-logo-colorize.png";
+import Logo from "../../assets/images/v3-logo-colorize.png";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import { useState } from "react";
@@ -23,7 +23,7 @@ const routes = [
 		icon: <MdMessage />,
 	},
 	{
-		path: "/",
+		path: "/projets",
 		name: "Projets",
 		icon: <FaProjectDiagram />,
 	},

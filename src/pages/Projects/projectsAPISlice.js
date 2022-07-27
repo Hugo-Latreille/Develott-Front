@@ -1,6 +1,6 @@
 import { emptySplitApi } from "../../API/APIslice";
 
-const authAPI = emptySplitApi.injectEndpoints({
+const projectsAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllProjects: builder.query({
 			query: () => "projects",
@@ -8,4 +8,4 @@ const authAPI = emptySplitApi.injectEndpoints({
 	}),
 });
 
-export const { useGetAllProjectsQuery } = authAPI;
+export const { useGetAllProjectsQuery } = projectsAPISlice;
