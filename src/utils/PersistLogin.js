@@ -16,8 +16,13 @@ const PersistLogin = () => {
 				withCredentials: true,
 			}
 		);
-		console.log("ici:", response.data.accessToken);
-		dispatch(setCredentials({ accessToken: response.data.accessToken }));
+		console.log("ici:", response.data);
+		dispatch(
+			setCredentials({
+				accessToken: response.data.accessToken,
+				email: response.data.user,
+			})
+		);
 		return response.data;
 	};
 
