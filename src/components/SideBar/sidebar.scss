@@ -12,7 +12,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   border-right: solid 1px rgba(0, 0, 0, 0.487);
 
   &_icon {
@@ -24,17 +25,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 10px;
+  padding: 15px 12px;
 }
 
 .logo_nav {
-  font-size: 18px;
+  font-size: 1.7em;
   line-height: 0;
-  margin-right: 1.8rem;
+  margin-right: 4rem;
+  margin-left: 0.6rem;
 }
 
 .anim {
-  margin-left: 2rem;
+  margin-left: 4rem;
 }
 
 .space {
@@ -51,9 +53,10 @@
 .sidebar_navlink {
   display: flex;
   color: white;
-  gap: 10px;
+  gap: 12px;
+  line-height: 55px;
   border-right: 4px solid transparent;
-  padding: 5px 10px;
+  padding: 0px 15px;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
@@ -62,21 +65,21 @@ a {
 }
 
 .sidebar_navlink:hover {
+  color: black;
   border-right: 4px solid white;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  background-color: rgba(255, 255, 255, 0.348);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  font-size: 1.1em;
 }
 
 .side_icon {
-  margin-top: 4%;
   font-size: 1.5rem;
 }
 
 .side_text {
   white-space: nowrap;
-  font-size: 1em;
-  margin-bottom: 5%;
-  margin-top: 5%;
+  font-size: 1.2em;
 }
 
 .side_main {
@@ -86,4 +89,87 @@ a {
 
 .bars_logo {
   cursor: pointer;
+}
+
+.profile_container {
+  position: absolute;
+  bottom: 0;
+    color: white;
+    gap: 12px;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    
+    &_details {
+    background-color: rgba(255, 255, 255, 0.605);
+    display: flex;
+    padding: 15px;
+    border-radius: 0px 12px 12px 0px;
+  }
+  
+  &_details:hover {
+    cursor: pointer;
+    color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 12px 12px 0px;
+  }
+
+  &_img {
+    margin-right: 1em;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.job {
+  background: vars.$linearGradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.name {
+  color: black;
+}
+
+.logo_unlog {
+  font-size: 1.7rem;
+  margin-top: 0.2em;
+  margin-left: 0.6em;
+  color: white;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+  &_big {
+    font-size: 1.7rem;
+    margin-top: 0.2em;
+    margin-left: 0.5em;
+    color: white;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+
+}
+
+.logo_unlog:hover {
+  color: black;
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 0;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  font-size: 1.7em;
+}
+
+.logo_unlog_big:hover {
+  color: black;
+  margin-left: 0;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }

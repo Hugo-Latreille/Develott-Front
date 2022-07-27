@@ -74,6 +74,9 @@ const authAPI = emptySplitApi.injectEndpoints({
 		userLogout: builder.mutation({
 			query: () => "user/logout",
 		}),
+		// getRefreshToken: builder.query({
+		// 	query: () => "user/refreshToken",
+		// }),
 	}),
 });
 
@@ -86,4 +89,5 @@ export const {
 	useUserLogoutMutation,
 	useForgotPasswordMutation,
 	useNewPasswordMutation,
+	useGetRefreshTokenQuery,
 } = authAPI;
