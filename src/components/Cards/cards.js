@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // import PropTypes from 'prop-types';
 import React, { useState } from "react";
 import "./cards.scss";
@@ -45,6 +46,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -55,7 +57,11 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
+						alt=""
 					</div>
 				</div>
 				<AnimatePresence>
@@ -101,6 +107,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -115,6 +122,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-vector/realistic-ui-ux-landing-page-template_52683-68898.jpg?t=st=1657989378~exp=1657989978~hmac=7dbf26d36ff7850abde76f313dbb1a591b368ffb72079a26be1dda0f2e93256e&w=996"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -125,7 +133,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -171,6 +182,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -185,6 +197,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148279574.jpg?t=st=1657989532~exp=1657990132~hmac=08608f29d21284c783fd75aeffcf6524583b99dcc59a6a7793a305f39890f587&w=996"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -195,7 +208,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -241,6 +257,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -255,6 +272,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -265,7 +283,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -311,6 +332,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -325,6 +347,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-psd/whatsapp-messenger-template-mobile-phone-ui-ux-app-presentation-mockup_106244-1512.jpg?t=st=1658753998~exp=1658754598~hmac=cc07d20adc270f09bbbdac5a54f6fe157673ed5fff2e6a7ecffdf58914405209&w=900"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -335,7 +358,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -381,6 +407,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -395,6 +422,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148279574.jpg?t=st=1657989532~exp=1657990132~hmac=08608f29d21284c783fd75aeffcf6524583b99dcc59a6a7793a305f39890f587&w=996"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -405,7 +433,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -451,6 +482,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -465,6 +497,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-psd/phone-screen-ui-ux-app-presentation-mockup_165789-263.jpg?t=st=1658753998~exp=1658754598~hmac=f3537ea4a10c5ce2498f1ba19be5ba19a1945803d5d484d557edd29b8e3c1cfe&w=900"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -475,7 +508,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -521,6 +557,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -535,6 +572,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -545,7 +583,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -591,6 +632,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
@@ -604,6 +646,7 @@ function ProjectList() {
 				<img
 					src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
 					className="card_img"
+					alt=""
 				/>
 				<div className="icone_content">
 					<div className="icone_content_btns">
@@ -614,7 +657,10 @@ function ProjectList() {
 				</div>
 				<div className="card_technologies_container">
 					<div className="icone_button" onClick={handleToggleTechnos}>
-						<img src={require("./../../assets/images/v3-logo-colorize.png")} />
+						<img
+							src={require("./../../assets/images/v3-logo-colorize.png")}
+							alt=""
+						/>
 					</div>
 				</div>
 				<AnimatePresence>
@@ -660,6 +706,7 @@ function ProjectList() {
 							<img
 								className="card_desc_user_avatar"
 								src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+								alt=""
 							/>
 							<span className="card_desc_user_name">John D'oeuf</span>
 						</div>
