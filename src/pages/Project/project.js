@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
-import NavbarColor from "../../components/Navbar/navbarColor";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 
 function Project() {
-	return (
-		<>
-			<Sidebar>
-				<div className="project">
-					{/* <NavbarColor /> */}
+  return (
+    <>
+      <Sidebar>
+        <div className="project">
           <div className="project-container ">
             <div className="project-container-left">
               <img
@@ -21,6 +19,7 @@ function Project() {
                 <img
                   className="slider-avatar"
                   src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+                  alt="User profile image"
                 />
                 <p className="project-user-name">Uller Mr</p>
                 <div className="project-user-links">
@@ -59,12 +58,19 @@ function Project() {
               </div>
             </div>
             <div className="project-container-right">
-              <div className="project-description">
-                <h2 className="project-description-title">Develott</h2>
-                <p className="project-description-subDesc">
-                  Le mot go peut faire référence à : g aire référence à : go
-                  aire référence à : goo
+              <div className="project-header">
+                <h1 className="project-header-title">
+                  Develott - La table ronde du code
+                </h1>
+                <p className="project-header-short-desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                  vel ex quis lorem tempus consequat.
                 </p>
+              </div>
+              <div className="project-description">
+                <h2 className="project-description-title">
+                  Description du projet
+                </h2>
                 <p className="project-description-desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   vel ex quis lorem tempus consequat. Pellentesque ornare eros
@@ -79,21 +85,34 @@ function Project() {
               <div className="project-technologies">
                 <div className="project-technologies-languages">
                   <h4>Langages</h4>
-                  <p>
-                    <i class="devicon-javascript-plain colored"></i> kllkj
-                  </p>
-                  <p>
-                    <i class="devicon-html5-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-css3-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i class="devicon-postgresql-plain colored"></i>
-                    hjkhkjh
-                  </p>
+                  <span className="technologies-icon-container">
+                    <i
+                      class={`devicon-javascript-plain`}
+                      style={{ backgroundColor: "red" }}
+                    ></i>
+                    Javascript
+                  </span>
+                  <span className="technologies-icon-container">
+                    <i
+                      class={`devicon-javascript-plain`}
+                      style={{ backgroundColor: "red" }}
+                    ></i>
+                    Javascript
+                  </span>
+                  <span className="technologies-icon-container">
+                    <i
+                      class={`devicon-javascript-plain`}
+                      style={{ backgroundColor: "red" }}
+                    ></i>
+                    Javascript
+                  </span>
+                  <span className="technologies-icon-container">
+                    <i
+                      class={`devicon-javascript-plain`}
+                      style={{ backgroundColor: "red" }}
+                    ></i>
+                    Javascript
+                  </span>
                 </div>
                 <div className="project-technologies-frameworks">
                   <h4>Frameworks</h4>
@@ -110,6 +129,24 @@ function Project() {
                   </p>
                   <p>
                     <i class="devicon-rails-plain colored"></i>
+                    hjkhkjh
+                  </p>
+                </div>
+                <div className="project-technologies-database">
+                  <h4>Base de donnée</h4>
+                  <p>
+                    <i class="devicon-github-plain colored"></i> kllkj
+                  </p>
+                  <p>
+                    <i class="devicon-trello-plain colored"></i>
+                    hjkhkjh
+                  </p>
+                  <p>
+                    <i class="devicon-illustrator-plain colored"></i>
+                    hjkhkjh
+                  </p>
+                  <p>
+                    <i class="devicon-canva-plain colored"></i>
                     hjkhkjh
                   </p>
                 </div>
@@ -139,7 +176,6 @@ function Project() {
       </Sidebar>
     </>
   );
-
 }
 
 export default Project;
