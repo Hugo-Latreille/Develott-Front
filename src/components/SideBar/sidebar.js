@@ -3,7 +3,7 @@ import { FaHome, FaUser, FaProjectDiagram } from "react-icons/fa";
 import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
-// import Logo from "../../assets/images/v3-logo-colorize.png";
+import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import { useState } from "react";
@@ -32,8 +32,10 @@ const routes = [
 ];
 
 function Sidebar({ children }) {
+  const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const toggleOut = () => setIsOpen(false);
   const showAnimation = {
     hidden: {
       width: 0,
@@ -196,6 +198,44 @@ function Sidebar({ children }) {
             </NavLink>
           ))}
           <div className="profile_container">
+            {!isOpen && (
+              <AnimatePresence>
+                <motion.i
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                  variants={logAnimation}
+                  onClick={() => setDarkMode(!darkMode)}
+                  className={`${
+                    darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+                  }`}
+                ></motion.i>
+              </AnimatePresence>
+            )}
+            {isOpen && (
+              <AnimatePresence>
+                <motion.div
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                  variants={profilAnimation}
+                  className="toggle_dark"
+                >
+                  <Toggle onChange={() => setDarkMode(!darkMode)} />
+                  <div className="side_text">Dark Mode</div>
+                </motion.div>
+              </AnimatePresence>
+            )}
             <div className="profile">
               <AnimatePresence>
                 {!isOpen && (
@@ -251,7 +291,7 @@ function Sidebar({ children }) {
           </div>
         </section>
       </motion.div>
-      <main className="side_main" onClick={toggle}>
+      <main className="side_main" onClick={toggleOut}>
         {children}
       </main>
     </div>

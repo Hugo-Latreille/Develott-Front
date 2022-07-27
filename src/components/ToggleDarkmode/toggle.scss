@@ -1,16 +1,21 @@
 
   
-  .container {
+  .toggle_container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-right: 0.2em;
+  }
+
+  .toggle_container:hover {
+    background-color: rgba(255, 255, 255, 0.194);
+    border-radius: 30px;
   }
   
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 14px;
+    width: 49px;
+    height: 8px;
   }
   
   .switch input {
@@ -22,8 +27,8 @@
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 53px;
+    height: 30px;
   }
   
   .switch input {
@@ -39,7 +44,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #454845;
+    background-color: #4548459f;
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
@@ -47,17 +52,17 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 20px;
+    width: 20px;
+    left: 5px;
+    bottom: 5px;
     background-color: white;
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
   
   input:checked + .slider {
-    background-color: rgb(38, 222, 51);
+    background-color: #3c097be4;
   }
   
   input:focus + .slider {
@@ -72,22 +77,25 @@
   
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
+    border-radius: 32px;
   }
   
   .slider.round:before {
-    border-radius: 50%;
+    border-radius: 48%;
   }
   .switch-checkbox {
-    padding: 10px;
+    padding: 8px;
   }
 
-  .sun {
-    font-size: 1.6rem;
-    margin-top: 0.5rem;
+  .moon_inside {
+    margin-left: 2.3em;
+    margin-top: 0.55em;
+    font-size: 0.9em;
   }
 
-  .moon {
-    font-size: 1.8rem;
-    margin-top: 0.4rem;
+  .sun_inside {
+    margin-left: 0.4em;
+    margin-top: 0.41em;
+    color: rgba(255, 255, 0, 0.813);
   }
+

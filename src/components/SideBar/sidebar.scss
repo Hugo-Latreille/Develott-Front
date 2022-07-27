@@ -173,3 +173,29 @@ a {
   margin-left: 0;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
+
+.toggle_dark {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.sun {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  color: yellow;
+  background-color: rgba(255, 255, 0, 0.186);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.moon {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  color: #3c097be4;
+  background-color: rgba(255, 255, 255, 0.068);
+  border-radius: 30px;
+  cursor: pointer;
+}
