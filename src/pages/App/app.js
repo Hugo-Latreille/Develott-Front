@@ -18,7 +18,6 @@ import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
 
-
 function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -32,7 +31,15 @@ function App() {
     }
   }, [modalIsOpen]);
 
-
+  return (
+    <div className="app">
+      <Routes location={background || location}>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />}>
+            <Route path="connexion" element={<Connexion />} />
+            <Route path="newpassword/:userId" element={<NewPassword />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
+          </Route>
 
 	return (
 		<div className="app">
