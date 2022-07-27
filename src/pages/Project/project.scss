@@ -117,7 +117,7 @@
   &-description {
     background-color: #fff;
     padding: 1rem 2rem;
-    min-height:29vh ;
+    min-height:28vh ;
     margin-bottom: 1rem;
     overflow-y: scroll;
 
@@ -152,11 +152,12 @@
   }
 
   &-technologies {
-    min-height:30vh ;
+    min-height:31vh ;
     background-color: #fff;
     padding: 2rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     overflow-y: scroll;
 
     &-title {
@@ -164,7 +165,7 @@
     }
 
     &-languages {
-      width: 22%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -182,7 +183,7 @@
     }
 
     &-frameworks {
-      width: 22%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -196,7 +197,7 @@
     }
 
     &-database {
-      width: 22%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -214,7 +215,7 @@
     }
 
     &-others {
-      width: 22%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;

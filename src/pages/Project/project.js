@@ -2,6 +2,7 @@
 import "./project.scss";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
+import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -11,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setDisplayEditDescription,
   setDisplayAllDescription,
+  setDisplayEditTechnologies,
+  removeTechnologyData,
 } from "./showProjectSlice";
 
 function Project() {
@@ -20,11 +23,36 @@ function Project() {
     (state) => state.showProject.displayEditDescriptionForm
   );
 
+  const displayEditTechnologies = useSelector(
+    (state) => state.showProject.displayEditTechnologies
+  );
+
   const adaptDescriptionContainer = useSelector(
     (state) => state.showProject.adaptDescriptionContainer
   );
 
-  console.log(adaptDescriptionContainer);
+  const technologiesData = useSelector(
+    (state) => state.showProject.technologiesData
+  );
+
+  const languagesData = technologiesData.filter((technology) =>
+    technology.tags.includes("language")
+  );
+
+  const frameworksData = technologiesData.filter((technology) =>
+    technology.tags.includes("framework")
+  );
+
+  const databasesData = technologiesData.filter((technology) =>
+    technology.tags.includes("database")
+  );
+
+  const othersData = technologiesData.filter(
+    (technology) =>
+      !technology.tags.includes("framework") &&
+      !technology.tags.includes("language") &&
+      !technology.tags.includes("database")
+  );
 
   return (
     <>
@@ -204,94 +232,192 @@ function Project() {
                     : {}
                 }
               >
-                <div className="project-technologies-languages">
-                  <h4>Langages</h4>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-javascript-plain`}
-                      style={{ backgroundColor: "red" }}
-                    ></i>
-                    Javascript
-                  </span>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-ruby-plain`}
-                      style={{ backgroundColor: "green" }}
-                    ></i>
-                    ruby
-                  </span>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-php-plain`}
-                      style={{ backgroundColor: "blue" }}
-                    ></i>
-                    php
-                  </span>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-javascript-plain`}
-                      style={{ backgroundColor: "red" }}
-                    ></i>
-                    Javascript
-                  </span>
-                </div>
-                <div className="project-technologies-frameworks">
-                  <h4>Frameworks</h4>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-ruby-plain`}
-                      style={{ backgroundColor: "chartreuse" }}
-                    ></i>
-                    ruby
-                  </span>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-php-plain`}
-                      style={{ backgroundColor: "pink" }}
-                    ></i>
-                    php
-                  </span>
-                </div>
-                <div className="project-technologies-database">
-                  <h4>Base de donnée</h4>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-mongodb-plain`}
-                      style={{ backgroundColor: "green" }}
-                    ></i>
-                    mongodb
-                  </span>
-                  <span className="technologies-icon-container">
-                    <i
-                      className={`devicon-php-plain`}
-                      style={{ backgroundColor: "blue" }}
-                    ></i>
-                    php
-                  </span>
-                </div>
-                <div className="project-technologies-others">
-                  <h4>Autres</h4>
-                  <p>
-                    <i className="devicon-github-plain colored"></i> kllkj
-                  </p>
-                  <p>
-                    <i className="devicon-trello-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i className="devicon-illustrator-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                  <p>
-                    <i className="devicon-canva-plain colored"></i>
-                    hjkhkjh
-                  </p>
-                </div>
-                <div className="project-technologies-edit">
-                  <span>
-                    <i className="fas fa-edit"></i>
-                  </span>
-                </div>
+                {displayEditTechnologies === false && (
+                  <>
+                    <div className="project-technologies-languages">
+                      <h4>Langages</h4>
+                      {languagesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {languagesData.map((techno) => (
+                        <span className="technologies-icon-container">
+                          <i
+                            class={`devicon-${techno.name}-plain`}
+                            style={{ backgroundColor: `${techno.color}` }}
+                          ></i>
+                          {techno.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-technologies-frameworks">
+                      <h4>Frameworks</h4>
+                      {frameworksData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {frameworksData.map((techno) => (
+                        <span className="technologies-icon-container">
+                          <i
+                            class={`devicon-${techno.name}-plain`}
+                            style={{ backgroundColor: `${techno.color}` }}
+                          ></i>
+                          {techno.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-technologies-database">
+                      <h4>Base de donnée</h4>
+                      {databasesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {databasesData.map((techno) => (
+                        <span className="technologies-icon-container">
+                          <i
+                            class={`devicon-${techno.name}-plain`}
+                            style={{ backgroundColor: `${techno.color}` }}
+                          ></i>
+                          {techno.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-technologies-others">
+                      <h4>Autres</h4>
+                      {othersData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {othersData.map((techno) => (
+                        <span className="technologies-icon-container">
+                          <i
+                            class={`devicon-${techno.name}-plain`}
+                            style={{ backgroundColor: `${techno.color}` }}
+                          ></i>
+                          {techno.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-technologies-edit">
+                      <span
+                        onClick={() => dispatch(setDisplayEditTechnologies())}
+                      >
+                        <i className="fas fa-edit"></i>
+                      </span>
+                    </div>
+                  </>
+                )}
+                {displayEditTechnologies === true && (
+                  <>
+                    <div className="width-100 margin-bottom1">
+                      <SearchBarTechnologies />
+                    </div>
+                    <div className="project-technologies-languages">
+                      <h4>Langages</h4>
+                      {languagesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {languagesData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>{" "}
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(removeTechnologyData(techno.name))
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="project-technologies-frameworks">
+                      <h4>Frameworks</h4>
+                      {frameworksData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {frameworksData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>{" "}
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(removeTechnologyData(techno.name))
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="project-technologies-database">
+                      <h4>Base de donnée</h4>
+                      {databasesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {databasesData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>{" "}
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(removeTechnologyData(techno.name))
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="project-technologies-others">
+                      <h4>Autres</h4>
+                      {othersData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {othersData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>{" "}
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(removeTechnologyData(techno.name))
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="project-technologies-edit">
+                      <span>
+                        <i
+                          onClick={() => dispatch(setDisplayEditTechnologies())}
+                          className="fas fa-edit"
+                        ></i>
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

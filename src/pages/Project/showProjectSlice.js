@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   adaptDescriptionContainer: false,
   displayEditDescriptionForm: false,
+  displayEditTechnologies: true,
   technologiesData: [],
   jobsData: [],
 };
@@ -14,6 +15,9 @@ export const showProjectSlice = createSlice({
     setDisplayEditDescription: (state, action) => {
       state.displayEditDescriptionForm = !state.displayEditDescriptionForm;
       state.adaptDescriptionContainer = !state.adaptDescriptionContainer;
+    },
+    setDisplayEditTechnologies: (state, action) => {
+      state.displayEditTechnologies = !state.displayEditTechnologies;
     },
     setDisplayAllDescription: (state, action) => {
       state.adaptDescriptionContainer = !state.adaptDescriptionContainer;
@@ -43,6 +47,7 @@ export const showProjectSlice = createSlice({
 
 export const {
   setDisplayEditDescription,
+  setDisplayEditTechnologies,
   setDisplayAllDescription,
   setTechnologiesData,
   removeTechnologyData,
