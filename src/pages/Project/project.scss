@@ -4,35 +4,36 @@
   height: 100vh;
   width: 90%;
   margin: 2rem auto;
-  background-image: url("./../../assets/images/background-blob2.png");
   background-size: cover;
   background-position: center;
 
   &-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     min-height: 90vh;
 
     &-left {
-      border-radius: 8px;
-      width: 30%;
+      width: 26%;
+      height:92vh;
+      min-height:600px;
       max-width: 400px;
       background-color: #fff;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     &-right {
-      width: 68% !important;
-      padding: 2rem;
-      margin-left: 2rem;
-      background-color: #fff;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      width: 73% !important;
+      height:92vh;
+      min-height:600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
   &-img {
     width: 100%;
-    height: 18rem;
+    height: 15rem;
     object-fit: cover;
   }
 
@@ -66,10 +67,16 @@
   }
 
   &-jobs {
-    margin: 3rem 0 0 0;
+    padding: 0.5rem 2rem;
 
     &-container {
       margin-top: 1.5rem;
+
+      &-job {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     & p {
@@ -77,24 +84,67 @@
     }
   }
 
+  &-dates {
+    padding: 0.5rem 2rem;
+  }
+
+  &-header {
+    background-color: hsl(234, 85%, 74%, 70%);
+    // background-image: url('./../../assets/images/footer-bg2.png');
+    // background-position: center right;
+    height:24vh;
+    min-height:100px;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem 1rem 2rem;
+    color:white;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+    &-left {
+      width:80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-title {
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+
+    &-short-desc {
+      font-weight: bolder;
+      margin-bottom: 0;
+    }
+  }
+
   &-description {
     background-color: #fff;
-    padding: 2rem;
+    padding: 1rem 2rem;
+    min-height:28vh ;
+    margin-bottom: 1rem;
+    overflow-y: scroll;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &-see-more {
       text-align: right;
       color: vars.$primaryColor;
       text-decoration: underline;
+      cursor: pointer;
     }
 
     &-title {
       margin-bottom: 0.5rem;
-    }
-
-    &-title:hover {
-      background: vars.$linearGradient;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: normal;
+      font-size: 1.3rem;
+      width:90%;
     }
 
     &-subDesc {
@@ -108,18 +158,20 @@
   }
 
   &-technologies {
+    min-height:31vh ;
     background-color: #fff;
     padding: 2rem;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 
     &-title {
       width: 100%;
     }
 
     &-languages {
-      width: 30%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -137,7 +189,7 @@
     }
 
     &-frameworks {
-      width: 30%;
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -150,8 +202,8 @@
       }
     }
 
-    &-others {
-      width: 30%;
+    &-database {
+      width: 24%;
 
       & h4 {
         font-size: 1.2rem;
@@ -167,9 +219,40 @@
         }
       }
     }
+
+    &-others {
+      width: 24%;
+
+      & h4 {
+        font-size: 1.2rem;
+        color: grey;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        padding: 0.5rem 1rem;
+
+        & i {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    &-edit {
+      width: 2%;
+    }
   }
 }
 
+.project-texte-editor {
+  width:100%;
+  margin-right: 0;
+}
+
+.searchbar-project-container {
+  display: flex;
+
+}
 
 @media screen and (width < 600px) {
   .project {
@@ -193,14 +276,24 @@
   }
 
   .project-jobs {
+    width: 100%;
+
     &-title {
       padding-bottom: 2rem;
     }
   }
 
+  .project-dates {
+    width:100%;
+  }
+
   .project-description {
     // min-height: 50%;
     margin-top: 2rem;
+
+    &-technologies {
+      flex-wrap: wrap;
+    }
   }
 
   .project-technologies {
