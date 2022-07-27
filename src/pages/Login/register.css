@@ -1,0 +1,35 @@
+@use "./../../styles/vars";
+.register-container {
+  margin: 3.4rem 3.4rem 0 3.4rem;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content {
+  padding-top: 2rem;
+}
+
+.inputs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.inputs-container .form-group {
+  width: 48%;
+}
+/*# sourceMappingURL=register.css.map */

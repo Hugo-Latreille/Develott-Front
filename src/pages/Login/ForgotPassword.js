@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { toggleLoggingModalOpen } from "./authSlice";
 import Input from "../../components/Input/Input";
-import { useForgotPasswordMutation } from "./authAPI";
+import { useForgotPasswordMutation } from "./authAPISlice";
 
 function ForgotPassword() {
 	const navigate = useNavigate();
