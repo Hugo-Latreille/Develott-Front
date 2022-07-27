@@ -3,7 +3,29 @@ import "./project.scss";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  setDisplayEditDescription,
+  setDisplayAllDescription,
+} from "./showProjectSlice";
+
 function Project() {
+  const dispatch = useDispatch();
+
+  const displayEditDescriptionForm = useSelector(
+    (state) => state.showProject.displayEditDescriptionForm
+  );
+
+  const adaptDescriptionContainer = useSelector(
+    (state) => state.showProject.adaptDescriptionContainer
+  );
+
+  console.log(adaptDescriptionContainer);
+
   return (
     <>
       <Sidebar>
@@ -33,38 +55,37 @@ function Project() {
                     <i class="fas fa-laptop-code"></i>
                   </p>
                 </div>
-                <div className="project-jobs">
-                  <h3 lassName="project-jobs-title">Profil(s) recherché(s)</h3>
-                  <div className="project-jobs-container">
-                    <p>
-                      <i class="fas fa-check-circle success"></i> Développeur
-                      Back-End
-                    </p>
-                    <p>
-                      <i class="fas fa-check-circle success"></i> Développeur
-                      Back-End
-                    </p>
-                    <p>
-                      <i class="fas fa-check-circle"></i> Développeur Front-End
-                    </p>
-                    <p>
-                      <i class="fas fa-check-circle"></i> UX-UI Designer
-                    </p>
-                    <p>
-                      <i class="fas fa-check-circle success"></i> Scrum Master
-                    </p>
-                  </div>
-                </div>
-                <div className="project-dates">
-                  <h3 lassName="project-jobs-title">Dates du projet</h3>
+              </div>
+              <div className="project-jobs">
+                <h3 className="project-jobs-title">Profil(s) recherché(s)</h3>
+                <div className="project-jobs-container">
                   <p>
-                    <i class="far fa-calendar-check success"></i> Dès maintenant
+                    <i class="fas fa-check-circle success"></i> Développeur
+                    Back-End
                   </p>
                   <p>
-                    <i class="far fa-calendar-exclamation warning"></i> 6
-                    semaines
+                    <i class="fas fa-check-circle success"></i> Développeur
+                    Back-End
+                  </p>
+                  <p>
+                    <i class="fas fa-check-circle"></i> Développeur Front-End
+                  </p>
+                  <p>
+                    <i class="fas fa-check-circle"></i> UX-UI Designer
+                  </p>
+                  <p>
+                    <i class="fas fa-check-circle success"></i> Scrum Master
                   </p>
                 </div>
+              </div>
+              <div className="project-dates">
+                <h3 className="project-jobs-title">Dates du projet</h3>
+                <p>
+                  <i class="far fa-calendar-check success"></i> Dès maintenant
+                </p>
+                <p>
+                  <i class="far fa-calendar-exclamation warning"></i> 6 semaines
+                </p>
               </div>
             </div>
             <div className="project-container-right">
@@ -85,27 +106,104 @@ function Project() {
                   </button>
                 </div>
               </div>
-              <div className="project-description">
-                <div className="project-description-container">
-                  <h2 className="project-description-title">
-                    Description du projet
-                  </h2>
-                  <span>
-                    <i className="fas fa-edit"></i>
-                  </span>
-                </div>
-                <p className="project-description-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  vel ex quis lorem tempus consequat. Pellentesque ornare eros
-                  eget ante elementum blandit. Aenean sed neque venenatis,
-                  ultrices risus vel, dignissim.Ut vel ex quis lorem tempus
-                  consequat. Pellentesque ornare eros. dolor sit amet,
-                  consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Ut vel ex quis lorem tempus
-                </p>
-                <a className="project-description-see-more">Voir plus...</a>
+              <div
+                className="project-description"
+                style={
+                  adaptDescriptionContainer === true
+                    ? { minHeight: "39vh", overflowY: "scroll" }
+                    : {}
+                }
+              >
+                {displayEditDescriptionForm === false && (
+                  <>
+                    <div className="project-description-container">
+                      <h2 className="project-description-title">
+                        Description du projet
+                      </h2>
+                      <span
+                        onClick={() => dispatch(setDisplayEditDescription())}
+                      >
+                        <i className="fas fa-edit"></i>
+                      </span>
+                    </div>
+                    <p className="project-description-desc">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut vel ex quis lorem tempus consequat. Pellentesque ornare
+                      eros eget ante elementum blandit. Aenean sed neque
+                      venenatis, ultrices risus vel, dignissim.Ut vel ex quis
+                      lorem tempus consequat. Pellentesque ornare eros. dolor
+                      sit amet, consectetur adipiscing elit. Lorem ipsum dolor
+                      sit amet, consectetur adipiscing elit. Ut vel ex quis
+                      lorem tempus
+                    </p>
+                    {adaptDescriptionContainer === false && (
+                      <span
+                        className="project-description-see-more"
+                        onClick={() => dispatch(setDisplayAllDescription())}
+                      >
+                        Voir plus...
+                      </span>
+                    )}
+                    {adaptDescriptionContainer === true && (
+                      <span
+                        className="project-description-see-more"
+                        onClick={() => dispatch(setDisplayAllDescription())}
+                      >
+                        Voir Moins...
+                      </span>
+                    )}
+                  </>
+                )}
+                {displayEditDescriptionForm === true && (
+                  <div className="project-texte-editor">
+                    <Editor
+                      wrapperClassName="wrapper-class"
+                      editorClassName="editor-class"
+                      toolbarClassName="toolbar-class"
+                      toolbar={{
+                        options: [
+                          "inline",
+                          "blockType",
+                          "fontSize",
+                          "list",
+                          "textAlign",
+                          "colorPicker",
+                          "link",
+                          "emoji",
+                          "history",
+                        ],
+                        inline: { inDropdown: true },
+                        list: { inDropdown: true },
+                        textAlign: { inDropdown: true },
+                        link: { inDropdown: false },
+                        image: { component: undefined },
+                        blockType: {
+                          inDropdown: true,
+                          options: ["Normal", "Blockquote", "Code"],
+                          className: undefined,
+                          component: undefined,
+                          dropdownClassName: undefined,
+                        },
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="main-button-colored create-project-button"
+                      onClick={() => dispatch(setDisplayEditDescription())}
+                    >
+                      Valider
+                    </button>
+                  </div>
+                )}
               </div>
-              <div className="project-technologies">
+              <div
+                className="project-technologies"
+                style={
+                  adaptDescriptionContainer === true
+                    ? { minHeight: "20vh", overflowY: "scroll" }
+                    : {}
+                }
+              >
                 <div className="project-technologies-languages">
                   <h4>Langages</h4>
                   <span className="technologies-icon-container">

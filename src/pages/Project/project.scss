@@ -67,6 +67,7 @@
   }
 
   &-jobs {
+    padding: 0.5rem 2rem;
 
     &-container {
       margin-top: 1.5rem;
@@ -75,6 +76,10 @@
     & p {
       color: vars.$lightGrey;
     }
+  }
+
+  &-dates {
+    padding: 0.5rem 2rem;
   }
 
   &-header {
@@ -112,7 +117,7 @@
   &-description {
     background-color: #fff;
     padding: 1rem 2rem;
-    min-height:29vh !important;
+    min-height:29vh ;
     margin-bottom: 1rem;
     overflow-y: scroll;
 
@@ -126,6 +131,7 @@
       text-align: right;
       color: vars.$primaryColor;
       text-decoration: underline;
+      cursor: pointer;
     }
 
     &-title {
@@ -133,12 +139,6 @@
       font-weight: normal;
       font-size: 1.3rem;
       width:90%;
-    }
-
-    &-title:hover {
-      background: vars.$linearGradient;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     &-subDesc {
@@ -152,8 +152,7 @@
   }
 
   &-technologies {
-    height:45vh !important;
-    min-height:250px;
+    min-height:30vh ;
     background-color: #fff;
     padding: 2rem;
     display: flex;
@@ -238,6 +237,11 @@
   }
 }
 
+.project-texte-editor {
+  width:100%;
+  margin-right: 0;
+}
+
 
 @media screen and (width < 600px) {
   .project {
@@ -261,9 +265,14 @@
   }
 
   .project-jobs {
+    width: 100%;
     &-title {
       padding-bottom: 2rem;
     }
+  }
+
+  .project-dates {
+    width:100%;
   }
 
   .project-description {
