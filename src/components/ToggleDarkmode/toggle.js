@@ -6,21 +6,19 @@ function ToggleDark() {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
-      <div className="container">
-        <i
-          style={{ color: darkMode ? "grey" : "yellow" }}
-          className="fas fa-sun sun"
-        ></i>
+      <div className="toggle_container">
         <div className="switch-checkbox">
           <label className="switch">
             <input type="checkbox" onChange={() => setDarkMode(!darkMode)} />
-            <span className="slider round"> </span>
+            <span className="slider round">
+              <i
+                className={`${
+                  darkMode ? "fas fa-sun sun_inside" : "fas fa-moon moon_inside"
+                }`}
+              ></i>
+            </span>
           </label>
         </div>
-        <i
-          style={{ color: darkMode ? "#204D83" : "grey" }}
-          className="fas fa-moon-stars moon"
-        ></i>
       </div>
     </div>
   );
