@@ -90,7 +90,7 @@ function ProjectList() {
 								<h1 className="card_main_title">{project.name}</h1>
 							</Link>
 							<p className="card_main_desc">
-								{project.exerpt}}{" "}
+								{project.exerpt}{" "}
 								<a className="card_main_desc_link" href="#">
 									voir plus.
 								</a>
