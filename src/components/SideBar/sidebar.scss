@@ -29,10 +29,22 @@
 }
 
 .logo_nav {
+  color: white;
   font-size: 1.7em;
   line-height: 0;
   margin-right: 4rem;
   margin-left: 0.6rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo_nav:hover {
+  background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: 0.5s;
+  font-size: 1.8em;
+  margin-right: 2em;
 }
 
 .anim {
@@ -40,7 +52,7 @@
 }
 
 .space {
-  margin-top: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 .search_dashbar input {
@@ -51,35 +63,31 @@
 }
 
 .sidebar_navlink {
+  margin-bottom: 1.2em;
+  line-height: 35px;
   display: flex;
   color: white;
   gap: 12px;
-  line-height: 55px;
-  border-right: 4px solid transparent;
-  padding: 0px 15px;
+  padding: 7px 16px;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-a {
-  text-decoration: none;
-}
 
 .sidebar_navlink:hover {
   color: black;
-  border-right: 4px solid white;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
-  font-size: 1.1em;
 }
 
 .side_icon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  margin-top: 0.1em;
 }
 
 .side_text {
   white-space: nowrap;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 .side_main {
@@ -172,4 +180,41 @@ a {
   color: black;
   margin-left: 0;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.toggle_dark {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.sun {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  color: yellow;
+  background-color: rgba(255, 255, 0, 0.186);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.5, -0.10, 0.720, 0.030);
+}
+
+.moon {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  color: #3c097be4;
+  background-color: rgba(255, 255, 255, 0.068);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.5, -0.10, 0.720, 0.030);
+}
+
+.active_toggle {
+  padding: 7.5em;
+  padding-bottom: 20em;
+}
+
+a {
+  text-decoration: none;
 }

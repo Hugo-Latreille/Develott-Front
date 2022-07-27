@@ -11,6 +11,10 @@ body {
   margin: 0;
 }
 
+h1 {
+  margin: 0;
+}
+
 h2 {
   font-size: 2rem;
   font-weight: bolder;
@@ -18,11 +22,12 @@ h2 {
 
 h3 {
   // font-size: 1.5rem;
-  font-weight: bolder;
+  font-weight: normal;
 }
 
 h4 {
   margin:0;
+  font-weight: normal;
 }
 
 p {
@@ -36,6 +41,11 @@ p {
 
 .success {
   color: rgba(117, 197, 117, 0.959);
+}
+
+.warning {
+  color: rgba(242, 162, 32, 0.959);
+
 }
 
 .danger {
@@ -85,7 +95,6 @@ p {
   border: solid 2px white;
   font-weight: bolder;
   padding: 1rem 1.8rem;
-  margin: 0.5rem;
   border-radius: 25px;
   background: vars.$linearGradient;
 }
@@ -153,4 +162,16 @@ p {
 
 .margin-top2 {
   margin-top: 2rem;
+}
+
+.margin-bottom1 {
+  margin-bottom: 1rem;
+}
+
+.color-secondary {
+  color: vars.$primaryColor;
+}
+
+.cursor-pointer {
+  cursor:pointer;
 }

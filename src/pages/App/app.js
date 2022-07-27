@@ -18,24 +18,21 @@ import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
 
-
 function App() {
-  const location = useLocation();
-  const background = location.state && location.state.background;
-  const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
+	const location = useLocation();
+	const background = location.state && location.state.background;
+	const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
 
-  useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [modalIsOpen]);
-
+	useEffect(() => {
+		if (modalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [modalIsOpen]);
 
 	return (
 		<div className="app">
-			{/* <Sidebar> */}
 			<Routes location={background || location}>
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
@@ -53,12 +50,12 @@ function App() {
 							<Route path="projet/create" element={<CreateProject />} />
 							<Route path="la-charte" element={<Home />} />
 							<Route path="profil" element={<Profil />} />
-							<Route path="*" element={<NotFound />} />
+							<Route path="*" element={<Erreur />} />
 						</Route>
 					</Route>
 				</Route>
 			</Routes>
-			{/* </Sidebar> */}
+
 			{background && (
 				<Routes>
 					<Route path="connexion" element={<Connexion />} />
@@ -66,7 +63,6 @@ function App() {
 			)}
 		</div>
 	);
-
 }
 
 export default App;

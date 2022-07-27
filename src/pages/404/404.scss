@@ -2321,7 +2321,7 @@
   .astronaut .glow {
     position: absolute;
     border-radius: 50%;
-    background-color: #334d57;
+    background-color: #ffffff6b;
   }
   .astronaut .glow--1 {
     top: 25px;
@@ -2374,21 +2374,22 @@
     z-index: 2;
   }
   .planet {
-    background-color: #ff4980;
-    box-shadow: inset -6px -10px 0px 1px #cc3b6b, 0px 2px 10px rgba(0,0,0,0.4);
+    background-color: #fffefcb9;
+    box-shadow: 5px 5px 16px 0px rgba(0, 0, 0, 0.523);
+    border: rgba(0, 0, 0, 0.633) solid 1px;
     width: 155px;
     height: 155px;
   }
   .craters .crater {
     position: absolute;
     border-radius: 50%;
-    background-color: #c93667;
+    background-color: #595653;
   }
   .craters .crater--1 {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     top: 30px;
-    left: 25px;
+    left: 10px;
   }
   .craters .crater--2 {
     width: 23px;
@@ -2422,27 +2423,50 @@
   }
   .button {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 12px;
-    border: 1px solid #fff;
-    border-radius: 3px;
+    color: white;
+    font-size: 1.3em;
+    border: solid 2px white;
+    font-weight: bolder;
+    padding: 0.8rem 1.6rem;
+    border-radius: 25px;
     cursor: pointer;
     z-index: 999;
   }
   .button:hover {
     color: #000;
-    background-color: rgba(255, 255, 255, 0.538);
+    background-color: rgba(255, 255, 255, 0.701);
     transform: translateX(-50%) scale(0.95);
+    font-size: 1.4em;
   }
   .sorry {
     position: absolute;
-    top: 210px;
+    top: 201px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: bolder;
+
+    &_text {
+        position: absolute;
+        top: 230px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px; 
+        font-weight: bolder;
+    }
   }
+
+  .logo_moon {
+    width: 7.5em;
+    margin-left: 2.8em;
+    margin-top: 1.7em;
+    z-index: 2;
+  }
+
   @-webkit-keyframes blink {
     0%, 100% {
       transform: scale(1);
