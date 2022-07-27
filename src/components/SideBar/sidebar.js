@@ -118,15 +118,17 @@ function Sidebar({ children }) {
       >
         <div className="top_section">
           {isOpen && (
-            <motion.h1
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              variants={showAnimation}
-              className="logo_nav"
-            >
-              Develott
-            </motion.h1>
+            <NavLink to="/">
+              <motion.h1
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={showAnimation}
+                className="logo_nav"
+              >
+                Develott
+              </motion.h1>
+            </NavLink>
           )}
           <div className="bars">
             {isOpen && (
@@ -173,7 +175,7 @@ function Sidebar({ children }) {
           </div>
           {isOpen && <div className="anim"></div>}
         </div>
-        <div className="space"></div>
+        <div className="space" onClick={toggle}></div>
         <section className="sidebar_icon">
           {routes.map((route) => (
             <NavLink
@@ -197,6 +199,7 @@ function Sidebar({ children }) {
               </AnimatePresence>
             </NavLink>
           ))}
+          <div onClick={toggle} className="active_toggle"></div>
           <div className="profile_container">
             {!isOpen && (
               <AnimatePresence>
