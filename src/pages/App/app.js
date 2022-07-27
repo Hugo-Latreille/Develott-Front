@@ -1,7 +1,6 @@
 import "./app.scss";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../Home/home";
-import Sidebar from "../../components/SideBar/sidebar";
 import Projects from "../Projects/projects";
 import Connexion from "../Login/connexion";
 import NotFound from "./../../components/NotFound/notFound";
@@ -16,6 +15,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
+import Erreur from "../404/404";
 
 function App() {
   const location = useLocation();
@@ -36,6 +36,7 @@ function App() {
       <Routes location={background || location}>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Profil />}>
+
             <Route path="connexion" element={<Connexion />} />
             <Route path="newpassword/:userId" element={<NewPassword />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
