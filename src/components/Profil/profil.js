@@ -89,7 +89,7 @@ function Profil() {
               <img
                 className="name_container_avatar"
                 src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                alt="Profil"
+                alt="Profil picture"
               />
               <div className="desc_container_description-user">
                 <p className="name_container_user">Bruce Wayne</p>
