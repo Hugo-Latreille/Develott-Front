@@ -14,7 +14,7 @@ import {
 //? React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useCreateUserMutation, useUserLoginMutation } from "./authAPI";
+import { useCreateUserMutation, useUserLoginMutation } from "./authAPISlice";
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 

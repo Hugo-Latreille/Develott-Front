@@ -5,7 +5,7 @@ import Slider from "../../components/Slider/slider";
 import Hero from "../../components/Home/Hero/hero";
 import About from "../../components/Home/About/about";
 import Presentation from "../../components/Home/Presentation/presentation";
-import { useGithubLoginQuery } from "../Login/authAPI";
+import { useGithubLoginQuery } from "../Login/authAPISlice";
 // import Sidebar from "../../components/SideBar/sidebar";
 // import Testimonial from "../Home/Tertimonial/testimonial";
 import { useNavigate } from "react-router-dom";

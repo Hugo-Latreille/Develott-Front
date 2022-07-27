@@ -27,7 +27,7 @@ function SearchBar() {
 	const formatResult = (item) => {
 		return (
 			<div className="results-container">
-				<i class={`devicon-${item.name}-plain colored`}></i>
+				<i className={`devicon-${item.name}-plain colored`}></i>
 				<span className="result-span-title">{item.name}</span>
 				<span className="result-span-subtitle" style={{ display: "block" }}>
 					{item.tags.map((element) => element + "  ")}

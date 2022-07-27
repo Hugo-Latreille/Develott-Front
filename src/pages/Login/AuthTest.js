@@ -1,4 +1,4 @@
-import { useAuthTestQuery, useUserLogoutMutation } from "./authAPI";
+import { useAuthTestQuery, useUserLogoutMutation } from "./authAPISlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "./authSlice";
