@@ -15,7 +15,9 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
+import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
+
 
 function App() {
   const location = useLocation();
@@ -30,37 +32,41 @@ function App() {
     }
   }, [modalIsOpen]);
 
-  return (
-    <div className="app">
-      {/* <Sidebar> */}
-      <Routes location={background || location}>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Profil />}>
 
-            <Route path="connexion" element={<Connexion />} />
-            <Route path="newpassword/:userId" element={<NewPassword />} />
-            <Route path="forgotpassword" element={<ForgotPassword />} />
-          </Route>
-          <Route element={<RequireAuth />}>
-            <Route path="welcome" element={<Welcome />} />
-            <Route path="authTest" element={<AuthTest />} />
-            <Route path="projets" element={<Projects />} />
-            <Route path="projet/1" element={<Project />} />
-            <Route path="projet/create" element={<CreateProject />} />
-            <Route path="la-charte" element={<Home />} />
-            <Route path="profil" element={<Profil />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Route>
-      </Routes>
-      {/* </Sidebar> */}
-      {background && (
-        <Routes>
-          <Route path="connexion" element={<Connexion />} />
-        </Routes>
-      )}
-    </div>
-  );
+	return (
+		<div className="app">
+			{/* <Sidebar> */}
+			<Routes location={background || location}>
+				<Route path="/" element={<Layout />}>
+					<Route path="/" element={<Home />}>
+						<Route path="connexion" element={<Connexion />} />
+						<Route path="newpassword/:userId" element={<NewPassword />} />
+						<Route path="forgotpassword" element={<ForgotPassword />} />
+					</Route>
+
+					<Route element={<PersistLogin />}>
+						<Route element={<RequireAuth />}>
+							<Route path="welcome" element={<Welcome />} />
+							<Route path="authTest" element={<AuthTest />} />
+							<Route path="projets" element={<Projects />} />
+							<Route path="projet/1" element={<Project />} />
+							<Route path="projet/create" element={<CreateProject />} />
+							<Route path="la-charte" element={<Home />} />
+							<Route path="profil" element={<Profil />} />
+							<Route path="*" element={<NotFound />} />
+						</Route>
+					</Route>
+				</Route>
+			</Routes>
+			{/* </Sidebar> */}
+			{background && (
+				<Routes>
+					<Route path="connexion" element={<Connexion />} />
+				</Routes>
+			)}
+		</div>
+	);
+
 }
 
 export default App;

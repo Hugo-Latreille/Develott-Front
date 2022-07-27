@@ -5,7 +5,6 @@ import Slider from "../../components/Slider/slider";
 import Hero from "../../components/Home/Hero/hero";
 import About from "../../components/Home/About/about";
 import Presentation from "../../components/Home/Presentation/presentation";
-import { useDispatch, useSelector } from "react-redux";
 import { useGithubLoginQuery } from "../Login/authAPI";
 // import Sidebar from "../../components/SideBar/sidebar";
 // import Testimonial from "../Home/Tertimonial/testimonial";
