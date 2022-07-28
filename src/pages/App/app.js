@@ -6,6 +6,7 @@ import Connexion from "../Login/connexion";
 import Project from "./../Project/project";
 import Profil from "../Profiles/profiles";
 import CreateProject from "../Project/createProject";
+import Dashboard from "../Dashboard/dashboard";
 import Layout from "../../utils/Layout/Layout";
 import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
@@ -31,6 +32,7 @@ function App() {
 			document.body.style.overflow = "visible";
 		}
 	}, [modalIsOpen]);
+
 
 	return (
 		<div className="app">
