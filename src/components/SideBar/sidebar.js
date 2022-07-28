@@ -8,9 +8,10 @@ import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
+import { toggleSideBar } from "../../pages/App/appSlice";
 
 const routes = [
 	{
@@ -37,11 +38,13 @@ const routes = [
 
 function Sidebar({ children }) {
 	const [darkMode, setDarkMode] = useState(false);
-	const [isOpen, setIsOpen] = useState(false);
-	const toggle = () => setIsOpen(!isOpen);
-	const toggleOut = () => setIsOpen(false);
-	const [userLogout] = useUserLogoutMutation();
+	// const [isOpen, setIsOpen] = useState(false);
+	// const toggle = () => setIsOpen(!isOpen);
+	// const toggleOut = () => setIsOpen(false);
+
+	const isOpen = useSelector((state) => state.app.sideBarIsOpen);
 	const dispatch = useDispatch();
+	const [userLogout] = useUserLogoutMutation();
 
 	const handleLogout = async () => {
 		await userLogout();
@@ -159,7 +162,7 @@ function Sidebar({ children }) {
 									className="bars_logo"
 									src={LogoW}
 									alt="logo"
-									onClick={toggle}
+									onClick={() => dispatch(toggleSideBar())}
 								/>
 							</AnimatePresence>
 						)}
@@ -180,14 +183,14 @@ function Sidebar({ children }) {
 									className="bars_logo"
 									src={LogoW}
 									alt="logo"
-									onClick={toggle}
+									onClick={() => dispatch(toggleSideBar())}
 								/>
 							</AnimatePresence>
 						)}
 					</div>
 					{isOpen && <div className="anim"></div>}
 				</div>
-				<div className="space" onClick={toggle}></div>
+				<div className="space" onClick={() => dispatch(toggleSideBar())}></div>
 				<section className="sidebar_icon">
 					{routes.map((route) => (
 						<NavLink
@@ -211,7 +214,10 @@ function Sidebar({ children }) {
 							</AnimatePresence>
 						</NavLink>
 					))}
-					<div onClick={toggle} className="active_toggle"></div>
+					<div
+						onClick={() => dispatch(toggleSideBar())}
+						className="active_toggle"
+					></div>
 					<div className="profile_container">
 						{!isOpen && (
 							<AnimatePresence>
@@ -310,7 +316,10 @@ function Sidebar({ children }) {
 					</div>
 				</section>
 			</motion.div>
-			<main className="side_main" onClick={toggleOut}>
+			<main
+				className="side_main"
+				onClick={() => dispatch(toggleSideBar("false"))}
+			>
 				{children}
 			</main>
 		</div>

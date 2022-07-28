@@ -142,13 +142,8 @@ function Project() {
 						<div className="project-container-right">
 							<div className="project-header">
 								<div className="project-header-left">
-									<h1 className="project-header-title">
-										Develott - La table ronde du code
-									</h1>
-									<p className="project-header-short-desc">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-										vel ex quis lorem tempus consequat.
-									</p>
+									<h1 className="project-header-title">{project?.name}</h1>
+									<p className="project-header-short-desc">{project?.exerpt}</p>
 								</div>
 								<div className="project-header-right">
 									<button className="main-button-bg-white">
@@ -178,14 +173,7 @@ function Project() {
 											</span>
 										</div>
 										<p className="project-description-desc">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-											Ut vel ex quis lorem tempus consequat. Pellentesque ornare
-											eros eget ante elementum blandit. Aenean sed neque
-											venenatis, ultrices risus vel, dignissim.Ut vel ex quis
-											lorem tempus consequat. Pellentesque ornare eros. dolor
-											sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet, consectetur adipiscing elit. Ut vel ex quis
-											lorem tempus
+											{project?.description}
 										</p>
 										{adaptDescriptionContainer === false && (
 											<span
