@@ -143,6 +143,52 @@ function Dashboard() {
               </div>
             </div>
           </div>
+          <div className="dashboard-main-technologies">
+            <div className="project-technologies-languages">
+              <h4>Langages</h4>
+
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-javascript-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                Javascript
+              </span>
+            </div>
+            <div className="project-technologies-frameworks">
+              <h4>Frameworks</h4>
+
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-javascript-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                Javascript
+              </span>
+            </div>
+            <div className="project-technologies-database">
+              <h4>Database</h4>
+
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-javascript-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                Javascript
+              </span>
+            </div>
+            <div className="project-technologies-others">
+              <h4>Autres</h4>
+
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-javascript-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                Javascript
+              </span>
+            </div>
+          </div>
         </div>
         <div className="dashboard-right">
           <p>vouvou dash</p>

@@ -184,7 +184,7 @@
         }
 
         &-users {
-            padding: 1rem;
+            padding: 0.8rem 1rem;
             display: flex;
             align-items: center;
             border-bottom: solid 1px  hsl(207, 67%, 78%, 50%);;
@@ -215,5 +215,17 @@
         width:43%;
         background-color: #fff;
         padding:1rem 2rem;
+    }
+}
+
+.dashboard-main-technologies {
+    margin-top: 1rem;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    display:flex;
+    flex-wrap: wrap;
+
+    & span {
+        width:80%;
     }
 }
