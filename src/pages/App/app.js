@@ -7,6 +7,7 @@ import NotFound from "./../../components/NotFound/notFound";
 import Project from "./../Project/project";
 import Profil from "../Profiles/profiles";
 import CreateProject from "../Project/createProject";
+import Dashboard from "../Dashboard/dashboard";
 import Layout from "../../utils/Layout/Layout";
 import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
@@ -35,7 +36,7 @@ function App() {
     <div className="app">
       <Routes location={background || location}>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Profil />}>
+          <Route path="/" element={<CreateProject />}>
             <Route path="connexion" element={<Connexion />} />
             <Route path="newpassword/:userId" element={<NewPassword />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
