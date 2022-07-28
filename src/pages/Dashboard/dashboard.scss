@@ -1,0 +1,167 @@
+@use "./../../styles/vars";
+
+.dashboard {
+    width:92vw;
+    margin:2rem auto 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    &-main {
+        width: 78%;
+
+        &-header {
+            background-color: #838FF5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-titles {
+            width:80%;
+            padding: 2rem;
+            color:white;
+        }
+
+        &-title {
+            margin:0;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        &-subtitle {
+            margin:0;
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+    }
+
+    &-right {
+        width:21%;
+        background-color: #fff;
+    }
+}
+
+
+.dashboard-main-navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    margin-top: 1rem;
+    padding:1rem 0;
+
+    &-accueil {
+        width:26%;
+
+        &-content {
+            background-image: url('./../../assets/images/footer-bg2.png');
+            background-position: bottom right;
+            background-size: cover;
+            height:7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-radius: 10px;
+            padding: 0 2rem;
+            color:white;
+            position:relative;
+
+            & h3 {
+                margin:0;
+                font-weight: bolder;
+            }
+
+            & p {
+                margin-top:0;
+            }
+
+            & i {
+                padding-right: 0.5rem;
+            }
+
+            & img {
+                position:absolute;
+                top:0.5rem;
+                right:0.5rem;
+                width:30%;
+            }
+        }
+    }
+
+    &-messagerie {
+        width:26%;
+
+        &-content {
+            background-color: hsl(207, 67%, 78%, 50%);
+            height:7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-radius: 10px;
+            padding: 0 2rem;
+            position:relative;
+            color:vars.$primaryColor;
+
+            & h3 {
+                margin:0;
+                font-weight: bolder;
+            }
+
+            & p {
+                margin-top:0;
+            }
+
+            & i {
+                padding-right: 0.5rem;
+            }
+
+            & img {
+                position:absolute;
+                top:0.5rem;
+                right:0.5rem;
+                width:30%;
+            }
+        }
+    }
+
+    &-calendrier {
+        width:26%;
+
+        &-content {
+            background-color: hsl(207, 67%, 88%, 50%);
+            height:7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-radius: 10px;
+            padding: 0 2rem;
+            position:relative;
+            color:vars.$primaryColor;
+
+
+            & h3 {
+                margin:0;
+                font-weight: bolder;
+            }
+
+            & p {
+                margin-top:0;
+            }
+
+            & i {
+                padding-right: 0.5rem;
+            }
+
+            & img {
+                position:absolute;
+                top:0.5rem;
+                right:0.5rem;
+                width:30%;
+            }
+        }
+    }
+
+
+}
