@@ -30,7 +30,7 @@ const routes = [
 		icon: <FaProjectDiagram />,
 	},
 	{
-		path: "/",
+		path: "/projet/create",
 		name: "Créer Projet",
 		icon: <MdConstruction />,
 	},

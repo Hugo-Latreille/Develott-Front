@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../Home/home";
 import Projects from "../Projects/projects";
 import Connexion from "../Login/connexion";
-import NotFound from "./../../components/NotFound/notFound";
 import Project from "./../Project/project";
 import Profil from "../Profiles/profiles";
 import CreateProject from "../Project/createProject";

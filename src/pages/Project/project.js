@@ -21,7 +21,7 @@ import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 function Project() {
 	const { projectId } = useParams();
 
-	const { data: project, isLoading } = useGetOneProjectQuery(projectId);
+	const { data: project } = useGetOneProjectQuery(projectId);
 	console.log(projectId);
 	console.log(project);
 
