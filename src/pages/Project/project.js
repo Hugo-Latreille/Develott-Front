@@ -1,7 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
+//? Date picker MUI
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment/min/moment-with-locales";
+import { DatePicker } from "@mui/x-date-pickers";
+import TextField from "@mui/material/TextField";
+
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
@@ -13,10 +18,12 @@ import {
 	setDisplayEditDescription,
 	setDisplayAllDescription,
 	setDisplayEditTechnologies,
-	setDisplayEditJobs,
-	removeJobData,
 	removeTechnologyData,
-} from "./showProjectSlice";
+	setDisplayEdit,
+	removeData,
+	startDate,
+	changeStartDate,
+} from "./projectSlice";
 import { useParams } from "react-router-dom";
 import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
@@ -32,10 +39,12 @@ function Project() {
 		displayEditDescriptionForm,
 		displayEditTechnologies,
 		displayEditJobForm,
+		displayEditDates,
 		adaptDescriptionContainer,
 		technologiesData,
 		jobsData,
-	} = useSelector((state) => state.showProject);
+		startDate,
+	} = useSelector((state) => state.project);
 
 	const languagesData = technologiesData.filter((technology) =>
 		technology.tags.includes("language")
@@ -90,13 +99,19 @@ function Project() {
 											<h3 className="project-jobs-title">
 												Profil(s) recherché(s)
 											</h3>
-											<span onClick={() => dispatch(setDisplayEditJobs())}>
+											<span
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({ name: "displayEditJobForm" })
+													)
+												}
+											>
 												<i className="fas fa-edit"></i>
 											</span>
 										</div>
 										<div className="project-jobs-container">
 											{jobsData.map((job) => (
-												<p>
+												<p key={job.id}>
 													<i className="fas fa-check-circle success"></i>{" "}
 													{job.name}
 												</p>
@@ -107,13 +122,23 @@ function Project() {
 								{displayEditJobForm === true && (
 									<div className="project-jobs-container">
 										<SearchBarJobsProject className="searchbar-project-container-searchbar" />
-										{jobsData.map((job) => (
-											<div className="project-jobs-container-job">
+										{jobsData.map((job, index) => (
+											<div key={index} className="project-jobs-container-job">
 												<p>
 													<i className="fas fa-check-circle success"></i>
 													{job.name}
 												</p>
-												<span onClick={() => dispatch(removeJobData(job.id))}>
+												<span
+													onClick={() =>
+														dispatch(
+															removeData({
+																name: "jobsData",
+																field: "id",
+																value: job.id,
+															})
+														)
+													}
+												>
 													<i className="far fa-backspace cursor-pointer"></i>
 												</span>
 											</div>
@@ -121,7 +146,11 @@ function Project() {
 										<span>
 											<button
 												className="main-button-colored"
-												onClick={() => dispatch(setDisplayEditJobs())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({ name: "displayEditJobForm" })
+													)
+												}
 											>
 												Valider
 											</button>
@@ -129,28 +158,81 @@ function Project() {
 									</div>
 								)}
 							</div>
-							<div className="project-dates">
-								<h3 className="project-jobs-title">Dates du projet</h3>
-								<p>
-									<i className="far fa-calendar-check success"></i> Début :{" "}
-									{moment(project?.start_date).locale("fr").format("LL")}
-								</p>
-								<p>
-									<i className="far fa-calendar-check success"></i> Fin :{" "}
-									{moment(project?.end_date).locale("fr").format("LL")}
-								</p>
-								<p>
-									<i className="far fa-calendar-exclamation warning"></i> Durée
-									:
-									{moment(project?.end_date)
-										.locale("fr")
-										.diff(
-											moment(project?.start_date).locale("fr"),
-											"weeks"
-										)}{" "}
-									semaines
-								</p>
-							</div>
+							{!displayEditDates && (
+								<div className="project-dates">
+									<h3 className="project-jobs-title">Dates du projet</h3>
+									<span
+										onClick={() =>
+											dispatch(setDisplayEdit({ name: "displayEditDates" }))
+										}
+									>
+										<i className="fas fa-edit"></i>
+									</span>
+									<p>
+										<i className="far fa-calendar-check success"></i> Début :{" "}
+										{moment(project?.start_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-check success"></i> Fin :{" "}
+										{moment(project?.end_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-exclamation warning"></i>{" "}
+										Durée :
+										{moment(project?.end_date)
+											.locale("fr")
+											.diff(
+												moment(project?.start_date).locale("fr"),
+												"weeks"
+											)}{" "}
+										semaines
+									</p>
+								</div>
+							)}
+							{displayEditDates && (
+								<div className="project-dates">
+									<h3 className="project-jobs-title">Dates du projet</h3>
+									<span
+										onClick={() =>
+											dispatch(setDisplayEdit({ name: "displayEditDates" }))
+										}
+									>
+										<i className="fas fa-edit"></i>
+									</span>
+
+									<LocalizationProvider dateAdapter={AdapterMoment}>
+										<DatePicker
+											label="Basic example"
+											value={startDate}
+											onChange={(newValue) => {
+												dispatch(changeStartDate(newValue._d));
+												console.log(newValue._d);
+											}}
+											renderInput={(params) => <TextField {...params} />}
+										/>
+									</LocalizationProvider>
+
+									<p>
+										<i className="far fa-calendar-check success"></i> Début :{" "}
+										{moment(project?.start_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-check success"></i> Fin :{" "}
+										{moment(project?.end_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-exclamation warning"></i>{" "}
+										Durée :
+										{moment(project?.end_date)
+											.locale("fr")
+											.diff(
+												moment(project?.start_date).locale("fr"),
+												"weeks"
+											)}{" "}
+										semaines
+									</p>
+								</div>
+							)}
 						</div>
 						<div className="project-container-right">
 							<div className="project-header">
@@ -180,7 +262,14 @@ function Project() {
 												Description du projet
 											</h2>
 											<span
-												onClick={() => dispatch(setDisplayEditDescription())}
+												// onClick={() => dispatch(setDisplayEditDescription())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({
+															name: "displayEditDescriptionForm",
+														})
+													)
+												}
 											>
 												<i className="fas fa-edit"></i>
 											</span>
@@ -191,7 +280,13 @@ function Project() {
 										{adaptDescriptionContainer === false && (
 											<span
 												className="project-description-see-more"
-												onClick={() => dispatch(setDisplayAllDescription())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({
+															name: "adaptDescriptionContainer",
+														})
+													)
+												}
 											>
 												Voir plus...
 											</span>
@@ -199,7 +294,13 @@ function Project() {
 										{adaptDescriptionContainer === true && (
 											<span
 												className="project-description-see-more"
-												onClick={() => dispatch(setDisplayAllDescription())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({
+															name: "adaptDescriptionContainer",
+														})
+													)
+												}
 											>
 												Voir Moins...
 											</span>
@@ -241,7 +342,13 @@ function Project() {
 										<button
 											type="button"
 											className="main-button-colored create-project-button"
-											onClick={() => dispatch(setDisplayEditDescription())}
+											onClick={() =>
+												dispatch(
+													setDisplayEdit({
+														name: "displayEditDescriptionForm",
+													})
+												)
+											}
 										>
 											Valider
 										</button>
@@ -264,7 +371,10 @@ function Project() {
 												<span className="form-technologies-empty">vide...</span>
 											)}
 											{languagesData.map((techno) => (
-												<span className="technologies-icon-container">
+												<span
+													key={techno.name}
+													className="technologies-icon-container"
+												>
 													<i
 														className={`devicon-${techno.name}-plain`}
 														style={{ backgroundColor: `${techno.color}` }}
@@ -279,7 +389,10 @@ function Project() {
 												<span className="form-technologies-empty">vide...</span>
 											)}
 											{frameworksData.map((techno) => (
-												<span className="technologies-icon-container">
+												<span
+													key={techno.name}
+													className="technologies-icon-container"
+												>
 													<i
 														className={`devicon-${techno.name}-plain`}
 														style={{ backgroundColor: `${techno.color}` }}
@@ -294,7 +407,10 @@ function Project() {
 												<span className="form-technologies-empty">vide...</span>
 											)}
 											{databasesData.map((techno) => (
-												<span className="technologies-icon-container">
+												<span
+													key={techno.name}
+													className="technologies-icon-container"
+												>
 													<i
 														className={`devicon-${techno.name}-plain`}
 														style={{ backgroundColor: `${techno.color}` }}
@@ -309,7 +425,10 @@ function Project() {
 												<span className="form-technologies-empty">vide...</span>
 											)}
 											{othersData.map((techno) => (
-												<span className="technologies-icon-container">
+												<span
+													key={techno.name}
+													className="technologies-icon-container"
+												>
 													<i
 														className={`devicon-${techno.name}-plain`}
 														style={{ backgroundColor: `${techno.color}` }}
@@ -320,7 +439,13 @@ function Project() {
 										</div>
 										<div className="project-technologies-edit">
 											<span
-												onClick={() => dispatch(setDisplayEditTechnologies())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({
+															name: "displayEditTechnologies",
+														})
+													)
+												}
 											>
 												<i className="fas fa-edit"></i>
 											</span>
@@ -351,7 +476,13 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "technologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -376,7 +507,13 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "technologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -401,7 +538,13 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "technologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -426,7 +569,13 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "technologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -435,7 +584,13 @@ function Project() {
 										<div className="project-technologies-edit">
 											<span>
 												<i
-													onClick={() => dispatch(setDisplayEditTechnologies())}
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({
+																name: "displayEditTechnologies",
+															})
+														)
+													}
 													className="fas fa-edit"
 												></i>
 											</span>

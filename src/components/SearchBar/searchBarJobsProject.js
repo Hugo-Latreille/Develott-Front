@@ -2,7 +2,7 @@ import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import jobsDataArray from "./../../assets/data/jobsData.json";
 import { useDispatch } from "react-redux";
-import { setJobsData } from "../../pages/Project/showProjectSlice";
+import { setData } from "../../pages/Project/projectSlice";
 
 function SearchBarJobsProject() {
 	const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function SearchBarJobsProject() {
 	const handleOnSelect = (item) => {
 		// the item selected
 		console.log(item);
-		dispatch(setJobsData(item));
+		dispatch(setData({ name: "jobsData", data: item }));
 	};
 
 	const handleOnFocus = () => {

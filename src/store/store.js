@@ -6,7 +6,7 @@ import updtateUserProfileSlice from "../pages/Profiles/updtateUserProfileSlice";
 //? RTK Query
 import { emptySplitApi } from "../API/APIslice";
 import userProfileSlice from "../pages/Profiles/userProfileSlice";
-import showProjectSlice from "../pages/Project/showProjectSlice";
+import projectSlice from "../pages/Project/projectSlice";
 import appSlice from "../pages/App/appSlice";
 
 export const store = configureStore({
@@ -15,10 +15,12 @@ export const store = configureStore({
 		app: appSlice,
 		auth: loginReducer,
 		createProject: createProjectSlice,
-		showProject: showProjectSlice,
+		project: projectSlice,
 		updateProfile: updtateUserProfileSlice,
 		userProfile: userProfileSlice,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(emptySplitApi.middleware),
+		getDefaultMiddleware({ serializableCheck: false }).concat(
+			emptySplitApi.middleware
+		),
 });
