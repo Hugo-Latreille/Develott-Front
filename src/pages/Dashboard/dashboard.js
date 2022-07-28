@@ -55,6 +55,54 @@ function Dashboard() {
               </div>
             </div>
           </div>
+          <div className="dashboard-main-content">
+            <div className="dashboard-main-content-team">
+              <h3>Team-mates</h3>
+              <div className="dashboard-main-content-team-users">
+                <img
+                  src="https://cours-informatique-gratuit.fr/wp-content/uploads/2017/10/avatar.png"
+                  alt="icon calendrier dashboard"
+                />
+                <div className="dashboard-main-content-team-users-details">
+                  <p>Mr Uller</p>
+                  <span>Developpeur Front-end</span>
+                </div>
+              </div>
+              <div className="dashboard-main-content-team-users">
+                <img
+                  src="https://cours-informatique-gratuit.fr/wp-content/uploads/2017/10/avatar.png"
+                  alt="icon calendrier dashboard"
+                />
+                <div className="dashboard-main-content-team-users-details">
+                  <p>Will Ternaire</p>
+                  <span>Developpeur Back-end</span>
+                </div>
+              </div>
+              <div className="dashboard-main-content-team-users">
+                <img
+                  src="https://cours-informatique-gratuit.fr/wp-content/uploads/2017/10/avatar.png"
+                  alt="icon calendrier dashboard"
+                />
+                <div className="dashboard-main-content-team-users-details">
+                  <p>Jul du 13</p>
+                  <span>Developpeur Front-end</span>
+                </div>
+              </div>
+              <div className="dashboard-main-content-team-users">
+                <img
+                  src="https://cours-informatique-gratuit.fr/wp-content/uploads/2017/10/avatar.png"
+                  alt="icon calendrier dashboard"
+                />
+                <div className="dashboard-main-content-team-users-details">
+                  <p>Le Sancho de la Veine</p>
+                  <span>UX Designer</span>
+                </div>
+              </div>
+            </div>
+            <div className="dashboard-main-content-links">
+              <h3>Outils collaboratifs</h3>
+            </div>
+          </div>
         </div>
         <div className="dashboard-right">
           <p>vouvou dash</p>
