@@ -5,7 +5,11 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 		getAllProjects: builder.query({
 			query: () => "projects",
 		}),
+		getOneProject: builder.query({
+			query: (projectId) => `project/${projectId}`,
+		}),
 	}),
 });
 
-export const { useGetAllProjectsQuery } = projectsAPISlice;
+export const { useGetAllProjectsQuery, useGetOneProjectQuery } =
+	projectsAPISlice;

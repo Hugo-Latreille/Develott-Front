@@ -6,9 +6,7 @@ import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnolog
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import {
 	setDisplayEditDescription,
 	setDisplayAllDescription,
@@ -18,10 +16,16 @@ import {
 	removeTechnologyData,
 } from "./showProjectSlice";
 import { useParams } from "react-router-dom";
+import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
 function Project() {
-	const dispatch = useDispatch();
 	const { projectId } = useParams();
+
+	const { data: project, isLoading } = useGetOneProjectQuery(projectId);
+	console.log(projectId);
+	console.log(project);
+
+	const dispatch = useDispatch();
 	const {
 		displayEditDescriptionForm,
 		displayEditTechnologies,

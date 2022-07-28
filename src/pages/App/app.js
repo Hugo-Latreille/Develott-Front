@@ -35,16 +35,6 @@ function App() {
 	return (
 		<div className="app">
 			<Routes location={background || location}>
-				<Route
-					path="*"
-					element={
-						<ReactCursorPosition>
-							{" "}
-							<Erreur />
-						</ReactCursorPosition>
-					}
-				/>
-
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
@@ -63,6 +53,15 @@ function App() {
 							<Route path="profil" element={<Profil />} />
 						</Route>
 					</Route>
+					<Route
+						path="*"
+						element={
+							<ReactCursorPosition>
+								{" "}
+								<Erreur />
+							</ReactCursorPosition>
+						}
+					/>
 				</Route>
 			</Routes>
 

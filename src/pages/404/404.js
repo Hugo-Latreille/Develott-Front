@@ -1,6 +1,6 @@
 import "./404.scss";
-import Profil from "../../components/Profil/profil";
-import Footer from "../../components/Footer/footerColored";
+// import Profil from "../../components/Profil/profil";
+// import Footer from "../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import LogoW from "../../assets/images/v3-logo-colorize.png";
 
