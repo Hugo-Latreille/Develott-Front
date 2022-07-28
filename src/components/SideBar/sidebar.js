@@ -36,12 +36,8 @@ const routes = [
 	},
 ];
 
-function Sidebar({ children }) {
+function Sidebar({ children, isVisible }) {
 	const [darkMode, setDarkMode] = useState(false);
-	// const [isOpen, setIsOpen] = useState(false);
-	// const toggle = () => setIsOpen(!isOpen);
-	// const toggleOut = () => setIsOpen(false);
-
 	const isOpen = useSelector((state) => state.app.sideBarIsOpen);
 	const dispatch = useDispatch();
 	const [userLogout] = useUserLogoutMutation();
@@ -121,6 +117,7 @@ function Sidebar({ children }) {
 	return (
 		<div className="sidebar_container">
 			<motion.div
+				initial={{ width: isOpen ? "250px" : "54px" }}
 				animate={{
 					width: isOpen ? "250px" : "54px",
 					transition: {
@@ -134,20 +131,22 @@ function Sidebar({ children }) {
 				<div className="top_section">
 					{isOpen && (
 						<NavLink to="/">
-							<motion.h1
-								initial="hidden"
-								animate="show"
-								exit="hidden"
-								variants={showAnimation}
-								className="logo_nav"
-							>
-								Develott
-							</motion.h1>
+							<AnimatePresence initial={false}>
+								<motion.h1
+									initial="hidden"
+									animate="show"
+									exit="hidden"
+									variants={showAnimation}
+									className="logo_nav"
+								>
+									Develott
+								</motion.h1>
+							</AnimatePresence>
 						</NavLink>
 					)}
 					<div className="bars">
 						{isOpen && (
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								<motion.img
 									whileHover={{ scale: 1.5, rotate: 180 }}
 									whileTap={{
@@ -167,8 +166,8 @@ function Sidebar({ children }) {
 							</AnimatePresence>
 						)}
 
-						{!isOpen && (
-							<AnimatePresence>
+						<AnimatePresence initial={false}>
+							{!isOpen && (
 								<motion.img
 									whileHover={{ scale: 1.4, rotate: 180 }}
 									whileTap={{
@@ -185,8 +184,8 @@ function Sidebar({ children }) {
 									alt="logo"
 									onClick={() => dispatch(toggleSideBar())}
 								/>
-							</AnimatePresence>
-						)}
+							)}
+						</AnimatePresence>
 					</div>
 					{isOpen && <div className="anim"></div>}
 				</div>
@@ -199,7 +198,7 @@ function Sidebar({ children }) {
 							className="sidebar_navlink"
 						>
 							<div className="side_icon">{route.icon}</div>
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								{isOpen && (
 									<motion.div
 										initial="hidden"
@@ -220,7 +219,7 @@ function Sidebar({ children }) {
 					></div>
 					<div className="profile_container">
 						{!isOpen && (
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								<motion.i
 									initial="hidden"
 									animate="show"
@@ -239,7 +238,7 @@ function Sidebar({ children }) {
 							</AnimatePresence>
 						)}
 						{isOpen && (
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								<motion.div
 									initial="hidden"
 									animate="show"
@@ -258,7 +257,7 @@ function Sidebar({ children }) {
 							</AnimatePresence>
 						)}
 						<div className="profile">
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								{!isOpen && (
 									<motion.div
 										initial="hidden"
@@ -277,7 +276,7 @@ function Sidebar({ children }) {
 									</motion.div>
 								)}
 							</AnimatePresence>
-							<AnimatePresence>
+							<AnimatePresence initial={false}>
 								{isOpen && (
 									<motion.div
 										initial="hidden"
@@ -316,7 +315,10 @@ function Sidebar({ children }) {
 					</div>
 				</section>
 			</motion.div>
-			<main className="side_main" onClick={() => dispatch(closeSideBar())}>
+			<main
+				className="side_main"
+				// onClick={() => dispatch(closeSideBar())}
+			>
 				{children}
 			</main>
 		</div>
