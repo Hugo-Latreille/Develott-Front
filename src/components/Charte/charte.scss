@@ -1,0 +1,43 @@
+@use "./../../styles/vars";
+
+.charte_container {
+    
+
+    &_main {
+        margin: 3em 20em 3em 20em;
+    }
+
+    &_title {
+        border-radius: 40px 40px 0px 0px;
+        padding: 2em;
+        text-align: center;
+        background-color: #7875db;
+        color: white;
+
+    }
+
+    &_end {
+        border-radius: 0px 0px 40px 40px;
+        padding: 2em;
+        text-align: center;
+        background-color: #7875db;
+        color: white;
+    }
+}
+
+.charte_main {
+    border: 1px black solid;
+    padding: 2em 4em 2em 4em;
+
+    &_section {
+        font-weight: bold;
+        line-height: 25px;
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
+
+    &_list {
+        margin-bottom: 1em;
+        font-size: 1.1em;
+    }
+}
