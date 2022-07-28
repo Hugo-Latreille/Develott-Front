@@ -5,10 +5,109 @@ import Sidebar from "../../components/SideBar/sidebar";
 import LogoW from "../../assets/images/v3-logo-colorize.png";
 
 function Profiles({ position, elementDimensions }) {
+	const { x, y } = position;
+	const { height, width } = elementDimensions;
+	const activeParallax = (depth = 15) => {
+		let posX = (width / 2 - x) / depth;
+		let posY = (height / 2 - y) / depth;
+		return {
+			transform: `translate(${posX}px, ${posY}px)`,
+		};
+	};
+
 	return (
 		<Sidebar>
 			<div className="sky">
 				<div className="stars">
+					<div className="star" style={activeParallax(15)}></div>
+					<div className="star" style={activeParallax(20)}></div>
+					<div className="star" style={activeParallax(10)}></div>
+					<div className="star" style={activeParallax(8)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(19)}></div>
+					<div className="star" style={activeParallax(22)}></div>
+					<div className="star" style={activeParallax(9)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(21)}></div>
+					<div className="star" style={activeParallax(25)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(26)}></div>
+					<div className="star" style={activeParallax(12)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(14)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(23)}></div>
+					<div className="star" style={activeParallax(24)}></div>
+					<div className="star" style={activeParallax(15)}></div>
+					<div className="star" style={activeParallax(20)}></div>
+					<div className="star" style={activeParallax(10)}></div>
+					<div className="star" style={activeParallax(8)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(19)}></div>
+					<div className="star" style={activeParallax(22)}></div>
+					<div className="star" style={activeParallax(9)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(21)}></div>
+					<div className="star" style={activeParallax(25)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(26)}></div>
+					<div className="star" style={activeParallax(12)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(14)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(23)}></div>
+					<div className="star" style={activeParallax(24)}></div>
+					<div className="star" style={activeParallax(15)}></div>
+					<div className="star" style={activeParallax(20)}></div>
+					<div className="star" style={activeParallax(10)}></div>
+					<div className="star" style={activeParallax(8)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(19)}></div>
+					<div className="star" style={activeParallax(22)}></div>
+					<div className="star" style={activeParallax(9)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(21)}></div>
+					<div className="star" style={activeParallax(25)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(26)}></div>
+					<div className="star" style={activeParallax(12)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(14)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(23)}></div>
+					<div className="star" style={activeParallax(24)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(26)}></div>
+					<div className="star" style={activeParallax(12)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(14)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(23)}></div>
+					<div className="star" style={activeParallax(24)}></div>
+					<div className="star" style={activeParallax(15)}></div>
+					<div className="star" style={activeParallax(20)}></div>
+					<div className="star" style={activeParallax(10)}></div>
+					<div className="star" style={activeParallax(8)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(19)}></div>
+					<div className="star" style={activeParallax(22)}></div>
+					<div className="star" style={activeParallax(9)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(16)}></div>
+					<div className="star" style={activeParallax(21)}></div>
+					<div className="star" style={activeParallax(25)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(26)}></div>
+					<div className="star" style={activeParallax(12)}></div>
+					<div className="star" style={activeParallax(13)}></div>
+					<div className="star" style={activeParallax(14)}></div>
+					<div className="star" style={activeParallax(7)}></div>
+					<div className="star" style={activeParallax(23)}></div>
+					<div className="star" style={activeParallax(24)}></div>
+					{/* <div className="star"></div>
 					<div className="star"></div>
 					<div className="star"></div>
 					<div className="star"></div>
@@ -86,9 +185,7 @@ function Profiles({ position, elementDimensions }) {
 					<div className="star"></div>
 					<div className="star"></div>
 					<div className="star"></div>
-					<div className="star"></div>
-					<div className="star"></div>
-					<div className="star"></div>
+					<div className="star"></div> */}
 				</div>
 				<div className="center">
 					<div className="circle circle--outer"></div>

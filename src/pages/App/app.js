@@ -35,7 +35,15 @@ function App() {
 	return (
 		<div className="app">
 			<Routes location={background || location}>
-				<Route path="*" element={<Erreur />} />
+				<Route
+					path="*"
+					element={
+						<ReactCursorPosition>
+							{" "}
+							<Erreur />
+						</ReactCursorPosition>
+					}
+				/>
 
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
