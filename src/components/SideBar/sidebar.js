@@ -133,6 +133,7 @@ function Sidebar({ children, isVisible }) {
 						<NavLink to="/">
 							<AnimatePresence initial={false}>
 								<motion.h1
+									key="top_section"
 									initial="hidden"
 									animate="show"
 									exit="hidden"
@@ -148,6 +149,7 @@ function Sidebar({ children, isVisible }) {
 						{isOpen && (
 							<AnimatePresence initial={false}>
 								<motion.img
+									key="bars"
 									whileHover={{ scale: 1.5, rotate: 180 }}
 									whileTap={{
 										scale: 0.8,
@@ -169,6 +171,7 @@ function Sidebar({ children, isVisible }) {
 						<AnimatePresence initial={false}>
 							{!isOpen && (
 								<motion.img
+									key="bars_closed"
 									whileHover={{ scale: 1.4, rotate: 180 }}
 									whileTap={{
 										scale: 0.8,
@@ -187,6 +190,7 @@ function Sidebar({ children, isVisible }) {
 							)}
 						</AnimatePresence>
 					</div>
+
 					{isOpen && <div className="anim"></div>}
 				</div>
 				<div className="space" onClick={() => dispatch(toggleSideBar())}></div>
@@ -201,6 +205,7 @@ function Sidebar({ children, isVisible }) {
 							<AnimatePresence initial={false}>
 								{isOpen && (
 									<motion.div
+										key={route.name}
 										initial="hidden"
 										animate="show"
 										exit="hidden"
@@ -221,6 +226,7 @@ function Sidebar({ children, isVisible }) {
 						{!isOpen && (
 							<AnimatePresence initial={false}>
 								<motion.i
+									key="profile_container_closed"
 									initial="hidden"
 									animate="show"
 									exit="hidden"
@@ -240,6 +246,7 @@ function Sidebar({ children, isVisible }) {
 						{isOpen && (
 							<AnimatePresence initial={false}>
 								<motion.div
+									key="profile_container"
 									initial="hidden"
 									animate="show"
 									exit="hidden"
@@ -260,6 +267,7 @@ function Sidebar({ children, isVisible }) {
 							<AnimatePresence initial={false}>
 								{!isOpen && (
 									<motion.div
+										key="profile_closed"
 										initial="hidden"
 										animate="show"
 										exit="hidden"
@@ -279,6 +287,7 @@ function Sidebar({ children, isVisible }) {
 							<AnimatePresence initial={false}>
 								{isOpen && (
 									<motion.div
+										key="profile"
 										initial="hidden"
 										animate="show"
 										exit="hidden"
