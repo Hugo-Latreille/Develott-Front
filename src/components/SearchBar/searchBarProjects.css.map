@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,IAAI,CAAJ,qBAAI;AAEJ,AAAA,yBAAyB,CAAC;EACxB,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,2BAA2B,CAAC;EAC1B,OAAO,EAAE,MAAM;CAChB;;AAED,AAAA,qBAAqB,CAAC;EACpB,WAAW,EAAE,MAAM;CACpB",
+    "sources": [
+        "searchBarProjects.scss"
+    ],
+    "names": [],
+    "file": "searchBarProjects.css"
+}

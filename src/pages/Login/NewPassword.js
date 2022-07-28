@@ -11,7 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { clearInputs, toggleLoggingModalOpen } from "./authSlice";
 import Input from "../../components/Input/Input";
-import { useNewPasswordMutation } from "./authAPI";
+import { useNewPasswordMutation } from "./authAPISlice";
 
 function NewPassword() {
 	const navigate = useNavigate();
