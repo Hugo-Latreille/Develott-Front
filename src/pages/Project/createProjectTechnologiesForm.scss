@@ -26,14 +26,15 @@
 
   &-items {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    
 
     & i {
       padding-right: 0.5rem;
     }
     & p {
       width: 70%;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -49,7 +50,7 @@
   justify-content: space-between;
 
   &-content {
-    width: 30%;
+    width: 25%;
     min-height: 100%;
     overflow-y: scroll;
   }
@@ -57,4 +58,8 @@
   &-70 {
     min-height: 60%;
   }
+}
+
+.width-80 {
+  width:80%;
 }

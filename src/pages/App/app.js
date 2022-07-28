@@ -17,6 +17,7 @@ import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
 import ReactCursorPosition from "react-cursor-position";
+import Charte from "../Charte-About/charteAbout";
 
 function App() {
 	const location = useLocation();
@@ -48,7 +49,7 @@ function App() {
 							<Route path="projets" element={<Projects />} />
 							<Route path="projet/:projectId" element={<Project />} />
 							<Route path="projet/create" element={<CreateProject />} />
-							<Route path="la-charte" element={<Home />} />
+							<Route path="charte" element={<Charte />} />
 							<Route path="profil" element={<Profil />} />
 						</Route>
 					</Route>

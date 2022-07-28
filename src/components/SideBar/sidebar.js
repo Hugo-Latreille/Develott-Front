@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import ReactTooltip from "react-tooltip";
 import { FaHome, FaUser, FaProjectDiagram } from "react-icons/fa";
 import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -14,6 +15,7 @@ import { logOut } from "../../pages/Login/authSlice";
 import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
 
 const routes = [
+
 	{
 		path: "/",
 		name: "Dashboard",
@@ -42,11 +44,13 @@ function Sidebar({ children, isVisible }) {
 	const dispatch = useDispatch();
 	const [userLogout] = useUserLogoutMutation();
 
-	const handleLogout = async () => {
-		await userLogout();
-		dispatch(logOut());
-	};
 
+  const handleLogout = async () => {
+    await userLogout();
+    dispatch(logOut());
+  };
+
+<<<<<<< HEAD
 	const showAnimation = {
 		hidden: {
 			width: 0,
@@ -222,8 +226,53 @@ function Sidebar({ children, isVisible }) {
 						onClick={() => dispatch(toggleSideBar())}
 						className="active_toggle"
 					></div>
-					<div className="profile_container">
-						{!isOpen && (
+					<div className="bottom_container">
+					<div className="toggle_pic_container">
+						<AnimatePresence initial={false}>
+              {!isOpen && (
+                  <motion.i
+									key="toggle_pic_container_closed"
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    }}
+                    variants={logAnimation}
+                    onClick={() => setDarkMode(!darkMode)}
+                    className={`${
+                      darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+                    }`}
+                  ></motion.i>
+									)}
+									</AnimatePresence>
+									<AnimatePresence initial={false}>
+              {!isOpen && (
+                  <NavLink to="/">
+                    <motion.img
+										key='toggle_pic_container'
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20,
+                      }}
+                      variants={logAnimation}
+                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+                      alt="Profil"
+                      className="profile_img_close"
+                    ></motion.img>
+                  </NavLink>
+              )}
+							</AnimatePresence>
+            </div>
+
+
+						{/* {!isOpen && (
 							<AnimatePresence initial={false}>
 								<motion.i
 									key="profile_container_closed"
@@ -262,7 +311,7 @@ function Sidebar({ children, isVisible }) {
 									<div className="side_text">Dark Mode</div>
 								</motion.div>
 							</AnimatePresence>
-						)}
+						)} */}
 						<div className="profile">
 							<AnimatePresence initial={false}>
 								{!isOpen && (
@@ -332,6 +381,7 @@ function Sidebar({ children, isVisible }) {
 			</main>
 		</div>
 	);
+
 }
 
 export default Sidebar;
