@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import moment from "moment/min/moment-with-locales";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
@@ -130,11 +132,22 @@ function Project() {
 							<div className="project-dates">
 								<h3 className="project-jobs-title">Dates du projet</h3>
 								<p>
-									<i className="far fa-calendar-check success"></i> Dès
-									maintenant
+									<i className="far fa-calendar-check success"></i> Début :{" "}
+									{moment(project?.start_date).locale("fr").format("LL")}
 								</p>
 								<p>
-									<i className="far fa-calendar-exclamation warning"></i> 6
+									<i className="far fa-calendar-check success"></i> Fin :{" "}
+									{moment(project?.end_date).locale("fr").format("LL")}
+								</p>
+								<p>
+									<i className="far fa-calendar-exclamation warning"></i> Durée
+									:
+									{moment(project?.end_date)
+										.locale("fr")
+										.diff(
+											moment(project?.start_date).locale("fr"),
+											"weeks"
+										)}{" "}
 									semaines
 								</p>
 							</div>
