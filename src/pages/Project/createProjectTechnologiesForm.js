@@ -118,15 +118,18 @@ function CreateProjectTechnologiesForm() {
           )}
           {othersData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
-              <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
+              <span className="technologies-icon-container width-80">
+                <i
+                  class={`devicon-${techno.name}-plain`}
+                  style={{ backgroundColor: `${techno.color}` }}
+                ></i>
                 {techno.name}
                 <i
                   className="fal fa-backspace form-technologies-delete"
                   onClick={() => dispatch(removeTechnologyData(techno.name))}
                   style={{ color: "black" }}
                 ></i>
-              </p>
+              </span>
             </div>
           ))}
         </div>
