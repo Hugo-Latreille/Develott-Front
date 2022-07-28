@@ -146,24 +146,43 @@ function Dashboard() {
           <div className="dashboard-main-technologies">
             <div className="project-technologies-languages">
               <h4>Langages</h4>
-
               <span className="technologies-icon-container">
                 <i
                   className={`devicon-javascript-plain`}
-                  style={{ backgroundColor: `red` }}
+                  style={{ backgroundColor: `orange` }}
                 ></i>
                 Javascript
+              </span>
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-ruby-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                ruby
+              </span>
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-html5-plain`}
+                  style={{ backgroundColor: `red` }}
+                ></i>
+                html5
               </span>
             </div>
             <div className="project-technologies-frameworks">
               <h4>Frameworks</h4>
-
               <span className="technologies-icon-container">
                 <i
-                  className={`devicon-javascript-plain`}
-                  style={{ backgroundColor: `red` }}
+                  className={`devicon-react-plain`}
+                  style={{ backgroundColor: `blue` }}
                 ></i>
-                Javascript
+                React
+              </span>
+              <span className="technologies-icon-container">
+                <i
+                  className={`devicon-redux-plain`}
+                  style={{ backgroundColor: `purple` }}
+                ></i>
+                redux
               </span>
             </div>
             <div className="project-technologies-database">

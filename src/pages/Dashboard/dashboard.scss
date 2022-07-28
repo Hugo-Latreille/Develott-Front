@@ -5,6 +5,7 @@
     margin:2rem auto 2rem 2rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     &-main {
         width: 78%;
@@ -94,7 +95,7 @@
         width:26%;
 
         &-content {
-            background-color: hsl(207, 67%, 78%, 50%);
+            background-color: hsl(207, 67%, 88%, 50%);
             height:7rem;
             display: flex;
             flex-direction: column;
@@ -171,7 +172,6 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    flex-wrap: wrap;
 
     &-team {
         width:43%;
@@ -221,11 +221,59 @@
 .dashboard-main-technologies {
     margin-top: 1rem;
     background-color: #fff;
-    padding: 1rem 2rem;
+    padding: 2rem;
     display:flex;
     flex-wrap: wrap;
 
     & span {
         width:80%;
+        text-transform: capitalize;
     }
 }
+
+
+
+
+
+@media screen and (width < 600px) {
+    .dashboard {
+        margin:0;
+        padding:0.5rem;
+        &-main {
+            width:100%;
+        }
+
+        &-right {
+            width: 100%;
+        }
+    }
+
+    .dashboard-main-navigation  {
+        &-accueil {
+            width:100%;
+            margin-bottom: 1rem;
+        }
+
+        &-messagerie {
+            width:100%;
+            margin-bottom: 1rem;
+        }
+
+        &-calendrier {
+            width:100%;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .dashboard-main-content {
+        flex-wrap: wrap;
+
+        &-team {
+            width: 100%;
+        }
+
+        &-links {
+            width: 100%;
+        }
+    }
+  }
