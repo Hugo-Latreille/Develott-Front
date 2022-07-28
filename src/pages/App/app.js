@@ -17,6 +17,7 @@ import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
+import ReactCursorPosition from "react-cursor-position";
 
 function App() {
 	const location = useLocation();
@@ -34,6 +35,8 @@ function App() {
 	return (
 		<div className="app">
 			<Routes location={background || location}>
+				<Route path="*" element={<Erreur />} />
+
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
@@ -50,7 +53,6 @@ function App() {
 							<Route path="projet/create" element={<CreateProject />} />
 							<Route path="la-charte" element={<Home />} />
 							<Route path="profil" element={<Profil />} />
-							<Route path="*" element={<Erreur />} />
 						</Route>
 					</Route>
 				</Route>
