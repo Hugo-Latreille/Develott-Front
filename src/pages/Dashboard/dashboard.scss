@@ -2,7 +2,7 @@
 
 .dashboard {
     width:92vw;
-    margin:2rem auto 2rem 2rem;
+    margin:1rem auto 2rem 2rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -238,7 +238,7 @@
 @media screen and (width < 600px) {
     .dashboard {
         margin:0;
-        padding:0.5rem;
+        padding:0rem;
         &-main {
             width:100%;
         }
