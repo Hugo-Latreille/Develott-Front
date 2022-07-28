@@ -21,10 +21,15 @@ function CreateProjectTechnologiesForm() {
     technology.tags.includes("framework")
   );
 
+  const databasesData = technologiesData.filter((technology) =>
+    technology.tags.includes("database")
+  );
+
   const othersData = technologiesData.filter(
     (technology) =>
       !technology.tags.includes("framework") &&
-      !technology.tags.includes("language")
+      !technology.tags.includes("language") &&
+      !technology.tags.includes("database")
   );
 
   return (
@@ -47,14 +52,18 @@ function CreateProjectTechnologiesForm() {
           )}
           {languagesData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
-              <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
+              <span className="technologies-icon-container width-80">
+                <i
+                  class={`devicon-${techno.name}-plain`}
+                  style={{ backgroundColor: `${techno.color}` }}
+                ></i>
                 {techno.name}
-              </p>
-              <i
-                className="fal fa-backspace form-technologies-delete"
-                onClick={() => dispatch(removeTechnologyData(techno.name))}
-              ></i>
+                <i
+                  className="fal fa-backspace form-technologies-delete"
+                  onClick={() => dispatch(removeTechnologyData(techno.name))}
+                  style={{ color: "black" }}
+                ></i>
+              </span>
             </div>
           ))}
         </div>
@@ -65,14 +74,40 @@ function CreateProjectTechnologiesForm() {
           )}
           {frameworksData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
-              <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
+              <span className="technologies-icon-container width-80">
+                <i
+                  class={`devicon-${techno.name}-plain`}
+                  style={{ backgroundColor: `${techno.color}` }}
+                ></i>
                 {techno.name}
-              </p>
-              <i
-                className="fal fa-backspace form-technologies-delete"
-                onClick={() => dispatch(removeTechnologyData(techno.name))}
-              ></i>
+                <i
+                  className="fal fa-backspace form-technologies-delete"
+                  onClick={() => dispatch(removeTechnologyData(techno.name))}
+                  style={{ color: "black" }}
+                ></i>
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="form-technologies-container-content">
+          <h3 className="form-technologies-title">Base de donnée</h3>
+          {databasesData.length === 0 && (
+            <span className="form-technologies-empty">vide...</span>
+          )}
+          {databasesData.map((techno) => (
+            <div key={techno.name} className="form-technologies-items">
+              <span className="technologies-icon-container width-80">
+                <i
+                  class={`devicon-${techno.name}-plain`}
+                  style={{ backgroundColor: `${techno.color}` }}
+                ></i>
+                {techno.name}
+                <i
+                  className="fal fa-backspace form-technologies-delete"
+                  onClick={() => dispatch(removeTechnologyData(techno.name))}
+                  style={{ color: "black" }}
+                ></i>
+              </span>
             </div>
           ))}
         </div>
@@ -83,14 +118,18 @@ function CreateProjectTechnologiesForm() {
           )}
           {othersData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
-              <p>
-                <i className={`devicon-${techno.name}-plain colored`}></i>{" "}
+              <span className="technologies-icon-container width-80">
+                <i
+                  class={`devicon-${techno.name}-plain`}
+                  style={{ backgroundColor: `${techno.color}` }}
+                ></i>
                 {techno.name}
-              </p>
-              <i
-                className="fal fa-backspace form-technologies-delete"
-                onClick={() => dispatch(removeTechnologyData(techno.name))}
-              ></i>
+                <i
+                  className="fal fa-backspace form-technologies-delete"
+                  onClick={() => dispatch(removeTechnologyData(techno.name))}
+                  style={{ color: "black" }}
+                ></i>
+              </span>
             </div>
           ))}
         </div>

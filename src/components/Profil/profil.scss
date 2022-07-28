@@ -295,7 +295,7 @@
   text-transform: capitalize;
   font-size: 0.9rem;
   margin-bottom: 0.8rem;
-  width:90%;
+  width:100%;
 
  & i {
     margin-right: 0.6rem;
@@ -357,6 +357,10 @@
     text-align: justify;
     padding-bottom: 2rem;
   }
+}
+
+.technologies-icon-container {
+  width: 80%;
 }
 }
 

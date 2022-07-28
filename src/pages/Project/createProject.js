@@ -21,9 +21,9 @@ function CreateProject() {
 
   return (
     <Sidebar>
-      <div className="testt">
+      <div className="project-create">
         {/* <NavbarColor /> */}
-        <div className="create-project container">
+        <div className="create-project">
           <div className="create-project-container ">
             <div className="create-project-left">
               <div

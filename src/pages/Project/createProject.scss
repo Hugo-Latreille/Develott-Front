@@ -4,9 +4,11 @@
   background-color: #fff;
   min-height: 700px;
   height: auto;
-  margin-top: 3.5rem;
+  width:94%;
+  margin:3.5rem auto;
 
   &-container {
+
     padding: 4rem;
     display: flex;
     justify-content: space-between;
@@ -36,9 +38,9 @@
   }
 
   &-right {
-    width: 65%;
+    width: 70%;
     height: auto;
-    padding: 0 4rem;
+    padding: 0rem;
 
     &-container {
       display: flex;
@@ -81,6 +83,6 @@
   opacity: 0.7;
 }
 
-.testt {
+.project-create {
   min-height: 100vh;
 }
