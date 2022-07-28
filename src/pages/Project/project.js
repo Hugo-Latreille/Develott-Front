@@ -4,12 +4,9 @@ import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
-
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import {
 	setDisplayEditDescription,
 	setDisplayAllDescription,
@@ -18,44 +15,35 @@ import {
 	removeJobData,
 	removeTechnologyData,
 } from "./showProjectSlice";
+import { useParams } from "react-router-dom";
+import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
 function Project() {
+	const { projectId } = useParams();
+
+	const { data: project } = useGetOneProjectQuery(projectId);
+	console.log(projectId);
+	console.log(project);
+
 	const dispatch = useDispatch();
-
-	const displayEditDescriptionForm = useSelector(
-		(state) => state.showProject.displayEditDescriptionForm
-	);
-
-	const displayEditTechnologies = useSelector(
-		(state) => state.showProject.displayEditTechnologies
-	);
-
-	const displayEditJobForm = useSelector(
-		(state) => state.showProject.displayEditJobForm
-	);
-
-	const adaptDescriptionContainer = useSelector(
-		(state) => state.showProject.adaptDescriptionContainer
-	);
-
-	const technologiesData = useSelector(
-		(state) => state.showProject.technologiesData
-	);
+	const {
+		displayEditDescriptionForm,
+		displayEditTechnologies,
+		displayEditJobForm,
+		adaptDescriptionContainer,
+		technologiesData,
+		jobsData,
+	} = useSelector((state) => state.showProject);
 
 	const languagesData = technologiesData.filter((technology) =>
 		technology.tags.includes("language")
 	);
-
 	const frameworksData = technologiesData.filter((technology) =>
 		technology.tags.includes("framework")
 	);
-
 	const databasesData = technologiesData.filter((technology) =>
 		technology.tags.includes("database")
 	);
-
-	const jobsData = useSelector((state) => state.showProject.jobsData);
-
 	const othersData = technologiesData.filter(
 		(technology) =>
 			!technology.tags.includes("framework") &&
@@ -154,13 +142,8 @@ function Project() {
 						<div className="project-container-right">
 							<div className="project-header">
 								<div className="project-header-left">
-									<h1 className="project-header-title">
-										Develott - La table ronde du code
-									</h1>
-									<p className="project-header-short-desc">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-										vel ex quis lorem tempus consequat.
-									</p>
+									<h1 className="project-header-title">{project?.name}</h1>
+									<p className="project-header-short-desc">{project?.exerpt}</p>
 								</div>
 								<div className="project-header-right">
 									<button className="main-button-bg-white">
@@ -190,14 +173,7 @@ function Project() {
 											</span>
 										</div>
 										<p className="project-description-desc">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-											Ut vel ex quis lorem tempus consequat. Pellentesque ornare
-											eros eget ante elementum blandit. Aenean sed neque
-											venenatis, ultrices risus vel, dignissim.Ut vel ex quis
-											lorem tempus consequat. Pellentesque ornare eros. dolor
-											sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet, consectetur adipiscing elit. Ut vel ex quis
-											lorem tempus
+											{project?.description}
 										</p>
 										{adaptDescriptionContainer === false && (
 											<span

@@ -7,10 +7,12 @@ import updtateUserProfileSlice from "../pages/Profiles/updtateUserProfileSlice";
 import { emptySplitApi } from "../API/APIslice";
 import userProfileSlice from "../pages/Profiles/userProfileSlice";
 import showProjectSlice from "../pages/Project/showProjectSlice";
+import appSlice from "../pages/App/appSlice";
 
 export const store = configureStore({
 	reducer: {
 		[emptySplitApi.reducerPath]: emptySplitApi.reducer,
+		app: appSlice,
 		auth: loginReducer,
 		createProject: createProjectSlice,
 		showProject: showProjectSlice,
