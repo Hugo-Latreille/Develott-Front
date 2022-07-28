@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
-import { toggleSideBar } from "../../pages/App/appSlice";
+import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
 
 const routes = [
 	{
@@ -316,10 +316,7 @@ function Sidebar({ children }) {
 					</div>
 				</section>
 			</motion.div>
-			<main
-				className="side_main"
-				onClick={() => dispatch(toggleSideBar("false"))}
-			>
+			<main className="side_main" onClick={() => dispatch(closeSideBar())}>
 				{children}
 			</main>
 		</div>
