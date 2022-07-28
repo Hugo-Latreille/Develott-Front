@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import ReactTooltip from "react-tooltip";
 import { FaHome, FaUser, FaProjectDiagram } from "react-icons/fa";
 import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -196,7 +197,21 @@ function Sidebar({ children }) {
               key={route.name}
               className="sidebar_navlink"
             >
-              <div className="side_icon">{route.icon}</div>
+              <div data-tip data-for="slide" className="side_icon">
+                {route.icon}
+                {/* <ReactTooltip
+                  id="slide"
+                  place="top"
+                  effect="solid"
+                  border
+                  textColor="white"
+                  backgroundColor="black"
+                  borderColor="#A2A1FD"
+                  arrowColor="#A2A1FD"
+                >
+                  {route.name}
+                </ReactTooltip> */}
+              </div>
               <AnimatePresence>
                 {isOpen && (
                   <motion.div
