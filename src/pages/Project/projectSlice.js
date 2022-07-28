@@ -34,8 +34,8 @@ export const projectSlice = createSlice({
 			);
 			state[action.payload.name] = updateData;
 		},
-		changeStartDate: (state, action) => {
-			state.startDate = action.payload;
+		changeDate: (state, action) => {
+			state[action.payload.name] = action.payload.value;
 		},
 	},
 });
@@ -52,7 +52,7 @@ export const {
 	setData,
 	setDisplayEdit,
 	removeData,
-	changeStartDate,
+	changeDate,
 } = projectSlice.actions;
 
 export default projectSlice.reducer;

@@ -22,7 +22,7 @@ import {
 	setDisplayEdit,
 	removeData,
 	startDate,
-	changeStartDate,
+	changeDate,
 } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
@@ -44,6 +44,7 @@ function Project() {
 		technologiesData,
 		jobsData,
 		startDate,
+		endDate,
 	} = useSelector((state) => state.project);
 
 	const languagesData = technologiesData.filter((technology) =>
@@ -174,12 +175,12 @@ function Project() {
 									</p>
 									<p>
 										<i className="far fa-calendar-check success"></i> Fin :{" "}
-										{moment(project?.end_date).locale("fr").format("LL")}
+										{moment(endDate).locale("fr").format("LL")}
 									</p>
 									<p>
 										<i className="far fa-calendar-exclamation warning"></i>{" "}
 										Durée :
-										{moment(project?.end_date)
+										{moment(endDate)
 											.locale("fr")
 											.diff(moment(startDate).locale("fr"), "weeks")}{" "}
 										semaines
@@ -197,25 +198,41 @@ function Project() {
 										<i className="fas fa-edit"></i>
 									</span>
 
-									<LocalizationProvider dateAdapter={AdapterMoment}>
-										<DatePicker
-											label="Basic example"
-											value={startDate}
-											onChange={(newValue) => {
-												dispatch(changeStartDate(newValue._d));
-												console.log(newValue._d);
-											}}
-											renderInput={(params) => <TextField {...params} />}
-										/>
-									</LocalizationProvider>
-
 									<p>
 										<i className="far fa-calendar-check success"></i> Début :{" "}
-										{moment(project?.start_date).locale("fr").format("LL")}
+										<LocalizationProvider dateAdapter={AdapterMoment}>
+											<DatePicker
+												label="Date de début"
+												value={startDate}
+												onChange={(newValue) => {
+													dispatch(
+														changeDate({
+															name: "startDate",
+															value: newValue._d,
+														})
+													);
+												}}
+												renderInput={(params) => <TextField {...params} />}
+											/>
+										</LocalizationProvider>
 									</p>
 									<p>
 										<i className="far fa-calendar-check success"></i> Fin :{" "}
-										{moment(project?.end_date).locale("fr").format("LL")}
+										<LocalizationProvider dateAdapter={AdapterMoment}>
+											<DatePicker
+												label="Date de fin"
+												value={endDate}
+												onChange={(newValue) => {
+													dispatch(
+														changeDate({
+															name: "endDate",
+															value: newValue._d,
+														})
+													);
+												}}
+												renderInput={(params) => <TextField {...params} />}
+											/>
+										</LocalizationProvider>
 									</p>
 									<p>
 										<i className="far fa-calendar-exclamation warning"></i>{" "}

@@ -1,5 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
-import { changeStartDate } from "../Project/projectSlice";
+import { changeDate } from "../Project/projectSlice";
 
 const projectsAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -13,7 +13,9 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 					.then((result) => {
 						console.log(result);
 						const startDate = result.data.start_date;
-						dispatch(changeStartDate(startDate));
+						const endDate = result.data.end_date;
+						dispatch(changeDate({ name: "startDate", value: startDate }));
+						dispatch(changeDate({ name: "endDate", value: endDate }));
 					})
 					.catch(({ error }) => {});
 			},
