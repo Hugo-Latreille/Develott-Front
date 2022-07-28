@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment/min/moment-with-locales";
 import { DatePicker } from "@mui/x-date-pickers";
 import TextField from "@mui/material/TextField";
+import "moment/locale/fr";
 
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
@@ -200,7 +201,10 @@ function Project() {
 
 									<p>
 										<i className="far fa-calendar-check success"></i> Début :{" "}
-										<LocalizationProvider dateAdapter={AdapterMoment}>
+										<LocalizationProvider
+											dateAdapter={AdapterMoment}
+											locale="fr"
+										>
 											<DatePicker
 												label="Date de début"
 												value={startDate}
@@ -218,7 +222,10 @@ function Project() {
 									</p>
 									<p>
 										<i className="far fa-calendar-check success"></i> Fin :{" "}
-										<LocalizationProvider dateAdapter={AdapterMoment}>
+										<LocalizationProvider
+											dateAdapter={AdapterMoment}
+											locale="fr"
+										>
 											<DatePicker
 												label="Date de fin"
 												value={endDate}
