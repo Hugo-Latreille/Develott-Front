@@ -2,7 +2,7 @@ import "./searchBarProjects.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
 import { useSelector, useDispatch } from "react-redux";
-import { setData, setTechnologiesData } from "../../pages/Project/projectSlice";
+import { setData } from "../../pages/Project/projectSlice";
 
 function SearchBarTechnologiesProject() {
 	const technologiesData = useSelector(
@@ -14,17 +14,17 @@ function SearchBarTechnologiesProject() {
 	const handleOnSearch = (string, results) => {
 		// onSearch will have as the first callback parameter
 		// the string searched and for the second the results.
-		console.log(string, results);
+		// console.log(string, results);
 	};
 
 	const handleOnHover = (result) => {
 		// the item hovered
-		console.log(result);
+		// console.log(result);
 	};
 
 	const handleOnSelect = (item) => {
 		// the item selected
-		console.log(item);
+		// console.log(item);
 		console.log(technologiesData);
 
 		const itemAlreadyExist = technologiesData.find(
@@ -42,14 +42,14 @@ function SearchBarTechnologiesProject() {
 		console.log("Focused");
 	};
 
-	const formatResult = (item) => {
+	const formatResult = (item, index) => {
 		return (
-			<div key={item.name} className="results-container-projects">
+			<div key={index} className="results-container-projects">
 				<i className={`devicon-${item.name}-plain colored`}></i>
 				<span className="result-span-title">{item.name}</span>
 				<span className="result-span-subtitle" style={{ display: "block" }}>
-					{item.tags.map((element) => (
-						<span key={element}>{element} </span>
+					{item.tags.map((element, index) => (
+						<span key={index}>{element} </span>
 					))}
 				</span>
 			</div>

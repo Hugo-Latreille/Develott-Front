@@ -31,7 +31,7 @@ function Project() {
 	const { projectId } = useParams();
 
 	const { data: project } = useGetOneProjectQuery(projectId);
-	console.log(projectId);
+
 	console.log(project);
 
 	const dispatch = useDispatch();
@@ -170,7 +170,7 @@ function Project() {
 									</span>
 									<p>
 										<i className="far fa-calendar-check success"></i> Début :{" "}
-										{moment(project?.start_date).locale("fr").format("LL")}
+										{moment(startDate).locale("fr").format("LL")}
 									</p>
 									<p>
 										<i className="far fa-calendar-check success"></i> Fin :{" "}
@@ -181,10 +181,7 @@ function Project() {
 										Durée :
 										{moment(project?.end_date)
 											.locale("fr")
-											.diff(
-												moment(project?.start_date).locale("fr"),
-												"weeks"
-											)}{" "}
+											.diff(moment(startDate).locale("fr"), "weeks")}{" "}
 										semaines
 									</p>
 								</div>
@@ -370,9 +367,9 @@ function Project() {
 											{languagesData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{languagesData.map((techno) => (
+											{languagesData.map((techno, index) => (
 												<span
-													key={techno.name}
+													key={index}
 													className="technologies-icon-container"
 												>
 													<i
@@ -388,9 +385,9 @@ function Project() {
 											{frameworksData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{frameworksData.map((techno) => (
+											{frameworksData.map((techno, index) => (
 												<span
-													key={techno.name}
+													key={index}
 													className="technologies-icon-container"
 												>
 													<i
@@ -406,9 +403,9 @@ function Project() {
 											{databasesData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{databasesData.map((techno) => (
+											{databasesData.map((techno, index) => (
 												<span
-													key={techno.name}
+													key={index}
 													className="technologies-icon-container"
 												>
 													<i
@@ -424,9 +421,9 @@ function Project() {
 											{othersData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{othersData.map((techno) => (
+											{othersData.map((techno, index) => (
 												<span
-													key={techno.name}
+													key={index}
 													className="technologies-icon-container"
 												>
 													<i
@@ -462,11 +459,8 @@ function Project() {
 											{languagesData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{languagesData.map((techno) => (
-												<div
-													key={techno.name}
-													className="form-technologies-items"
-												>
+											{languagesData.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno.name}-plain colored`}
@@ -493,11 +487,8 @@ function Project() {
 											{frameworksData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{frameworksData.map((techno) => (
-												<div
-													key={techno.name}
-													className="form-technologies-items"
-												>
+											{frameworksData.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno.name}-plain colored`}
@@ -524,11 +515,8 @@ function Project() {
 											{databasesData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{databasesData.map((techno) => (
-												<div
-													key={techno.name}
-													className="form-technologies-items"
-												>
+											{databasesData.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno.name}-plain colored`}
@@ -555,11 +543,8 @@ function Project() {
 											{othersData.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{othersData.map((techno) => (
-												<div
-													key={techno.name}
-													className="form-technologies-items"
-												>
+											{othersData.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno.name}-plain colored`}
