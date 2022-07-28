@@ -35,8 +35,6 @@ function App() {
 	return (
 		<div className="app">
 			<Routes location={background || location}>
-				<Route path="projets" element={<Projects />} />
-				<Route path="projet/:projectId" element={<Project />} />
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />}>
 						<Route path="connexion" element={<Connexion />} />
@@ -48,6 +46,8 @@ function App() {
 						<Route element={<RequireAuth />}>
 							<Route path="welcome" element={<Welcome />} />
 							<Route path="authTest" element={<AuthTest />} />
+							<Route path="projets" element={<Projects />} />
+							<Route path="projet/:projectId" element={<Project />} />
 							<Route path="projet/create" element={<CreateProject />} />
 							<Route path="la-charte" element={<Home />} />
 							<Route path="profil" element={<Profil />} />
