@@ -15,7 +15,6 @@ import { logOut } from "../../pages/Login/authSlice";
 import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
 
 const routes = [
-
 	{
 		path: "/",
 		name: "Dashboard",
@@ -44,13 +43,11 @@ function Sidebar({ children, isVisible }) {
 	const dispatch = useDispatch();
 	const [userLogout] = useUserLogoutMutation();
 
+	const handleLogout = async () => {
+		await userLogout();
+		dispatch(logOut());
+	};
 
-  const handleLogout = async () => {
-    await userLogout();
-    dispatch(logOut());
-  };
-
-<<<<<<< HEAD
 	const showAnimation = {
 		hidden: {
 			width: 0,
@@ -227,50 +224,49 @@ function Sidebar({ children, isVisible }) {
 						className="active_toggle"
 					></div>
 					<div className="bottom_container">
-					<div className="toggle_pic_container">
-						<AnimatePresence initial={false}>
-              {!isOpen && (
-                  <motion.i
-									key="toggle_pic_container_closed"
-                    initial="hidden"
-                    animate="show"
-                    exit="hidden"
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 20,
-                    }}
-                    variants={logAnimation}
-                    onClick={() => setDarkMode(!darkMode)}
-                    className={`${
-                      darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
-                    }`}
-                  ></motion.i>
-									)}
-									</AnimatePresence>
-									<AnimatePresence initial={false}>
-              {!isOpen && (
-                  <NavLink to="/">
-                    <motion.img
-										key='toggle_pic_container'
-                      initial="hidden"
-                      animate="show"
-                      exit="hidden"
-                      transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 20,
-                      }}
-                      variants={logAnimation}
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                      alt="Profil"
-                      className="profile_img_close"
-                    ></motion.img>
-                  </NavLink>
-              )}
+						<div className="toggle_pic_container">
+							<AnimatePresence initial={false}>
+								{!isOpen && (
+									<motion.i
+										key="toggle_pic_container_closed"
+										initial="hidden"
+										animate="show"
+										exit="hidden"
+										transition={{
+											type: "spring",
+											stiffness: 260,
+											damping: 20,
+										}}
+										variants={logAnimation}
+										onClick={() => setDarkMode(!darkMode)}
+										className={`${
+											darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+										}`}
+									></motion.i>
+								)}
 							</AnimatePresence>
-            </div>
-
+							<AnimatePresence initial={false}>
+								{!isOpen && (
+									<NavLink to="/">
+										<motion.img
+											key="toggle_pic_container"
+											initial="hidden"
+											animate="show"
+											exit="hidden"
+											transition={{
+												type: "spring",
+												stiffness: 260,
+												damping: 20,
+											}}
+											variants={logAnimation}
+											src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+											alt="Profil"
+											className="profile_img_close"
+										></motion.img>
+									</NavLink>
+								)}
+							</AnimatePresence>
+						</div>
 
 						{/* {!isOpen && (
 							<AnimatePresence initial={false}>
@@ -381,7 +377,6 @@ function Sidebar({ children, isVisible }) {
 			</main>
 		</div>
 	);
-
 }
 
 export default Sidebar;
