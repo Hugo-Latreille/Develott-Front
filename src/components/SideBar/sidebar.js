@@ -118,6 +118,7 @@ function Sidebar({ children }) {
   return (
     <div className="sidebar_container">
       <motion.div
+        style={{ width: "54px" }}
         animate={{
           width: isOpen ? "250px" : "54px",
           transition: {
@@ -332,9 +333,7 @@ function Sidebar({ children }) {
           </div>
         </section>
       </motion.div>
-      <main className="side_main" onClick={toggleOut}>
-        {children}
-      </main>
+      <main className="side_main">{children}</main>
     </div>
   );
 }

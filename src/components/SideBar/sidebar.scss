@@ -137,7 +137,6 @@
 
   &_img {
     margin-right: 1em;
-    width: 30px;
     height: 30px;
   }
 
@@ -177,14 +176,7 @@
 
 .logo_unlog:hover {
   color: black;
-  padding-top: 0.5em;
-  padding-bottom: 0.3em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  margin-left: 0;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  background-color: rgb(255, 255, 255);
-  border-radius: 12px;
   font-size: 1.7em;
 }
 
