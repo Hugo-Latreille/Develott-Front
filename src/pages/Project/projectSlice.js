@@ -6,10 +6,12 @@ const initialState = {
 	displayEditJobForm: false,
 	displayEditTechnologies: false,
 	displayEditDates: false,
+	displayImgEdit: false,
 	technologiesData: [],
 	jobsData: [],
 	startDate: "",
 	endDate: "",
+	projectImg: "",
 };
 
 export const projectSlice = createSlice({

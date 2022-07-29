@@ -15,16 +15,7 @@ import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProjec
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
-import {
-	setDisplayEditDescription,
-	setDisplayAllDescription,
-	setDisplayEditTechnologies,
-	removeTechnologyData,
-	setDisplayEdit,
-	removeData,
-	startDate,
-	changeDate,
-} from "./projectSlice";
+import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
@@ -41,6 +32,7 @@ function Project() {
 		displayEditTechnologies,
 		displayEditJobForm,
 		displayEditDates,
+		displayImgEdit,
 		adaptDescriptionContainer,
 		technologiesData,
 		jobsData,
@@ -64,17 +56,88 @@ function Project() {
 			!technology.tags.includes("database")
 	);
 
+	const showCloudinaryWidget = () => {
+		let widget = window.cloudinary.createUploadWidget(
+			{
+				cloudName: `develott`,
+				uploadPreset: `develott`,
+				sources: ["local", "url"],
+				showAdvancedOptions: true,
+				cropping: true,
+				multiple: false,
+				defaultSource: "local",
+				styles: {
+					palette: {
+						window: "#FFFFFF",
+						windowBorder: "#90A0B3",
+						tabIcon: "#9B72F1",
+						menuIcons: "#5A616A",
+						textDark: "#000000",
+						textLight: "#FFFFFF",
+						link: "#9B72F1",
+						action: "#FF620C",
+						inactiveTabIcon: "#7288E4",
+						error: "#F44235",
+						inProgress: "#0078FF",
+						complete: "#20B832",
+						sourceBg: "#E4EBF1",
+					},
+					fonts: {
+						default: null,
+						"'Fira Sans', sans-serif": {
+							url: "https://fonts.googleapis.com/css?family=Fira+Sans",
+							active: true,
+						},
+					},
+				},
+			},
+			(error, result) => {
+				if (!error && result && result.event === "success") {
+					console.log(result.info.url);
+				}
+			}
+		);
+		widget.open();
+	};
+
 	return (
 		<>
 			<Sidebar>
 				<div className="project">
 					<div className="project-container ">
 						<div className="project-container-left">
-							<img
-								src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
-								className="project-img"
-								alt="Projet image"
-							/>
+							{!displayImgEdit && (
+								<>
+									<img
+										src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
+										className="project-img"
+										alt="Projet image"
+									/>
+									<span
+										onClick={() =>
+											dispatch(setDisplayEdit({ name: "displayImgEdit" }))
+										}
+									>
+										<i className="fas fa-edit"></i>
+									</span>
+								</>
+							)}
+							{displayImgEdit && (
+								<>
+									<button onClick={() => showCloudinaryWidget()}>
+										Uploader une nouvelle image
+									</button>
+
+									<span
+										onClick={() =>
+											dispatch(setDisplayEdit({ name: "displayImgEdit" }))
+										}
+									>
+										<i className="fas fa-edit"></i>
+									</span>
+								</>
+							)}
+
 							<div className="project-user">
 								<img
 									className="slider-avatar"
