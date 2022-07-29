@@ -4,7 +4,7 @@
     
 
     &_main {
-        margin: 3em 20em 3em 20em;
+        margin: 5em 20em 5em 2em;
     }
 
     &_title {
@@ -30,6 +30,7 @@
 .about_main {
     border: 1px rgba(0, 0, 0, 0.303) solid;
     padding: 3em 4em 7em 4em;
+    display: flex;
 
     &_section {
         font-weight: bold;
@@ -45,9 +46,12 @@
 }
 
 .swiper {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     position: relative;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    text-align: center;
 }
 
 
@@ -65,6 +69,11 @@
   .cube_name {
     font-size: 1.2em;
     font-weight: bold;
+
+    &_job {
+      font-size: 1em;
+    font-weight: bold;
+    }
   }
 
   .overlay {
@@ -85,15 +94,31 @@
   }
 
   .swipe_icon {
-    margin-right: 1em;
+    margin-right: 0.4em;
   }
 
   .text {
     position: absolute;
-    top: 2%;
-    left: 60%;
+    top: 3%;
+    left: 86%;
+    font-size: 0.9em;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     white-space: nowrap;
+  }
+
+  .cube_letter {
+    position: absolute;
+    top: -40%;
+    margin-left: 0.16em;
+    font-size: 15em;
+  }
+
+  .achange {
+    background-color: #fff;
+  height:37vh;
+  // min-height: 37vh;
+  // max-height: 37vh;
+  padding: 0 1rem 2rem 1rem;
   }

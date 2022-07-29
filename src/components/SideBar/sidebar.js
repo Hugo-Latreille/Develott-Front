@@ -53,7 +53,7 @@ function Sidebar({ children, isVisible }) {
       width: 0,
       opacity: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.4,
       },
     },
     show: {
@@ -69,14 +69,14 @@ function Sidebar({ children, isVisible }) {
       width: "1em",
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
       },
     },
     show: {
       width: "2rem",
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.2,
       },
     },
   };
@@ -103,7 +103,7 @@ function Sidebar({ children, isVisible }) {
       width: 0,
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.1,
       },
     },
     show: {
@@ -130,10 +130,10 @@ function Sidebar({ children, isVisible }) {
         className="sidebar"
       >
         <div className="top_section">
-          {isOpen && (
-            <NavLink to="/">
-              <AnimatePresence initial={false}>
-                <motion.h1
+          <AnimatePresence initial={false}>
+            {isOpen && (
+              <NavLink to="/">
+                <motion.p
                   key="top_section"
                   initial="hidden"
                   animate="show"
@@ -142,13 +142,13 @@ function Sidebar({ children, isVisible }) {
                   className="logo_nav"
                 >
                   Develott
-                </motion.h1>
-              </AnimatePresence>
-            </NavLink>
-          )}
-          <div className="bars">
-            {isOpen && (
-              <AnimatePresence initial={false}>
+                </motion.p>
+                {/* </AnimatePresence> */}
+              </NavLink>
+            )}
+            <div className="bars">
+              {isOpen && (
+                // <AnimatePresence initial={false}>
                 <motion.img
                   key="bars"
                   whileHover={{ scale: 1.5, rotate: 180 }}
@@ -166,10 +166,10 @@ function Sidebar({ children, isVisible }) {
                   alt="logo"
                   onClick={() => dispatch(toggleSideBar())}
                 />
-              </AnimatePresence>
-            )}
+                // </AnimatePresence>
+              )}
 
-            <AnimatePresence initial={false}>
+              {/* <AnimatePresence initial={false}> */}
               {!isOpen && (
                 <motion.img
                   key="bars_closed"
@@ -189,8 +189,8 @@ function Sidebar({ children, isVisible }) {
                   onClick={() => dispatch(toggleSideBar())}
                 />
               )}
-            </AnimatePresence>
-          </div>
+            </div>
+          </AnimatePresence>
 
           {isOpen && <div className="anim"></div>}
         </div>
@@ -228,7 +228,7 @@ function Sidebar({ children, isVisible }) {
               <AnimatePresence initial={false}>
                 {!isOpen && (
                   <motion.i
-                    key="toggle_pic_container_closed"
+                    key="toggle_container_closed"
                     initial="hidden"
                     animate="show"
                     exit="hidden"
@@ -249,7 +249,7 @@ function Sidebar({ children, isVisible }) {
                 {!isOpen && (
                   <NavLink to="/">
                     <motion.img
-                      key="toggle_pic_container"
+                      key="pic_container_close"
                       initial="hidden"
                       animate="show"
                       exit="hidden"
@@ -268,46 +268,6 @@ function Sidebar({ children, isVisible }) {
               </AnimatePresence>
             </div>
 
-            {/* {!isOpen && (
-							<AnimatePresence initial={false}>
-								<motion.i
-									key="profile_container_closed"
-									initial="hidden"
-									animate="show"
-									exit="hidden"
-									transition={{
-										type: "spring",
-										stiffness: 260,
-										damping: 20,
-									}}
-									variants={logAnimation}
-									onClick={() => setDarkMode(!darkMode)}
-									className={`${
-										darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
-									}`}
-								></motion.i>
-							</AnimatePresence>
-						)}
-						{isOpen && (
-							<AnimatePresence initial={false}>
-								<motion.div
-									key="profile_container"
-									initial="hidden"
-									animate="show"
-									exit="hidden"
-									transition={{
-										type: "spring",
-										stiffness: 260,
-										damping: 20,
-									}}
-									variants={profilAnimation}
-									className="toggle_dark"
-								>
-									<Toggle onChange={() => setDarkMode(!darkMode)} />
-									<div className="side_text">Dark Mode</div>
-								</motion.div>
-							</AnimatePresence>
-						)} */}
             <div className="profile">
               <AnimatePresence initial={false}>
                 {!isOpen && (
@@ -355,26 +315,21 @@ function Sidebar({ children, isVisible }) {
                     </div>
                   </motion.div>
                 )}
-                {isOpen && (
-                  <NavLink
-                    to="/"
-                    className="logo_unlog_big"
-                    onClick={handleLogout}
-                  >
-                    <MdOutlineLogout />
-                  </NavLink>
-                )}
               </AnimatePresence>
+              {isOpen && (
+                <NavLink
+                  to="/"
+                  className="logo_unlog_big"
+                  onClick={handleLogout}
+                >
+                  <MdOutlineLogout />
+                </NavLink>
+              )}
             </div>
           </div>
         </section>
       </motion.div>
-      <main
-        className="side_main"
-        // onClick={() => dispatch(closeSideBar())}
-      >
-        {children}
-      </main>
+      <main className="side_main">{children}</main>
     </div>
   );
 }
