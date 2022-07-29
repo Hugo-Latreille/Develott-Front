@@ -43,8 +43,8 @@
 }
 
 .swiper {
-    width: 13em;
-    height: 13em;
+    width: 15em;
+    height: 15em;
     margin-left: 2em;
     margin-right: 2em;
     text-align: center;
@@ -55,7 +55,7 @@
 .swiper-slide {
     background-position: center;
     background-size: cover;
-    border: rgba(149, 157, 165, 0.026)1px solid;
+    border: rgba(149, 157, 165, 0.03)1px solid;
 }
 
 .swiper-slide img {
@@ -110,7 +110,6 @@
   .cube_letter {
     position: absolute;
     top: -50%;
-    margin-left: 0.04em;
     font-size: 15em;
   }
 
