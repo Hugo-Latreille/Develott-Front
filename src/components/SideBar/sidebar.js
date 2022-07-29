@@ -264,6 +264,23 @@ function Sidebar({ children, isVisible }) {
                     />
                   </>
                 )}
+                {isOpen && (
+                  <motion.div
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    }}
+                    variants={profilAnimation}
+                    className="toggle_dark"
+                  >
+                    <Toggle onChange={() => setDarkMode(!darkMode)} />
+                    <div className="side_text">Dark Mode</div>
+                  </motion.div>
+                )}
               </AnimatePresence>
               <AnimatePresence initial={false}>
                 {!isOpen && (
