@@ -167,6 +167,10 @@ p {
 .margin-bottom1 {
   margin-bottom: 1rem;
 }
+.margin-bottom-4 {
+margin-bottom: -3rem;
+margin-top: -1rem;
+}
 
 .color-secondary {
   color: vars.$primaryColor;
