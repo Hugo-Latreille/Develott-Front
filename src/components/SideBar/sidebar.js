@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import ReactTooltip from "react-tooltip";
-import { FaHome, FaUser, FaProjectDiagram } from "react-icons/fa";
+import { FaProjectDiagram } from "react-icons/fa";
 import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
-import Logo from "../../assets/images/v3-logo-colorize.png";
+// import Logo from "../../assets/images/v3-logo-colorize.png";
 import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
@@ -19,21 +19,25 @@ const routes = [
     path: "/",
     name: "Dashboard",
     icon: <AiOutlineDashboard />,
+    tooltip: "Dashboard",
   },
   {
     path: "/",
     name: "Message",
     icon: <MdMessage />,
+    tooltip: "Messagerie",
   },
   {
     path: "/projets",
     name: "Projets",
     icon: <FaProjectDiagram />,
+    tooltip: "Les Projets",
   },
   {
     path: "/projet/create",
     name: "Créer Projet",
     icon: <MdConstruction />,
+    tooltip: "Créer un projet",
   },
 ];
 
@@ -198,7 +202,18 @@ function Sidebar({ children, isVisible }) {
               key={route.name}
               className="sidebar_navlink"
             >
-              <div className="side_icon">{route.icon}</div>
+              <div
+                className="side_icon"
+                data-tip={!isOpen ? route.tooltip : ""}
+              >
+                {route.icon}
+              </div>
+              <ReactTooltip
+                place="right"
+                type="light"
+                effect="solid"
+                arrowColor="white"
+              />
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -223,27 +238,36 @@ function Sidebar({ children, isVisible }) {
             <div className="toggle_pic_container">
               <AnimatePresence initial={false}>
                 {!isOpen && (
-                  <motion.i
-                    key="toggle_container_closed"
-                    initial="hidden"
-                    animate="show"
-                    exit="hidden"
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 20,
-                    }}
-                    variants={logAnimation}
-                    onClick={() => setDarkMode(!darkMode)}
-                    className={`${
-                      darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
-                    }`}
-                  ></motion.i>
+                  <>
+                    <motion.i
+                      key="toggle_container_closed"
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20,
+                      }}
+                      variants={logAnimation}
+                      onClick={() => setDarkMode(!darkMode)}
+                      className={`${
+                        darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+                      }`}
+                      data-tip="DarkMode"
+                    ></motion.i>
+                    <ReactTooltip
+                      place="right"
+                      type="light"
+                      effect="solid"
+                      arrowColor="white"
+                    />
+                  </>
                 )}
               </AnimatePresence>
               <AnimatePresence initial={false}>
                 {!isOpen && (
-                  <NavLink to="/">
+                  <NavLink to="/profil">
                     <motion.img
                       key="pic_container_close"
                       initial="hidden"
@@ -258,7 +282,14 @@ function Sidebar({ children, isVisible }) {
                       src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
                       alt="Profil"
                       className="profile_img_close"
+                      data-tip="Profil"
                     ></motion.img>
+                    <ReactTooltip
+                      place="right"
+                      type="light"
+                      effect="solid"
+                      arrowColor="white"
+                    />
                   </NavLink>
                 )}
               </AnimatePresence>
@@ -280,7 +311,10 @@ function Sidebar({ children, isVisible }) {
                     variants={logAnimation}
                   >
                     <NavLink to="/" className="logo_unlog">
-                      <MdOutlineLogout onClick={handleLogout} />
+                      <MdOutlineLogout
+                        onClick={handleLogout}
+                        data-tip="Se déconnecter"
+                      />
                     </NavLink>
                   </motion.div>
                 )}
@@ -300,15 +334,19 @@ function Sidebar({ children, isVisible }) {
                     variants={profilAnimation}
                     className="profile_details"
                   >
-                    <img
-                      className="profile_img"
-                      src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                      alt="Profil"
-                    />
-                    <div className="name_job">
-                      <div className="name">Bruce Wayne</div>
-                      <div className="job">Lead Dev Front</div>
-                    </div>
+                    <NavLink to="/profil">
+                      <img
+                        className="profile_img"
+                        src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+                        alt="Profil"
+                      />
+                    </NavLink>
+                    <NavLink to="/profil">
+                      <div className="name_job">
+                        <div className="name">Bruce Wayne</div>
+                        <div className="job">Lead Dev Front</div>
+                      </div>
+                    </NavLink>
                   </motion.div>
                 )}
               </AnimatePresence>
