@@ -19,21 +19,25 @@ const routes = [
 		path: "/",
 		name: "Dashboard",
 		icon: <AiOutlineDashboard />,
+		tooltip: "Dashboard",
 	},
 	{
 		path: "/",
 		name: "Message",
 		icon: <MdMessage />,
+		tooltip: "Messagerie",
 	},
 	{
 		path: "/projets",
 		name: "Projets",
 		icon: <FaProjectDiagram />,
+		tooltip: "Les projets",
 	},
 	{
 		path: "/projet/create",
 		name: "Créer Projet",
 		icon: <MdConstruction />,
+		tooltip: "Créer un projet",
 	},
 ];
 
@@ -202,7 +206,13 @@ function Sidebar({ children, isVisible }) {
 							key={route.name}
 							className="sidebar_navlink"
 						>
-							<div className="side_icon">{route.icon}</div>
+							<div
+								className="side_icon"
+								data-tip={!isOpen ? route.tooltip : ""}
+							>
+								{route.icon}
+							</div>
+							<ReactTooltip />
 							<AnimatePresence initial={false}>
 								{isOpen && (
 									<motion.div
@@ -227,27 +237,31 @@ function Sidebar({ children, isVisible }) {
 						<div className="toggle_pic_container">
 							<AnimatePresence initial={false}>
 								{!isOpen && (
-									<motion.i
-										key="toggle_pic_container_closed"
-										initial="hidden"
-										animate="show"
-										exit="hidden"
-										transition={{
-											type: "spring",
-											stiffness: 260,
-											damping: 20,
-										}}
-										variants={logAnimation}
-										onClick={() => setDarkMode(!darkMode)}
-										className={`${
-											darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
-										}`}
-									></motion.i>
+									<>
+										<motion.i
+											key="toggle_pic_container_closed"
+											initial="hidden"
+											animate="show"
+											exit="hidden"
+											transition={{
+												type: "spring",
+												stiffness: 260,
+												damping: 20,
+											}}
+											variants={logAnimation}
+											onClick={() => setDarkMode(!darkMode)}
+											className={`${
+												darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+											}`}
+											data-tip="DarkMode"
+										></motion.i>
+										<ReactTooltip />
+									</>
 								)}
 							</AnimatePresence>
 							<AnimatePresence initial={false}>
 								{!isOpen && (
-									<NavLink to="/">
+									<NavLink to="/profil">
 										<motion.img
 											key="toggle_pic_container"
 											initial="hidden"
@@ -262,6 +276,7 @@ function Sidebar({ children, isVisible }) {
 											src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
 											alt="Profil"
 											className="profile_img_close"
+											data-tip="Votre profil"
 										></motion.img>
 									</NavLink>
 								)}
@@ -324,7 +339,10 @@ function Sidebar({ children, isVisible }) {
 										variants={logAnimation}
 									>
 										<NavLink to="/" className="logo_unlog">
-											<MdOutlineLogout onClick={handleLogout} />
+											<MdOutlineLogout
+												onClick={handleLogout}
+												data-tip="Se déconnecter"
+											/>
 										</NavLink>
 									</motion.div>
 								)}
@@ -344,15 +362,19 @@ function Sidebar({ children, isVisible }) {
 										variants={profilAnimation}
 										className="profile_details"
 									>
-										<img
-											className="profile_img"
-											src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-											alt="Profil"
-										/>
-										<div className="name_job">
-											<div className="name">Bruce Wayne</div>
-											<div className="job">Lead Dev Front</div>
-										</div>
+										<NavLink to="/profil">
+											<img
+												className="profile_img"
+												src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
+												alt="Profil"
+											/>
+										</NavLink>
+										<NavLink to="/profil">
+											<div className="name_job">
+												<div className="name">Bruce Wayne</div>
+												<div className="job">Lead Dev Front</div>
+											</div>
+										</NavLink>
 									</motion.div>
 								)}
 								{isOpen && (
@@ -369,6 +391,7 @@ function Sidebar({ children, isVisible }) {
 					</div>
 				</section>
 			</motion.div>
+
 			<main
 				className="side_main"
 				// onClick={() => dispatch(closeSideBar())}
