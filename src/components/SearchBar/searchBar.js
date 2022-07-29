@@ -61,32 +61,26 @@ function SearchBar() {
           showItemsOnFocus={false}
         />
       </div>
-      <select className="select-input" name="pets" id="pet-select">
-        <option value="techno">Technologie</option>
-        {technologies.map((element) => (
-          <option key={element.name} value="dog">
-            {element.name}
-          </option>
-        ))}
-      </select>
-      <select className="select-input" name="pets" id="pet-select">
-        <option value=""> Poste</option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="hamster">Hamster</option>
-        <option value="parrot">Parrot</option>
-        <option value="spider">Spider</option>
-        <option value="goldfish">Goldfish</option>
-      </select>
-      <select className="select-input" name="pets" id="pet-select">
-        <option value=""> Date </option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="hamster">Hamster</option>
-        <option value="parrot">Parrot</option>
-        <option value="spider">Spider</option>
-        <option value="goldfish">Goldfish</option>
-      </select>
+      <div className="select-input-container">
+        <select className="select-input" name="pets" id="pet-select">
+          <option value=""> Poste</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="hamster">Hamster</option>
+          <option value="parrot">Parrot</option>
+          <option value="spider">Spider</option>
+          <option value="goldfish">Goldfish</option>
+        </select>
+        <select className="select-input" name="pets" id="pet-select">
+          <option value=""> Date </option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="hamster">Hamster</option>
+          <option value="parrot">Parrot</option>
+          <option value="spider">Spider</option>
+          <option value="goldfish">Goldfish</option>
+        </select>
+      </div>
     </div>
   );
 }
