@@ -43,3 +43,13 @@
   background-color: transparent;
   font-size: 1rem;
 }
+
+
+
+
+@media screen and (width < 800px) {
+
+  .input-container {
+    width: 80%;
+  }
+}
