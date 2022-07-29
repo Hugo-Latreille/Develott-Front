@@ -40,18 +40,14 @@ function Profil() {
 	} = useSelector((state) => state.userProfile);
 
 	// const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
 	const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
 	const contentBlock = htmlToDraft(html);
 	const contentState = ContentState.createFromBlockArray(
 		contentBlock.contentBlocks
 	);
-
 	const [editorState, setEditorState] = useState(
 		EditorState.createWithContent(contentState)
 	);
-	// setEditorState(EditorState.createWithContent(contentState));
-
 	const handleEditorChange = (editorState) => {
 		setEditorState(editorState);
 	};
@@ -59,7 +55,13 @@ function Profil() {
 	const handleDescriptionSubmit = (e) => {
 		e.preventDefault();
 		console.log(editorState);
-		// dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
+		dispatch(
+			setUserDescription(
+				draftToHtml(convertToRaw(editorState.getCurrentContent()))
+			)
+		);
+
+		dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
 	};
 
 	const email = useSelector((state) => state.auth.email);
