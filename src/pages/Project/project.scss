@@ -35,6 +35,23 @@
     width: 100%;
     height: 15rem;
     object-fit: cover;
+
+    &-container {
+      position:relative;
+
+      &-edit-btn {
+        position:absolute;
+        top:0.5rem;
+        right:0.5rem;
+        background-color: #fff;
+        padding:0.5rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        color: vars.$primaryColor;
+        cursor: pointer;
+      }
+    }
+    
   }
 
   &-user {
@@ -67,7 +84,19 @@
   }
 
   &-jobs {
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 2rem 0 2rem;
+
+    &-title-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    &-title {
+      width:80%;
+      margin-bottom: -1rem;
+    }
 
     &-container {
       margin-top: 1.5rem;
@@ -90,8 +119,6 @@
 
   &-header {
     background-color: hsl(234, 85%, 74%, 70%);
-    // background-image: url('./../../assets/images/footer-bg2.png');
-    // background-position: center right;
     height:24vh;
     min-height:100px;
     margin-bottom: 1rem;
@@ -130,7 +157,7 @@
     &-container {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
     }
 
     &-see-more {
@@ -254,6 +281,62 @@
 
 }
 
+.validation-edit-btn {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.project-edit-img-container {
+  margin:4rem 2rem 7.75rem 2rem;
+}
+
+.project-edit-img-input {
+  background-color: vars.$backgroundLight;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.edit-btn-main {
+  color: vars.$primaryColor;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.technologies-icon-container2 {
+  background-color: vars.$backgroundLight;
+  display: flex;
+  align-items: center; 
+  border-radius: 5px 8px 8px 5px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  width:90%;
+
+ & i {
+    margin-right: 0.6rem;
+    color:white;
+    padding: 0.6rem 0.7rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+}
+
+.jobs-searchbar-container .input-container {
+  width: 100%;
+  margin-top: -4rem;
+}
+
+.project .project-jobs-container-job {
+  & p {
+    margin-top:0.8rem;
+    margin-bottom: 0;
+  }
+}
+
+
 @media screen and (width < 600px) {
   .project {
     height: auto;
@@ -276,15 +359,13 @@
   }
 
   .project-jobs {
-    width: 100%;
+    width: 85%;
 
-    &-title {
-      padding-bottom: 2rem;
-    }
+
   }
 
   .project-dates {
-    width:100%;
+    width:85%;
   }
 
   .project-description {
