@@ -43,18 +43,18 @@ function App() {
 						<Route path="forgotpassword" element={<ForgotPassword />} />
 					</Route>
 
-					<Route element={<PersistLogin />}>
-						<Route element={<RequireAuth />}>
-							<Route path="welcome" element={<Welcome />} />
-							<Route path="authTest" element={<AuthTest />} />
-							<Route path="projets" element={<Projects />} />
-							<Route path="projet/:projectId" element={<Project />} />
-							<Route path="projet/create" element={<CreateProject />} />
-							<Route path="charte" element={<Charte />} />
-							<Route path="profil" element={<Profil />} />
-							<Route path="dashboard" element={<Dashboard />} />
-						</Route>
-					</Route>
+					{/* <Route element={<PersistLogin />}> */}
+					{/* <Route element={<RequireAuth />}> */}
+					<Route path="welcome" element={<Welcome />} />
+					<Route path="authTest" element={<AuthTest />} />
+					<Route path="projets" element={<Projects />} />
+					<Route path="projet/:projectId" element={<Project />} />
+					<Route path="projet/create" element={<CreateProject />} />
+					<Route path="charte" element={<Charte />} />
+					<Route path="profil" element={<Profil />} />
+					<Route path="dashboard" element={<Dashboard />} />
+					{/* </Route> */}
+					{/* </Route> */}
 					<Route
 						path="*"
 						element={

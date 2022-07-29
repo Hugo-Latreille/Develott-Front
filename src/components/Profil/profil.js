@@ -5,17 +5,25 @@ import "./profil.scss";
 import "../Cards/cards.scss";
 import SearchBarTechnologiesUserProfile from "../SearchBar/searchBarTechnologiesUserProfile";
 import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
+
+//? WYSIWYG editor
 import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
-	setIsEditTechnologiesActive,
 	setDisplayEdit,
 	setNewUserImg,
 	removeData,
+	setUserDescription,
 } from "./../../pages/Profiles/userProfileSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Profil() {
 	const dispatch = useDispatch();
@@ -28,13 +36,35 @@ function Profil() {
 		displayAllDescription,
 		userJobData,
 		userImg,
+		userDescription,
 	} = useSelector((state) => state.userProfile);
+
+	// const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+	const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
+	const contentBlock = htmlToDraft(html);
+	const contentState = ContentState.createFromBlockArray(
+		contentBlock.contentBlocks
+	);
+
+	const [editorState, setEditorState] = useState(
+		EditorState.createWithContent(contentState)
+	);
+	// setEditorState(EditorState.createWithContent(contentState));
+
+	const handleEditorChange = (editorState) => {
+		setEditorState(editorState);
+	};
+
+	const handleDescriptionSubmit = (e) => {
+		e.preventDefault();
+		console.log(editorState);
+		// dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
+	};
 
 	const email = useSelector((state) => state.auth.email);
 	const { data: user } = useGetOneUserQuery(email);
 	console.log(user);
-
-	console.log(userTechnologiesData);
 
 	const languagesData = userTechnologiesData.filter((technology) =>
 		technology.tags.includes("language")
@@ -95,10 +125,6 @@ function Profil() {
 		);
 		widget.open();
 	};
-
-	// TEST TEXTE
-	const texte =
-		" Vous savez, moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...";
 
 	return (
 		<>
@@ -184,8 +210,13 @@ function Profil() {
 							}
 						>
 							{isEditDescriptionActive === true && (
-								<form className="padding-on-edition">
+								<form
+									className="padding-on-edition"
+									onSubmit={handleDescriptionSubmit}
+								>
 									<Editor
+										editorState={editorState}
+										onEditorStateChange={handleEditorChange}
 										wrapperClassName="wrapper-class"
 										editorClassName="editor-class"
 										toolbarClassName="toolbar-class"
@@ -215,14 +246,15 @@ function Profil() {
 											},
 										}}
 									/>
+									<textarea
+										disabled
+										value={draftToHtml(
+											convertToRaw(editorState.getCurrentContent())
+										)}
+									/>
 									<button
 										type="submit"
 										className="main-button-colored create-project-button"
-										onClick={() =>
-											dispatch(
-												setDisplayEdit({ name: "isEditDescriptionActive" })
-											)
-										}
 									>
 										Valider
 									</button>
@@ -245,8 +277,8 @@ function Profil() {
 									</div>
 									<p className="user-description-texte">
 										{displayAllDescription === false &&
-											DisplayShowMoreDescription(texte)}
-										{displayAllDescription === true && texte}
+											DisplayShowMoreDescription(user?.description)}
+										{displayAllDescription === true && user?.description}
 										{displayAllDescription === false && (
 											<span
 												className="user_desc_link"

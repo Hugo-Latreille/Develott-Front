@@ -9,6 +9,7 @@ const initialState = {
 	userTechnologiesData: [],
 	userJobData: "",
 	userImg: "",
+	userDescription: "",
 };
 
 export const userProfile = createSlice({
@@ -36,6 +37,9 @@ export const userProfile = createSlice({
 		setNewUserImg: (state, action) => {
 			state.userImg = action.payload;
 		},
+		setUserDescription: (state, action) => {
+			state.userDescription = action.payload;
+		},
 	},
 });
 
@@ -43,8 +47,9 @@ export const {
 	setData,
 	setDisplayEdit,
 	removeData,
-	setNewUserImg,
 	setJobData,
+	setNewUserImg,
+	setUserDescription,
 } = userProfile.actions;
 
 export default userProfile.reducer;

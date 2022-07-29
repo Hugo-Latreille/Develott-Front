@@ -2,7 +2,7 @@ import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import jobsDataArray from "../../assets/data/jobsData.json";
 import { useDispatch } from "react-redux";
-import { setData, setJobData } from "../../pages/Profiles/userProfileSlice";
+import { setJobData } from "../../pages/Profiles/userProfileSlice";
 
 function SearchBarJobsUser() {
 	const dispatch = useDispatch();
