@@ -110,6 +110,7 @@ function Dashboard() {
                   <p>Github / Gitlab</p>
                   <span>/Develott</span>
                 </div>
+                <span className="edit-btn-main">Modifier</span>
               </div>
               <div className="dashboard-main-content-team-users">
                 <img
@@ -120,6 +121,7 @@ function Dashboard() {
                   <p>Discord</p>
                   <span>/Develott</span>
                 </div>
+                <span className="edit-btn-main">Modifier</span>
               </div>
               <div className="dashboard-main-content-team-users">
                 <img
@@ -130,6 +132,7 @@ function Dashboard() {
                   <p>Slack</p>
                   <span>/Develott</span>
                 </div>
+                <span className="edit-btn-main">Modifier</span>
               </div>
               <div className="dashboard-main-content-team-users">
                 <img
@@ -140,6 +143,7 @@ function Dashboard() {
                   <p>Trello</p>
                   <span>/Develott-Trello</span>
                 </div>
+                <span className="edit-btn-main">Ajouter</span>
               </div>
             </div>
           </div>
