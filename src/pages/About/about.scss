@@ -1,63 +1,61 @@
 @use "./../../styles/vars";
 
 .about_container {
-    
+      margin-top: 3.5rem;
+      background-image: url("./../../assets/images/background-blob2.png");
+      background-size: contain;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      padding-bottom: 13rem;
+     
+
 
     &_main {
-        margin: 5em 20em 5em 2em;
+      padding-left: 10em;
+      padding-right: 10em;
+      
     }
 
     &_title {
-        border-radius: 40px 40px 0px 0px;
-        padding: 2em;
-        text-align: center;
-        background-image: url("./../../assets/images/footer-bg2.png");
-        background-size: cover;
-        color: white;
+      background-color: hsl(234, 85%, 74%, 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height:100px;
+      margin-bottom: 7rem;
+      padding: 1rem 2rem 1rem 2rem;
+      color:white;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     }
 
-    &_end {
-        border-radius: 0px 0px 40px 40px;
-        padding: 2em;
-        text-align: center;
-        background-image: url("./../../assets/images/footer-bg2.png");
-        background-size: cover;
-        color: white;
-    }
 }
 
 .about_main {
-    border: 1px rgba(0, 0, 0, 0.303) solid;
-    padding: 3em 4em 7em 4em;
+    padding: 4em 1em 10em 1em;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
-    &_section {
-        font-weight: bold;
-        line-height: 25px;
-        font-size: 1.2em;
-        margin-bottom: 2em;
-    }
-
-    &_list {
-        margin-bottom: 1em;
-        font-size: 1.1em;
-    }
 }
 
 .swiper {
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 230px;
     position: relative;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
+    margin-left: 2em;
+    margin-right: 2em;
     text-align: center;
+    
 }
 
 
 .swiper-slide {
     background-position: center;
     background-size: cover;
+    border: rgba(149, 157, 165, 0.026)1px solid;
 }
 
 .swiper-slide img {
@@ -67,6 +65,7 @@
   }
 
   .cube_name {
+    margin-top: 20%;
     font-size: 1.2em;
     font-weight: bold;
 
@@ -110,15 +109,16 @@
 
   .cube_letter {
     position: absolute;
-    top: -40%;
-    margin-left: 0.16em;
+    top: -50%;
+    margin-left: 0.04em;
     font-size: 15em;
   }
 
-  .achange {
-    background-color: #fff;
-  height:37vh;
-  // min-height: 37vh;
-  // max-height: 37vh;
+  .info_contain {
+    margin-top: 1em;
+    align-items: baseline;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
   padding: 0 1rem 2rem 1rem;
   }

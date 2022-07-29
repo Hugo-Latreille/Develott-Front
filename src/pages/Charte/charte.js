@@ -1,6 +1,5 @@
-import "./charteAbout.scss";
+import "./charte.scss";
 import CharteComp from "../../components/Charte/charte";
-import About from "../../components/About/about";
 import Footer from "../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 
@@ -9,7 +8,6 @@ function Charte() {
     <Sidebar>
       <div className="charte">
         <CharteComp />
-        <About />
         <Footer />
       </div>
     </Sidebar>
