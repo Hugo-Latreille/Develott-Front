@@ -16,13 +16,13 @@ import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
 
 const routes = [
   {
-    path: "/",
+    path: "/dashboard",
     name: "Dashboard",
     icon: <AiOutlineDashboard />,
     tooltip: "Dashboard",
   },
   {
-    path: "/",
+    path: "/message",
     name: "Message",
     icon: <MdMessage />,
     tooltip: "Messagerie",
@@ -136,7 +136,7 @@ function Sidebar({ children, isVisible }) {
         <div className="top_section">
           <AnimatePresence initial={false}>
             {isOpen && (
-              <NavLink to="/">
+              <NavLink to="/projets">
                 <motion.p
                   key="top_section"
                   initial="hidden"
@@ -208,12 +208,6 @@ function Sidebar({ children, isVisible }) {
               >
                 {route.icon}
               </div>
-              <ReactTooltip
-                place="right"
-                type="light"
-                effect="solid"
-                arrowColor="white"
-              />
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -256,12 +250,6 @@ function Sidebar({ children, isVisible }) {
                       }`}
                       data-tip="DarkMode"
                     ></motion.i>
-                    <ReactTooltip
-                      place="right"
-                      type="light"
-                      effect="solid"
-                      arrowColor="white"
-                    />
                   </>
                 )}
                 {isOpen && (
@@ -302,6 +290,7 @@ function Sidebar({ children, isVisible }) {
                       data-tip="Profil"
                     ></motion.img>
                     <ReactTooltip
+                      className="tooltips_side"
                       place="right"
                       type="light"
                       effect="solid"

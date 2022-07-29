@@ -6,14 +6,11 @@
       background-size: contain;
       background-position: center bottom;
       background-repeat: no-repeat;
-      width: 100vw;
      
 
 
     &_main {
-      padding-left: 10em;
-      padding-right: 10em;
-      margin-bottom: 13em;
+      margin: 3em 10em 12em 10em;
       
     }
 
@@ -22,9 +19,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height:100px;
       margin-bottom: 7rem;
-      padding: 1rem 2rem 1rem 2rem;
+      padding: 3rem 2rem 3rem 2rem;
       color:white;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
@@ -33,6 +29,8 @@
 }
 
 .about_main {
+  margin-left: 2em;
+  margin-right: 2em;
     padding: 4em 1em 10em 1em;
     display: flex;
     flex-direction: row;
