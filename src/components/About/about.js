@@ -35,7 +35,7 @@ function About() {
             }}
             pagination={false}
             modules={[Autoplay, EffectCube, Pagination]}
-            className="mySwiper"
+            className="swippertest"
           >
             <SwiperSlide>
               <img src={Lea} />
