@@ -6,11 +6,12 @@
       background-size: contain;
       background-position: center bottom;
       background-repeat: no-repeat;
+      width: 100vw;
      
 
 
     &_main {
-      margin: 3em 10em 12em 10em;
+      margin: 3em 9em 12em 6em;
       
     }
 
@@ -42,8 +43,8 @@
 }
 
 .swiper {
-    width: 14em;
-    height: 14em;
+    width: 13em;
+    height: 13em;
     margin-left: 2em;
     margin-right: 2em;
     text-align: center;

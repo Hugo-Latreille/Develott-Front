@@ -306,7 +306,6 @@ function About() {
             </Swiper>
           </div>
         </div>
-        <Footer />
       </div>
     </Sidebar>
   );
