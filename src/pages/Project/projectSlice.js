@@ -39,22 +39,13 @@ export const projectSlice = createSlice({
 		changeDate: (state, action) => {
 			state[action.payload.name] = action.payload.value;
 		},
+		setNewImg: (state, action) => {
+			state.projectImg = action.payload;
+		},
 	},
 });
 
-export const {
-	setDisplayEditDescription,
-	setDisplayEditTechnologies,
-	setDisplayEditJobs,
-	setDisplayAllDescription,
-	setTechnologiesData,
-	removeTechnologyData,
-	setJobsData,
-	removeJobData,
-	setData,
-	setDisplayEdit,
-	removeData,
-	changeDate,
-} = projectSlice.actions;
+export const { setData, setDisplayEdit, removeData, changeDate, setNewImg } =
+	projectSlice.actions;
 
 export default projectSlice.reducer;

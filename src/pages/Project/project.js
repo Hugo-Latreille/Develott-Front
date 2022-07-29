@@ -15,7 +15,12 @@ import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProjec
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
+import {
+	setDisplayEdit,
+	removeData,
+	changeDate,
+	setNewImg,
+} from "./projectSlice";
 import { useParams } from "react-router-dom";
 import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
@@ -38,6 +43,7 @@ function Project() {
 		jobsData,
 		startDate,
 		endDate,
+		projectImg,
 	} = useSelector((state) => state.project);
 
 	const languagesData = technologiesData.filter((technology) =>
@@ -94,6 +100,8 @@ function Project() {
 			(error, result) => {
 				if (!error && result && result.event === "success") {
 					console.log(result.info.url);
+					const newImg = result.info.url;
+					dispatch(setNewImg(newImg));
 				}
 			}
 		);
@@ -109,7 +117,7 @@ function Project() {
 							{!displayImgEdit && (
 								<>
 									<img
-										src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
+										src={projectImg}
 										className="project-img"
 										alt="Projet image"
 									/>
