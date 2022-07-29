@@ -6,13 +6,14 @@
       background-size: contain;
       background-position: center bottom;
       background-repeat: no-repeat;
-      padding-bottom: 13rem;
+      width: 100vw;
      
 
 
     &_main {
       padding-left: 10em;
       padding-right: 10em;
+      margin-bottom: 13em;
       
     }
 
@@ -36,15 +37,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 }
 
 .swiper {
-    width: 230px;
-    height: 230px;
-    position: relative;
+    width: 14em;
+    height: 14em;
     margin-left: 2em;
     margin-right: 2em;
     text-align: center;
@@ -122,3 +123,105 @@
     flex-direction: column;
   padding: 0 1rem 2rem 1rem;
   }
+
+  @media screen and (width < 1800px) {
+    .swiper {
+      width: 11em;
+      height: 11em;
+      
+  }
+  .info_contain {
+    font-size: 0.7em;
+  }
+  .cube_letter {
+    font-size: 10em;
+  }
+  .cube_name {
+    font-size: 1em;
+
+    &_job {
+      font-size: 0.7em;
+    }
+  }
+  }
+
+  @media screen and (width < 1600px) {
+    .swiper {
+      width: 9em;
+      height: 9em;
+      
+  }
+  .info_contain {
+    font-size: 0.6em;
+  }
+  .cube_letter {
+    font-size: 9em;
+  }
+  .cube_name {
+    font-size: 0.9em;
+
+    &_job {
+      font-size: 0.6em;
+    }
+  }
+  }
+
+
+@media screen and (width < 1400px) {
+  .swiper {
+    width: 15em;
+    height: 15em;
+    margin-bottom: 10em;
+    
+}
+.about_main {
+  flex-direction: column;
+  align-items: center;
+}
+.info_contain {
+  font-size: 1em;
+}
+
+
+
+
+}
+
+@media screen and (width < 700px) {
+  .about_container_main {
+    padding-left: 6em;
+    padding-right: 6em;
+    margin-bottom: 9em;
+    
+  }
+
+
+
+
+}
+
+@media screen and (width < 500px) {
+  .swiper {
+    width: 10em;
+    height: 10em;
+    
+}
+  .about_container_main {
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 7em;
+    
+  }
+
+  .about_container_title {
+    padding: 1rem 1rem 1rem 1rem;
+
+  }
+
+  .about_main {
+    padding: 1em 1em 1em 1em;
+
+}
+
+
+}

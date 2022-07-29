@@ -52,6 +52,7 @@ function App() {
               <Route path="projet/:projectId" element={<Project />} />
               <Route path="projet/create" element={<CreateProject />} />
               <Route path="charte" element={<Charte />} />
+              <Route path="about" element={<About />} />
               <Route path="profil" element={<Profil />} />
               <Route path="dashboard" element={<Dashboard />} />
             </Route>

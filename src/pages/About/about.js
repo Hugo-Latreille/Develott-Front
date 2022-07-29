@@ -3,7 +3,6 @@ import "./about.scss";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cube";
-import "swiper/css/pagination";
 import Sidebar from "../../components/SideBar/sidebar";
 import Footer from "../../components/Footer/footerColored";
 import Lea from "../../assets/images/Lea.png";
@@ -13,7 +12,7 @@ import Clement from "../../assets/images/Clement.png";
 import Charlelie from "../../assets/images/Charlelie.png";
 
 // import required modules
-import { Autoplay, EffectCube, Pagination } from "swiper";
+import { Autoplay, EffectCube } from "swiper";
 
 function About() {
   return (
@@ -38,7 +37,7 @@ function About() {
                 disableOnInteraction: true,
               }}
               pagination={false}
-              modules={[Autoplay, EffectCube, Pagination]}
+              modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
               <SwiperSlide>
@@ -95,7 +94,7 @@ function About() {
                 disableOnInteraction: true,
               }}
               pagination={false}
-              modules={[Autoplay, EffectCube, Pagination]}
+              modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
               <SwiperSlide>
@@ -151,7 +150,7 @@ function About() {
                 disableOnInteraction: true,
               }}
               pagination={false}
-              modules={[Autoplay, EffectCube, Pagination]}
+              modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
               <SwiperSlide>
@@ -207,7 +206,7 @@ function About() {
                 disableOnInteraction: true,
               }}
               pagination={false}
-              modules={[Autoplay, EffectCube, Pagination]}
+              modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
               <SwiperSlide>
@@ -263,7 +262,7 @@ function About() {
                 disableOnInteraction: true,
               }}
               pagination={false}
-              modules={[Autoplay, EffectCube, Pagination]}
+              modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
               <SwiperSlide>
@@ -307,8 +306,8 @@ function About() {
             </Swiper>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </Sidebar>
   );
 }

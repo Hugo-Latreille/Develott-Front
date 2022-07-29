@@ -47,3 +47,31 @@
         font-size: 1.1em;
     }
 }
+
+.align {
+    text-align: center;
+}
+
+@media screen and (width < 1200px) {
+    .charte_container_main {
+        margin: 3em 10em 3em 10em;
+    }
+  
+  
+  }
+
+  @media screen and (width < 900px) {
+    .charte_container_main {
+        margin: 3em 5em 3em 5em;
+    }
+  
+  
+  }
+
+  @media screen and (width < 600px) {
+    .charte_container_main {
+        margin: 3em 2em 3em 2em;
+    }
+  
+  
+  }
