@@ -12,6 +12,7 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import sanitizeHtml from "sanitize-html";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -23,7 +24,6 @@ import {
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useState } from "react";
-import { useEffect } from "react";
 
 function Profil() {
 	const dispatch = useDispatch();
@@ -40,7 +40,8 @@ function Profil() {
 	} = useSelector((state) => state.userProfile);
 
 	// const [editorState, setEditorState] = useState(EditorState.createEmpty());
-	const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
+	// const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
+	const html = userDescription;
 	const contentBlock = htmlToDraft(html);
 	const contentState = ContentState.createFromBlockArray(
 		contentBlock.contentBlocks
@@ -277,10 +278,25 @@ function Profil() {
 											}
 										></i>
 									</div>
+
+									{displayAllDescription === false && (
+										<p
+											className="user-description-texte"
+											dangerouslySetInnerHTML={{
+												__html: DisplayShowMoreDescription(userDescription),
+											}}
+										/>
+									)}
+									{displayAllDescription === true && (
+										<p
+											className="user-description-texte"
+											dangerouslySetInnerHTML={{
+												__html: userDescription,
+											}}
+										/>
+									)}
+
 									<p className="user-description-texte">
-										{displayAllDescription === false &&
-											DisplayShowMoreDescription(user?.description)}
-										{displayAllDescription === true && user?.description}
 										{displayAllDescription === false && (
 											<span
 												className="user_desc_link"
