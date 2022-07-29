@@ -61,3 +61,26 @@
   border-radius: 25px 0 0 25px;
   color: vars.$primaryColor !important ;
 }
+
+@media screen and (width < 600px) {
+
+  .connexion {
+
+    &-container {
+      width:96%;
+      margin:auto;
+      height:80vh;
+    }
+  }
+
+  .navigation-links {
+    font-size: 0.7rem;
+
+    & span {
+      padding: 1.5rem 1.6rem;
+      margin:0;
+      text-align: right;
+    }
+  }
+
+}
