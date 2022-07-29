@@ -16,12 +16,18 @@
 
 @media screen and (width < 600px) {
   .navbar {
-    &-logo {
+    width: 100%;
+
+
+    &-searchbar {
       display: none;
     }
 
     &-link {
-      display: none;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
     }
+
+
   }
 }
