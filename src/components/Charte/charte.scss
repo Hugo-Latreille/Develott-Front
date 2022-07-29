@@ -2,34 +2,38 @@
 
 .charte_container {
     
+    
 
     &_main {
         margin: 3em 20em 3em 20em;
     }
 
     &_title {
-        border-radius: 40px 40px 0px 0px;
-        padding: 2em;
-        text-align: center;
-        background-image: url("./../../assets/images/footer-bg2.png");
-        background-size: cover;
-        color: white;
+        background-color: hsl(234, 85%, 74%, 70%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height:100px;
+        margin-bottom: 3rem;
+        padding: 1rem 2rem 1rem 2rem;
+        color:white;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     }
 
-    &_end {
-        border-radius: 0px 0px 40px 40px;
-        padding: 2em;
-        text-align: center;
-        background-image: url("./../../assets/images/footer-bg2.png");
-        background-size: cover;
-        color: white;
-    }
+  
 }
 
 .charte_main {
-    border: 1px rgba(0, 0, 0, 0.303) solid;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 2em 4em 2em 4em;
+
+    &_conditions {
+        line-height: 25px;
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
 
     &_section {
         font-weight: bold;
