@@ -11,7 +11,8 @@
         border-radius: 40px 40px 0px 0px;
         padding: 2em;
         text-align: center;
-        background-color: #7875db;
+        background-image: url("./../../assets/images/footer-bg2.png");
+        background-size: cover;
         color: white;
 
     }
@@ -20,13 +21,14 @@
         border-radius: 0px 0px 40px 40px;
         padding: 2em;
         text-align: center;
-        background-color: #7875db;
+        background-image: url("./../../assets/images/footer-bg2.png");
+        background-size: cover;
         color: white;
     }
 }
 
 .charte_main {
-    border: 1px black solid;
+    border: 1px rgba(0, 0, 0, 0.303) solid;
     padding: 2em 4em 2em 4em;
 
     &_section {
