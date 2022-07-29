@@ -1,17 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  displayEditGitLink: false,
+  displayEditDiscordLink: false,
+  displayEditSlackLink: false,
+  displayEditTrelloLink: false,
+};
 
 export const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
   reducers: {
-    toggleSideBar: (state) => {
-      state.sideBarIsOpen = !state.sideBarIsOpen;
+    setDisplayEdit: (state, action) => {
+      state[action.payload.name] = !state[action.payload.name];
     },
   },
 });
 
-export const { toggleSideBar } = dashboardSlice.actions;
+export const { setDisplayEdit } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

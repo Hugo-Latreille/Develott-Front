@@ -41,6 +41,14 @@
         width:21%;
         background-color: #fff;
     }
+
+    &-edit-input {
+        background-color: vars.$backgroundLight;
+        padding: 0.6rem 0.5rem ;
+        border:none;
+        border-bottom: 1px solid vars.$primaryColor;
+        width:80%;
+    }
 }
 
 
