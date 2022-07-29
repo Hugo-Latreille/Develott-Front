@@ -9,12 +9,10 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-	setIsEditDescriptionActive,
 	setIsEditTechnologiesActive,
-	removeUserTechnologyData,
-	setDisplayAllDescription,
 	setDisplayEdit,
 	setNewUserImg,
+	removeData,
 } from "./../../pages/Profiles/userProfileSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
@@ -142,7 +140,6 @@ function Profil() {
 								></i>
 							</div>
 						)}
-
 						<div className=" desc_container_description-links-informations">
 							<div className="desc_container_description-links">
 								<p className="desc_container_title user-available">
@@ -221,7 +218,11 @@ function Profil() {
 									<button
 										type="submit"
 										className="main-button-colored create-project-button"
-										onClick={() => dispatch(setIsEditDescriptionActive())}
+										onClick={() =>
+											dispatch(
+												setDisplayEdit({ name: "isEditDescriptionActive" })
+											)
+										}
 									>
 										Valider
 									</button>
@@ -235,7 +236,11 @@ function Profil() {
 										</h4>
 										<i
 											className="fal fa-edit"
-											onClick={() => dispatch(setIsEditDescriptionActive())}
+											onClick={() =>
+												dispatch(
+													setDisplayEdit({ name: "isEditDescriptionActive" })
+												)
+											}
 										></i>
 									</div>
 									<p className="user-description-texte">
@@ -245,7 +250,11 @@ function Profil() {
 										{displayAllDescription === false && (
 											<span
 												className="user_desc_link"
-												onClick={() => dispatch(setDisplayAllDescription())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({ name: "displayAllDescription" })
+													)
+												}
 											>
 												... voir plus.
 											</span>
@@ -253,7 +262,11 @@ function Profil() {
 										{displayAllDescription === true && (
 											<span
 												className="user_desc_link"
-												onClick={() => dispatch(setDisplayAllDescription())}
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({ name: "displayAllDescription" })
+													)
+												}
 											>
 												voir moins.
 											</span>
@@ -286,7 +299,13 @@ function Profil() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeUserTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "userTechnologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -311,7 +330,13 @@ function Profil() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeUserTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "userTechnologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -336,7 +361,13 @@ function Profil() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(removeUserTechnologyData(techno.name))
+															dispatch(
+																removeData({
+																	name: "userTechnologiesData",
+																	field: "name",
+																	value: techno.name,
+																})
+															)
 														}
 													></i>
 												</div>
@@ -347,7 +378,11 @@ function Profil() {
 								<button
 									type="button"
 									className="main-button-colored create-project-button"
-									onClick={() => dispatch(setIsEditTechnologiesActive())}
+									onClick={() =>
+										dispatch(
+											setDisplayEdit({ name: "isEditTechnologiesActive" })
+										)
+									}
 								>
 									Valider
 								</button>
@@ -366,7 +401,11 @@ function Profil() {
 									<h4 className="desc_container_main">Compétences</h4>
 									<i
 										className="fal fa-edit"
-										onClick={() => dispatch(setIsEditTechnologiesActive())}
+										onClick={() =>
+											dispatch(
+												setDisplayEdit({ name: "isEditTechnologiesActive" })
+											)
+										}
 									></i>
 								</div>
 								<div className="user-technologies">

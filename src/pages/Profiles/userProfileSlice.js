@@ -5,6 +5,7 @@ const initialState = {
 	isEditDescriptionActive: false,
 	isEditTechnologiesActive: false,
 	isEditUserPictureActive: false,
+	isEditUserInfos: false,
 	userTechnologiesData: [],
 	userJobData: "",
 	userImg: "",
@@ -32,25 +33,6 @@ export const userProfile = createSlice({
 			);
 			state[action.payload.name] = updateData;
 		},
-
-		setDisplayAllDescription: (state, action) => {
-			state.displayAllDescription = !state.displayAllDescription;
-		},
-		setIsEditDescriptionActive: (state, action) => {
-			state.isEditDescriptionActive = !state.isEditTechnologiesActive;
-		},
-		setIsEditTechnologiesActive: (state, action) => {
-			state.isEditTechnologiesActive = !state.isEditTechnologiesActive;
-		},
-
-		removeUserTechnologyData: (state, action) => {
-			const updateTechnologiesData = state.userTechnologiesData.filter(
-				(technologie) => {
-					return technologie.name !== action.payload;
-				}
-			);
-			state.userTechnologiesData = updateTechnologiesData;
-		},
 		setNewUserImg: (state, action) => {
 			state.userImg = action.payload;
 		},
@@ -61,11 +43,6 @@ export const {
 	setData,
 	setDisplayEdit,
 	removeData,
-	setDisplayAllDescription,
-	setIsEditDescriptionActive,
-	setIsEditTechnologiesActive,
-	setUserTechnologiesData,
-	removeUserTechnologyData,
 	setNewUserImg,
 	setJobData,
 } = userProfile.actions;

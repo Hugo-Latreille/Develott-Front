@@ -8,7 +8,6 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
-						console.log(result);
 						const userImg = result.data.picture_project;
 						dispatch(setNewUserImg(userImg));
 					})
