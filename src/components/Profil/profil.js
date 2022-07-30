@@ -238,7 +238,7 @@ function Profil() {
                   <>
                     <p className="desc_container_title">
                       <i className="fas fa-map-marker color-secondary"></i>
-                      {user.city ? user.city : "A compléter"}
+                      {/* {user.city ? user.city : "A compléter"} */}
                     </p>
                     <p className="desc_container_title">
                       <i className="fab fa-github color-secondary"></i>
