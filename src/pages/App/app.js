@@ -43,8 +43,8 @@ function App() {
 						<Route path="forgotpassword" element={<ForgotPassword />} />
 					</Route>
 
-					{/* <Route element={<PersistLogin />}> */}
-					{/* <Route element={<RequireAuth />}> */}
+					<Route element={<PersistLogin />}>
+					<Route element={<RequireAuth />}>
 					<Route path="welcome" element={<Welcome />} />
 					<Route path="authTest" element={<AuthTest />} />
 					<Route path="projets" element={<Projects />} />
@@ -53,8 +53,8 @@ function App() {
 					<Route path="charte" element={<Charte />} />
 					<Route path="profil" element={<Profil />} />
 					<Route path="dashboard" element={<Dashboard />} />
-					{/* </Route> */}
-					{/* </Route> */}
+					</Route>
+					</Route>
 					<Route
 						path="*"
 						element={
