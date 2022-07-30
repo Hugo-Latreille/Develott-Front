@@ -17,7 +17,6 @@ export const store = configureStore({
     createProject: createProjectSlice,
     project: projectSlice,
     dashboard: dashboardSlice,
-    updateProfile: updtateUserProfileSlice,
     userProfile: userProfileSlice,
   },
   middleware: (getDefaultMiddleware) =>

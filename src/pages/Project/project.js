@@ -126,7 +126,9 @@ function Project() {
                     onClick={() =>
                       dispatch(setDisplayEdit({ name: "displayImgEdit" }))
                     }
-                  ></span>
+                  >
+                    Modifier
+                  </span>
                 </div>
               )}
               {displayImgEdit && (
