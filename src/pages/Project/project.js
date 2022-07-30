@@ -126,7 +126,9 @@ function Project() {
                     onClick={() =>
                       dispatch(setDisplayEdit({ name: "displayImgEdit" }))
                     }
-                  ></span>
+                  >
+                    Modifier
+                  </span>
                 </div>
               )}
               {displayImgEdit && (
@@ -148,7 +150,6 @@ function Project() {
                   </p>
                 </div>
               )}
-
               <div className="project-user">
                 <img
                   className="slider-avatar"
