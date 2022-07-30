@@ -188,7 +188,7 @@ function Dashboard() {
                   <div className="dashboard-main-content-team-users-details">
                     <input
                       type="texte"
-                      placeholder="Url chanel Discord..."
+                      placeholder="Lien chanel Discord..."
                       className="dashboard-edit-input"
                     />
                   </div>
@@ -233,7 +233,7 @@ function Dashboard() {
                   <div className="dashboard-main-content-team-users-details">
                     <input
                       type="texte"
-                      placeholder="Url Chanel Slack"
+                      placeholder="Lien Chanel Slack"
                       className="dashboard-edit-input"
                     />
                   </div>
@@ -278,7 +278,7 @@ function Dashboard() {
                   <div className="dashboard-main-content-team-users-details">
                     <input
                       type="texte"
-                      placeholder="Url Trello"
+                      placeholder="Lien Trello"
                       className="dashboard-edit-input"
                     />
                   </div>

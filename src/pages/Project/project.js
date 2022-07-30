@@ -254,10 +254,6 @@ function Project() {
                     <i className="far fa-calendar-check success"></i> Début :{" "}
                     {moment(startDate).locale("fr").format("LL")}
                   </p>
-                  {/* <p>
-                    <i className="far fa-calendar-check success"></i> Fin :{" "}
-                    {moment(endDate).locale("fr").format("LL")}
-                  </p> */}
                   <p>
                     <i className="far fa-calendar-exclamation warning"></i>{" "}
                     Durée :
@@ -270,7 +266,7 @@ function Project() {
               )}
               {displayEditDates && (
                 <div className="project-dates">
-                  <p>
+                  <div className="project-dates-inputs">
                     <LocalizationProvider
                       dateAdapter={AdapterMoment}
                       locale="fr"
@@ -289,7 +285,7 @@ function Project() {
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </LocalizationProvider>
-                  </p>
+                  </div>
                   <p>
                     <LocalizationProvider
                       dateAdapter={AdapterMoment}
