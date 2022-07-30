@@ -32,6 +32,7 @@ function Profil() {
     isEditDescriptionActive,
     isEditTechnologiesActive,
     isEditUserPictureActive,
+    isEditUserInfos,
     userTechnologiesData,
     displayAllDescription,
     userJobData,
@@ -209,26 +210,74 @@ function Profil() {
             )}
             <div className=" desc_container_description-links-informations">
               <div className="desc_container_description-links">
+                <span
+                  className="project-img-container-edit-btn"
+                  onClick={() =>
+                    dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+                  }
+                >
+                  Modifier
+                </span>
                 <p className="desc_container_title user-available">
                   <i className="fas fa-circle success"></i> Disponible pour
                   débuter un nouveau projet
                 </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-map-marker color-secondary"></i>{" "}
-                  Montpellier
-                </p>
-                <p className="desc_container_title">
-                  <i className="fab fa-github color-secondary"></i>{" "}
-                  <a href="#"> Superman-Suck</a>{" "}
-                </p>
-                <p className="desc_container_title">
-                  <i className="fab fa-linkedin color-secondary"></i>{" "}
-                  <a href="#"> Bruce Wayne</a>
-                </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-globe color-secondary"></i>{" "}
-                  <a href="#"> brucewayne.com</a>
-                </p>
+                {isEditUserInfos === false && (
+                  <>
+                    <p className="desc_container_title">
+                      <i className="fas fa-map-marker color-secondary"></i>{" "}
+                      Montpellier
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fab fa-github color-secondary"></i>{" "}
+                      <a href="#"> Superman-Suck</a>{" "}
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fab fa-linkedin color-secondary"></i>{" "}
+                      <a href="#"> Bruce Wayne</a>
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fas fa-globe color-secondary"></i>{" "}
+                      <a href="#"> brucewayne.com</a>
+                    </p>
+                  </>
+                )}
+                {isEditUserInfos === true && (
+                  <>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fas fa-map-marker color-secondary"></i>{" "}
+                      <input
+                        type="texte"
+                        placeholder="Ville ..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fab fa-github color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien profil Github..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fab fa-linkedin color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien profil Linkedin..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fas fa-globe color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien vers Portfolio..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               <p className="desc_container_title user-password">
                 <i className="fal fa-key"></i> Mot de Passe

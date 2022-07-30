@@ -176,13 +176,10 @@
       background-color: #fff;
       padding : 2rem ;
       min-height:40vh;
+      position:relative;
     }
 
-    // &-user {
-    //   height: 25%;
-    // }
-    // &-links {
-    // }
+
   }
 
   &_project {
@@ -324,6 +321,12 @@
   font-weight: bolder;
   cursor: pointer;
   margin-left: 1rem;
+}
+
+.user-info-input-edition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 @media screen and (width < 600px) {
