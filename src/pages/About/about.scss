@@ -122,6 +122,72 @@
   padding: 0 1rem 2rem 1rem;
   }
 
+  .socialmedia_container {
+      background-color: white;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #330867 0%, #30cfd0 100%);
+        padding: 1em 6em 1em 0em;
+  }
+
+  .ul_media{
+    position: relative;
+    display: flex;
+    z-index: 2;
+  }
+
+  .ul_media li {
+    position: relative;
+    list-style: none;
+    margin: 20px;
+
+  }
+
+  .ul_media li a {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    transition: 0.5s;
+    overflow: hidden;
+
+  }
+
+  .ul_media li a:hover {
+    transform: translateY(-20px);
+  }
+
+  .ul_media li a::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skewX(45deg) translateX(150px);
+    transition: 0.5s;
+  }
+
+  .ul_media li a:hover::before {
+    transform: skewX(45deg) translateX(-150px);
+  }
+
+
   @media screen and (width < 1800px) {
     .swiper {
       width: 11em;

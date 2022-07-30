@@ -21,6 +21,9 @@ import ReactCursorPosition from "react-cursor-position";
 import Charte from "../Charte/charte";
 import About from "../About/about";
 
+import Loader1 from "../../components/Loader1/loader1";
+import Loader2 from "../../components/Loader2/loader2";
+
 function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -38,7 +41,7 @@ function App() {
     <div className="app">
       <Routes location={background || location}>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={<About />}>
             <Route path="connexion" element={<Connexion />} />
             <Route path="newpassword/:userId" element={<NewPassword />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />

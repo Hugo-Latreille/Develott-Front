@@ -12,29 +12,29 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function Home() {
-	const navigate = useNavigate();
-	const { isSuccess } = useGithubLoginQuery();
+  const navigate = useNavigate();
+  const { isSuccess } = useGithubLoginQuery();
 
-	useEffect(() => {
-		if (isSuccess) {
-			navigate("/projets");
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isSuccess]);
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/projets");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess]);
 
-	return (
-		// pour que la sidebar soit fixe il faut ajouter une div avec la class "sidebar_layout" a la page
-		<div className="sidebar_layout">
-			<div className="hero">
-				<Navbar />
-				<Hero />
-			</div>
-			<Slider />
-			<About />
-			<Presentation />
-			{/* <Testimonial />git  */}
-		</div>
-	);
+  return (
+    // pour que la sidebar soit fixe il faut ajouter une div avec la class "sidebar_layout" a la page
+    <div className="sidebar_layout">
+      <div className="hero">
+        <Navbar />
+        <Hero />
+      </div>
+      <Slider />
+      <About />
+      <Presentation />
+      {/* <Testimonial />git  */}
+    </div>
+  );
 }
 
 export default Home;
