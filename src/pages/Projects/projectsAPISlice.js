@@ -4,7 +4,8 @@ import { changeDate, setNewImg } from "../Project/projectSlice";
 const projectsAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllProjects: builder.query({
-			query: () => "projects",
+			query: () => "homeproject",
+			// transformResponse: (response, meta, arg) => response.projects,
 		}),
 		getOneProject: builder.query({
 			query: (projectId) => `project/${projectId}`,

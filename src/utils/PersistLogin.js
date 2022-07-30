@@ -45,11 +45,11 @@ const PersistLogin = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useEffect(() => {
-		console.log(`isLoading: ${isLoading}`);
-		console.log(`aT: ${JSON.stringify(token)}`);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading]);
+	// useEffect(() => {
+	// 	console.log(`isLoading: ${isLoading}`);
+	// 	console.log(`aT: ${JSON.stringify(token)}`);
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [isLoading]);
 
 	return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
 };
