@@ -2,8 +2,8 @@
 
 .project {
   height: 100vh;
-  width: 90%;
-  margin: 2rem auto;
+  width: 92vw;
+  margin: 2rem ;
   background-size: cover;
   background-position: center;
 
@@ -114,7 +114,7 @@
   }
 
   &-dates {
-    padding: 0.5rem 2rem;
+    padding: 2rem;
   }
 
   &-header {
@@ -366,6 +366,7 @@
 
   .project-dates {
     width:85%;
+
   }
 
   .project-description {

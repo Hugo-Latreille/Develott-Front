@@ -7,18 +7,21 @@ import { emptySplitApi } from "../API/APIslice";
 import userProfileSlice from "../pages/Profiles/userProfileSlice";
 import projectSlice from "../pages/Project/projectSlice";
 import appSlice from "../pages/App/appSlice";
+import dashboardSlice from "../pages/Dashboard/dashboardSlice";
 
 export const store = configureStore({
-	reducer: {
-		[emptySplitApi.reducerPath]: emptySplitApi.reducer,
-		app: appSlice,
-		auth: loginReducer,
-		createProject: createProjectSlice,
-		project: projectSlice,
-		userProfile: userProfileSlice,
-	},
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({ serializableCheck: false }).concat(
-			emptySplitApi.middleware
-		),
+  reducer: {
+    [emptySplitApi.reducerPath]: emptySplitApi.reducer,
+    app: appSlice,
+    auth: loginReducer,
+    createProject: createProjectSlice,
+    project: projectSlice,
+    dashboard: dashboardSlice,
+    updateProfile: updtateUserProfileSlice,
+    userProfile: userProfileSlice,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      emptySplitApi.middleware
+    ),
 });
