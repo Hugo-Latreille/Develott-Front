@@ -150,7 +150,6 @@ function Project() {
                   </p>
                 </div>
               )}
-
               <div className="project-user">
                 <img
                   className="slider-avatar"

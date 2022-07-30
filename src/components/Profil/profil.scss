@@ -43,8 +43,10 @@
   }
 
   &_avatar {
-    width: 90%;
+    width: 98%;
     margin: auto;
+    border-radius: 50%;
+    border: solid 6px vars.$secondaryColor;
   }
 }
 
@@ -136,6 +138,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: -1rem;
+
+    &-edition {
+      color:grey;
+      margin-top: -1rem;
+    }
   }
 
   &_technos {
@@ -156,9 +163,10 @@
       padding: 2rem 2rem 0 2rem;
       min-height: 37vh;
       max-height: 37vh;
+      position: relative;
 
       background-color: #fff;
-      margin: 0 auto 1rem auto;
+      margin-bottom: 1rem;
     }
 
     &-links-informations {

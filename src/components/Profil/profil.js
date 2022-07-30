@@ -136,37 +136,47 @@ function Profil() {
           <div className="desc_container_description">
             {isEditUserPictureActive ? (
               <div className=" desc_container_description-username">
-                <button onClick={() => showCloudinaryWidget()}>
-                  Uploader une nouvelle image
-                </button>
-                <div className="desc_container_description-user">
-                  <p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
-                  <SearchBarJobsUser />
-                </div>
-                <i
-                  className="fal fa-edit"
+                <span
+                  className="project-img-container-edit-btn"
                   onClick={() =>
                     dispatch(
                       setDisplayEdit({ name: "isEditUserPictureActive" })
                     )
                   }
-                ></i>
+                >
+                  Enregistrer
+                </span>
+                <button
+                  className="project-edit-img-input margin-top2"
+                  onClick={() => showCloudinaryWidget()}
+                >
+                  Uploader une image de profil
+                </button>
+                <div className="desc_container_description-user">
+                  <p className="margin-top2">Modifier le poste actuel :</p>
+                  <p className="desc_container_role-edition">{userJobData}</p>
+                  <div className="jobs-searchbar-container margin-top-4">
+                    <SearchBarJobsUser />
+                  </div>
+                </div>
               </div>
             ) : (
               <div className=" desc_container_description-username">
                 <img className="name_container_avatar" src={userImg} alt="" />
-                <div className="desc_container_description-user">
-                  <p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
-                  <p className="desc_container_role">{userJobData}</p>
-                </div>
-                <i
-                  className="fal fa-edit"
+                <span
+                  className="project-img-container-edit-btn"
                   onClick={() =>
                     dispatch(
                       setDisplayEdit({ name: "isEditUserPictureActive" })
                     )
                   }
-                ></i>
+                >
+                  Modifier
+                </span>
+                <div className="desc_container_description-user">
+                  <p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
+                  <p className="desc_container_role">{userJobData}</p>
+                </div>
               </div>
             )}
             <div className=" desc_container_description-links-informations">
