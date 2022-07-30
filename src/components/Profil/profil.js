@@ -666,13 +666,11 @@ function Profil() {
               />
               <div className="card_main">
                 <h3 className="card_main_title-project">Develott</h3>
-                <p className="card_main_desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                <p className="project-list-paragraph-desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing...
                 </p>
+                <p className="project-list-paragraph">4 co-équipiers</p>
+                <p className="project-list-paragraph-grey">Le 30 mai 2022</p>
               </div>
             </div>
             <div className="card_project">
@@ -683,13 +681,11 @@ function Profil() {
               />
               <div className="card_main">
                 <h3 className="card_main_title-project">Develott</h3>
-                <p className="card_main_desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                <p className="project-list-paragraph-desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing...
                 </p>
+                <p className="project-list-paragraph">4 co-équipiers</p>
+                <p className="project-list-paragraph-grey">Le 30 mai 2022</p>
               </div>
             </div>
           </div>

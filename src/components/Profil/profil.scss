@@ -164,8 +164,7 @@
 
     &-username {
       padding: 2rem 2rem 0 2rem;
-      min-height: 37vh;
-      max-height: 37vh;
+      height: 37vh;
       position: relative;
 
       background-color: #fff;
@@ -184,7 +183,7 @@
 
   &_project {
     background-color: #fff;
-    padding: 3rem 0.5rem 0.5rem 1.5rem;
+    padding: 3rem 0rem 0.5rem 0rem;
     margin-bottom: 5%;
     height: 82vh;
     overflow-y: scroll;
@@ -192,7 +191,23 @@
   }
 }
 
+.project-list-paragraph {
+  margin: 0rem;
+  font-size: 0.7rem;
 
+  &-desc {
+    margin: 0rem;
+    font-size: 0.9rem;
+    color:grey;
+    margin-bottom: 0.2rem;
+  }
+
+  &-grey {
+    color:grey;
+    margin: 0rem;
+    font-size: 0.7rem;
+  }
+}
 
 .technos_logo {
   font-size: 5em;
@@ -338,7 +353,7 @@
 
   &_desc {
     width: 100%;
-    height: auto;
+    height: auto !important;
   }
 
   &_projets {
@@ -352,11 +367,16 @@
   }
 
   .desc_container {
-    height:100%;
+    height:auto;
   }
 
   .desc_container_description {
     height: auto;
+
+    &-username {
+      height: auto;
+
+    }
   }
 
   .min-height-technos-container {
