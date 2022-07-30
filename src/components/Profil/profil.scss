@@ -1,7 +1,7 @@
 @use "./../../styles/vars";
 
 .profil {
-  width: 90%;
+  width: 95%;
   height: 100vh;
   margin: 2rem auto 0 auto;
   display: flex;
@@ -37,9 +37,10 @@
 
 .name_container {
 
-
   &_user {
     font-size: 1.4rem;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   &_avatar {
@@ -138,6 +139,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: -1rem;
+    text-align: center;
+
 
     &-edition {
       color:grey;
@@ -236,7 +239,6 @@
 
 .user-technologies {
   background-color: #fff;
-  margin-left: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -277,6 +279,7 @@
 
 .padding-on-edition {
   padding-top: 2rem;
+  overflow-y: scroll;
 }
 
 .min-height-technos-container {

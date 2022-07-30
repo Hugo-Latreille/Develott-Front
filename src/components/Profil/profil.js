@@ -77,10 +77,15 @@ function Profil() {
     technology.tags.includes("framework")
   );
 
+  const databasesData = userTechnologiesData.filter((technology) =>
+    technology.tags.includes("database")
+  );
+
   const othersData = userTechnologiesData.filter(
     (technology) =>
       !technology.tags.includes("framework") &&
-      !technology.tags.includes("language")
+      !technology.tags.includes("language") &&
+      !technology.tags.includes("database")
   );
 
   const showCloudinaryWidget = () => {
@@ -162,7 +167,15 @@ function Profil() {
               </div>
             ) : (
               <div className=" desc_container_description-username">
-                <img className="name_container_avatar" src={userImg} alt="" />
+                {userImg ? (
+                  <img className="name_container_avatar" src={userImg} alt="" />
+                ) : (
+                  <img
+                    className="name_container_avatar"
+                    src={require("./../../assets/images/user-avatar.png")}
+                    alt=""
+                  />
+                )}
                 <span
                   className="project-img-container-edit-btn"
                   onClick={() =>
@@ -175,7 +188,22 @@ function Profil() {
                 </span>
                 <div className="desc_container_description-user">
                   <p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
-                  <p className="desc_container_role">{userJobData}</p>
+                  <p className="desc_container_role">
+                    {userJobData ? (
+                      userJobData
+                    ) : (
+                      <span
+                        className="cursor-pointer"
+                        onClick={() =>
+                          dispatch(
+                            setDisplayEdit({ name: "isEditUserPictureActive" })
+                          )
+                        }
+                      >
+                        Renseigner mon poste
+                      </span>
+                    )}
+                  </p>
                 </div>
               </div>
             )}
@@ -188,10 +216,6 @@ function Profil() {
                 <p className="desc_container_title">
                   <i className="fas fa-map-marker color-secondary"></i>{" "}
                   Montpellier
-                </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-envelope color-secondary"></i>{" "}
-                  batman@batmail.batfr
                 </p>
                 <p className="desc_container_title">
                   <i className="fab fa-github color-secondary"></i>{" "}
@@ -279,14 +303,16 @@ function Profil() {
                     <h4 className="desc_container_main">
                       Bruce en quelques mots...
                     </h4>
-                    <i
-                      className="fal fa-edit"
+                    <span
+                      className="edit-btn-main"
                       onClick={() =>
                         dispatch(
                           setDisplayEdit({ name: "isEditDescriptionActive" })
                         )
                       }
-                    ></i>
+                    >
+                      Modifier
+                    </span>
                   </div>
 
                   {displayAllDescription === false && (
@@ -402,6 +428,37 @@ function Profil() {
                         </div>
                       ))}
                     </div>
+                    <div className="project-technologies-frameworks">
+                      <h4>Database</h4>
+                      {databasesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {databasesData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>{" "}
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(
+                                removeData({
+                                  name: "userTechnologiesData",
+                                  field: "name",
+                                  value: techno.name,
+                                })
+                              )
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
                     <div className="project-technologies-others">
                       <h4>Autres</h4>
                       {othersData.length === 0 && (
@@ -459,16 +516,18 @@ function Profil() {
               >
                 <div className="profile-edition-btns-container">
                   <h4 className="desc_container_main">Compétences</h4>
-                  <i
-                    className="fal fa-edit"
+                  <span
+                    className="edit-btn-main"
                     onClick={() =>
                       dispatch(
                         setDisplayEdit({ name: "isEditTechnologiesActive" })
                       )
                     }
-                  ></i>
+                  >
+                    Modifier
+                  </span>
                 </div>
-                <div className="user-technologies">
+                <div className="user-technologies margin-left2">
                   <div className="project-technologies-languages">
                     <h4>Langages</h4>
                     {languagesData.length === 0 && (
@@ -484,12 +543,28 @@ function Profil() {
                       </span>
                     ))}
                   </div>
+
                   <div className="project-technologies-frameworks">
                     <h4>Frameworks</h4>
                     {frameworksData.length === 0 && (
                       <span className="form-technologies-empty">vide...</span>
                     )}
                     {frameworksData.map((techno) => (
+                      <span className="technologies-icon-container">
+                        <i
+                          className={`devicon-${techno.name}-plain`}
+                          style={{ backgroundColor: `${techno.color}` }}
+                        ></i>
+                        {techno.name}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-technologies-languages">
+                    <h4>Database</h4>
+                    {databasesData.length === 0 && (
+                      <span className="form-technologies-empty">vide...</span>
+                    )}
+                    {databasesData.map((techno) => (
                       <span className="technologies-icon-container">
                         <i
                           className={`devicon-${techno.name}-plain`}
