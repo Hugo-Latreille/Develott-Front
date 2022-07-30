@@ -210,14 +210,26 @@ function Profil() {
             )}
             <div className=" desc_container_description-links-informations">
               <div className="desc_container_description-links">
-                <span
-                  className="project-img-container-edit-btn"
-                  onClick={() =>
-                    dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
-                  }
-                >
-                  Modifier
-                </span>
+                {isEditUserInfos === false && (
+                  <span
+                    className="project-img-container-edit-btn"
+                    onClick={() =>
+                      dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+                    }
+                  >
+                    Modifier
+                  </span>
+                )}
+                {isEditUserInfos === true && (
+                  <span
+                    className="project-img-container-edit-btn"
+                    onClick={() =>
+                      dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+                    }
+                  >
+                    Enregistrer
+                  </span>
+                )}
                 <p className="desc_container_title user-available">
                   <i className="fas fa-circle success"></i> Disponible pour
                   débuter un nouveau projet
@@ -225,19 +237,19 @@ function Profil() {
                 {isEditUserInfos === false && (
                   <>
                     <p className="desc_container_title">
-                      <i className="fas fa-map-marker color-secondary"></i>{" "}
-                      Montpellier
+                      <i className="fas fa-map-marker color-secondary"></i>
+                      {user.city ? user.city : "A compléter"}
                     </p>
                     <p className="desc_container_title">
-                      <i className="fab fa-github color-secondary"></i>{" "}
-                      <a href="#"> Superman-Suck</a>{" "}
+                      <i className="fab fa-github color-secondary"></i>
+                      <a href="#"> Superman-Suck</a>
                     </p>
                     <p className="desc_container_title">
-                      <i className="fab fa-linkedin color-secondary"></i>{" "}
+                      <i className="fab fa-linkedin color-secondary"></i>
                       <a href="#"> Bruce Wayne</a>
                     </p>
                     <p className="desc_container_title">
-                      <i className="fas fa-globe color-secondary"></i>{" "}
+                      <i className="fas fa-globe color-secondary"></i>
                       <a href="#"> brucewayne.com</a>
                     </p>
                   </>
@@ -245,7 +257,7 @@ function Profil() {
                 {isEditUserInfos === true && (
                   <>
                     <div className="desc_container_title user-info-input-edition">
-                      <i className="fas fa-map-marker color-secondary"></i>{" "}
+                      <i className="fas fa-map-marker color-secondary"></i>
                       <input
                         type="texte"
                         placeholder="Ville ..."
@@ -428,7 +440,7 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
@@ -459,7 +471,7 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
@@ -490,7 +502,7 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
@@ -521,7 +533,7 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
@@ -656,7 +668,7 @@ function Profil() {
                 <h3 className="card_main_title-project">Develott</h3>
                 <p className="card_main_desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...{" "}
+                  do eiusmod...
                   <a className="card_main_desc_link" href="#">
                     voir plus.
                   </a>
@@ -673,7 +685,7 @@ function Profil() {
                 <h3 className="card_main_title-project">Develott</h3>
                 <p className="card_main_desc">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...{" "}
+                  do eiusmod...
                   <a className="card_main_desc_link" href="#">
                     voir plus.
                   </a>
