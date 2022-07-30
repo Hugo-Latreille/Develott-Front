@@ -16,7 +16,7 @@ export const store = configureStore({
     auth: loginReducer,
     createProject: createProjectSlice,
     project: projectSlice,
-    dashboard: dashboardSlice,
+    dashboard: dashboardSlice,  
     userProfile: userProfileSlice,
   },
   middleware: (getDefaultMiddleware) =>
