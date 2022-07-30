@@ -23,7 +23,7 @@ function Home() {
   }, [isSuccess]);
 
   return (
-    // pour que la sidebar soit fixe il faut ajouter une div avec la class "sidebar_layout" a la page
+    // pour que la sidebar soit fixe il faut ajouter une div avec la className "sidebar_layout" a la page
     <div className="sidebar_layout">
       <div className="hero">
         <Navbar />

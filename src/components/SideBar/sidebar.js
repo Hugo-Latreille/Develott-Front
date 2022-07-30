@@ -122,6 +122,7 @@ function Sidebar({ children, isVisible }) {
   return (
     <div className="sidebar_container">
       <motion.div
+        key="main_side"
         initial={{ width: isOpen ? "250px" : "54px" }}
         animate={{
           width: isOpen ? "250px" : "54px",
@@ -149,48 +150,47 @@ function Sidebar({ children, isVisible }) {
                 </motion.p>
               </NavLink>
             )}
-            <div className="bars">
-              {isOpen && (
-                <motion.img
-                  key="bars"
-                  whileHover={{ scale: 1.5, rotate: 180 }}
-                  whileTap={{
-                    scale: 0.8,
-                    rotate: -90,
-                    borderRadius: "100%",
-                  }}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={logoAnimation}
-                  className="bars_logo"
-                  src={LogoW}
-                  alt="logo"
-                  onClick={() => dispatch(toggleSideBar())}
-                />
-              )}
-
-              {!isOpen && (
-                <motion.img
-                  key="bars_closed"
-                  whileHover={{ scale: 1.4, rotate: 180 }}
-                  whileTap={{
-                    scale: 0.8,
-                    rotate: -90,
-                    borderRadius: "100%",
-                  }}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={logoAnimation}
-                  className="bars_logo"
-                  src={LogoW}
-                  alt="logo"
-                  onClick={() => dispatch(toggleSideBar())}
-                />
-              )}
-            </div>
           </AnimatePresence>
+          <div className="bars">
+            {isOpen && (
+              <motion.img
+                key="bars"
+                whileHover={{ scale: 1.5, rotate: 180 }}
+                whileTap={{
+                  scale: 0.8,
+                  rotate: -90,
+                  borderRadius: "100%",
+                }}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={logoAnimation}
+                className="bars_logo"
+                src={LogoW}
+                alt="logo"
+                onClick={() => dispatch(toggleSideBar())}
+              />
+            )}
+            {!isOpen && (
+              <motion.img
+                key="bars_closed"
+                whileHover={{ scale: 1.4, rotate: 180 }}
+                whileTap={{
+                  scale: 0.8,
+                  rotate: -90,
+                  borderRadius: "100%",
+                }}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={logoAnimation}
+                className="bars_logo"
+                src={LogoW}
+                alt="logo"
+                onClick={() => dispatch(toggleSideBar())}
+              />
+            )}
+          </div>
 
           {isOpen && <div className="anim"></div>}
         </div>
@@ -211,7 +211,7 @@ function Sidebar({ children, isVisible }) {
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
-                    key={route.name}
+                    key="side_icon"
                     initial="hidden"
                     animate="show"
                     exit="hidden"
@@ -254,6 +254,7 @@ function Sidebar({ children, isVisible }) {
                 )}
                 {isOpen && (
                   <motion.div
+                    key="toggle_container_open"
                     initial="hidden"
                     animate="show"
                     exit="hidden"

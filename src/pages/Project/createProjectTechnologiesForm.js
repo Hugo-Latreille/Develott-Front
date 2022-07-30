@@ -54,7 +54,7 @@ function CreateProjectTechnologiesForm() {
             <div key={techno.name} className="form-technologies-items">
               <span className="technologies-icon-container width-80">
                 <i
-                  class={`devicon-${techno.name}-plain`}
+                  className={`devicon-${techno.name}-plain`}
                   style={{ backgroundColor: `${techno.color}` }}
                 ></i>
                 {techno.name}
@@ -76,7 +76,7 @@ function CreateProjectTechnologiesForm() {
             <div key={techno.name} className="form-technologies-items">
               <span className="technologies-icon-container width-80">
                 <i
-                  class={`devicon-${techno.name}-plain`}
+                  className={`devicon-${techno.name}-plain`}
                   style={{ backgroundColor: `${techno.color}` }}
                 ></i>
                 {techno.name}
@@ -98,7 +98,7 @@ function CreateProjectTechnologiesForm() {
             <div key={techno.name} className="form-technologies-items">
               <span className="technologies-icon-container width-80">
                 <i
-                  class={`devicon-${techno.name}-plain`}
+                  className={`devicon-${techno.name}-plain`}
                   style={{ backgroundColor: `${techno.color}` }}
                 ></i>
                 {techno.name}
@@ -120,7 +120,7 @@ function CreateProjectTechnologiesForm() {
             <div key={techno.name} className="form-technologies-items">
               <span className="technologies-icon-container width-80">
                 <i
-                  class={`devicon-${techno.name}-plain`}
+                  className={`devicon-${techno.name}-plain`}
                   style={{ backgroundColor: `${techno.color}` }}
                 ></i>
                 {techno.name}

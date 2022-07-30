@@ -43,9 +43,9 @@ function About() {
               <SwiperSlide>
                 <img src={Lea} />
 
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-left swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -73,9 +73,9 @@ function About() {
               </SwiperSlide>
               <SwiperSlide>
                 <p className="cube_letter">M</p>
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-right swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-right swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -99,9 +99,9 @@ function About() {
             >
               <SwiperSlide>
                 <img src={Clement} />
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-left swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -129,9 +129,9 @@ function About() {
               </SwiperSlide>
               <SwiperSlide>
                 <p className="cube_letter">E</p>
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-right swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-right swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -155,9 +155,9 @@ function About() {
             >
               <SwiperSlide>
                 <img src={Hugo} />
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-left swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -185,9 +185,9 @@ function About() {
               </SwiperSlide>
               <SwiperSlide>
                 <p className="cube_letter">R</p>
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-right swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-right swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -211,9 +211,9 @@ function About() {
             >
               <SwiperSlide>
                 <img src={PA} />
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-left swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -241,9 +241,9 @@ function About() {
               </SwiperSlide>
               <SwiperSlide>
                 <p className="cube_letter">C</p>
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-right swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-right swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -267,9 +267,9 @@ function About() {
             >
               <SwiperSlide>
                 <img src={Charlelie} />
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-left swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>
@@ -297,9 +297,9 @@ function About() {
               </SwiperSlide>
               <SwiperSlide>
                 <p className="cube_letter">I</p>
-                <div class="overlay">
-                  <div class="text">
-                    <i class="fas fa-arrow-alt-right swipe_icon"></i>Swipe
+                <div className="overlay">
+                  <div className="text">
+                    <i className="fas fa-arrow-alt-right swipe_icon"></i>Swipe
                   </div>
                 </div>
               </SwiperSlide>

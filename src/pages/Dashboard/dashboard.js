@@ -20,7 +20,7 @@ function Dashboard() {
             <div className="dashboard-main-navigation-accueil">
               <div className="dashboard-main-navigation-accueil-content">
                 <h3>
-                  <i class="far fa-rocket"></i>Accueil
+                  <i className="far fa-rocket"></i>Accueil
                 </h3>
                 <p>djsqjdqkdj qmldj</p>
                 <img
@@ -32,7 +32,7 @@ function Dashboard() {
             <div className="dashboard-main-navigation-messagerie">
               <div className="dashboard-main-navigation-messagerie-content">
                 <h3>
-                  <i class="far fa-comment-alt-dots"></i>Messagerie
+                  <i className="far fa-comment-alt-dots"></i>Messagerie
                 </h3>
                 <p>djsqjdqkdj qmldj</p>
                 <img
@@ -44,7 +44,7 @@ function Dashboard() {
             <div className="dashboard-main-navigation-calendrier">
               <div className="dashboard-main-navigation-calendrier-content">
                 <h3>
-                  <i class="far fa-calendar-alt"></i>
+                  <i className="far fa-calendar-alt"></i>
                   Calendrier
                 </h3>
                 <p>djsqjdqkdj qmldj</p>
