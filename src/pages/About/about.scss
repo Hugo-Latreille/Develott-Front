@@ -2,16 +2,16 @@
 
 .about_container {
       margin-top: 3.5rem;
-      background-image: url("./../../assets/images/background-blob2.png");
       background-size: contain;
       background-position: center bottom;
       background-repeat: no-repeat;
+      background-image: url("./../../assets/images/background-blob2.png");
       width: 100vw;
-     
-
-
-    &_main {
-      margin: 3em 9em 12em 6em;
+      
+      
+      
+      &_main {
+      padding: 3em 9em 9em 6em;
       
     }
 
