@@ -19,7 +19,7 @@ import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
 import ReactCursorPosition from "react-cursor-position";
 import Charte from "../Charte-About/charteAbout";
-import JoinProject from "../JoinProject/joinProject";
+import TeamCreation from "../TeamCreation/teamCreation";
 
 function App() {
   const location = useLocation();
@@ -51,7 +51,7 @@ function App() {
               <Route path="projets" element={<Projects />} />
               <Route path="projet/:projectId" element={<Project />} />
               <Route path="projet/create" element={<CreateProject />} />
-              <Route path="projet/postuler" element={<JoinProject />} />
+              <Route path="projet/postuler" element={<TeamCreation />} />
               <Route path="charte" element={<Charte />} />
               <Route path="profil" element={<Profil />} />
               <Route path="dashboard" element={<Dashboard />} />
