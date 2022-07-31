@@ -19,18 +19,13 @@ import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
 import { useSelector, useDispatch } from "react-redux";
-import {
-	setDisplayEdit,
-	removeData,
-	changeDate,
-	setNewImg,
-} from "./projectSlice";
+import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import {
 	useGetOneProjectQuery,
 	useUpdateProjectDescriptionMutation,
 } from "../Projects/projectsAPISlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Project() {
 	const { projectId } = useParams();
@@ -112,27 +107,37 @@ function Project() {
 				if (!error && result && result.event === "success") {
 					console.log(result.info.url);
 					const newImg = result.info.url;
-					dispatch(setNewImg(newImg));
+					updateProject({ id: projectId, picture_project: newImg });
+					refetch();
 				}
 			}
 		);
 		widget.open();
 	};
 
-	const html = description;
-	const contentBlock = htmlToDraft(html);
-	const contentState = ContentState.createFromBlockArray(
-		contentBlock.contentBlocks
-	);
+	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-	const [editorState, setEditorState] = useState(
-		EditorState.createWithContent(contentState)
-	);
+	useEffect(() => {
+		if (description.length > 0) {
+			console.log(description);
+			const html = description;
+			const contentBlock = htmlToDraft(html);
+			const contentState = ContentState.createFromBlockArray(
+				contentBlock.contentBlocks
+			);
+			setEditorState(EditorState.createWithContent(contentState));
+		}
+	}, [description]);
+
+	// const [editorState, setEditorState] = useState(
+	// 	EditorState.createWithContent(contentState)
+	// );
+
 	const handleEditorChange = (editorState) => {
 		setEditorState(editorState);
 	};
 
-	const handleDescriptionSubmit = (e) => {
+	const handleDescriptionSubmit = async (e) => {
 		e.preventDefault();
 		const newDescription = draftToHtml(
 			convertToRaw(editorState.getCurrentContent())
@@ -143,13 +148,13 @@ function Project() {
 				value: newDescription,
 			})
 		);
-		updateProject({ id: projectId, description: newDescription });
+		refetch();
+		await updateProject({ id: projectId, description: newDescription });
 		dispatch(
 			setDisplayEdit({
 				name: "displayEditDescriptionForm",
 			})
 		);
-		refetch();
 	};
 
 	return (
@@ -184,9 +189,9 @@ function Project() {
 
 									<p
 										className="secondary-button-colored validation-edit-btn"
-										onClick={() =>
-											dispatch(setDisplayEdit({ name: "displayImgEdit" }))
-										}
+										onClick={() => {
+											dispatch(setDisplayEdit({ name: "displayImgEdit" }));
+										}}
 									>
 										<i className="fas fa-edit"></i> Enregistrer
 									</p>

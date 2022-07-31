@@ -1,23 +1,22 @@
 import { emptySplitApi } from "../../API/APIslice";
-import { changeDate, setData, setNewImg } from "../Project/projectSlice";
+import { changeDate, setNewImg } from "../Project/projectSlice";
 
 const projectsAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllProjects: builder.query({
 			query: () => "projects",
-			refetchOnMountOrArgChange: true,
-			providesTags: ["Projects"],
+			providesTags: ["Project"],
 			// transformResponse: (response, meta, arg) => response.projects,
 		}),
 		getOneProject: builder.query({
 			query: (projectId) => `project/${projectId}`,
-
+			providesTags: ["Project"],
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
 						console.log(result);
 						const startDate = result.data.project.start_date;
-						const endDate = result.data.project.end_date;
+						// const endDate = result.data.project.end_date;
 						const projectImg = result.data.project.picture;
 						const projectDescription = result.data.project.description;
 						dispatch(changeDate({ name: "startDate", value: startDate }));
@@ -36,7 +35,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 				method: "POST",
 				body: body,
 			}),
-			invalidatesTags: ["Projects"],
+			invalidatesTags: ["Project"],
 		}),
 		updateProjectDescription: builder.mutation({
 			query: ({ id, ...patch }) => ({
@@ -44,6 +43,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 				method: "PATCH",
 				body: patch,
 			}),
+			invalidatesTags: ["Project"],
 		}),
 	}),
 });
