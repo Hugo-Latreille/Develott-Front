@@ -10,11 +10,7 @@ function ProjectList() {
 	const [toggleJobs, setToggleJobs] = useState(false);
 	const [toggleTechnos, setToggleTechnos] = useState(false);
 
-	const {
-		data: projectsTeams,
-		isLoading,
-		isSuccess,
-	} = useGetAllProjectsQuery();
+	const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
 
 	console.log(projectsTeams);
 
@@ -30,8 +26,6 @@ function ProjectList() {
 			(team) => team?.project_id === projectId && team?.role === "admin"
 		)[0];
 	};
-
-	console.log(findProductOwnerOfProject(1));
 
 	const handleToggleJobs = () => {
 		setToggleJobs(!toggleJobs);
@@ -107,7 +101,7 @@ function ProjectList() {
 						<div className="card_main">
 							<div>
 								<Link to={`/projet/${project.id}`}>
-									<h2 className="card_main_title">{project.name}</h2>
+									<h2 className="card_main_title">{project.project}</h2>
 								</Link>
 							</div>
 							<div>
@@ -134,8 +128,8 @@ function ProjectList() {
 											alt=""
 										/>
 										<span className="card_desc_user_name">
-											{`${findProductOwnerOfProject(project.id).firstname} ${
-												findProductOwnerOfProject(project.id).lastname
+											{`${findProductOwnerOfProject(project.id)?.firstname} ${
+												findProductOwnerOfProject(project.id)?.lastname
 											}`}
 										</span>
 									</div>
