@@ -38,7 +38,7 @@ function CreateProject() {
 			end_date,
 		});
 		dispatch(emptyForm());
-		navigate("/projets", { replace: true });
+		// navigate("/projets", { replace: true });
 	};
 
 	return (

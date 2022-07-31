@@ -7,13 +7,17 @@ import moment from "moment/min/moment-with-locales";
 import { DatePicker } from "@mui/x-date-pickers";
 import TextField from "@mui/material/TextField";
 import "moment/locale/fr";
+//? WYSIWYG editor
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	setDisplayEdit,
@@ -22,12 +26,16 @@ import {
 	setNewImg,
 } from "./projectSlice";
 import { useParams } from "react-router-dom";
-import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
+import {
+	useGetOneProjectQuery,
+	useUpdateProjectDescriptionMutation,
+} from "../Projects/projectsAPISlice";
+import { useState } from "react";
 
 function Project() {
 	const { projectId } = useParams();
-
-	const { data: projectWithTeam } = useGetOneProjectQuery(projectId);
+	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
+	const [updateProject] = useUpdateProjectDescriptionMutation();
 
 	console.log(projectWithTeam);
 
@@ -46,6 +54,7 @@ function Project() {
 		startDate,
 		endDate,
 		projectImg,
+		description,
 	} = useSelector((state) => state.project);
 
 	const languagesData = technologiesData.filter((technology) =>
@@ -108,6 +117,40 @@ function Project() {
 			}
 		);
 		widget.open();
+	};
+
+	const html = description;
+	const contentBlock = htmlToDraft(html);
+	const contentState = ContentState.createFromBlockArray(
+		contentBlock.contentBlocks
+	);
+
+	const [editorState, setEditorState] = useState(
+		EditorState.createWithContent(contentState)
+	);
+	const handleEditorChange = (editorState) => {
+		setEditorState(editorState);
+	};
+
+	const handleDescriptionSubmit = (e) => {
+		e.preventDefault();
+		const newDescription = draftToHtml(
+			convertToRaw(editorState.getCurrentContent())
+		);
+		dispatch(
+			changeDate({
+				name: "description",
+				value: newDescription,
+			})
+		);
+		updateProject({ projectId, newDescription });
+
+		dispatch(
+			setDisplayEdit({
+				name: "displayEditDescriptionForm",
+			})
+		);
+		refetch();
 	};
 
 	return (
@@ -359,9 +402,13 @@ function Project() {
 												<i className="fas fa-edit"></i>
 											</span>
 										</div>
-										<p className="project-description-desc">
-											{project?.description}
-										</p>
+										<p
+											className="project-description-desc"
+											dangerouslySetInnerHTML={{
+												__html: description,
+											}}
+										/>
+
 										{adaptDescriptionContainer === false && (
 											<span
 												className="project-description-see-more"
@@ -393,8 +440,13 @@ function Project() {
 									</>
 								)}
 								{displayEditDescriptionForm === true && (
-									<div className="project-texte-editor">
+									<form
+										className="project-texte-editor"
+										onSubmit={handleDescriptionSubmit}
+									>
 										<Editor
+											editorState={editorState}
+											onEditorStateChange={handleEditorChange}
 											wrapperClassName="wrapper-class"
 											editorClassName="editor-class"
 											toolbarClassName="toolbar-class"
@@ -425,19 +477,12 @@ function Project() {
 											}}
 										/>
 										<button
-											type="button"
+											type="submit"
 											className="main-button-colored create-project-button"
-											onClick={() =>
-												dispatch(
-													setDisplayEdit({
-														name: "displayEditDescriptionForm",
-													})
-												)
-											}
 										>
 											Valider
 										</button>
-									</div>
+									</form>
 								)}
 							</div>
 							<div
