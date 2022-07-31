@@ -7,7 +7,7 @@ import CreateProjectInformationsForm from "./createProjectInformationsForm";
 import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveForm } from "./createProjectSlice";
+import { emptyForm, setActiveForm } from "./createProjectSlice";
 import { usePostProjectMutation } from "../Projects/projectsAPISlice";
 import { useNavigate } from "react-router-dom";
 
@@ -37,6 +37,7 @@ function CreateProject() {
 			start_date,
 			end_date,
 		});
+		dispatch(emptyForm());
 		navigate("/projets", { replace: true });
 	};
 
