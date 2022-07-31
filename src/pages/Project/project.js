@@ -143,8 +143,7 @@ function Project() {
 				value: newDescription,
 			})
 		);
-		updateProject({ projectId, newDescription });
-
+		updateProject({ id: projectId, description: newDescription });
 		dispatch(
 			setDisplayEdit({
 				name: "displayEditDescriptionForm",

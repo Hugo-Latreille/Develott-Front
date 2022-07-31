@@ -39,10 +39,10 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			invalidatesTags: ["Projects"],
 		}),
 		updateProjectDescription: builder.mutation({
-			query: (id, body) => ({
+			query: ({ id, ...patch }) => ({
 				url: `project/${id}`,
 				method: "PATCH",
-				body: body,
+				body: patch,
 			}),
 		}),
 	}),
