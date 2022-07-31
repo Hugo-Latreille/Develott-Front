@@ -42,6 +42,9 @@ export const projetSlice = createSlice({
 		handleChange: (state, action) => {
 			state[action.payload.name] = action.payload.value;
 		},
+		setNewImg: (state, action) => {
+			state.picture_project = action.payload;
+		},
 	},
 });
 
@@ -52,6 +55,7 @@ export const {
 	setJobsData,
 	removeJobData,
 	handleChange,
+	setNewImg,
 } = projetSlice.actions;
 
 export default projetSlice.reducer;

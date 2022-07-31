@@ -271,7 +271,7 @@ function Project() {
 									<div className="project-dates-inputs">
 										<LocalizationProvider
 											dateAdapter={AdapterMoment}
-											locale="fr"
+											adapterLocale="fr"
 										>
 											<DatePicker
 												label="Date de début"
@@ -291,7 +291,7 @@ function Project() {
 									<p>
 										<LocalizationProvider
 											dateAdapter={AdapterMoment}
-											locale="fr"
+											adapterLocale="fr"
 										>
 											<DatePicker
 												label="Date de fin"
