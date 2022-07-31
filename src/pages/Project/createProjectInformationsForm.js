@@ -7,7 +7,6 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import sanitizeHtml from "sanitize-html";
 
 import { useDispatch, useSelector } from "react-redux";
 import { handleChange, setActiveForm, setNewImg } from "./createProjectSlice";
@@ -15,8 +14,9 @@ import { useState } from "react";
 
 function CreateProjectInformationsForm() {
 	const dispatch = useDispatch();
-	const { picture_project, name, exerpt, description, start_date, end_date } =
-		useSelector((state) => state.createProject);
+	const { name, exerpt, description, start_date, end_date } = useSelector(
+		(state) => state.createProject
+	);
 
 	const html = description;
 	const contentBlock = htmlToDraft(html);

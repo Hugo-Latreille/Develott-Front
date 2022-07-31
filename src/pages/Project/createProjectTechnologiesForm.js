@@ -1,9 +1,6 @@
 import "./createProjectTechnologiesForm.scss";
-
 import SearchBarProjects from "./../../components/SearchBar/searchBarTechnologies";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import { removeTechnologyData, setActiveForm } from "./createProjectSlice";
 
 function CreateProjectTechnologiesForm() {

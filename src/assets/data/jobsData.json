@@ -1,9 +1,9 @@
 [
-    { "id": 1, "name": "Developpeur Back-End" },
-    { "id": 2, "name": "Developpeur Front-End" },
-    { "id": 3, "name": "Developpeur Mobile" },
-    { "id": 4, "name": "Developpeur FullStack" },
-    { "id": 5, "name": "Graphiste" },
-    { "id": 6, "name": "UX Designer" },
-    { "id": 7, "name": "DevOps" }
-  ]
+	{ "id": 1, "name": "Développeur Back-End" },
+	{ "id": 2, "name": "Développeur Front-End" },
+	{ "id": 3, "name": "Développeur Mobile" },
+	{ "id": 4, "name": "Développeur FullStack" },
+	{ "id": 5, "name": "Graphiste" },
+	{ "id": 6, "name": "UX Designer" },
+	{ "id": 7, "name": "DevOps" }
+]

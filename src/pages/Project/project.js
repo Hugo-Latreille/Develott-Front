@@ -322,7 +322,7 @@ function Project() {
 						<div className="project-container-right">
 							<div className="project-header">
 								<div className="project-header-left">
-									<h1 className="project-header-title">{project?.name}</h1>
+									<h1 className="project-header-title">{project?.project}</h1>
 									<p className="project-header-short-desc">{project?.exerpt}</p>
 								</div>
 								<div className="project-header-right">

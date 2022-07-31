@@ -1,23 +1,44 @@
 import "./createProject.scss";
-import NavbarColor from "../../components/Navbar/navbarColor";
+// import NavbarColor from "../../components/Navbar/navbarColor";
 import FooterColored from "./../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 
 import CreateProjectInformationsForm from "./createProjectInformationsForm";
 import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
-
-// ajout léa
-// import { useNavigate } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveForm } from "./createProjectSlice";
+import { usePostProjectMutation } from "../Projects/projectsAPISlice";
+import { useNavigate } from "react-router-dom";
 
 function CreateProject() {
-	const activeForm = useSelector((state) => state.createProject.activeForm);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const {
+		activeForm,
+		picture_project,
+		name,
+		exerpt,
+		description,
+		start_date,
+		end_date,
+		technologiesData,
+		jobsData,
+	} = useSelector((state) => state.createProject);
+	const [postProject] = usePostProjectMutation();
 
-	// const navigate = useNavigate();
+	const postNewProject = (e) => {
+		e.preventDefault();
+		postProject({
+			name,
+			exerpt,
+			description,
+			picture_project,
+			start_date,
+			end_date,
+		});
+		navigate("/projets", { replace: true });
+	};
 
 	return (
 		<Sidebar>
@@ -74,7 +95,7 @@ function CreateProject() {
 							</div>
 						</div>
 						<div className="create-project-right">
-							<form>
+							<form onSubmit={postNewProject}>
 								{activeForm === "informations" && (
 									<CreateProjectInformationsForm />
 								)}

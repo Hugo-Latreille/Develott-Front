@@ -60,11 +60,7 @@ function ProjectList() {
 			{isSuccess &&
 				allProjects.map((project) => (
 					<div className="card" key={project.id}>
-						<img
-							src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
-							className="card_img2"
-							alt=""
-						/>
+						<img src={project?.picture} className="card_img2" alt="" />
 						<div className="icone_content">
 							<div className="icone_content_btns">
 								<span className="icone_button">
@@ -106,7 +102,7 @@ function ProjectList() {
 							</div>
 							<div>
 								<p className="card_main_desc">
-									{project.exerpt}
+									{project?.excerpt}
 									<a className="card_main_desc_link" href="#">
 										voir plus.
 									</a>
@@ -128,13 +124,13 @@ function ProjectList() {
 											alt=""
 										/>
 										<span className="card_desc_user_name">
-											{`${findProductOwnerOfProject(project.id)?.firstname} ${
-												findProductOwnerOfProject(project.id)?.lastname
+											{`${findProductOwnerOfProject(project?.id)?.firstname} ${
+												findProductOwnerOfProject(project?.id)?.lastname
 											}`}
 										</span>
 									</div>
 									<span className="card_desc_user_date">
-										{moment(project.createdAt).locale("fr").format("LLLL")}
+										{moment(project?.start_date).locale("fr").format("LLLL")}
 									</span>
 								</div>
 							</div>
