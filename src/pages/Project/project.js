@@ -306,10 +306,6 @@ function Project() {
 										{moment(project?.start_date).locale("fr").format("LL")}
 									</p>
 									<p>
-										<i className="far fa-calendar-check success"></i> Début :{" "}
-										{moment(project?.end_date).locale("fr").format("LL")}
-									</p>
-									<p>
 										<i className="far fa-calendar-exclamation warning"></i>{" "}
 										Durée :
 										{moment(project?.end_date)
@@ -631,10 +627,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-languages">
 											<h4>Langages</h4>
-											{languagesData.length === 0 && (
+											{languagesData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{languagesData.map((techno, index) => (
+											{languagesData?.map((techno, index) => (
 												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
@@ -656,10 +652,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-frameworks">
 											<h4>Frameworks</h4>
-											{frameworksData.length === 0 && (
+											{frameworksData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{frameworksData.map((techno, index) => (
+											{frameworksData?.map((techno, index) => (
 												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
@@ -681,10 +677,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-database">
 											<h4>Base de donnée</h4>
-											{databasesData.length === 0 && (
+											{databasesData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{databasesData.map((techno, index) => (
+											{databasesData?.map((techno, index) => (
 												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
@@ -706,10 +702,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-others">
 											<h4>Autres</h4>
-											{othersData.length === 0 && (
+											{othersData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{othersData.map((techno, index) => (
+											{othersData?.map((techno, index) => (
 												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
