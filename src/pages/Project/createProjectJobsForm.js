@@ -4,14 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import SearchBarJobs from "../../components/SearchBar/searchBarJobs";
 
-import { removeJobData } from "./createProjectSlice";
 import {
 	useDeleteProjectJobMutation,
 	useGetOneProjectQuery,
 } from "../Projects/projectsAPISlice";
+import { useNavigate } from "react-router-dom";
+import { emptyForm } from "./createProjectSlice";
 
 function CreateProjectJobsForm() {
 	const { projectId } = useSelector((state) => state.createProject);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const [deleteJobProject] = useDeleteProjectJobMutation();
 	const { data: projectWithTeam } = useGetOneProjectQuery(projectId);
@@ -86,8 +89,12 @@ function CreateProjectJobsForm() {
 				</div>
 			</div>
 			<button
-				type="submit"
+				type="button"
 				className="main-button-colored create-project-button"
+				onClick={() => {
+					dispatch(emptyForm());
+					navigate("/projets", { replace: true });
+				}}
 			>
 				Valider le projet
 			</button>
