@@ -12,11 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleChange, setActiveForm, setNewImg } from "./createProjectSlice";
 import { useState } from "react";
 import { usePostProjectMutation } from "../Projects/projectsAPISlice";
+import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 
 function CreateProjectInformationsForm() {
 	const dispatch = useDispatch();
 	const { picture_project, name, exerpt, description, start_date, end_date } =
 		useSelector((state) => state.createProject);
+	const { email } = useSelector((state) => state.auth);
+	const { data: userInfos, refetch } = useFindUserByEmailQuery(email);
 	const [postProject] = usePostProjectMutation();
 
 	const html = description;
@@ -86,6 +89,7 @@ function CreateProjectInformationsForm() {
 			})
 		);
 		postProject({
+			userId: userInfos?.id,
 			name,
 			exerpt,
 			description,
@@ -95,13 +99,10 @@ function CreateProjectInformationsForm() {
 		})
 			.unwrap()
 			.then((data) => {
-				console.log(data[0].id);
-				dispatch(handleChange({ name: "projectId", value: data[0].id }));
+				console.log(data);
+				dispatch(handleChange({ name: "projectId", value: data }));
 				dispatch(setActiveForm("technologies"));
 			});
-
-		// dispatch(emptyForm());
-		// navigate("/projets", { replace: true });
 	};
 
 	return (

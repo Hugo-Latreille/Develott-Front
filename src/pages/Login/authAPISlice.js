@@ -18,6 +18,7 @@ const authAPI = emptySplitApi.injectEndpoints({
 				};
 			},
 		}),
+
 		userLogin: builder.mutation({
 			query: ({ email, password }) => {
 				return {
@@ -74,6 +75,9 @@ const authAPI = emptySplitApi.injectEndpoints({
 		userLogout: builder.mutation({
 			query: () => "user/logout",
 		}),
+		findUserByEmail: builder.query({
+			query: (email) => `user/findByEmail/${email}`,
+		}),
 		// getRefreshToken: builder.query({
 		// 	query: () => "user/refreshToken",
 		// }),
@@ -90,4 +94,5 @@ export const {
 	useForgotPasswordMutation,
 	useNewPasswordMutation,
 	useGetRefreshTokenQuery,
+	useFindUserByEmailQuery,
 } = authAPI;

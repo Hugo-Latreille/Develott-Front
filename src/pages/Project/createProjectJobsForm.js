@@ -23,7 +23,7 @@ function CreateProjectJobsForm() {
 	const jobsDataFirst = [];
 	const jobsDataElse = [];
 
-	projectJobs.forEach((element, index) => {
+	projectJobs?.forEach((element, index) => {
 		if (index < 3) {
 			jobsDataFirst.push(element);
 		} else {
