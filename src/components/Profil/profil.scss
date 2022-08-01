@@ -1,9 +1,9 @@
 @use "./../../styles/vars";
 
 .profil {
-  width: 95%;
+  width: 92vw;
   height: 100vh;
-  margin: 2rem auto 0 auto;
+  margin: 2rem 2rem 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -28,7 +28,6 @@
 
   &-middle {
     width: 54%;
-    // background-color: #fff;
     height: 86vh;
     
   }
@@ -38,7 +37,7 @@
 .name_container {
 
   &_user {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
     text-align: center;
   }
@@ -57,7 +56,7 @@
 
 .desc_container {
   background-color: #fff;
-  height:37vh;
+  height:40vh;
   // min-height: 37vh;
   // max-height: 37vh;
   padding: 0 1rem 2rem 1rem;
@@ -164,7 +163,7 @@
 
     &-username {
       padding: 2rem 2rem 0 2rem;
-      height: 37vh;
+      height: 40vh;
       position: relative;
 
       background-color: #fff;
@@ -185,7 +184,7 @@
     background-color: #fff;
     padding: 3rem 0rem 0.5rem 0rem;
     margin-bottom: 5%;
-    height: 82vh;
+    height: 87vh;
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -398,3 +397,91 @@
 }
 }
 
+
+
+
+
+
+// DARK MODE 
+
+#dark .desc_container {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_description-username {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_description-links-informations {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_technos {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .user-technologies {
+  background: transparent;
+  color:white;
+
+  & h4 {
+    color:white;
+  }
+
+  & span {
+    background: vars.$linearGradientDarkMode;
+  }
+}
+
+#dark .desc_container_project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .card_project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_title  {
+  color:white;
+
+  & a {
+    color:white;
+  }
+}
+
+#dark .desc_container_role {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .dashboard-edit-input {
+  background-color: #323C5A;
+  color:white;
+
+}
+
+#dark .form-technologies-empty {
+  background-color: transparent;
+}
+
+#dark .desc_container_user-links-dark {
+  & i {
+    background: #30cfd0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+#dark .user_desc_link {
+  background: #30cfd0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 1rem;
+}
