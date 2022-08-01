@@ -11,12 +11,13 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch, useSelector } from "react-redux";
 import { handleChange, setActiveForm, setNewImg } from "./createProjectSlice";
 import { useState } from "react";
+import { usePostProjectMutation } from "../Projects/projectsAPISlice";
 
 function CreateProjectInformationsForm() {
 	const dispatch = useDispatch();
-	const { name, exerpt, description, start_date, end_date } = useSelector(
-		(state) => state.createProject
-	);
+	const { picture_project, name, exerpt, description, start_date, end_date } =
+		useSelector((state) => state.createProject);
+	const [postProject] = usePostProjectMutation();
 
 	const html = description;
 	const contentBlock = htmlToDraft(html);
@@ -75,8 +76,36 @@ function CreateProjectInformationsForm() {
 		);
 		widget.open();
 	};
+
+	const postNewProject = (e) => {
+		e.preventDefault();
+		dispatch(
+			handleChange({
+				name: "description",
+				value: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+			})
+		);
+		postProject({
+			name,
+			exerpt,
+			description,
+			picture_project,
+			start_date,
+			end_date,
+		})
+			.unwrap()
+			.then((data) => {
+				console.log(data[0].id);
+				dispatch(handleChange({ name: "projectId", value: data[0].id }));
+				dispatch(setActiveForm("technologies"));
+			});
+
+		// dispatch(emptyForm());
+		// navigate("/projets", { replace: true });
+	};
+
 	return (
-		<>
+		<form onSubmit={postNewProject}>
 			<button
 				type="button"
 				className="project-edit-img-input"
@@ -133,26 +162,14 @@ function CreateProjectInformationsForm() {
 					},
 				}}
 			/>
-			<textarea
-				disabled
-				value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-			/>
+
 			<button
-				type="button"
+				type="submit"
 				className="main-button-colored create-project-button"
-				onClick={() => {
-					dispatch(setActiveForm("technologies"));
-					dispatch(
-						handleChange({
-							name: "description",
-							value: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-						})
-					);
-				}}
 			>
 				Valider
 			</button>
-		</>
+		</form>
 	);
 }
 

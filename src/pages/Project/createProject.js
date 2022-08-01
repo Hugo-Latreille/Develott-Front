@@ -8,38 +8,30 @@ import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
 import { useSelector, useDispatch } from "react-redux";
 import { emptyForm, setActiveForm } from "./createProjectSlice";
-import { usePostProjectMutation } from "../Projects/projectsAPISlice";
+import {
+	useGetAllProjectsQuery,
+	usePostProjectMutation,
+} from "../Projects/projectsAPISlice";
 import { useNavigate } from "react-router-dom";
 
 function CreateProject() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const {
-		activeForm,
-		picture_project,
-		name,
-		exerpt,
-		description,
-		start_date,
-		end_date,
-		technologiesData,
-		jobsData,
-	} = useSelector((state) => state.createProject);
-	const [postProject] = usePostProjectMutation();
+	const { activeForm } = useSelector((state) => state.createProject);
 
-	const postNewProject = (e) => {
-		e.preventDefault();
-		postProject({
-			name,
-			exerpt,
-			description,
-			picture_project,
-			start_date,
-			end_date,
-		});
-		dispatch(emptyForm());
-		navigate("/projets", { replace: true });
-	};
+	// const postNewProject = (e) => {
+	// 	e.preventDefault();
+	// 	postProject({
+	// 		name,
+	// 		exerpt,
+	// 		description,
+	// 		picture_project,
+	// 		start_date,
+	// 		end_date,
+	// 	});
+	// 	dispatch(emptyForm());
+	// 	navigate("/projets", { replace: true });
+	// };
 
 	return (
 		<Sidebar>
@@ -96,15 +88,13 @@ function CreateProject() {
 							</div>
 						</div>
 						<div className="create-project-right">
-							<form onSubmit={postNewProject}>
-								{activeForm === "informations" && (
-									<CreateProjectInformationsForm />
-								)}
-								{activeForm === "technologies" && (
-									<CreateProjectTechnologiesForm />
-								)}
-								{activeForm === "jobs" && <CreateProjectJobsForm />}
-							</form>
+							{activeForm === "informations" && (
+								<CreateProjectInformationsForm />
+							)}
+							{activeForm === "technologies" && (
+								<CreateProjectTechnologiesForm />
+							)}
+							{activeForm === "jobs" && <CreateProjectJobsForm />}
 						</div>
 					</div>
 				</div>

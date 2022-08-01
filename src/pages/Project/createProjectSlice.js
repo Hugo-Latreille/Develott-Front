@@ -10,6 +10,7 @@ const initialState = {
 	end_date: "",
 	technologiesData: [],
 	jobsData: [],
+	projectId: "",
 };
 
 export const projetSlice = createSlice({
