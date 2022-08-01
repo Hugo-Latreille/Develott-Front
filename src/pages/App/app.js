@@ -20,6 +20,7 @@ import Erreur from "../404/404";
 import ReactCursorPosition from "react-cursor-position";
 import Charte from "../Charte-About/charteAbout";
 import TeamCreation from "../TeamCreation/teamCreation";
+import Calendar from "../../components/Calendar/calendar";
 
 function App() {
   const location = useLocation();
@@ -55,6 +56,7 @@ function App() {
               <Route path="charte" element={<Charte />} />
               <Route path="profil" element={<Profil />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="calendar" element={<Calendar />} />
             </Route>
           </Route>
           <Route
