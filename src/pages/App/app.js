@@ -25,6 +25,7 @@ import About from "../About/about";
 import Loader1 from "../../components/Loader1/loader1";
 import Loader2 from "../../components/Loader2/loader2";
 import TeamCreation from "../TeamCreation/teamCreation";
+import Calendar from "../../components/Calendar/calendar";
 
 function App() {
   const location = useLocation();
@@ -61,6 +62,7 @@ function App() {
               <Route path="projet/id/postuler" element={<TeamCreation />} />
               <Route path="profil" element={<Profil />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="calendar" element={<Calendar />} />
             </Route>
           </Route>
           <Route

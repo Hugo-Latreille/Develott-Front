@@ -5,6 +5,8 @@ const initialState = {
   displayEditDiscordLink: false,
   displayEditSlackLink: false,
   displayEditTrelloLink: false,
+  displayMaincontent: "main",
+  displayMain: true,
 };
 
 export const dashboardSlice = createSlice({
@@ -14,9 +16,12 @@ export const dashboardSlice = createSlice({
     setDisplayEdit: (state, action) => {
       state[action.payload.name] = !state[action.payload.name];
     },
+    setDisplayMaincontent: (state, action) => {
+      state.displayMaincontent = action.payload;
+    },
   },
 });
 
-export const { setDisplayEdit } = dashboardSlice.actions;
+export const { setDisplayEdit, setDisplayMaincontent } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

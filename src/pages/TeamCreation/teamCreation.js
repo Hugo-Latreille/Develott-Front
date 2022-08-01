@@ -8,14 +8,14 @@ function TeamCreation() {
     <div className="team-creation">
       <div className="team-creation-container">
         <div className="team-creation-container-header">
-          <h2>Tu souhaites rejoindre le projet Develott ? 🎉</h2>
+          <h2>Tu souhaite rejoindre le projet Develott ? 🎉</h2>
           <p>
             Tu n'as plus qu'à sélectionner le poste sur lequel tu souhaites de
             positionner ! Prenom Nom, pourra ensuite visualiser ta demande.
           </p>
         </div>
         <div className="team-creation-container-main">
-          <TeamCreationAdminForm />
+          <TeamCreationUserForm />
         </div>
         <span className="close-modal-button">
           <i class="fas fa-times-circle"></i>
