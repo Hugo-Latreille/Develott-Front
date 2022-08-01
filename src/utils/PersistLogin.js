@@ -11,7 +11,8 @@ const PersistLogin = () => {
 
 	const refreshToken = async () => {
 		const response = await axios.get(
-			"https://develott.herokuapp.com/v1/user/refreshToken",
+			// "https://develott.herokuapp.com/v1/user/refreshToken",
+			"http://localhost:3002/v1/user/refreshToken",
 			{
 				withCredentials: true,
 			}
@@ -45,11 +46,11 @@ const PersistLogin = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useEffect(() => {
-		console.log(`isLoading: ${isLoading}`);
-		console.log(`aT: ${JSON.stringify(token)}`);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading]);
+	// useEffect(() => {
+	// 	console.log(`isLoading: ${isLoading}`);
+	// 	console.log(`aT: ${JSON.stringify(token)}`);
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [isLoading]);
 
 	return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
 };

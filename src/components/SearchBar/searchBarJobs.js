@@ -1,67 +1,52 @@
 import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { useSelector } from "react-redux";
 
-import jobsDataArray from "./../../assets/data/jobsData.json";
-
-import { useDispatch } from "react-redux";
-import { setJobsData } from "../../pages/Project/createProjectSlice";
+import {
+	useGetAllJobsQuery,
+	usePostProjectJobMutation,
+} from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarJobs() {
-  const dispatch = useDispatch();
+	const { projectId } = useSelector((state) => state.createProject);
+	const { data: allJobs } = useGetAllJobsQuery();
+	const [postProjectJob] = usePostProjectJobMutation();
 
-  const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    console.log(string, results);
-  };
+	const handleOnSelect = (item) => {
+		// the item selected
+		// console.log(item);
+		postProjectJob({ id: projectId, job: item.name });
+	};
 
-  const handleOnHover = (result) => {
-    // the item hovered
-    console.log(result);
-  };
+	const formatResult = (item) => {
+		return (
+			<div className="results-container-projects">
+				<span className="result-span-title">{item.name}</span>
+			</div>
+		);
+	};
 
-  const handleOnSelect = (item) => {
-    // the item selected
-    console.log(item);
-    dispatch(setJobsData(item));
-  };
-
-  const handleOnFocus = () => {
-    console.log("Focused");
-  };
-
-  const formatResult = (item) => {
-    return (
-      <div className="results-container-projects">
-        <span className="result-span-title">{item.name}</span>
-      </div>
-    );
-  };
-
-  return (
-    <div className="input-container">
-      <div>
-        <ReactSearchAutocomplete
-          showItemsOnFocus={true}
-          autoFocus={true}
-          items={jobsDataArray}
-          onSearch={handleOnSearch}
-          onHover={handleOnHover}
-          onSelect={handleOnSelect}
-          onFocus={handleOnFocus}
-          styling={{
-            zIndex: 1,
-          }}
-          formatResult={formatResult}
-          //   maxResults={5}
-          showIcon={true}
-          placeholder="Developpeur Back-End, UX-UI Designer, devOps... "
-          showNoResults
-          showNoResultsText="Pas de résultats."
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div className="input-container">
+			<div>
+				<ReactSearchAutocomplete
+					showItemsOnFocus={true}
+					autoFocus={true}
+					items={allJobs}
+					onSelect={handleOnSelect}
+					styling={{
+						zIndex: 1,
+					}}
+					formatResult={formatResult}
+					//   maxResults={5}
+					showIcon={true}
+					placeholder="Développeur Back-End, UX-UI Designer, devOps... "
+					showNoResults
+					showNoResultsText="Pas de résultats."
+				/>
+			</div>
+		</div>
+	);
 }
 
 export default SearchBarJobs;
