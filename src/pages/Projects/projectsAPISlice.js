@@ -70,16 +70,16 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 				method: "POST",
 				body: { techno },
 			}),
-			// invalidatesTags: ["Project"],
+			invalidatesTags: ["Project"],
 		}),
-		// deleteProjectTechno: builder.mutation({
-		// 	query: ({ id, techno }) => ({
-		// 		url: `project/${id}/techno`,
-		// 		method: "DELETE",
-		// 		body: { techno },
-		// 	}),
-		// 	invalidatesTags: ["Project"],
-		// }),
+		deleteProjectTechno: builder.mutation({
+			query: ({ id, techno }) => ({
+				url: `project/${id}/techno`,
+				method: "DELETE",
+				body: { techno },
+			}),
+			invalidatesTags: ["Project"],
+		}),
 	}),
 });
 
@@ -92,4 +92,5 @@ export const {
 	usePostProjectJobMutation,
 	useDeleteProjectJobMutation,
 	usePostProjectTechnoMutation,
+	useDeleteProjectTechnoMutation,
 } = projectsAPISlice;

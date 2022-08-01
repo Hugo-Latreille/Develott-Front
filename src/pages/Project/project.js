@@ -23,6 +23,7 @@ import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import {
 	useDeleteProjectJobMutation,
+	useDeleteProjectTechnoMutation,
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
@@ -34,6 +35,7 @@ function Project() {
 	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteJobProject] = useDeleteProjectJobMutation();
+	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
 
 	console.log(projectWithTeam);
 
@@ -638,13 +640,10 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "technologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteTechnoProject({
+																id: projectId,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -666,13 +665,10 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "technologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteTechnoProject({
+																id: projectId,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -694,13 +690,10 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "technologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteTechnoProject({
+																id: projectId,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -722,13 +715,10 @@ function Project() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "technologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteTechnoProject({
+																id: projectId,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>

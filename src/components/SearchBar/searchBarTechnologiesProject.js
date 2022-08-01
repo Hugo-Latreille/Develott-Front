@@ -21,14 +21,14 @@ function SearchBarTechnologiesProject({ technos, projectId }) {
 
 	const handleOnSelect = (item) => {
 		// postProjectTechno({ id: projectId, techno: item.name });
-		postProjectTechno({ id: projectId, techno: item.name });
-		// const itemAlreadyExist = technos.find((techno) => techno === item.name);
-		// if (!itemAlreadyExist) {
-		// 	// dispatch(setData({ name: "technologiesData", data: item }));
-		// 	postProjectTechno({ id: projectId, techno: item.name });
-		// } else {
-		// 	console.log("techno already added");
-		// }
+
+		const itemAlreadyExist = technos.find((techno) => techno === item.name);
+		if (!itemAlreadyExist) {
+			// dispatch(setData({ name: "technologiesData", data: item }));
+			postProjectTechno({ id: projectId, techno: item.name });
+		} else {
+			console.log("techno already added");
+		}
 	};
 
 	const handleOnFocus = () => {
