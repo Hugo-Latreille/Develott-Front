@@ -1,15 +1,11 @@
 import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import jobsDataArray from "./../../assets/data/jobsData.json";
-import { useDispatch } from "react-redux";
-import { setData } from "../../pages/Project/projectSlice";
 import {
 	useGetAllJobsQuery,
 	usePostProjectJobMutation,
 } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarJobsProject({ projectId }) {
-	const dispatch = useDispatch();
 	const [postProjectJob] = usePostProjectJobMutation();
 	const { data: allJobs } = useGetAllJobsQuery();
 

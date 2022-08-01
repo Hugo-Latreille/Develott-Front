@@ -5,21 +5,30 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchBarJobs from "../../components/SearchBar/searchBarJobs";
 
 import { removeJobData } from "./createProjectSlice";
+import {
+	useDeleteProjectJobMutation,
+	useGetOneProjectQuery,
+} from "../Projects/projectsAPISlice";
 
 function CreateProjectJobsForm() {
-	const jobsData = useSelector((state) => state.createProject.jobsData);
-	const dispatch = useDispatch();
+	const { projectId } = useSelector((state) => state.createProject);
+
+	const [deleteJobProject] = useDeleteProjectJobMutation();
+	const { data: projectWithTeam } = useGetOneProjectQuery(projectId);
+	const projectJobs = projectWithTeam?.jobByProject;
 
 	const jobsDataFirst = [];
 	const jobsDataElse = [];
 
-	jobsData.forEach((element, index) => {
+	projectJobs.forEach((element, index) => {
 		if (index < 3) {
 			jobsDataFirst.push(element);
 		} else {
 			jobsDataElse.push(element);
 		}
 	});
+
+	console.log(projectJobs);
 
 	return (
 		<div className="form-jobs">
@@ -32,15 +41,23 @@ function CreateProjectJobsForm() {
 			<div className="form-jobs-container form-jobs-container-70">
 				<div className="form-jobs-container-content">
 					<h3 className="form-jobs-title">Profils Ajoutés</h3>
-					{jobsData.length === 0 && (
+					{projectJobs?.map.length === 0 && (
 						<span className="form-technologies-empty">vide...</span>
 					)}
-					{jobsDataFirst.map((job) => (
-						<div key={job.id} className="form-technologies-items">
-							<p>{job.name}</p>
+					{projectJobs?.map((job) => (
+						<div
+							key={job.id_project_has_job}
+							className="form-technologies-items"
+						>
+							<p>{job.job}</p>
 							<i
 								className="fal fa-backspace form-technologies-delete"
-								onClick={() => dispatch(removeJobData(job.id))}
+								onClick={() => {
+									deleteJobProject({
+										id: projectId,
+										id_project_has_job: job.id_project_has_job,
+									});
+								}}
 							></i>
 						</div>
 					))}
@@ -48,14 +65,21 @@ function CreateProjectJobsForm() {
 				<div className="form-jobs-container-content">
 					<h3 className="form-jobs-title-2"> </h3>
 					{jobsDataElse.map((job) => (
-						<div key={job.id} className="form-technologies-items">
+						<div
+							key={job.id_project_has_job}
+							className="form-technologies-items"
+						>
 							<p>
-								<i className={`devicon-${job.name}-plain colored`}></i>{" "}
-								{job.name}
+								<i className={`devicon-${job.job}-plain colored`}></i> {job.job}
 							</p>
 							<i
 								className="fal fa-backspace form-technologies-delete"
-								onClick={() => dispatch(removeJobData(job.id))}
+								onClick={() => {
+									deleteJobProject({
+										id: projectId,
+										id_project_has_job: job.id_project_has_job,
+									});
+								}}
 							></i>
 						</div>
 					))}

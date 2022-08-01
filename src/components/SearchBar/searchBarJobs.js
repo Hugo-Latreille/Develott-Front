@@ -1,31 +1,21 @@
 import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import jobsDataArray from "./../../assets/data/jobsData.json";
-import { useDispatch } from "react-redux";
-import { setJobsData } from "../../pages/Project/createProjectSlice";
+import { useSelector } from "react-redux";
+
+import {
+	useGetAllJobsQuery,
+	usePostProjectJobMutation,
+} from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarJobs() {
-	const dispatch = useDispatch();
-
-	const handleOnSearch = (string, results) => {
-		// onSearch will have as the first callback parameter
-		// the string searched and for the second the results.
-		// console.log(string, results);
-	};
-
-	const handleOnHover = (result) => {
-		// the item hovered
-		// console.log(result);
-	};
+	const { projectId } = useSelector((state) => state.createProject);
+	const { data: allJobs } = useGetAllJobsQuery();
+	const [postProjectJob] = usePostProjectJobMutation();
 
 	const handleOnSelect = (item) => {
 		// the item selected
 		// console.log(item);
-		dispatch(setJobsData(item));
-	};
-
-	const handleOnFocus = () => {
-		// console.log("Focused");
+		postProjectJob({ id: projectId, job: item.name });
 	};
 
 	const formatResult = (item) => {
@@ -42,11 +32,8 @@ function SearchBarJobs() {
 				<ReactSearchAutocomplete
 					showItemsOnFocus={true}
 					autoFocus={true}
-					items={jobsDataArray}
-					onSearch={handleOnSearch}
-					onHover={handleOnHover}
+					items={allJobs}
 					onSelect={handleOnSelect}
-					onFocus={handleOnFocus}
 					styling={{
 						zIndex: 1,
 					}}
