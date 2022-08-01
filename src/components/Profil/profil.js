@@ -571,7 +571,7 @@ function Profil() {
                 className="desc_container_technos min-height-technos-container"
                 style={
                   displayAllDescription === true
-                    ? { height: "26vh", overflowY: "scroll" }
+                    ? { height: "29vh", overflowY: "scroll" }
                     : {}
                 }
               >
