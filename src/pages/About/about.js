@@ -40,7 +40,7 @@ function About() {
               modules={[Autoplay, EffectCube]}
               className="mySwiper"
             >
-              <SwiperSlide>
+              <SwiperSlide className="test-test">
                 <img src={Lea} />
 
                 <div className="overlay">

@@ -48,7 +48,7 @@ function CreateProjectTechnologiesForm() {
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Languages</h3>
           {languagesData.length === 0 && (
-            <span className="form-technologies-empty">vide...</span>
+            <p className="form-technologies-empty">vide...</p>
           )}
           {languagesData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
@@ -70,7 +70,7 @@ function CreateProjectTechnologiesForm() {
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Frameworks</h3>
           {frameworksData.length === 0 && (
-            <span className="form-technologies-empty">vide...</span>
+            <p className="form-technologies-empty">vide...</p>
           )}
           {frameworksData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
@@ -92,7 +92,7 @@ function CreateProjectTechnologiesForm() {
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Base de donnée</h3>
           {databasesData.length === 0 && (
-            <span className="form-technologies-empty">vide...</span>
+            <p className="form-technologies-empty">vide...</p>
           )}
           {databasesData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">
@@ -114,7 +114,7 @@ function CreateProjectTechnologiesForm() {
         <div className="form-technologies-container-content">
           <h3 className="form-technologies-title">Divers</h3>
           {othersData.length === 0 && (
-            <span className="form-technologies-empty">vide...</span>
+            <p className="form-technologies-empty">vide...</p>
           )}
           {othersData.map((techno) => (
             <div key={techno.name} className="form-technologies-items">

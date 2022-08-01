@@ -1,7 +1,7 @@
 @use "./../../styles/vars";
 
 .dashboard {
-    width:92vw;
+    width:96%;
     margin:1rem auto 2rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -291,4 +291,87 @@
             width: 100%;
         }
     }
+  }
+
+
+
+
+
+  // DARK MODE 
+
+  #dark .bg-colored {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+    color:white;
+  }
+
+  #dark .dashboard-main-header {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+    color:white;
+  }
+
+  #dark .dashboard-main-navigation {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    &-accueil-content {
+        color:white;
+    }
+
+    &-messagerie-content {
+        color:white;
+    }
+
+    &-calendrier-content {
+        color:white;
+    }
+  }
+
+  #dark .dashboard-main-content-links {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & span {
+        color:white;
+        font-weight: lighter;
+    }
+  }
+
+  #dark .dashboard-main-content-team {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & span {
+        color:white;
+        font-weight: lighter;
+    }
+  }
+
+  #dark .dashboard-main-technologies {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & h4 {
+        color:white;
+      }
+    
+      & span {
+        background: vars.$linearGradientDarkMode;
+      }
+
+  }
+
+  #dark .dashboard-main-navigation-accueil-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-navigation-calendrier-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-navigation-messagerie-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-content-team-users:hover {
+    background: vars.$linearGradientDarkMode;
   }
