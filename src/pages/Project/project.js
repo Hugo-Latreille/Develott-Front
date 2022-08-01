@@ -27,6 +27,7 @@ import {
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
 import { useEffect, useState } from "react";
+import technologiesJson from "./../../assets/data/technologiesData.json";
 
 function Project() {
 	const { projectId } = useParams();
@@ -53,6 +54,14 @@ function Project() {
 		projectImg,
 		description,
 	} = useSelector((state) => state.project);
+
+	const findProjectTechnosFromDatabase = () => {
+		return project?.techno?.map(
+			(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
+		);
+	};
+
+	console.log(findProjectTechnosFromDatabase());
 
 	const languagesData = technologiesData.filter((technology) =>
 		technology.tags.includes("language")
@@ -379,7 +388,9 @@ function Project() {
 							<div className="project-header">
 								<div className="project-header-left">
 									<h1 className="project-header-title">{project?.project}</h1>
-									<p className="project-header-short-desc">{project?.exerpt}</p>
+									<p className="project-header-short-desc">
+										{project?.excerpt}
+									</p>
 								</div>
 								<div className="project-header-right">
 									<button className="main-button-bg-white">
