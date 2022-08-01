@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import {
+	useDeleteProjectJobMutation,
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
@@ -31,6 +32,7 @@ function Project() {
 	const { projectId } = useParams();
 	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
 	const [updateProject] = useUpdateProjectMutation();
+	const [deleteJobProject] = useDeleteProjectJobMutation();
 
 	console.log(projectWithTeam);
 
@@ -119,7 +121,6 @@ function Project() {
 
 	useEffect(() => {
 		if (project?.description) {
-			console.log(description);
 			const html = project?.description;
 			const contentBlock = htmlToDraft(html);
 			const contentState = ContentState.createFromBlockArray(
@@ -232,10 +233,9 @@ function Project() {
 											</span>
 										</div>
 										<div className="project-jobs-container">
-											{jobsData.map((job) => (
-												<p key={job.id}>
-													<i className="fas fa-check-circle success"></i>{" "}
-													{job.name}
+											{project?.job?.map((job, index) => (
+												<p key={index}>
+													<i className="fas fa-check-circle success"></i> {job}
 												</p>
 											))}
 										</div>
@@ -246,22 +246,26 @@ function Project() {
 										<div className="jobs-searchbar-container">
 											<SearchBarJobsProject projectId={projectId} />
 										</div>
-										{jobsData.map((job, index) => (
+										{project?.job?.map((job, index) => (
 											<div key={index} className="project-jobs-container-job">
 												<p>
 													<i className="fas fa-check-circle success"></i>
-													{job.name}
+													{job}
 												</p>
 												<span
 													onClick={() =>
-														dispatch(
-															removeData({
-																name: "jobsData",
-																field: "id",
-																value: job.id,
-															})
-														)
+														deleteJobProject({ id: projectId, job: job })
 													}
+
+													// onClick={() =>
+													// 	dispatch(
+													// 		removeData({
+													// 			name: "jobsData",
+													// 			field: "id",
+													// 			value: job.id,
+													// 		})
+													// 	)
+													// }
 												>
 													<i className="far fa-backspace cursor-pointer"></i>
 												</span>

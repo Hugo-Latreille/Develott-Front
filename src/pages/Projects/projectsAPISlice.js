@@ -41,18 +41,26 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			invalidatesTags: ["Project"],
 		}),
 		updateProject: builder.mutation({
-			query: ({ id, job }) => ({
+			query: ({ id, ...patch }) => ({
 				url: `project/${id}`,
 				method: "PATCH",
-				body: { job: job },
+				body: patch,
 			}),
 			invalidatesTags: ["Project"],
 		}),
 		postProjectJob: builder.mutation({
-			query: ({ id, jobName }) => ({
+			query: ({ id, job }) => ({
 				url: `project/${id}/addJob`,
 				method: "POST",
-				body: jobName,
+				body: { job },
+			}),
+			invalidatesTags: ["Project"],
+		}),
+		deleteProjectJob: builder.mutation({
+			query: ({ id, job }) => ({
+				url: `project/${id}/deleteJob`,
+				method: "DELETE",
+				body: { job },
 			}),
 			invalidatesTags: ["Project"],
 		}),
@@ -66,4 +74,5 @@ export const {
 	usePostProjectMutation,
 	useUpdateProjectMutation,
 	usePostProjectJobMutation,
+	useDeleteProjectJobMutation,
 } = projectsAPISlice;
