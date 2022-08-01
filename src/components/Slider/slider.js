@@ -90,7 +90,7 @@ function Slider() {
             clickable: true,
           }}
           modules={[Pagination, Navigation]}
-          className="mySwiper"
+          className="mySwiper-home"
         >
           {/* ***************************************PARAMETRES EFFET************************************ */}
           <SwiperSlide>

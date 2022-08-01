@@ -6,7 +6,7 @@
   padding: 4rem 0 0 0;
 }
 
-.slide {
+.mySwiper-home .slide {
   width: 100%;
   background-color: #fff;
   margin-bottom: 4rem;
@@ -14,14 +14,14 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.slide-img {
+.mySwiper-home .slide-img {
   width: 100%;
   height: 12rem;
   object-fit: cover;
   position: relative;
 }
 
-.img-content {
+.mySwiper-home .img-content {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -30,12 +30,12 @@
   align-items: flex-end;
 }
 
-.img-content-btns {
+.mySwiper-home .img-content-btns {
   display: flex;
   align-items: flex-end;
 }
 
-.stack-button {
+.mySwiper-home .stack-button {
   background-color: #fff;
   padding: 0.6rem;
   margin-left: 0.5rem;
@@ -44,11 +44,11 @@
   cursor: pointer;
 }
 
-.icons-container {
+.mySwiper-home .icons-container {
   display: flex;
   justify-content: flex-end;
 }
-.img-content-stacks {
+.mySwiper-home .img-content-stacks {
   background-color: #fff;
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -59,7 +59,7 @@
   transition-duration: 2s;
 }
 
-.img-content-jobs {
+.mySwiper-home .img-content-jobs {
   background-color: #fff;
   margin: 0.5rem 0 0.5rem 0.5rem;
   padding: 0.5rem;
@@ -70,76 +70,76 @@
   transition-duration: 2s;
 }
 
-.img-content-stacks i {
+.mySwiper-home .img-content-stacks i {
   font-size: 1rem;
   margin: 0.3rem;
 }
 
-.img-content-jobs i {
+.mySwiper-home .img-content-jobs i {
   font-size: 1rem;
   margin: 0.3rem;
 }
 
-.slider-main-content {
+.mySwiper-home .slider-main-content {
   padding: 1rem;
 }
 
-.slider-title {
+.mySwiper-home .slider-title {
   font-size: 1.2rem;
   font-weight: bold;
   padding-bottom: 1rem;
   cursor: pointer;
 }
 
-.slider-title:hover {
+.mySwiper-home .slider-title:hover {
   background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 
-.slider-desc {
+.mySwiper-home .slider-desc {
   font-size: 0.8rem;
   color: grey;
 }
 
-.slider-desc a {
+.mySwiper-home .slider-desc a {
   font-weight: bolder;
   color: grey;
 }
 
-.slider-desc a:hover {
+.mySwiper-home .slider-desc a:hover {
   background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 
-.slider-content-container {
+.mySwiper-home .slider-content-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
 }
 
-.slider-user-container {
+.mySwiper-home .slider-user-container {
   display: flex;
   align-items: center;
 }
 
-.slider-avatar {
+.mySwiper-home .slider-avatar {
   height: 2rem;
   width: auto;
   cursor: pointer;
   border-radius: 50px;
 }
 
-.slider-date {
+.mySwiper-home .slider-date {
   color: grey;
   font-size: 0.6rem;
 }
 
-.slider-user-name {
+.mySwiper-home .slider-user-name {
   color: grey;
   font-size: 0.6rem;
   font-weight: bolder;
