@@ -1,12 +1,16 @@
 @use "./../../styles/vars";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
 
+
+
+
+
 .app {
   background-color: vars.$backgroundLight;
 }
 
 body {
-  background-color: vars.$backgroundLight;
+  // background-color: vars.$backgroundLight;
   font-family: "Montserrat", sans-serif;
   margin: 0;
 }
@@ -192,3 +196,36 @@ margin-top: -1rem;
   cursor:pointer;
 }
 
+
+
+
+
+
+// DARK MODE 
+
+#dark .side_main {
+  background: vars.$linearGradientDarkMode;
+}
+
+
+#dark .public-DraftEditor-content {
+  background-color: #2A314C;
+}
+
+#dark .secondary-button-colored {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .main-button-colored  {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .project-jobs-container {
+  & p {
+    color:white;
+  }
+}

@@ -117,7 +117,11 @@ function Project() {
               {!displayImgEdit && (
                 <div className="project-img-container">
                   <img
-                    src={projectImg}
+                    src={
+                      projectImg
+                        ? projectImg
+                        : "https://actu.epfl.ch/static/img/placeholder.png"
+                    }
                     className="project-img"
                     alt="Projet image"
                   />
@@ -152,7 +156,7 @@ function Project() {
               )}
               <div className="project-user">
                 <img
-                  className="slider-avatar"
+                  className="project-user-avatar"
                   src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
                   alt="User profile image"
                 />
@@ -184,7 +188,7 @@ function Project() {
                           )
                         }
                       >
-                        <i className="fas fa-edit"></i>
+                        Modifier
                       </span>
                     </div>
                     <div className="project-jobs-container">
@@ -248,7 +252,7 @@ function Project() {
                         dispatch(setDisplayEdit({ name: "displayEditDates" }))
                       }
                     >
-                      <i className="fas fa-edit"></i>
+                      Modifier
                     </p>
                   </div>
                   <p>
@@ -275,6 +279,7 @@ function Project() {
                       <DatePicker
                         label="Date de début"
                         value={startDate}
+                        className="date-picker-color"
                         onChange={(newValue) => {
                           dispatch(
                             changeDate({
@@ -355,7 +360,7 @@ function Project() {
                           )
                         }
                       >
-                        <i className="fas fa-edit"></i>
+                        Modifier
                       </span>
                     </div>
                     <p className="project-description-desc">
@@ -514,7 +519,7 @@ function Project() {
                           className="technologies-icon-container2"
                         >
                           <i
-                            className={`devicon-${techno.name}-plain`}
+                            className={`devicon-${techno.name}-plain dark-white`}
                             style={{ backgroundColor: `${techno.color}` }}
                           ></i>
                           {techno.name}

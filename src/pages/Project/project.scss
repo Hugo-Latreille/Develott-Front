@@ -61,6 +61,10 @@
     margin-top: 2rem;
     margin-left: 2rem;
 
+    &-avatar {
+      width:3rem;
+    }
+
     &-name {
       padding: 0.5rem 1rem;
       text-decoration: underline;
@@ -340,6 +344,7 @@
 @media screen and (width < 600px) {
   .project {
     height: auto;
+    margin:1rem 0;
   }
   .project-container {
     flex-wrap: wrap;
@@ -396,4 +401,62 @@
       width: 100%;
     }
   }
+}
+
+
+
+
+// DARK MODE 
+
+#dark .dark-white {
+  color:white;
+}
+
+#dark .project {
+  color:white;
+}
+
+#dark .project-user {
+  & i {
+    color:white;
+  }
+}
+
+#dark .project-description {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-container-left {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-technologies {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+
+  & h4 {
+    color: white;
+  }
+}
+
+#dark .technologies-icon-container2 {
+  background: vars.$linearGradientDarkMode;
+}
+
+#dark .edit-btn-main {
+  color: #30cfd0;
+}
+
+#dark .project-header {
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+#dark .project-img-container-edit-btn {
+  color:white;
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+
+#dark .project-description-see-more {
+  color: #30cfd0;
 }
