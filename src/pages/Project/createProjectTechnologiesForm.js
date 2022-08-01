@@ -2,12 +2,13 @@ import "./createProjectTechnologiesForm.scss";
 import SearchBarProjects from "./../../components/SearchBar/searchBarTechnologies";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTechnologyData, setActiveForm } from "./createProjectSlice";
+import { useDeleteProjectTechnoMutation } from "../Projects/projectsAPISlice";
 
 function CreateProjectTechnologiesForm() {
-	const technologiesData = useSelector(
-		(state) => state.createProject.technologiesData
+	const { projectId, technologiesData } = useSelector(
+		(state) => state.createProject
 	);
-
+	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
 	const dispatch = useDispatch();
 
 	const languagesData = technologiesData.filter((technology) =>
@@ -50,7 +51,13 @@ function CreateProjectTechnologiesForm() {
 								{techno.name}
 								<i
 									className="fal fa-backspace form-technologies-delete"
-									onClick={() => dispatch(removeTechnologyData(techno.name))}
+									onClick={() => {
+										deleteTechnoProject({
+											id: projectId,
+											techno: techno.name,
+										});
+										dispatch(removeTechnologyData(techno.name));
+									}}
 									style={{ color: "black" }}
 								></i>
 							</span>
@@ -72,7 +79,13 @@ function CreateProjectTechnologiesForm() {
 								{techno.name}
 								<i
 									className="fal fa-backspace form-technologies-delete"
-									onClick={() => dispatch(removeTechnologyData(techno.name))}
+									onClick={() => {
+										deleteTechnoProject({
+											id: projectId,
+											techno: techno.name,
+										});
+										dispatch(removeTechnologyData(techno.name));
+									}}
 									style={{ color: "black" }}
 								></i>
 							</span>
@@ -94,7 +107,13 @@ function CreateProjectTechnologiesForm() {
 								{techno.name}
 								<i
 									className="fal fa-backspace form-technologies-delete"
-									onClick={() => dispatch(removeTechnologyData(techno.name))}
+									onClick={() => {
+										deleteTechnoProject({
+											id: projectId,
+											techno: techno.name,
+										});
+										dispatch(removeTechnologyData(techno.name));
+									}}
 									style={{ color: "black" }}
 								></i>
 							</span>
@@ -116,7 +135,13 @@ function CreateProjectTechnologiesForm() {
 								{techno.name}
 								<i
 									className="fal fa-backspace form-technologies-delete"
-									onClick={() => dispatch(removeTechnologyData(techno.name))}
+									onClick={() => {
+										deleteTechnoProject({
+											id: projectId,
+											techno: techno.name,
+										});
+										dispatch(removeTechnologyData(techno.name));
+									}}
 									style={{ color: "black" }}
 								></i>
 							</span>
