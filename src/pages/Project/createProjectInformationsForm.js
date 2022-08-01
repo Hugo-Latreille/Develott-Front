@@ -7,7 +7,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function CreateProjectInformationsForm() {
   return (
-    <form>
+    <form className="project-information-form-dark">
       <InputProject name="email" label="Nom du projet" />
       <InputProject name="email" label="Description courte" />
       <div className="create-project-right-container">
