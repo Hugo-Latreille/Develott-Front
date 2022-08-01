@@ -3,42 +3,25 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
 import { useSelector, useDispatch } from "react-redux";
 import { setTechnologiesData } from "../../pages/Project/createProjectSlice";
+import { usePostProjectTechnoMutation } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarTechnologies() {
-	const technologiesData = useSelector(
-		(state) => state.createProject.technologiesData
+	const [postProjectTechno] = usePostProjectTechnoMutation();
+	const { projectId, technologiesData } = useSelector(
+		(state) => state.createProject
 	);
-
 	const dispatch = useDispatch();
 
-	const handleOnSearch = (string, results) => {
-		// onSearch will have as the first callback parameter
-		// the string searched and for the second the results.
-		// console.log(string, results);
-	};
-
-	const handleOnHover = (result) => {
-		// the item hovered
-		// console.log(result);
-	};
-
 	const handleOnSelect = (item) => {
-		// the item selected
-		// console.log(item);
-
 		const itemAlreadyExist = technologiesData.find(
-			(techno) => techno.name === item.name
+			(techno) => techno === item.name
 		);
-
 		if (!itemAlreadyExist) {
 			dispatch(setTechnologiesData(item));
+			postProjectTechno({ id: projectId, techno: item.name });
 		} else {
 			console.log("techno already added");
 		}
-	};
-
-	const handleOnFocus = () => {
-		console.log("Focused");
 	};
 
 	const formatResult = (item) => {
@@ -55,21 +38,12 @@ function SearchBarTechnologies() {
 		);
 	};
 
-	const technologies = datas.filter(
-		(element) =>
-			element.tags.includes("framework") || element.tags.includes("language")
-	);
-
 	return (
 		<div className="input-container-projects">
 			<div>
 				<ReactSearchAutocomplete
 					items={datas}
-					// onSearch={handleOnSearch}
-					// onHover={handleOnHover}
 					onSelect={handleOnSelect}
-					// onFocus={handleOnFocus}
-
 					styling={{
 						zIndex: 1,
 						backgroundColor: "white",
