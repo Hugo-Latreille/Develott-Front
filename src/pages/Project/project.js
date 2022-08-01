@@ -47,32 +47,25 @@ function Project() {
 		displayEditDates,
 		displayImgEdit,
 		adaptDescriptionContainer,
-		technologiesData,
-		jobsData,
 		startDate,
 		endDate,
-		projectImg,
 		description,
 	} = useSelector((state) => state.project);
 
-	const findProjectTechnosFromDatabase = () => {
-		return project?.techno?.map(
-			(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
-		);
-	};
+	const findProjectTechnosFromDatabase = project?.techno?.map(
+		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
+	);
 
-	console.log(findProjectTechnosFromDatabase());
-
-	const languagesData = technologiesData.filter((technology) =>
+	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
 	);
-	const frameworksData = technologiesData.filter((technology) =>
+	const frameworksData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("framework")
 	);
-	const databasesData = technologiesData.filter((technology) =>
+	const databasesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("database")
 	);
-	const othersData = technologiesData.filter(
+	const othersData = findProjectTechnosFromDatabase?.filter(
 		(technology) =>
 			!technology.tags.includes("framework") &&
 			!technology.tags.includes("language") &&
@@ -521,10 +514,10 @@ function Project() {
 									<>
 										<div className="project-technologies-languages">
 											<h4>Langages</h4>
-											{languagesData.length === 0 && (
+											{languagesData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{languagesData.map((techno, index) => (
+											{languagesData?.map((techno, index) => (
 												<span
 													key={index}
 													className="technologies-icon-container2"
@@ -539,10 +532,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-frameworks">
 											<h4>Frameworks</h4>
-											{frameworksData.length === 0 && (
+											{frameworksData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{frameworksData.map((techno, index) => (
+											{frameworksData?.map((techno, index) => (
 												<span
 													key={index}
 													className="technologies-icon-container2"
@@ -557,10 +550,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-database">
 											<h4>Database</h4>
-											{databasesData.length === 0 && (
+											{databasesData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{databasesData.map((techno, index) => (
+											{databasesData?.map((techno, index) => (
 												<span
 													key={index}
 													className="technologies-icon-container2"
@@ -575,10 +568,10 @@ function Project() {
 										</div>
 										<div className="project-technologies-others">
 											<h4>Autres</h4>
-											{othersData.length === 0 && (
+											{othersData?.length === 0 && (
 												<span className="form-technologies-empty">vide...</span>
 											)}
-											{othersData.map((techno, index) => (
+											{othersData?.map((techno, index) => (
 												<span
 													key={index}
 													className="technologies-icon-container2"
