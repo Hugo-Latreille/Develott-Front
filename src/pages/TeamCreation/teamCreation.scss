@@ -1,0 +1,88 @@
+@use "./../../styles/vars";
+
+.team-creation {
+    background-color: rgba(0,0,0,0.4);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-container {
+        background-color: #fff;
+        width:40%;
+        margin:auto;
+        position: relative; 
+
+        &-header {
+            margin: 1rem ;
+            padding : 2rem ;
+            background: url('./../../assets/images/footer-bg2.png');
+            color:white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & h2 {
+                font-size: 1.2rem;
+                font-weight: normal;
+                margin: 0;
+            }
+        }
+
+        &-main {
+            margin : 3rem ;
+
+            & h3 {
+                margin-bottom: 2rem;
+            }
+
+            & input {
+                margin-bottom: 1rem;
+            }
+
+            & label {
+                margin-left: 1rem;
+            }
+
+            & button {
+                width:100%;
+                margin-top: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+   
+}
+
+.close-modal-button {
+    position : absolute;
+    top : -0.45rem;
+    right: -0.45rem;
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.team-creation-admin-form {
+    height:14rem;
+    overflow-y: scroll;
+
+    &-input-container {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    &-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+
+        & p {
+            font-weight: bolder;
+            margin:0;
+        }
+    }
+}

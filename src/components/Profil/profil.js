@@ -3,128 +3,293 @@
 // import React, { useState } from "react";
 import "./profil.scss";
 import "../Cards/cards.scss";
-
 import SearchBarTechnologiesUserProfile from "../SearchBar/searchBarTechnologiesUserProfile";
-
 import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
 
+//? WYSIWYG editor
 import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import sanitizeHtml from "sanitize-html";
 
 import { useSelector, useDispatch } from "react-redux";
-
 import {
-  setIsEditDescriptionActive,
-  setIsEditTechnologiesActive,
-  removeUserTechnologyData,
-} from "./../../pages/Profiles/updtateUserProfileSlice";
-
-import { setDisplayAllDescription } from "./../../pages/Profiles/userProfileSlice";
+  setDisplayEdit,
+  setNewUserImg,
+  removeData,
+  setUserDescription,
+} from "./../../pages/Profiles/userProfileSlice";
+import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
+import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
+import { useState } from "react";
 
 function Profil() {
   const dispatch = useDispatch();
 
-  const isEditDescriptionActive = useSelector(
-    (state) => state.updateProfile.isEditDescriptionActive
+  const {
+    isEditDescriptionActive,
+    isEditTechnologiesActive,
+    isEditUserPictureActive,
+    isEditUserInfos,
+    userTechnologiesData,
+    displayAllDescription,
+    userJobData,
+    userImg,
+    userDescription,
+  } = useSelector((state) => state.userProfile);
+
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  // const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
+  const html = userDescription;
+  const contentBlock = htmlToDraft(html);
+  const contentState = ContentState.createFromBlockArray(
+    contentBlock.contentBlocks
   );
-
-  const isEditTechnologiesActive = useSelector(
-    (state) => state.updateProfile.isEditTechnologiesActive
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(contentState)
   );
+  const handleEditorChange = (editorState) => {
+    setEditorState(editorState);
+  };
 
-  const technologiesData = useSelector(
-    (state) => state.updateProfile.userTechnologiesData
-  );
+  const handleDescriptionSubmit = (e) => {
+    e.preventDefault();
+    console.log(editorState);
+    dispatch(
+      setUserDescription(
+        draftToHtml(convertToRaw(editorState.getCurrentContent()))
+      )
+    );
 
-  const displayAllDescription = useSelector(
-    (state) => state.userProfile.displayAllDescription
-  );
+    dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
+  };
 
-  console.log(technologiesData);
+  const email = useSelector((state) => state.auth.email);
+  const { data: user } = useGetOneUserQuery(email);
+  console.log(user);
 
-  const languagesData = technologiesData.filter((technology) =>
+  const languagesData = userTechnologiesData.filter((technology) =>
     technology.tags.includes("language")
   );
 
-  const frameworksData = technologiesData.filter((technology) =>
+  const frameworksData = userTechnologiesData.filter((technology) =>
     technology.tags.includes("framework")
   );
 
-  const othersData = technologiesData.filter(
-    (technology) =>
-      !technology.tags.includes("framework") &&
-      !technology.tags.includes("language")
+  const databasesData = userTechnologiesData.filter((technology) =>
+    technology.tags.includes("database")
   );
 
-  // TEST TEXTE
-  const texte =
-    " Vous savez, moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux moi je ne crois pas qu’il y ait de bonne ou deauvaise situation. Moi, si je devais résumer ma viejourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...  Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée...";
+  const othersData = userTechnologiesData.filter(
+    (technology) =>
+      !technology.tags.includes("framework") &&
+      !technology.tags.includes("language") &&
+      !technology.tags.includes("database")
+  );
 
-  // const adaptTextSize = (texte) => {
-  //   const sentenceArray = [];
-
-  //   // pour chaque article, on récupère le texte de l'article dans une variable
-  //   const wordsArray = [];
-
-  //   for (let i = 0; i < 100; i++) {
-  //     // on split la string (texte de l'article) à chaque " ", puis on ajoute chaque mot dans un nouveau tableau
-  //     const word = texte.split(" ");
-  //     wordsArray.push(word[i]);
-  //   }
-
-  //   console.log(wordsArray);
-  //   // on transforme notre array de mots (qui en contient 100), en une string.
-  //   const sentence = wordsArray.join(" ");
-  //   console.log(sentence);
-
-  //   //on ajoute ces nouvelles string dans un nouvel array (qui contiendra donc les textes de chacun des articles avec 30 mots suelement)
-  //   sentenceArray.push(sentence);
-
-  //   return sentenceArray;
-  // };
+  const showCloudinaryWidget = () => {
+    let widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: `develott`,
+        uploadPreset: `develott`,
+        sources: ["local", "url"],
+        showAdvancedOptions: true,
+        cropping: true,
+        multiple: false,
+        defaultSource: "local",
+        styles: {
+          palette: {
+            window: "#FFFFFF",
+            windowBorder: "#90A0B3",
+            tabIcon: "#9B72F1",
+            menuIcons: "#5A616A",
+            textDark: "#000000",
+            textLight: "#FFFFFF",
+            link: "#9B72F1",
+            action: "#FF620C",
+            inactiveTabIcon: "#7288E4",
+            error: "#F44235",
+            inProgress: "#0078FF",
+            complete: "#20B832",
+            sourceBg: "#E4EBF1",
+          },
+          fonts: {
+            default: null,
+            "'Fira Sans', sans-serif": {
+              url: "https://fonts.googleapis.com/css?family=Fira+Sans",
+              active: true,
+            },
+          },
+        },
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log(result.info.url);
+          const newImg = result.info.url;
+          dispatch(setNewUserImg(newImg));
+        }
+      }
+    );
+    widget.open();
+  };
 
   return (
     <>
       <div className="profil ">
         <div className="profil_desc">
           <div className="desc_container_description">
-            <div className=" desc_container_description-username">
-              <img
-                className="name_container_avatar"
-                src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-                alt=""
-              />
-              <div className="desc_container_description-user">
-                <p className="name_container_user">Bruce Wayne</p>
-                <p className="desc_container_role">Lead Dev Front</p>
+            {isEditUserPictureActive ? (
+              <div className=" desc_container_description-username">
+                <span
+                  className="project-img-container-edit-btn"
+                  onClick={() =>
+                    dispatch(
+                      setDisplayEdit({ name: "isEditUserPictureActive" })
+                    )
+                  }
+                >
+                  Enregistrer
+                </span>
+                <button
+                  className="project-edit-img-input margin-top2"
+                  onClick={() => showCloudinaryWidget()}
+                >
+                  Uploader une image de profil
+                </button>
+                <div className="desc_container_description-user">
+                  <p className="margin-top2">Modifier le poste actuel :</p>
+                  <p className="desc_container_role-edition">{userJobData}</p>
+                  <div className="jobs-searchbar-container margin-top-4">
+                    <SearchBarJobsUser />
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className=" desc_container_description-username">
+                {userImg ? (
+                  <img className="name_container_avatar" src={userImg} alt="" />
+                ) : (
+                  <img
+                    className="name_container_avatar"
+                    src={require("./../../assets/images/user-avatar.png")}
+                    alt=""
+                  />
+                )}
+                <span
+                  className="project-img-container-edit-btn"
+                  onClick={() =>
+                    dispatch(
+                      setDisplayEdit({ name: "isEditUserPictureActive" })
+                    )
+                  }
+                >
+                  Modifier
+                </span>
+                <div className="desc_container_description-user">
+                  <p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
+                  <p className="desc_container_role">
+                    {userJobData ? (
+                      userJobData
+                    ) : (
+                      <span
+                        className="cursor-pointer"
+                        onClick={() =>
+                          dispatch(
+                            setDisplayEdit({ name: "isEditUserPictureActive" })
+                          )
+                        }
+                      >
+                        Renseigner mon poste
+                      </span>
+                    )}
+                  </p>
+                </div>
+              </div>
+            )}
             <div className=" desc_container_description-links-informations">
               <div className="desc_container_description-links">
+                {isEditUserInfos === false && (
+                  <span
+                    className="project-img-container-edit-btn"
+                    onClick={() =>
+                      dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+                    }
+                  >
+                    Modifier
+                  </span>
+                )}
+                {isEditUserInfos === true && (
+                  <span
+                    className="project-img-container-edit-btn"
+                    onClick={() =>
+                      dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+                    }
+                  >
+                    Enregistrer
+                  </span>
+                )}
                 <p className="desc_container_title user-available">
                   <i className="fas fa-circle success"></i> Disponible pour
                   débuter un nouveau projet
                 </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-map-marker color-secondary"></i>{" "}
-                  Montpellier
-                </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-envelope color-secondary"></i>{" "}
-                  batman@batmail.batfr
-                </p>
-                <p className="desc_container_title">
-                  <i className="fab fa-github color-secondary"></i>{" "}
-                  <a href="#"> Superman-Suck</a>{" "}
-                </p>
-                <p className="desc_container_title">
-                  <i className="fab fa-linkedin color-secondary"></i>{" "}
-                  <a href="#"> Bruce Wayne</a>
-                </p>
-                <p className="desc_container_title">
-                  <i className="fas fa-globe color-secondary"></i>{" "}
-                  <a href="#"> brucewayne.com</a>
-                </p>
+                {isEditUserInfos === false && (
+                  <>
+                    <p className="desc_container_title">
+                      <i className="fas fa-map-marker color-secondary"></i>
+                      {/* {user.city ? user.city : "A compléter"} */}
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fab fa-github color-secondary"></i>
+                      <a href="#"> Superman-Suck</a>
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fab fa-linkedin color-secondary"></i>
+                      <a href="#"> Bruce Wayne</a>
+                    </p>
+                    <p className="desc_container_title">
+                      <i className="fas fa-globe color-secondary"></i>
+                      <a href="#"> brucewayne.com</a>
+                    </p>
+                  </>
+                )}
+                {isEditUserInfos === true && (
+                  <>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fas fa-map-marker color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Ville ..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fab fa-github color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien profil Github..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fab fa-linkedin color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien profil Linkedin..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                    <div className="desc_container_title user-info-input-edition">
+                      <i className="fas fa-globe color-secondary"></i>
+                      <input
+                        type="texte"
+                        placeholder="Lien vers Portfolio..."
+                        className="dashboard-edit-input"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               <p className="desc_container_title user-password">
                 <i className="fal fa-key"></i> Mot de Passe
@@ -143,8 +308,13 @@ function Profil() {
               }
             >
               {isEditDescriptionActive === true && (
-                <form className="padding-on-edition">
+                <form
+                  className="padding-on-edition"
+                  onSubmit={handleDescriptionSubmit}
+                >
                   <Editor
+                    editorState={editorState}
+                    onEditorStateChange={handleEditorChange}
                     wrapperClassName="wrapper-class"
                     editorClassName="editor-class"
                     toolbarClassName="toolbar-class"
@@ -174,10 +344,15 @@ function Profil() {
                       },
                     }}
                   />
+                  <textarea
+                    disabled
+                    value={draftToHtml(
+                      convertToRaw(editorState.getCurrentContent())
+                    )}
+                  />
                   <button
                     type="submit"
                     className="main-button-colored create-project-button"
-                    onClick={() => dispatch(setIsEditDescriptionActive())}
                   >
                     Valider
                   </button>
@@ -189,32 +364,61 @@ function Profil() {
                     <h4 className="desc_container_main">
                       Bruce en quelques mots...
                     </h4>
-                    <i
-                      className="fal fa-edit"
-                      onClick={() => dispatch(setIsEditDescriptionActive())}
-                    ></i>
+                    <span
+                      className="edit-btn-main"
+                      onClick={() =>
+                        dispatch(
+                          setDisplayEdit({ name: "isEditDescriptionActive" })
+                        )
+                      }
+                    >
+                      Modifier
+                    </span>
                   </div>
-                  <p className="user-description-texte">
-                    {displayAllDescription === false &&
-                      DisplayShowMoreDescription(texte)}
-                    {displayAllDescription === true && texte}
+
+                  {displayAllDescription === false && (
+                    <div
+                      className="user-description-texte"
+                      dangerouslySetInnerHTML={{
+                        __html: DisplayShowMoreDescription(userDescription),
+                      }}
+                    />
+                  )}
+                  {displayAllDescription === true && (
+                    <div
+                      className="user-description-texte"
+                      dangerouslySetInnerHTML={{
+                        __html: userDescription,
+                      }}
+                    />
+                  )}
+
+                  <div className="user-description-texte">
                     {displayAllDescription === false && (
                       <span
                         className="user_desc_link"
-                        onClick={() => dispatch(setDisplayAllDescription())}
+                        onClick={() =>
+                          dispatch(
+                            setDisplayEdit({ name: "displayAllDescription" })
+                          )
+                        }
                       >
-                        ... voir plus.
+                        voir plus...
                       </span>
                     )}
                     {displayAllDescription === true && (
                       <span
                         className="user_desc_link"
-                        onClick={() => dispatch(setDisplayAllDescription())}
+                        onClick={() =>
+                          dispatch(
+                            setDisplayEdit({ name: "displayAllDescription" })
+                          )
+                        }
                       >
                         voir moins.
                       </span>
                     )}
-                  </p>
+                  </div>
                 </>
               )}
             </div>
@@ -236,13 +440,19 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
                             className="fal fa-backspace form-technologies-delete"
                             onClick={() =>
-                              dispatch(removeUserTechnologyData(techno.name))
+                              dispatch(
+                                removeData({
+                                  name: "userTechnologiesData",
+                                  field: "name",
+                                  value: techno.name,
+                                })
+                              )
                             }
                           ></i>
                         </div>
@@ -261,13 +471,50 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
                             className="fal fa-backspace form-technologies-delete"
                             onClick={() =>
-                              dispatch(removeUserTechnologyData(techno.name))
+                              dispatch(
+                                removeData({
+                                  name: "userTechnologiesData",
+                                  field: "name",
+                                  value: techno.name,
+                                })
+                              )
+                            }
+                          ></i>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="project-technologies-frameworks">
+                      <h4>Database</h4>
+                      {databasesData.length === 0 && (
+                        <span className="form-technologies-empty">vide...</span>
+                      )}
+                      {databasesData.map((techno) => (
+                        <div
+                          key={techno.name}
+                          className="form-technologies-items"
+                        >
+                          <p className="margin0">
+                            <i
+                              className={`devicon-${techno.name}-plain colored`}
+                            ></i>
+                            {techno.name}
+                          </p>
+                          <i
+                            className="fal fa-backspace form-technologies-delete"
+                            onClick={() =>
+                              dispatch(
+                                removeData({
+                                  name: "userTechnologiesData",
+                                  field: "name",
+                                  value: techno.name,
+                                })
+                              )
                             }
                           ></i>
                         </div>
@@ -286,13 +533,19 @@ function Profil() {
                           <p className="margin0">
                             <i
                               className={`devicon-${techno.name}-plain colored`}
-                            ></i>{" "}
+                            ></i>
                             {techno.name}
                           </p>
                           <i
                             className="fal fa-backspace form-technologies-delete"
                             onClick={() =>
-                              dispatch(removeUserTechnologyData(techno.name))
+                              dispatch(
+                                removeData({
+                                  name: "userTechnologiesData",
+                                  field: "name",
+                                  value: techno.name,
+                                })
+                              )
                             }
                           ></i>
                         </div>
@@ -303,7 +556,11 @@ function Profil() {
                 <button
                   type="button"
                   className="main-button-colored create-project-button"
-                  onClick={() => dispatch(setIsEditTechnologiesActive())}
+                  onClick={() =>
+                    dispatch(
+                      setDisplayEdit({ name: "isEditTechnologiesActive" })
+                    )
+                  }
                 >
                   Valider
                 </button>
@@ -320,12 +577,18 @@ function Profil() {
               >
                 <div className="profile-edition-btns-container">
                   <h4 className="desc_container_main">Compétences</h4>
-                  <i
-                    className="fal fa-edit"
-                    onClick={() => dispatch(setIsEditTechnologiesActive())}
-                  ></i>
+                  <span
+                    className="edit-btn-main"
+                    onClick={() =>
+                      dispatch(
+                        setDisplayEdit({ name: "isEditTechnologiesActive" })
+                      )
+                    }
+                  >
+                    Modifier
+                  </span>
                 </div>
-                <div className="user-technologies">
+                <div className="user-technologies margin-left2">
                   <div className="project-technologies-languages">
                     <h4>Langages</h4>
                     {languagesData.length === 0 && (
@@ -341,12 +604,28 @@ function Profil() {
                       </span>
                     ))}
                   </div>
+
                   <div className="project-technologies-frameworks">
                     <h4>Frameworks</h4>
                     {frameworksData.length === 0 && (
                       <span className="form-technologies-empty">vide...</span>
                     )}
                     {frameworksData.map((techno) => (
+                      <span className="technologies-icon-container">
+                        <i
+                          className={`devicon-${techno.name}-plain`}
+                          style={{ backgroundColor: `${techno.color}` }}
+                        ></i>
+                        {techno.name}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-technologies-languages">
+                    <h4>Database</h4>
+                    {databasesData.length === 0 && (
+                      <span className="form-technologies-empty">vide...</span>
+                    )}
+                    {databasesData.map((techno) => (
                       <span className="technologies-icon-container">
                         <i
                           className={`devicon-${techno.name}-plain`}
@@ -387,13 +666,11 @@ function Profil() {
               />
               <div className="card_main">
                 <h3 className="card_main_title-project">Develott</h3>
-                <p className="card_main_desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...{" "}
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                <p className="project-list-paragraph-desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing...
                 </p>
+                <p className="project-list-paragraph">4 co-équipiers</p>
+                <p className="project-list-paragraph-grey">Le 30 mai 2022</p>
               </div>
             </div>
             <div className="card_project">
@@ -404,13 +681,11 @@ function Profil() {
               />
               <div className="card_main">
                 <h3 className="card_main_title-project">Develott</h3>
-                <p className="card_main_desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod...{" "}
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                <p className="project-list-paragraph-desc">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing...
                 </p>
+                <p className="project-list-paragraph">4 co-équipiers</p>
+                <p className="project-list-paragraph-grey">Le 30 mai 2022</p>
               </div>
             </div>
           </div>
