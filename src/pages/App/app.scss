@@ -73,6 +73,7 @@ a {
   padding: 0.8rem 1.6rem;
   border-radius: 25px;
   margin: 0.5rem;
+  cursor: pointer;
 }
 
 .main-button-bg-white {
@@ -83,6 +84,7 @@ a {
   border-radius: 25px;
   background-color: white;
   margin: 0.5rem;
+  cursor: pointer;
 }
 
 .main-button-colored {
@@ -96,6 +98,7 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0.5rem;
+  cursor: pointer;
 }
 
 .main-button-bg-colored {
@@ -105,6 +108,7 @@ a {
   padding: 1rem 1.8rem;
   border-radius: 25px;
   background: vars.$linearGradient;
+  cursor: pointer;
 }
 
 .secondary-button-colored {
@@ -115,6 +119,7 @@ a {
   font-weight: bolder;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
+  cursor: pointer;
 }
 
 .secondary-button-white {
@@ -122,18 +127,21 @@ a {
   font-size: 0.8rem;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
+  cursor: pointer;
 }
 
 .thrid-button-white {
   color: white;
   font-size: 0.8rem;
   padding-left: 1rem;
+  cursor: pointer;
 }
 
 .third-button-colored {
   color: #32518d;
   font-size: 0.8rem;
   padding-left: 1rem;
+  cursor: pointer;
 }
 
 .container {
