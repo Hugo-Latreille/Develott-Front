@@ -19,7 +19,7 @@ import Sidebar from "../../components/SideBar/sidebar";
 import SearchBarTechnologies from "../../components/SearchBar/searchBarTechnologiesProject";
 import SearchBarJobsProject from "../../components/SearchBar/searchBarJobsProject";
 import { useSelector, useDispatch } from "react-redux";
-import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
+import { setDisplayEdit, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import {
 	useDeleteProjectJobMutation,
@@ -40,6 +40,7 @@ function Project() {
 	console.log(projectWithTeam);
 
 	const project = projectWithTeam?.project;
+	const projectJobs = projectWithTeam?.jobByProject;
 
 	const dispatch = useDispatch();
 	const {
@@ -237,9 +238,10 @@ function Project() {
 											</span>
 										</div>
 										<div className="project-jobs-container">
-											{project?.job?.map((job, index) => (
-												<p key={index}>
-													<i className="fas fa-check-circle success"></i> {job}
+											{projectJobs?.map((job) => (
+												<p key={job.id_project_has_job}>
+													<i className="fas fa-check-circle success"></i>{" "}
+													{job.job}
 												</p>
 											))}
 										</div>
@@ -250,26 +252,22 @@ function Project() {
 										<div className="jobs-searchbar-container">
 											<SearchBarJobsProject projectId={projectId} />
 										</div>
-										{project?.job?.map((job, index) => (
-											<div key={index} className="project-jobs-container-job">
+										{projectJobs?.map((job) => (
+											<div
+												key={job.id_project_has_job}
+												className="project-jobs-container-job"
+											>
 												<p>
 													<i className="fas fa-check-circle success"></i>
-													{job}
+													{job.job}
 												</p>
 												<span
 													onClick={() =>
-														deleteJobProject({ id: projectId, job: job })
+														deleteJobProject({
+															id: projectId,
+															id_project_has_job: job.id_project_has_job,
+														})
 													}
-
-													// onClick={() =>
-													// 	dispatch(
-													// 		removeData({
-													// 			name: "jobsData",
-													// 			field: "id",
-													// 			value: job.id,
-													// 		})
-													// 	)
-													// }
 												>
 													<i className="far fa-backspace cursor-pointer"></i>
 												</span>
@@ -305,14 +303,21 @@ function Project() {
 									</div>
 									<p>
 										<i className="far fa-calendar-check success"></i> Début :{" "}
-										{moment(startDate).locale("fr").format("LL")}
+										{moment(project?.start_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-check success"></i> Début :{" "}
+										{moment(project?.end_date).locale("fr").format("LL")}
 									</p>
 									<p>
 										<i className="far fa-calendar-exclamation warning"></i>{" "}
 										Durée :
-										{moment(endDate)
+										{moment(project?.end_date)
 											.locale("fr")
-											.diff(moment(startDate).locale("fr"), "weeks")}{" "}
+											.diff(
+												moment(project?.start_date).locale("fr"),
+												"weeks"
+											)}{" "}
 										semaines
 									</p>
 								</div>

@@ -19,14 +19,14 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 					.then((result) => {
 						// console.log(result);
 						const startDate = result.data.project.start_date;
-						// const endDate = result.data.project.end_date;
+						const endDate = result.data.project.end_date;
 						const projectImg = result.data.project.picture;
 						const projectDescription = result.data.project.description;
 						dispatch(changeDate({ name: "startDate", value: startDate }));
 						dispatch(
 							changeDate({ name: "description", value: projectDescription })
 						);
-						// dispatch(changeDate({ name: "endDate", value: endDate }));
+						dispatch(changeDate({ name: "endDate", value: endDate }));
 						dispatch(setNewImg(projectImg));
 					})
 					.catch(({ error }) => {});
@@ -57,10 +57,10 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			invalidatesTags: ["Project"],
 		}),
 		deleteProjectJob: builder.mutation({
-			query: ({ id, job }) => ({
+			query: ({ id, id_project_has_job }) => ({
 				url: `project/${id}/deleteJob`,
 				method: "DELETE",
-				body: { job },
+				body: { id_project_has_job },
 			}),
 			invalidatesTags: ["Project"],
 		}),
