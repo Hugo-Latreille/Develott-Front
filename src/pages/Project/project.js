@@ -23,14 +23,14 @@ import { setDisplayEdit, removeData, changeDate } from "./projectSlice";
 import { useParams } from "react-router-dom";
 import {
 	useGetOneProjectQuery,
-	useUpdateProjectDescriptionMutation,
+	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
 import { useEffect, useState } from "react";
 
 function Project() {
 	const { projectId } = useParams();
 	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
-	const [updateProject] = useUpdateProjectDescriptionMutation();
+	const [updateProject] = useUpdateProjectMutation();
 
 	console.log(projectWithTeam);
 
@@ -120,7 +120,7 @@ function Project() {
 	useEffect(() => {
 		if (project?.description) {
 			console.log(description);
-			const html = description;
+			const html = project?.description;
 			const contentBlock = htmlToDraft(html);
 			const contentState = ContentState.createFromBlockArray(
 				contentBlock.contentBlocks
@@ -244,7 +244,7 @@ function Project() {
 								{displayEditJobForm === true && (
 									<div className="project-jobs-container">
 										<div className="jobs-searchbar-container">
-											<SearchBarJobsProject />
+											<SearchBarJobsProject projectId={projectId} />
 										</div>
 										{jobsData.map((job, index) => (
 											<div key={index} className="project-jobs-container-job">
@@ -414,7 +414,7 @@ function Project() {
 										<p
 											className="project-description-desc"
 											dangerouslySetInnerHTML={{
-												__html: description,
+												__html: project?.description,
 											}}
 										/>
 
