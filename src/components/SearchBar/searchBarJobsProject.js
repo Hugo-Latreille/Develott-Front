@@ -3,11 +3,15 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import jobsDataArray from "./../../assets/data/jobsData.json";
 import { useDispatch } from "react-redux";
 import { setData } from "../../pages/Project/projectSlice";
-import { usePostProjectJobMutation } from "../../pages/Projects/projectsAPISlice";
+import {
+	useGetAllJobsQuery,
+	usePostProjectJobMutation,
+} from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarJobsProject({ projectId }) {
 	const dispatch = useDispatch();
 	const [postProjectJob] = usePostProjectJobMutation();
+	const { data: allJobs } = useGetAllJobsQuery();
 
 	const handleOnSearch = (string, results) => {
 		// onSearch will have as the first callback parameter
@@ -45,7 +49,7 @@ function SearchBarJobsProject({ projectId }) {
 				<ReactSearchAutocomplete
 					showItemsOnFocus={true}
 					autoFocus={true}
-					items={jobsDataArray}
+					items={allJobs}
 					onSearch={handleOnSearch}
 					onHover={handleOnHover}
 					onSelect={handleOnSelect}

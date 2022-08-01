@@ -8,6 +8,9 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			providesTags: ["Project"],
 			// transformResponse: (response, meta, arg) => response.projects,
 		}),
+		getAllJobs: builder.query({
+			query: () => "jobs",
+		}),
 		getOneProject: builder.query({
 			query: (projectId) => `project/${projectId}`,
 			providesTags: ["Project"],
@@ -58,6 +61,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 
 export const {
 	useGetAllProjectsQuery,
+	useGetAllJobsQuery,
 	useGetOneProjectQuery,
 	usePostProjectMutation,
 	useUpdateProjectMutation,

@@ -5,5 +5,7 @@
 	{ "id": 4, "name": "Développeur FullStack" },
 	{ "id": 5, "name": "Graphiste" },
 	{ "id": 6, "name": "UX Designer" },
-	{ "id": 7, "name": "DevOps" }
+	{ "id": 7, "name": "DevOps" },
+	{ "id": 8, "name": "Scrum Master" },
+	{ "id": 9, "name": "Product Owner" }
 ]
