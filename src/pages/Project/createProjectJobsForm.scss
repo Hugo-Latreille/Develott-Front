@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
 
+
   &-title {
     color: vars.$darkGrey;
     margin-bottom: 2rem;
@@ -46,6 +47,11 @@
     cursor: pointer;
   }
 }
+
+.form-jobs .input-container {
+  width: 100%;
+}
+
 
 .form-jobs-container {
   display: flex;
