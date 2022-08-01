@@ -306,32 +306,6 @@ function About() {
             </Swiper>
           </div>
         </div>
-        <div className="socialmedia_container">
-          <section className="socialmedia_container_section">
-            <ul className="ul_media">
-              <li>
-                <a href="#">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-github"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
         <Footer />
       </div>
     </Sidebar>

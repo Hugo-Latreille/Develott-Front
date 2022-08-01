@@ -90,11 +90,11 @@ function Slider() {
             clickable: true,
           }}
           modules={[Pagination, Navigation]}
-          className="mySwiper-home"
+          className="swiperhome"
         >
           {/* ***************************************PARAMETRES EFFET************************************ */}
           <SwiperSlide>
-            <div className="slide">
+            <div className="slide_home">
               <img
                 src="https://img.freepik.com/free-vector/realistic-ui-ux-landing-page-template_52683-68898.jpg?t=st=1657989378~exp=1657989978~hmac=7dbf26d36ff7850abde76f313dbb1a591b368ffb72079a26be1dda0f2e93256e&w=996"
                 className="slide-img"
@@ -175,7 +175,7 @@ function Slider() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide">
+            <div className="slide_home">
               <img
                 src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
                 className="slide-img"
@@ -246,7 +246,7 @@ function Slider() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide">
+            <div className="slide_home">
               <img
                 src="https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148279574.jpg?t=st=1657989532~exp=1657990132~hmac=08608f29d21284c783fd75aeffcf6524583b99dcc59a6a7793a305f39890f587&w=996"
                 className="slide-img"
@@ -320,7 +320,7 @@ function Slider() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide">
+            <div className="slide_home">
               <img
                 src="https://img.freepik.com/premium-photo/blue-devices-top-view-creative-website-builder-3d-rendering_72104-3666.jpg?w=1380"
                 className="slide-img"
@@ -394,7 +394,7 @@ function Slider() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide">
+            <div className="slide_home">
               <img
                 src="https://img.freepik.com/free-psd/whatsapp-messenger-template-mobile-phone-ui-ux-app-presentation-mockup_106244-1512.jpg?t=st=1658753998~exp=1658754598~hmac=cc07d20adc270f09bbbdac5a54f6fe157673ed5fff2e6a7ecffdf58914405209&w=900"
                 className="slide-img"

@@ -58,7 +58,7 @@
 .close-modal-button {
     position : absolute;
     top : -0.45rem;
-    right: -0.45rem;
+    right: -0.39rem;
     background: vars.$linearGradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -85,4 +85,28 @@
             margin:0;
         }
     }
+}
+
+.team-creation-container-main button:hover {
+    color: #23055e;
+    border: 2px solid #24085c;
+    transition: 2s ease-in-out linear;
+
+}
+
+// DARK MODE 
+
+#dark .team-creation-container-header {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+#dark .team-creation-container {
+    background: vars.$linearGradientDarkModeCards;
+    color: white;
+}
+
+#dark .close-modal-button {
+    background: #30cfd0;;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

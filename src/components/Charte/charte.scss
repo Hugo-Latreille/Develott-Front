@@ -75,3 +75,14 @@
   
   
   }
+
+  // DARK MODE 
+
+#dark .charte_main {
+    background: vars.$linearGradientDarkModeCards; 
+    color: white;
+}
+
+#dark .charte_container_title {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}

@@ -6,11 +6,9 @@
   padding: 4rem 0 0 0;
 }
 
-.mySwiper-home {
-  width:100%;
-}
 
-.mySwiper-home .slide {
+.slide_home {
+
   width: 100%;
   background-color: #fff;
   margin-bottom: 4rem;
@@ -18,14 +16,14 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.mySwiper-home .slide-img {
+.slide-img {
   width: 100%;
   height: 12rem;
   object-fit: cover;
   position: relative;
 }
 
-.mySwiper-home .img-content {
+.img-content {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -34,12 +32,12 @@
   align-items: flex-end;
 }
 
-.mySwiper-home .img-content-btns {
+.img-content-btns {
   display: flex;
   align-items: flex-end;
 }
 
-.mySwiper-home .stack-button {
+.stack-button {
   background-color: #fff;
   padding: 0.6rem;
   margin-left: 0.5rem;
@@ -48,11 +46,11 @@
   cursor: pointer;
 }
 
-.mySwiper-home .icons-container {
+.icons-container {
   display: flex;
   justify-content: flex-end;
 }
-.mySwiper-home .img-content-stacks {
+.img-content-stacks {
   background-color: #fff;
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -63,7 +61,7 @@
   transition-duration: 2s;
 }
 
-.mySwiper-home .img-content-jobs {
+.img-content-jobs {
   background-color: #fff;
   margin: 0.5rem 0 0.5rem 0.5rem;
   padding: 0.5rem;
@@ -74,76 +72,76 @@
   transition-duration: 2s;
 }
 
-.mySwiper-home .img-content-stacks i {
+.img-content-stacks i {
   font-size: 1rem;
   margin: 0.3rem;
 }
 
-.mySwiper-home .img-content-jobs i {
+.img-content-jobs i {
   font-size: 1rem;
   margin: 0.3rem;
 }
 
-.mySwiper-home .slider-main-content {
+.slider-main-content {
   padding: 1rem;
 }
 
-.mySwiper-home .slider-title {
+.slider-title {
   font-size: 1.2rem;
   font-weight: bold;
   padding-bottom: 1rem;
   cursor: pointer;
 }
 
-.mySwiper-home .slider-title:hover {
+.slider-title:hover {
   background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 
-.mySwiper-home .slider-desc {
+.slider-desc {
   font-size: 0.8rem;
   color: grey;
 }
 
-.mySwiper-home .slider-desc a {
+.slider-desc a {
   font-weight: bolder;
   color: grey;
 }
 
-.mySwiper-home .slider-desc a:hover {
+.slider-desc a:hover {
   background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition-duration: 0.5s;
 }
 
-.mySwiper-home .slider-content-container {
+.slider-content-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
 }
 
-.mySwiper-home .slider-user-container {
+.slider-user-container {
   display: flex;
   align-items: center;
 }
 
-.mySwiper-home .slider-avatar {
+.slider-avatar {
   height: 2rem;
   width: auto;
   cursor: pointer;
   border-radius: 50px;
 }
 
-.mySwiper-home .slider-date {
+.slider-date {
   color: grey;
   font-size: 0.6rem;
 }
 
-.mySwiper-home .slider-user-name {
+.slider-user-name {
   color: grey;
   font-size: 0.6rem;
   font-weight: bolder;

@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
 import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
+import { setDisplayDarkMode } from "../../pages/App/appSlice";
 
 const routes = [
   {
@@ -42,8 +43,8 @@ const routes = [
 ];
 
 function Sidebar({ children, isVisible }) {
-  const [darkMode, setDarkMode] = useState(false);
   const isOpen = useSelector((state) => state.app.sideBarIsOpen);
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
   const dispatch = useDispatch();
   const [userLogout] = useUserLogoutMutation();
 
@@ -107,7 +108,7 @@ function Sidebar({ children, isVisible }) {
       width: 0,
       opacity: 0,
       transition: {
-        duration: 0.1,
+        duration: 0.2,
       },
     },
     show: {
@@ -115,7 +116,7 @@ function Sidebar({ children, isVisible }) {
       rotate: 360,
       opacity: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.5,
       },
     },
   };
@@ -244,9 +245,9 @@ function Sidebar({ children, isVisible }) {
                         damping: 20,
                       }}
                       variants={logAnimation}
-                      onClick={() => setDarkMode(!darkMode)}
+                      onClick={() => dispatch(setDisplayDarkMode())}
                       className={`${
-                        darkMode ? "fas fa-moon moon" : "fas fa-sun sun"
+                        displayDarkMode ? "fas fa-moon moon" : "fas fa-sun sun"
                       }`}
                       data-tip="DarkMode"
                     ></motion.i>
@@ -266,8 +267,8 @@ function Sidebar({ children, isVisible }) {
                     variants={profilAnimation}
                     className="toggle_dark"
                   >
-                    <Toggle onChange={() => setDarkMode(!darkMode)} />
-                    <div className="side_text">Dark Mode</div>
+                    <Toggle />
+                    <div className="side_text_darkmode">Dark Mode</div>
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -81,10 +81,14 @@
 .side_text {
   white-space: nowrap;
   font-size: 1.3em;
+
+  &_darkmode {
+  font-size: 1.2em;
+  }
 }
 
 .side_main {
-  height: 100vh;
+  width: 100%;
   overflow-y: auto; // You can use scroll too
 }
 
@@ -104,6 +108,7 @@
     display: flex;
     flex-direction: column;
     align-items: end;
+    margin-bottom: 0.5em;
    
   }
   
