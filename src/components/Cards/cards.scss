@@ -211,3 +211,50 @@
     width: 100%;
   }
 }
+
+
+
+
+// DARK MODE 
+
+#dark .cards {
+  background-image: none;
+}
+
+#dark .card {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .card_main {
+  &_title {
+    color:white;
+  }
+
+  &_title:hover {
+    color:rgb(182, 182, 182);
+  }
+
+  &_desc {
+    color:white;
+  }
+
+  &_desc_link {
+    color:white;
+  }
+
+  &_profiles {
+    color:white;
+    font-weight: bolder;
+  }
+}
+
+#dark .card_desc {
+  &_user_name {
+    color:white;
+  }
+
+  &_user_date {
+    color:white;
+  }
+}
