@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
 //? Date picker MUI
@@ -41,6 +42,7 @@ function Project() {
 
 	const project = projectWithTeam?.project;
 	const projectJobs = projectWithTeam?.jobByProject;
+	const projectTeam = projectWithTeam?.teams;
 
 	const dispatch = useDispatch();
 	const {
@@ -58,6 +60,9 @@ function Project() {
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
 	);
+	const displayProductOwner = projectTeam
+		?.filter((team) => team.role === "admin")
+		.map((po) => `${po.firstname} ${po.lastname}`)[0];
 
 	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
@@ -206,7 +211,10 @@ function Project() {
 									src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
 									alt="User profile image"
 								/>
-								<p className="project-user-name">Uller Mr</p>
+								<p className="project-user-name">{displayProductOwner}</p>
+
+								{/* //TODO connecter les liens RS */}
+
 								<div className="project-user-links">
 									<p>
 										<i className="fab fa-github"></i>
