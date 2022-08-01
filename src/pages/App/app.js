@@ -18,7 +18,12 @@ import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
 import Erreur from "../404/404";
 import ReactCursorPosition from "react-cursor-position";
-import Charte from "../Charte-About/charteAbout";
+
+import Charte from "../Charte/charte";
+import About from "../About/about";
+
+import Loader1 from "../../components/Loader1/loader1";
+import Loader2 from "../../components/Loader2/loader2";
 import TeamCreation from "../TeamCreation/teamCreation";
 
 function App() {
@@ -51,8 +56,9 @@ function App() {
               <Route path="projets" element={<Projects />} />
               <Route path="projet/:projectId" element={<Project />} />
               <Route path="projet/create" element={<CreateProject />} />
-              <Route path="projet/id/postuler" element={<TeamCreation />} />
               <Route path="charte" element={<Charte />} />
+              <Route path="about" element={<About />} />
+              <Route path="projet/id/postuler" element={<TeamCreation />} />
               <Route path="profil" element={<Profil />} />
               <Route path="dashboard" element={<Dashboard />} />
             </Route>

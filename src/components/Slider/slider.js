@@ -61,7 +61,7 @@ function Slider() {
         borderColor="#A2A1FD"
         arrowColor="#A2A1FD"
       >
-        Attrapez et glisser pour faire défiler les projets !
+        Attraper et glisser pour faire défiler les projets !
       </ReactTooltip>
       <div className="container">
         {/* ***************************************PARAMETRES EFFET************************************ */}

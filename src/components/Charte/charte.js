@@ -83,10 +83,8 @@ function CharteComp() {
                 de cet espace (phénomènes pollupostage)
               </li>{" "}
             </ul>
-            <p className="charte_main_section">Merci Bisous</p>
           </section>
         </div>
-        <div className="charte_container_end"></div>
       </div>
     </div>
   );
