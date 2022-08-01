@@ -86,3 +86,32 @@
 .project-create {
   min-height: 100vh;
 }
+
+
+// DARK MDOE 
+
+#dark .create-project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+
+  &-title {
+    color:white;
+  }
+
+  &-desc {
+    color:white;
+    font-weight: lighter;
+  }
+
+}
+
+#dark .project-information-form-dark {
+  & input {
+    background: #2A314C;
+    color:white;
+  }
+}
+
+#dark .form-group-project-label {
+  color:white;  
+}

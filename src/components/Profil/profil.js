@@ -235,7 +235,7 @@ function Profil() {
                   débuter un nouveau projet
                 </p>
                 {isEditUserInfos === false && (
-                  <>
+                  <div className="desc_container_user-links-dark">
                     <p className="desc_container_title">
                       <i className="fas fa-map-marker color-secondary"></i>
                       {/* {user.city ? user.city : "A compléter"} */}
@@ -252,7 +252,7 @@ function Profil() {
                       <i className="fas fa-globe color-secondary"></i>
                       <a href="#"> brucewayne.com</a>
                     </p>
-                  </>
+                  </div>
                 )}
                 {isEditUserInfos === true && (
                   <>
@@ -430,7 +430,7 @@ function Profil() {
                     <div className="project-technologies-languages">
                       <h4>Langages</h4>
                       {languagesData.length === 0 && (
-                        <span className="form-technologies-empty">vide...</span>
+                        <p className="form-technologies-empty">vide...</p>
                       )}
                       {languagesData.map((techno) => (
                         <div
@@ -461,7 +461,7 @@ function Profil() {
                     <div className="project-technologies-frameworks">
                       <h4>Frameworks</h4>
                       {frameworksData.length === 0 && (
-                        <span className="form-technologies-empty">vide...</span>
+                        <p className="form-technologies-empty">vide...</p>
                       )}
                       {frameworksData.map((techno) => (
                         <div
@@ -492,7 +492,7 @@ function Profil() {
                     <div className="project-technologies-frameworks">
                       <h4>Database</h4>
                       {databasesData.length === 0 && (
-                        <span className="form-technologies-empty">vide...</span>
+                        <p className="form-technologies-empty">vide...</p>
                       )}
                       {databasesData.map((techno) => (
                         <div
@@ -523,7 +523,7 @@ function Profil() {
                     <div className="project-technologies-others">
                       <h4>Autres</h4>
                       {othersData.length === 0 && (
-                        <span className="form-technologies-empty">vide...</span>
+                        <p className="form-technologies-empty">vide...</p>
                       )}
                       {othersData.map((techno) => (
                         <div
@@ -571,7 +571,7 @@ function Profil() {
                 className="desc_container_technos min-height-technos-container"
                 style={
                   displayAllDescription === true
-                    ? { height: "26vh", overflowY: "scroll" }
+                    ? { height: "29vh", overflowY: "scroll" }
                     : {}
                 }
               >
@@ -592,7 +592,7 @@ function Profil() {
                   <div className="project-technologies-languages">
                     <h4>Langages</h4>
                     {languagesData.length === 0 && (
-                      <span className="form-technologies-empty">vide...</span>
+                      <p className="form-technologies-empty">vide...</p>
                     )}
                     {languagesData.map((techno) => (
                       <span className="technologies-icon-container">
@@ -608,7 +608,7 @@ function Profil() {
                   <div className="project-technologies-frameworks">
                     <h4>Frameworks</h4>
                     {frameworksData.length === 0 && (
-                      <span className="form-technologies-empty">vide...</span>
+                      <p className="form-technologies-empty">vide...</p>
                     )}
                     {frameworksData.map((techno) => (
                       <span className="technologies-icon-container">
@@ -623,7 +623,7 @@ function Profil() {
                   <div className="project-technologies-languages">
                     <h4>Database</h4>
                     {databasesData.length === 0 && (
-                      <span className="form-technologies-empty">vide...</span>
+                      <p className="form-technologies-empty">vide...</p>
                     )}
                     {databasesData.map((techno) => (
                       <span className="technologies-icon-container">
@@ -638,7 +638,7 @@ function Profil() {
                   <div className="project-technologies-others">
                     <h4>Autres</h4>
                     {othersData.length === 0 && (
-                      <span className="form-technologies-empty">vide...</span>
+                      <p className="form-technologies-empty">vide...</p>
                     )}
                     {othersData.map((techno) => (
                       <span className="technologies-icon-container">
