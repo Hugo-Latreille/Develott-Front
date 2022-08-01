@@ -1,25 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setDisplayDarkMode } from "../../pages/App/appSlice";
 import "./toggle.scss";
 
-//☀︎ ☽
 function ToggleDark() {
-  const [darkMode, setDarkMode] = useState(false);
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+  const dispatch = useDispatch();
   return (
-    <div className={darkMode ? "dark-mode" : "light-mode"}>
-      <div className="toggle_container">
-        <div className="switch-checkbox">
-          <label className="switch">
-            <input type="checkbox" onChange={() => setDarkMode(!darkMode)} />
-            <span className="slider round">
-              <i
-                className={`${
-                  darkMode ? "fas fa-sun sun_inside" : "fas fa-moon moon_inside"
-                }`}
-              ></i>
-            </span>
-          </label>
-        </div>
-      </div>
+    <div className="toggle_dm" onClick={() => dispatch(setDisplayDarkMode())}>
+      <i className="fas fa-sun sun_inside"></i>
+      <i className="fas fa-moon moon_inside"></i>
+      <div
+        className="toggle_dm_button"
+        style={{
+          left: displayDarkMode ? "25px" : "0",
+          backgroundColor: displayDarkMode
+            ? "rgba(25, 138, 153, 1)"
+            : "#3c097be4",
+        }}
+      ></div>
     </div>
   );
 }

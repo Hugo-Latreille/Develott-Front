@@ -1,7 +1,7 @@
 @use "./../../styles/vars";
 
 .dashboard {
-    width:92vw;
+    width:96%;
     margin:1rem auto 2rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -63,9 +63,10 @@
 
     &-accueil {
         width:26%;
+        cursor: pointer;
 
         &-content {
-            background-image: url('./../../assets/images/footer-bg2.png');
+            background-color: hsl(207, 67%, 88%, 50%);
             background-position: bottom right;
             background-size: cover;
             height:7rem;
@@ -74,7 +75,7 @@
             justify-content: flex-end;
             border-radius: 10px;
             padding: 0 2rem;
-            color:white;
+            color:vars.$primaryColor;
             position:relative;
 
             & h3 {
@@ -101,6 +102,7 @@
 
     &-messagerie {
         width:26%;
+        cursor: pointer;
 
         &-content {
             background-color: hsl(207, 67%, 88%, 50%);
@@ -137,6 +139,7 @@
 
     &-calendrier {
         width:26%;
+        cursor: pointer;
 
         &-content {
             background-color: hsl(207, 67%, 88%, 50%);
@@ -240,7 +243,11 @@
 }
 
 
-
+.bg-colored {
+    background-image: url('./../../assets/images/footer-bg2.png');
+    background-position: bottom center;
+    color:white;
+}
 
 
 @media screen and (width < 600px) {
@@ -284,4 +291,87 @@
             width: 100%;
         }
     }
+  }
+
+
+
+
+
+  // DARK MODE 
+
+  #dark .bg-colored {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+    color:white;
+  }
+
+  #dark .dashboard-main-header {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+    color:white;
+  }
+
+  #dark .dashboard-main-navigation {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    &-accueil-content {
+        color:white;
+    }
+
+    &-messagerie-content {
+        color:white;
+    }
+
+    &-calendrier-content {
+        color:white;
+    }
+  }
+
+  #dark .dashboard-main-content-links {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & span {
+        color:white;
+        font-weight: lighter;
+    }
+  }
+
+  #dark .dashboard-main-content-team {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & span {
+        color:white;
+        font-weight: lighter;
+    }
+  }
+
+  #dark .dashboard-main-technologies {
+    background: vars.$linearGradientDarkModeCards;
+    color:white;
+
+    & h4 {
+        color:white;
+      }
+    
+      & span {
+        background: vars.$linearGradientDarkMode;
+      }
+
+  }
+
+  #dark .dashboard-main-navigation-accueil-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-navigation-calendrier-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-navigation-messagerie-content {
+    background-color: hsla(207deg, 67%, 88%, 0.2);
+  }
+
+  #dark .dashboard-main-content-team-users:hover {
+    background: vars.$linearGradientDarkMode;
   }

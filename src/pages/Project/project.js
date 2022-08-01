@@ -242,7 +242,7 @@ function Project() {
 													)
 												}
 											>
-												<i className="fas fa-edit"></i>
+												Modifier
 											</span>
 										</div>
 										<div className="project-jobs-container">
@@ -306,7 +306,7 @@ function Project() {
 												dispatch(setDisplayEdit({ name: "displayEditDates" }))
 											}
 										>
-											<i className="fas fa-edit"></i>
+											Modifier
 										</p>
 									</div>
 									<p>
@@ -336,6 +336,7 @@ function Project() {
 											<DatePicker
 												label="Date de début"
 												value={startDate}
+												className="date-picker-color"
 												onChange={(newValue) => {
 													dispatch(
 														changeDate({
@@ -376,15 +377,14 @@ function Project() {
 											/>
 										</LocalizationProvider>
 									</div>
-									<button
-										type="submit"
+									<p
 										className="secondary-button-colored validation-edit-btn"
 										onClick={() =>
 											dispatch(setDisplayEdit({ name: "displayEditDates" }))
 										}
 									>
 										Valider
-									</button>
+									</p>
 								</div>
 							)}
 						</div>
@@ -427,7 +427,7 @@ function Project() {
 													)
 												}
 											>
-												<i className="fas fa-edit"></i>
+												Modifier
 											</span>
 										</div>
 										<p

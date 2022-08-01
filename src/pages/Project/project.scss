@@ -2,27 +2,30 @@
 
 .project {
   height: 100vh;
-  width: 92vw;
+  width: 93vw;
   margin: 2rem ;
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     min-height: 90vh;
-
     &-left {
-      width: 26%;
+      margin-right: 1rem;
+      width: 26vw;
       height:92vh;
       min-height:600px;
       max-width: 400px;
       background-color: #fff;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
-
     &-right {
-      width: 73% !important;
+      width: 65vw !important;
       height:92vh;
       min-height:600px;
       display: flex;
@@ -60,6 +63,10 @@
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
+
+    &-avatar {
+      width:3rem;
+    }
 
     &-name {
       padding: 0.5rem 1rem;
@@ -340,6 +347,8 @@
 @media screen and (width < 600px) {
   .project {
     height: auto;
+    margin:1rem 0;
+    width:90vw;
   }
   .project-container {
     flex-wrap: wrap;
@@ -396,4 +405,66 @@
       width: 100%;
     }
   }
+}
+
+
+
+
+// DARK MODE 
+
+#dark .dark-white {
+  color:white;
+}
+
+#dark .project {
+  color:white;
+}
+
+#dark .project-user {
+  & i {
+    color:white;
+  }
+}
+
+#dark .project-description {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-container-left {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-technologies {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+
+  & h4 {
+    color: white;
+  }
+}
+
+#dark .technologies-icon-container2 {
+  background: vars.$linearGradientDarkMode;
+}
+
+#dark .edit-btn-main {
+  color: #30cfd0;
+}
+
+#dark .project-header {
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+#dark .project-img-container-edit-btn {
+  color:white;
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+
+#dark .project-description-see-more {
+  color: #30cfd0;
+}
+
+#dark .technologies-icon-container2 {
+  // width:100%;
 }

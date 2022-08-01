@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
 
+
   &-title {
     color: vars.$darkGrey;
     margin-bottom: 2rem;
@@ -47,6 +48,11 @@
   }
 }
 
+.form-jobs .input-container {
+  width: 100%;
+}
+
+
 .form-jobs-container {
   display: flex;
   flex-wrap: wrap;
@@ -66,4 +72,25 @@
     height: 80%;
     margin-bottom: 2rem;
   }
+}
+
+
+
+
+// DARK MODE 
+
+.form-jobs {
+
+  &-title {
+    color: white;
+  }
+
+  &-title-2 {
+    color: white;
+  }
+
+  &-disclaimer {
+    color: white;
+  }
+
 }

@@ -81,10 +81,14 @@
 .side_text {
   white-space: nowrap;
   font-size: 1.3em;
+
+  &_darkmode {
+  font-size: 1.2em;
+  }
 }
 
 .side_main {
-  height: 100vh;
+  width: 100%;
   overflow-y: auto; // You can use scroll too
 }
 
@@ -104,6 +108,7 @@
     display: flex;
     flex-direction: column;
     align-items: end;
+    margin-bottom: 0.5em;
    
   }
   
@@ -183,6 +188,7 @@
   margin-bottom: 1em;
   display: flex;
   align-items: center;
+  margin-right: 4em;
 }
 
 .sun {
@@ -214,6 +220,15 @@
   padding-bottom: 20em;
 }
 
-a {
-  text-decoration: none;
+
+.tooltips_side {
+  font-weight: bolder;
+}
+
+
+
+// DARK MODE 
+
+#dark .sidebar {
+  background: linear-gradient(to top  ,  #219898, #24085c  );
 }

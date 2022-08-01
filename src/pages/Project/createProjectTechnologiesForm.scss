@@ -62,3 +62,30 @@
 .width-80 {
   width:80%;
 }
+
+
+
+
+
+// DARK MODE 
+
+#dark .form-technologies {
+
+  &-title {
+    color: white,
+  }
+
+  &-disclaimer {
+    color: white,
+  }
+}
+
+#dark .form-technologies-container-content {
+  & h4 {
+    color:white;
+  }
+
+  & span {
+    background: vars.$linearGradientDarkMode;
+  }
+}

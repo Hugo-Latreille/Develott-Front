@@ -14,6 +14,32 @@ function FooterColored() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             botbot.{" "}
           </p>
+          <div className="socialmedia_container">
+            <section className="socialmedia_container_section">
+              <ul className="ul_media">
+                <li>
+                  <a href="#">
+                    <i className="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fab fa-github"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i className="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
         </div>
         <div className="footer-container-column">
           <p> © 2022 - Made with ♡</p>
@@ -23,13 +49,13 @@ function FooterColored() {
         </div>
         <div className="footer-container-column">
           <p>
-            <a href="#">Voir tous les projets</a>
+            <a href="/projets">Voir tous les projets</a>
           </p>
           <p>
-            <a href="#">Lire la charte</a>
+            <a href="/charte">Lire la charte</a>
           </p>
           <p>
-            <a href="#">Découvrir l'équipe</a>
+            <a href="/about">Découvrir l'équipe</a>
           </p>
           <p>
             <a href="#">S'inscrire / Se connecter</a>

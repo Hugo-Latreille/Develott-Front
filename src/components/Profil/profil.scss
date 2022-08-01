@@ -1,9 +1,9 @@
 @use "./../../styles/vars";
 
 .profil {
-  width: 90%;
+  width: 93vw;
   height: 100vh;
-  margin: 2rem auto 0 auto;
+  margin: 2rem 2rem 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -28,7 +28,6 @@
 
   &-middle {
     width: 54%;
-    // background-color: #fff;
     height: 86vh;
     
   }
@@ -37,14 +36,17 @@
 
 .name_container {
 
-
   &_user {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   &_avatar {
-    width: 90%;
+    width: 98%;
     margin: auto;
+    border-radius: 50%;
+    border: solid 6px vars.$secondaryColor;
   }
 }
 
@@ -54,7 +56,7 @@
 
 .desc_container {
   background-color: #fff;
-  height:37vh;
+  height:40vh;
   // min-height: 37vh;
   // max-height: 37vh;
   padding: 0 1rem 2rem 1rem;
@@ -68,11 +70,11 @@
   }
 
   & p {
-    margin: 0 2rem;
+    margin: 0 1rem ;
     font-size: 1rem;
     color: vars.$darkGrey;
     line-height: 1.3rem;
-    min-height:180px;
+    // min-height:180px;
 
 
   }
@@ -136,6 +138,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: -1rem;
+    text-align: center;
+
+
+    &-edition {
+      color:grey;
+      margin-top: -1rem;
+    }
   }
 
   &_technos {
@@ -154,37 +163,50 @@
 
     &-username {
       padding: 2rem 2rem 0 2rem;
-      min-height: 37vh;
-      max-height: 37vh;
+      height: 40vh;
+      position: relative;
 
       background-color: #fff;
-      margin: 0 auto 1rem auto;
+      margin-bottom: 1rem;
     }
 
     &-links-informations {
       background-color: #fff;
       padding : 2rem ;
       min-height:40vh;
+      position:relative;
     }
 
-    // &-user {
-    //   height: 25%;
-    // }
-    // &-links {
-    // }
+
   }
 
   &_project {
     background-color: #fff;
-    padding: 3rem 0.5rem 0.5rem 1.5rem;
+    padding: 3rem 0rem 0.5rem 0rem;
     margin-bottom: 5%;
-    height: 82vh;
+    height: 87vh;
     overflow-y: scroll;
     overflow-x: hidden;
   }
 }
 
+.project-list-paragraph {
+  margin: 0rem;
+  font-size: 0.7rem;
 
+  &-desc {
+    margin: 0rem;
+    font-size: 0.9rem;
+    color:grey;
+    margin-bottom: 0.2rem;
+  }
+
+  &-grey {
+    color:grey;
+    margin: 0rem;
+    font-size: 0.7rem;
+  }
+}
 
 .technos_logo {
   font-size: 5em;
@@ -228,7 +250,6 @@
 
 .user-technologies {
   background-color: #fff;
-  margin-left: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -269,6 +290,7 @@
 
 .padding-on-edition {
   padding-top: 2rem;
+  overflow-y: scroll;
 }
 
 .min-height-technos-container {
@@ -312,7 +334,13 @@
   -webkit-text-fill-color: transparent;
   font-weight: bolder;
   cursor: pointer;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+}
+
+.user-info-input-edition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 @media screen and (width < 600px) {
@@ -324,7 +352,7 @@
 
   &_desc {
     width: 100%;
-    height: auto;
+    height: auto !important;
   }
 
   &_projets {
@@ -338,11 +366,16 @@
   }
 
   .desc_container {
-    height:100%;
+    height:auto;
   }
 
   .desc_container_description {
     height: auto;
+
+    &-username {
+      height: auto;
+
+    }
   }
 
   .min-height-technos-container {
@@ -364,3 +397,91 @@
 }
 }
 
+
+
+
+
+
+// DARK MODE 
+
+#dark .desc_container {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_description-username {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_description-links-informations {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_technos {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .user-technologies {
+  background: transparent;
+  color:white;
+
+  & h4 {
+    color:white;
+  }
+
+  & span {
+    background: vars.$linearGradientDarkMode;
+  }
+}
+
+#dark .desc_container_project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .card_project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+}
+
+#dark .desc_container_title  {
+  color:white;
+
+  & a {
+    color:white;
+  }
+}
+
+#dark .desc_container_role {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .dashboard-edit-input {
+  background-color: #323C5A;
+  color:white;
+
+}
+
+#dark .form-technologies-empty {
+  background-color: transparent;
+}
+
+#dark .desc_container_user-links-dark {
+  & i {
+    background: #30cfd0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+#dark .user_desc_link {
+  background: #30cfd0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 1rem;
+}
