@@ -28,7 +28,7 @@ function SearchBarJobsProject({ projectId }) {
 		// the item selected
 		console.log(item.name);
 		postProjectJob({ id: projectId, job: item.name });
-		dispatch(setData({ name: "jobsData", data: item }));
+		// dispatch(setData({ name: "jobsData", data: item }));
 	};
 
 	const handleOnFocus = () => {

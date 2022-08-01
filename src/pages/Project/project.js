@@ -603,7 +603,10 @@ function Project() {
 								{displayEditTechnologies === true && (
 									<>
 										<div className="width-100 margin-bottom-4">
-											<SearchBarTechnologies />
+											<SearchBarTechnologies
+												technos={project?.techno}
+												projectId={projectId}
+											/>
 											<div className="project-technologies-edit">
 												<span
 													className="secondary-button-colored validation-edit-btn"

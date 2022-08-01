@@ -1,15 +1,12 @@
 import "./searchBarProjects.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
-import { useSelector, useDispatch } from "react-redux";
-import { setData } from "../../pages/Project/projectSlice";
+import { useDispatch } from "react-redux";
+import { usePostProjectTechnoMutation } from "../../pages/Projects/projectsAPISlice";
 
-function SearchBarTechnologiesProject() {
-	const technologiesData = useSelector(
-		(state) => state.project.technologiesData
-	);
-
+function SearchBarTechnologiesProject({ technos, projectId }) {
 	const dispatch = useDispatch();
+	const [postProjectTechno] = usePostProjectTechnoMutation();
 
 	const handleOnSearch = (string, results) => {
 		// onSearch will have as the first callback parameter
@@ -23,23 +20,19 @@ function SearchBarTechnologiesProject() {
 	};
 
 	const handleOnSelect = (item) => {
-		// the item selected
-		// console.log(item);
-		console.log(technologiesData);
-
-		const itemAlreadyExist = technologiesData.find(
-			(techno) => techno.name === item.name
-		);
-
-		if (!itemAlreadyExist) {
-			dispatch(setData({ name: "technologiesData", data: item }));
-		} else {
-			console.log("techno allready add");
-		}
+		// postProjectTechno({ id: projectId, techno: item.name });
+		postProjectTechno({ id: projectId, techno: item.name });
+		// const itemAlreadyExist = technos.find((techno) => techno === item.name);
+		// if (!itemAlreadyExist) {
+		// 	// dispatch(setData({ name: "technologiesData", data: item }));
+		// 	postProjectTechno({ id: projectId, techno: item.name });
+		// } else {
+		// 	console.log("techno already added");
+		// }
 	};
 
 	const handleOnFocus = () => {
-		console.log("Focused");
+		// console.log("Focused");
 	};
 
 	const formatResult = (item, index) => {
@@ -56,10 +49,10 @@ function SearchBarTechnologiesProject() {
 		);
 	};
 
-	const technologies = datas.filter(
-		(element) =>
-			element.tags.includes("framework") || element.tags.includes("language")
-	);
+	// const technologies = datas.filter(
+	// 	(element) =>
+	// 		element.tags.includes("framework") || element.tags.includes("language")
+	// );
 
 	return (
 		<div className="input-container-projects">
@@ -75,7 +68,7 @@ function SearchBarTechnologiesProject() {
 						backgroundColor: "white",
 					}}
 					formatResult={formatResult}
-					maxResults={5}
+					maxResults={1}
 					showIcon={true}
 					placeholder="Javascript, PHP, React... "
 					showNoResults
