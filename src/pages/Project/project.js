@@ -118,7 +118,7 @@ function Project() {
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
 	useEffect(() => {
-		if (description.length > 0) {
+		if (project?.description) {
 			console.log(description);
 			const html = description;
 			const contentBlock = htmlToDraft(html);
@@ -127,11 +127,7 @@ function Project() {
 			);
 			setEditorState(EditorState.createWithContent(contentState));
 		}
-	}, [description]);
-
-	// const [editorState, setEditorState] = useState(
-	// 	EditorState.createWithContent(contentState)
-	// );
+	}, [description, project?.description, projectWithTeam]);
 
 	const handleEditorChange = (editorState) => {
 		setEditorState(editorState);
@@ -166,7 +162,7 @@ function Project() {
 							{!displayImgEdit && (
 								<div className="project-img-container">
 									<img
-										src={projectImg}
+										src={project?.picture}
 										className="project-img"
 										alt="Projet image"
 									/>
@@ -330,12 +326,16 @@ function Project() {
 															value: newValue._d,
 														})
 													);
+													updateProject({
+														id: projectId,
+														start_date: newValue._d,
+													});
 												}}
 												renderInput={(params) => <TextField {...params} />}
 											/>
 										</LocalizationProvider>
 									</div>
-									<p>
+									<div className="project-dates-inputs">
 										<LocalizationProvider
 											dateAdapter={AdapterMoment}
 											adapterLocale="fr"
@@ -350,19 +350,24 @@ function Project() {
 															value: newValue._d,
 														})
 													);
+													updateProject({
+														id: projectId,
+														end_date: newValue._d,
+													});
 												}}
 												renderInput={(params) => <TextField {...params} />}
 											/>
 										</LocalizationProvider>
-									</p>
-									<p
+									</div>
+									<button
+										type="submit"
 										className="secondary-button-colored validation-edit-btn"
 										onClick={() =>
 											dispatch(setDisplayEdit({ name: "displayEditDates" }))
 										}
 									>
 										Valider
-									</p>
+									</button>
 								</div>
 							)}
 						</div>

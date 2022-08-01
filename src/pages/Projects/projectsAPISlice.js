@@ -14,7 +14,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
-						console.log(result);
+						// console.log(result);
 						const startDate = result.data.project.start_date;
 						// const endDate = result.data.project.end_date;
 						const projectImg = result.data.project.picture;
