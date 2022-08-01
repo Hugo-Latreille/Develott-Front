@@ -19,9 +19,9 @@ import {
   Resize,
 } from "@syncfusion/ej2-react-schedule";
 import { DataManager, WebApiAdaptor } from "@syncfusion/ej2-data";
-import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
-import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
-import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
+// import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
+// import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+// import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { L10n } from "@syncfusion/ej2-base";
 import React from "react";
 
