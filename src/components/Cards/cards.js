@@ -6,15 +6,24 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGetAllProjectsQuery } from "./../../pages/Projects/projectsAPISlice";
 import moment from "moment/min/moment-with-locales";
+import mockAvatar from "./../../assets/images/user-avatar.png";
+import { useDispatch } from "react-redux";
+import {
+	addToFavorites,
+	setFavorites,
+	removeFromFavorites,
+} from "./../../pages/App/appSlice";
+import { useSelector } from "react-redux";
+import { useGetOneUserQuery } from "./../../pages/Profiles/userAPISlice";
+import { useEffect } from "react";
+
 function ProjectList() {
-	const [toggleJobs, setToggleJobs] = useState(false);
-	const [toggleTechnos, setToggleTechnos] = useState(false);
-
 	const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
-
+	const { email } = useSelector((state) => state.auth);
+	const { data: user } = useGetOneUserQuery(email);
 	console.log(projectsTeams);
-
 	const allProjects = projectsTeams?.projects;
+	const dispatch = useDispatch();
 
 	//! conserver
 	// const findTeamByProject = (projectId) => {
@@ -33,14 +42,28 @@ function ProjectList() {
 	// 	setToggleJobs(!toggleJobs);
 	// };
 
-	const [selected, setSelected] = useState(null);
-
+	const [selected, setSelected] = useState(false);
 	const handleToggleTechnos = (index) => {
 		setSelected((prevState) => ({
 			...prevState,
 			[index]: !prevState[index],
 		}));
 	};
+
+	// const [favorite, setFavorite] = useState(false);
+	// const handleFavorites = (index) => {
+	// 	setFavorite((prevState) => ({
+	// 		...prevState,
+	// 		[index]: !prevState[index],
+	// 	}));
+	// };
+
+	useEffect(() => {
+		const retrieveFavorites = JSON.parse(localStorage.getItem(`${user?.id}`));
+		dispatch(setFavorites(retrieveFavorites));
+	}, [dispatch, user?.id]);
+
+	const { userFavorites } = useSelector((state) => state.app);
 
 	const inputAnimation = {
 		hidden: {
@@ -70,8 +93,35 @@ function ProjectList() {
 						<div className="icone_content">
 							<div className="icone_content_btns">
 								<span className="icone_button">
-									{/* //TODO bouton favoris */}
-									<i className="fal fa-heart"></i>
+									{userFavorites?.map((fav) =>
+										fav === project?.id ? (
+											<i key={fav} className="fas fa-heart"></i>
+										) : (
+											<i
+												className="fal fa-heart"
+												onClick={() =>
+													dispatch(
+														addToFavorites({
+															project: project.id,
+															user: user.id,
+														})
+													)
+												}
+											></i>
+										)
+									)}
+
+									{/* {favorite && favorite[index] ? (
+										<i
+											className="fas fa-heart"
+											onClick={() => handleFavorites(index)}
+										></i>
+									) : (
+										<i
+											className="fal fa-heart"
+											onClick={() => handleFavorites(index)}
+										></i>
+									)} */}
 								</span>
 							</div>
 						</div>
@@ -89,7 +139,7 @@ function ProjectList() {
 							</div>
 						</div>
 						<AnimatePresence>
-							{selected[index] && (
+							{selected && selected[index] && (
 								<motion.div
 									key={project?.id}
 									initial="hidden"
@@ -132,11 +182,21 @@ function ProjectList() {
 								</p>
 								<div className="card_desc">
 									<div className="card_desc_user">
-										<img
-											className="card_desc_user_avatar"
-											src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
-											alt=""
-										/>
+										{project?.c_profil_picture &&
+										project?.c_profil_picture.length > 1 ? (
+											<img
+												className="card_desc_user_avatar"
+												src={project?.c_profil_picture}
+												alt=""
+											/>
+										) : (
+											<img
+												className="card_desc_user_avatar"
+												src={mockAvatar}
+												alt=""
+											/>
+										)}
+
 										<span className="card_desc_user_name">
 											{`${findProductOwnerOfProject(project?.id)?.firstname} ${
 												findProductOwnerOfProject(project?.id)?.lastname
