@@ -3,42 +3,40 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../../pages/Profiles/userProfileSlice";
+import { usePostUserTechnoMutation } from "../../pages/Profiles/userAPISlice";
 
-function SearchBarTechnologiesUserProfile() {
-	const technologiesData = useSelector(
-		(state) => state.userProfile.userTechnologiesData
-	);
+function SearchBarTechnologiesUserProfile({ technos, userId }) {
+	const [postUserTechno] = usePostUserTechnoMutation();
 
-	const dispatch = useDispatch();
+	// const technologiesData = useSelector(
+	// 	(state) => state.userProfile.userTechnologiesData
+	// );
+
 	const handleOnSearch = (string, results) => {
 		// onSearch will have as the first callback parameter
 		// the string searched and for the second the results.
-		console.log(string, results);
+		// console.log(string, results);
 	};
 
 	const handleOnHover = (result) => {
 		// the item hovered
-		console.log(result);
+		// console.log(result);
 	};
 
 	const handleOnSelect = (item) => {
 		// the item selected
-		console.log(item);
-		console.log(technologiesData);
-
-		const itemAlreadyExist = technologiesData.find(
-			(techno) => techno.name === item.name
-		);
+		const itemAlreadyExist = technos?.find((techno) => techno === item.name);
 
 		if (!itemAlreadyExist) {
-			dispatch(setData({ name: "userTechnologiesData", data: item }));
+			// dispatch(setData({ name: "userTechnologiesData", data: item }));
+			postUserTechno({ id: userId, techno: item.name });
 		} else {
-			console.log("techno already add");
+			console.log("techno already added");
 		}
 	};
 
 	const handleOnFocus = () => {
-		console.log("Focused");
+		// console.log("Focused");
 	};
 
 	const formatResult = (item) => {
@@ -55,11 +53,6 @@ function SearchBarTechnologiesUserProfile() {
 		);
 	};
 
-	const technologies = datas.filter(
-		(element) =>
-			element.tags.includes("framework") || element.tags.includes("language")
-	);
-
 	return (
 		<div className="input-container-projects">
 			<div>
@@ -74,7 +67,7 @@ function SearchBarTechnologiesUserProfile() {
 						backgroundColor: "white",
 					}}
 					formatResult={formatResult}
-					maxResults={5}
+					maxResults={1}
 					showIcon={true}
 					placeholder="Javascript, PHP, React... "
 					showNoResults

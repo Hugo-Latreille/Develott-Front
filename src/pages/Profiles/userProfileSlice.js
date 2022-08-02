@@ -13,7 +13,7 @@ const initialState = {
 	userCity: "",
 	userGitHub: "",
 	userLinkedin: "",
-	userPortolio: "",
+	userPortfolio: "",
 };
 
 export const userProfile = createSlice({
@@ -49,7 +49,6 @@ export const userProfile = createSlice({
 		},
 		setUserData: (state, action) => {
 			state[action.payload.name] = action.payload.value;
-			// state.userCity = action.payload;
 		},
 	},
 });

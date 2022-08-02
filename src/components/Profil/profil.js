@@ -15,13 +15,12 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	setDisplayEdit,
-	setNewUserImg,
 	removeData,
 	setUserDescription,
 	setUserData,
-	setData,
 } from "./../../pages/Profiles/userProfileSlice";
 import {
+	useDeleteUserTechnoMutation,
 	useGetOneUserQuery,
 	useUpdateUserMutation,
 } from "../../pages/Profiles/userAPISlice";
@@ -35,6 +34,7 @@ function Profil() {
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
 	const [updateUser] = useUpdateUserMutation();
+	const [deleteUserTechno] = useDeleteUserTechnoMutation();
 
 	console.log(user);
 
@@ -500,7 +500,10 @@ function Profil() {
 						{isEditTechnologiesActive === true && (
 							<div className="desc_container_technos">
 								<div className="desc_container_technos padding-on-edition">
-									<SearchBarTechnologiesUserProfile />
+									<SearchBarTechnologiesUserProfile
+										technos={user?.techno}
+										userId={user?.id}
+									/>
 									<div className="user-technologies margin-top2">
 										<div className="project-technologies-languages">
 											<h4>Langages</h4>
@@ -509,25 +512,22 @@ function Profil() {
 											)}
 											{languagesData?.map((techno) => (
 												<div
-													key={techno.name}
+													key={techno?.name}
 													className="form-technologies-items"
 												>
 													<p className="margin0">
 														<i
-															className={`devicon-${techno.name}-plain colored`}
+															className={`devicon-${techno?.name}-plain colored`}
 														></i>
-														{techno.name}
+														{techno?.name}
 													</p>
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "userTechnologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteUserTechno({
+																id: user?.id,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -540,14 +540,14 @@ function Profil() {
 											)}
 											{frameworksData?.map((techno) => (
 												<div
-													key={techno.name}
+													key={techno?.name}
 													className="form-technologies-items"
 												>
 													<p className="margin0">
 														<i
-															className={`devicon-${techno.name}-plain colored`}
+															className={`devicon-${techno?.name}-plain colored`}
 														></i>
-														{techno.name}
+														{techno?.name}
 													</p>
 													<i
 														className="fal fa-backspace form-technologies-delete"
@@ -556,7 +556,7 @@ function Profil() {
 																removeData({
 																	name: "userTechnologiesData",
 																	field: "name",
-																	value: techno.name,
+																	value: techno?.name,
 																})
 															)
 														}
@@ -571,25 +571,22 @@ function Profil() {
 											)}
 											{databasesData?.map((techno) => (
 												<div
-													key={techno.name}
+													key={techno?.name}
 													className="form-technologies-items"
 												>
 													<p className="margin0">
 														<i
-															className={`devicon-${techno.name}-plain colored`}
+															className={`devicon-${techno?.name}-plain colored`}
 														></i>
-														{techno.name}
+														{techno?.name}
 													</p>
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "userTechnologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteUserTechno({
+																id: user?.id,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -602,25 +599,22 @@ function Profil() {
 											)}
 											{othersData?.map((techno) => (
 												<div
-													key={techno.name}
+													key={techno?.name}
 													className="form-technologies-items"
 												>
 													<p className="margin0">
 														<i
-															className={`devicon-${techno.name}-plain colored`}
+															className={`devicon-${techno?.name}-plain colored`}
 														></i>
-														{techno.name}
+														{techno?.name}
 													</p>
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "userTechnologiesData",
-																	field: "name",
-																	value: techno.name,
-																})
-															)
+															deleteUserTechno({
+																id: user?.id,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
@@ -671,14 +665,14 @@ function Profil() {
 										)}
 										{languagesData?.map((techno) => (
 											<span
-												key={techno.name}
+												key={techno?.name}
 												className="technologies-icon-container"
 											>
 												<i
-													className={`devicon-${techno.name}-plain`}
-													style={{ backgroundColor: `${techno.color}` }}
+													className={`devicon-${techno?.name}-plain`}
+													style={{ backgroundColor: `${techno?.color}` }}
 												></i>
-												{techno.name}
+												{techno?.name}
 											</span>
 										))}
 									</div>
@@ -690,14 +684,14 @@ function Profil() {
 										)}
 										{frameworksData?.map((techno) => (
 											<span
-												key={techno.name}
+												key={techno?.name}
 												className="technologies-icon-container"
 											>
 												<i
-													className={`devicon-${techno.name}-plain`}
-													style={{ backgroundColor: `${techno.color}` }}
+													className={`devicon-${techno?.name}-plain`}
+													style={{ backgroundColor: `${techno?.color}` }}
 												></i>
-												{techno.name}
+												{techno?.name}
 											</span>
 										))}
 									</div>
@@ -709,10 +703,10 @@ function Profil() {
 										{databasesData?.map((techno) => (
 											<span className="technologies-icon-container">
 												<i
-													className={`devicon-${techno.name}-plain`}
-													style={{ backgroundColor: `${techno.color}` }}
+													className={`devicon-${techno?.name}-plain`}
+													style={{ backgroundColor: `${techno?.color}` }}
 												></i>
-												{techno.name}
+												{techno?.name}
 											</span>
 										))}
 									</div>
