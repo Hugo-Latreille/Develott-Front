@@ -1,6 +1,11 @@
 import "./footerColored.scss";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleCharteModalOpen } from "../Modal-Charte/modalSlice";
 
 function FooterColored() {
+  const location = useLocation();
+  const dispatch = useDispatch();
   return (
     <div className="footer-colored">
       <div className="footer-container container">
@@ -52,7 +57,13 @@ function FooterColored() {
             <a href="/projets">Voir tous les projets</a>
           </p>
           <p>
-            <a href="/charte">Lire la charte</a>
+            <Link
+              to="/modal-charte"
+              state={{ background: location }}
+              onClick={() => dispatch(toggleCharteModalOpen())}
+            >
+              voir la charte
+            </Link>
           </p>
           <p>
             <a href="/about">Découvrir l'équipe</a>
@@ -62,6 +73,7 @@ function FooterColored() {
           </p>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }
