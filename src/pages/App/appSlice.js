@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	sideBarIsOpen: false,
 	displayDarkMode: JSON.parse(localStorage.getItem("darkMode")) || false,
+	userFavorites: [],
 };
 
 export const appSlice = createSlice({

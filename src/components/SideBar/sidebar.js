@@ -7,11 +7,11 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
-import { closeSideBar, toggleSideBar } from "../../pages/App/appSlice";
+import { toggleSideBar } from "../../pages/App/appSlice";
 import { setDisplayDarkMode } from "../../pages/App/appSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 
