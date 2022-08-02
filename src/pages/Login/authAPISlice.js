@@ -77,6 +77,11 @@ const authAPI = emptySplitApi.injectEndpoints({
 		}),
 		findUserByEmail: builder.query({
 			query: (email) => `user/findByEmail/${email}`,
+			providesTags: ["User"],
+		}),
+		findUserById: builder.query({
+			query: (email) => `user/findById/${email}`,
+			providesTags: ["User"],
 		}),
 		// getRefreshToken: builder.query({
 		// 	query: () => "user/refreshToken",
@@ -95,4 +100,5 @@ export const {
 	useNewPasswordMutation,
 	useGetRefreshTokenQuery,
 	useFindUserByEmailQuery,
+	useFindUserByIdQuery,
 } = authAPI;

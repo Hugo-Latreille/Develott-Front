@@ -109,11 +109,14 @@ function App() {
             <Route path="connexion" element={<Connexion />} />
             <Route path="postuler" element={<TeamCreation />} />
             <Route path="modal-charte" element={<CharteModal />} />
+            <Route path="newpassword/:userId" element={<NewPassword />} />
+
           </Routes>
         )}
       </div>
     </div>
   );
+
 }
 
 export default App;

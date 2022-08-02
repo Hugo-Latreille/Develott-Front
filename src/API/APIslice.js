@@ -6,7 +6,7 @@ const baseQuery = fetchBaseQuery({
 	baseUrl: "https://develott.herokuapp.com/v1/",
 
 	credentials: "include",
-	tagTypes: ["Project"],
+	tagTypes: ["Project", "User"],
 	prepareHeaders: (headers, { getState }) => {
 		const token = getState().auth.token;
 		if (token) {
