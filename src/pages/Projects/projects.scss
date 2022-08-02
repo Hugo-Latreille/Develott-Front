@@ -11,3 +11,12 @@
     background-position: center bottom;
   }
 }
+
+#dark .projects {
+  background: vars.$linearGradientDarkMode;
+
+  &_hero {
+    background-color: vars.$linearGradientDarkMode;
+    background-image: none;
+  }
+}

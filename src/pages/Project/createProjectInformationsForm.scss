@@ -5,3 +5,18 @@
         margin-top: 0.5rem;
     }
 }
+
+.create-project-inputs-container {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &-right {
+        width:75%;
+    }
+
+    &-left {
+        width:20%;
+    }
+}

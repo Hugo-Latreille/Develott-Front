@@ -28,66 +28,80 @@ import TeamCreation from "../TeamCreation/teamCreation";
 import Calendar from "../../components/Calendar/calendar";
 
 function App() {
-	const location = useLocation();
-	const background = location.state && location.state.background;
-	const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
-	const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+  const location = useLocation();
+  const background = location.state && location.state.background;
+  const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+  const teamModalIsOpen = useSelector(
+    (state) => state.teamCreation.teamModalIsOpen
+  );
 
-	useEffect(() => {
-		if (modalIsOpen) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "visible";
-		}
-	}, [modalIsOpen]);
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [modalIsOpen]);
 
-	return (
-		<div id={displayDarkMode === true ? "dark" : "light"}>
-			<div className="app">
-				<Routes location={background || location}>
-					<Route path="/" element={<Layout />}>
-						<Route path="/" element={<Home />}>
-							<Route path="connexion" element={<Connexion />} />
-							<Route path="newpassword/:userId" element={<NewPassword />} />
-							<Route path="forgotpassword" element={<ForgotPassword />} />
-						</Route>
+  useEffect(() => {
+    if (teamModalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [teamModalIsOpen]);
 
-						<Route element={<PersistLogin />}>
-							<Route element={<RequireAuth />}>
-								<Route path="welcome" element={<Welcome />} />
-								<Route path="authTest" element={<AuthTest />} />
-								<Route path="projets" element={<Projects />} />
-								<Route path="projet/:projectId" element={<Project />} />
-								<Route path="projet/create" element={<CreateProject />} />
-								<Route path="charte" element={<Charte />} />
-								<Route path="about" element={<About />} />
-								<Route path="projet/id/postuler" element={<TeamCreation />} />
-								<Route path="profil" element={<Profil />} />
-								<Route path="dashboard" element={<Dashboard />} />
-								<Route path="calendar" element={<Calendar />} />
-							</Route>
-						</Route>
-						<Route
-							path="*"
-							element={
-								<ReactCursorPosition>
-									{" "}
-									<Erreur />
-								</ReactCursorPosition>
-							}
-						/>
-					</Route>
-				</Routes>
+  return (
+    <div id={displayDarkMode === true ? "dark" : "light"}>
+      <div className="app">
+        <Routes location={background || location}>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />}>
+              <Route path="connexion" element={<Connexion />} />
+              <Route path="newpassword/:userId" element={<NewPassword />} />
+              <Route path="forgotpassword" element={<ForgotPassword />} />
+            </Route>
 
-				{background && (
-					<Routes>
-						<Route path="connexion" element={<Connexion />} />
-						<Route path="newpassword/:userId" element={<NewPassword />} />
-					</Routes>
-				)}
-			</div>
-		</div>
-	);
+            <Route element={<PersistLogin />}>
+              <Route element={<RequireAuth />}>
+                <Route path="welcome" element={<Welcome />} />
+                <Route path="authTest" element={<AuthTest />} />
+                <Route path="projets" element={<Projects />} />
+                <Route path="projet/:projectId" element={<Project />}>
+                  <Route path="postuler" element={<TeamCreation />} />
+                </Route>
+                <Route path="projet/create" element={<CreateProject />} />
+                <Route path="charte" element={<Charte />} />
+                <Route path="about" element={<About />} />
+                <Route path="profil" element={<Profil />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="calendar" element={<Calendar />} />
+                <Route path="500" element={<Loader1 />} />
+              </Route>
+            </Route>
+            <Route
+              path="*"
+              element={
+                <ReactCursorPosition>
+                  <Erreur />
+                </ReactCursorPosition>
+              }
+            />
+          </Route>
+        </Routes>
+
+        {background && (
+          <Routes>
+            <Route path="connexion" element={<Connexion />} />
+            <Route path="postuler" element={<TeamCreation />} />
+            <Route path="newpassword/:userId" element={<NewPassword />} />
+          </Routes>
+        )}
+      </div>
+    </div>
+  );
+
 }
 
 export default App;
