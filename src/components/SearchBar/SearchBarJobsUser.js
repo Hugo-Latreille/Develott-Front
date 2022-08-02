@@ -1,31 +1,32 @@
 import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import jobsDataArray from "../../assets/data/jobsData.json";
-import { useDispatch } from "react-redux";
-import { setJobData } from "../../pages/Profiles/userProfileSlice";
+import { useGetAllJobsQuery } from "../../pages/Projects/projectsAPISlice";
+import { useUpdateUserMutation } from "../../pages/Profiles/userAPISlice";
 
-function SearchBarJobsUser() {
-	const dispatch = useDispatch();
+function SearchBarJobsUser({ userId }) {
+	const { data: allJobs } = useGetAllJobsQuery();
+	const [updateUser] = useUpdateUserMutation();
 
 	const handleOnSearch = (string, results) => {
 		// onSearch will have as the first callback parameter
 		// the string searched and for the second the results.
-		console.log(string, results);
+		// console.log(string, results);
 	};
 
 	const handleOnHover = (result) => {
 		// the item hovered
-		console.log(result);
+		// console.log(result);
 	};
 
 	const handleOnSelect = (item) => {
 		// the item selected
-		console.log(item);
-		dispatch(setJobData(item.name));
+		console.log(item.name);
+		updateUser({ id: userId, job_id: item.id });
+		// dispatch(setJobData(item.name));
 	};
 
 	const handleOnFocus = () => {
-		console.log("Focused");
+		// console.log("Focused");
 	};
 
 	const formatResult = (item) => {
@@ -42,7 +43,7 @@ function SearchBarJobsUser() {
 				<ReactSearchAutocomplete
 					showItemsOnFocus={true}
 					autoFocus={true}
-					items={jobsDataArray}
+					items={allJobs}
 					onSearch={handleOnSearch}
 					onHover={handleOnHover}
 					onSelect={handleOnSelect}

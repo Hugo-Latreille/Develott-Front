@@ -12,7 +12,7 @@ function TeamCreationUserForm() {
           value="DeveloppeurBackEnd"
           checked
         />
-        <label for="DeveloppeurBackEnd">Developpeur/se Back-End</label>
+        <label title="DeveloppeurBackEnd">Developpeur/se Back-End</label>
       </div>
 
       <div>
@@ -22,24 +22,24 @@ function TeamCreationUserForm() {
           name="drone"
           value="DeveloppeurFrontEnd"
         />
-        <label for="DeveloppeurFrontEnd">Developpeur/se Front-End</label>
+        <label title="DeveloppeurFrontEnd">Developpeur/se Front-End</label>
       </div>
 
       <div>
         <input type="radio" id="UxDesigner" name="drone" value="UxDesigner" />
-        <label for="UxDesigner">Ux Designer</label>
+        <label title="UxDesigner">Ux Designer</label>
       </div>
       <div>
         <input type="radio" id="ScrumMaster" name="drone" value="ScrumMaster" />
-        <label for="ScrumMaster">Scrum Master</label>
+        <label title="ScrumMaster">Scrum Master</label>
       </div>
 
       <div>
         <input type="radio" id="GitMaster" name="drone" value="GitMaster" />
-        <label for="GitMaster">Git Master</label>
+        <label title="GitMaster">Git Master</label>
       </div>
       <button type="submit" className="main-button-bg-colored">
-        Postuler <i class="far fa-rocket"></i>
+        Postuler <i className="far fa-rocket"></i>
       </button>
     </form>
   );

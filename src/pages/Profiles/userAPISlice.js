@@ -5,6 +5,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getOneUser: builder.query({
 			query: (email) => `user/findByEmail/${email}`,
+			providesTags: ["User"],
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
@@ -20,9 +21,30 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 				method: "PATCH",
 				body: patch,
 			}),
-			invalidatesTags: ["Project"],
+			invalidatesTags: ["User"],
+		}),
+		postUserTechno: builder.mutation({
+			query: ({ id, techno }) => ({
+				url: `user/${id}/techno`,
+				method: "POST",
+				body: { techno },
+			}),
+			invalidatesTags: ["User"],
+		}),
+		deleteUserTechno: builder.mutation({
+			query: ({ id, techno }) => ({
+				url: `user/${id}/techno`,
+				method: "DELETE",
+				body: { techno },
+			}),
+			invalidatesTags: ["User"],
 		}),
 	}),
 });
 
-export const { useGetOneUserQuery, useUpdateUserMutation } = userAPISlice;
+export const {
+	useGetOneUserQuery,
+	useUpdateUserMutation,
+	usePostUserTechnoMutation,
+	useDeleteUserTechnoMutation,
+} = userAPISlice;

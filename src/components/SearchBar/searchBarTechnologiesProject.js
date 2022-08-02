@@ -1,11 +1,9 @@
 import "./searchBarProjects.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import datas from "../../assets/data/technologiesData.json";
-import { useDispatch } from "react-redux";
 import { usePostProjectTechnoMutation } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBarTechnologiesProject({ technos, projectId }) {
-	const dispatch = useDispatch();
 	const [postProjectTechno] = usePostProjectTechnoMutation();
 
 	const handleOnSearch = (string, results) => {
