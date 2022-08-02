@@ -65,6 +65,7 @@ function App() {
                 <Route path="profil" element={<Profil />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
+                <Route path="500" element={<Loader1 />} />
               </Route>
             </Route>
             <Route

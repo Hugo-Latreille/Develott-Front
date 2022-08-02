@@ -1,10 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import ReactTooltip from "react-tooltip";
-import { FaProjectDiagram } from "react-icons/fa";
-import { MdMessage, MdConstruction, MdOutlineLogout } from "react-icons/md";
+import { FaProjectDiagram, FaPlusSquare } from "react-icons/fa";
+import { MdMessage, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
-// import Logo from "../../assets/images/v3-logo-colorize.png";
 import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
@@ -37,7 +36,7 @@ const routes = [
   {
     path: "/projet/create",
     name: "Créer Projet",
-    icon: <MdConstruction />,
+    icon: <FaPlusSquare />,
     tooltip: "Créer un projet",
   },
 ];

@@ -3,6 +3,7 @@ import "./dashboard.scss";
 import Sidebar from "../../components/SideBar/sidebar";
 import Calendar from "../../components/Calendar/calendar";
 import CalendarSmall from "../../components/Calendar/calendarSmall";
+import Footer from "../../components/Footer/footerColored";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -404,6 +405,7 @@ function Dashboard() {
           <CalendarSmall />
         </div>
       </div>
+      <Footer />
     </Sidebar>
   );
 }
