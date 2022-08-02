@@ -10,7 +10,7 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import sanitizeHtml from "sanitize-html";
+// import sanitizeHtml from "sanitize-html";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -19,15 +19,20 @@ import {
 	removeData,
 	setUserDescription,
 } from "./../../pages/Profiles/userProfileSlice";
-import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
+import {
+	useGetOneUserQuery,
+	useUpdateUserMutation,
+} from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
-import { useState } from "react";
-import { useFindUserByEmailQuery } from "../../pages/Login/authAPISlice";
+import { useEffect, useState } from "react";
+import technologiesJson from "./../../assets/data/technologiesData.json";
 
 function Profil() {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
+	const [updateUser] = useUpdateUserMutation();
+	console.log(user);
 
 	const {
 		isEditDescriptionActive,
@@ -38,52 +43,59 @@ function Profil() {
 		displayAllDescription,
 		userJobData,
 		userImg,
-		userDescription,
 	} = useSelector((state) => state.userProfile);
 
-	// const [editorState, setEditorState] = useState(EditorState.createEmpty());
-	// const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
-	const html = userDescription;
-	const contentBlock = htmlToDraft(html);
-	const contentState = ContentState.createFromBlockArray(
-		contentBlock.contentBlocks
-	);
-	const [editorState, setEditorState] = useState(
-		EditorState.createWithContent(contentState)
-	);
+	const [editorState, setEditorState] = useState(EditorState.createEmpty());
+	useEffect(() => {
+		if (user?.description) {
+			const html = user?.description;
+			const contentBlock = htmlToDraft(html);
+			const contentState = ContentState.createFromBlockArray(
+				contentBlock.contentBlocks
+			);
+			setEditorState(EditorState.createWithContent(contentState));
+		}
+	}, [user?.description]);
+
 	const handleEditorChange = (editorState) => {
 		setEditorState(editorState);
 	};
 
-	const handleDescriptionSubmit = (e) => {
+	const handleDescriptionSubmit = async (e) => {
 		e.preventDefault();
-		console.log(editorState);
-		dispatch(
-			setUserDescription(
-				draftToHtml(convertToRaw(editorState.getCurrentContent()))
-			)
+		const newDescription = draftToHtml(
+			convertToRaw(editorState.getCurrentContent())
 		);
-
-		dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
+		dispatch(setUserDescription(newDescription));
+		// refetch();
+		await updateUser({ id: user?.id, description: newDescription });
+		dispatch(
+			setDisplayEdit({
+				name: "isEditDescriptionActive",
+			})
+		);
 	};
 
-	const languagesData = userTechnologiesData.filter((technology) =>
-		technology.tags.includes("language")
+	const findUserTechnosFromDatabase = user?.techno?.map(
+		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
+	);
+	const languagesData = findUserTechnosFromDatabase?.filter((technology) =>
+		technology?.tags.includes("language")
 	);
 
-	const frameworksData = userTechnologiesData.filter((technology) =>
-		technology.tags.includes("framework")
+	const frameworksData = findUserTechnosFromDatabase?.filter((technology) =>
+		technology?.tags.includes("framework")
 	);
 
-	const databasesData = userTechnologiesData.filter((technology) =>
-		technology.tags.includes("database")
+	const databasesData = findUserTechnosFromDatabase?.filter((technology) =>
+		technology?.tags.includes("database")
 	);
 
-	const othersData = userTechnologiesData.filter(
+	const othersData = findUserTechnosFromDatabase?.filter(
 		(technology) =>
-			!technology.tags.includes("framework") &&
-			!technology.tags.includes("language") &&
-			!technology.tags.includes("database")
+			!technology?.tags.includes("framework") &&
+			!technology?.tags.includes("language") &&
+			!technology?.tags.includes("database")
 	);
 
 	const showCloudinaryWidget = () => {
@@ -125,7 +137,8 @@ function Profil() {
 				if (!error && result && result.event === "success") {
 					console.log(result.info.url);
 					const newImg = result.info.url;
-					dispatch(setNewUserImg(newImg));
+					updateUser({ id: user?.id, profil_picture: newImg });
+					dispatch(setDisplayEdit({ name: "isEditUserPictureActive" }));
 				}
 			}
 		);
@@ -165,8 +178,12 @@ function Profil() {
 							</div>
 						) : (
 							<div className=" desc_container_description-username">
-								{userImg ? (
-									<img className="name_container_avatar" src={userImg} alt="" />
+								{user?.profil_picture ? (
+									<img
+										className="name_container_avatar"
+										src={user?.profil_picture}
+										alt=""
+									/>
 								) : (
 									<img
 										className="name_container_avatar"
@@ -341,12 +358,6 @@ function Profil() {
 											},
 										}}
 									/>
-									<textarea
-										disabled
-										value={draftToHtml(
-											convertToRaw(editorState.getCurrentContent())
-										)}
-									/>
 									<button
 										type="submit"
 										className="main-button-colored create-project-button"
@@ -359,7 +370,7 @@ function Profil() {
 								<>
 									<div className="profile-edition-btns-container">
 										<h4 className="desc_container_main">
-											Bruce en quelques mots...
+											{user?.firstname} en quelques mots...
 										</h4>
 										<span
 											className="edit-btn-main"
@@ -377,7 +388,7 @@ function Profil() {
 										<div
 											className="user-description-texte"
 											dangerouslySetInnerHTML={{
-												__html: DisplayShowMoreDescription(userDescription),
+												__html: DisplayShowMoreDescription(user?.description),
 											}}
 										/>
 									)}
@@ -385,7 +396,7 @@ function Profil() {
 										<div
 											className="user-description-texte"
 											dangerouslySetInnerHTML={{
-												__html: userDescription,
+												__html: user?.description,
 											}}
 										/>
 									)}
@@ -426,10 +437,10 @@ function Profil() {
 									<div className="user-technologies margin-top2">
 										<div className="project-technologies-languages">
 											<h4>Langages</h4>
-											{languagesData.length === 0 && (
+											{languagesData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{languagesData.map((techno) => (
+											{languagesData?.map((techno) => (
 												<div
 													key={techno.name}
 													className="form-technologies-items"
@@ -457,10 +468,10 @@ function Profil() {
 										</div>
 										<div className="project-technologies-frameworks">
 											<h4>Frameworks</h4>
-											{frameworksData.length === 0 && (
+											{frameworksData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{frameworksData.map((techno) => (
+											{frameworksData?.map((techno) => (
 												<div
 													key={techno.name}
 													className="form-technologies-items"
@@ -488,10 +499,10 @@ function Profil() {
 										</div>
 										<div className="project-technologies-frameworks">
 											<h4>Database</h4>
-											{databasesData.length === 0 && (
+											{databasesData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{databasesData.map((techno) => (
+											{databasesData?.map((techno) => (
 												<div
 													key={techno.name}
 													className="form-technologies-items"
@@ -519,10 +530,10 @@ function Profil() {
 										</div>
 										<div className="project-technologies-others">
 											<h4>Autres</h4>
-											{othersData.length === 0 && (
+											{othersData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{othersData.map((techno) => (
+											{othersData?.map((techno) => (
 												<div
 													key={techno.name}
 													className="form-technologies-items"
@@ -588,10 +599,10 @@ function Profil() {
 								<div className="user-technologies margin-left2">
 									<div className="project-technologies-languages">
 										<h4>Langages</h4>
-										{languagesData.length === 0 && (
+										{languagesData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{languagesData.map((techno) => (
+										{languagesData?.map((techno) => (
 											<span className="technologies-icon-container">
 												<i
 													className={`devicon-${techno.name}-plain`}
@@ -604,10 +615,10 @@ function Profil() {
 
 									<div className="project-technologies-frameworks">
 										<h4>Frameworks</h4>
-										{frameworksData.length === 0 && (
+										{frameworksData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{frameworksData.map((techno) => (
+										{frameworksData?.map((techno) => (
 											<span className="technologies-icon-container">
 												<i
 													className={`devicon-${techno.name}-plain`}
@@ -619,10 +630,10 @@ function Profil() {
 									</div>
 									<div className="project-technologies-languages">
 										<h4>Database</h4>
-										{databasesData.length === 0 && (
+										{databasesData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{databasesData.map((techno) => (
+										{databasesData?.map((techno) => (
 											<span className="technologies-icon-container">
 												<i
 													className={`devicon-${techno.name}-plain`}
@@ -634,16 +645,16 @@ function Profil() {
 									</div>
 									<div className="project-technologies-others">
 										<h4>Autres</h4>
-										{othersData.length === 0 && (
+										{othersData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{othersData.map((techno) => (
+										{othersData?.map((techno) => (
 											<span className="technologies-icon-container">
 												<i
-													className={`devicon-${techno.name}-plain`}
-													style={{ backgroundColor: `${techno.color}` }}
+													className={`devicon-${techno?.name}-plain`}
+													style={{ backgroundColor: `${techno?.color}` }}
 												></i>
-												{techno.name}
+												{techno?.name}
 											</span>
 										))}
 									</div>

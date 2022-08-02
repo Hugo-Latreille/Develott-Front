@@ -15,7 +15,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 					.catch(({ error }) => {});
 			},
 		}),
-		updateProject: builder.mutation({
+		updateUser: builder.mutation({
 			query: ({ id, ...patch }) => ({
 				url: `user/${id}`,
 				method: "PATCH",
@@ -44,7 +44,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 
 export const {
 	useGetOneUserQuery,
-	useUpdateProjectMutation,
+	useUpdateUserMutation,
 	usePostUserTechnoMutation,
 	useDeleteUserTechnoMutation,
 } = userAPISlice;
