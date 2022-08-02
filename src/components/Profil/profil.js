@@ -32,12 +32,11 @@ import { Link } from "react-router-dom";
 function Profil() {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.auth);
-	const { data: user } = useGetOneUserQuery(email);
+	const { data: user, refetch } = useGetOneUserQuery(email);
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
 
 	console.log(user);
-
 	const {
 		isEditDescriptionActive,
 		isEditTechnologiesActive,
@@ -49,6 +48,10 @@ function Profil() {
 		userLinkedin,
 		userPortfolio,
 	} = useSelector((state) => state.userProfile);
+
+	const findUserTechnosFromDatabase = user?.techno?.map(
+		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
+	);
 
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 	useEffect(() => {
@@ -81,9 +84,6 @@ function Profil() {
 		);
 	};
 
-	const findUserTechnosFromDatabase = user?.techno?.map(
-		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
-	);
 	const languagesData = findUserTechnosFromDatabase?.filter((technology) =>
 		technology?.tags.includes("language")
 	);
@@ -552,13 +552,10 @@ function Profil() {
 													<i
 														className="fal fa-backspace form-technologies-delete"
 														onClick={() =>
-															dispatch(
-																removeData({
-																	name: "userTechnologiesData",
-																	field: "name",
-																	value: techno?.name,
-																})
-															)
+															deleteUserTechno({
+																id: user?.id,
+																techno: techno.name,
+															})
 														}
 													></i>
 												</div>
