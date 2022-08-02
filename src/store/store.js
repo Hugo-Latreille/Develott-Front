@@ -9,6 +9,7 @@ import projectSlice from "../pages/Project/projectSlice";
 import appSlice from "../pages/App/appSlice";
 import dashboardSlice from "../pages/Dashboard/dashboardSlice";
 import teamCreationSlice from "../pages/TeamCreation/teamCreationSlice";
+import modalSlice from "../components/Modal-Charte/modalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     dashboard: dashboardSlice,
     userProfile: userProfileSlice,
     teamCreation: teamCreationSlice,
+    modal: modalSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(

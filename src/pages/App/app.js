@@ -25,6 +25,7 @@ import About from "../About/about";
 import Loader1 from "../../components/Loader1/loader1";
 import Loader2 from "../../components/Loader2/loader2";
 import TeamCreation from "../TeamCreation/teamCreation";
+import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
   const teamModalIsOpen = useSelector(
     (state) => state.teamCreation.teamModalIsOpen
+  );
+  const charteModalIsOpen = useSelector(
+    (state) => state.modal.charteModalIsOpen
   );
 
   useEffect(() => {
@@ -51,6 +55,14 @@ function App() {
       document.body.style.overflow = "visible";
     }
   }, [teamModalIsOpen]);
+
+  useEffect(() => {
+    if (charteModalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [charteModalIsOpen]);
 
   return (
     <div id={displayDarkMode === true ? "dark" : "light"}>
@@ -73,6 +85,7 @@ function App() {
                 </Route>
                 <Route path="projet/create" element={<CreateProject />} />
                 <Route path="charte" element={<Charte />} />
+                <Route path="modal-charte" element={<CharteModal />} />
                 <Route path="about" element={<About />} />
                 <Route path="profil" element={<Profil />} />
                 <Route path="dashboard" element={<Dashboard />} />
@@ -95,7 +108,9 @@ function App() {
           <Routes>
             <Route path="connexion" element={<Connexion />} />
             <Route path="postuler" element={<TeamCreation />} />
+            <Route path="modal-charte" element={<CharteModal />} />
             <Route path="newpassword/:userId" element={<NewPassword />} />
+
           </Routes>
         )}
       </div>
