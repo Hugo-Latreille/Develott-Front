@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import PropTypes from 'prop-types';
 import React, { useState } from "react";
-import "./cards.scss";
+import ReactTooltip from "react-tooltip";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGetAllProjectsQuery } from "./../../pages/Projects/projectsAPISlice";
 import moment from "moment/min/moment-with-locales";
+import "./cards.scss";
 function ProjectList() {
   const [toggleJobs, setToggleJobs] = useState(false);
   const [toggleTechnos, setToggleTechnos] = useState(false);
@@ -36,13 +38,15 @@ function ProjectList() {
     setToggleJobs(!toggleJobs);
   };
 
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+
   const inputAnimation = {
     hidden: {
       width: 0,
       padding: 0,
       opacity: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
       },
     },
     show: {
@@ -50,7 +54,7 @@ function ProjectList() {
       padding: "8px 20px",
       opacity: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
       },
     },
   };
@@ -109,11 +113,34 @@ function ProjectList() {
                 </p>
                 <p className="card_main_profiles">
                   <span
-                    title="Developpeur Front-End, DevOps, UX Designer"
+                    data-tip={"Developpeur, Lead Dev"}
                     className="span-strong"
                   >
                     4
                   </span>
+                  {!displayDarkMode && (
+                    <ReactTooltip
+                      className="tooltips_cards"
+                      place="right"
+                      effect="solid"
+                      border
+                      textColor="#272727"
+                      backgroundColor="#FFFFFF"
+                      borderColor="#272727"
+                    />
+                  )}
+                  {displayDarkMode && (
+                    <ReactTooltip
+                      className="tooltips_cards"
+                      place="right"
+                      type="light"
+                      effect="solid"
+                      border
+                      textColor="#FFFFFF"
+                      borderColor="#FFFFFF"
+                      backgroundColor="#231661"
+                    />
+                  )}
                   Co-équipier(s) recherché(s)
                 </p>
                 <div className="card_desc">

@@ -248,6 +248,10 @@
   width: 80%;
 }
 
+.tooltips_cards {
+  font-weight: bold;
+}
+
 @keyframes skeleton-loading  {
 
   0% {
@@ -305,4 +309,9 @@
   &_user_date {
     color:white;
   }
+}
+
+#dark .card_technologies_container_icons {
+  background: linear-gradient(to left top, #232843f0 0%, #14162a 100%);
+  border: 0.5px solid rgba(255, 255, 255, 0.497);
 }

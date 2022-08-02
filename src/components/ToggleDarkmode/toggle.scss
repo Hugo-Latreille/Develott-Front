@@ -84,11 +84,12 @@ input:checked+.slider:before {
 
 .moon_inside {
   position: absolute;
-  margin-top: 0.2em;
+  margin-top: 0.25em;
   right: 10%;
   top: 11%;
   bottom: 0;
   font-size: 0.9em;
+  color: #3958bd;
 }
 
 .sun_inside {
@@ -104,7 +105,7 @@ input:checked+.slider:before {
   width: 50px;
   height: 25px;
   border-radius: 20px;
-  background-color: rgb(162, 160, 160);
+  background-color: rgba(192, 191, 191, 0.541);
   position: fixed;
   right: 117px;
   z-index: 999;
