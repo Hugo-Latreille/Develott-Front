@@ -172,7 +172,7 @@ function Profil() {
 									<p className="margin-top2">Modifier le poste actuel :</p>
 									<p className="desc_container_role-edition">{userJobData}</p>
 									<div className="jobs-searchbar-container margin-top-4">
-										<SearchBarJobsUser />
+										<SearchBarJobsUser userId={user?.id} />
 									</div>
 								</div>
 							</div>
@@ -204,8 +204,8 @@ function Profil() {
 								<div className="desc_container_description-user">
 									<p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
 									<p className="desc_container_role">
-										{userJobData ? (
-											userJobData
+										{user?.job ? (
+											user?.job
 										) : (
 											<span
 												className="cursor-pointer"
