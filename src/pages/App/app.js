@@ -82,6 +82,7 @@ function App() {
 				{background && (
 					<Routes>
 						<Route path="connexion" element={<Connexion />} />
+						<Route path="newpassword/:userId" element={<NewPassword />} />
 					</Routes>
 				)}
 			</div>

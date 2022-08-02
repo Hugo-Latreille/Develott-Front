@@ -18,6 +18,8 @@ import {
 	setNewUserImg,
 	removeData,
 	setUserDescription,
+	setUserData,
+	setData,
 } from "./../../pages/Profiles/userProfileSlice";
 import {
 	useGetOneUserQuery,
@@ -26,12 +28,14 @@ import {
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
+import { Link } from "react-router-dom";
 
 function Profil() {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
 	const [updateUser] = useUpdateUserMutation();
+
 	console.log(user);
 
 	const {
@@ -39,10 +43,11 @@ function Profil() {
 		isEditTechnologiesActive,
 		isEditUserPictureActive,
 		isEditUserInfos,
-		userTechnologiesData,
 		displayAllDescription,
-		userJobData,
-		userImg,
+		userCity,
+		userGitHub,
+		userLinkedin,
+		userPortfolio,
 	} = useSelector((state) => state.userProfile);
 
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -145,6 +150,19 @@ function Profil() {
 		widget.open();
 	};
 
+	const handleUserInfoSubmit = (e) => {
+		e.preventDefault();
+		updateUser({
+			id: user?.id,
+			city: userCity,
+			url_github: userGitHub,
+			url_linkedin: userLinkedin,
+			url_portfolio: userPortfolio,
+		});
+
+		dispatch(setDisplayEdit({ name: "isEditUserInfos" }));
+	};
+
 	return (
 		<>
 			<div className="profil ">
@@ -152,7 +170,7 @@ function Profil() {
 					<div className="desc_container_description">
 						{isEditUserPictureActive ? (
 							<div className=" desc_container_description-username">
-								<span
+								<div
 									className="project-img-container-edit-btn"
 									onClick={() =>
 										dispatch(
@@ -161,7 +179,7 @@ function Profil() {
 									}
 								>
 									Enregistrer
-								</span>
+								</div>
 								<button
 									className="project-edit-img-input margin-top2"
 									onClick={() => showCloudinaryWidget()}
@@ -170,7 +188,7 @@ function Profil() {
 								</button>
 								<div className="desc_container_description-user">
 									<p className="margin-top2">Modifier le poste actuel :</p>
-									<p className="desc_container_role-edition">{userJobData}</p>
+									<p className="desc_container_role-edition">{user?.job}</p>
 									<div className="jobs-searchbar-container margin-top-4">
 										<SearchBarJobsUser userId={user?.id} />
 									</div>
@@ -191,7 +209,7 @@ function Profil() {
 										alt=""
 									/>
 								)}
-								<span
+								<div
 									className="project-img-container-edit-btn"
 									onClick={() =>
 										dispatch(
@@ -200,14 +218,14 @@ function Profil() {
 									}
 								>
 									Modifier
-								</span>
+								</div>
 								<div className="desc_container_description-user">
 									<p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
 									<p className="desc_container_role">
 										{user?.job ? (
 											user?.job
 										) : (
-											<span
+											<div
 												className="cursor-pointer"
 												onClick={() =>
 													dispatch(
@@ -216,7 +234,7 @@ function Profil() {
 												}
 											>
 												Renseigner mon poste
-											</span>
+											</div>
 										)}
 									</p>
 								</div>
@@ -224,89 +242,138 @@ function Profil() {
 						)}
 						<div className=" desc_container_description-links-informations">
 							<div className="desc_container_description-links">
-								{isEditUserInfos === false && (
-									<span
-										className="project-img-container-edit-btn"
-										onClick={() =>
-											dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
-										}
-									>
-										Modifier
-									</span>
-								)}
-								{isEditUserInfos === true && (
-									<span
-										className="project-img-container-edit-btn"
-										onClick={() =>
-											dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
-										}
-									>
-										Enregistrer
-									</span>
-								)}
 								<p className="desc_container_title user-available">
 									<i className="fas fa-circle success"></i> Disponible pour
 									débuter un nouveau projet
 								</p>
 								{isEditUserInfos === false && (
-									<div className="desc_container_user-links-dark">
-										<p className="desc_container_title">
-											<i className="fas fa-map-marker color-secondary"></i>
-											{/* {user.city ? user.city : "A compléter"} */}
-										</p>
-										<p className="desc_container_title">
-											<i className="fab fa-github color-secondary"></i>
-											<a href="#"> Superman-Suck</a>
-										</p>
-										<p className="desc_container_title">
-											<i className="fab fa-linkedin color-secondary"></i>
-											<a href="#"> Bruce Wayne</a>
-										</p>
-										<p className="desc_container_title">
-											<i className="fas fa-globe color-secondary"></i>
-											<a href="#"> brucewayne.com</a>
-										</p>
-									</div>
-								)}
-								{isEditUserInfos === true && (
 									<>
-										<div className="desc_container_title user-info-input-edition">
-											<i className="fas fa-map-marker color-secondary"></i>
-											<input
-												type="texte"
-												placeholder="Ville ..."
-												className="dashboard-edit-input"
-											/>
+										<div
+											className="project-img-container-edit-btn"
+											onClick={() =>
+												dispatch(setDisplayEdit({ name: "isEditUserInfos" }))
+											}
+										>
+											Modifier
 										</div>
-										<div className="desc_container_title user-info-input-edition">
-											<i className="fab fa-github color-secondary"></i>
-											<input
-												type="texte"
-												placeholder="Lien profil Github..."
-												className="dashboard-edit-input"
-											/>
-										</div>
-										<div className="desc_container_title user-info-input-edition">
-											<i className="fab fa-linkedin color-secondary"></i>
-											<input
-												type="texte"
-												placeholder="Lien profil Linkedin..."
-												className="dashboard-edit-input"
-											/>
-										</div>
-										<div className="desc_container_title user-info-input-edition">
-											<i className="fas fa-globe color-secondary"></i>
-											<input
-												type="texte"
-												placeholder="Lien vers Portfolio..."
-												className="dashboard-edit-input"
-											/>
+										<div className="desc_container_user-links-dark">
+											<p className="desc_container_title">
+												<i className="fas fa-map-marker color-secondary"></i>
+												{user?.city ? user?.city : "Ville"}
+											</p>
+											<p className="desc_container_title">
+												<i className="fab fa-github color-secondary"></i>
+												<a href="#">
+													{" "}
+													{user?.url_github ? user?.url_github : "GitHub"}
+												</a>
+											</p>
+											<p className="desc_container_title">
+												<i className="fab fa-linkedin color-secondary"></i>
+												<a href="#">
+													{" "}
+													{user?.url_linkedin ? user?.url_linkedin : "Linkedin"}
+												</a>
+											</p>
+											<p className="desc_container_title">
+												<i className="fas fa-globe color-secondary"></i>
+												<a href="#">
+													{" "}
+													{user?.url_portfolio
+														? user?.url_portfolio
+														: "Portfolio"}
+												</a>
+											</p>
 										</div>
 									</>
 								)}
+								{isEditUserInfos === true && (
+									<>
+										<form onSubmit={handleUserInfoSubmit}>
+											<button
+												type="submit"
+												className="project-img-container-edit-btn"
+												style={{ border: "none" }}
+											>
+												Enregistrer
+											</button>
+											<div className="desc_container_title user-info-input-edition">
+												<i className="fas fa-map-marker color-secondary"></i>
+												<input
+													value={userCity}
+													onChange={(e) =>
+														dispatch(
+															setUserData({
+																name: "userCity",
+																value: e.target.value,
+															})
+														)
+													}
+													type="text"
+													placeholder="Ville ..."
+													className="dashboard-edit-input"
+												/>
+											</div>
+											<div className="desc_container_title user-info-input-edition">
+												<i className="fab fa-github color-secondary"></i>
+												<input
+													value={userGitHub}
+													onChange={(e) =>
+														dispatch(
+															setUserData({
+																name: "userGitHub",
+																value: e.target.value,
+															})
+														)
+													}
+													type="text"
+													placeholder="Lien profil Github..."
+													className="dashboard-edit-input"
+												/>
+											</div>
+											<div className="desc_container_title user-info-input-edition">
+												<i className="fab fa-linkedin color-secondary"></i>
+												<input
+													value={userLinkedin}
+													onChange={(e) =>
+														dispatch(
+															setUserData({
+																name: "userLinkedin",
+																value: e.target.value,
+															})
+														)
+													}
+													type="text"
+													placeholder="Lien profil Linkedin..."
+													className="dashboard-edit-input"
+												/>
+											</div>
+											<div className="desc_container_title user-info-input-edition">
+												<i className="fas fa-globe color-secondary"></i>
+												<input
+													value={userPortfolio}
+													onChange={(e) =>
+														dispatch(
+															setUserData({
+																name: "userPortfolio",
+																value: e.target.value,
+															})
+														)
+													}
+													type="text"
+													placeholder="Lien vers Portfolio..."
+													className="dashboard-edit-input"
+												/>
+											</div>
+										</form>
+									</>
+								)}
 							</div>
+
 							<p className="desc_container_title user-password">
-								<i className="fal fa-key"></i> Mot de Passe
+								<Link to={`/newpassword/${user?.id}`}>
+									<i className="fal fa-key"></i> Mot de Passe
+								</Link>
 							</p>
 						</div>
 					</div>
@@ -372,7 +439,7 @@ function Profil() {
 										<h4 className="desc_container_main">
 											{user?.firstname} en quelques mots...
 										</h4>
-										<span
+										<div
 											className="edit-btn-main"
 											onClick={() =>
 												dispatch(
@@ -381,7 +448,7 @@ function Profil() {
 											}
 										>
 											Modifier
-										</span>
+										</div>
 									</div>
 
 									{displayAllDescription === false && (
@@ -403,7 +470,7 @@ function Profil() {
 
 									<div className="user-description-texte">
 										{displayAllDescription === false && (
-											<span
+											<div
 												className="user_desc_link"
 												onClick={() =>
 													dispatch(
@@ -412,10 +479,10 @@ function Profil() {
 												}
 											>
 												voir plus...
-											</span>
+											</div>
 										)}
 										{displayAllDescription === true && (
-											<span
+											<div
 												className="user_desc_link"
 												onClick={() =>
 													dispatch(
@@ -424,7 +491,7 @@ function Profil() {
 												}
 											>
 												voir moins.
-											</span>
+											</div>
 										)}
 									</div>
 								</>
@@ -585,7 +652,7 @@ function Profil() {
 							>
 								<div className="profile-edition-btns-container">
 									<h4 className="desc_container_main">Compétences</h4>
-									<span
+									<div
 										className="edit-btn-main"
 										onClick={() =>
 											dispatch(
@@ -594,7 +661,7 @@ function Profil() {
 										}
 									>
 										Modifier
-									</span>
+									</div>
 								</div>
 								<div className="user-technologies margin-left2">
 									<div className="project-technologies-languages">
@@ -603,7 +670,10 @@ function Profil() {
 											<p className="form-technologies-empty">vide...</p>
 										)}
 										{languagesData?.map((techno) => (
-											<span className="technologies-icon-container">
+											<span
+												key={techno.name}
+												className="technologies-icon-container"
+											>
 												<i
 													className={`devicon-${techno.name}-plain`}
 													style={{ backgroundColor: `${techno.color}` }}
@@ -619,7 +689,10 @@ function Profil() {
 											<p className="form-technologies-empty">vide...</p>
 										)}
 										{frameworksData?.map((techno) => (
-											<span className="technologies-icon-container">
+											<span
+												key={techno.name}
+												className="technologies-icon-container"
+											>
 												<i
 													className={`devicon-${techno.name}-plain`}
 													style={{ backgroundColor: `${techno.color}` }}
@@ -649,7 +722,10 @@ function Profil() {
 											<p className="form-technologies-empty">vide...</p>
 										)}
 										{othersData?.map((techno) => (
-											<span className="technologies-icon-container">
+											<span
+												key={techno?.name}
+												className="technologies-icon-container"
+											>
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}
