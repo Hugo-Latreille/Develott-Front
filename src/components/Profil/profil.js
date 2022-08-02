@@ -1,6 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import PropTypes from 'prop-types';
-// import React, { useState } from "react";
 import "./profil.scss";
 import "../Cards/cards.scss";
 import SearchBarTechnologiesUserProfile from "../SearchBar/searchBarTechnologiesUserProfile";
@@ -24,9 +22,12 @@ import {
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useState } from "react";
+import { useFindUserByEmailQuery } from "../../pages/Login/authAPISlice";
 
 function Profil() {
 	const dispatch = useDispatch();
+	const { email } = useSelector((state) => state.auth);
+	const { data: user } = useGetOneUserQuery(email);
 
 	const {
 		isEditDescriptionActive,
@@ -65,10 +66,6 @@ function Profil() {
 
 		dispatch(setDisplayEdit({ name: "isEditDescriptionActive" }));
 	};
-
-	const email = useSelector((state) => state.auth.email);
-	const { data: user } = useGetOneUserQuery(email);
-	console.log(user);
 
 	const languagesData = userTechnologiesData.filter((technology) =>
 		technology.tags.includes("language")
