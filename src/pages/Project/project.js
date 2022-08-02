@@ -31,6 +31,9 @@ import {
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 
+import { Link, useLocation, Outlet } from "react-router-dom";
+import { toggleTeamCreationModalOpen } from "./../TeamCreation/teamCreationSlice";
+
 function Project() {
   const { projectId } = useParams();
   const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
@@ -45,6 +48,8 @@ function Project() {
   const projectTeam = projectWithTeam?.teams;
 
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const {
     displayEditDescriptionForm,
     displayEditTechnologies,
@@ -399,10 +404,15 @@ function Project() {
                   </p>
                 </div>
                 <div className="project-header-right">
-                  <button className="main-button-bg-white">
-                    {" "}
+                  <Link
+                    to={`/postuler`}
+                    // to={`/projet/${projectId}/postuler`}
+                    state={{ background: location }}
+                    onClick={() => dispatch(toggleTeamCreationModalOpen())}
+                    className="main-button-bg-white"
+                  >
                     Postuler <i className="far fa-rocket"></i>
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div
@@ -743,6 +753,7 @@ function Project() {
         </div>
         <FooterColored />
       </Sidebar>
+      <Outlet />
     </>
   );
 }

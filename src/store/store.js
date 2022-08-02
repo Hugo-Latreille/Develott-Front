@@ -8,6 +8,7 @@ import userProfileSlice from "../pages/Profiles/userProfileSlice";
 import projectSlice from "../pages/Project/projectSlice";
 import appSlice from "../pages/App/appSlice";
 import dashboardSlice from "../pages/Dashboard/dashboardSlice";
+import teamCreationSlice from "../pages/TeamCreation/teamCreationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,8 +17,9 @@ export const store = configureStore({
     auth: loginReducer,
     createProject: createProjectSlice,
     project: projectSlice,
-    dashboard: dashboardSlice,  
+    dashboard: dashboardSlice,
     userProfile: userProfileSlice,
+    teamCreation: teamCreationSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(

@@ -32,6 +32,9 @@ function App() {
   const background = location.state && location.state.background;
   const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+  const teamModalIsOpen = useSelector(
+    (state) => state.teamCreation.teamModalIsOpen
+  );
 
   useEffect(() => {
     if (modalIsOpen) {
@@ -40,6 +43,14 @@ function App() {
       document.body.style.overflow = "visible";
     }
   }, [modalIsOpen]);
+
+  useEffect(() => {
+    if (teamModalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [teamModalIsOpen]);
 
   return (
     <div id={displayDarkMode === true ? "dark" : "light"}>
@@ -57,11 +68,12 @@ function App() {
                 <Route path="welcome" element={<Welcome />} />
                 <Route path="authTest" element={<AuthTest />} />
                 <Route path="projets" element={<Projects />} />
-                <Route path="projet/:projectId" element={<Project />} />
+                <Route path="projet/:projectId" element={<Project />}>
+                  <Route path="postuler" element={<TeamCreation />} />
+                </Route>
                 <Route path="projet/create" element={<CreateProject />} />
                 <Route path="charte" element={<Charte />} />
                 <Route path="about" element={<About />} />
-                <Route path="projet/id/postuler" element={<TeamCreation />} />
                 <Route path="profil" element={<Profil />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
@@ -72,7 +84,6 @@ function App() {
               path="*"
               element={
                 <ReactCursorPosition>
-                  {" "}
                   <Erreur />
                 </ReactCursorPosition>
               }
@@ -83,6 +94,7 @@ function App() {
         {background && (
           <Routes>
             <Route path="connexion" element={<Connexion />} />
+            <Route path="postuler" element={<TeamCreation />} />
           </Routes>
         )}
       </div>
