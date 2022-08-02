@@ -15,7 +15,6 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	setDisplayEdit,
-	removeData,
 	setUserDescription,
 	setUserData,
 } from "./../../pages/Profiles/userProfileSlice";
@@ -32,7 +31,7 @@ import { Link } from "react-router-dom";
 function Profil() {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.auth);
-	const { data: user, refetch } = useGetOneUserQuery(email);
+	const { data: user } = useGetOneUserQuery(email);
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
 
