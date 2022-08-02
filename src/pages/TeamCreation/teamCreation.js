@@ -3,8 +3,19 @@ import "./teamCreation.scss";
 import TeamCreationUserForm from "./teamCreationUserForm";
 import TeamCreationAdminForm from "./teamCreationAdminForm";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import ReactDOM from "react-dom";
+
+import { useNavigate } from "react-router-dom";
+
+import { toggleTeamCreationModalOpen } from "./teamCreationSlice";
+
 function TeamCreation() {
-  return (
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  return ReactDOM.createPortal(
     <div className="team-creation">
       <div className="team-creation-container">
         <div className="team-creation-container-header">
@@ -17,11 +28,18 @@ function TeamCreation() {
         <div className="team-creation-container-main">
           <TeamCreationUserForm />
         </div>
-        <span className="close-modal-button">
-          <i class="fas fa-times-circle"></i>
-        </span>
+        <div
+          className="close-modal-button"
+          onClick={() => {
+            dispatch(toggleTeamCreationModalOpen());
+            navigate(-1);
+          }}
+        >
+          <i className="fas fa-times-circle"></i>
+        </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal-root")
   );
 }
 

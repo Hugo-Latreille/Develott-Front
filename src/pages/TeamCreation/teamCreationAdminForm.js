@@ -13,7 +13,7 @@ function TeamCreationAdminForm() {
             value="DeveloppeurBackEnd"
           />
           <label
-            for="DeveloppeurBackEnd"
+            title="DeveloppeurBackEnd"
             className="team-creation-admin-form-label"
           >
             <p>jul du 13</p>
@@ -28,7 +28,7 @@ function TeamCreationAdminForm() {
             value="DeveloppeurBackEnd"
           />
           <label
-            for="DeveloppeurBackEnd"
+            title="DeveloppeurBackEnd"
             className="team-creation-admin-form-label"
           >
             <p>jul du 13</p>
@@ -43,7 +43,7 @@ function TeamCreationAdminForm() {
             value="DeveloppeurBackEnd"
           />
           <label
-            for="DeveloppeurBackEnd"
+            title="DeveloppeurBackEnd"
             className="team-creation-admin-form-label"
           >
             <p>jul du 13</p>
@@ -58,7 +58,7 @@ function TeamCreationAdminForm() {
             value="DeveloppeurBackEnd"
           />
           <label
-            for="DeveloppeurBackEnd"
+            title="DeveloppeurBackEnd"
             className="team-creation-admin-form-label"
           >
             <p>jul du 13</p>
@@ -73,7 +73,7 @@ function TeamCreationAdminForm() {
             value="DeveloppeurBackEnd"
           />
           <label
-            for="DeveloppeurBackEnd"
+            title="DeveloppeurBackEnd"
             className="team-creation-admin-form-label"
           >
             <p>jul du 13</p>
@@ -83,7 +83,7 @@ function TeamCreationAdminForm() {
       </div>
 
       <button type="submit" className="main-button-bg-colored">
-        Constituer l'équipe <i class="far fa-rocket"></i>
+        Constituer l'équipe <i className="far fa-rocket"></i>
       </button>
     </form>
   );
