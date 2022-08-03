@@ -20,9 +20,8 @@ import { useEffect } from "react";
 function ProjectList() {
   const dispatch = useDispatch();
 
-  const technologySearch = useSelector(
-    (state) => state.searchbar.searchTechnology
-  );
+  const { searchTechnology, searchJob, searchProjectName, searchDate } =
+    useSelector((state) => state.searchbar);
 
   const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
   const { email } = useSelector((state) => state.auth);
@@ -31,6 +30,8 @@ function ProjectList() {
   let allProjects = projectsTeams?.projects;
   const { userFavorites, showFavorites } = useSelector((state) => state.app);
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+
+  console.log(allProjects);
 
   //! conserver
   // const findTeamByProject = (projectId) => {
@@ -74,6 +75,15 @@ function ProjectList() {
     );
   };
 
+  const findProjectByName = (id) => {
+    const filteredProjects = [];
+    const foundProject = allProjects?.find(
+      (element) => element.id === Number(id)
+    );
+
+    return filteredProjects.push(foundProject);
+  };
+
   const findProjectsByTechnologyName = (technology) => {
     const filteredProjects = allProjects?.filter((project) =>
       project?.techno?.includes(technology)
@@ -81,12 +91,74 @@ function ProjectList() {
     return filteredProjects;
   };
 
-  //   const findProjectsByJobName = (id) => {
-  //     const filteredProjects = allProjects?.filter((project) =>
-  //       project?.techno?.includes(technology)
-  //     );
-  //     return filteredProjects;
-  //   };
+  const findProjectsByDate = (date) => {
+    const filteredProjects = allProjects?.filter(
+      (project) => project?.start_date > date
+    );
+    return filteredProjects;
+  };
+
+  const findProjectsByJobName = (id) => {
+    const projectHasJobData = projectsTeams?.jobByProject.filter(
+      (job) => job?.job_id === parseInt(id)
+    );
+
+    const filteredProjects = [];
+
+    projectHasJobData?.forEach((element) => {
+      const foundProject = allProjects?.find(
+        (projet) => projet.id === element.project_id
+      );
+      filteredProjects.push(foundProject);
+    });
+
+    return filteredProjects;
+  };
+
+  const findProject = (technoName, jobId) => {
+    if (jobId !== "" && technoName !== "") {
+      const projectHasJobData = projectsTeams?.jobByProject.filter(
+        (job) => job?.job_id === parseInt(jobId)
+      );
+
+      const filteredProjects1 = [];
+
+      projectHasJobData.forEach((element) => {
+        const foundProject = allProjects?.find(
+          (projet) => projet.id === element.project_id
+        );
+        filteredProjects1.push(foundProject);
+      });
+
+      const filteredProjects2 = filteredProjects1.filter((project) =>
+        project?.techno?.includes(technoName)
+      );
+      return filteredProjects2;
+    } else if (jobId === "") {
+      const filteredProjects = allProjects?.filter((project) =>
+        project?.techno?.includes(technoName)
+      );
+      return filteredProjects;
+    } else if (technoName === "") {
+      const projectHasJobData = projectsTeams?.jobByProject.filter(
+        (job) => job?.job_id === parseInt(jobId)
+      );
+
+      const filteredProjects = [];
+
+      projectHasJobData.forEach((element) => {
+        const foundProject = allProjects?.find(
+          (projet) => projet.id === element.project_id
+        );
+        filteredProjects.push(foundProject);
+      });
+
+      return filteredProjects;
+    }
+  };
+
+  console.log(findProjectsByJobName(1));
+
 
   const inputAnimation = {
     hidden: {
@@ -111,14 +183,31 @@ function ProjectList() {
     allProjects = findFavoritesInfos();
   }
 
-  if (technologySearch !== "") {
-    allProjects = findProjectsByTechnologyName(technologySearch);
+  if (searchTechnology !== "" && searchJob === "") {
+    allProjects = findProjectsByTechnologyName(searchTechnology);
   }
+
+  if (searchJob !== "" && searchTechnology === "") {
+    allProjects = findProjectsByJobName(Number(searchJob));
+  }
+
+  if (searchJob !== "" && searchTechnology !== "") {
+    allProjects = findProject(searchTechnology, Number(searchJob));
+  }
+
+  if (searchProjectName !== "") {
+    allProjects = findProjectByName(searchProjectName);
+  }
+
+  if (searchDate !== "") {
+    allProjects = findProjectsByDate(searchDate);
+  }
+
 
   return (
     <div className="cards">
       {isSuccess &&
-        allProjects.map((project, index) => (
+        allProjects?.map((project, index) => (
           <div className="card" key={project.id}>
             <img src={project?.picture} className="card_img2" alt="" />
             <div className="icone_content">
