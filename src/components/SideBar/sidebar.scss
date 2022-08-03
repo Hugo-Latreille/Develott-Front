@@ -120,6 +120,7 @@
     
     &_details {
     background-color: rgba(255, 255, 255, 0.605);
+    max-width: 11em;
     display: flex;
     padding: 15px;
     border-radius: 0px 12px 12px 0px;
@@ -135,11 +136,18 @@
 
   &_img {
     margin-right: 1em;
-    height: 30px;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+    object-fit: cover;
   }
 
   &_img_close {
-    height: 29px;
+    border-radius: 50%;
+    width: 1.70rem;
+    height: 1.70rem;
+    border: 1px solid #223ffa;
+    object-fit: cover;
     margin-bottom: 1.5em;
     margin-right: 0.1em;
   }
@@ -149,10 +157,12 @@
   background: vars.$linearGradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 0.8em;
 }
 
 .name {
   color: black;
+  font-size: 0.9em;
 }
 
 .logo_unlog {
@@ -231,4 +241,8 @@
 
 #dark .sidebar {
   background: linear-gradient(to top  ,  #219898, #24085c  );
+}
+
+#dark .profile_img_close {
+  border: 1px solid #093737;
 }
