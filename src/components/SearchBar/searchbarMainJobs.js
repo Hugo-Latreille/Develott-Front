@@ -33,7 +33,9 @@ function SearchbarMainJobs() {
         styling={{
           zIndex: 1,
           backgroundColor: "white",
+          borderLeft: "1px solid black",
           fontSize: "0.8rem",
+          borderRadius: "0px",
         }}
         formatResult={formatResult}
         maxResults={5}

@@ -5,6 +5,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment/min/moment-with-locales";
 import { DatePicker } from "@mui/x-date-pickers";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "moment/locale/fr";
 
@@ -16,6 +17,7 @@ import SearchbarMainJobs from "./searchbarMainJobs";
 import SearchbarMainProjectTitle from "./searchbarMainProjectTitle";
 
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 import {
   initResearch,
@@ -27,6 +29,8 @@ import { useGetAllJobsQuery } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBar() {
   const dispatch = useDispatch();
+  const [openTechno, setOpenTechno] = useState(true);
+  const [openTitre, setOpenTitre] = useState(false);
 
   const { data: allJobs } = useGetAllJobsQuery();
 
@@ -68,32 +72,67 @@ function SearchBar() {
   //     element.tags.includes("framework") || element.tags.includes("language")
   // );
 
+  const openingTechno = () => {
+    setOpenTitre(false);
+    setOpenTechno(true);
+  };
+
+  const openingTitre = () => {
+    setOpenTechno(false);
+    setOpenTitre(true);
+  };
+
   return (
     <div className="input-container">
+      <div className="select_research">
+        <div className="select_research_click" onClick={() => openingTechno()}>
+          Rechercher par Techno
+        </div>
+        <div className="select_research_click" onClick={() => openingTitre()}>
+          Rechercher par Titre
+        </div>
+      </div>
       <div className="projects-searchbar-container">
-        <SearchbarMainTechnologies />
-        <SearchbarMainJobs />
-        <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="fr">
-          <DatePicker
-            label="Date de début"
-            // value={startDate}
-            className="date-picker-color"
-            onChange={(newValue) => {
-              console.log(newValue.format());
-              dispatch(setSearchProjectDate(newValue.format()));
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-        {/* <SearchbarMainProjectTitle /> */}
+        {openTechno && (
+          <>
+            <SearchbarMainTechnologies />
+            <SearchbarMainJobs />
+            <LocalizationProvider
+              dateAdapter={AdapterMoment}
+              adapterLocale="fr"
+            >
+              <DatePicker
+                className="date-picker-color"
+                onChange={(newValue) => {
+                  console.log(newValue.format());
+                  dispatch(setSearchProjectDate(newValue.format()));
+                }}
+                // renderInput={(params) => <TextField {...params} />}
+                renderInput={({ inputRef, inputProps, InputProps }) => (
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <input ref={inputRef} {...inputProps} />
+                    {InputProps?.endAdornment}
+                  </Box>
+                )}
+              />
+            </LocalizationProvider>
+          </>
+        )}
+        {openTitre && <SearchbarMainProjectTitle />}
         <div
           onClick={() => dispatch(initResearch(""))}
           className="projects-searchbar-init-search"
         >
           <i class="fas fa-undo"></i>
         </div>
+        <div className="select-input favoris">
+          <div onClick={() => dispatch(toggleShowFavorites())}>
+            <i className="fas fa-heart fav"></i> Favoris
+          </div>
+        </div>
       </div>
-      <div className="input-container-flex">
+
+      {/* <div className="input-container-flex">
         <div className="select-input-container">
           <select
             className="select-input"
@@ -116,13 +155,9 @@ function SearchBar() {
             <option value="spider">Spider</option>
             <option value="goldfish">Goldfish</option>
           </select>
-          <div className="select-input favoris">
-            <div onClick={() => dispatch(toggleShowFavorites())}>
-              <i className="fas fa-heart fav"></i> Favoris
-            </div>
-          </div>
+          
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
