@@ -154,8 +154,8 @@
   }
 }
 
-.icone_test {
-  display: flex;
+.fav {
+  color: #6560fb;
 }
 
 .card_technologies_container {
@@ -166,6 +166,7 @@
 
   &_icons {
     background-color: #fff;
+    border: 1px #6560fb48 solid;
     padding: 0.6rem 1rem;
     margin-top: -1.5rem;
     margin-left: 5rem;
@@ -301,6 +302,10 @@
   }
 }
 
+.mini_icon {
+  margin-left: 0.1em;
+}
+
 #dark .card_desc {
   &_user_name {
     color:white;
@@ -312,6 +317,15 @@
 }
 
 #dark .card_technologies_container_icons {
-  background: linear-gradient(to left top, #232843f0 0%, #14162a 100%);
+  background: linear-gradient(to left top, #38406cea 0%, #2e325f 100%);
   border: 0.5px solid rgba(255, 255, 255, 0.497);
+}
+
+#dark .fav {
+  color: #249e9e;
+}
+
+#dark .mini_icon {
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
 }

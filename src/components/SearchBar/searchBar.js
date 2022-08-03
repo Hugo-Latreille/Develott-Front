@@ -1,9 +1,14 @@
 import "./searchbar.scss";
+import { toggleShowFavorites } from "../../pages/App/appSlice";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+
+import { useDispatch } from "react-redux";
 
 import datas from "../../assets/data/technologiesData.json";
 
 function SearchBar() {
+  const dispatch = useDispatch();
+
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
@@ -61,25 +66,32 @@ function SearchBar() {
           showItemsOnFocus={false}
         />
       </div>
-      <div className="select-input-container">
-        <select className="select-input" name="pets" id="pet-select">
-          <option value=""> Poste</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
-        </select>
-        <select className="select-input" name="pets" id="pet-select">
-          <option value=""> Date </option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
-        </select>
+      <div className="input-container-flex">
+        <div className="select-input-container">
+          <select className="select-input" name="pets" id="pet-select">
+            <option value=""> Poste</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+          </select>
+          <select className="select-input" name="pets" id="pet-select">
+            <option value=""> Date </option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+          </select>
+        </div>
+        <div className="select-input favoris">
+          <div onClick={() => dispatch(toggleShowFavorites())}>
+            <i className="fas fa-heart fav"></i> Favoris
+          </div>
+        </div>
       </div>
     </div>
   );
