@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   searchTechnology: "",
-  searchJob: "4",
+  searchJob: "",
+  searchProjectName: "",
+  searchDate: "",
 };
 
 export const searchbarSlice = createSlice({
@@ -15,9 +17,26 @@ export const searchbarSlice = createSlice({
     setSearchJob: (state, action) => {
       state.searchJob = action.payload;
     },
+    setSearchProjectName: (state, action) => {
+      state.searchJob = action.payload;
+    },
+    setSearchProjectDate: (state, action) => {
+      state.searchDate = action.payload;
+    },
+    initResearch: (state, action) => {
+      state.searchTechnology = action.payload;
+      state.searchJob = action.payload;
+      state.searchDate = action.payload;
+    },
   },
 });
 
-export const { setSearchTechnology, setSearchJob } = searchbarSlice.actions;
+export const {
+  setSearchTechnology,
+  setSearchJob,
+  initResearch,
+  setSearchProjectDate,
+  setSearchProjectName,
+} = searchbarSlice.actions;
 
 export default searchbarSlice.reducer;

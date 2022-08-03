@@ -2,7 +2,7 @@ import "./searchBarProjects.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { useSelector, useDispatch } from "react-redux";
 
-import { setSearchJob } from "./searchbarSlice";
+import { setSearchProjectName } from "./searchbarSlice";
 
 import { useGetAllProjectsQuery } from "./../../pages/Projects/projectsAPISlice";
 
@@ -16,7 +16,7 @@ function SearchbarMainProjectTitle() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item);
-    dispatch(setSearchJob(item.id));
+    dispatch(setSearchProjectName(item.id));
   };
 
   const formatResult = (item) => {
