@@ -159,6 +159,7 @@ function ProjectList() {
 
   console.log(findProjectsByJobName(1));
 
+
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -201,6 +202,7 @@ function ProjectList() {
   if (searchDate !== "") {
     allProjects = findProjectsByDate(searchDate);
   }
+
 
   return (
     <div className="cards">
@@ -281,9 +283,9 @@ function ProjectList() {
               <div>
                 <p className="card_main_desc">
                   {project?.excerpt}
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                  <Link to={`/projet/${project.id}`}>
+                    <a className="card_main_desc_link"> voir plus.</a>
+                  </Link>
                 </p>
 
                 <div className="card_main_profiles">

@@ -90,8 +90,8 @@
   &_title {
     font-size: 1.2rem;
     font-weight: normal;
+    color: #3d11b6;
     cursor: pointer;
-    color:black;
   }
 
   &_title:hover {
@@ -107,7 +107,7 @@
 
   &_desc_link {
     font-weight: bolder;
-    color: grey;
+    color: #4c0dfba3;
   }
 
   &_desc_link:hover {
@@ -281,7 +281,7 @@
 
 #dark .card_main {
   &_title {
-    color:white;
+    color:#05c8c8;
   }
 
   &_title:hover {
@@ -293,7 +293,7 @@
   }
 
   &_desc_link {
-    color:white;
+    color:#249e9e;
   }
 
   &_profiles {
@@ -329,3 +329,4 @@
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
 }
+

@@ -1,9 +1,18 @@
 import "./presentation.scss";
 import Footer from "../../Footer/footer";
+import { useDispatch } from "react-redux";
+import { toggleLoggingModalOpen } from "../../../pages/Login/authSlice";
 
 import { Link } from "react-router-dom";
 
 function Presentation() {
+  const dispatch = useDispatch();
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="presentation">
       <div className="presentation-container container">
@@ -17,11 +26,31 @@ function Presentation() {
             eiusmod tempor.
           </p>
           <div className="presentation-links">
-            <Link to="/projets" className="main-button-white">
-              Parcourir les projets
+            <Link
+              onClick={scrollToTop()}
+              className="main-button-white"
+              to="/connexion"
+            >
+              <a
+                href="/connection"
+                onClick={() => dispatch(toggleLoggingModalOpen())}
+              >
+                {" "}
+                Parcourir les projets
+              </a>
             </Link>
-            <Link to="/projets" className="main-button-bg-white">
-              S'inscrire
+            <Link
+              onClick={scrollToTop()}
+              className="main-button-bg-white"
+              to="/connexion"
+            >
+              <a
+                href="/connection"
+                onClick={() => dispatch(toggleLoggingModalOpen())}
+              >
+                {" "}
+                S'inscrire
+              </a>
             </Link>
           </div>
         </div>
