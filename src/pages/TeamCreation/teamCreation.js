@@ -17,11 +17,15 @@ function TeamCreation() {
 	const { data: user } = useGetOneUserQuery(email);
 	const { data: projectWithTeam } = useGetOneProjectQuery(projectId);
 	const projectTeam = projectWithTeam?.teams;
+	const projectJobs = projectWithTeam?.jobByProject;
 
 	const isUserProjectAdmin = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "admin"
 	);
-	console.log(isUserProjectAdmin);
+
+	//TODO : on filtre team par candidates --> on affiche nombre candidats à côté
+
+	const candidates = projectTeam?.filter((team) => team.role === "candidates");
 
 	return ReactDOM.createPortal(
 		<div className="team-creation">
@@ -37,7 +41,12 @@ function TeamCreation() {
 					{isUserProjectAdmin ? (
 						<TeamCreationAdminForm />
 					) : (
-						<TeamCreationUserForm />
+						<TeamCreationUserForm
+							projectJobs={projectJobs}
+							userId={user?.id}
+							projectId={projectId}
+							candidates={candidates}
+						/>
 					)}
 				</div>
 				<div

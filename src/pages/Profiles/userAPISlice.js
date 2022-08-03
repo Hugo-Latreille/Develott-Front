@@ -39,6 +39,14 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 			}),
 			invalidatesTags: ["User"],
 		}),
+		addUserRole: builder.mutation({
+			query: ({ projectId, ...body }) => ({
+				url: `/project/${projectId}/addroletoproject`,
+				method: "POST",
+				body: body,
+			}),
+			invalidatesTags: ["Project"],
+		}),
 	}),
 });
 
@@ -47,4 +55,5 @@ export const {
 	useUpdateUserMutation,
 	usePostUserTechnoMutation,
 	useDeleteUserTechnoMutation,
+	useAddUserRoleMutation,
 } = userAPISlice;

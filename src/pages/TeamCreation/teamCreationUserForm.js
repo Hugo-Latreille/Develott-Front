@@ -1,48 +1,60 @@
+import {
+	useAddUserRoleMutation,
+	useUpdateUserMutation,
+} from "../Profiles/userAPISlice";
 import "./teamCreation.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserChoice } from "./teamCreationSlice";
 
-function TeamCreationUserForm() {
-  return (
-    <form>
-      <h3>Sélectionner un poste :</h3>
-      <div>
-        <input
-          type="radio"
-          id="DeveloppeurBackEnd"
-          name="drone"
-          value="DeveloppeurBackEnd"
-          checked
-        />
-        <label title="DeveloppeurBackEnd">Developpeur/se Back-End</label>
-      </div>
+function TeamCreationUserForm({ projectJobs, userId, projectId, candidates }) {
+	console.log(projectJobs);
+	const { userJobChoice } = useSelector((state) => state.teamCreation);
+	const [userIsCandidate] = useAddUserRoleMutation();
+	const [changeUserJob] = useUpdateUserMutation();
+	const dispatch = useDispatch();
+	console.log(userJobChoice);
 
-      <div>
-        <input
-          type="radio"
-          id="DeveloppeurFrontEnd"
-          name="drone"
-          value="DeveloppeurFrontEnd"
-        />
-        <label title="DeveloppeurFrontEnd">Developpeur/se Front-End</label>
-      </div>
+	console.log(candidates);
 
-      <div>
-        <input type="radio" id="UxDesigner" name="drone" value="UxDesigner" />
-        <label title="UxDesigner">Ux Designer</label>
-      </div>
-      <div>
-        <input type="radio" id="ScrumMaster" name="drone" value="ScrumMaster" />
-        <label title="ScrumMaster">Scrum Master</label>
-      </div>
+	const alreadyCandidates = (jobId) => {
+		return candidates.filter((candidate) => candidate.job_id === jobId).length;
+	};
 
-      <div>
-        <input type="radio" id="GitMaster" name="drone" value="GitMaster" />
-        <label title="GitMaster">Git Master</label>
-      </div>
-      <button type="submit" className="main-button-bg-colored">
-        Postuler <i className="far fa-rocket"></i>
-      </button>
-    </form>
-  );
+	return (
+		<form
+			onSubmit={(e) => {
+				e.preventDefault();
+				userIsCandidate({
+					projectId: projectId,
+					customer_id: userId,
+					role_id: 3,
+				});
+				changeUserJob({ id: userId, job_id: userJobChoice });
+				//TODO REDIRECT
+			}}
+		>
+			<h3>Sélectionner un poste :</h3>
+			{projectJobs?.map((job, index) => (
+				<div
+					key={job.id_project_has_job}
+					onChange={(e) => dispatch(setUserChoice(e.target.value))}
+				>
+					<input
+						type="radio"
+						name="test"
+						value={job.job_id}
+						defaultChecked={index === 0 ? true : false}
+					/>
+					<label>{job.job}</label>
+					<div>{alreadyCandidates(job.job_id)} candidat(s)</div>
+				</div>
+			))}
+
+			<button type="submit" className="main-button-bg-colored">
+				Postuler <i className="far fa-rocket"></i>
+			</button>
+		</form>
+	);
 }
 
 export default TeamCreationUserForm;

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	teamModalIsOpen: false,
 	projectId: "",
+	userJobChoice: "",
 };
 
 export const teamCreationSlice = createSlice({
@@ -15,10 +16,13 @@ export const teamCreationSlice = createSlice({
 		setProjectId: (state, action) => {
 			state.projectId = action.payload;
 		},
+		setUserChoice: (state, action) => {
+			state.userJobChoice = action.payload;
+		},
 	},
 });
 
-export const { toggleTeamCreationModalOpen, setProjectId } =
+export const { toggleTeamCreationModalOpen, setProjectId, setUserChoice } =
 	teamCreationSlice.actions;
 
 export default teamCreationSlice.reducer;
