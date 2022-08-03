@@ -21,7 +21,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 				method: "PATCH",
 				body: patch,
 			}),
-			invalidatesTags: ["User"],
+			invalidatesTags: ["User", "Project"],
 		}),
 		postUserTechno: builder.mutation({
 			query: ({ id, techno }) => ({
@@ -45,7 +45,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 				method: "POST",
 				body: body,
 			}),
-			invalidatesTags: ["Project"],
+			invalidatesTags: ["User", "Project"],
 		}),
 		updateUserRole: builder.mutation({
 			query: ({ projectId, ...patch }) => ({
@@ -53,7 +53,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 				method: "PATCH",
 				body: patch,
 			}),
-			invalidatesTags: ["Project"],
+			invalidatesTags: ["User", "Project"],
 		}),
 	}),
 });

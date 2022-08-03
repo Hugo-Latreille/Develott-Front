@@ -18,10 +18,10 @@ function TeamCreationUserForm({ projectJobs, userId, projectId, candidates }) {
 	console.log(candidates);
 
 	const isThereCandidates = (jobId) => {
-		return candidates.filter((candidate) => candidate.job_id === jobId).length;
+		return candidates?.filter((candidate) => candidate.job_id === jobId).length;
 	};
 
-	const userAlreadyCandidate = candidates.some(
+	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
 
@@ -29,6 +29,7 @@ function TeamCreationUserForm({ projectJobs, userId, projectId, candidates }) {
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
+				changeUserJob({ id: userId, job_id: userJobChoice });
 				if (!userAlreadyCandidate) {
 					userIsCandidate({
 						projectId: projectId,
@@ -36,8 +37,6 @@ function TeamCreationUserForm({ projectJobs, userId, projectId, candidates }) {
 						role_id: 3,
 					});
 				}
-
-				changeUserJob({ id: userId, job_id: userJobChoice });
 				navigate(`/projet/${projectId}`, { replace: true });
 			}}
 		>
@@ -49,7 +48,7 @@ function TeamCreationUserForm({ projectJobs, userId, projectId, candidates }) {
 				>
 					<input
 						type="radio"
-						name="test"
+						name="selectJob"
 						value={job.job_id}
 						defaultChecked={index === 0 ? true : false}
 					/>

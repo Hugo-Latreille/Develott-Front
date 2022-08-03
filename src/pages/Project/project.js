@@ -192,10 +192,10 @@ function Project() {
 		);
 	};
 
-	// const isUserProjectAdmin = projectTeam?.some(
-	// 	(team) => team.customer_id === user?.id && team.role === "admin"
-	// );
-	const isUserProjectAdmin = true;
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+	// const isUserProjectAdmin = true;
 
 	return (
 		<>

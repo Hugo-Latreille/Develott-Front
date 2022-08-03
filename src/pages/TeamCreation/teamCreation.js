@@ -4,7 +4,7 @@ import TeamCreationUserForm from "./teamCreationUserForm";
 import TeamCreationAdminForm from "./teamCreationAdminForm";
 import { useSelector, useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toggleTeamCreationModalOpen } from "./teamCreationSlice";
 import { useGetOneUserQuery } from "../Profiles/userAPISlice";
 import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
@@ -22,10 +22,11 @@ function TeamCreation() {
 	const isUserProjectAdmin = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "admin"
 	);
-
-	//TODO : on filtre team par candidates --> on affiche nombre candidats à côté
-
+	// const isUserProjectAdmin = false;
 	const candidates = projectTeam?.filter((team) => team.role === "candidates");
+	const displayProductOwner = projectTeam
+		?.filter((team) => team.role === "admin")
+		.map((po) => `${po.firstname} ${po.lastname}`)[0];
 
 	return ReactDOM.createPortal(
 		<div className="team-creation">
@@ -34,12 +35,18 @@ function TeamCreation() {
 					<h2>Tu souhaite rejoindre le projet Develott ? 🎉</h2>
 					<p>
 						Tu n'as plus qu'à sélectionner le poste sur lequel tu souhaites de
-						positionner ! Prenom Nom, pourra ensuite visualiser ta demande.
+						positionner ! {displayProductOwner} pourra ensuite visualiser ta
+						demande.
 					</p>
 				</div>
 				<div className="team-creation-container-main">
 					{isUserProjectAdmin ? (
-						<TeamCreationAdminForm />
+						<TeamCreationAdminForm
+							projectJobs={projectJobs}
+							userId={user?.id}
+							projectId={projectId}
+							candidates={candidates}
+						/>
 					) : (
 						<TeamCreationUserForm
 							projectJobs={projectJobs}
