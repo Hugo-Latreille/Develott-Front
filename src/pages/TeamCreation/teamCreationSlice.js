@@ -26,6 +26,9 @@ export const teamCreationSlice = createSlice({
 		removeTeam: (state, action) => {
 			state.selectTeam = state.selectTeam.filter((id) => id !== action.payload);
 		},
+		resetTeam: (state) => {
+			state.selectTeam = [];
+		},
 	},
 });
 
@@ -35,6 +38,7 @@ export const {
 	setUserChoice,
 	setTeam,
 	removeTeam,
+	resetTeam,
 } = teamCreationSlice.actions;
 
 export default teamCreationSlice.reducer;

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { useUpdateUserRoleMutation } from "../Profiles/userAPISlice";
 import "./teamCreation.scss";
-import { removeTeam, setTeam } from "./teamCreationSlice";
+import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 	//TODO : afficher uniquement les candidats + job
@@ -14,9 +15,9 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	console.log(candidates);
+	const [updateCandidateToParticipant] = useUpdateUserRoleMutation();
 
 	const [checked, setChecked] = useState(false);
-
 	const handleChange = (e, index) => {
 		setChecked((prevState) => ({
 			...prevState,
@@ -31,6 +32,19 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		selectTeam.forEach((checkedCandidate) => {
+			const thisCandidate = candidates.filter(
+				(candidate) => candidate.customer_id === Number(checkedCandidate)
+			);
+			updateCandidateToParticipant({
+				projectId: projectId,
+				customer_id: thisCandidate[0].customer_id,
+				role_id: 2,
+			});
+		});
+		dispatch(resetTeam());
+		navigate(`/projet/${projectId}`, { replace: true });
+		//TODO : effacer les non retenus ?
 	};
 
 	return (
@@ -46,7 +60,7 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 							type="checkbox"
 							name="selectTeam"
 							value={candidate.customer_id}
-							checked={checked[index]}
+							checked={checked[index] || false}
 							onChange={(e) => handleChange(e, index)}
 						/>
 						<label className="team-creation-admin-form-label">
