@@ -1,39 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  teamModalIsOpen: false,
+	teamModalIsOpen: false,
+	projectId: "",
 };
 
 export const teamCreationSlice = createSlice({
-  name: "teamCreation",
-  initialState,
-  reducers: {
-    toggleTeamCreationModalOpen: (state, action) => {
-      state.teamModalIsOpen = !state.teamModalIsOpen;
-    },
-  },
+	name: "teamCreation",
+	initialState,
+	reducers: {
+		toggleTeamCreationModalOpen: (state) => {
+			state.teamModalIsOpen = !state.teamModalIsOpen;
+		},
+		setProjectId: (state, action) => {
+			state.projectId = action.payload;
+		},
+	},
 });
 
-export const { toggleTeamCreationModalOpen } = teamCreationSlice.actions;
+export const { toggleTeamCreationModalOpen, setProjectId } =
+	teamCreationSlice.actions;
 
 export default teamCreationSlice.reducer;
-
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const initialState = {
-//   teamModalIsOpen: false,
-// };
-
-// export const teamCreationSlice = createSlice({
-//   name: "teamCreation",
-//   initialState,
-//   reducers: {
-//     toggleTeamCreationModalOpen: (state) => {
-//       state.teamModalIsOpen = !state.teamModalIsOpen;
-//     },
-//   },
-// });
-
-// export const { toggleTeamCreationModalOpen } = teamCreationSlice.actions;
-
-// export default teamCreationSlice.reducer;

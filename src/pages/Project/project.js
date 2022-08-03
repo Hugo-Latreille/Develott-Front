@@ -32,7 +32,10 @@ import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 
 import { Link, useLocation, Outlet } from "react-router-dom";
-import { toggleTeamCreationModalOpen } from "./../TeamCreation/teamCreationSlice";
+import {
+	setProjectId,
+	toggleTeamCreationModalOpen,
+} from "./../TeamCreation/teamCreationSlice";
 
 import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
 import { useGetOneUserQuery } from "../Profiles/userAPISlice";
@@ -184,10 +187,10 @@ function Project() {
 		);
 	};
 
-	const isUserProjectAdmin = projectTeam?.some(
-		(team) => team.customer_id === user?.id && team.role === "admin"
-	);
-	// const isUserProjectAdmin = true;
+	// const isUserProjectAdmin = projectTeam?.some(
+	// 	(team) => team.customer_id === user?.id && team.role === "admin"
+	// );
+	const isUserProjectAdmin = true;
 
 	return (
 		<>
@@ -238,7 +241,8 @@ function Project() {
 								<img
 									className="slider-avatar"
 									src={
-										project.c_profil_picture
+										project?.c_profil_picture &&
+										project?.c_profil_picture.length > 1
 											? project.c_profil_picture
 											: mockAvatar
 									}
@@ -351,12 +355,12 @@ function Project() {
 									</div>
 									<p>
 										<i className="far fa-calendar-check success margin-right05"></i>
-										Début :
+										Début :{" "}
 										{moment(project?.start_date).locale("fr").format("LL")}
 									</p>
 									<p>
 										<i className="far fa-calendar-exclamation warning margin-right05"></i>
-										Durée :
+										Durée :{" "}
 										{moment(project?.end_date)
 											.locale("fr")
 											.diff(
@@ -441,19 +445,23 @@ function Project() {
 									{isUserProjectAdmin ? (
 										<Link
 											to={`/postuler`}
-											// to={`/projet/${projectId}/postuler`}
 											state={{ background: location }}
-											onClick={() => dispatch(toggleTeamCreationModalOpen())}
+											onClick={() => {
+												dispatch(toggleTeamCreationModalOpen());
+												dispatch(setProjectId(projectId));
+											}}
 											className="main-button-bg-white"
 										>
-											Sélectionner l'équipe <i className="far fa-rocket"></i>
+											Valider <i className="far fa-rocket"></i>
 										</Link>
 									) : (
 										<Link
 											to={`/postuler`}
-											// to={`/projet/${projectId}/postuler`}
 											state={{ background: location }}
-											onClick={() => dispatch(toggleTeamCreationModalOpen())}
+											onClick={() => {
+												dispatch(toggleTeamCreationModalOpen());
+												dispatch(setProjectId(projectId));
+											}}
 											className="main-button-bg-white"
 										>
 											Postuler <i className="far fa-rocket"></i>

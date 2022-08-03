@@ -17,16 +17,22 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
-						// console.log(result);
+						console.log(result);
 						const startDate = result.data.project.start_date;
 						const endDate = result.data.project.end_date;
 						const projectImg = result.data.project.picture;
 						const projectDescription = result.data.project.description;
+						const projectTitle = result.data.project.project;
+						const projectExcerpt = result.data.project.excerpt;
 						dispatch(changeDate({ name: "startDate", value: startDate }));
 						dispatch(
 							changeDate({ name: "description", value: projectDescription })
 						);
 						dispatch(changeDate({ name: "endDate", value: endDate }));
+						dispatch(changeDate({ name: "projectTitle", value: projectTitle }));
+						dispatch(
+							changeDate({ name: "projectExcerpt", value: projectExcerpt })
+						);
 						dispatch(setNewImg(projectImg));
 					})
 					.catch(({ error }) => {});

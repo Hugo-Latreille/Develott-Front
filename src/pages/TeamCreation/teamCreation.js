@@ -4,12 +4,24 @@ import TeamCreationUserForm from "./teamCreationUserForm";
 import TeamCreationAdminForm from "./teamCreationAdminForm";
 import { useSelector, useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toggleTeamCreationModalOpen } from "./teamCreationSlice";
+import { useGetOneUserQuery } from "../Profiles/userAPISlice";
+import { useGetOneProjectQuery } from "../Projects/projectsAPISlice";
 
 function TeamCreation() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const { projectId } = useSelector((state) => state.teamCreation);
+	const { email } = useSelector((state) => state.auth);
+	const { data: user } = useGetOneUserQuery(email);
+	const { data: projectWithTeam } = useGetOneProjectQuery(projectId);
+	const projectTeam = projectWithTeam?.teams;
+
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+	console.log(isUserProjectAdmin);
 
 	return ReactDOM.createPortal(
 		<div className="team-creation">
@@ -22,8 +34,11 @@ function TeamCreation() {
 					</p>
 				</div>
 				<div className="team-creation-container-main">
-					{/* <TeamCreationUserForm /> */}
-					<TeamCreationAdminForm />
+					{isUserProjectAdmin ? (
+						<TeamCreationAdminForm />
+					) : (
+						<TeamCreationUserForm />
+					)}
 				</div>
 				<div
 					className="close-modal-button"
