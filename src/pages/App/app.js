@@ -92,15 +92,15 @@ function App() {
 								<Route path="calendar" element={<Calendar />} />
 								<Route path="500" element={<Loader1 />} />
 							</Route>
+							<Route
+								path="*"
+								element={
+									<ReactCursorPosition>
+										<Erreur />
+									</ReactCursorPosition>
+								}
+							/>
 						</Route>
-						<Route
-							path="*"
-							element={
-								<ReactCursorPosition>
-									<Erreur />
-								</ReactCursorPosition>
-							}
-						/>
 					</Route>
 				</Routes>
 

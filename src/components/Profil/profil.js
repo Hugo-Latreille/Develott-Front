@@ -20,7 +20,6 @@ import {
 } from "./../../pages/Profiles/userProfileSlice";
 import {
 	useDeleteUserTechnoMutation,
-	useGetOneUserQuery,
 	useUpdateUserMutation,
 } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
@@ -35,7 +34,6 @@ function Profil() {
 	const { profilId } = useParams();
 	const location = useLocation();
 	const { email } = useSelector((state) => state.auth);
-	// const { data: user } = useGetOneUserQuery(email);
 	const { data: user } = useFindUserByIdQuery(profilId);
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
