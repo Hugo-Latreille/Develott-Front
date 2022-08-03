@@ -74,6 +74,10 @@ function Project() {
 		?.filter((team) => team.role === "admin")
 		.map((po) => `${po.firstname} ${po.lastname}`)[0];
 
+	const productOwnerId = projectTeam
+		?.filter((team) => team.role === "admin")
+		.map((po) => po.customer_id)[0];
+
 	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
 	);
@@ -179,12 +183,10 @@ function Project() {
 		);
 	};
 
-	//TODO : logique conditionnalité
-	// si user.id !== po.id alors on n'affiche pas les modifs
-
 	const isUserProjectAdmin = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "admin"
 	);
+	// const isUserProjectAdmin = true;
 
 	return (
 		<>
@@ -237,7 +239,9 @@ function Project() {
 									src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png"
 									alt="User profile image"
 								/>
-								<p className="project-user-name">{displayProductOwner}</p>
+								<Link to={`/profil/${productOwnerId}`}>
+									<p className="project-user-name">{displayProductOwner}</p>
+								</Link>
 
 								{/* //TODO connecter les liens RS */}
 
