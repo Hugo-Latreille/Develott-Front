@@ -28,6 +28,8 @@
 }
 
 
-#dark input {
+#dark .create-project-inputs-container {
+    & input {
     background-color: #323c5a;
+    }
 }
