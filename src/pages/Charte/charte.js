@@ -8,8 +8,8 @@ function Charte() {
   return (
     <Sidebar>
       <div className="charte">
-        <CharteComp />
         <ConditionComp />
+        <CharteComp />
         <Footer />
       </div>
     </Sidebar>

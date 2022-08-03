@@ -54,7 +54,9 @@ function FooterColored() {
         </div>
         <div className="footer-container-column">
           <p>
-            <a href="/projets">Voir tous les projets</a>
+            <Link to="/projets">
+              <div>Voir tous les projets</div>
+            </Link>
           </p>
           <p>
             <Link
@@ -66,10 +68,14 @@ function FooterColored() {
             </Link>
           </p>
           <p>
-            <a href="/about">Découvrir l'équipe</a>
+            <Link to="/charte">
+              <div>Nos CGU</div>
+            </Link>
           </p>
           <p>
-            <a href="#">S'inscrire / Se connecter</a>
+            <Link to="/about">
+              <div>Découvrir l'équipe</div>
+            </Link>
           </p>
         </div>
       </div>

@@ -12,6 +12,7 @@ function About() {
               src={require(`./../../../assets/images/home-icon1.png`)}
               alt="Develott dashboard presentation"
             />
+
             <h3 className="about-subtitle">Parcourez les projets</h3>
             <p className="about-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
