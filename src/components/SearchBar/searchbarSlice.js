@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   searchTechnology: "",
-  searchJob: "",
+  searchJob: "4",
 };
 
 export const searchbarSlice = createSlice({
