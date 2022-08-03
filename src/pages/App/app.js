@@ -23,7 +23,7 @@ import Charte from "../Charte/charte";
 import About from "../About/about";
 
 import Loader1 from "../../components/Loader1/loader1";
-import Loader2 from "../../components/Loader2/loader2";
+// import Loader2 from "../../components/Loader2/loader2";
 import TeamCreation from "../TeamCreation/teamCreation";
 import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
@@ -87,20 +87,20 @@ function App() {
 								<Route path="charte" element={<Charte />} />
 								<Route path="modal-charte" element={<CharteModal />} />
 								<Route path="about" element={<About />} />
-								<Route path="profil" element={<Profil />} />
+								<Route path="profil/:profilId" element={<Profil />} />
 								<Route path="dashboard" element={<Dashboard />} />
 								<Route path="calendar" element={<Calendar />} />
 								<Route path="500" element={<Loader1 />} />
 							</Route>
+							<Route
+								path="*"
+								element={
+									<ReactCursorPosition>
+										<Erreur />
+									</ReactCursorPosition>
+								}
+							/>
 						</Route>
-						<Route
-							path="*"
-							element={
-								<ReactCursorPosition>
-									<Erreur />
-								</ReactCursorPosition>
-							}
-						/>
 					</Route>
 				</Routes>
 
