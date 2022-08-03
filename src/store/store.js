@@ -10,6 +10,7 @@ import appSlice from "../pages/App/appSlice";
 import dashboardSlice from "../pages/Dashboard/dashboardSlice";
 import teamCreationSlice from "../pages/TeamCreation/teamCreationSlice";
 import modalSlice from "../components/Modal-Charte/modalSlice";
+import searchbarSlice from "../components/SearchBar/searchbarSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     userProfile: userProfileSlice,
     teamCreation: teamCreationSlice,
     modal: modalSlice,
+    searchbar: searchbarSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(

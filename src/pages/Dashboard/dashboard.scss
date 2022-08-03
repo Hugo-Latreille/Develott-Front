@@ -18,7 +18,7 @@
         }
 
         &-titles {
-            width:80%;
+            width:70%;
             padding: 2rem;
             color:white;
         }
@@ -33,6 +33,10 @@
             margin:0;
             font-size: 1.2rem;
             font-weight: normal;
+        }
+
+        &-cta {
+            margin-right: 2rem;
         }
 
     }

@@ -32,7 +32,9 @@ function Dashboard() {
                 Bienvenue sur le dashboard du projet Develott
               </h1>
             </div>
-            <div className="dashboard-main-cta">qd</div>
+            <div className="dashboard-main-cta">
+              Présentation du projet <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
           <div className="dashboard-main-navigation">
             <div

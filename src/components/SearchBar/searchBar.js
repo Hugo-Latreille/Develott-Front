@@ -1,9 +1,13 @@
 import "./searchbar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-
+import { useDispatch } from "react-redux";
 import datas from "../../assets/data/technologiesData.json";
 
+import { setSearchTechnology } from "./searchbarSlice";
+
 function SearchBar() {
+  const dispatch = useDispatch();
+
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
@@ -18,6 +22,7 @@ function SearchBar() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item);
+    dispatch(setSearchTechnology(item.name));
   };
 
   const handleOnFocus = () => {
@@ -43,23 +48,31 @@ function SearchBar() {
 
   return (
     <div className="input-container">
-      <div>
-        <ReactSearchAutocomplete
-          items={datas}
-          onSearch={handleOnSearch}
-          onHover={handleOnHover}
-          onSelect={handleOnSelect}
-          onFocus={handleOnFocus}
-          styling={{
-            zIndex: 1000,
-          }}
-          formatResult={formatResult}
-          maxResults={5}
-          showIcon={true}
-          placeholder="Javascript, Ruby, React..."
-          showNoResults
-          showItemsOnFocus={false}
-        />
+      <div className="projects-searchbar-container">
+        <div>
+          <ReactSearchAutocomplete
+            items={datas}
+            onSearch={handleOnSearch}
+            onHover={handleOnHover}
+            onSelect={handleOnSelect}
+            onFocus={handleOnFocus}
+            styling={{
+              zIndex: 1000,
+            }}
+            formatResult={formatResult}
+            maxResults={5}
+            showIcon={true}
+            placeholder="Javascript, Ruby, React..."
+            showNoResults
+            showItemsOnFocus={false}
+          />
+        </div>
+        <div
+          onClick={() => dispatch(setSearchTechnology(""))}
+          className="projects-searchbar-init-search"
+        >
+          <i class="fas fa-undo"></i>
+        </div>
       </div>
       <div className="select-input-container">
         <select className="select-input" name="pets" id="pet-select">
