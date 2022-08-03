@@ -3,10 +3,14 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { useDispatch } from "react-redux";
 import datas from "../../assets/data/technologiesData.json";
 
-import { setSearchTechnology } from "./searchbarSlice";
+import { setSearchTechnology, setSearchJob } from "./searchbarSlice";
+
+import { useGetAllJobsQuery } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBar() {
   const dispatch = useDispatch();
+
+  const { data: allJobs } = useGetAllJobsQuery();
 
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -75,14 +79,17 @@ function SearchBar() {
         </div>
       </div>
       <div className="select-input-container">
-        <select className="select-input" name="pets" id="pet-select">
-          <option value=""> Poste</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
+        <select
+          className="select-input"
+          name="pets"
+          id="pet-select"
+          onChange={(e) => dispatch(setSearchJob(e.target.value))}
+        >
+          {allJobs?.map((job) => (
+            <option key={job.id} value={job.id}>
+              {job.name}
+            </option>
+          ))}
         </select>
         <select className="select-input" name="pets" id="pet-select">
           <option value=""> Date </option>

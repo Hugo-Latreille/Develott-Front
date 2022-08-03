@@ -81,6 +81,13 @@ function ProjectList() {
     return filteredProjects;
   };
 
+  //   const findProjectsByJobName = (id) => {
+  //     const filteredProjects = allProjects?.filter((project) =>
+  //       project?.techno?.includes(technology)
+  //     );
+  //     return filteredProjects;
+  //   };
+
   const inputAnimation = {
     hidden: {
       width: 0,
