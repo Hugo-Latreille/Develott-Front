@@ -88,7 +88,6 @@ function ProjectList() {
   //     return filteredProjects;
   //   };
 
-
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -115,7 +114,6 @@ function ProjectList() {
   if (technologySearch !== "") {
     allProjects = findProjectsByTechnologyName(technologySearch);
   }
-
 
   return (
     <div className="cards">
@@ -196,9 +194,9 @@ function ProjectList() {
               <div>
                 <p className="card_main_desc">
                   {project?.excerpt}
-                  <a className="card_main_desc_link" href="#">
-                    voir plus.
-                  </a>
+                  <Link to={`/projet/${project.id}`}>
+                    <a className="card_main_desc_link"> voir plus.</a>
+                  </Link>
                 </p>
 
                 <div className="card_main_profiles">
@@ -232,7 +230,6 @@ function ProjectList() {
                     />
                   )}
                   Co-équipier(s) recherché(s)
-
                 </div>
                 <div className="card_desc">
                   <div className="card_desc_user">

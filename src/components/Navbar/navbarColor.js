@@ -1,8 +1,6 @@
 import "./navbarColor.scss";
 import { Link, useLocation, Outlet } from "react-router-dom";
 
-import SearchBar from "../SearchBar/searchBar";
-
 function Navbar() {
   const location = useLocation();
 

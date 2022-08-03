@@ -31,6 +31,10 @@
   }
 }
 
+.main-button-white a {
+  color: white ;
+}
+
 @media screen and (width < 600px) {
   .presentation {
     &-container {
