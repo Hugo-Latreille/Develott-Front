@@ -1,6 +1,10 @@
 import "./searchbar.scss";
+import { toggleShowFavorites } from "../../pages/App/appSlice";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+
+
 import { useDispatch } from "react-redux";
+
 import datas from "../../assets/data/technologiesData.json";
 
 import { setSearchTechnology, setSearchJob } from "./searchbarSlice";
@@ -10,7 +14,9 @@ import { useGetAllJobsQuery } from "../../pages/Projects/projectsAPISlice";
 function SearchBar() {
   const dispatch = useDispatch();
 
+
   const { data: allJobs } = useGetAllJobsQuery();
+
 
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -78,6 +84,8 @@ function SearchBar() {
           <i class="fas fa-undo"></i>
         </div>
       </div>
+      <div className="input-container-flex">
+
       <div className="select-input-container">
         <select
           className="select-input"
@@ -100,6 +108,12 @@ function SearchBar() {
           <option value="spider">Spider</option>
           <option value="goldfish">Goldfish</option>
         </select>
+         <div className="select-input favoris">
+            <div onClick={() => dispatch(toggleShowFavorites())}>
+              <i className="fas fa-heart fav"></i> Favoris
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

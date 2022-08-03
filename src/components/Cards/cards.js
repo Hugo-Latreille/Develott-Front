@@ -88,6 +88,7 @@ function ProjectList() {
   //     return filteredProjects;
   //   };
 
+
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -115,6 +116,7 @@ function ProjectList() {
     allProjects = findProjectsByTechnologyName(technologySearch);
   }
 
+
   return (
     <div className="cards">
       {isSuccess &&
@@ -123,7 +125,7 @@ function ProjectList() {
             <img src={project?.picture} className="card_img2" alt="" />
             <div className="icone_content">
               <div className="icone_content_btns">
-                <span className="icone_button">
+                <span className="icone_button fav">
                   {isFavorite(project?.id) ? (
                     <i
                       className="fas fa-heart"
@@ -177,7 +179,7 @@ function ProjectList() {
                 >
                   {project?.techno?.map((techno) => (
                     <i
-                      className={`devicon-${techno}-plain colored icon-techno`}
+                      className={`devicon-${techno}-plain colored icon-techno mini_icon`}
                       key={techno}
                     ></i>
                   ))}
@@ -198,9 +200,10 @@ function ProjectList() {
                     voir plus.
                   </a>
                 </p>
-                <p className="card_main_profiles">
+
+                <div className="card_main_profiles">
                   <span
-                    title="Développeur Front-End, DevOps, UX Designer"
+                    data-tip="Developpeur Braguette, Lead Dev Fion"
                     className="span-strong"
                   >
                     4
@@ -229,7 +232,8 @@ function ProjectList() {
                     />
                   )}
                   Co-équipier(s) recherché(s)
-                </p>
+
+                </div>
                 <div className="card_desc">
                   <div className="card_desc_user">
                     {project?.c_profil_picture &&

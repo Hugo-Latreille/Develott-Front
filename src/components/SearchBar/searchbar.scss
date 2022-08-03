@@ -5,6 +5,12 @@
   padding-top: 4rem;
   width: 60%;
   margin:auto;
+
+  &-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .results-container {
@@ -30,18 +36,32 @@
 }
 
 .select-input-container {
-  margin:auto;
   display: flex;
   justify-content: center;
 }
 
 .select-input {
+  margin-top: 0.5em;
   border: none;
   padding: 0.5rem;
   color: white;
   font-weight: bold;
   background-color: transparent;
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.favoris {
+  margin-left: 5em;
+  cursor: pointer
+
+}
+
+.favoris:hover {
+  background-color: rgba(255, 255, 255, 0.601);
+  border-radius: 20px;
+  color: #6560fb;
+
 }
 
 .projects-searchbar-container {
@@ -62,4 +82,12 @@
   .input-container {
     width: 80%;
   }
+}
+
+// DARK MODE 
+
+#dark .favoris:hover {
+  background-color: #4f30ea76;
+  color:#249e9e;
+
 }

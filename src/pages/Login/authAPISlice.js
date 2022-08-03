@@ -80,7 +80,7 @@ const authAPI = emptySplitApi.injectEndpoints({
 			providesTags: ["User"],
 		}),
 		findUserById: builder.query({
-			query: (email) => `user/findById/${email}`,
+			query: (id) => `user/findById/${id}`,
 			providesTags: ["User"],
 		}),
 		// getRefreshToken: builder.query({
