@@ -166,6 +166,7 @@ function Profil() {
 	};
 
 	const isMyProfile = user?.email === email;
+	// const isMyProfile = true;
 
 	return (
 		<>

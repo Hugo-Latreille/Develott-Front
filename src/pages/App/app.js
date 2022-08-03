@@ -23,7 +23,7 @@ import Charte from "../Charte/charte";
 import About from "../About/about";
 
 import Loader1 from "../../components/Loader1/loader1";
-import Loader2 from "../../components/Loader2/loader2";
+// import Loader2 from "../../components/Loader2/loader2";
 import TeamCreation from "../TeamCreation/teamCreation";
 import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
