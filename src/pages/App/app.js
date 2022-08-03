@@ -87,7 +87,7 @@ function App() {
 								<Route path="charte" element={<Charte />} />
 								<Route path="modal-charte" element={<CharteModal />} />
 								<Route path="about" element={<About />} />
-								<Route path="profil" element={<Profil />} />
+								<Route path="profil/:profilId" element={<Profil />} />
 								<Route path="dashboard" element={<Dashboard />} />
 								<Route path="calendar" element={<Calendar />} />
 								<Route path="500" element={<Loader1 />} />
