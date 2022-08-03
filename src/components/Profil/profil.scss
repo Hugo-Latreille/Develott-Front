@@ -456,7 +456,7 @@
 }
 
 #dark .desc_container_role {
-  background: white;
+  background: #30cfd0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -484,4 +484,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-left: 1rem;
+}
+
+#dark .name_container_avatar {
+  border: solid 6px #3c24b1;
 }
