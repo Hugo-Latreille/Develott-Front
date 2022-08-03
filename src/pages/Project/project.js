@@ -43,7 +43,9 @@ import mockAvatar from "./../../assets/images/user-avatar.png";
 
 function Project() {
 	const { projectId } = useParams();
-	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
+	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId, {
+		refetchOnMountOrArgChange: true,
+	});
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteJobProject] = useDeleteProjectJobMutation();
 	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
@@ -70,6 +72,9 @@ function Project() {
 		projectTitle,
 		projectExcerpt,
 	} = useSelector((state) => state.project);
+
+	//TODO: si participants, on raye les jobs. Si tous jobs pris : projet complet
+	//TODO si candidats, on note le nombre de candidats en attente ?
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]

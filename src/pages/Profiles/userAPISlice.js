@@ -47,6 +47,14 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 			}),
 			invalidatesTags: ["Project"],
 		}),
+		updateUserRole: builder.mutation({
+			query: ({ projectId, ...patch }) => ({
+				url: `/project/${projectId}/updateparticipantrole`,
+				method: "PATCH",
+				body: patch,
+			}),
+			invalidatesTags: ["Project"],
+		}),
 	}),
 });
 
@@ -56,4 +64,5 @@ export const {
 	usePostUserTechnoMutation,
 	useDeleteUserTechnoMutation,
 	useAddUserRoleMutation,
+	useUpdateUserRoleMutation,
 } = userAPISlice;

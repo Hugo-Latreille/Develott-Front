@@ -53,7 +53,7 @@ function TeamCreation() {
 					className="close-modal-button"
 					onClick={() => {
 						dispatch(toggleTeamCreationModalOpen());
-						navigate(-1);
+						navigate(`/projet/${projectId}`, { replace: true });
 					}}
 				>
 					<i className="fas fa-times-circle"></i>
