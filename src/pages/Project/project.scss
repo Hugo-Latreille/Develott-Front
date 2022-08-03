@@ -481,3 +481,14 @@
 #dark .technologies-icon-container2 {
   // width:100%;
 }
+
+#dark .project {
+
+  & a {
+    color:white;
+  }
+}
+
+#dark .main-button-bg-white {
+  background: vars.$linearGradient;
+}

@@ -19,6 +19,11 @@ import { useEffect } from "react";
 
 function ProjectList() {
   const dispatch = useDispatch();
+
+  const technologySearch = useSelector(
+    (state) => state.searchbar.searchTechnology
+  );
+
   const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
   const { email } = useSelector((state) => state.auth);
   const { data: user } = useGetOneUserQuery(email);
@@ -69,6 +74,21 @@ function ProjectList() {
     );
   };
 
+  const findProjectsByTechnologyName = (technology) => {
+    const filteredProjects = allProjects?.filter((project) =>
+      project?.techno?.includes(technology)
+    );
+    return filteredProjects;
+  };
+
+  //   const findProjectsByJobName = (id) => {
+  //     const filteredProjects = allProjects?.filter((project) =>
+  //       project?.techno?.includes(technology)
+  //     );
+  //     return filteredProjects;
+  //   };
+
+
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -91,6 +111,11 @@ function ProjectList() {
   if (showFavorites && userFavorites.length > 0) {
     allProjects = findFavoritesInfos();
   }
+
+  if (technologySearch !== "") {
+    allProjects = findProjectsByTechnologyName(technologySearch);
+  }
+
 
   return (
     <div className="cards">
@@ -175,6 +200,7 @@ function ProjectList() {
                     voir plus.
                   </a>
                 </p>
+
                 <div className="card_main_profiles">
                   <span
                     data-tip="Developpeur Braguette, Lead Dev Fion"
@@ -206,6 +232,7 @@ function ProjectList() {
                     />
                   )}
                   Co-équipier(s) recherché(s)
+
                 </div>
                 <div className="card_desc">
                   <div className="card_desc_user">

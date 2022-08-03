@@ -64,7 +64,17 @@
 
 }
 
+.projects-searchbar-container {
+  position:relative;
+}
 
+.projects-searchbar-init-search {
+  position:absolute;
+  top:0.75rem;
+  right:-1.5rem;
+  color:white;
+  cursor: pointer;
+}
 
 
 @media screen and (width < 800px) {
