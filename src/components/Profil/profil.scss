@@ -43,8 +43,10 @@
   }
 
   &_avatar {
-    width: 98%;
-    margin: auto;
+    width:10rem;
+    height:10rem;
+    object-fit: cover;
+    margin:2rem auto 1rem auto;
     border-radius: 50%;
     border: solid 6px vars.$secondaryColor;
   }
@@ -165,7 +167,7 @@
       padding: 2rem 2rem 0 2rem;
       height: 40vh;
       position: relative;
-
+      text-align: center;
       background-color: #fff;
       margin-bottom: 1rem;
     }
@@ -488,4 +490,5 @@
 
 #dark .name_container_avatar {
   border: solid 6px #3c24b1;
+
 }
