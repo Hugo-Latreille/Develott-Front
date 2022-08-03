@@ -13,6 +13,8 @@ const initialState = {
 	endDate: "",
 	projectImg: "",
 	description: "",
+	projectTitle: "",
+	projectExcerpt: "",
 };
 
 export const projectSlice = createSlice({
