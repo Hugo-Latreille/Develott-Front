@@ -74,7 +74,12 @@ function App() {
 								<Route path="projet/create" element={<CreateProject />} />
 								<Route path="charte" element={<Charte />} />
 								<Route path="about" element={<About />} />
-								<Route path="profil" element={<Profil />} />
+								<Route path="profil" element={<Profil />}>
+									<Route
+										path="changePassword/:userId"
+										element={<NewPassword />}
+									/>
+								</Route>
 								<Route path="dashboard" element={<Dashboard />} />
 								<Route path="calendar" element={<Calendar />} />
 								<Route path="500" element={<Loader1 />} />
@@ -95,7 +100,7 @@ function App() {
 					<Routes>
 						<Route path="connexion" element={<Connexion />} />
 						<Route path="postuler" element={<TeamCreation />} />
-						<Route path="newpassword/:userId" element={<NewPassword />} />
+						<Route path="changePassword/:userId" element={<NewPassword />} />
 					</Routes>
 				)}
 			</div>

@@ -4,6 +4,7 @@ const initialState = {
 	sideBarIsOpen: false,
 	displayDarkMode: JSON.parse(localStorage.getItem("darkMode")) || false,
 	userFavorites: [],
+	showFavorites: false,
 };
 
 export const appSlice = createSlice({
@@ -39,6 +40,9 @@ export const appSlice = createSlice({
 				JSON.stringify(state.userFavorites)
 			);
 		},
+		toggleShowFavorites: (state) => {
+			state.showFavorites = !state.showFavorites;
+		},
 	},
 });
 
@@ -49,6 +53,7 @@ export const {
 	setFavorites,
 	addToFavorites,
 	removeFromFavorites,
+	toggleShowFavorites,
 } = appSlice.actions;
 
 export default appSlice.reducer;

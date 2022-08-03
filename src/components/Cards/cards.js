@@ -18,12 +18,13 @@ import { useGetOneUserQuery } from "./../../pages/Profiles/userAPISlice";
 import { useEffect } from "react";
 
 function ProjectList() {
+	const dispatch = useDispatch();
 	const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
 	console.log(projectsTeams);
-	const allProjects = projectsTeams?.projects;
-	const dispatch = useDispatch();
+	let allProjects = projectsTeams?.projects;
+	const { userFavorites, showFavorites } = useSelector((state) => state.app);
 
 	//! conserver
 	// const findTeamByProject = (projectId) => {
@@ -50,7 +51,6 @@ function ProjectList() {
 		}));
 	};
 
-	const { userFavorites } = useSelector((state) => state.app);
 	useEffect(() => {
 		const retrieveFavorites = JSON.parse(localStorage.getItem(`${user?.id}`));
 		if (retrieveFavorites) {
@@ -60,6 +60,12 @@ function ProjectList() {
 
 	const isFavorite = (projectId) => {
 		return userFavorites?.find((fav) => fav === projectId);
+	};
+
+	const findFavoritesInfos = () => {
+		return allProjects.filter((project) =>
+			userFavorites.some((fav) => fav === project.id)
+		);
 	};
 
 	const inputAnimation = {
@@ -80,6 +86,10 @@ function ProjectList() {
 			},
 		},
 	};
+
+	if (showFavorites && userFavorites.length > 0) {
+		allProjects = findFavoritesInfos();
+	}
 
 	return (
 		<div className="cards">

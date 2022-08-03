@@ -27,9 +27,11 @@ import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Profil() {
 	const dispatch = useDispatch();
+	const location = useLocation();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
 	const [updateUser] = useUpdateUserMutation();
@@ -370,7 +372,11 @@ function Profil() {
 							</div>
 
 							<p className="desc_container_title user-password">
-								<Link to={`/newpassword/${user?.id}`}>
+								<Link
+									to={`/changePassword/${user?.id}`}
+									state={{ background: location }}
+									// onClick={() => dispatch(toggleTeamCreationModalOpen())}
+								>
 									<i className="fal fa-key"></i> Mot de Passe
 								</Link>
 							</p>
