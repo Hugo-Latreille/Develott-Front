@@ -34,6 +34,8 @@ import technologiesJson from "./../../assets/data/technologiesData.json";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { toggleTeamCreationModalOpen } from "./../TeamCreation/teamCreationSlice";
 
+import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
+
 function Project() {
   const { projectId } = useParams();
   const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId);
@@ -317,11 +319,11 @@ function Project() {
                     </p>
                   </div>
                   <p>
-                    <i className="far fa-calendar-check success"></i> Début :{" "}
+                    <i className="far fa-calendar-check success"></i> Début :
                     {moment(project?.start_date).locale("fr").format("LL")}
                   </p>
                   <p>
-                    <i className="far fa-calendar-exclamation warning"></i>{" "}
+                    <i className="far fa-calendar-exclamation warning"></i>
                     Durée :
                     {moment(project?.end_date)
                       .locale("fr")
@@ -442,12 +444,24 @@ function Project() {
                         Modifier
                       </span>
                     </div>
-                    <p
-                      className="project-description-desc"
-                      dangerouslySetInnerHTML={{
-                        __html: project?.description,
-                      }}
-                    />
+                    {adaptDescriptionContainer === false && (
+                      <p
+                        className="project-description-desc"
+                        dangerouslySetInnerHTML={{
+                          __html: DisplayShowMoreDescription(
+                            project?.description
+                          ),
+                        }}
+                      />
+                    )}
+                    {adaptDescriptionContainer === true && (
+                      <p
+                        className="project-description-desc"
+                        dangerouslySetInnerHTML={{
+                          __html: project?.description,
+                        }}
+                      />
+                    )}
 
                     {adaptDescriptionContainer === false && (
                       <span
@@ -480,49 +494,64 @@ function Project() {
                   </>
                 )}
                 {displayEditDescriptionForm === true && (
-                  <form
-                    className="project-texte-editor"
-                    onSubmit={handleDescriptionSubmit}
-                  >
-                    <Editor
-                      editorState={editorState}
-                      onEditorStateChange={handleEditorChange}
-                      wrapperClassName="wrapper-class"
-                      editorClassName="editor-class"
-                      toolbarClassName="toolbar-class"
-                      toolbar={{
-                        options: [
-                          "inline",
-                          "blockType",
-                          "fontSize",
-                          "list",
-                          "textAlign",
-                          "colorPicker",
-                          "link",
-                          "emoji",
-                          "history",
-                        ],
-                        inline: { inDropdown: true },
-                        list: { inDropdown: true },
-                        textAlign: { inDropdown: true },
-                        link: { inDropdown: false },
-                        image: { component: undefined },
-                        blockType: {
-                          inDropdown: true,
-                          options: ["Normal", "Blockquote", "Code"],
-                          className: undefined,
-                          component: undefined,
-                          dropdownClassName: undefined,
-                        },
-                      }}
-                    />
-                    <button
-                      type="submit"
-                      className="main-button-colored create-project-button"
+                  <>
+                    <form
+                      className="project-texte-editor"
+                      onSubmit={handleDescriptionSubmit}
                     >
-                      Valider
-                    </button>
-                  </form>
+                      <h3>Modifier le titre du projet :</h3>
+                      <input
+                        className="dashboard-edit-input"
+                        type="texte"
+                        placeholder="Titre du projet"
+                      />
+                      <h3>Modifier la description courte du projet :</h3>
+                      <input
+                        className="dashboard-edit-input"
+                        type="texte"
+                        placeholder="Titre du projet"
+                      />
+                      <h3>Modifier la description du projet :</h3>
+                      <Editor
+                        editorState={editorState}
+                        onEditorStateChange={handleEditorChange}
+                        wrapperClassName="wrapper-class"
+                        editorClassName="editor-class"
+                        toolbarClassName="toolbar-class"
+                        toolbar={{
+                          options: [
+                            "inline",
+                            "blockType",
+                            "fontSize",
+                            "list",
+                            "textAlign",
+                            "colorPicker",
+                            "link",
+                            "emoji",
+                            "history",
+                          ],
+                          inline: { inDropdown: true },
+                          list: { inDropdown: true },
+                          textAlign: { inDropdown: true },
+                          link: { inDropdown: false },
+                          image: { component: undefined },
+                          blockType: {
+                            inDropdown: true,
+                            options: ["Normal", "Blockquote", "Code"],
+                            className: undefined,
+                            component: undefined,
+                            dropdownClassName: undefined,
+                          },
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        className="main-button-colored create-project-button"
+                      >
+                        Valider
+                      </button>
+                    </form>
+                  </>
                 )}
               </div>
               <div
@@ -625,7 +654,7 @@ function Project() {
                 )}
                 {displayEditTechnologies === true && (
                   <>
-                    <div className="width-100 margin-bottom-4">
+                    <div className="width-100 searchbar-project-page">
                       <SearchBarTechnologies
                         technos={project?.techno}
                         projectId={projectId}

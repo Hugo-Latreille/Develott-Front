@@ -91,7 +91,7 @@
   }
 
   &-jobs {
-    padding: 0.5rem 2rem 0 2rem;
+    padding: 0rem 2rem 0 2rem;
 
     &-title-container {
       display: flex;
@@ -121,7 +121,7 @@
   }
 
   &-dates {
-    padding: 2rem;
+    padding: 1rem 2rem;
   }
 
   &-header {
@@ -343,6 +343,10 @@
   }
 }
 
+.project-dates-inputs {
+  margin-bottom: 1rem;
+}
+
 
 @media screen and (width < 600px) {
   .project {
@@ -388,8 +392,8 @@
   }
 
   .project-technologies {
-    margin-bottom: 2rem;
     height: auto;
+
 
     &-languages {
       width: 100%;
@@ -405,6 +409,11 @@
       width: 100%;
     }
   }
+}
+
+.searchbar-project-page {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
 }
 
 

@@ -13,10 +13,23 @@
     flex-wrap: wrap;
 
     &-right {
-        width:75%;
+        width:65%;
     }
 
     &-left {
-        width:20%;
+        width:30%;
+    }
+}
+
+.project-create-avatar-img {
+    width:14rem;
+    height:9rem;
+    object-fit: cover;
+}
+
+
+#dark .create-project-inputs-container {
+    & input {
+    background-color: #323c5a;
     }
 }
