@@ -50,20 +50,17 @@ function ProjectList() {
 		}));
 	};
 
-	// const [favorite, setFavorite] = useState(false);
-	// const handleFavorites = (index) => {
-	// 	setFavorite((prevState) => ({
-	// 		...prevState,
-	// 		[index]: !prevState[index],
-	// 	}));
-	// };
-
+	const { userFavorites } = useSelector((state) => state.app);
 	useEffect(() => {
 		const retrieveFavorites = JSON.parse(localStorage.getItem(`${user?.id}`));
-		dispatch(setFavorites(retrieveFavorites));
+		if (retrieveFavorites) {
+			dispatch(setFavorites(retrieveFavorites));
+		}
 	}, [dispatch, user?.id]);
 
-	const { userFavorites } = useSelector((state) => state.app);
+	const isFavorite = (projectId) => {
+		return userFavorites?.find((fav) => fav === projectId);
+	};
 
 	const inputAnimation = {
 		hidden: {
@@ -93,24 +90,31 @@ function ProjectList() {
 						<div className="icone_content">
 							<div className="icone_content_btns">
 								<span className="icone_button">
-									{userFavorites?.map((fav) =>
-										fav === project?.id ? (
-											<i key={fav} className="fas fa-heart"></i>
-										) : (
-											<i
-												className="fal fa-heart"
-												onClick={() =>
-													dispatch(
-														addToFavorites({
-															project: project.id,
-															user: user.id,
-														})
-													)
-												}
-											></i>
-										)
+									{isFavorite(project?.id) ? (
+										<i
+											className="fas fa-heart"
+											onClick={() =>
+												dispatch(
+													removeFromFavorites({
+														project: project.id,
+														user: user.id,
+													})
+												)
+											}
+										></i>
+									) : (
+										<i
+											className="fal fa-heart"
+											onClick={() =>
+												dispatch(
+													addToFavorites({
+														project: project.id,
+														user: user.id,
+													})
+												)
+											}
+										></i>
 									)}
-
 									{/* {favorite && favorite[index] ? (
 										<i
 											className="fas fa-heart"
