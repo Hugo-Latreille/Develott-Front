@@ -1,86 +1,83 @@
 @use "./../../styles/vars";
 
 .connexion {
-  background-color: rgba(91, 112, 131, 0.65);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  width: 100vw;
+	background-color: rgba(91, 112, 131, 0.65);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	width: 100vw;
 
-  &-container {
-    width: 50%;
-    min-height: 60%;
-    margin: auto;
-    background-color: #fff;
-    display: flex;
-    border-radius: 10px;
-    position: relative;
+	&-container {
+		width: 50%;
+		min-height: 60%;
+		margin: auto;
+		background-color: #fff;
+		display: flex;
+		border-radius: 10px;
+		position: relative;
 
-    &-navigation {
-      position: relative;
-      width: 30%;
-      height: 100%;
-      background-image: url("./../../assets/images/footer-bg2.png");
-      background-size: cover;
-    }
+		&-navigation {
+			position: relative;
+			width: 30%;
+			height: 100%;
+			background-image: url("./../../assets/images/footer-bg2.png");
+			background-size: cover;
+		}
 
-    &-form {
-      width: 70%;
-      height: 100%;
-    }
-  }
+		&-form {
+			width: 70%;
+			height: 100%;
+		}
+	}
 
-  &-logo {
-    width: 100%;
-    margin: 2rem auto;
-  }
+	&-logo {
+		width: 100%;
+		margin: 2rem auto;
+	}
 }
 
 .navigation-links {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  right: 0;
-  top: 30%;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	top: 30%;
 
-  & span {
-    padding: 1.5rem 2.5rem;
-    margin-bottom: 1rem;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 600ms ease-in-out;
-  }
+	& span {
+		padding: 1.5rem 2.5rem;
+		margin-bottom: 1rem;
+		color: white;
+		font-weight: bold;
+		cursor: pointer;
+		transition: all 600ms ease-in-out;
+	}
 }
 
 .link-is-active {
-  background-color: white;
-  border-radius: 25px 0 0 25px;
-  color: vars.$primaryColor !important ;
+	background-color: white;
+	border-radius: 25px 0 0 25px;
+	color: vars.$primaryColor !important ;
 }
 
 @media screen and (width < 600px) {
+	.connexion {
+		&-container {
+			width: 96%;
+			margin: auto;
+			height: 80vh;
+		}
+	}
 
-  .connexion {
+	.navigation-links {
+		font-size: 0.7rem;
 
-    &-container {
-      width:96%;
-      margin:auto;
-      height:80vh;
-    }
-  }
-
-  .navigation-links {
-    font-size: 0.7rem;
-
-    & span {
-      padding: 1.5rem 1.6rem;
-      margin:0;
-      text-align: right;
-    }
-  }
-
+		& span {
+			padding: 1.5rem 1.6rem;
+			margin: 0;
+			text-align: right;
+		}
+	}
 }
