@@ -35,6 +35,7 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { toggleTeamCreationModalOpen } from "./../TeamCreation/teamCreationSlice";
 
 import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
+import { useGetOneUserQuery } from "../Profiles/userAPISlice";
 
 function Project() {
 	const { projectId } = useParams();
@@ -42,12 +43,12 @@ function Project() {
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteJobProject] = useDeleteProjectJobMutation();
 	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
-
 	console.log(projectWithTeam);
-
 	const project = projectWithTeam?.project;
 	const projectJobs = projectWithTeam?.jobByProject;
 	const projectTeam = projectWithTeam?.teams;
+	const { email } = useSelector((state) => state.auth);
+	const { data: user } = useGetOneUserQuery(email);
 
 	const dispatch = useDispatch();
 	const location = useLocation();
@@ -181,6 +182,10 @@ function Project() {
 	//TODO : logique conditionnalité
 	// si user.id !== po.id alors on n'affiche pas les modifs
 
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+
 	return (
 		<>
 			<Sidebar>
@@ -194,14 +199,16 @@ function Project() {
 										className="project-img"
 										alt="Projet image"
 									/>
-									<span
-										className="project-img-container-edit-btn"
-										onClick={() =>
-											dispatch(setDisplayEdit({ name: "displayImgEdit" }))
-										}
-									>
-										Modifier
-									</span>
+									{isUserProjectAdmin && (
+										<span
+											className="project-img-container-edit-btn"
+											onClick={() =>
+												dispatch(setDisplayEdit({ name: "displayImgEdit" }))
+											}
+										>
+											Modifier
+										</span>
+									)}
 								</div>
 							)}
 							{displayImgEdit && (
@@ -253,16 +260,18 @@ function Project() {
 											<h3 className="project-jobs-title">
 												Profil(s) recherché(s)
 											</h3>
-											<span
-												className="edit-btn-main"
-												onClick={() =>
-													dispatch(
-														setDisplayEdit({ name: "displayEditJobForm" })
-													)
-												}
-											>
-												Modifier
-											</span>
+											{isUserProjectAdmin && (
+												<span
+													className="edit-btn-main"
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({ name: "displayEditJobForm" })
+														)
+													}
+												>
+													Modifier
+												</span>
+											)}
 										</div>
 										<div className="project-jobs-container">
 											{projectJobs?.map((job) => (
@@ -319,14 +328,17 @@ function Project() {
 								<div className="project-dates">
 									<div className="project-jobs-title-container">
 										<h3 className="project-jobs-title">Dates du projet</h3>
-										<p
-											className="edit-btn-main"
-											onClick={() =>
-												dispatch(setDisplayEdit({ name: "displayEditDates" }))
-											}
-										>
-											Modifier
-										</p>
+
+										{isUserProjectAdmin && (
+											<p
+												className="edit-btn-main"
+												onClick={() =>
+													dispatch(setDisplayEdit({ name: "displayEditDates" }))
+												}
+											>
+												Modifier
+											</p>
+										)}
 									</div>
 									<p>
 										<i className="far fa-calendar-check success"></i> Début :
@@ -441,18 +453,20 @@ function Project() {
 											<h2 className="project-description-title">
 												Description du projet
 											</h2>
-											<span
-												className="edit-btn-main"
-												onClick={() =>
-													dispatch(
-														setDisplayEdit({
-															name: "displayEditDescriptionForm",
-														})
-													)
-												}
-											>
-												Modifier
-											</span>
+											{isUserProjectAdmin && (
+												<span
+													className="edit-btn-main"
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({
+																name: "displayEditDescriptionForm",
+															})
+														)
+													}
+												>
+													Modifier
+												</span>
+											)}
 										</div>
 										{adaptDescriptionContainer === false && (
 											<p
@@ -665,18 +679,20 @@ function Project() {
 											))}
 										</div>
 										<div className="project-technologies-edit">
-											<span
-												className="edit-btn-main"
-												onClick={() =>
-													dispatch(
-														setDisplayEdit({
-															name: "displayEditTechnologies",
-														})
-													)
-												}
-											>
-												<i className="fas fa-edit"></i>
-											</span>
+											{isUserProjectAdmin && (
+												<span
+													className="edit-btn-main"
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({
+																name: "displayEditTechnologies",
+															})
+														)
+													}
+												>
+													<i className="fas fa-edit"></i>
+												</span>
+											)}
 										</div>
 									</>
 								)}
