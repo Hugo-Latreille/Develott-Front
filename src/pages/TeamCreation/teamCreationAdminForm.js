@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import "./teamCreation.scss";
 import { removeTeam, setTeam } from "./teamCreationSlice";
 
@@ -11,6 +12,7 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 
 	const { selectTeam } = useSelector((state) => state.teamCreation);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	console.log(candidates);
 
 	const [checked, setChecked] = useState(false);
@@ -27,8 +29,12 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 		}
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	};
+
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<h3>Sélectionnes tes co-équipiers :</h3>
 			<div className="team-creation-admin-form">
 				{candidates?.map((candidate, index) => (
@@ -43,12 +49,11 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 							checked={checked[index]}
 							onChange={(e) => handleChange(e, index)}
 						/>
-						<label
-							title="DeveloppeurBackEnd"
-							className="team-creation-admin-form-label"
-						>
-							<p>jul du 13</p>
-							<span>Developpeur/se Back-End</span>
+						<label className="team-creation-admin-form-label">
+							<Link to={`/profil/${candidate.customer_id}`} target="_blank">
+								<p>{`${candidate.firstname} ${candidate.lastname}`}</p>
+							</Link>
+							<span>{candidate.job}</span>
 						</label>
 					</div>
 				))}
