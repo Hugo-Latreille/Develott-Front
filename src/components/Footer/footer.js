@@ -10,10 +10,7 @@ function Footer() {
             src={require(`./../../assets/images/v3-large-white.png`)}
             alt="logo Develott"
           />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            botbot.{" "}
-          </p>
+          <p>Rejoignez la table ronde du code, et ensemble, codez !</p>
           <div className="socialmedia_container">
             <section className="socialmedia_container_section">
               <ul className="ul_media">

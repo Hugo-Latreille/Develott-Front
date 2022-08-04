@@ -16,8 +16,10 @@ function Hero() {
       <div className="hero-left">
         <h1 className="hero-title">Rejoignez la table ronde du code</h1>
         <p className="hero-baseline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
+          Tu es Développeur Junior et tu souhaites travailler autour de projets
+          concrets pour accroître tes connaissances et compétences ? Rejoins dès
+          maintenant la communauté Develott, et trouve des co-équipiers pour
+          collaborer !
         </p>
         <Link
           onClick={scrollToTop()}

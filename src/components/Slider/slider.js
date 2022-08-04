@@ -163,12 +163,12 @@ function Slider() {
                       onClick={scrollToTop()}
                       to={`/connexion`}
                     >
-                      <h1
+                      <h3
                         onClick={() => dispatch(toggleLoggingModalOpen())}
                         className="slider-title"
                       >
                         {project.project}
-                      </h1>
+                      </h3>
                     </Link>
                     <div>
                       <p className="slider-desc">
