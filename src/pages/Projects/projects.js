@@ -1,10 +1,10 @@
 import "./projects.scss";
-import Navbar from "../../components/Navbar/navbar";
+// import Navbar from "../../components/Navbar/navbar";
 import Cards from "../../components/Cards/cards";
 import FooterColored from "../../components/Footer/footerColored";
 import Sidebar from "../../components/SideBar/sidebar";
 import SearchBar from "../../components/SearchBar/searchBar";
-import Skeleton from "../../components/Skeletron/skeleton";
+// import Skeleton from "../../components/Skeletron/skeleton";
 
 function Projects() {
 	return (
