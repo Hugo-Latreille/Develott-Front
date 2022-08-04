@@ -287,7 +287,7 @@ function ProjectList() {
 								<p className="card_main_desc">
 									{project?.excerpt}
 									<Link to={`/projet/${project.id}`}>
-										<a className="card_main_desc_link"> voir plus.</a>
+										<span className="card_main_desc_link"> voir plus.</span>
 									</Link>
 								</p>
 

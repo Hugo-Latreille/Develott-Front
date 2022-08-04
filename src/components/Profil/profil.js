@@ -274,7 +274,7 @@ function Profil() {
 							<div className="desc_container_description-links">
 								{user?.is_active ? (
 									<p className="desc_container_title user-available">
-										<i className="fas fa-circle error"></i> Participe à un
+										<i className="fas fa-circle warning"></i> Participe à un
 										projet
 									</p>
 								) : (
