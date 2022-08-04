@@ -10,9 +10,6 @@ import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectId, candidates }) {
-	//TODO : projects: =! entre taille jobs projet et participants projet
-	//TODO :
-
 	const { selectTeam } = useSelector((state) => state.teamCreation);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
