@@ -29,6 +29,13 @@ function CreateProjectTechnologiesForm() {
 
   return (
     <div className="form-technologies">
+      <div className="create-project-step-mobile step-active">
+        <h2 className="create-project-title">Technologies</h2>
+        <p className="create-project-desc p-light">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt.
+        </p>
+      </div>
       <SearchBarProjects className="navbar-searchbar" />
       <span className="form-technologies-disclaimer">
         Veuillez renseigner les technologies souhaitées pour mener à bien votre
