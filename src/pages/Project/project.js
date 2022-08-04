@@ -74,6 +74,7 @@ function Project() {
 		projectTitle,
 		projectExcerpt,
 	} = useSelector((state) => state.project);
+	const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
 
 	const isUserTeamMember = projectTeam?.some(
 		(team) => team.customer_id === user?.id
@@ -84,11 +85,9 @@ function Project() {
 	const isUserParticipant = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);
-
 	const isUserCandidate = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "candidates"
 	);
-
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -109,7 +108,7 @@ function Project() {
 		if (!isLoading && isUserCandidate) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
-	}, []);
+	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
