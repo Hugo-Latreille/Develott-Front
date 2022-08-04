@@ -20,10 +20,8 @@ function Presentation() {
           <h2 className="presentation-title">
             Prêts ? Recherchez... Dévelottez !
           </h2>
-          <h3 className="presentation-title">Parcourez les projets</h3>
           <p className="presentation-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor.
+            Inscrivez-vous pour partager un projet et trouver des co-équipiers.
           </p>
           <div className="presentation-links">
             <Link
