@@ -16,7 +16,7 @@ import SearchbarMainTechnologies from "./searchbarMainTechnos";
 import SearchbarMainJobs from "./searchbarMainJobs";
 import SearchbarMainProjectTitle from "./searchbarMainProjectTitle";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 import {
@@ -29,6 +29,7 @@ import { useGetAllJobsQuery } from "../../pages/Projects/projectsAPISlice";
 
 function SearchBar() {
   const dispatch = useDispatch();
+  const searchDate = useSelector((state) => state.searchbar.searchDate);
   const [openTechno, setOpenTechno] = useState(true);
   const [openTitre, setOpenTitre] = useState(false);
 
@@ -85,10 +86,24 @@ function SearchBar() {
   return (
     <div className="input-container">
       <div className="select_research">
-        <div className="select_research_click" onClick={() => openingTechno()}>
+        <div
+          className={
+            openTitre
+              ? "select_research_click"
+              : "select_research_click underline"
+          }
+          onClick={() => openingTechno()}
+        >
           Rechercher par Techno
         </div>
-        <div className="select_research_click" onClick={() => openingTitre()}>
+        <div
+          className={
+            openTechno
+              ? "select_research_click"
+              : "select_research_click underline"
+          }
+          onClick={() => openingTitre()}
+        >
           Rechercher par Titre
         </div>
       </div>
@@ -102,6 +117,7 @@ function SearchBar() {
               adapterLocale="fr"
             >
               <DatePicker
+                value={searchDate}
                 className="date-picker-color"
                 onChange={(newValue) => {
                   console.log(newValue.format());

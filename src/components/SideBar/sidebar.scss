@@ -73,6 +73,13 @@
   border-radius: 12px;
 }
 
+.activesidebar {
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
 .side_icon {
   font-size: 1.4rem;
   margin-top: 0.1em;

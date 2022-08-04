@@ -115,20 +115,26 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 1.2em;
   margin-right: 2rem;
+  margin-bottom: 0.2em;
   font-size: 0.9em;
   color: white;
 
   &_click {
     cursor: pointer;
+    font-weight: bold;
     padding: 0.5rem;
   }
   &_click:hover {
-    background-color: rgba(255, 255, 255, 0.601);
-  border-radius: 20px;
   color: #6560fb;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
   }
+}
+
+.underline {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
 }
  
 
