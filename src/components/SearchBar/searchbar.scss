@@ -70,7 +70,7 @@
   position:relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .projects-searcbar-main-technos {
@@ -87,7 +87,7 @@
 
 
 .projects-searchbar-init-search {
-  top:0.75rem;
+  top:2rem;
   right:14.5rem;
   color:white;
   cursor: pointer;
@@ -95,10 +95,10 @@
 
 .css-70qvj9 input {
   border-radius: 0px 24px 24px 0px;
-  height: 2.722rem;
-  border: none;
+  height: 2.65rem;
   padding-left: 1rem;
   color: rgb(117, 117, 117);
+  border: 1px solid #dfe1e5;
 }
 
 .css-70qvj9 input:focus {

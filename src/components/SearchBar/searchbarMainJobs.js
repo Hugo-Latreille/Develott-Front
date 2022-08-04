@@ -43,7 +43,6 @@ function SearchbarMainJobs() {
         placeholder="Métier... "
         showNoResults
         showNoResultsText="Pas de résultats."
-        showItemsOnFocus={true}
       />
     </div>
   );
