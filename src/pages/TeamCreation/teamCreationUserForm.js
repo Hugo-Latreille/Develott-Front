@@ -26,25 +26,17 @@ function TeamCreationUserForm({
 	const navigate = useNavigate();
 
 	const isUserAlreadyParticipant = projectsTeams?.teams.some(
-		(team) => team?.customer_id === userId
+		(team) => team?.customer_id === userId && team?.role === "participants"
 	);
-
+	console.log(projectsTeams?.teams);
 	const isThereCandidates = (jobId) => {
 		return candidates?.filter((candidate) => candidate.job_id === jobId).length;
 	};
 
-	const jobDuplicates = () => {
-		const count = {};
-		projectJobs?.forEach((job) => {
-			count[job.job] = (count[job.job] || 0) + 1;
-		});
-		return count;
-	};
-
-	console.log(jobDuplicates());
-	console.log(candidates);
-	console.log(projectJobs);
-	console.log(projectTeam);
+	const jobNames = projectJobs?.map((job) => job.job);
+	const filterJobs = projectJobs?.filter(
+		({ job }, index) => !jobNames.includes(job, index + 1)
+	);
 
 	const jobAlreadyHasParticipant = (jobId) => {
 		return projectTeam?.some(
@@ -52,16 +44,14 @@ function TeamCreationUserForm({
 				participant.job_id === jobId && participant.role === "participants"
 		);
 	};
-
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
-
-	const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
-		return projectJobs?.find(
-			(projectJob) => projectJob.id_project_has_job === idProjectHasJob
-		)?.job_id;
-	};
+	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
+	// 	return projectJobs?.find(
+	// 		(projectJob) => projectJob.id_project_has_job === idProjectHasJob
+	// 	)?.job_id;
+	// };
 
 	return (
 		<form
@@ -70,7 +60,7 @@ function TeamCreationUserForm({
 				if (!isUserAlreadyParticipant) {
 					changeUserJob({
 						id: userId,
-						job_id: findJobIdByIdProjectHasJob(userJobChoice),
+						job_id: userJobChoice,
 					});
 					if (!userAlreadyCandidate) {
 						userIsCandidate({
@@ -80,23 +70,20 @@ function TeamCreationUserForm({
 						});
 					}
 					navigate(`/projet/${projectId}`, { replace: true });
+				} else {
+					toast.error("Vous faites déjà partie de l'équipe d'un projet");
 				}
-				toast.error("Vous faites déjà partie de l'équipe d'un projet");
 			}}
 		>
 			<h3>Sélectionner un poste :</h3>
-			{projectJobs?.map((job) => (
+			{filterJobs?.map((job) => (
 				<div
 					key={job.id_project_has_job}
 					onChange={(e) => dispatch(setUserChoice(e.target.value))}
 				>
 					{!jobAlreadyHasParticipant(job.job_id) ? (
 						<>
-							<input
-								type="radio"
-								name="selectJob"
-								value={job.id_project_has_job}
-							/>
+							<input type="radio" name="selectJob" value={job.job_id} />
 							<label>{job.job}</label>
 							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
 						</>
