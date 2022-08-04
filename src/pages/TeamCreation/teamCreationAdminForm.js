@@ -10,8 +10,6 @@ import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectId, candidates }) {
-	//TODO : bouton pour supprimer un candidat
-	//TODO : project : affichage postes déjà occupés
 	//TODO : projects: =! entre taille jobs projet et participants projet
 	//TODO :
 
@@ -51,7 +49,6 @@ function TeamCreationAdminForm({ projectId, candidates }) {
 		});
 		dispatch(resetTeam());
 		navigate(`/projet/${projectId}`, { replace: true });
-		//TODO : effacer les non retenus ?
 	};
 
 	return (

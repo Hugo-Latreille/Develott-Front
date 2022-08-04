@@ -79,6 +79,10 @@ function Project() {
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);
 
+	const isUserCandidate = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "candidates"
+	);
+
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -95,6 +99,9 @@ function Project() {
 		}
 		if (!isLoading && isUserParticipant) {
 			toast.success("Vous avez été sélectionné pour participer à ce projet");
+		}
+		if (!isLoading && isUserCandidate) {
+			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
 	}, []);
 

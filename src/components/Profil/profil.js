@@ -11,7 +11,7 @@ import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import sanitizeHtml from "sanitize-html";
-
+import moment from "moment/min/moment-with-locales";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	setDisplayEdit,
@@ -28,6 +28,7 @@ import technologiesJson from "./../../assets/data/technologiesData.json";
 import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
+import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
 
 function Profil() {
 	const dispatch = useDispatch();
@@ -35,8 +36,35 @@ function Profil() {
 	const location = useLocation();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useFindUserByIdQuery(profilId);
+	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
+
+	//TODO dans toutes les équipes, retrouver l'utilisateur
+
+	const findMyProjectsId = projectsTeams?.teams?.filter(
+		(team) => team.customer_id === user?.id
+	);
+	const findMyProjects = () => {
+		return findMyProjectsId?.map((projectRole) => {
+			const myProject = projectsTeams?.projects.filter(
+				(project) => project.id === projectRole.project_id
+			)[0];
+			const myRole = projectRole;
+			const projectTeam = projectsTeams?.teams?.filter(
+				(team) => team?.project_id === myProject.id
+			);
+			const projectJobs = projectsTeams?.jobByProject?.filter(
+				(job) => job?.project_id === myProject.id
+			);
+			return { myProject, myRole, projectTeam, projectJobs };
+		});
+	};
+	console.log(findMyProjects());
+
+	//TODO afficher le projet
+	//TODO calculer combien de places restes
+	//TODO afficher le job/role de l'utilisateur
 
 	console.log(user);
 	const {
@@ -167,9 +195,6 @@ function Profil() {
 
 	const isMyProfile = user?.email === email;
 	// const isMyProfile = true;
-
-	//TODO
-	//TODO gérer les projets à droite
 
 	return (
 		<>
@@ -754,36 +779,37 @@ function Profil() {
 				<div className="profil_projets">
 					<div className="desc_container_project">
 						<h4 className="desc_container_main">Projet(s)</h4>
-						<div className="card_project">
-							<img
-								src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
-								className="card_img"
-								alt=""
-							/>
-							<div className="card_main">
-								<h3 className="card_main_title-project">Develott</h3>
-								<p className="project-list-paragraph-desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing...
-								</p>
-								<p className="project-list-paragraph">4 co-équipiers</p>
-								<p className="project-list-paragraph-grey">Le 30 mai 2022</p>
+						{findMyProjects()?.map((project) => (
+							<div className="card_project">
+								<img
+									src={project.myProject?.picture}
+									className="card_img"
+									alt=""
+								/>
+								<div className="card_main">
+									<h3 className="card_main_title-project">
+										{project.myProject?.project}
+									</h3>
+									<p className="project-list-paragraph-desc">
+										{project.myProject?.excerpt}
+									</p>
+									<p className="project-list-paragraph">{`${
+										project.projectJobs.length -
+										(project.projectTeam.length - 1)
+									} co-équipiers`}</p>
+									<p className="project-list-paragraph-grey">
+										{moment(project.myProject?.start_date)
+											.locale("fr")
+											.format("LL")}
+									</p>
+								</div>
+								{project.myRole.role === "candidates" && <div>candidat</div>}
+								{project.myRole.role === "admin" && <div>admin</div>}
+								{project.myRole.role === "participants" && (
+									<div>participant</div>
+								)}
 							</div>
-						</div>
-						<div className="card_project">
-							<img
-								src="https://img.freepik.com/free-psd/artist-room-decorated-with-website-mockup_23-2148834377.jpg?t=st=1657989378~exp=1657989978~hmac=c9b385a472b91f3ed478c556c5a221c200aca1532704a909e7bcc8c23b110003&w=900"
-								className="card_img"
-								alt=""
-							/>
-							<div className="card_main">
-								<h3 className="card_main_title-project">Develott</h3>
-								<p className="project-list-paragraph-desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing...
-								</p>
-								<p className="project-list-paragraph">4 co-équipiers</p>
-								<p className="project-list-paragraph-grey">Le 30 mai 2022</p>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</div>
