@@ -22,7 +22,7 @@ function SearchbarMainProjectTitle() {
   const formatResult = (item) => {
     return (
       <div className="results-container">
-        <span className="result-span-title">{item.project}</span>
+        <span className="result-span-title">{item?.project}</span>
       </div>
     );
   };
