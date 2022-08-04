@@ -47,11 +47,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  overflow-y: scroll;
+height:20rem;
 
   &-content {
     width: 25%;
-    min-height: 100%;
-    overflow-y: scroll;
   }
 
   &-70 {
