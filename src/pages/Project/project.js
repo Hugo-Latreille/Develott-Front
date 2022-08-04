@@ -87,7 +87,6 @@ function Project() {
 	};
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
-	//! REPARER LOGIQUE
 	useEffect(() => {
 		if (!isLoading && isProjectComplete) {
 			toast.info("Ce projet est complet");
@@ -469,7 +468,11 @@ function Project() {
 									</p>
 								</div>
 								<div className="project-header-right">
-									{isUserProjectAdmin ? (
+									{isProjectComplete ? (
+										<Link to={`/dashboard`} className="main-button-bg-white">
+											Complet <i className="far fa-rocket"></i>
+										</Link>
+									) : isUserProjectAdmin ? (
 										<Link
 											to={`/postuler`}
 											state={{ background: location }}

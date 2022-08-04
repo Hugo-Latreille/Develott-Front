@@ -717,7 +717,10 @@ function Profil() {
 											<p className="form-technologies-empty">vide...</p>
 										)}
 										{databasesData?.map((techno) => (
-											<span className="technologies-icon-container">
+											<span
+												key={techno?.name}
+												className="technologies-icon-container"
+											>
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}
