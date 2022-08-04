@@ -5,7 +5,7 @@ const DisplayShowMoreDescription = (texte) => {
     // pour chaque article, on récupère le texte de l'article dans une variable
     const wordsArray = [];
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 60; i++) {
       // on split la string (texte de l'article) à chaque " ", puis on ajoute chaque mot dans un nouveau tableau
       const word = texte.split(" ");
       wordsArray.push(word[i]);
