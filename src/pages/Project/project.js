@@ -75,7 +75,6 @@ function Project() {
 		projectExcerpt,
 	} = useSelector((state) => state.project);
 
-	//TODO si utilisateur active && c'est moi : vous avez été sélectionné pour le projet untel
 	const isUserParticipant = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);

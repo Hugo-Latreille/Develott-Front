@@ -170,7 +170,6 @@ function Profil() {
 
 	//TODO
 	//TODO gérer les projets à droite
-	//TODO si utilisateur active && c'est moi : vous avez été sélectionné pour le projet untel
 
 	return (
 		<>

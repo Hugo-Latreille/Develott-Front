@@ -48,6 +48,7 @@ function TeamCreation() {
 					) : (
 						<TeamCreationUserForm
 							projectJobs={projectJobs}
+							projectTeam={projectTeam}
 							userId={user?.id}
 							projectId={projectId}
 							candidates={candidates}

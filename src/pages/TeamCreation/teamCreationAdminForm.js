@@ -9,11 +9,7 @@ import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectId, candidates }) {
-	//TODO : comment prévenir postulant ? Toast ? au submit admin :
-	//? --> jouer avec le isActive ? Si false : dispo pour projet, si oui toast vous avez été sélectionné !!
-	// -> isActive profile à false + toast
-	// toast au submit pour admin
-	//TODO : bouton pour supprimer un candidat
+	//TODO : bouton pour supprimer un candidat + n'afficher que les posts sans participants
 	//TODO : project : affichage postes déjà occupés
 	//TODO : projects: =! entre taille jobs projet et participants projet
 	//TODO :
