@@ -51,7 +51,6 @@ function Dashboard() {
                 <h3>
                   <i className="far fa-rocket"></i>Accueil
                 </h3>
-                <p>djsqjdqkdj qmldj</p>
                 <img
                   src={require("./../../assets/images/dashboard-accueil.png")}
                   alt="icon accueil dashboard"
@@ -63,7 +62,6 @@ function Dashboard() {
                 <h3>
                   <i className="far fa-comment-alt-dots"></i>Messagerie
                 </h3>
-                <p>djsqjdqkdj qmldj</p>
                 <img
                   src={require("./../../assets/images/dashboard-message.png")}
                   alt="icon messagerie dashboard"
@@ -85,7 +83,6 @@ function Dashboard() {
                   <i className="far fa-calendar-alt"></i>
                   Calendrier
                 </h3>
-                <p>djsqjdqkdj qmldj</p>
                 <img
                   src={require("./../../assets/images/dashboard-calendar.png")}
                   alt="icon calendrier dashboard"

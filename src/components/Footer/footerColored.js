@@ -16,8 +16,7 @@ function FooterColored() {
             alt="logo Develott"
           />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            botbot.{" "}
+            Rejoignez la table ronde du code, et ensemble, codez en roue libre !
           </p>
           <div className="socialmedia_container">
             <section className="socialmedia_container_section">
