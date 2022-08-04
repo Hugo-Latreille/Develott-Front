@@ -16,6 +16,7 @@ import {
 } from "./../../pages/App/appSlice";
 import { useGetOneUserQuery } from "./../../pages/Profiles/userAPISlice";
 import { useEffect } from "react";
+import Skeleton from "./../Skeletron/skeleton";
 
 function ProjectList() {
 	const dispatch = useDispatch();
@@ -23,7 +24,11 @@ function ProjectList() {
 	const { searchTechnology, searchJob, searchProjectName, searchDate } =
 		useSelector((state) => state.searchbar);
 
-	const { data: projectsTeams, isSuccess } = useGetAllProjectsQuery();
+	const {
+		data: projectsTeams,
+		isLoading,
+		isSuccess,
+	} = useGetAllProjectsQuery();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
 	console.log(projectsTeams);
@@ -209,6 +214,7 @@ function ProjectList() {
 
 	return (
 		<div className="cards">
+			{isLoading && <Skeleton />}
 			{isSuccess &&
 				allProjects?.map((project, index) => (
 					<div className="card" key={project.id}>

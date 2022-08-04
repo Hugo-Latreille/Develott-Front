@@ -7,20 +7,20 @@ import SearchBar from "../../components/SearchBar/searchBar";
 import Skeleton from "../../components/Skeletron/skeleton";
 
 function Projects() {
-  return (
-    <Sidebar>
-      <div className="projects">
-        <div className="projects_hero">
-          <div>
-            <SearchBar />
-          </div>
-          <Cards />
-          {/* <Skeleton /> */}
-          <FooterColored />
-        </div>
-      </div>
-    </Sidebar>
-  );
+	return (
+		<Sidebar>
+			<div className="projects">
+				<div className="projects_hero">
+					<div>
+						<SearchBar />
+					</div>
+					<Cards />
+					{/* <Skeleton /> */}
+					<FooterColored />
+				</div>
+			</div>
+		</Sidebar>
+	);
 }
 
 export default Projects;
