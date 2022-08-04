@@ -35,7 +35,6 @@ function SearchBar() {
 
   const { data: allJobs } = useGetAllJobsQuery();
 
-
   // const handleOnSearch = (string, results) => {
   //   // onSearch will have as the first callback parameter
   //   // the string searched and for the second the results.
@@ -95,7 +94,7 @@ function SearchBar() {
           }
           onClick={() => openingTechno()}
         >
-          Rechercher par Techno
+          Recherche Affinée
         </div>
         <div
           className={
@@ -105,7 +104,7 @@ function SearchBar() {
           }
           onClick={() => openingTitre()}
         >
-          Rechercher par Titre
+          Recherche par Nom
         </div>
       </div>
       <div className="projects-searchbar-container">
