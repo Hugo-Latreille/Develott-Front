@@ -7,31 +7,11 @@ import CreateProjectInformationsForm from "./createProjectInformationsForm";
 import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
 import { useSelector, useDispatch } from "react-redux";
-import { emptyForm, setActiveForm } from "./createProjectSlice";
-import {
-	useGetAllProjectsQuery,
-	usePostProjectMutation,
-} from "../Projects/projectsAPISlice";
-import { useNavigate } from "react-router-dom";
+import { setActiveForm } from "./createProjectSlice";
 
 function CreateProject() {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const { activeForm } = useSelector((state) => state.createProject);
-
-	// const postNewProject = (e) => {
-	// 	e.preventDefault();
-	// 	postProject({
-	// 		name,
-	// 		exerpt,
-	// 		description,
-	// 		picture_project,
-	// 		start_date,
-	// 		end_date,
-	// 	});
-	// 	dispatch(emptyForm());
-	// 	navigate("/projets", { replace: true });
-	// };
 
 	return (
 		<Sidebar>

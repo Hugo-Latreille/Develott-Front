@@ -21,7 +21,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 				method: "PATCH",
 				body: patch,
 			}),
-			invalidatesTags: ["User"],
+			invalidatesTags: ["User", "Project"],
 		}),
 		postUserTechno: builder.mutation({
 			query: ({ id, techno }) => ({
@@ -39,6 +39,30 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 			}),
 			invalidatesTags: ["User"],
 		}),
+		addUserRole: builder.mutation({
+			query: ({ projectId, ...body }) => ({
+				url: `/project/${projectId}/addroletoproject`,
+				method: "POST",
+				body: body,
+			}),
+			invalidatesTags: ["User", "Project"],
+		}),
+		updateUserRole: builder.mutation({
+			query: ({ projectId, ...patch }) => ({
+				url: `/project/${projectId}/updateparticipantrole`,
+				method: "PATCH",
+				body: patch,
+			}),
+			invalidatesTags: ["User", "Project"],
+		}),
+		deleteUserRole: builder.mutation({
+			query: ({ projectId, ...body }) => ({
+				url: `/project/${projectId}/deleterolecustomer`,
+				method: "DELETE",
+				body: body,
+			}),
+			invalidatesTags: ["User", "Project"],
+		}),
 	}),
 });
 
@@ -47,4 +71,7 @@ export const {
 	useUpdateUserMutation,
 	usePostUserTechnoMutation,
 	useDeleteUserTechnoMutation,
+	useAddUserRoleMutation,
+	useUpdateUserRoleMutation,
+	useDeleteUserRoleMutation,
 } = userAPISlice;
