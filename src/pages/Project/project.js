@@ -30,16 +30,17 @@ import {
 } from "../Projects/projectsAPISlice";
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
-
 import { Link, useLocation, Outlet } from "react-router-dom";
 import {
 	setProjectId,
 	toggleTeamCreationModalOpen,
 } from "./../TeamCreation/teamCreationSlice";
-
 import DisplayShowMoreDescription from "../../utils/displayShowMoreDescription";
 import { useGetOneUserQuery } from "../Profiles/userAPISlice";
 import mockAvatar from "./../../assets/images/user-avatar.png";
+//React Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Project() {
 	const { projectId } = useParams();
@@ -73,8 +74,21 @@ function Project() {
 		projectExcerpt,
 	} = useSelector((state) => state.project);
 
-	//TODO: si participants, on raye les jobs. Si tous jobs pris : projet complet
-	//TODO si candidats, on note le nombre de candidats en attente ?
+	const displayParticipants = projectTeam?.filter(
+		(participant) => participant.role === "participants"
+	);
+	const doesJobHaveParticipant = (jobName) => {
+		return displayParticipants?.find(
+			(participant) => participant.job === jobName
+		);
+	};
+	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
+
+	useEffect(() => {
+		if (isProjectComplete) {
+			toast.info("Ce projet est complet");
+		}
+	}, []);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
@@ -294,7 +308,11 @@ function Project() {
 										<div className="project-jobs-container">
 											{projectJobs?.map((job) => (
 												<p key={job.id_project_has_job}>
-													<i className="fas fa-check-circle success"></i>{" "}
+													{doesJobHaveParticipant(job.job) ? (
+														<i className="fas fa-check-circle error'"></i>
+													) : (
+														<i className="fas fa-check-circle success"></i>
+													)}{" "}
 													{job.job}
 												</p>
 											))}
@@ -862,6 +880,17 @@ function Project() {
 				<FooterColored />
 			</Sidebar>
 			<Outlet />
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 		</>
 	);
 }

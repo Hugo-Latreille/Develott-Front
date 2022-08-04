@@ -6,10 +6,13 @@ import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
-	//TODO : afficher uniquement les candidats + job
-	//TODO: Submit : update des candidats en participants
+	//TODO : comment prévenir postulant ? Toast ? au submit admin :
+	//? --> jouer avec le isActive ? Si false : dispo pour projet, si oui toast vous avez été sélectionné !!
+
+	//TODO : bouton pour supprimer un candidat
+	//TODO : project : affichage postes déjà occupés
+	//TODO : projects: =! entre taille jobs projet et participants projet
 	//TODO :
-	//TODO
 
 	const { selectTeam } = useSelector((state) => state.teamCreation);
 	const dispatch = useDispatch();
