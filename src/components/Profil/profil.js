@@ -40,8 +40,6 @@ function Profil() {
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
 
-	//TODO dans toutes les équipes, retrouver l'utilisateur
-
 	const findMyProjectsId = projectsTeams?.teams?.filter(
 		(team) => team.customer_id === user?.id
 	);
@@ -61,10 +59,6 @@ function Profil() {
 		});
 	};
 	console.log(findMyProjects());
-
-	//TODO afficher le projet
-	//TODO calculer combien de places restes
-	//TODO afficher le job/role de l'utilisateur
 
 	console.log(user);
 	const {
