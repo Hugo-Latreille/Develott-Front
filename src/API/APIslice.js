@@ -49,5 +49,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const emptySplitApi = createApi({
 	baseQuery: baseQueryWithReauth,
+	refetchOnMountOrArgChange: true,
 	endpoints: (builder) => ({}),
 });

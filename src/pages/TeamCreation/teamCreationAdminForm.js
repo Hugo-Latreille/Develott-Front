@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useUpdateUserRoleMutation } from "../Profiles/userAPISlice";
+import {
+	useUpdateUserMutation,
+	useUpdateUserRoleMutation,
+} from "../Profiles/userAPISlice";
 import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
-function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
+function TeamCreationAdminForm({ projectId, candidates }) {
 	//TODO : comment prévenir postulant ? Toast ? au submit admin :
 	//? --> jouer avec le isActive ? Si false : dispo pour projet, si oui toast vous avez été sélectionné !!
-
+	// -> isActive profile à false + toast
+	// toast au submit pour admin
 	//TODO : bouton pour supprimer un candidat
 	//TODO : project : affichage postes déjà occupés
 	//TODO : projects: =! entre taille jobs projet et participants projet
@@ -19,6 +23,7 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 	const navigate = useNavigate();
 	console.log(candidates);
 	const [updateCandidateToParticipant] = useUpdateUserRoleMutation();
+	const [UpdateUserActive] = useUpdateUserMutation();
 
 	const [checked, setChecked] = useState(false);
 	const handleChange = (e, index) => {
@@ -44,6 +49,7 @@ function TeamCreationAdminForm({ projectJobs, userId, projectId, candidates }) {
 				customer_id: thisCandidate[0].customer_id,
 				role_id: 2,
 			});
+			UpdateUserActive({ id: thisCandidate[0].customer_id, is_active: true });
 		});
 		dispatch(resetTeam());
 		navigate(`/projet/${projectId}`, { replace: true });

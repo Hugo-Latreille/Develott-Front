@@ -42,8 +42,6 @@ function TeamCreation() {
 				<div className="team-creation-container-main">
 					{isUserProjectAdmin ? (
 						<TeamCreationAdminForm
-							projectJobs={projectJobs}
-							userId={user?.id}
 							projectId={projectId}
 							candidates={candidates}
 						/>

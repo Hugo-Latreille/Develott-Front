@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./project.scss";
@@ -44,9 +45,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Project() {
 	const { projectId } = useParams();
-	const { data: projectWithTeam, refetch } = useGetOneProjectQuery(projectId, {
-		refetchOnMountOrArgChange: true,
-	});
+	const {
+		data: projectWithTeam,
+		refetch,
+		isLoading,
+	} = useGetOneProjectQuery(projectId);
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteJobProject] = useDeleteProjectJobMutation();
 	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
@@ -84,8 +87,9 @@ function Project() {
 	};
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
+	//! REPARER LOGIQUE
 	useEffect(() => {
-		if (isProjectComplete) {
+		if (!isLoading && isProjectComplete) {
 			toast.info("Ce projet est complet");
 		}
 	}, []);
