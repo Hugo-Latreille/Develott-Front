@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import "moment/locale/fr";
 
 import { toggleShowFavorites } from "../../pages/App/appSlice";
+import { toggleOpenIntro } from "../SideBar/sidebarSlice";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import SearchbarMainTechnologies from "./searchbarMainTechnos";
@@ -62,6 +63,10 @@ function SearchBar() {
         </div>
       </div>
       <div className="projects-searchbar-container">
+        <i
+          className="fas fa-info-circle information_intro"
+          onClick={() => dispatch(toggleOpenIntro())}
+        ></i>
         {openTechno && (
           <>
             <SearchbarMainTechnologies />
@@ -97,7 +102,8 @@ function SearchBar() {
         </div>
         <div className="select-input favoris">
           <div onClick={() => dispatch(toggleShowFavorites())}>
-            <i className="fas fa-heart fav"></i> Favoris
+            <i className="fas fa-heart fav"></i>{" "}
+            <span className="display">Favoris</span>
           </div>
         </div>
       </div>

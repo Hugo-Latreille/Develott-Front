@@ -15,6 +15,7 @@ import { logOut } from "../../pages/Login/authSlice";
 import { toggleSideBar } from "../../pages/App/appSlice";
 import { setDisplayDarkMode } from "../../pages/App/appSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
+import { toggleOpenIntro } from "./sidebarSlice";
 
 import { Steps } from "intro.js-react";
 import { useState } from "react";
@@ -47,6 +48,7 @@ const routes = [
 ];
 
 function Sidebar({ children, isVisible }) {
+  const introIsOpen = useSelector((state) => state.sidebarintro.introIsOpen);
   const isOpen = useSelector((state) => state.app.sideBarIsOpen);
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
   const dispatch = useDispatch();
@@ -54,11 +56,10 @@ function Sidebar({ children, isVisible }) {
   const { email } = useSelector((state) => state.auth);
   const { data: user } = useGetOneUserQuery(email);
 
-  const [enabled, setEnabled] = useState(true);
   const [initialStep, setInitialStep] = useState(0);
 
   const onExit = () => {
-    setEnabled(false);
+    dispatch(toggleOpenIntro());
   };
   const steps = [
     {
@@ -186,7 +187,7 @@ function Sidebar({ children, isVisible }) {
   return (
     <div className="sidebar_container">
       <Steps
-        enabled={enabled}
+        enabled={introIsOpen}
         steps={steps}
         initialStep={initialStep}
         onExit={onExit}

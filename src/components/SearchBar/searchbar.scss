@@ -3,7 +3,7 @@
 .input-container {
   z-index: 1000;
   padding-top: 3rem;
-  width: 70%;
+  width: 100%;
   margin:auto;
 
   &-flex {
@@ -70,7 +70,7 @@
   position:relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .projects-searcbar-main-technos {
@@ -79,17 +79,20 @@
 }
 
 .projects-searcbar-main-title {
-  width:72%;
-  margin-right: 0.8em;
-  // padding: 0 0.5rem;
+  width:66.5%;
 }
 
 
 
 .projects-searchbar-init-search {
-  top:2rem;
-  right:14.5rem;
-  color:white;
+  margin-left: 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.information_intro {
+  margin-right: 0.8rem;
+  color: white;
   cursor: pointer;
 }
 
@@ -116,7 +119,6 @@
   justify-content: space-evenly;
   align-items: center;
   margin-right: 2rem;
-  margin-bottom: 0.2em;
   font-size: 0.9em;
   color: white;
 
@@ -138,14 +140,82 @@
 }
  
 
+@media screen and (width < 1830px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+}
 
 
-@media screen and (width < 800px) {
+@media screen and (width < 1614px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-left: 5em;
+}
+.projects-searchbar-container {
+  margin-left: 10rem;
+}
+}
+
+@media screen and (width < 1300px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-left: 1em;
+}
+.projects-searchbar-container {
+  margin-left: 7rem;
+}
+}
+
+@media screen and (width < 1060px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-top: 0em;
+    margin-left: 0em;
+}
+.projects-searchbar-container {
+  margin-left: 3rem;
+  margin-bottom: 1em;
+}
+.display {
+  display: none;
+}
+}
+
+@media screen and (width < 905px) {
 
   .input-container {
     width: 80%;
+   
   }
+  .favoris {
+    margin-top: 0em;
 }
+.projects-searchbar-container {
+  margin-left: 1rem;
+  margin-bottom: 1em;
+}
+.display {
+  display: none;
+}
+}
+
+
+
 
 // DARK MODE 
 
