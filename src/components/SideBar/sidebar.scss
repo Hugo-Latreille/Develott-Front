@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 12px;
+  padding: 15px 7px;
 }
 
 .logo_nav {
@@ -67,6 +67,13 @@
 
 
 .sidebar_navlink:hover {
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
+.activesidebar {
   color: black;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   background-color: rgb(255, 255, 255);

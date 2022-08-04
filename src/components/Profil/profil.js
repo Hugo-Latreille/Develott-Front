@@ -256,12 +256,12 @@ function Profil() {
 								)}
 
 								<div className="desc_container_description-user">
-									<p className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</p>
-									<p className="desc_container_role">
+									<div className="name_container_user">{`${user?.firstname} ${user?.lastname}`}</div>
+									<div className="desc_container_role">
 										{user?.job ? (
 											user?.job
 										) : (
-											<div
+											<p
 												className="cursor-pointer"
 												onClick={() =>
 													dispatch(
@@ -270,9 +270,9 @@ function Profil() {
 												}
 											>
 												Renseigner mon poste
-											</div>
+											</p>
 										)}
-									</p>
+									</div>
 								</div>
 							</div>
 						)}
@@ -310,26 +310,35 @@ function Profil() {
 											</p>
 											<p className="desc_container_title">
 												<i className="fab fa-github color-secondary"></i>
-												<a href="#">
-													{" "}
-													{user?.url_github ? user?.url_github : "GitHub"}
-												</a>
+												{user?.url_github ? (
+													<a href={user?.url_github} target="_blank">
+														Profile Github
+													</a>
+												) : (
+													"GitHub"
+												)}
 											</p>
 											<p className="desc_container_title">
 												<i className="fab fa-linkedin color-secondary"></i>
 												<a href="#">
-													{" "}
-													{user?.url_linkedin ? user?.url_linkedin : "Linkedin"}
+													{user?.url_linkedin ? (
+														<a href={user?.url_linkedin} target="_blank">
+															Profile Linkedin
+														</a>
+													) : (
+														"Linkedin"
+													)}
 												</a>
 											</p>
 											<p className="desc_container_title">
 												<i className="fas fa-globe color-secondary"></i>
-												<a href="#">
-													{" "}
-													{user?.url_portfolio
-														? user?.url_portfolio
-														: "Portfolio"}
-												</a>
+												{user?.url_portfolio ? (
+													<a href={user?.url_portfolio} target="_blank">
+														{user?.url_portfolio}
+													</a>
+												) : (
+													"Portfolio"
+												)}
 											</p>
 										</div>
 									</>
@@ -563,11 +572,8 @@ function Profil() {
 											{languagesData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{languagesData?.map((techno) => (
-												<div
-													key={techno?.name}
-													className="form-technologies-items"
-												>
+											{languagesData?.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno?.name}-plain colored`}
@@ -591,11 +597,8 @@ function Profil() {
 											{frameworksData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{frameworksData?.map((techno) => (
-												<div
-													key={techno?.name}
-													className="form-technologies-items"
-												>
+											{frameworksData?.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno?.name}-plain colored`}
@@ -619,11 +622,8 @@ function Profil() {
 											{databasesData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{databasesData?.map((techno) => (
-												<div
-													key={techno?.name}
-													className="form-technologies-items"
-												>
+											{databasesData?.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno?.name}-plain colored`}
@@ -647,11 +647,8 @@ function Profil() {
 											{othersData?.length === 0 && (
 												<p className="form-technologies-empty">vide...</p>
 											)}
-											{othersData?.map((techno) => (
-												<div
-													key={techno?.name}
-													className="form-technologies-items"
-												>
+											{othersData?.map((techno, index) => (
+												<div key={index} className="form-technologies-items">
 													<p className="margin0">
 														<i
 															className={`devicon-${techno?.name}-plain colored`}
@@ -780,7 +777,7 @@ function Profil() {
 					<div className="desc_container_project">
 						<h4 className="desc_container_main">Projet(s)</h4>
 						{findMyProjects()?.map((project) => (
-							<div className="card_project">
+							<div key={project.myProject.id} className="card_project">
 								<img
 									src={project.myProject?.picture}
 									className="card_img"
@@ -797,11 +794,11 @@ function Profil() {
 										project.projectJobs.length -
 										(project.projectTeam.length - 1)
 									} co-équipiers`}</p>
-									<p className="project-list-paragraph-grey">
+									<div className="project-list-paragraph-grey">
 										{moment(project.myProject?.start_date)
 											.locale("fr")
 											.format("LL")}
-									</p>
+									</div>
 								</div>
 								{project.myRole.role === "candidates" && <div>candidat</div>}
 								{project.myRole.role === "admin" && <div>admin</div>}
