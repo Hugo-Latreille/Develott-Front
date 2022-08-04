@@ -26,7 +26,7 @@ function SearchBar() {
   const searchDate = useSelector((state) => state.searchbar.searchDate);
   const [openTechno, setOpenTechno] = useState(true);
   const [openTitre, setOpenTitre] = useState(false);
-
+  
   const openingTechno = () => {
     setOpenTitre(false);
     setOpenTechno(true);
@@ -48,7 +48,7 @@ function SearchBar() {
           }
           onClick={() => openingTechno()}
         >
-          Rechercher par Techno
+          Recherche Affinée
         </div>
         <div
           className={
@@ -58,7 +58,7 @@ function SearchBar() {
           }
           onClick={() => openingTitre()}
         >
-          Rechercher par Titre
+          Recherche par Nom
         </div>
       </div>
       <div className="projects-searchbar-container">

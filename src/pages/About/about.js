@@ -55,19 +55,25 @@ function About() {
                 <div className="info_contain">
                   <p>
                     <i className="fas fa-envelope color-secondary"></i>{" "}
-                    batman@batmail.batfr
+                    l.bramoulle@hotmail.fr
                   </p>
                   <p>
                     <i className="fab fa-github color-secondary"></i>{" "}
-                    <a href="#"> Superman-Suck</a>{" "}
+                    <a href="https://github.com/Lea-Bramoulle">
+                      {" "}
+                      Lea-Bramoulle
+                    </a>{" "}
                   </p>
                   <p>
                     <i className="fab fa-linkedin color-secondary"></i>{" "}
-                    <a href="#"> Bruce Wayne</a>
+                    <a href="https://www.linkedin.com/in/lea-bramoulle/">
+                      {" "}
+                      Léa Bramoullé
+                    </a>
                   </p>
                   <p>
                     <i className="fas fa-globe color-secondary"></i>{" "}
-                    <a href="#"> brucewayne.com</a>
+                    <a href="#"> Develott.com</a>
                   </p>
                 </div>
               </SwiperSlide>
@@ -98,7 +104,7 @@ function About() {
               className="mySwiper"
             >
               <SwiperSlide>
-                <img src={Clement} />
+                <img src={Clement} alt="Clement" />
                 <div className="overlay">
                   <div className="text">
                     <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
@@ -109,21 +115,24 @@ function About() {
               <p className="cube_name_job">Lead Dev Back</p>
               <SwiperSlide>
                 <div className="info_contain">
-                  <p>
+                  <p className="big_mail">
                     <i className="fas fa-envelope color-secondary"></i>{" "}
-                    batman@batmail.batfr
+                    moretticlement@outlook.fr
                   </p>
                   <p>
                     <i className="fab fa-github color-secondary"></i>{" "}
-                    <a href="#"> Superman-Suck</a>{" "}
+                    <a href="https://github.com/daddykoala"> clément-moretti</a>{" "}
                   </p>
                   <p>
                     <i className="fab fa-linkedin color-secondary"></i>{" "}
-                    <a href="#"> Bruce Wayne</a>
+                    <a href="https://www.linkedin.com/in/clement-moretti-39ab59220/">
+                      {" "}
+                      Clement Moretti
+                    </a>
                   </p>
                   <p>
                     <i className="fas fa-globe color-secondary"></i>{" "}
-                    <a href="#"> brucewayne.com</a>
+                    <a href="#"> Develott.com</a>
                   </p>
                 </div>
               </SwiperSlide>
@@ -165,21 +174,30 @@ function About() {
               <p className="cube_name_job">Lead Dev Front</p>
               <SwiperSlide>
                 <div className="info_contain">
-                  <p>
+                  <p className="big_mail">
                     <i className="fas fa-envelope color-secondary"></i>{" "}
-                    batman@batmail.batfr
+                    hugo.latreille@gmail.com
                   </p>
                   <p>
                     <i className="fab fa-github color-secondary"></i>{" "}
-                    <a href="#"> Superman-Suck</a>{" "}
+                    <a href="https://github.com/Hugo-Latreille ">
+                      {" "}
+                      Hugo-Latreille
+                    </a>{" "}
                   </p>
                   <p>
                     <i className="fab fa-linkedin color-secondary"></i>{" "}
-                    <a href="#"> Bruce Wayne</a>
+                    <a href="https://www.linkedin.com/in/hugo-latreille">
+                      {" "}
+                      Hugo Latreille
+                    </a>
                   </p>
                   <p>
                     <i className="fas fa-globe color-secondary"></i>{" "}
-                    <a href="#"> brucewayne.com</a>
+                    <a href="https://hugolatreilleportfolio.herokuapp.com">
+                      {" "}
+                      Mon Portefolio
+                    </a>
                   </p>
                 </div>
               </SwiperSlide>
@@ -210,7 +228,7 @@ function About() {
               className="mySwiper"
             >
               <SwiperSlide>
-                <img src={PA} />
+                <img src={PA} alt="PA" />
                 <div className="overlay">
                   <div className="text">
                     <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
@@ -221,21 +239,27 @@ function About() {
               <p className="cube_name_job">Git Master / Dev Back</p>
               <SwiperSlide>
                 <div className="info_contain">
-                  <p>
+                  <p className="big_mail_potage">
                     <i className="fas fa-envelope color-secondary"></i>{" "}
-                    batman@batmail.batfr
+                    pierreantoinepotage@gmail.com
                   </p>
                   <p>
                     <i className="fab fa-github color-secondary"></i>{" "}
-                    <a href="#"> Superman-Suck</a>{" "}
+                    <a href="https://github.com/Pierreantoine-p">
+                      {" "}
+                      Pierreantoine-p
+                    </a>{" "}
                   </p>
                   <p>
                     <i className="fab fa-linkedin color-secondary"></i>{" "}
-                    <a href="#"> Bruce Wayne</a>
+                    <a href="https://www.linkedin.com/in/pierre-antoine-potage/">
+                      {" "}
+                      Pierre-Antoine Potage
+                    </a>
                   </p>
                   <p>
                     <i className="fas fa-globe color-secondary"></i>{" "}
-                    <a href="#"> brucewayne.com</a>
+                    <a href="#"> Develott.com</a>
                   </p>
                 </div>
               </SwiperSlide>
@@ -266,7 +290,7 @@ function About() {
               className="mySwiper"
             >
               <SwiperSlide>
-                <img src={Charlelie} />
+                <img src={Charlelie} alt="Charlelie" />
                 <div className="overlay">
                   <div className="text">
                     <i className="fas fa-arrow-alt-left swipe_icon"></i>Swipe
@@ -277,21 +301,27 @@ function About() {
               <p className="cube_name_job">Scrum Master / Dev Front</p>
               <SwiperSlide>
                 <div className="info_contain">
-                  <p>
+                  <p className="big_mail">
                     <i className="fas fa-envelope color-secondary"></i>{" "}
-                    batman@batmail.batfr
+                    latastecharlelie@gmail.com
                   </p>
                   <p>
                     <i className="fab fa-github color-secondary"></i>{" "}
-                    <a href="#"> Superman-Suck</a>{" "}
+                    <a href="https://github.com/Charlelielataste">
+                      {" "}
+                      Charlelielataste
+                    </a>{" "}
                   </p>
                   <p>
                     <i className="fab fa-linkedin color-secondary"></i>{" "}
-                    <a href="#"> Bruce Wayne</a>
+                    <a href="https://www.linkedin.com/in/charlelie-lataste-b28860108/">
+                      {" "}
+                      Charlélie Lataste
+                    </a>
                   </p>
                   <p>
                     <i className="fas fa-globe color-secondary"></i>{" "}
-                    <a href="#"> brucewayne.com</a>
+                    <a href="#"> Develott.com</a>
                   </p>
                 </div>
               </SwiperSlide>
