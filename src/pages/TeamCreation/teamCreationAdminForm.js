@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
+	useDeleteUserRoleMutation,
 	useUpdateUserMutation,
 	useUpdateUserRoleMutation,
 } from "../Profiles/userAPISlice";
@@ -9,7 +10,7 @@ import "./teamCreation.scss";
 import { removeTeam, resetTeam, setTeam } from "./teamCreationSlice";
 
 function TeamCreationAdminForm({ projectId, candidates }) {
-	//TODO : bouton pour supprimer un candidat + n'afficher que les posts sans participants
+	//TODO : bouton pour supprimer un candidat
 	//TODO : project : affichage postes déjà occupés
 	//TODO : projects: =! entre taille jobs projet et participants projet
 	//TODO :
@@ -20,6 +21,7 @@ function TeamCreationAdminForm({ projectId, candidates }) {
 	console.log(candidates);
 	const [updateCandidateToParticipant] = useUpdateUserRoleMutation();
 	const [UpdateUserActive] = useUpdateUserMutation();
+	const [deleteUserRole] = useDeleteUserRoleMutation();
 
 	const [checked, setChecked] = useState(false);
 	const handleChange = (e, index) => {
@@ -72,6 +74,16 @@ function TeamCreationAdminForm({ projectId, candidates }) {
 							<Link to={`/profil/${candidate.customer_id}`} target="_blank">
 								<p>{`${candidate.firstname} ${candidate.lastname}`}</p>
 							</Link>
+							<i
+								className="fal fa-backspace form-technologies-delete"
+								onClick={() => {
+									deleteUserRole({
+										projectId: projectId,
+										customer_id: candidate.customer_id,
+										role_id: candidate.role_id,
+									});
+								}}
+							></i>
 							<span>{candidate.job}</span>
 						</label>
 					</div>
