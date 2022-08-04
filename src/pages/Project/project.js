@@ -80,8 +80,6 @@ function Project() {
 		(team) => team.customer_id === user?.id
 	);
 
-	console.log(isUserTeamMember);
-
 	const isUserParticipant = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);
