@@ -35,6 +35,7 @@ function SearchbarMainTechnologies() {
           zIndex: 1,
           backgroundColor: "white",
           fontSize: "0.8rem",
+          borderRadius: "24px 0px 0px 24px;",
         }}
         formatResult={formatResult}
         maxResults={5}

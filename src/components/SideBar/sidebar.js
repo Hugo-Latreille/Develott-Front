@@ -203,7 +203,9 @@ function Sidebar({ children, isVisible }) {
             <NavLink
               to={route.path}
               key={route.name}
-              className="sidebar_navlink"
+              className={({ isActive }) =>
+                isActive ? "sidebar_navlink activesidebar" : "sidebar_navlink"
+              }
             >
               <div
                 className="side_icon"
