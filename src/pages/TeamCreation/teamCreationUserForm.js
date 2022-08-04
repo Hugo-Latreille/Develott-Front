@@ -24,9 +24,6 @@ function TeamCreationUserForm({
 	const [changeUserJob] = useUpdateUserMutation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	console.log(projectJobs);
-	console.log(projectTeam);
-	console.log(projectsTeams);
 
 	const isUserAlreadyParticipant = projectsTeams?.teams.some(
 		(team) => team?.customer_id === userId
@@ -35,6 +32,13 @@ function TeamCreationUserForm({
 	const isThereCandidates = (jobId) => {
 		return candidates?.filter((candidate) => candidate.job_id === jobId).length;
 	};
+
+	//TODO 1 candidat par job
+
+	console.log(candidates);
+	console.log(projectJobs);
+	console.log(projectTeam);
+
 	const jobAlreadyHasParticipant = (jobId) => {
 		return projectTeam?.some(
 			(participant) =>
@@ -45,12 +49,21 @@ function TeamCreationUserForm({
 		(candidate) => candidate.customer_id === userId
 	);
 
+	const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
+		return projectJobs?.find(
+			(projectJob) => projectJob.id_project_has_job === idProjectHasJob
+		)?.job_id;
+	};
+
 	return (
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
 				if (!isUserAlreadyParticipant) {
-					changeUserJob({ id: userId, job_id: userJobChoice });
+					changeUserJob({
+						id: userId,
+						job_id: findJobIdByIdProjectHasJob(userJobChoice),
+					});
 					if (!userAlreadyCandidate) {
 						userIsCandidate({
 							projectId: projectId,
@@ -64,7 +77,7 @@ function TeamCreationUserForm({
 			}}
 		>
 			<h3>Sélectionner un poste :</h3>
-			{projectJobs?.map((job, index) => (
+			{projectJobs?.map((job) => (
 				<div
 					key={job.id_project_has_job}
 					onChange={(e) => dispatch(setUserChoice(e.target.value))}
@@ -74,8 +87,7 @@ function TeamCreationUserForm({
 							<input
 								type="radio"
 								name="selectJob"
-								value={job.job_id}
-								// defaultChecked={index === 0 ? true : false}
+								value={job.id_project_has_job}
 							/>
 							<label>{job.job}</label>
 							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
