@@ -16,7 +16,7 @@ function SearchbarMainProjectTitle() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item);
-    dispatch(setSearchProjectName(item.id));
+    // dispatch(setSearchProjectName(item.id));
   };
 
   const formatResult = (item) => {
@@ -30,7 +30,7 @@ function SearchbarMainProjectTitle() {
   return (
     <div className="projects-searcbar-main-title">
       <ReactSearchAutocomplete
-        items={allProjects}
+        items={projectsTeams?.projects}
         onSelect={handleOnSelect}
         styling={{
           zIndex: 1,
@@ -41,8 +41,8 @@ function SearchbarMainProjectTitle() {
         maxResults={5}
         showIcon={true}
         placeholder="Nom de projet... "
-        showNoResults
-        showNoResultsText="Pas de résultats."
+        // showNoResults={false}
+        // showNoResultsText="Pas de résultats."
         showItemsOnFocus={true}
       />
     </div>

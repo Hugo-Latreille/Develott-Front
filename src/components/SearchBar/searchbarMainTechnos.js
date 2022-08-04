@@ -43,7 +43,6 @@ function SearchbarMainTechnologies() {
         placeholder="Technologie... "
         showNoResults
         showNoResultsText="Pas de résultats."
-        showItemsOnFocus={true}
       />
     </div>
   );
