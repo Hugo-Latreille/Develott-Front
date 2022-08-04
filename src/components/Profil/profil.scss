@@ -192,6 +192,12 @@
   }
 }
 
+.project-list-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
 .project-list-paragraph {
   margin: 0rem;
   font-size: 0.7rem;
@@ -241,13 +247,29 @@
 
 .card_project {
   width: 100%;
-  margin-left: 1%;
-  margin-right: 1%;
   background-color: #fff;
-  border-radius: 8px;
   box-shadow: rgb(65 70 245 / 8%) 0px 15px 10px -5px,
     rgb(113 73 245 / 4%) 0px 10px 10px -5px;
   position: relative;
+
+  &_role {
+    position: absolute;
+    top:0.5rem;
+    right:0.5rem;
+    padding: 0.3rem 0.6rem;
+    color:white;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: bolder;
+
+    &-admin {
+      background-color: rgb(126, 98, 241);
+    }
+
+    &-candidat {
+      background-color: rgb(29, 0, 144);
+    }
+  }
 }
 
 .user-technologies {
@@ -265,6 +287,8 @@
 
 .card_img {
   height: 10rem;
+  width:100%;
+  object-fit: cover;
 }
 
 
@@ -355,7 +379,7 @@
 .profil {
   width: 80%;
   height:auto;
-  margin:0;
+  margin:1rem 0;
   flex-wrap: wrap;
 
   &_desc {
@@ -374,7 +398,11 @@
   }
 
   .desc_container {
-    height:auto;
+    height:auto !important;
+
+    &_role {
+      margin-bottom: 1rem;
+    }
   }
 
   .desc_container_description {
