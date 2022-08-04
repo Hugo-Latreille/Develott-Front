@@ -74,15 +74,18 @@ function Project() {
 		projectTitle,
 		projectExcerpt,
 	} = useSelector((state) => state.project);
+	const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
+
+	const isUserTeamMember = projectTeam?.some(
+		(team) => team.customer_id === user?.id
+	);
 
 	const isUserParticipant = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);
-
 	const isUserCandidate = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "candidates"
 	);
-
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -94,16 +97,16 @@ function Project() {
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
-		if (!isLoading && isProjectComplete) {
+		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
 			toast.info("Ce projet est complet");
 		}
-		if (!isLoading && isUserParticipant) {
+		if (!isLoading && isUserParticipant && teamModalIsOpen === false) {
 			toast.success("Vous avez été sélectionné pour participer à ce projet");
 		}
-		if (!isLoading && isUserCandidate) {
+		if (!isLoading && isUserCandidate && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
-	}, []);
+	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
@@ -481,9 +484,16 @@ function Project() {
 								</div>
 								<div className="project-header-right">
 									{isProjectComplete ? (
-										<Link to={`/dashboard`} className="main-button-bg-white">
-											Complet <i className="far fa-rocket"></i>
-										</Link>
+										isUserTeamMember ? (
+											<Link to={`/dashboard`} className="main-button-bg-white">
+												Accéder au Dashboard <i className="far fa-rocket"></i>
+											</Link>
+										) : (
+											<Link to={`/projets`} className="main-button-bg-white">
+												Complet - revenir aux projets{" "}
+												<i className="far fa-rocket"></i>
+											</Link>
+										)
 									) : isUserProjectAdmin ? (
 										<Link
 											to={`/postuler`}
