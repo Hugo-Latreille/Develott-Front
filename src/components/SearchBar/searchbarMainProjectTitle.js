@@ -28,7 +28,7 @@ function SearchbarMainProjectTitle() {
   };
 
   return (
-    <div className="projects-searcbar-main-technos">
+    <div className="projects-searcbar-main-title">
       <ReactSearchAutocomplete
         items={allProjects}
         onSelect={handleOnSelect}
