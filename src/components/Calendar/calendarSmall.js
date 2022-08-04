@@ -26,8 +26,8 @@ class CalendarSmall extends React.Component {
         User: "Leadagan",
         Initiale: "LB",
         Color: "#F0F",
-        StartTime: "2022-06-20T12:25:43.511Z",
-        EndTime: "2022-06-20T18:25:43.511Z",
+        StartTime: "2022-08-20T12:25:43.511Z",
+        EndTime: "2022-08-20T18:25:43.511Z",
         Subject: "Râler",
         // RecurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=4'
       },
@@ -36,46 +36,46 @@ class CalendarSmall extends React.Component {
         User: "Leadagan",
         Initiale: "LB",
         Color: "#0F0",
-        StartTime: "2022-06-10T17:25:43.511Z",
-        EndTime: "2022-06-10T18:25:43.511Z",
-        Subject: "Devenir King of Kaamelott",
-        //IsAllDay: true
+        StartTime: "2022-08-08T18:25:43.511Z",
+        EndTime: "2022-08-08T19:25:43.511Z",
+        Subject: "Apérooo",
       },
       {
         Id: 3,
         User: "Perceval",
         Initiale: "PU",
         Color: "#00F",
-        StartTime: "2022-06-07T09:20:43.511Z",
-        EndTime: "2022-06-07T11:25:43.511Z",
-        Subject: "Penser que cest peut être faux",
+        StartTime: "2022-08-08T09:20:43.511Z",
+        EndTime: "2022-08-08T11:00:43.511Z",
+        Subject: "Réunion pré-apothéose",
       },
       {
         Id: 4,
         User: "Dame du Lac",
         Initiale: "DL",
         Color: "#F00",
-        StartTime: "2022-05-08T09:20:43.511Z",
-        EndTime: "2022-05-08T11:25:43.511Z",
-        Subject: "Sembler intelligente",
+        StartTime: "2022-08-08T14:10:43.511Z",
+        EndTime: "2022-08-08T16:30:43.511Z",
+        Subject: "Présenter l'Apothéose",
       },
       {
         Id: 5,
         User: "Athur",
         Initiale: "KA",
         Color: "orange",
-        StartTime: "2022-06-08T12:20:43.511Z",
-        EndTime: "2022-06-08T14:25:43.511Z",
-        Subject: "Trouver le Graal",
+        StartTime: "2022-08-09T08:20:43.511Z",
+        EndTime: "2022-08-09T14:25:43.511Z",
+        Subject: "Dormir.",
+        IsAllDay: true,
       },
       {
         Id: 6,
         User: "Athur",
         Initiale: "KA",
         Color: "orange",
-        StartTime: "2022-06-08T08:20:43.511Z",
-        EndTime: "2022-06-08T09:25:43.511Z",
-        Subject: "Pécho Guenièvre",
+        StartTime: "2022-08-12T08:20:43.511Z",
+        EndTime: "2022-08-12T09:25:43.511Z",
+        Subject: "Implémenter Socket.io",
       },
     ],
   };
@@ -92,7 +92,7 @@ class CalendarSmall extends React.Component {
       <div className="container-scheduler-component">
         <ScheduleComponent
           currentView="Day"
-          selectedDate={new Date(2022, 5, 5)}
+          selectedDate={new Date(2022, 7, 8)}
           eventSettings={{
             dataSource: this.EventSettingsModel.dataSource,
             // template: this.eventTemplate.bind(this),
