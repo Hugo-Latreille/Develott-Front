@@ -137,11 +137,20 @@
         width:85%;
         margin:auto;
 
+
+    }
+
+    .team-user-form-input-container {
         &-right {
             width: 100%;
             color:grey;
             margin-top: -0.5rem;
             margin-bottom: 0.5rem;
+            margin-left: 2.5rem;
+        }
+
+        &-left {
+            width: 100%;
         }
     }
 }

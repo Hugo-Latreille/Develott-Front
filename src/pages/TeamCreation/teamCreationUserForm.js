@@ -84,7 +84,7 @@ function TeamCreationUserForm({
         >
           {!jobAlreadyHasParticipant(job.job_id) ? (
             <div className="team-user-form-input-container">
-              <div>
+              <div className="team-user-form-input-container-left">
                 <input
                   type="radio"
                   name="selectJob"
