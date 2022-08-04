@@ -59,6 +59,16 @@
    
 }
 
+.team-user-form-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    &-right {
+        color:grey;
+    }
+}
+
 .close-modal-button {
     position : absolute;
     top : -0.45rem;

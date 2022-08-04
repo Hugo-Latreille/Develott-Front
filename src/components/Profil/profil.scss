@@ -140,7 +140,6 @@
     background: vars.$linearGradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: -1rem;
     text-align: center;
 
 
@@ -354,8 +353,9 @@
 @media screen and (width < 600px) {
   
 .profil {
-  width: 100%;
+  width: 80%;
   height:auto;
+  margin:0;
   flex-wrap: wrap;
 
   &_desc {
@@ -397,6 +397,7 @@
     margin-bottom: 2rem;
     text-align: justify;
     padding-bottom: 2rem;
+    height:auto !important;
   }
 }
 
