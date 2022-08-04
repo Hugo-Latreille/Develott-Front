@@ -64,7 +64,7 @@ function TeamCreationUserForm({
 								type="radio"
 								name="selectJob"
 								value={job.job_id}
-								defaultChecked={index === 0 ? true : false}
+								// defaultChecked={index === 0 ? true : false}
 							/>
 							<label>{job.job}</label>
 							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
