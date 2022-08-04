@@ -168,6 +168,10 @@ function Profil() {
 	const isMyProfile = user?.email === email;
 	// const isMyProfile = true;
 
+	//TODO
+	//TODO gérer les projets à droite
+	//TODO si utilisateur active && c'est moi : vous avez été sélectionné pour le projet untel
+
 	return (
 		<>
 			<div className="profil ">
@@ -250,10 +254,18 @@ function Profil() {
 						)}
 						<div className=" desc_container_description-links-informations">
 							<div className="desc_container_description-links">
-								<p className="desc_container_title user-available">
-									<i className="fas fa-circle success"></i> Disponible pour
-									débuter un nouveau projet
-								</p>
+								{user?.is_active ? (
+									<p className="desc_container_title user-available">
+										<i className="fas fa-circle error"></i> Participe à un
+										projet
+									</p>
+								) : (
+									<p className="desc_container_title user-available">
+										<i className="fas fa-circle success"></i> Disponible pour
+										débuter un nouveau projet
+									</p>
+								)}
+
 								{isEditUserInfos === false && (
 									<>
 										{isMyProfile && (
@@ -679,11 +691,8 @@ function Profil() {
 										{languagesData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{languagesData?.map((techno) => (
-											<span
-												key={techno?.name}
-												className="technologies-icon-container"
-											>
+										{languagesData?.map((techno, index) => (
+											<span key={index} className="technologies-icon-container">
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}
@@ -698,11 +707,8 @@ function Profil() {
 										{frameworksData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{frameworksData?.map((techno) => (
-											<span
-												key={techno?.name}
-												className="technologies-icon-container"
-											>
+										{frameworksData?.map((techno, index) => (
+											<span key={index} className="technologies-icon-container">
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}
@@ -716,11 +722,8 @@ function Profil() {
 										{databasesData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{databasesData?.map((techno) => (
-											<span
-												key={techno?.name}
-												className="technologies-icon-container"
-											>
+										{databasesData?.map((techno, index) => (
+											<span key={index} className="technologies-icon-container">
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}
@@ -734,11 +737,8 @@ function Profil() {
 										{othersData?.length === 0 && (
 											<p className="form-technologies-empty">vide...</p>
 										)}
-										{othersData?.map((techno) => (
-											<span
-												key={techno?.name}
-												className="technologies-icon-container"
-											>
+										{othersData?.map((techno, index) => (
+											<span key={index} className="technologies-icon-container">
 												<i
 													className={`devicon-${techno?.name}-plain`}
 													style={{ backgroundColor: `${techno?.color}` }}

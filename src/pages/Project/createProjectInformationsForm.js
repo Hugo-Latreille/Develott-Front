@@ -22,7 +22,7 @@ function CreateProjectInformationsForm() {
 	const { email } = useSelector((state) => state.auth);
 	const { data: userInfos } = useFindUserByEmailQuery(email);
 	const [postProject] = usePostProjectMutation();
-	const [UpdateUserActive] = useUpdateUserMutation();
+	const [UpdateUserActiveAndJob] = useUpdateUserMutation();
 
 	const html = description;
 	const contentBlock = htmlToDraft(html);
@@ -90,7 +90,7 @@ function CreateProjectInformationsForm() {
 				value: draftToHtml(convertToRaw(editorState.getCurrentContent())),
 			})
 		);
-		UpdateUserActive({ id: userInfos?.id, is_active: true });
+		UpdateUserActiveAndJob({ id: userInfos?.id, is_active: true, job_id: 1 });
 		postProject({
 			userId: userInfos?.id,
 			name,
@@ -131,17 +131,10 @@ function CreateProjectInformationsForm() {
 					) : (
 						<img
 							src={picture_project}
-							alt="image du projet"
+							alt=""
 							className="project-create-avatar-img"
 						/>
 					)}
-					{/* <button
-            type="button"
-            className="project-edit-img-input"
-            onClick={() => showCloudinaryWidget()}
-          >
-            Image du projet
-          </button> */}
 				</div>
 			</div>
 			<div className="create-project-right-container">

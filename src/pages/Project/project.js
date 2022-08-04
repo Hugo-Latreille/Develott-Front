@@ -59,10 +59,8 @@ function Project() {
 	const projectTeam = projectWithTeam?.teams;
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
-
 	const dispatch = useDispatch();
 	const location = useLocation();
-
 	const {
 		displayEditDescriptionForm,
 		displayEditTechnologies,
@@ -77,6 +75,11 @@ function Project() {
 		projectExcerpt,
 	} = useSelector((state) => state.project);
 
+	//TODO si utilisateur active && c'est moi : vous avez été sélectionné pour le projet untel
+	const isUserParticipant = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "participants"
+	);
+
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -90,6 +93,9 @@ function Project() {
 	useEffect(() => {
 		if (!isLoading && isProjectComplete) {
 			toast.info("Ce projet est complet");
+		}
+		if (!isLoading && isUserParticipant) {
+			toast.success("Vous avez été sélectionné pour participer à ce projet");
 		}
 	}, []);
 
