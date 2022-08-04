@@ -99,13 +99,13 @@ function Project() {
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
-		if (!isLoading && isProjectComplete) {
+		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
 			toast.info("Ce projet est complet");
 		}
-		if (!isLoading && isUserParticipant) {
+		if (!isLoading && isUserParticipant && teamModalIsOpen === false) {
 			toast.success("Vous avez été sélectionné pour participer à ce projet");
 		}
-		if (!isLoading && isUserCandidate) {
+		if (!isLoading && isUserCandidate && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
 	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
