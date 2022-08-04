@@ -33,8 +33,15 @@ function TeamCreationUserForm({
 		return candidates?.filter((candidate) => candidate.job_id === jobId).length;
 	};
 
-	//TODO 1 candidat par job
+	const jobDuplicates = () => {
+		const count = {};
+		projectJobs?.forEach((job) => {
+			count[job.job] = (count[job.job] || 0) + 1;
+		});
+		return count;
+	};
 
+	console.log(jobDuplicates());
 	console.log(candidates);
 	console.log(projectJobs);
 	console.log(projectTeam);
@@ -45,6 +52,7 @@ function TeamCreationUserForm({
 				participant.job_id === jobId && participant.role === "participants"
 		);
 	};
+
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
