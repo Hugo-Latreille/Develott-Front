@@ -75,6 +75,12 @@ function Project() {
 		projectExcerpt,
 	} = useSelector((state) => state.project);
 
+	const isUserTeamMember = projectTeam?.some(
+		(team) => team.customer_id === user?.id
+	);
+
+	console.log(isUserTeamMember);
+
 	const isUserParticipant = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "participants"
 	);
@@ -481,9 +487,16 @@ function Project() {
 								</div>
 								<div className="project-header-right">
 									{isProjectComplete ? (
-										<Link to={`/dashboard`} className="main-button-bg-white">
-											Complet <i className="far fa-rocket"></i>
-										</Link>
+										isUserTeamMember ? (
+											<Link to={`/dashboard`} className="main-button-bg-white">
+												Accéder au Dashboard <i className="far fa-rocket"></i>
+											</Link>
+										) : (
+											<Link to={`/projets`} className="main-button-bg-white">
+												Complet - revenir aux projets{" "}
+												<i className="far fa-rocket"></i>
+											</Link>
+										)
 									) : isUserProjectAdmin ? (
 										<Link
 											to={`/postuler`}
