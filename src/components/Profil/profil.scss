@@ -1,7 +1,7 @@
 @use "./../../styles/vars";
 
 .profil {
-  width: 93vw;
+  width: 94%;
   height: 100vh;
   margin: 2rem 2rem 0 2rem;
   display: flex;
@@ -371,7 +371,14 @@
 
 
 
+@media screen and (width < 1600px) {
 
+  .profil {
+    width:93vw;
+  }
+
+
+}
 
 
 @media screen and (width < 600px) {
