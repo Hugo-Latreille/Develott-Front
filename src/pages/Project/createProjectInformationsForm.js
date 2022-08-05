@@ -151,13 +151,13 @@ function CreateProjectInformationsForm() {
 					name="start_date"
 					label=" "
 					className="form-right-container-left"
-					value={start_date ? start_date : today}
+					value={start_date}
 				/>
 				<InputProject
 					name="end_date"
 					label=" "
 					className="form-right-container-right"
-					value={end_date ? end_date : today}
+					value={end_date}
 				/>
 			</div>
 			<Editor
