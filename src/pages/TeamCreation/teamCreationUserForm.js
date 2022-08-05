@@ -56,50 +56,49 @@ function TeamCreationUserForm({
 	//TODO : TOAST : si un candidat, afficher toast+
 
 	// console.log(projectsTeams?.teams);
-	// console.log(projectJobs);
+	console.log(projectJobs);
 	// console.log(filterJobs);
 	// console.log(candidates);
 
-	const countDuplicates = () => {
+	const countDuplicates = (jobId) => {
 		const count = {};
 		projectJobs?.forEach((element) => {
-			// if (element.job_id === jobId) {
-			var key = JSON.stringify(element.job_id);
-			count[key] = (count[key] || 0) + 1;
-			// }
+			if (element.job_id === jobId) {
+				var key = JSON.stringify(element.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
 		});
 		return count;
 	};
 
-	const countCandidatesSameJob = () => {
+	const countCandidatesSameJob = (jobId) => {
 		const count = {};
 		candidates?.forEach((candidate) => {
-			var key = JSON.stringify(candidate.job_id);
-			count[key] = (count[key] || 0) + 1;
+			if (candidate.job_id === jobId) {
+				var key = JSON.stringify(candidate.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
 		});
 		return count;
 	};
-	// console.log(countCandidatesSameJob());
-	console.log(countDuplicates());
+	// console.log(countCandidatesSameJob(8));
+	// console.log(countDuplicates(8));
 
-	const checkHowManyCandidatesPerDuplicate = () => {
-		const candidatesSameJob = countCandidatesSameJob();
-		const howManySameJob = countDuplicates();
-		const difference = [];
+	const checkHowManyCandidatesPerDuplicate = (jobId) => {
+		const candidatesSameJob = countCandidatesSameJob(jobId);
+		const howManySameJob = countDuplicates(jobId);
 
 		for (const candidate in candidatesSameJob) {
 			for (const sameJob in howManySameJob) {
 				if (candidate === sameJob) {
-					const test = {
+					return {
 						[candidate]: howManySameJob[sameJob] - candidatesSameJob[candidate],
 					};
-					difference.push(test);
 				}
 			}
 		}
-		return difference;
 	};
-	console.log(checkHowManyCandidatesPerDuplicate());
+	console.log(checkHowManyCandidatesPerDuplicate(8));
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(
@@ -140,6 +139,12 @@ function TeamCreationUserForm({
 							<input type="radio" name="selectJob" value={job.job_id} />
 							<label>{job.job}</label>
 							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
+							{checkHowManyCandidatesPerDuplicate(job.job_id) && (
+								<div>
+									{checkHowManyCandidatesPerDuplicate(job.job_id)[job.job_id]}
+									place(s) restante(s)
+								</div>
+							)}
 						</>
 					) : (
 						<>
