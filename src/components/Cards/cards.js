@@ -49,8 +49,6 @@ function ProjectList() {
 		);
 	};
 
-	console.log(findJobsByProject(1));
-
 	const findProductOwnerOfProject = (projectId) => {
 		return projectsTeams?.teams?.filter(
 			(team) => team?.project_id === projectId && team?.role === "admin"
