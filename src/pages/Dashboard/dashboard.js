@@ -155,7 +155,16 @@ function Dashboard() {
 											key={member.customer_id}
 											className="dashboard-main-content-team-users"
 										>
-											<img src={mockAvatar} alt="icon calendrier dashboard" />
+											<img
+												src={
+													member?.profil_picture &&
+													member?.profil_picture.length > 1
+														? member?.profil_picture
+														: mockAvatar
+												}
+												alt="icon calendrier dashboard"
+											/>
+											{/* <img src={mockAvatar} alt="icon calendrier dashboard" /> */}
 											<div className="dashboard-main-content-team-users-details">
 												<Link to={`/profil/${member.customer_id}`}>
 													<p>{`${member.firstname} ${member.lastname}`}</p>
