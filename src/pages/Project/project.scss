@@ -407,8 +407,6 @@
 
   .project-jobs {
     width: 85%;
-
-
   }
 
   .project-dates {
@@ -439,6 +437,11 @@
     }
 
     &-others {
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    &-database {
       margin-top: 2rem;
       width: 100%;
     }
