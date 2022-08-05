@@ -5,11 +5,17 @@ import Calendar from "../../components/Calendar/calendar";
 import CalendarSmall from "../../components/Calendar/calendarSmall";
 import Footer from "../../components/Footer/footerColored";
 import { useSelector, useDispatch } from "react-redux";
-import { setDisplayEdit, setDisplayMaincontent } from "./dashboardSlice";
+import {
+	setDisplayEdit,
+	setDisplayMaincontent,
+	setProjectData,
+} from "./dashboardSlice";
 import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import {
 	useGetAllProjectsQuery,
+	useGetOneProjectCompleteQuery,
 	useGetOneProjectQuery,
+	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
 import { Link } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
@@ -25,6 +31,10 @@ function Dashboard() {
 		displayEditTrelloLink,
 		displayCalendar,
 		displayMaincontent,
+		projectGithub,
+		projectDiscord,
+		projectSlack,
+		projectTrello,
 	} = useSelector((state) => state.dashboard);
 
 	const { email } = useSelector((state) => state.auth);
@@ -34,7 +44,9 @@ function Dashboard() {
 		(team) => team.customer_id === user?.id
 	)[0]?.project_id;
 	const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
-	console.log(myProject);
+	// const { data: myProjectLinks } =
+	// 	useGetOneProjectCompleteQuery(findMyProjectId);
+	const [updateProject] = useUpdateProjectMutation();
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"
@@ -164,7 +176,7 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Github / Gitlab</p>
-												<span>/Develott</span>
+												<span>{projectGithub}</span>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -184,20 +196,34 @@ function Dashboard() {
 												src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
 												alt="icon calendrier dashboard"
 											/>
+
 											<div className="dashboard-main-content-team-users-details">
 												<input
-													type="texte"
+													type="text"
 													placeholder="Lien Github / Gitlab ..."
 													className="dashboard-edit-input"
+													value={projectGithub}
+													onChange={(e) =>
+														dispatch(
+															setProjectData({
+																name: "projectGithub",
+																value: e.target.value,
+															})
+														)
+													}
 												/>
 											</div>
 											<span
 												className="edit-btn-main"
-												onClick={() =>
+												onClick={() => {
+													updateProject({
+														id: findMyProjectId,
+														url_github_repo: projectGithub,
+													});
 													dispatch(
 														setDisplayEdit({ name: "displayEditGitLink" })
-													)
-												}
+													);
+												}}
 											>
 												Enregistrer
 											</span>
@@ -211,7 +237,7 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Discord</p>
-												<span>/Develott</span>
+												<span>{projectDiscord}</span>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -233,18 +259,31 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<input
-													type="texte"
+													type="text"
 													placeholder="Lien chanel Discord..."
 													className="dashboard-edit-input"
+													value={projectDiscord}
+													onChange={(e) =>
+														dispatch(
+															setProjectData({
+																name: "projectDiscord",
+																value: e.target.value,
+															})
+														)
+													}
 												/>
 											</div>
 											<span
 												className="edit-btn-main"
-												onClick={() =>
+												onClick={() => {
+													updateProject({
+														id: findMyProjectId,
+														url_github_project: projectDiscord,
+													});
 													dispatch(
 														setDisplayEdit({ name: "displayEditDiscordLink" })
-													)
-												}
+													);
+												}}
 											>
 												Enregistrer
 											</span>
@@ -258,7 +297,7 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Slack</p>
-												<span>/Develott</span>
+												<span>{projectSlack}</span>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -280,18 +319,32 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<input
-													type="texte"
+													type="text"
 													placeholder="Lien Chanel Slack"
 													className="dashboard-edit-input"
+													value={projectSlack}
+													onChange={(e) =>
+														dispatch(
+															setProjectData({
+																name: "projectSlack",
+																value: e.target.value,
+															})
+														)
+													}
 												/>
 											</div>
 											<span
 												className="edit-btn-main"
-												onClick={() =>
+												onClick={() => {
+													updateProject({
+														id: findMyProjectId,
+														url_slack_server: projectSlack,
+													});
+
 													dispatch(
 														setDisplayEdit({ name: "displayEditSlackLink" })
-													)
-												}
+													);
+												}}
 											>
 												Enregistrer
 											</span>
@@ -305,7 +358,7 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Trello</p>
-												<span>/Develott-Trello</span>
+												<span>{projectTrello}</span>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -327,18 +380,32 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<input
-													type="texte"
+													type="text"
 													placeholder="Lien Trello"
 													className="dashboard-edit-input"
+													value={projectTrello}
+													onChange={(e) =>
+														dispatch(
+															setProjectData({
+																name: "projectTrello",
+																value: e.target.value,
+															})
+														)
+													}
 												/>
 											</div>
 											<span
 												className="edit-btn-main"
-												onClick={() =>
+												onClick={() => {
+													updateProject({
+														id: findMyProjectId,
+														url_trello: projectTrello,
+													});
+
 													dispatch(
 														setDisplayEdit({ name: "displayEditTrelloLink" })
-													)
-												}
+													);
+												}}
 											>
 												Enregistrer
 											</span>

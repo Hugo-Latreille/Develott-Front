@@ -1,4 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
+import { setProjectData } from "../Dashboard/dashboardSlice";
 import { changeDate, setNewImg } from "../Project/projectSlice";
 
 const projectsAPISlice = emptySplitApi.injectEndpoints({
@@ -33,6 +34,34 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 							changeDate({ name: "projectExcerpt", value: projectExcerpt })
 						);
 						dispatch(setNewImg(projectImg));
+					})
+					.catch(({ error }) => {});
+			},
+		}),
+		getOneProjectComplete: builder.query({
+			query: (projectId) => `project/guest/${projectId}`,
+			providesTags: ["Project"],
+			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+				queryFulfilled
+					.then((result) => {
+						console.log(result);
+						const projectGithub = result.data.url_github_repo;
+						const projectDiscord = result.data.url_github_project;
+						const projectSlack = result.data.url_slack_server;
+						const projectTrello = result.data.url_trello;
+
+						dispatch(
+							setProjectData({ name: "projectGithub", value: projectGithub })
+						);
+						dispatch(
+							setProjectData({ name: "projectDiscord", value: projectDiscord })
+						);
+						dispatch(
+							setProjectData({ name: "projectSlack", value: projectSlack })
+						);
+						dispatch(
+							setProjectData({ name: "projectTrello", value: projectTrello })
+						);
 					})
 					.catch(({ error }) => {});
 			},
@@ -98,4 +127,5 @@ export const {
 	useDeleteProjectJobMutation,
 	usePostProjectTechnoMutation,
 	useDeleteProjectTechnoMutation,
+	useGetOneProjectCompleteQuery,
 } = projectsAPISlice;
