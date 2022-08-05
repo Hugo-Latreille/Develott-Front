@@ -27,6 +27,7 @@ export const searchbarSlice = createSlice({
       state.searchTechnology = action.payload;
       state.searchJob = action.payload;
       state.searchDate = action.payload;
+      state.searchProjectName = action.payload;
     },
   },
 });
