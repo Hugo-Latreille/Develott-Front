@@ -139,7 +139,7 @@ function ProjectList() {
 				filteredProjects1.push(foundProject);
 			});
 
-			const filteredProjects2 = filteredProjects1.filter((project) =>
+			const filteredProjects2 = filteredProjects1?.filter((project) =>
 				project?.techno?.includes(technoName)
 			);
 			return filteredProjects2;
