@@ -27,6 +27,32 @@
     object-fit: cover;
 }
 
+.hour_style {
+    font-size: 0.7rem;
+    
+}
+
+.hour_start {
+    position: absolute;
+    left: 0.8rem;
+    top: 0.5rem;
+    background-color: white;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+}
+
+.hour_end {
+    position: absolute;
+    left: 16rem;
+    top: 0.5rem;
+    background-color: white;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+}
+
+.hour_container {
+    position: relative;
+}
 
 
 // RESPONSIVE 
@@ -53,4 +79,21 @@
     & input {
     background-color: #323c5a;
     }
+}
+
+#dark .hour_style {
+    color: white;
+    
+}
+
+#dark .hour_end {
+    background-color: rgba(255, 255, 255, 0);
+    top: 0rem;
+    left: 15.1rem;
+}
+
+#dark .hour_start {
+    background-color: rgba(255, 255, 255, 0);
+    top: 0rem;
+    left: 0.1rem;
 }

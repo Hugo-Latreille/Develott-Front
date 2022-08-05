@@ -3,12 +3,13 @@
 .sidebar_container {
   display: flex;
   height: 100%;
-  z-index: 1000;
+  z-index: 10000;
   position: fixed;
 }
 
 .sidebar {
   background-image: url("./../../assets/images/footer-bg2.png");
+  opacity: 0.9;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
@@ -133,31 +134,31 @@
     border-radius: 0px 12px 12px 0px;
   }
   
-  &_details:hover {
+    &_details:hover {
     cursor: pointer;
     color: black;
-  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  background-color: rgb(255, 255, 255);
-  border-radius: 0px 12px 12px 0px;
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px 12px 12px 0px;
   }
 
-  &_img {
-    margin-right: 1em;
-    border-radius: 50%;
-    width: 1.8rem;
-    height: 1.8rem;
-    object-fit: cover;
-  }
+    &_img {
+      margin-right: 1em;
+      border-radius: 50%;
+      width: 1.8rem;
+      height: 1.8rem;
+      object-fit: cover;
+    }
 
-  &_img_close {
-    border-radius: 50%;
-    width: 1.70rem;
-    height: 1.70rem;
-    border: 1px solid #223ffa;
-    object-fit: cover;
-    margin-bottom: 1.5em;
-    margin-right: 0.1em;
-  }
+    &_img_close {
+      border-radius: 50%;
+      width: 1.70rem;
+      height: 1.70rem;
+      border: 1px solid #223ffa;
+      object-fit: cover;
+      margin-bottom: 1.5em;
+      margin-right: 0.1em;
+    }
 }
 
 .job {
@@ -233,8 +234,8 @@
 }
 
 .active_toggle {
-  padding: 7.5em;
   padding-bottom: 20em;
+  width: 100%;
 }
 
 
@@ -248,8 +249,11 @@
 
 #dark .sidebar {
   background: linear-gradient(to top  ,  #219898, #24085c  );
+  opacity: 1;
+  transition: opacity 0.9s ease;
 }
 
 #dark .profile_img_close {
   border: 1px solid #093737;
+  transition: border 0.5s ease;
 }

@@ -7,6 +7,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment/min/moment-with-locales";
 import { DatePicker } from "@mui/x-date-pickers";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "moment/locale/fr";
 //? WYSIWYG editor
@@ -415,6 +416,14 @@ function Project() {
               {displayEditDates && (
                 <div className="project-dates">
                   <div className="project-dates-inputs">
+
+                    <span className="hour_modifstart hour_style">
+                      Date de début
+                    </span>
+                    <span className="hour_modifend hour_style">
+                      Date de fin
+                    </span>
+
                     <LocalizationProvider
                       dateAdapter={AdapterMoment}
                       adapterLocale="fr"
@@ -435,7 +444,21 @@ function Project() {
                             start_date: newValue._d,
                           });
                         }}
-                        renderInput={(params) => <TextField {...params} />}
+
+                        // renderInput={(params) => <TextField {...params} />}
+                        renderInput={({ inputRef, inputProps, InputProps }) => (
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <input ref={inputRef} {...inputProps} />
+                            {InputProps?.endAdornment}
+                          </Box>
+                        )}
+
                       />
                     </LocalizationProvider>
                   </div>
@@ -459,7 +482,21 @@ function Project() {
                             end_date: newValue._d,
                           });
                         }}
-                        renderInput={(params) => <TextField {...params} />}
+
+                        // renderInput={(params) => <TextField {...params} />}
+                        renderInput={({ inputRef, inputProps, InputProps }) => (
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <input ref={inputRef} {...inputProps} />
+                            {InputProps?.endAdornment}
+                          </Box>
+                        )}
+
                       />
                     </LocalizationProvider>
                   </div>
