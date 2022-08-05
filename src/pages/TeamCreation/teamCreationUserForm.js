@@ -56,7 +56,7 @@ function TeamCreationUserForm({
 	//TODO : TOAST : si un candidat, afficher toast+
 
 	// console.log(projectsTeams?.teams);
-	console.log(projectJobs);
+	// console.log(projectJobs);
 	// console.log(filterJobs);
 	// console.log(candidates);
 
@@ -81,19 +81,24 @@ function TeamCreationUserForm({
 		});
 		return count;
 	};
-	// console.log(countCandidatesSameJob(8));
-	// console.log(countDuplicates(8));
+	// console.log(countCandidatesSameJob(2));
+	// console.log(countDuplicates(2));
 
 	const checkHowManyCandidatesPerDuplicate = (jobId) => {
 		const candidatesSameJob = countCandidatesSameJob(jobId);
 		const howManySameJob = countDuplicates(jobId);
 
-		for (const candidate in candidatesSameJob) {
-			for (const sameJob in howManySameJob) {
-				if (candidate === sameJob) {
-					return {
-						[candidate]: howManySameJob[sameJob] - candidatesSameJob[candidate],
-					};
+		if (Object.keys(candidatesSameJob).length === 0) {
+			return howManySameJob;
+		} else {
+			for (const candidate in candidatesSameJob) {
+				for (const sameJob in howManySameJob) {
+					if (candidate === sameJob) {
+						return {
+							[candidate]:
+								howManySameJob[sameJob] - candidatesSameJob[candidate],
+						};
+					}
 				}
 			}
 		}
