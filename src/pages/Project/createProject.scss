@@ -113,6 +113,12 @@
     font-weight: lighter;
   }
 
+  &-inputs-container {
+    & input {
+      color:white;
+    }
+  }
+
 }
 
 #dark .project-information-form-dark {
@@ -133,6 +139,11 @@
 
 @media screen and (width < 600px) {
 
+  .create-project {
+    margin: 1rem 0;
+    width:100%;
+  }
+
   .create-project-left {
     display: none;
   }
@@ -143,7 +154,7 @@
 
   .create-project-container {
     padding: 0rem;
-    margin:1.5rem;
+    margin:0.7rem;
   }
 
   .create-project-step-mobile {
