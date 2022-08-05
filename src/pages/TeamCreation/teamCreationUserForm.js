@@ -50,12 +50,6 @@ function TeamCreationUserForm({
 		(candidate) => candidate.customer_id === userId
 	);
 
-	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job
-	//TODO : on compte et on calcul combien de place reste.
-	//TODO :
-	//TODO :
-	//TODO : TOAST : si un candidat, afficher toast+
-
 	// console.log(projectsTeams?.teams);
 	// console.log(projectJobs);
 	// console.log(filterJobs);
