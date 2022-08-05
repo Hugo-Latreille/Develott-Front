@@ -390,7 +390,7 @@
 .profil {
   width: 88%;
   height:auto;
-  margin:1rem 0;
+  margin: 0;
   flex-wrap: wrap;
 
   &_desc {
@@ -410,10 +410,16 @@
 
   .desc_container {
     height:auto !important;
+    padding : 0;
+
+    &_main {
+      padding : 1rem ;
+    }
 
     &_role {
       margin-bottom: 1rem;
     }
+
   }
 
   .desc_container_description {
@@ -422,6 +428,10 @@
     &-username {
       height: auto;
 
+    }
+
+    &-links-informations {
+      padding: 2rem 1rem
     }
   }
 
@@ -455,6 +465,10 @@
 #dark .desc_container {
   background: vars.$linearGradientDarkModeCards;
   color:white;
+
+  & p {
+    color:rgba(255, 255, 255, 0.9);
+  }
 }
 
 #dark .desc_container_description-username {
