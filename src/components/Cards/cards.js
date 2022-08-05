@@ -39,7 +39,7 @@ function ProjectList() {
 	//! conserver
 	const findTeamByProject = (projectId) => {
 		return projectsTeams?.teams?.filter(
-			(team) => team?.project_id === projectId
+			(team) => team?.project_id === projectId && team?.role === "participants"
 		);
 	};
 
@@ -302,7 +302,7 @@ function ProjectList() {
 										className="span-strong"
 									>
 										{findJobsByProject(project?.id).length -
-											(findTeamByProject(project?.id).length - 1)}
+											findTeamByProject(project?.id).length}
 									</span>
 									{!displayDarkMode && (
 										<ReactTooltip

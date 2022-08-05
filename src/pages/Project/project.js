@@ -74,6 +74,8 @@ function Project() {
 		projectTitle,
 		projectExcerpt,
 	} = useSelector((state) => state.project);
+	const today = new Date();
+
 	const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
 
 	const isUserTeamMember = projectTeam?.some(
@@ -420,6 +422,7 @@ function Project() {
 											adapterLocale="fr"
 										>
 											<DatePicker
+												disablePast
 												label="Date de début"
 												value={startDate}
 												className="date-picker-color"
@@ -445,6 +448,7 @@ function Project() {
 											adapterLocale="fr"
 										>
 											<DatePicker
+												disablePast
 												label="Date de fin"
 												value={endDate}
 												onChange={(newValue) => {
