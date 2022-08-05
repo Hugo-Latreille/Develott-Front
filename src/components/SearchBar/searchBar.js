@@ -40,6 +40,8 @@ function SearchBar() {
 		setOpenTitre(true);
 	};
 
+	const today = new Date();
+
 	return (
 		<div id="navbar" className="input-container">
 			<div className="select_research">
@@ -78,7 +80,7 @@ function SearchBar() {
 							adapterLocale="fr"
 						>
 							<DatePicker
-								value={searchDate}
+								value={searchDate ? searchDate : today}
 								className="date-picker-color"
 								onChange={(newValue) => {
 									console.log(newValue.format());
