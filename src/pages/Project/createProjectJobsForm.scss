@@ -1,0 +1,96 @@
+@use "./../../styles/vars";
+
+.form-jobs {
+  display: flex;
+  height: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+  &-title {
+    color: vars.$darkGrey;
+    margin-bottom: 2rem;
+  }
+
+  &-title-2 {
+    color: vars.$darkGrey;
+    margin-bottom: 4.7rem;
+  }
+
+  &-disclaimer {
+    color: rgb(99, 98, 98);
+    font-size: 0.8rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+    line-height: 1.1rem;
+  }
+
+  &-empty {
+    color: grey;
+    font-size: 0.8rem;
+  }
+
+  &-items {
+    display: flex;
+
+    & i {
+      padding-right: 0.5rem;
+    }
+    & p {
+      width: 80%;
+      font-size: 0.9rem;
+    }
+  }
+
+  &-delete {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+}
+
+.form-jobs .input-container {
+  width: 100%;
+}
+
+
+.form-jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-content {
+    width: 50%;
+    min-height: 100%;
+    overflow-y: scroll;
+
+    & p {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &-70 {
+    height: 80%;
+    margin-bottom: 2rem;
+  }
+}
+
+
+
+
+// DARK MODE 
+
+.form-jobs {
+
+  &-title {
+    color: white;
+  }
+
+  &-title-2 {
+    color: white;
+  }
+
+  &-disclaimer {
+    color: white;
+  }
+
+}

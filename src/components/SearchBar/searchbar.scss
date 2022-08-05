@@ -1,0 +1,231 @@
+@use "./../../styles/vars";
+
+.input-container {
+  z-index: 1000;
+  padding-top: 3rem;
+  width: 100%;
+  margin:auto;
+
+  &-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.results-container {
+  display: flex;
+  justify-content: left;
+  align-items: baseline;
+  padding: 0.4rem 0.2rem;
+}
+
+.result-span-title {
+  display: "block";
+  font-size: 0.8rem;
+  font-weight: bolder;
+  text-transform: capitalize;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+
+.result-span-subtitle {
+  display: "block";
+  color: grey;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.select-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.select-input {
+  margin-top: 0.5em;
+  border: none;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.favoris {
+  margin-left: 7em;
+  cursor: pointer
+
+}
+
+.favoris:hover {
+  background-color: rgba(255, 255, 255, 0.601);
+  border-radius: 20px;
+  color: #6560fb;
+
+}
+
+.projects-searchbar-container {
+  margin-left: 14rem;
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-searcbar-main-technos {
+  width:27%;
+  // padding: 0 0.5rem;
+}
+
+.projects-searcbar-main-title {
+  width:66.5%;
+}
+
+
+
+.projects-searchbar-init-search {
+  margin-left: 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.information_intro {
+  margin-right: 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.css-70qvj9 input {
+  border-radius: 0px 24px 24px 0px;
+  height: 2.65rem;
+  padding-left: 1rem;
+  color: rgb(117, 117, 117);
+  border: 1px solid #dfe1e5;
+}
+
+.css-70qvj9 input:focus {
+ outline: none;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  position: absolute;
+  right: 2.5rem;
+}
+
+.select_research {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 2rem;
+  font-size: 0.9em;
+  color: white;
+
+  &_click {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem;
+  }
+  &_click:hover {
+  color: #6560fb;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  }
+}
+
+.underline {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+ 
+
+@media screen and (width < 1830px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+}
+
+
+@media screen and (width < 1614px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-left: 5em;
+}
+.projects-searchbar-container {
+  margin-left: 10rem;
+}
+}
+
+@media screen and (width < 1300px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-left: 1em;
+}
+.projects-searchbar-container {
+  margin-left: 7rem;
+}
+}
+
+@media screen and (width < 1060px) {
+
+  .input-container {
+    width: 100%;
+   
+  }
+  .favoris {
+    margin-top: 0em;
+    margin-left: 0em;
+}
+.projects-searchbar-container {
+  margin-left: 3rem;
+  margin-bottom: 1em;
+}
+.display {
+  display: none;
+}
+}
+
+@media screen and (width < 905px) {
+
+  .input-container {
+    width: 80%;
+   
+  }
+  .favoris {
+    margin-top: 0em;
+}
+.projects-searchbar-container {
+  margin-left: 1rem;
+  margin-bottom: 1em;
+}
+.display {
+  display: none;
+}
+}
+
+
+
+
+// DARK MODE 
+
+#dark .favoris:hover {
+  background-color: #4f30ea76;
+  color:#249e9e;
+
+}
+
+#dark .select_research_click:hover {
+  background-color: #4f30ea76;
+  color:#249e9e;
+}

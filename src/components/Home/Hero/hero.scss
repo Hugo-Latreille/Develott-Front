@@ -1,0 +1,82 @@
+@use "./../../../styles/vars";
+
+.hero {
+	background-image: url("./../../../assets/images/hero-background55.png");
+	height: 85vh;
+	min-height: 600px;
+	background-position: center bottom;
+	background-size: cover;
+
+  &-container {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+	&-left {
+		width: 45%;
+		padding-right: 5rem;
+	}
+
+	&-right {
+		width: 48%;
+	}
+
+	&-title {
+		font-size: 2.5rem;
+		font-weight: bold;
+		color: white;
+		padding-bottom: 1rem;
+	}
+
+	&-baseline {
+		font-size: 1.2rem;
+		color: white;
+		margin-bottom: 4rem;
+		line-height: 1.4rem;
+	}
+
+	&-img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.main-button-bg-white a {
+	color: #8998F6;
+}
+
+.span-instance {
+	text-decoration: line-through;
+}
+
+@media screen and (width < 600px) {
+	.hero {
+		height: 90vh;
+		margin-bottom: 4rem;
+		&-container {
+			flex-wrap: wrap;
+		}
+
+    &-container {
+      flex-wrap: wrap;
+    }
+
+    &-left {
+      width: 100%;
+      padding-right: 0;
+    }
+
+
+		&-right {
+			width: 80%;
+			margin: 4rem auto 0 auto;
+		}
+
+		&-title {
+			padding-bottom: 1rem;
+		}
+	}
+}

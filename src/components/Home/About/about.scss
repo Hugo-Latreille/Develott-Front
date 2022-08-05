@@ -1,0 +1,56 @@
+@use "./../../../styles/vars";
+
+.about {
+  background-image: url("./../../../assets/images/home-blob-bg.png");
+  background-size: cover;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5rem 0;
+
+    &-card {
+      width: 26%;
+      height: 15rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+
+  &-img {
+    width: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &-title {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  &-subtitle {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  &-text {
+    color: grey;
+  }
+}
+
+@media screen and (width < 600px) {
+  .about {
+    &-container {
+    }
+    &-container-card {
+      width: 100%;
+    }
+  }
+}
+
+

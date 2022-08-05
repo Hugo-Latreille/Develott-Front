@@ -1,0 +1,35 @@
+.testimonial {
+  margin-top: 4rem;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+    color: white;
+
+    &-left {
+      width: 50%;
+      padding-right: 5rem;
+    }
+
+    &-right {
+      width: 50%;
+    }
+  }
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &-text {
+    padding-bottom: 4rem;
+    color: grey;
+  }
+}

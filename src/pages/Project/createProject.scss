@@ -1,0 +1,165 @@
+@use "./../../styles/vars";
+
+.create-project {
+  background-color: #fff;
+  min-height: 700px;
+  height: auto;
+  width:94%;
+  margin:3.5rem auto;
+
+  &-container {
+
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-title {
+    font-weight: lighter;
+    font-size: 1.4rem;
+    color: vars.$grey;
+    margin-bottom: 0.5rem;
+  }
+
+  &-desc {
+    padding-right: 2rem;
+    color: vars.$darkGrey;
+  }
+
+  &-left {
+    width: 24%;
+    border-right: solid 1px vars.$primaryColor;
+  }
+
+  &-step {
+    margin-bottom: 4rem;
+    color: vars.$grey;
+    cursor: pointer;
+  }
+
+  &-right {
+    width: 70%;
+    height: auto;
+    padding: 0rem;
+
+    &-container {
+      display: flex;
+
+      &-left {
+        width: 50%;
+      }
+      &-right .form-group-project {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.DraftEditor-editorContainer {
+  min-height: 10rem;
+}
+.public-DraftEditor-content {
+  max-height: 14rem;
+  overflow-y: scroll;
+  background-color: vars.$backgroundLight;
+  padding: 1rem 2rem 4rem 1rem;
+}
+
+.create-project-button {
+  width: 100%;
+}
+
+.step-active {
+  font-weight: bold;
+
+  & h2 {
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.step-inactive {
+  opacity: 0.7;
+}
+
+.project-create {
+  min-height: 100vh;
+  width: 96.4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-project-step-mobile {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+
+// DARK MDOE 
+
+#dark .create-project {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+
+  &-title {
+    color:white;
+  }
+
+  &-desc {
+    color:white;
+    font-weight: lighter;
+  }
+
+}
+
+#dark .project-information-form-dark {
+  & input {
+    background: #2A314C;
+    color:white;
+  }
+}
+
+#dark .form-group-project-label {
+  color:white;  
+}
+
+
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+  .create-project-left {
+    display: none;
+  }
+
+  .create-project-right {
+    width:95%;
+  }
+
+  .create-project-container {
+    padding: 0rem;
+    margin:1.5rem;
+  }
+
+  .create-project-step-mobile {
+    display: block;
+  }
+
+  .form-technologies-container {
+    height: auto !important;
+  }
+
+  .form-technologies-container-content {
+    width:100% !important;
+  }
+
+  .form-jobs-container-content {
+    width:100% !important;
+  }
+
+}

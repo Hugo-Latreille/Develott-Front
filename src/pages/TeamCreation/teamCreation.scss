@@ -1,0 +1,156 @@
+@use "./../../styles/vars";
+
+.team-creation {
+    background-color: rgba(0,0,0,0.4);
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position:absolute;
+    top:0;
+    z-index:1000;
+
+    &-container {
+        background-color: #fff;
+        width:40%;
+        margin:auto;
+        position: relative; 
+
+        &-header {
+            margin: 1rem ;
+            padding : 2rem ;
+            background: url('./../../assets/images/footer-bg2.png');
+            color:white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & h2 {
+                font-size: 1.2rem;
+                font-weight: normal;
+                margin: 0;
+            }
+        }
+
+        &-main {
+            margin : 3rem ;
+
+            & h3 {
+                margin-bottom: 2rem;
+            }
+
+            & input {
+                margin-bottom: 1rem;
+            }
+
+            & label {
+                margin-left: 1rem;
+            }
+
+            & button {
+                width:100%;
+                margin-top: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+   
+}
+
+.team-user-form-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    &-right {
+        color:grey;
+    }
+}
+
+.close-modal-button {
+    position : absolute;
+    top : -0.45rem;
+    right: -0.39rem;
+    background: vars.$linearGradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.team-creation-admin-form {
+    height:14rem;
+    overflow-y: scroll;
+
+    &-input-container {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    &-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+
+        & p {
+            font-weight: bolder;
+            margin:0;
+        }
+    }
+}
+
+.team-creation-container-main button:hover {
+    color: #23055e;
+    border: 2px solid #24085c;
+    transition: 2s ease-in-out linear;
+
+}
+
+// DARK MODE 
+
+#dark .team-creation-container-header {
+    background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+#dark .team-creation-container {
+    background: vars.$linearGradientDarkModeCards;
+    color: white;
+}
+
+#dark .close-modal-button {
+    background: #30cfd0;;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+    .team-creation-container {
+        width:85%;
+        margin:auto;
+
+
+    }
+
+    .team-user-form-input-container {
+        &-right {
+            width: 100%;
+            color:grey;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            margin-left: 2.5rem;
+        }
+
+        &-left {
+            width: 100%;
+        }
+    }
+}

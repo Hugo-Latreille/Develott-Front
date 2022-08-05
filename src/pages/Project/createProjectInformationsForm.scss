@@ -1,0 +1,56 @@
+.project-information-form-dark {
+    padding-right: 2rem;
+
+    & input {
+        margin-top: 0.5rem;
+    }
+}
+
+.create-project-inputs-container {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &-right {
+        width:65%;
+    }
+
+    &-left {
+        width:30%;
+    }
+}
+
+.project-create-avatar-img {
+    width:14rem;
+    height:9rem;
+    object-fit: cover;
+}
+
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+    .create-project-inputs-container {
+      &-left {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      &-right {
+        width: 100%;
+      }
+    }
+  
+}
+
+
+// DARK
+
+#dark .create-project-inputs-container {
+    & input {
+    background-color: #323c5a;
+    }
+}

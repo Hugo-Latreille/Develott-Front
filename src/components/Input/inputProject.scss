@@ -1,0 +1,18 @@
+@use "./../../styles/vars";
+
+.form-group-project {
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  &-label {
+    color: rgb(99, 99, 99);
+    font-size: 0.8rem;
+  }
+
+  &-input {
+    padding: 0.5rem;
+    background-color: #fff;
+    border: none;
+    border-bottom: solid 1px vars.$primaryColor;
+    width: 100%;
+  }
+}

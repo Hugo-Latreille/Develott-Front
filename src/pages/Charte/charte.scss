@@ -1,0 +1,16 @@
+@use "../../styles/vars";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap");
+
+.charte {
+  font-family: "Montserrat", sans-serif;
+  background-image: url("./../../assets/images/background-blob2.png");
+      background-size:auto;
+      background-position: center;
+      background-repeat: repeat;
+  
+}
+
+body {
+  background-color: vars.$backgroundLight ;
+
+}

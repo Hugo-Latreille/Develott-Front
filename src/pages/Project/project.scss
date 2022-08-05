@@ -1,0 +1,494 @@
+@use "./../../styles/vars";
+
+.project {
+  height: 100vh;
+  width: 93vw;
+  margin: 2rem ;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    &-left {
+      margin-right: 1rem;
+      width: 26vw;
+      height:92vh;
+      min-height:600px;
+      max-width: 400px;
+      background-color: #fff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    &-right {
+      width: 65vw !important;
+      height:92vh;
+      min-height:600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &-img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+
+    &-container {
+      position:relative;
+
+      &-edit-btn {
+        position:absolute;
+        top:0.5rem;
+        right:0.5rem;
+        background-color: #fff;
+        padding:0.5rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        color: vars.$primaryColor;
+        cursor: pointer;
+      }
+    }
+    
+  }
+
+  &-user {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+    &-avatar {
+      width:3rem;
+    }
+
+    &-name {
+      padding: 0.5rem 1rem;
+      text-decoration: underline;
+      margin-right: 3rem;
+    }
+
+    &-links {
+      display: flex;
+      justify-content: flex-end;
+
+      & p {
+        padding: 0 0.4rem;
+        color: vars.$grey;
+        cursor: pointer;
+      }
+
+      & p:hover {
+        color: rgb(87, 86, 86);
+      }
+    }
+  }
+
+  &-jobs {
+    padding: 0rem 2rem 0 2rem;
+
+    &-title-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    &-title {
+      width:80%;
+      margin-bottom: -1rem;
+    }
+
+    &-container {
+      margin-top: 1.5rem;
+
+      &-job {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    & p {
+      color: vars.$lightGrey;
+    }
+  }
+
+  &-dates {
+    padding: 1rem 2rem;
+  }
+
+  &-header {
+    background-color: hsl(234, 85%, 74%, 70%);
+    height:24vh;
+    min-height:100px;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem 1rem 2rem;
+    color:white;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+    &-left {
+      width:80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-title {
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+
+    &-short-desc {
+      font-weight: bolder;
+      margin-bottom: 0;
+    }
+  }
+
+  &-description {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    min-height:28vh ;
+    margin-bottom: 1rem;
+    overflow-y: scroll;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    &-see-more {
+      text-align: right;
+      color: vars.$primaryColor;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    &-title {
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+      font-size: 1.3rem;
+      width:90%;
+    }
+
+    &-subDesc {
+      margin-bottom: 1rem;
+    }
+
+    &-desc {
+      color: vars.$grey;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-technologies {
+    min-height:31vh ;
+    background-color: #fff;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+    &-title {
+      width: 100%;
+    }
+
+    &-languages {
+      width: 24%;
+
+      & h4 {
+        font-size: 1.2rem;
+        color: grey;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        padding: 0.5rem 1rem;
+
+        & i {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    &-frameworks {
+      width: 24%;
+
+      & h4 {
+        font-size: 1.2rem;
+        color: grey;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    &-database {
+      width: 24%;
+
+      & h4 {
+        font-size: 1.2rem;
+        color: grey;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        padding: 0.5rem 1rem;
+
+        & i {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    &-others {
+      width: 24%;
+
+      & h4 {
+        font-size: 1.2rem;
+        color: grey;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        padding: 0.5rem 1rem;
+
+        & i {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    &-edit {
+      width: 2%;
+    }
+  }
+}
+
+.project-texte-editor {
+  width:100%;
+  margin-right: 0;
+}
+
+.searchbar-project-container {
+  display: flex;
+
+}
+
+.validation-edit-btn {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.project-edit-img-container {
+  margin:4rem 2rem 7.75rem 2rem;
+}
+
+.project-edit-img-input {
+  background-color: vars.$backgroundLight;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.edit-btn-main {
+  color: vars.$primaryColor;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.technologies-icon-container2 {
+  background-color: vars.$backgroundLight;
+  display: flex;
+  align-items: center; 
+  border-radius: 5px 8px 8px 5px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  width:90%;
+
+ & i {
+    margin-right: 0.6rem;
+    color:white;
+    padding: 0.6rem 0.7rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+}
+
+.jobs-searchbar-container .input-container {
+  width: 100%;
+  margin-top: -4rem;
+}
+
+.project .project-jobs-container-job {
+  & p {
+    margin-top:0.8rem;
+    margin-bottom: 0;
+  }
+}
+
+.project-dates-inputs {
+  margin-bottom: 1rem;
+}
+
+
+@media screen and (width < 600px) {
+  .project {
+    height: auto;
+    margin:1rem 0;
+    width:90vw;
+  }
+  .project-container {
+    flex-wrap: wrap;
+
+    &-left {
+      width: 100%;
+      height: auto;
+    }
+
+    &-right {
+      min-width: 100% !important;
+      max-width: 100% !important;
+      height: auto;
+      margin: 2rem 0;
+      padding: 0;
+    }
+  }
+
+  .project-jobs {
+    width: 85%;
+
+
+  }
+
+  .project-dates {
+    width:85%;
+
+  }
+
+  .project-description {
+    // min-height: 50%;
+    margin-top: 2rem;
+
+    &-technologies {
+      flex-wrap: wrap;
+    }
+  }
+
+  .project-technologies {
+    height: auto;
+
+
+    &-languages {
+      width: 100%;
+    }
+
+    &-frameworks {
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    &-others {
+      margin-top: 2rem;
+      width: 100%;
+    }
+  }
+}
+
+.searchbar-project-page {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+// DARK MODE 
+
+#dark .dark-white {
+  color:white;
+}
+
+#dark .project {
+  color:white;
+}
+
+#dark .project-user {
+  & i {
+    color:white;
+  }
+}
+
+#dark .project-description {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-container-left {
+  background: vars.$linearGradientDarkModeCards;
+}
+
+#dark .project-technologies {
+  background: vars.$linearGradientDarkModeCards;
+  color:white;
+
+  & h4 {
+    color: white;
+  }
+}
+
+#dark .technologies-icon-container2 {
+  background: vars.$linearGradientDarkMode;
+}
+
+#dark .edit-btn-main {
+  color: #30cfd0;
+}
+
+#dark .project-header {
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+#dark .project-img-container-edit-btn {
+  color:white;
+  background: linear-gradient(to top left ,  #219898b0, #24085c  );
+}
+
+
+#dark .project-description-see-more {
+  color: #30cfd0;
+}
+
+#dark .project-description-desc {
+  color:rgba(255, 255, 255, 0.852);
+}
+
+#dark .technologies-icon-container2 {
+  // width:100%;
+}
+
+#dark .project {
+
+  & a {
+    color:white;
+  }
+}
+
+#dark .main-button-bg-white {
+  background: vars.$linearGradient;
+}
