@@ -390,6 +390,21 @@
     }
   }
 
+  .project-header {
+    height: auto !important;
+    padding: 2rem ;
+
+    &-left {
+      margin-bottom: 3rem;
+    }
+
+    &-right {
+      & a {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
   .project-jobs {
     width: 85%;
 
