@@ -17,6 +17,7 @@ function TeamCreationUserForm({
 	projectId,
 	candidates,
 	projectTeam,
+	participants,
 }) {
 	const { userJobChoice } = useSelector((state) => state.teamCreation);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
@@ -71,21 +72,21 @@ function TeamCreationUserForm({
 		return count;
 	};
 
-	const countCandidatesSameJob = (jobId) => {
+	const countParticipantsSameJob = (jobId) => {
 		const count = {};
-		candidates?.forEach((candidate) => {
-			if (candidate.job_id === jobId) {
-				var key = JSON.stringify(candidate.job_id);
+		participants?.forEach((participant) => {
+			if (participant.job_id === jobId) {
+				var key = JSON.stringify(participant.job_id);
 				count[key] = (count[key] || 0) + 1;
 			}
 		});
 		return count;
 	};
-	// console.log(countCandidatesSameJob(2));
-	// console.log(countDuplicates(2));
+	console.log(countParticipantsSameJob(2));
+	console.log(countDuplicates(2));
 
-	const checkHowManyCandidatesPerDuplicate = (jobId) => {
-		const candidatesSameJob = countCandidatesSameJob(jobId);
+	const checkHowManyParticipantsPerDuplicate = (jobId) => {
+		const candidatesSameJob = countParticipantsSameJob(jobId);
 		const howManySameJob = countDuplicates(jobId);
 
 		if (Object.keys(candidatesSameJob).length === 0) {
@@ -103,7 +104,7 @@ function TeamCreationUserForm({
 			}
 		}
 	};
-	console.log(checkHowManyCandidatesPerDuplicate(8));
+	console.log(checkHowManyParticipantsPerDuplicate(2));
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(
@@ -139,14 +140,15 @@ function TeamCreationUserForm({
 					key={job.id_project_has_job}
 					onChange={(e) => dispatch(setUserChoice(e.target.value))}
 				>
-					{!jobAlreadyHasParticipant(job.job_id) ? (
+					{checkHowManyParticipantsPerDuplicate(job.job_id)[job.job_id] &&
+					checkHowManyParticipantsPerDuplicate(job.job_id)[job.job_id] !== 0 ? (
 						<>
 							<input type="radio" name="selectJob" value={job.job_id} />
 							<label>{job.job}</label>
 							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
-							{checkHowManyCandidatesPerDuplicate(job.job_id) && (
+							{checkHowManyParticipantsPerDuplicate(job.job_id) && (
 								<div>
-									{checkHowManyCandidatesPerDuplicate(job.job_id)[job.job_id]}
+									{checkHowManyParticipantsPerDuplicate(job.job_id)[job.job_id]}
 									place(s) restante(s)
 								</div>
 							)}
