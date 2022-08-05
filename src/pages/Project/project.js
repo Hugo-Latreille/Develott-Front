@@ -97,6 +97,11 @@ function Project() {
 			(participant) => participant.job === jobName
 		);
 	};
+
+	const doesJobHaveCandidates = projectTeam?.filter(
+		(candidate) => candidate.role === "candidates"
+	);
+
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
@@ -507,17 +512,23 @@ function Project() {
 											</Link>
 										)
 									) : isUserProjectAdmin ? (
-										<Link
-											to={`/postuler`}
-											state={{ background: location }}
-											onClick={() => {
-												dispatch(toggleTeamCreationModalOpen());
-												dispatch(setProjectId(projectId));
-											}}
-											className="main-button-bg-white"
-										>
-											Valider <i className="far fa-rocket"></i>
-										</Link>
+										doesJobHaveCandidates.length === 0 ? (
+											<div className="main-button-bg-white">
+												Aucun postulant
+											</div>
+										) : (
+											<Link
+												to={`/postuler`}
+												state={{ background: location }}
+												onClick={() => {
+													dispatch(toggleTeamCreationModalOpen());
+													dispatch(setProjectId(projectId));
+												}}
+												className={"main-button-bg-white"}
+											>
+												Sélectionner l'équipe <i className="far fa-rocket"></i>
+											</Link>
+										)
 									) : (
 										<Link
 											to={`/postuler`}
