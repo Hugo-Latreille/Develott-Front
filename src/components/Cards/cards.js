@@ -10,15 +10,16 @@ import moment from "moment/min/moment-with-locales";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import { useDispatch } from "react-redux";
 import {
-	addToFavorites,
-	setFavorites,
-	removeFromFavorites,
+  addToFavorites,
+  setFavorites,
+  removeFromFavorites,
 } from "./../../pages/App/appSlice";
 import { useGetOneUserQuery } from "./../../pages/Profiles/userAPISlice";
 import { useEffect } from "react";
 import Skeleton from "./../Skeletron/skeleton";
 
 function ProjectList() {
+
 	const dispatch = useDispatch();
 
 	const { searchTechnology, searchJob, searchProjectName, searchDate } =
@@ -362,6 +363,7 @@ function ProjectList() {
 				))}
 		</div>
 	);
+
 }
 
 export default ProjectList;

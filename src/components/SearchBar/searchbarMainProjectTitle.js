@@ -7,6 +7,7 @@ import { setSearchProjectName } from "./searchbarSlice";
 import { useGetAllProjectsQuery } from "./../../pages/Projects/projectsAPISlice";
 
 function SearchbarMainProjectTitle() {
+
 	const dispatch = useDispatch();
 
 	const { data: projectsTeams } = useGetAllProjectsQuery();
@@ -49,6 +50,7 @@ function SearchbarMainProjectTitle() {
 			/>
 		</div>
 	);
+
 }
 
 export default SearchbarMainProjectTitle;

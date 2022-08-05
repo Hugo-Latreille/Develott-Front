@@ -92,6 +92,11 @@
   align-items: center;
 }
 
+.create-project-step-mobile {
+  display: none;
+  margin-bottom: 1rem;
+}
+
 
 // DARK MDOE 
 
@@ -119,4 +124,42 @@
 
 #dark .form-group-project-label {
   color:white;  
+}
+
+
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+  .create-project-left {
+    display: none;
+  }
+
+  .create-project-right {
+    width:95%;
+  }
+
+  .create-project-container {
+    padding: 0rem;
+    margin:1.5rem;
+  }
+
+  .create-project-step-mobile {
+    display: block;
+  }
+
+  .form-technologies-container {
+    height: auto !important;
+  }
+
+  .form-technologies-container-content {
+    width:100% !important;
+  }
+
+  .form-jobs-container-content {
+    width:100% !important;
+  }
+
 }

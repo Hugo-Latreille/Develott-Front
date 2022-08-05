@@ -15,6 +15,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         &-titles {
@@ -258,6 +259,7 @@
 
 @media screen and (width < 600px) {
     .dashboard {
+        width:80%;
         margin:0;
         padding:0rem;
         &-main {
@@ -267,6 +269,10 @@
         &-right {
             width: 100%;
         }
+    }
+
+    .dashboard .project-technologies-database {
+        width:100%;
     }
 
     .dashboard-main-navigation  {
@@ -295,6 +301,19 @@
 
         &-links {
             width: 100%;
+        }
+    }
+
+    .dashboard-main {
+
+        &-header-titles {
+            width: 100%;
+        }
+
+        &-cta {
+            width:100%;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
     }
   }

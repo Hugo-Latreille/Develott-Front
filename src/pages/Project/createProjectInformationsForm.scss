@@ -28,6 +28,27 @@
 }
 
 
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+    .create-project-inputs-container {
+      &-left {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      &-right {
+        width: 100%;
+      }
+    }
+  
+}
+
+
+// DARK
+
 #dark .create-project-inputs-container {
     & input {
     background-color: #323c5a;

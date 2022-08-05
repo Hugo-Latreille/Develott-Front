@@ -59,6 +59,17 @@
    
 }
 
+.team-user-form-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    &-right {
+        color:grey;
+    }
+}
+
 .close-modal-button {
     position : absolute;
     top : -0.45rem;
@@ -113,4 +124,33 @@
     background: #30cfd0;;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+    .team-creation-container {
+        width:85%;
+        margin:auto;
+
+
+    }
+
+    .team-user-form-input-container {
+        &-right {
+            width: 100%;
+            color:grey;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            margin-left: 2.5rem;
+        }
+
+        &-left {
+            width: 100%;
+        }
+    }
 }

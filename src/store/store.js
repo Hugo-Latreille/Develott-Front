@@ -11,6 +11,7 @@ import dashboardSlice from "../pages/Dashboard/dashboardSlice";
 import teamCreationSlice from "../pages/TeamCreation/teamCreationSlice";
 import modalSlice from "../components/Modal-Charte/modalSlice";
 import searchbarSlice from "../components/SearchBar/searchbarSlice";
+import sidebarSlice from "../components/SideBar/sidebarSlice";
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     teamCreation: teamCreationSlice,
     modal: modalSlice,
     searchbar: searchbarSlice,
+    sidebarintro: sidebarSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(

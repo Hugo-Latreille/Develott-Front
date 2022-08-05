@@ -35,6 +35,13 @@ function CreateProjectJobsForm() {
 
   return (
     <div className="form-jobs">
+      <div className="create-project-step-mobile step-active">
+        <h2 className="create-project-title">Profils recherchés</h2>
+        <p className="create-project-desc p-light">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt.
+        </p>
+      </div>
       <SearchBarJobs className="project-from-searchbar" />
       <span className="form-jobs-disclaimer">
         Veuillez renseigner les profils recherchés pour constituer votre équipe
