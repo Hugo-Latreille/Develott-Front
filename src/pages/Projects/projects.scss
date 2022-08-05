@@ -4,11 +4,15 @@
 .projects {
   font-family: "Montserrat", sans-serif;
   background-color: vars.$backgroundLight;
+  width:100vw;
+  margin:0;
 
   &_hero {
     background-image: url("./../../assets/images/hero-background55.png");
     height: 80vh;
     background-position: center bottom;
+    background-size: 120%;
+    background-repeat: no-repeat;
   }
 }
 
@@ -19,4 +23,14 @@
     background-color: vars.$linearGradientDarkMode;
     background-image: none;
   }
+}
+
+
+
+
+@media screen and (width < 1600px) {
+
+
+
+
 }

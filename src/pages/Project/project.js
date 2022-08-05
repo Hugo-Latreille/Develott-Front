@@ -416,12 +416,14 @@ function Project() {
               {displayEditDates && (
                 <div className="project-dates">
                   <div className="project-dates-inputs">
+
                     <span className="hour_modifstart hour_style">
                       Date de début
                     </span>
                     <span className="hour_modifend hour_style">
                       Date de fin
                     </span>
+
                     <LocalizationProvider
                       dateAdapter={AdapterMoment}
                       adapterLocale="fr"
@@ -442,6 +444,7 @@ function Project() {
                             start_date: newValue._d,
                           });
                         }}
+
                         // renderInput={(params) => <TextField {...params} />}
                         renderInput={({ inputRef, inputProps, InputProps }) => (
                           <Box
@@ -455,6 +458,7 @@ function Project() {
                             {InputProps?.endAdornment}
                           </Box>
                         )}
+
                       />
                     </LocalizationProvider>
                   </div>
@@ -478,6 +482,7 @@ function Project() {
                             end_date: newValue._d,
                           });
                         }}
+
                         // renderInput={(params) => <TextField {...params} />}
                         renderInput={({ inputRef, inputProps, InputProps }) => (
                           <Box
@@ -491,6 +496,7 @@ function Project() {
                             {InputProps?.endAdornment}
                           </Box>
                         )}
+
                       />
                     </LocalizationProvider>
                   </div>

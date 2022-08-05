@@ -2,7 +2,7 @@
 
 .project {
   height: 100vh;
-  width: 93vw;
+  width: 96vw;
   margin: 2rem ;
   background-size: cover;
   background-position: center;
@@ -348,6 +348,7 @@
   margin-bottom: 1rem;
 }
 
+
 .hour_modifstart {
   position: absolute;
   top: -0.5rem;
@@ -366,13 +367,32 @@
   padding-right: 0.2rem;
     padding-left: 0.2rem;
     z-index: 1;
+
+.searchbar-project-page {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+// RESPONSIVE
+
+
+@media screen and (width < 1600px) {
+
+  .project {
+    width:93vw;
+  }
+
+
+
 }
 
 
 @media screen and (width < 600px) {
   .project {
     height: auto;
-    margin:1rem 0;
+    margin: 0;
     width:90vw;
   }
   .project-container {
@@ -392,10 +412,23 @@
     }
   }
 
+  .project-header {
+    height: auto !important;
+    padding: 2rem ;
+
+    &-left {
+      margin-bottom: 3rem;
+    }
+
+    &-right {
+      & a {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
   .project-jobs {
     width: 85%;
-
-
   }
 
   .project-dates {
@@ -429,13 +462,18 @@
       margin-top: 2rem;
       width: 100%;
     }
+
+    &-database {
+      margin-top: 2rem;
+      width: 100%;
+    }
   }
 }
 
-.searchbar-project-page {
-  margin-top: -1rem;
-  margin-bottom: 1rem;
-}
+
+
+
+
 
 
 
