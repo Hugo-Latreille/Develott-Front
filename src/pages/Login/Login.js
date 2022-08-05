@@ -10,7 +10,7 @@ function Login({ onSubmit }) {
 	const dispatch = useDispatch();
 
 	const github = () => {
-		window.open("http://localhost:3001/v1/auth/github", "_self");
+		window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
 	};
 
 	const { email, password, passwordVisibility } = useSelector(
