@@ -39,12 +39,12 @@ function TeamCreationUserForm({
 		({ job }, index) => !jobNames.includes(job, index + 1)
 	);
 
-	const jobAlreadyHasParticipant = (jobId) => {
-		return projectTeam?.some(
-			(participant) =>
-				participant.job_id === jobId && participant.role === "participants"
-		);
-	};
+	// const jobAlreadyHasParticipant = (jobId) => {
+	// 	return projectTeam?.some(
+	// 		(participant) =>
+	// 			participant.job_id === jobId && participant.role === "participants"
+	// 	);
+	// };
 
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId

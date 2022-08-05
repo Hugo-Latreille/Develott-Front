@@ -89,6 +89,11 @@ function Project() {
 	const isUserCandidate = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "candidates"
 	);
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+	// const isUserProjectAdmin = true;
+
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -114,13 +119,14 @@ function Project() {
 		if (isUserCandidate && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
-	}, [
-		teamModalIsOpen,
-		isProjectComplete,
-		isUserParticipant,
-		isUserCandidate,
-		projectWithTeam,
-	]);
+		if (
+			doesJobHaveCandidates?.length > 0 &&
+			isUserProjectAdmin &&
+			teamModalIsOpen === false
+		) {
+			toast.info("Un candidat en attente de validation");
+		}
+	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
@@ -237,11 +243,6 @@ function Project() {
 			})
 		);
 	};
-
-	const isUserProjectAdmin = projectTeam?.some(
-		(team) => team.customer_id === user?.id && team.role === "admin"
-	);
-	// const isUserProjectAdmin = true;
 
 	return (
 		<>
@@ -513,9 +514,7 @@ function Project() {
 										)
 									) : isUserProjectAdmin ? (
 										doesJobHaveCandidates.length === 0 ? (
-											<div className="main-button-bg-white">
-												Aucun postulant
-											</div>
+											<div className="main-button-bg-white">Aucun candidat</div>
 										) : (
 											<Link
 												to={`/postuler`}
