@@ -113,6 +113,12 @@
     font-weight: lighter;
   }
 
+  &-inputs-container {
+    & input {
+      color:white;
+    }
+  }
+
 }
 
 #dark .project-information-form-dark {
