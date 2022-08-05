@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import ReactTooltip from "react-tooltip";
-import { FaProjectDiagram, FaPlusSquare, FaGamepad } from "react-icons/fa";
+import { FaProjectDiagram, FaPlusSquare } from "react-icons/fa";
+import { BiGame } from "react-icons/bi";
 import { MdMessage, MdOutlineLogout } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
@@ -8,7 +9,7 @@ import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import "intro.js/introjs.css";
-// import { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
@@ -17,8 +18,7 @@ import { setDisplayDarkMode } from "../../pages/App/appSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import { toggleOpenIntro } from "./sidebarSlice";
 
-// import { Steps } from "intro.js-react";
-// import { useState } from "react";
+import { Steps } from "intro.js-react";
 
 const routes = [
   {
@@ -41,14 +41,14 @@ const routes = [
   },
   {
     path: "/game",
-    name: "Game",
-    icon: <FaGamepad />,
-    tooltip: "Game",
+    name: "Detente",
+    icon: <BiGame />,
+    tooltip: "Detente",
   },
 ];
 
 function Sidebar({ children, isVisible }) {
-  // const introIsOpen = useSelector((state) => state.sidebarintro.introIsOpen);
+  const introIsOpen = useSelector((state) => state.sidebarintro.introIsOpen);
   const isOpen = useSelector((state) => state.app.sideBarIsOpen);
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
   const dispatch = useDispatch();
@@ -56,62 +56,62 @@ function Sidebar({ children, isVisible }) {
   const { email } = useSelector((state) => state.auth);
   const { data: user } = useGetOneUserQuery(email);
 
-  // const [initialStep, setInitialStep] = useState(0);
+  const [initialStep, setInitialStep] = useState(0);
 
-  // const onExit = () => {
-  //   dispatch(toggleOpenIntro());
-  // };
-  // const steps = [
-  //   {
-  //     element: "#intromain",
-  //     intro:
-  //       "Bienvenue sur Develott ! Nous sommes heureux de te connaitre. Suis moi, je vais t'expliquer comment ça marche...",
-  //     position: "center",
-  //   },
-  //   {
-  //     element: "#sideok",
-  //     intro:
-  //       "Ici c'est votre Sidebar elle est cool hein ? Elle deviendra vite votre meilleure amie. Tu y retrouveras tous les liens utiles. Utilise notre logo pour l'ouvrir ou la fermer.",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#step-0",
-  //     intro:
-  //       "Voici le Dashboard, quand tu auras rejoint un projet il te permettra de retrouver toutes les infos utiles à la bonne réalisation de votre application (qui va revolutionner le monde, on croise les doigts !)",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#step-1",
-  //     intro:
-  //       "Ici, tu retouveras tous les projets proposés par notre IMMENSE communauté. Y'a le choix, choisis le bien et postule (qui ne tente rien..)",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#step-2",
-  //     intro:
-  //       "Là c'est la création de projet. Tu as des idées, l'âme d'un artiste ou l'envie de progresser ? Crée ton projet, choisis ton équipe et fais de tes réves une réalité (on croit en toi !)",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#step-3",
-  //     intro:
-  //       "Ah ! Besoin de décompresser ? ou juste d'attendre que ton équipe soit connectée ? Detend toi avec notre jeu Snake fait maison",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#profil",
-  //     intro:
-  //       "Ici tu retrouveras ton profil, tu peux ajouter ou modifier ta photo de profil, ta description et tes liens personnels. C'est ta petite bulle à toi !",
-  //     position: "right",
-  //   },
-  //   {
-  //     element: "#navbar",
-  //     intro:
-  //       "On à bientôt fini...  Utilise cette barre de recherche pour trouver des projets en fonction de plusieurs critéres (Technologies / Metier / Date) ou par titre de projet. Hésite pas à ajouter tes projets préférés en Favoris pour les retrouver facilement... C'est tout pour moi ! Bienvenue dans l'équipe de Develott",
-  //     position: "center",
-  //   },
-  //   // "Ah ! la messagerie instantanée de Develott, envoi des messages à d'autres utilisateurs ou à ton groupe de projet. Le top du top pour rester en contact avec ton équipe",
-  // ];
+  const onExit = () => {
+    dispatch(toggleOpenIntro());
+  };
+  const steps = [
+    {
+      element: "#intromain",
+      intro:
+        "Bienvenue sur Develott ! Nous sommes heureux de te connaitre. Suis moi, je vais t'expliquer comment ça marche...",
+      position: "center",
+    },
+    {
+      element: "#sideok",
+      intro:
+        "Ici c'est votre Sidebar elle est cool hein ? Elle deviendra vite votre meilleure amie. Tu y retrouveras tous les liens utiles. Utilise notre logo pour l'ouvrir ou la fermer.",
+      position: "right",
+    },
+    {
+      element: "#step-0",
+      intro:
+        "Voici le Dashboard, quand tu auras rejoint un projet il te permettra de retrouver toutes les infos utiles à la bonne réalisation de votre application (qui va revolutionner le monde, on croise les doigts !)",
+      position: "right",
+    },
+    {
+      element: "#step-1",
+      intro:
+        "Ici, tu retouveras tous les projets proposés par notre IMMENSE communauté. Y'a le choix, choisis le bien et postule (qui ne tente rien..)",
+      position: "right",
+    },
+    {
+      element: "#step-2",
+      intro:
+        "Là c'est la création de projet. Tu as des idées, l'âme d'un artiste ou l'envie de progresser ? Crée ton projet, choisis ton équipe et fais de tes réves une réalité (on croit en toi !)",
+      position: "right",
+    },
+    {
+      element: "#step-3",
+      intro:
+        "Ah ! Besoin de décompresser ? ou juste d'attendre que ton équipe soit connectée ? Detend toi avec notre jeu Snake fait maison",
+      position: "right",
+    },
+    {
+      element: "#profil",
+      intro:
+        "Ici tu retrouveras ton profil, tu peux ajouter ou modifier ta photo de profil, ta description et tes liens personnels. C'est ta petite bulle à toi !",
+      position: "right",
+    },
+    {
+      element: "#navbar",
+      intro:
+        "On à bientôt fini...  Utilise cette barre de recherche pour trouver des projets en fonction de plusieurs critéres (Technologies / Metier / Date) ou par titre de projet. Hésite pas à ajouter tes projets préférés en Favoris pour les retrouver facilement... C'est tout pour moi ! Bienvenue dans l'équipe de Develott",
+      position: "center",
+    },
+    // "Ah ! la messagerie instantanée de Develott, envoi des messages à d'autres utilisateurs ou à ton groupe de projet. Le top du top pour rester en contact avec ton équipe",
+  ];
 
   const handleLogout = async () => {
     await userLogout();
@@ -187,12 +187,12 @@ function Sidebar({ children, isVisible }) {
   };
   return (
     <div className="sidebar_container">
-      {/* <Steps
+      <Steps
         enabled={introIsOpen}
         steps={steps}
         initialStep={initialStep}
         onExit={onExit}
-      /> */}
+      />
       <motion.div
         id="sideok"
         key="main_side"
