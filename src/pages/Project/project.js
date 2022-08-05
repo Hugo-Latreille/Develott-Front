@@ -99,7 +99,7 @@ function Project() {
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
-		if (isProjectComplete && teamModalIsOpen === false) {
+		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
 			toast.info("Ce projet est complet");
 		}
 		if (isUserParticipant && teamModalIsOpen === false) {

@@ -38,11 +38,6 @@ function TeamCreationUserForm({
 		({ job }, index) => !jobNames.includes(job, index + 1)
 	);
 
-	console.log(projectsTeams?.teams);
-	console.log(projectJobs);
-	console.log(filterJobs);
-	console.log(candidates);
-
 	const jobAlreadyHasParticipant = (jobId) => {
 		return projectTeam?.some(
 			(participant) =>
@@ -50,25 +45,46 @@ function TeamCreationUserForm({
 		);
 	};
 
-	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job
-	//TODO : on compte et on calcul combien de place reste.
-	//TODO :
-	//TODO :
-	//TODO : TOAST : si un candidat, afficher toast
-
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
 
+	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job
+	//TODO : on compte et on calcul combien de place reste.
+	//TODO :
+	//TODO :
+	//TODO : TOAST : si un candidat, afficher toast+
+
+	// console.log(projectsTeams?.teams);
+	console.log(projectJobs);
+	console.log(filterJobs);
+	console.log(candidates);
+
 	const countDuplicates = () => {
 		const count = {};
-		projectJobs.forEach((element) => {
-			var key = JSON.stringify(element.job);
+		projectJobs?.forEach((element) => {
+			var key = JSON.stringify(element.job_id);
 			count[key] = (count[key] || 0) + 1;
 		});
 		return count;
 	};
 
+	const checkDuplicateStillAvailable = () => {
+		let count = [];
+		const duplicates = countDuplicates();
+
+		candidates.forEach((candidate) => {
+			for (const duplicate in duplicates) {
+				console.log(`${duplicate}: ${duplicates[duplicate]}`);
+				if (Number(duplicate) === candidate.job_id) {
+					count.push({ [duplicate]: duplicates[duplicate] - 1 });
+				}
+			}
+		});
+
+		return count;
+	};
+	console.log(checkDuplicateStillAvailable());
 	console.log(countDuplicates());
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
