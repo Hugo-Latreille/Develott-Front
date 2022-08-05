@@ -28,6 +28,8 @@ import TeamCreation from "../TeamCreation/teamCreation";
 import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
 
+import Game from "../../components/Game/game";
+
 function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -90,6 +92,7 @@ function App() {
                 <Route path="profil/:profilId" element={<Profil />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
+                <Route path="game" element={<Game />} />
                 <Route path="500" element={<Loader1 />} />
               </Route>
               <Route
