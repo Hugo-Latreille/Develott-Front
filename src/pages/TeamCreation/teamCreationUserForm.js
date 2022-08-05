@@ -28,7 +28,7 @@ function TeamCreationUserForm({
 	const isUserAlreadyParticipant = projectsTeams?.teams.some(
 		(team) => team?.customer_id === userId && team?.role === "participants"
 	);
-	console.log(projectsTeams?.teams);
+
 	const isThereCandidates = (jobId) => {
 		return candidates?.filter((candidate) => candidate.job_id === jobId).length;
 	};
@@ -38,15 +38,27 @@ function TeamCreationUserForm({
 		({ job }, index) => !jobNames.includes(job, index + 1)
 	);
 
+	console.log(projectsTeams?.teams);
+	console.log(projectJobs);
+	console.log(filterJobs);
+	console.log(candidates);
+
 	const jobAlreadyHasParticipant = (jobId) => {
 		return projectTeam?.some(
 			(participant) =>
 				participant.job_id === jobId && participant.role === "participants"
 		);
 	};
+
+	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job !==
+	//TODO : on compte et on calcul combien de place reste.
+	//TODO :
+	//TODO :
+
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
+
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(
 	// 		(projectJob) => projectJob.id_project_has_job === idProjectHasJob

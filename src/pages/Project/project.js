@@ -99,16 +99,22 @@ function Project() {
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
-		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
+		if (isProjectComplete && teamModalIsOpen === false) {
 			toast.info("Ce projet est complet");
 		}
-		if (!isLoading && isUserParticipant && teamModalIsOpen === false) {
+		if (isUserParticipant && teamModalIsOpen === false) {
 			toast.success("Vous avez été sélectionné pour participer à ce projet");
 		}
-		if (!isLoading && isUserCandidate && teamModalIsOpen === false) {
+		if (isUserCandidate && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
 		}
-	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
+	}, [
+		teamModalIsOpen,
+		isProjectComplete,
+		isUserParticipant,
+		isUserCandidate,
+		projectWithTeam,
+	]);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
