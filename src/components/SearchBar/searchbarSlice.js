@@ -18,7 +18,7 @@ export const searchbarSlice = createSlice({
       state.searchJob = action.payload;
     },
     setSearchProjectName: (state, action) => {
-      state.searchJob = action.payload;
+      state.searchProjectName = action.payload;
     },
     setSearchProjectDate: (state, action) => {
       state.searchDate = action.payload;
