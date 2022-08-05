@@ -1,6 +1,6 @@
 import {
-  useAddUserRoleMutation,
-  useUpdateUserMutation,
+	useAddUserRoleMutation,
+	useUpdateUserMutation,
 } from "../Profiles/userAPISlice";
 import "./teamCreation.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,19 +12,18 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function TeamCreationUserForm({
-  projectJobs,
-  userId,
-  projectId,
-  candidates,
-  projectTeam,
+	projectJobs,
+	userId,
+	projectId,
+	candidates,
+	projectTeam,
 }) {
-  const { userJobChoice } = useSelector((state) => state.teamCreation);
-  const { data: projectsTeams } = useGetAllProjectsQuery();
-  const [userIsCandidate] = useAddUserRoleMutation();
-  const [changeUserJob] = useUpdateUserMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+	const { userJobChoice } = useSelector((state) => state.teamCreation);
+	const { data: projectsTeams } = useGetAllProjectsQuery();
+	const [userIsCandidate] = useAddUserRoleMutation();
+	const [changeUserJob] = useUpdateUserMutation();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const isUserAlreadyParticipant = projectsTeams?.teams.some(
 		(team) => team?.customer_id === userId && team?.role === "participants"
@@ -96,12 +95,11 @@ function TeamCreationUserForm({
 				</div>
 			))}
 
-
-      <button type="submit" className="main-button-bg-colored">
-        Postuler <i className="far fa-rocket"></i>
-      </button>
-    </form>
-  );
+			<button type="submit" className="main-button-bg-colored">
+				Postuler <i className="far fa-rocket"></i>
+			</button>
+		</form>
+	);
 }
 
 export default TeamCreationUserForm;
