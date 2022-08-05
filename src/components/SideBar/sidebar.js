@@ -117,6 +117,7 @@ function Sidebar({ children, isVisible }) {
 		dispatch(logOut());
 	};
 
+
 	const showAnimation = {
 		hidden: {
 			width: 0,
