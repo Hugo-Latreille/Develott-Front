@@ -144,6 +144,11 @@ function CreateProjectInformationsForm() {
           )}
         </div>
       </div>
+      <div className="hour_container">
+        <span className="hour_start hour_style">Date de début</span>
+        <span className="hour_end hour_style">Date de fin</span>
+      </div>
+
       <div className="create-project-right-container">
         <InputProject
           name="start_date"
