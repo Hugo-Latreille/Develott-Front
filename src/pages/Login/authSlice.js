@@ -11,6 +11,8 @@ const initialState = {
 	isLoggingActive: true,
 	token: "",
 	loggingModalOpen: false,
+	passwordVisibility: false,
+	registerPasswordVisibility: false,
 };
 
 export const authSlice = createSlice({
@@ -44,6 +46,12 @@ export const authSlice = createSlice({
 		toggleLoggingModalOpen: (state) => {
 			state.loggingModalOpen = !state.loggingModalOpen;
 		},
+		togglePasswordVisibility: (state) => {
+			state.passwordVisibility = !state.passwordVisibility;
+		},
+		toggleRegisterVisibility: (state) => {
+			state.registerPasswordVisibility = !state.registerPasswordVisibility;
+		},
 	},
 });
 
@@ -55,6 +63,8 @@ export const {
 	setCredentials,
 	logOut,
 	toggleLoggingModalOpen,
+	togglePasswordVisibility,
+	toggleRegisterVisibility,
 } = authSlice.actions;
 
 export default authSlice.reducer;

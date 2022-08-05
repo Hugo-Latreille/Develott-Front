@@ -9,6 +9,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "moment/locale/fr";
 
+import "intro.js/introjs.css";
+
 import { toggleShowFavorites } from "../../pages/App/appSlice";
 import { toggleOpenIntro } from "../SideBar/sidebarSlice";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";

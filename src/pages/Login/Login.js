@@ -1,15 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Input from "../../components/Input/Input";
 import "./login.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
+import { togglePasswordVisibility } from "./authSlice";
 
 function Login({ onSubmit }) {
+	const dispatch = useDispatch();
+
 	const github = () => {
 		window.open("http://localhost:3001/v1/auth/github", "_self");
 	};
 
-	const { email, password } = useSelector((state) => state.auth);
+	const { email, password, passwordVisibility } = useSelector(
+		(state) => state.auth
+	);
 
 	return (
 		<div className="login-container">
@@ -28,9 +34,16 @@ function Login({ onSubmit }) {
 							name="password"
 							value={password}
 							label="Mot de passe"
-							type="password"
+							type={passwordVisibility ? "text" : "password"}
 							required={true}
 						/>
+					</div>
+					<div onClick={() => dispatch(togglePasswordVisibility())}>
+						{passwordVisibility ? (
+							<MdOutlineVisibility />
+						) : (
+							<MdOutlineVisibilityOff />
+						)}
 					</div>
 				</div>
 				<div className="login-form-buttons">
