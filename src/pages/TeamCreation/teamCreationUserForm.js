@@ -50,14 +50,26 @@ function TeamCreationUserForm({
 		);
 	};
 
-	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job !==
+	//TODO : s'il y a plusieurs fois le même nom de filterJobs dans projectsJobs avec des id_project_has_job
 	//TODO : on compte et on calcul combien de place reste.
 	//TODO :
 	//TODO :
+	//TODO : TOAST : si un candidat, afficher toast
 
 	const userAlreadyCandidate = candidates?.some(
 		(candidate) => candidate.customer_id === userId
 	);
+
+	const countDuplicates = () => {
+		const count = {};
+		projectJobs.forEach((element) => {
+			var key = JSON.stringify(element.job);
+			count[key] = (count[key] || 0) + 1;
+		});
+		return count;
+	};
+
+	console.log(countDuplicates());
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(
