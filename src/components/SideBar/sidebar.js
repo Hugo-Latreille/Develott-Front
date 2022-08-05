@@ -184,14 +184,19 @@ function Sidebar({ children, isVisible }) {
       },
     },
   };
+
+  console.log(window.location.pathname);
+
   return (
     <div className="sidebar_container">
-      <Steps
-        enabled={introIsOpen}
-        steps={steps}
-        initialStep={initialStep}
-        onExit={onExit}
-      />
+      {window.location.pathname === "/projets" && (
+        <Steps
+          enabled={introIsOpen}
+          steps={steps}
+          initialStep={initialStep}
+          onExit={onExit}
+        />
+      )}
       <motion.div
         id="sideok"
         key="main_side"
