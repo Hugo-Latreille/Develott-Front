@@ -56,36 +56,50 @@ function TeamCreationUserForm({
 	//TODO : TOAST : si un candidat, afficher toast+
 
 	// console.log(projectsTeams?.teams);
-	console.log(projectJobs);
-	console.log(filterJobs);
-	console.log(candidates);
+	// console.log(projectJobs);
+	// console.log(filterJobs);
+	// console.log(candidates);
 
 	const countDuplicates = () => {
 		const count = {};
 		projectJobs?.forEach((element) => {
+			// if (element.job_id === jobId) {
 			var key = JSON.stringify(element.job_id);
+			count[key] = (count[key] || 0) + 1;
+			// }
+		});
+		return count;
+	};
+
+	const countCandidatesSameJob = () => {
+		const count = {};
+		candidates?.forEach((candidate) => {
+			var key = JSON.stringify(candidate.job_id);
 			count[key] = (count[key] || 0) + 1;
 		});
 		return count;
 	};
+	// console.log(countCandidatesSameJob());
+	console.log(countDuplicates());
 
-	const checkDuplicateStillAvailable = () => {
-		let count = [];
-		const duplicates = countDuplicates();
+	const checkHowManyCandidatesPerDuplicate = () => {
+		const candidatesSameJob = countCandidatesSameJob();
+		const howManySameJob = countDuplicates();
+		const difference = [];
 
-		candidates.forEach((candidate) => {
-			for (const duplicate in duplicates) {
-				console.log(`${duplicate}: ${duplicates[duplicate]}`);
-				if (Number(duplicate) === candidate.job_id) {
-					count.push({ [duplicate]: duplicates[duplicate] - 1 });
+		for (const candidate in candidatesSameJob) {
+			for (const sameJob in howManySameJob) {
+				if (candidate === sameJob) {
+					const test = {
+						[candidate]: howManySameJob[sameJob] - candidatesSameJob[candidate],
+					};
+					difference.push(test);
 				}
 			}
-		});
-
-		return count;
+		}
+		return difference;
 	};
-	console.log(checkDuplicateStillAvailable());
-	console.log(countDuplicates());
+	console.log(checkHowManyCandidatesPerDuplicate());
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(
