@@ -244,6 +244,55 @@ function Project() {
 		);
 	};
 
+	const jobNames = projectJobs?.map((job) => job.job);
+	const filterJobs = projectJobs?.filter(
+		({ job }, index) => !jobNames.includes(job, index + 1)
+	);
+	const participants = projectTeam?.filter(
+		(team) => team.role === "participants"
+	);
+
+	const countDuplicates = (jobId) => {
+		const count = {};
+		projectJobs?.forEach((element) => {
+			if (element.job_id === jobId) {
+				var key = JSON.stringify(element.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+
+	const countParticipantsSameJob = (jobId) => {
+		const count = {};
+		participants?.forEach((participant) => {
+			if (participant.job_id === jobId) {
+				var key = JSON.stringify(participant.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+	const checkHowManyParticipantsPerDuplicate = (jobId) => {
+		const candidatesSameJob = countParticipantsSameJob(jobId);
+		const howManySameJob = countDuplicates(jobId);
+
+		if (Object.keys(candidatesSameJob).length === 0) {
+			return howManySameJob;
+		} else {
+			for (const candidate in candidatesSameJob) {
+				for (const sameJob in howManySameJob) {
+					if (candidate === sameJob) {
+						return {
+							[candidate]:
+								howManySameJob[sameJob] - candidatesSameJob[candidate],
+						};
+					}
+				}
+			}
+		}
+	};
+
 	return (
 		<>
 			{isLoading && <Loader2 />}
@@ -340,12 +389,24 @@ function Project() {
 											)}
 										</div>
 										<div className="project-jobs-container">
-											{projectJobs?.map((job) => (
+											{filterJobs?.map((job) => (
 												<p key={job.id_project_has_job}>
-													{doesJobHaveParticipant(job.job) ? (
+													{checkHowManyParticipantsPerDuplicate(job.job_id)[
+														job.job_id
+													] === 0 ? (
 														<i className="fas fa-check-circle error'"></i>
 													) : (
-														<i className="fas fa-check-circle success"></i>
+														<>
+															<i className="fas fa-check-circle success"></i>
+															<p>
+																{
+																	checkHowManyParticipantsPerDuplicate(
+																		job.job_id
+																	)[job.job_id]
+																}
+																place(s) restante(s)
+															</p>
+														</>
 													)}{" "}
 													{job.job}
 												</p>
