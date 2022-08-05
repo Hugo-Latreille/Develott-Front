@@ -86,14 +86,13 @@ function ProjectList() {
 	};
 
 	const findProjectByName = (id) => {
-		const filteredProjects = [];
+		// const filteredProjects = [];
 		const foundProject = allProjects?.find(
 			(element) => element.id === Number(id)
 		);
-
-		return filteredProjects.push(foundProject);
+		return foundProject;
+		// return filteredProjects.push(foundProject);
 	};
-
 	const findProjectsByTechnologyName = (technology) => {
 		const filteredProjects = allProjects?.filter((project) =>
 			project?.techno?.includes(technology)

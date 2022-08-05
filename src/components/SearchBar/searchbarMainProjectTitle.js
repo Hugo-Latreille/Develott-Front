@@ -16,7 +16,7 @@ function SearchbarMainProjectTitle() {
 	const handleOnSelect = (item) => {
 		// the item selected
 		console.log(item);
-		// dispatch(setSearchProjectName(item.id));
+		dispatch(setSearchProjectName(item.id));
 	};
 
 	const formatResult = (item) => {
