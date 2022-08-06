@@ -21,33 +21,6 @@ import { toggleOpenIntro } from "./sidebarSlice";
 import { Steps } from "intro.js-react";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
 
-let routes = [
-	{
-		path: "/dashboard",
-		name: "Dashboard",
-		icon: <AiOutlineDashboard />,
-		tooltip: "Dashboard",
-	},
-	{
-		path: "/projets",
-		name: "Projets",
-		icon: <FaProjectDiagram />,
-		tooltip: "Les Projets",
-	},
-	{
-		path: "/projet/create",
-		name: "Créer Projet",
-		icon: <FaPlusSquare />,
-		tooltip: "Créer un projet",
-	},
-	{
-		path: "/game",
-		name: "Detente",
-		icon: <BiGame />,
-		tooltip: "Detente",
-	},
-];
-
 function Sidebar({ children, isVisible }) {
 	const introIsOpen = useSelector((state) => state.sidebarintro.introIsOpen);
 	const isOpen = useSelector((state) => state.app.sideBarIsOpen);
@@ -56,20 +29,48 @@ function Sidebar({ children, isVisible }) {
 	const [userLogout] = useUserLogoutMutation();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
-	const { data: projectsTeams } = useGetAllProjectsQuery();
+	const { data: projectsTeams, refetch } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
 
-	useEffect(() => {
-		const showDashboard = projectsTeams?.teams?.find(
-			(team) =>
-				team.customer_id === user?.id &&
-				(team.role === "admin" || team.role === "participants")
-		);
-		if (!showDashboard) {
-			routes = routes.filter((route) => route.name !== "Dashboard");
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	let routes = [
+		{
+			path: "/dashboard",
+			name: "Dashboard",
+			icon: <AiOutlineDashboard />,
+			tooltip: "Dashboard",
+		},
+		{
+			path: "/projets",
+			name: "Projets",
+			icon: <FaProjectDiagram />,
+			tooltip: "Les Projets",
+		},
+		{
+			path: "/projet/create",
+			name: "Créer Projet",
+			icon: <FaPlusSquare />,
+			tooltip: "Créer un projet",
+		},
+		{
+			path: "/game",
+			name: "Detente",
+			icon: <BiGame />,
+			tooltip: "Detente",
+		},
+	];
+
+	const showDashboard = projectsTeams?.teams?.some(
+		(team) =>
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
+	);
+
+	console.log(showDashboard);
+
+	if (showDashboard === false) {
+		routes = routes.filter((route) => route.name !== "Dashboard");
+		console.log("ici filter routes sidebar");
+	}
 
 	const onExit = () => {
 		dispatch(toggleOpenIntro());
