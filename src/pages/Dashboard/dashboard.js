@@ -12,6 +12,7 @@ import {
 } from "./dashboardSlice";
 import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import {
+	useDeleteProjectMutation,
 	useGetAllProjectsQuery,
 	useGetOneProjectCompleteQuery,
 	useGetOneProjectQuery,
@@ -40,17 +41,24 @@ function Dashboard() {
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useFindUserByEmailQuery(email);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
+	const [deleteProject] = useDeleteProjectMutation();
 
 	const findMyProjectId = projectsTeams?.teams?.find(
 		(team) =>
-			(team.customer_id === user?.id && team.role === "admin") ||
-			team.role === "participants"
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
 	)?.project_id;
+
+	console.log(findMyProjectId);
 
 	const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
 	// const { data: myProjectLinks } =
 	// 	useGetOneProjectCompleteQuery(findMyProjectId);
 	const [updateProject] = useUpdateProjectMutation();
+
+	const isUserAdmin = myProject?.teams?.find(
+		(member) => member.customer_id === user?.id && member.role === "admin"
+	);
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"
@@ -93,6 +101,16 @@ function Dashboard() {
 								Présentation du projet <i className="fas fa-chevron-right"></i>
 							</Link>
 						</div>
+						<button
+							onClick={() => {
+								const confirm = window.confirm("test");
+								if (confirm) {
+									deleteProject({ findMyProjectId });
+								}
+							}}
+						>
+							/!\ Supprimer le projet
+						</button>
 					</div>
 					<div className="dashboard-main-navigation">
 						<div
