@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useCreateUserMutation, useUserLoginMutation } from "./authAPISlice";
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
+import { useState } from "react";
 
 function Connexion() {
 	const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Connexion() {
 		email,
 		password,
 		passwordConfirm,
-		gitHubUsername,
+		username_gith,
 	} = useSelector((state) => state.auth);
 	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 
@@ -85,17 +86,19 @@ function Connexion() {
 		e.preventDefault();
 
 		if (handleValidation()) {
-			createUser({ firstname, lastname, email, password, gitHubUsername })
+			createUser({ firstname, lastname, email, password, username_gith })
 				.unwrap()
-				.then(() => {
-					toast.success(
-						"On y est presque ! Vérifiez vos emails pour valider votre inscription",
-						toastOptions
-					);
-					dispatch(clearInputs());
+				.then((data) => {
+					if (data) {
+						toast.success(
+							"On y est presque ! Vérifiez vos emails pour valider votre inscription",
+							toastOptions
+						);
+						dispatch(clearInputs());
+					}
 				})
 				.catch((err) => {
-					if (err.data.message === "This email already use") {
+					if (err?.data.message === "This email already use") {
 						return toast.error(
 							"Cet email existe déjà, vous pouvez renouveler votre mot de passe dans l'onglet 'Connexion' en cas d'oubli",
 							toastOptions

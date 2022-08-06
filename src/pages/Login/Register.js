@@ -13,7 +13,9 @@ function Register({ onSubmit }) {
 		password,
 		passwordConfirm,
 		registerPasswordVisibility,
-		gitHubUsername,
+		passwordFocus,
+		passwordValidity,
+		username_gith,
 	} = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
 	return (
@@ -37,8 +39,8 @@ function Register({ onSubmit }) {
 						/>
 					</div>
 					<Input
-						name="gitHubUsername"
-						value={gitHubUsername}
+						name="username_gith"
+						value={username_gith}
 						label="Nom d'utilisateur GitHub"
 						type="text"
 						required={false}
@@ -72,6 +74,22 @@ function Register({ onSubmit }) {
 							<MdOutlineVisibilityOff />
 						)}
 					</div>
+					{passwordFocus && (
+						<div>
+							Le mot de passe doit contenir :
+							<ul>
+								<li className={passwordValidity.minChar ? "" : ""}>
+									Au moins 8 caractères, dont une majuscule
+								</li>
+								<li className={passwordValidity.number ? "" : ""}>
+									Un chiffre
+								</li>
+								<li className={passwordValidity.specialChar ? "" : ""}>
+									Un caractère spécial
+								</li>
+							</ul>
+						</div>
+					)}
 					<button type="submit" className="main-button-colored">
 						S'inscrire
 					</button>

@@ -13,9 +13,13 @@ function Login({ onSubmit }) {
 		window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
 	};
 
-	const { email, password, passwordVisibility } = useSelector(
-		(state) => state.auth
-	);
+	const {
+		email,
+		password,
+		passwordVisibility,
+		passwordFocus,
+		passwordValidity,
+	} = useSelector((state) => state.auth);
 
 	return (
 		<div className="login-container">
@@ -45,6 +49,22 @@ function Login({ onSubmit }) {
 							<MdOutlineVisibilityOff />
 						)}
 					</div>
+					{passwordFocus && (
+						<div>
+							Le mot de passe doit contenir :
+							<ul>
+								<li className={passwordValidity.minChar ? "" : ""}>
+									Au moins 8 caractères, dont une majuscule
+								</li>
+								<li className={passwordValidity.number ? "" : ""}>
+									Un chiffre
+								</li>
+								<li className={passwordValidity.specialChar ? "" : ""}>
+									Un caractère spécial
+								</li>
+							</ul>
+						</div>
+					)}
 				</div>
 				<div className="login-form-buttons">
 					<button type="submit" className="main-button-colored">

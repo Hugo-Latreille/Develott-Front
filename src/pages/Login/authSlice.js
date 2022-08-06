@@ -7,14 +7,18 @@ const initialState = {
 	password: "",
 	passwordConfirm: "",
 	email: "",
-	gitHubUsername: "",
+	username_gith: "",
 	isLogged: false,
 	isLoggingActive: true,
 	token: "",
 	loggingModalOpen: false,
 	passwordVisibility: false,
 	registerPasswordVisibility: false,
+	passwordValidity: { minChar: null, number: null, specialChar: null },
 };
+
+const isNumberRegex = /\d/;
+const specialCharacterRegex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
 export const authSlice = createSlice({
 	name: "login",
@@ -53,6 +57,13 @@ export const authSlice = createSlice({
 		toggleRegisterVisibility: (state) => {
 			state.registerPasswordVisibility = !state.registerPasswordVisibility;
 		},
+		setPasswordValidity: (state) => {
+			state.passwordValidity = {
+				minChar: state.password.length >= 8 ? true : false,
+				number: isNumberRegex.test(state.password) ? true : false,
+				specialChar: specialCharacterRegex.test(state.password) ? true : false,
+			};
+		},
 	},
 });
 
@@ -66,6 +77,7 @@ export const {
 	toggleLoggingModalOpen,
 	togglePasswordVisibility,
 	toggleRegisterVisibility,
+	setPasswordValidity,
 } = authSlice.actions;
 
 export default authSlice.reducer;
