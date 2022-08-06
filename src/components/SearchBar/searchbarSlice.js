@@ -8,27 +8,30 @@ const initialState = {
 };
 
 export const searchbarSlice = createSlice({
-	name: "app",
-	initialState,
-	reducers: {
-		setSearchTechnology: (state, action) => {
-			state.searchTechnology = action.payload;
-		},
-		setSearchJob: (state, action) => {
-			state.searchJob = action.payload;
-		},
-		setSearchProjectName: (state, action) => {
-			state.searchJob = action.payload;
-		},
-		setSearchProjectDate: (state, action) => {
-			state.searchDate = action.payload;
-		},
-		initResearch: (state, action) => {
-			state.searchTechnology = action.payload;
-			state.searchJob = action.payload;
-			state.searchDate = action.payload;
-		},
-	},
+
+  name: "app",
+  initialState,
+  reducers: {
+    setSearchTechnology: (state, action) => {
+      state.searchTechnology = action.payload;
+    },
+    setSearchJob: (state, action) => {
+      state.searchJob = action.payload;
+    },
+    setSearchProjectName: (state, action) => {
+      state.searchProjectName = action.payload;
+    },
+    setSearchProjectDate: (state, action) => {
+      state.searchDate = action.payload;
+    },
+    initResearch: (state, action) => {
+      state.searchTechnology = action.payload;
+      state.searchJob = action.payload;
+      state.searchDate = action.payload;
+      state.searchProjectName = action.payload;
+    },
+  },
+
 });
 
 export const {
