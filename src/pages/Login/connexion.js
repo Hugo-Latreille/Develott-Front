@@ -37,20 +37,24 @@ function Connexion() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
-			const userData = await userLogin({ email, password })
+			await userLogin({ email, password })
 				.unwrap()
-				.then(() => {
-					if (userData.foundUser.validate === false) {
+				.then((data) => {
+					if (data.foundUser.validate === false) {
 						return toast.error(
 							"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
 							toastOptions
 						);
+					} else {
+						dispatch(
+							setCredentials({
+								accessToken: data.accessToken,
+								email: email,
+							})
+						);
+						dispatch(toggleLoggingModalOpen());
+						navigate("/projets");
 					}
-					dispatch(
-						setCredentials({ accessToken: userData.accessToken, email: email })
-					);
-					dispatch(toggleLoggingModalOpen());
-					navigate("/projets");
 				})
 				.catch((err) => {
 					if (err.data.message === "le mail n'existe pas") {
