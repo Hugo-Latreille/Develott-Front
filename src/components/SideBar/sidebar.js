@@ -59,17 +59,17 @@ function Sidebar({ children, isVisible }) {
 	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
 
-	const showDashboard = projectsTeams?.teams?.find(
-		(team) =>
-			team.customer_id === user?.id &&
-			(team.role === "admin" || team.role === "participants")
-	);
-
 	useEffect(() => {
+		const showDashboard = projectsTeams?.teams?.find(
+			(team) =>
+				team.customer_id === user?.id &&
+				(team.role === "admin" || team.role === "participants")
+		);
 		if (!showDashboard) {
 			routes = routes.filter((route) => route.name !== "Dashboard");
 		}
-	}, [projectsTeams, showDashboard]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const onExit = () => {
 		dispatch(toggleOpenIntro());

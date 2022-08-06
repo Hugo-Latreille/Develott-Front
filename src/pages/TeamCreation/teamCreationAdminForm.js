@@ -14,7 +14,7 @@ import {
 	toggleTeamCreationModalOpen,
 } from "./teamCreationSlice";
 
-function TeamCreationAdminForm({ projectId, candidates }) {
+function TeamCreationAdminForm({ projectId, candidates, refetch }) {
 	const { selectTeam } = useSelector((state) => state.teamCreation);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -51,6 +51,7 @@ function TeamCreationAdminForm({ projectId, candidates }) {
 		});
 		dispatch(resetTeam());
 		dispatch(toggleTeamCreationModalOpen());
+		refetch();
 		navigate(`/projet/${projectId}`, { replace: true });
 	};
 

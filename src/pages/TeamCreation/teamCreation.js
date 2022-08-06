@@ -75,6 +75,7 @@ function TeamCreation() {
 						<TeamCreationAdminForm
 							projectId={projectId}
 							candidates={candidates}
+							refetch={refetch}
 						/>
 					)}
 					{!isUserProjectAdmin && user.charte && (
@@ -85,6 +86,7 @@ function TeamCreation() {
 							projectId={projectId}
 							candidates={candidates}
 							participants={participants}
+							refetch={refetch}
 						/>
 					)}
 				</div>

@@ -21,6 +21,7 @@ function TeamCreationUserForm({
 	candidates,
 	projectTeam,
 	participants,
+	refetch,
 }) {
 	const { userJobChoice } = useSelector((state) => state.teamCreation);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
@@ -127,6 +128,7 @@ function TeamCreationUserForm({
 						});
 					}
 					dispatch(toggleTeamCreationModalOpen());
+					refetch();
 					navigate(`/projet/${projectId}`, { replace: true });
 				} else {
 					toast.error("Vous faites déjà partie de l'équipe d'un projet");
