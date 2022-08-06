@@ -9,6 +9,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index:0;
+
+  & a {
+    color: rgb(73, 73, 73);
+  }
 
   &-container {
     display: flex;
@@ -385,8 +390,6 @@
     width:93vw;
   }
 
-
-
 }
 
 
@@ -396,6 +399,7 @@
     margin: 0;
     width:90vw;
   }
+
   .project-container {
     flex-wrap: wrap;
 
@@ -434,11 +438,9 @@
 
   .project-dates {
     width:85%;
-
   }
 
   .project-description {
-    // min-height: 50%;
     margin-top: 2rem;
 
     &-technologies {
@@ -538,9 +540,9 @@
   color:rgba(255, 255, 255, 0.852);
 }
 
-#dark .technologies-icon-container2 {
-  // width:100%;
-}
+// #dark .technologies-icon-container2 {
+//   // width:100%;
+// }
 
 #dark .project {
 
@@ -562,3 +564,5 @@
   top: 3.9rem;
   background-color: rgba(255, 255, 255, 0);
 }
+
+

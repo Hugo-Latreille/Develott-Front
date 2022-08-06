@@ -13,6 +13,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import sanitizeHtml from "sanitize-html";
 import moment from "moment/min/moment-with-locales";
 import { useSelector, useDispatch } from "react-redux";
+import { store } from "./../../store/store";
 import {
 	setDisplayEdit,
 	setUserDescription,
@@ -25,10 +26,16 @@ import {
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
-import { Link, useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
+
 import Loader2 from "./../Loader2/loader2";
 
 function Profil() {
@@ -40,6 +47,7 @@ function Profil() {
 	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
+
 
 	const findMyProjectsId = projectsTeams?.teams?.filter(
 		(team) => team.customer_id === user?.id
@@ -90,9 +98,11 @@ function Profil() {
 		}
 	}, [user?.description]);
 
+
 	const handleEditorChange = (editorState) => {
 		setEditorState(editorState);
 	};
+
 
 	const handleDescriptionSubmit = async (e) => {
 		e.preventDefault();
@@ -188,8 +198,11 @@ function Profil() {
 		dispatch(setDisplayEdit({ name: "isEditUserInfos" }));
 	};
 
+
+
 	const isMyProfile = user?.email === email;
 	// const isMyProfile = true;
+
 
 	return (
 		<>
@@ -719,6 +732,7 @@ function Profil() {
 										))}
 									</div>
 
+
 									<div className="project-technologies-frameworks">
 										<h4>Frameworks</h4>
 										{frameworksData?.length === 0 && (
@@ -821,6 +835,7 @@ function Profil() {
 			</div>
 		</>
 	);
+
 }
 
 export default Profil;

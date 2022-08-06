@@ -47,6 +47,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader2 from "./../../components/Loader2/loader2";
 
 function Project() {
+
 	const { projectId } = useParams();
 	const {
 		data: projectWithTeam,
@@ -1040,6 +1041,7 @@ function Project() {
 			/>
 		</>
 	);
+
 }
 
 export default Project;

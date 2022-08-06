@@ -12,7 +12,7 @@ import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
@@ -87,9 +87,15 @@ function App() {
                 </Route>
                 <Route path="projet/create" element={<CreateProject />} />
                 <Route path="charte" element={<Charte />} />
-                <Route path="modal-charte" element={<CharteModal />} />
+                <Route
+                  path="modal-charte"
+                  element={<CharteModal />}
+                  background={<Profil />}
+                />
                 <Route path="about" element={<About />} />
-                <Route path="profil/:profilId" element={<Profil />} />
+                <Route path="profil/:profilId" element={<Profil />}>
+                  {/* <Route path="modal-charte" element={<CharteModal />} /> */}
+                </Route>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
                 <Route path="game" element={<Game />} />
