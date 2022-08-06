@@ -24,17 +24,23 @@ function CreateProject() {
   const { data: userInfos } = useFindUserByEmailQuery(email);
   const { data: projectsTeams } = useGetAllProjectsQuery();
 
-  const isUserAlreadyParticipant = projectsTeams?.teams.some(
-    (team) =>
-      (team?.customer_id === userInfos?.id && team?.role === "participants") ||
-      team?.role === "candidates"
-  );
 
-  useEffect(() => {
-    if (isUserAlreadyParticipant && userInfos?.id !== 16) {
-      toast.error("Vous ne pouvez participer qu'à un seul projet");
-    }
-  }, [isUserAlreadyParticipant]);
+	const isUserAlreadyParticipant = projectsTeams?.teams.some(
+		(team) =>
+			team?.customer_id === userInfos?.id &&
+			(team?.role === "participants" || team?.role === "admin")
+	);
+
+	useEffect(() => {
+		if (
+			isUserAlreadyParticipant &&
+			userInfos?.id !== 16 &&
+			activeForm === "informations"
+		) {
+			toast.error("Vous ne pouvez participer qu'à un seul projet");
+		}
+	}, [isUserAlreadyParticipant]);
+
 
   return (
     <Sidebar>

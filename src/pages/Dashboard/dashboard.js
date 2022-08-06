@@ -14,18 +14,26 @@ import {
 } from "./dashboardSlice";
 import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import {
-  useGetAllProjectsQuery,
-  useGetOneProjectCompleteQuery,
-  useGetOneProjectQuery,
-  useUpdateProjectMutation,
+
+	useDeleteProjectMutation,
+	useGetAllProjectsQuery,
+	useGetOneProjectQuery,
+	useUpdateProjectMutation,
+
+
 } from "../Projects/projectsAPISlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import technologiesJson from "./../../assets/data/technologiesData.json";
+import Loader2 from "../../components/Loader2/loader2";
+import { useDeleteUserRoleMutation } from "../Profiles/userAPISlice";
 
 function Dashboard() {
-  const dispatch = useDispatch();
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+
 
   const {
     displayEditGitLink,
@@ -40,16 +48,35 @@ function Dashboard() {
     projectTrello,
   } = useSelector((state) => state.dashboard);
 
-  const { email } = useSelector((state) => state.auth);
-  const { data: user } = useFindUserByEmailQuery(email);
-  const { data: projectsTeams } = useGetAllProjectsQuery();
-  const findMyProjectId = projectsTeams?.teams?.filter(
-    (team) => team.customer_id === user?.id
-  )[0]?.project_id;
-  const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
-  // const { data: myProjectLinks } =
-  // 	useGetOneProjectCompleteQuery(findMyProjectId);
-  const [updateProject] = useUpdateProjectMutation();
+const { email } = useSelector((state) => state.auth);
+	const { data: user, isLoading: userLoading } = useFindUserByEmailQuery(email);
+	const { data: projectsTeams, isLoading: projectsLoading } =
+		useGetAllProjectsQuery();
+
+	const findMyProjectId = projectsTeams?.teams?.find(
+		(team) =>
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
+	)?.project_id;
+
+	const { data: myProject, isLoading: teamLoading } =
+		useGetOneProjectQuery(findMyProjectId);
+
+	const [updateProject] = useUpdateProjectMutation();
+	const [deleteProject] = useDeleteProjectMutation();
+	const [deleteFromTeam] = useDeleteUserRoleMutation();
+
+	console.log(myProject);
+
+	const isUserAdmin = myProject?.teams?.find(
+		(member) => member.customer_id === user?.id && member.role === "admin"
+	);
+
+	const isUserParticipant = myProject?.teams?.find(
+		(member) =>
+			member.customer_id === user?.id && member.role === "participants"
+	);
+
 
   const myTeam = myProject?.teams.filter(
     (team) => team.role === "admin" || team.role === "participants"
@@ -75,9 +102,10 @@ function Dashboard() {
       !technology.tags.includes("database")
   );
 
-  return (
-    <Sidebar>
-      {!displayDarkMode && (
+
+	return (
+		<Sidebar>
+    {!displayDarkMode && (
         <ReactTooltip
           className="tooltips_cards"
           place="right"
@@ -100,44 +128,79 @@ function Dashboard() {
           backgroundColor="#231661"
         />
       )}
-      <div className="dashboard">
-        <div className="dashboard-main">
-          <div className="dashboard-main-header">
-            <div className="dashboard-main-titles">
-              <h2 className="dashboard-main-title">Hi {user?.firstname},</h2>
-              <h1 className="dashboard-main-subtitle">
-                Bienvenue sur le dashboard du projet{" "}
-                {myProject?.project.project}
-              </h1>
-            </div>
-            <div className="dashboard-main-cta">
-              <Link to={`/projet/${myProject?.project.id}`}>
-                Présentation du projet <i className="fas fa-chevron-right"></i>
-              </Link>
-            </div>
-          </div>
-          <div className="dashboard-main-navigation">
-            <div
-              className="dashboard-main-navigation-accueil"
-              onClick={() => dispatch(setDisplayMaincontent("main"))}
-            >
-              <div
-                className={
-                  displayMaincontent === "main"
-                    ? "dashboard-main-navigation-accueil-content bg-colored"
-                    : "dashboard-main-navigation-accueil-content "
-                }
-              >
-                <h3>
-                  <i className="far fa-rocket"></i>Accueil
-                </h3>
-                <img
-                  src={require("./../../assets/images/dashboard-accueil.png")}
-                  alt="icon accueil dashboard"
-                />
-              </div>
-            </div>
-            <div
+			{userLoading || projectsLoading || (teamLoading && <Loader2 />)}
+			<div className="dashboard">
+				<div className="dashboard-main">
+					<div className="dashboard-main-header">
+						<div className="dashboard-main-titles">
+							<h2 className="dashboard-main-title">Hi {user?.firstname},</h2>
+							<h1 className="dashboard-main-subtitle">
+								Bienvenue sur le dashboard du projet{" "}
+								{myProject?.project.project}
+							</h1>
+						</div>
+						<div className="dashboard-main-cta">
+							<Link to={`/projet/${myProject?.project.id}`}>
+								Présentation du projet <i className="fas fa-chevron-right"></i>
+							</Link>
+						</div>
+						{isUserAdmin && (
+							<button
+								onClick={() => {
+									const confirm = window.confirm(
+										"Voulez-vous vraiment supprimer le projet ?"
+									);
+									if (confirm) {
+										deleteProject(findMyProjectId);
+										navigate("/projets", { replace: true });
+									}
+								}}
+							>
+								/!\ Supprimer le projet
+							</button>
+						)}
+						{isUserParticipant && (
+							<button
+								onClick={() => {
+									const confirm = window.confirm(
+										"Voulez-vous vraiment vous retirer de l'équipe ?"
+									);
+									if (confirm) {
+										deleteFromTeam({
+											projectId: findMyProjectId,
+											role_id: 2,
+											customer_id: user?.id,
+										});
+										navigate("/projets", { replace: true });
+									}
+								}}
+							>
+								/!\ Se retirer de l'équipe
+							</button>
+						)}
+					</div>
+					<div className="dashboard-main-navigation">
+						<div
+							className="dashboard-main-navigation-accueil"
+							onClick={() => dispatch(setDisplayMaincontent("main"))}
+						>
+							<div
+								className={
+									displayMaincontent === "main"
+										? "dashboard-main-navigation-accueil-content bg-colored"
+										: "dashboard-main-navigation-accueil-content "
+								}
+							>
+								<h3>
+									<i className="far fa-rocket"></i>Accueil
+								</h3>
+								<img
+									src={require("./../../assets/images/dashboard-accueil.png")}
+									alt="icon accueil dashboard"
+								/>
+							</div>
+						</div>
+						<div
               className="dashboard-main-navigation-messagerie"
               onClick={() => dispatch(setDisplayMaincontent("messagerie"))}
             >
@@ -148,67 +211,68 @@ function Dashboard() {
                     : "dashboard-main-navigation-messagerie-content "
                 }
               >
-                <h3>
-                  <i className="far fa-comment-alt-dots"></i>Messagerie
-                </h3>
-                <img
-                  src={require("./../../assets/images/dashboard-message.png")}
-                  alt="icon messagerie dashboard"
-                />
-              </div>
-            </div>
-            <div
-              className="dashboard-main-navigation-calendrier"
-              onClick={() => dispatch(setDisplayMaincontent("calendar"))}
-            >
-              <div
-                className={
-                  displayMaincontent === "calendar"
-                    ? "dashboard-main-navigation-calendrier-content bg-colored"
-                    : "dashboard-main-navigation-calendrier-content "
-                }
-              >
-                <h3>
-                  <i className="far fa-calendar-alt"></i>
-                  Calendrier
-                </h3>
-                <img
-                  src={require("./../../assets/images/dashboard-calendar.png")}
-                  alt="icon calendrier dashboard"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="dashboard-main-content">
-            {/* // LA */}
-            {displayMaincontent === "main" && (
-              <>
-                <div className="dashboard-main-content-team">
-                  <h3>Team-mates</h3>
-                  {myTeam?.map((member) => (
-                    <div
-                      key={member.customer_id}
-                      className="dashboard-main-content-team-users"
-                    >
-                      <img
-                        src={
-                          member?.profil_picture &&
-                          member?.profil_picture.length > 1
-                            ? member?.profil_picture
-                            : mockAvatar
-                        }
-                        alt="icon calendrier dashboard"
-                      />
-                      {/* <img src={mockAvatar} alt="icon calendrier dashboard" /> */}
-                      <div className="dashboard-main-content-team-users-details">
-                        <Link to={`/profil/${member.customer_id}`}>
-                          <p>{`${member.firstname} ${member.lastname}`}</p>
-                        </Link>
-                        <span>{member.job}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+								<h3>
+									<i className="far fa-comment-alt-dots"></i>Messagerie
+								</h3>
+								<img
+									src={require("./../../assets/images/dashboard-message.png")}
+									alt="icon messagerie dashboard"
+								/>
+							</div>
+						</div>
+						<div
+							className="dashboard-main-navigation-calendrier"
+							onClick={() => dispatch(setDisplayMaincontent("calendar"))}
+						>
+							<div
+								className={
+									displayMaincontent === "calendar"
+										? "dashboard-main-navigation-calendrier-content bg-colored"
+										: "dashboard-main-navigation-calendrier-content "
+								}
+							>
+								<h3>
+									<i className="far fa-calendar-alt"></i>
+									Calendrier
+								</h3>
+								<img
+									src={require("./../../assets/images/dashboard-calendar.png")}
+									alt="icon calendrier dashboard"
+								/>
+							</div>
+						</div>
+					</div>
+					<div className="dashboard-main-content">
+						{/* // LA */}
+						{displayMaincontent === "main" && (
+							<>
+								<div className="dashboard-main-content-team">
+									<h3>Team-mates</h3>
+									{myTeam?.map((member) => (
+										<div
+											key={member.customer_id}
+											className="dashboard-main-content-team-users"
+										>
+											<img
+												src={
+													member?.profil_picture &&
+													member?.profil_picture.length > 1
+														? member?.profil_picture
+														: mockAvatar
+												}
+												alt="icon calendrier dashboard"
+											/>
+											{/* <img src={mockAvatar} alt="icon calendrier dashboard" /> */}
+											<div className="dashboard-main-content-team-users-details">
+												<Link to={`/profil/${member.customer_id}`}>
+													<p>{`${member.firstname} ${member.lastname}`}</p>
+												</Link>
+												<span>{member.job}</span>
+											</div>
+										</div>
+									))}
+								</div>
+
 
                 <div className="dashboard-main-content-links">
                   <h3>Outils collaboratifs</h3>
