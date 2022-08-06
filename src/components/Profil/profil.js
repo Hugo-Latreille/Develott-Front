@@ -29,13 +29,14 @@ import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
+import Loader2 from "./../Loader2/loader2";
 
 function Profil() {
 	const dispatch = useDispatch();
 	const { profilId } = useParams();
 	const location = useLocation();
 	const { email } = useSelector((state) => state.auth);
-	const { data: user } = useFindUserByIdQuery(profilId);
+	const { data: user, isLoading } = useFindUserByIdQuery(profilId);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
@@ -192,6 +193,7 @@ function Profil() {
 
 	return (
 		<>
+			{isLoading && <Loader2 />}
 			<div className="profil ">
 				<div className="profil_desc">
 					<div className="desc_container_description">
@@ -778,16 +780,17 @@ function Profil() {
 									alt=""
 								/>
 								<div className="card_main margin05">
-									<h3 className="card_main_title-project">
-										{project.myProject?.project}
-									</h3>
+									<Link to={`/projet/${project.myProject?.id}`}>
+										<h3 className="card_main_title-project">
+											{project.myProject?.project}
+										</h3>
+									</Link>
 									<p className="project-list-paragraph-desc">
 										{project.myProject?.excerpt}
 									</p>
 									<div className="project-list-container">
 										<p className="project-list-paragraph">{`${
-											project.projectJobs.length -
-											(project.projectTeam.length - 1)
+											project.projectTeam.length - 1
 										} co-équipiers`}</p>
 										<div className="project-list-paragraph-grey">
 											{moment(project.myProject?.start_date)
@@ -807,7 +810,9 @@ function Profil() {
 									</div>
 								)}
 								{project.myRole.role === "participants" && (
-									<div>participant</div>
+									<div className="card_project_role card_project_role-participant">
+										participant
+									</div>
 								)}
 							</div>
 						))}

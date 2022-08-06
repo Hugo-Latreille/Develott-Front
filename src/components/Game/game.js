@@ -14,7 +14,7 @@ const getRandomCoordinates = () => {
 
 const initialState = {
   food: getRandomCoordinates(),
-  speed: 200,
+  speed: 180,
   direction: "RIGHT",
   snakeDots: [
     [0, 0],
@@ -93,7 +93,7 @@ class Game extends Component {
     let head = snake[snake.length - 1];
     snake.pop();
     snake.forEach((dot) => {
-      if (head[0] == dot[0] && head[1] == dot[1]) {
+      if (head[0] === dot[0] && head[1] === dot[1]) {
         this.onGameOver();
       }
     });
@@ -102,7 +102,7 @@ class Game extends Component {
   checkIfEat() {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
     let food = this.state.food;
-    if (head[0] == food[0] && head[1] == food[1]) {
+    if (head[0] === food[0] && head[1] === food[1]) {
       this.setState({
         food: getRandomCoordinates(),
       });
@@ -120,9 +120,9 @@ class Game extends Component {
   }
 
   increaseSpeed() {
-    if (this.state.speed > 10) {
+    if (this.state.speed > 5) {
       this.setState({
-        speed: this.state.speed - 10,
+        speed: this.state.speed - 5,
       });
     }
   }
@@ -152,10 +152,61 @@ class Game extends Component {
             <div className="star"></div>
             <div className="star"></div>
             <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
           </div>
           <div className="center"></div>
           <div className="score_game">
-            Score : {this.state.snakeDots.length}
+            Score : {this.state.snakeDots.length - 2}
           </div>
           <div className="game-area">
             <Snake snakeDots={this.state.snakeDots} />

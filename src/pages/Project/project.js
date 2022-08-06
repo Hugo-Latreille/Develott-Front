@@ -8,6 +8,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment/min/moment-with-locales";
 import { DatePicker } from "@mui/x-date-pickers";
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 import "moment/locale/fr";
 //? WYSIWYG editor
 import { Editor } from "react-draft-wysiwyg";
@@ -43,6 +44,8 @@ import mockAvatar from "./../../assets/images/user-avatar.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import Loader2 from "./../../components/Loader2/loader2";
+
 function Project() {
 	const { projectId } = useParams();
 	const {
@@ -74,6 +77,8 @@ function Project() {
 		projectTitle,
 		projectExcerpt,
 	} = useSelector((state) => state.project);
+	const today = new Date();
+
 	const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
 
 	const isUserTeamMember = projectTeam?.some(
@@ -86,6 +91,11 @@ function Project() {
 	const isUserCandidate = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "candidates"
 	);
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+	// const isUserProjectAdmin = true;
+
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
 	);
@@ -94,17 +104,29 @@ function Project() {
 			(participant) => participant.job === jobName
 		);
 	};
+
+	const doesJobHaveCandidates = projectTeam?.filter(
+		(candidate) => candidate.role === "candidates"
+	);
+
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
 		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
 			toast.info("Ce projet est complet");
 		}
-		if (!isLoading && isUserParticipant && teamModalIsOpen === false) {
+		if (isUserParticipant && teamModalIsOpen === false) {
 			toast.success("Vous avez été sélectionné pour participer à ce projet");
 		}
-		if (!isLoading && isUserCandidate && teamModalIsOpen === false) {
+		if (isUserCandidate && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat pour participer à ce projet");
+		}
+		if (
+			doesJobHaveCandidates?.length > 0 &&
+			isUserProjectAdmin &&
+			teamModalIsOpen === false
+		) {
+			toast.info("Un candidat en attente de validation");
 		}
 	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
 
@@ -224,13 +246,58 @@ function Project() {
 		);
 	};
 
-	const isUserProjectAdmin = projectTeam?.some(
-		(team) => team.customer_id === user?.id && team.role === "admin"
+	const jobNames = projectJobs?.map((job) => job.job);
+	const filterJobs = projectJobs?.filter(
+		({ job }, index) => !jobNames.includes(job, index + 1)
 	);
-	// const isUserProjectAdmin = true;
+	const participants = projectTeam?.filter(
+		(team) => team.role === "participants"
+	);
+
+	const countDuplicates = (jobId) => {
+		const count = {};
+		projectJobs?.forEach((element) => {
+			if (element.job_id === jobId) {
+				var key = JSON.stringify(element.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+
+	const countParticipantsSameJob = (jobId) => {
+		const count = {};
+		participants?.forEach((participant) => {
+			if (participant.job_id === jobId) {
+				var key = JSON.stringify(participant.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+	const checkHowManyParticipantsPerDuplicate = (jobId) => {
+		const candidatesSameJob = countParticipantsSameJob(jobId);
+		const howManySameJob = countDuplicates(jobId);
+
+		if (Object.keys(candidatesSameJob).length === 0) {
+			return howManySameJob;
+		} else {
+			for (const candidate in candidatesSameJob) {
+				for (const sameJob in howManySameJob) {
+					if (candidate === sameJob) {
+						return {
+							[candidate]:
+								howManySameJob[sameJob] - candidatesSameJob[candidate],
+						};
+					}
+				}
+			}
+		}
+	};
 
 	return (
 		<>
+			{isLoading && <Loader2 />}
 			<Sidebar>
 				<div className="project">
 					<div className="project-container ">
@@ -323,13 +390,26 @@ function Project() {
 												</span>
 											)}
 										</div>
+
 										<div className="project-jobs-container">
-											{projectJobs?.map((job) => (
+											{filterJobs?.map((job) => (
 												<p key={job.id_project_has_job}>
-													{doesJobHaveParticipant(job.job) ? (
+													{checkHowManyParticipantsPerDuplicate(job.job_id)[
+														job.job_id
+													] === 0 ? (
 														<i className="fas fa-check-circle error'"></i>
 													) : (
-														<i className="fas fa-check-circle success"></i>
+														<>
+															<i className="fas fa-check-circle success"></i>
+															<p>
+																{
+																	checkHowManyParticipantsPerDuplicate(
+																		job.job_id
+																	)[job.job_id]
+																}{" "}
+																place(s) restante(s)
+															</p>
+														</>
 													)}{" "}
 													{job.job}
 												</p>
@@ -415,12 +495,20 @@ function Project() {
 							{displayEditDates && (
 								<div className="project-dates">
 									<div className="project-dates-inputs">
+										<span className="hour_modifstart hour_style">
+											Date de début
+										</span>
+										<span className="hour_modifend hour_style">
+											Date de fin
+										</span>
+
 										<LocalizationProvider
 											dateAdapter={AdapterMoment}
 											adapterLocale="fr"
 										>
 											<DatePicker
 												label="Date de début"
+												disablePast
 												value={startDate}
 												className="date-picker-color"
 												onChange={(newValue) => {
@@ -435,7 +523,19 @@ function Project() {
 														start_date: newValue._d,
 													});
 												}}
-												renderInput={(params) => <TextField {...params} />}
+												// renderInput={(params) => <TextField {...params} />}
+												renderInput={({ inputRef, inputProps, InputProps }) => (
+													<Box
+														sx={{
+															display: "flex",
+															alignItems: "center",
+															justifyContent: "center",
+														}}
+													>
+														<input ref={inputRef} {...inputProps} />
+														{InputProps?.endAdornment}
+													</Box>
+												)}
 											/>
 										</LocalizationProvider>
 									</div>
@@ -445,6 +545,7 @@ function Project() {
 											adapterLocale="fr"
 										>
 											<DatePicker
+												disablePast
 												label="Date de fin"
 												value={endDate}
 												onChange={(newValue) => {
@@ -459,7 +560,19 @@ function Project() {
 														end_date: newValue._d,
 													});
 												}}
-												renderInput={(params) => <TextField {...params} />}
+												// renderInput={(params) => <TextField {...params} />}
+												renderInput={({ inputRef, inputProps, InputProps }) => (
+													<Box
+														sx={{
+															display: "flex",
+															alignItems: "center",
+															justifyContent: "center",
+														}}
+													>
+														<input ref={inputRef} {...inputProps} />
+														{InputProps?.endAdornment}
+													</Box>
+												)}
 											/>
 										</LocalizationProvider>
 									</div>
@@ -474,6 +587,7 @@ function Project() {
 								</div>
 							)}
 						</div>
+
 						<div className="project-container-right">
 							<div className="project-header">
 								<div className="project-header-left">
@@ -495,17 +609,21 @@ function Project() {
 											</Link>
 										)
 									) : isUserProjectAdmin ? (
-										<Link
-											to={`/postuler`}
-											state={{ background: location }}
-											onClick={() => {
-												dispatch(toggleTeamCreationModalOpen());
-												dispatch(setProjectId(projectId));
-											}}
-											className="main-button-bg-white"
-										>
-											Valider <i className="far fa-rocket"></i>
-										</Link>
+										doesJobHaveCandidates.length === 0 ? (
+											<div className="main-button-bg-white">Aucun candidat</div>
+										) : (
+											<Link
+												to={`/postuler`}
+												state={{ background: location }}
+												onClick={() => {
+													dispatch(toggleTeamCreationModalOpen());
+													dispatch(setProjectId(projectId));
+												}}
+												className={"main-button-bg-white"}
+											>
+												Sélectionner l'équipe <i className="far fa-rocket"></i>
+											</Link>
+										)
 									) : (
 										<Link
 											to={`/postuler`}

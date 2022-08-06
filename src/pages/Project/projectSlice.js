@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+const today = new Date();
 
 const initialState = {
 	adaptDescriptionContainer: false,
@@ -9,8 +10,8 @@ const initialState = {
 	displayImgEdit: false,
 	technologiesData: [],
 	jobsData: [],
-	startDate: "",
-	endDate: "",
+	startDate: today,
+	endDate: today,
 	projectImg: "",
 	description: "",
 	projectTitle: "",

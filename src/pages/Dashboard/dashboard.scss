@@ -272,7 +272,9 @@
     }
 
     .dashboard .project-technologies-database {
-        width:100%;
+
+            width:100% !important;
+        
     }
 
     .dashboard-main-navigation  {
@@ -319,6 +321,16 @@
   }
 
 
+  @media screen and (width < 400px) {
+
+    .dashboard {
+        width:70%;
+    }
+
+  }
+
+
+
 
 
 
@@ -327,11 +339,17 @@
   #dark .bg-colored {
     background: linear-gradient(to top left ,  #219898b0, #24085c  );
     color:white;
+
+
   }
 
   #dark .dashboard-main-header {
     background: linear-gradient(to top left ,  #219898b0, #24085c  );
     color:white;
+
+    & a {
+        color:white;
+    }
   }
 
   #dark .dashboard-main-navigation {
