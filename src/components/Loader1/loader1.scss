@@ -2,6 +2,7 @@
 .loader_container {
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .loader1 {
@@ -49,6 +50,34 @@
     animation-delay: -40s;
 }
 
+.v2 {
+    position:absolute;
+    display: flex;
+    top: 17rem;
+    left: 47rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+    border: 2px #ffffff93 solid;
+    box-shadow: 7px 6px 11px 4px rgba(0, 0, 0, 0.582);
+    color: white;
+    padding: 8rem 3rem 8rem 3rem;
+    z-index: 1;
+
+    &_incoming{
+        font-weight: bold;
+        font-size: 1.8rem;
+        margin-top: 3rem;
+    }
+
+    &_message {
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+}
+
 @keyframes animate1 
 {
     0% {
@@ -71,34 +100,3 @@
 
 }
 
-// .loader1 .row:nth-child(even) div {
-//     animation: animate3 80s linear infinite;
-//     animation-delay: -80s;
-// }
-
-// .loader1 .row:nth-child(even) div:nth-child(2){
-//     animation: animate4 80s linear infinite;
-//     animation-delay: -40s;
-// }
-
-// @keyframes animate3 
-// {
-//     0% {
-//         transform: translateX(-100%);
-//     }
-//     100% {
-//         transform: translateX(100%);
-//     }
-
-// }
-
-// @keyframes animate4
-// {
-//     0% {
-//         transform: translateX(-200%);
-//     }
-//     100% {
-//         transform: translateX(0%);
-//     }
-
-// }

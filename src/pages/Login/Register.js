@@ -4,78 +4,91 @@ import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 
 import "./register.scss";
 import {
-	togglePasswordVisibility,
-	toggleRegisterVisibility,
+  togglePasswordVisibility,
+  toggleRegisterVisibility,
 } from "./authSlice";
 
 function Register({ onSubmit }) {
-	const {
-		firstname,
-		lastname,
-		email,
-		password,
-		passwordConfirm,
-		registerPasswordVisibility,
-	} = useSelector((state) => state.auth);
-	const dispatch = useDispatch();
-	return (
-		<div className="register-container">
-			<div className="content ">
-				<form className="form" onSubmit={onSubmit}>
-					<div className="inputs-container">
-						<Input
-							name="firstname"
-							value={firstname}
-							label="Prénom"
-							type="text"
-							required={true}
-						/>
-						<Input
-							name="lastname"
-							value={lastname}
-							label="Nom"
-							type="text"
-							required={true}
-						/>
-					</div>
+  const {
+    firstname,
+    lastname,
+    email,
+    password,
+    passwordConfirm,
+    registerPasswordVisibility,
+  } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  return (
+    <div className="register-container">
+      <div className="content ">
+        <form className="form" onSubmit={onSubmit}>
+          <div className="inputs-container">
+            <Input
+              name="firstname"
+              value={firstname}
+              label="Prénom"
+              type="text"
+              required={true}
+            />
+            <Input
+              name="lastname"
+              value={lastname}
+              label="Nom"
+              type="text"
+              required={true}
+            />
+          </div>
 
-					<Input
-						name="email"
-						value={email}
-						label="Email"
-						type="email"
-						required={true}
-					/>
-					<Input
-						name="password"
-						value={password}
-						label="Mot de passe"
-						type={registerPasswordVisibility ? "text" : "password"}
-						required={true}
-					/>
-					<Input
-						name="passwordConfirm"
-						value={passwordConfirm}
-						label="Confirmez votre mot de passe"
-						type={registerPasswordVisibility ? "text" : "password"}
-						required={true}
-					/>
-					<div onClick={() => dispatch(toggleRegisterVisibility())}>
-						{registerPasswordVisibility ? (
-							<MdOutlineVisibility />
-						) : (
-							<MdOutlineVisibilityOff />
-						)}
-					</div>
-					<button type="submit" className="main-button-colored">
-						S'inscrire
-					</button>
-					<a href="#" className="third-button-colored width-100">
-						Déjà inscrit ?
-					</a>
-				</form>
-			</div>
-		</div>
-	);
+          <Input
+            name="email"
+            value={email}
+            label="Email"
+            type="email"
+            required={true}
+          />
+          <Input
+            name="password"
+            value={password}
+            label="Mot de passe"
+            type={registerPasswordVisibility ? "text" : "password"}
+            required={true}
+          />
+          <Input
+            name="passwordConfirm"
+            value={passwordConfirm}
+            label="Confirmez votre mot de passe"
+            type={registerPasswordVisibility ? "text" : "password"}
+            required={true}
+          />
+          <div
+            className="eye_register_pass"
+            onClick={() => dispatch(toggleRegisterVisibility())}
+          >
+            {registerPasswordVisibility ? (
+              <MdOutlineVisibility />
+            ) : (
+              <MdOutlineVisibilityOff />
+            )}
+          </div>
+          <div
+            className="eye_register_confirm"
+            onClick={() => dispatch(toggleRegisterVisibility())}
+          >
+            {registerPasswordVisibility ? (
+              <MdOutlineVisibility />
+            ) : (
+              <MdOutlineVisibilityOff />
+            )}
+          </div>
+          <button type="submit" className="main-button-colored">
+            S'inscrire
+          </button>
+          <a href="#" className="third-button-colored width-100">
+            Déjà inscrit ?
+          </a>
+        </form>
+      </div>
+    </div>
+  );
 }
 export default Register;

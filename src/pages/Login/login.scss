@@ -24,6 +24,7 @@
 
 .form {
   width: 80%;
+  position: relative;
   margin: auto;
   .form-group {
     position: relative;
@@ -67,4 +68,10 @@
       }
     }
   }
+}
+
+.toogle_eye {
+  position: absolute;
+  top: 5.5rem;
+  right: 0.1rem;
 }

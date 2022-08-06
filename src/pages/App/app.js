@@ -106,7 +106,7 @@ function App() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
                 <Route path="game" element={<Game />} />
-                <Route path="500" element={<Loader1 />} />
+                <Route path="V2" element={<Loader1 />} />
               </Route>
               <Route
                 path="*"

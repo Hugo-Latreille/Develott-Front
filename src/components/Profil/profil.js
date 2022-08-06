@@ -25,6 +25,7 @@ import {
 } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 import {
   Link,
@@ -44,11 +45,14 @@ function Profil() {
   const { profilId } = useParams();
   const location = useLocation();
   const { email } = useSelector((state) => state.auth);
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
   const { data: user, isLoading } = useFindUserByIdQuery(profilId);
   const { data: projectsTeams } = useGetAllProjectsQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUserTechno] = useDeleteUserTechnoMutation();
+
   const { toggleChangePasswordModal } = useSelector((state) => state.app);
+
 
   const findMyProjectsId = projectsTeams?.teams?.filter(
     (team) => team.customer_id === user?.id
@@ -203,6 +207,31 @@ function Profil() {
   return (
     <>
       {isLoading && <Loader2 />}
+
+      {!displayDarkMode && (
+        <ReactTooltip
+          className="tooltips_cards"
+          place="right"
+          effect="solid"
+          border
+          textColor="#272727"
+          backgroundColor="#FFFFFF"
+          borderColor="#272727"
+        />
+      )}
+      {displayDarkMode && (
+        <ReactTooltip
+          className="tooltips_cards"
+          place="right"
+          type="light"
+          effect="solid"
+          border
+          textColor="#FFFFFF"
+          borderColor="#FFFFFF"
+          backgroundColor="#231661"
+        />
+      )}
+
       <div className="profil ">
         <div className="profil_desc">
           <div className="desc_container_description">
@@ -433,9 +462,11 @@ function Profil() {
 
               <p className="desc_container_title user-password">
                 <Link
+
                   to={`/newpassword/${user?.id}`}
                   state={{ background: location }}
                   onClick={() => dispatch(setToggleChangePasswordModal())}
+
                 >
                   <i className="fal fa-key"></i> Mot de Passe
                 </Link>
@@ -827,7 +858,9 @@ function Profil() {
             ))}
           </div>
         </div>
+
         <Outlet />
+
       </div>
     </>
   );
