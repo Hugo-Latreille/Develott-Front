@@ -198,7 +198,7 @@ function CreateProjectInformationsForm({ isUserAlreadyParticipant }) {
 						},
 					}}
 				/>
-				{isUserAlreadyParticipant ? (
+				{isUserAlreadyParticipant && userInfos?.id !== 16 ? (
 					<button
 						type="button"
 						className="main-button-colored create-project-button"

@@ -29,7 +29,7 @@ function CreateProject() {
 	);
 
 	useEffect(() => {
-		if (isUserAlreadyParticipant) {
+		if (isUserAlreadyParticipant && userInfos?.id !== 16) {
 			toast.error("Vous ne pouvez participer qu'à un seul projet");
 		}
 	}, [isUserAlreadyParticipant]);
