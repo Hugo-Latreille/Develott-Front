@@ -66,22 +66,6 @@ function TeamCreation() {
               </p>
             </>
           )}
-          {isUserProjectAdmin && user.charte && (
-            <TeamCreationAdminForm
-              projectId={projectId}
-              candidates={candidates}
-            />
-          )}
-          {!isUserProjectAdmin && user.charte && (
-            <TeamCreationUserForm
-              projectJobs={projectJobs}
-              projectTeam={projectTeam}
-              userId={user?.id}
-              projectId={projectId}
-              candidates={candidates}
-              participants={participants}
-            />
-          )}
         </div>
         {user.charte === false && <TeamCreationCharteForm />}
         <div className="team-creation-container-main">

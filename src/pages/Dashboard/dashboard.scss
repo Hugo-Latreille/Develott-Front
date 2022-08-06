@@ -16,6 +16,10 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+
+            & a {
+                color:white;
+            }
         }
 
         &-titles {
