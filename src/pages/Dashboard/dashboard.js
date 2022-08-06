@@ -17,13 +17,15 @@ import {
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 import Loader2 from "../../components/Loader2/loader2";
+import { useDeleteUserRoleMutation } from "../Profiles/userAPISlice";
 
 function Dashboard() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const {
 		displayEditGitLink,
@@ -54,15 +56,22 @@ function Dashboard() {
 
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteProject] = useDeleteProjectMutation();
+	const [deleteFromTeam] = useDeleteUserRoleMutation();
 
-	const isUserAdmin = myProject?.teams?.find(
-		(member) => member.customer_id === user?.id && member.role === "admin"
-	);
+	console.log(myProject);
 
-	const isUserParticipant = myProject?.teams?.find(
-		(member) =>
-			member.customer_id === user?.id && member.role === "participants"
-	);
+	// const isUserAdmin = myProject?.teams?.find(
+	// 	(member) => member.customer_id === user?.id && member.role === "admin"
+	// );
+
+	// const isUserParticipant = myProject?.teams?.find(
+	// 	(member) =>
+	// 		member.customer_id === user?.id && member.role === "participants"
+	// );
+
+	const isUserAdmin = false;
+
+	const isUserParticipant = true;
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"
@@ -106,16 +115,40 @@ function Dashboard() {
 								Présentation du projet <i className="fas fa-chevron-right"></i>
 							</Link>
 						</div>
-						<button
-							onClick={() => {
-								const confirm = window.confirm("test");
-								if (confirm) {
-									findMyProjectId && deleteProject(findMyProjectId);
-								}
-							}}
-						>
-							/!\ Supprimer le projet
-						</button>
+						{isUserAdmin && (
+							<button
+								onClick={() => {
+									const confirm = window.confirm(
+										"Voulez-vous vraiment supprimer le projet ?"
+									);
+									if (confirm) {
+										deleteProject(findMyProjectId);
+										navigate("/projets", { replace: true });
+									}
+								}}
+							>
+								/!\ Supprimer le projet
+							</button>
+						)}
+						{isUserParticipant && (
+							<button
+								onClick={() => {
+									const confirm = window.confirm(
+										"Voulez-vous vraiment vous retirer de l'équipe ?"
+									);
+									if (confirm) {
+										deleteFromTeam({
+											projectId: findMyProjectId,
+											role_id: 2,
+											customer_id: user?.id,
+										});
+										navigate("/projets", { replace: true });
+									}
+								}}
+							>
+								/!\ Se retirer de l'équipe
+							</button>
+						)}
 					</div>
 					<div className="dashboard-main-navigation">
 						<div
