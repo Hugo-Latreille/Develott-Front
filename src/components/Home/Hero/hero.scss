@@ -69,14 +69,17 @@
       padding-right: 0;
     }
 
+	&-right {
+		width: 80%;
+		margin: 4rem auto 4rem auto;
 
-		&-right {
-			width: 80%;
-			margin: 4rem auto 0 auto;
+		& img {
+			margin-bottom: 2rem;
 		}
+	}
 
-		&-title {
-			padding-bottom: 1rem;
-		}
+	&-title {
+		padding-bottom: 1rem;
+	}
 	}
 }

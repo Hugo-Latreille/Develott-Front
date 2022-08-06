@@ -36,6 +36,7 @@ import {
 } from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
+import { setToggleChangePasswordModal } from "./../../pages/App/appSlice";
 
 import Loader2 from "./../Loader2/loader2";
 
@@ -49,6 +50,9 @@ function Profil() {
   const { data: projectsTeams } = useGetAllProjectsQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUserTechno] = useDeleteUserTechnoMutation();
+
+  const { toggleChangePasswordModal } = useSelector((state) => state.app);
+
 
   const findMyProjectsId = projectsTeams?.teams?.filter(
     (team) => team.customer_id === user?.id
@@ -203,6 +207,7 @@ function Profil() {
   return (
     <>
       {isLoading && <Loader2 />}
+
       {!displayDarkMode && (
         <ReactTooltip
           className="tooltips_cards"
@@ -226,6 +231,7 @@ function Profil() {
           backgroundColor="#231661"
         />
       )}
+
       <div className="profil ">
         <div className="profil_desc">
           <div className="desc_container_description">
@@ -456,9 +462,11 @@ function Profil() {
 
               <p className="desc_container_title user-password">
                 <Link
-                  to={`/changePassword/${user?.id}`}
+
+                  to={`/newpassword/${user?.id}`}
                   state={{ background: location }}
-                  // onClick={() => dispatch(toggleTeamCreationModalOpen())}
+                  onClick={() => dispatch(setToggleChangePasswordModal())}
+
                 >
                   <i className="fal fa-key"></i> Mot de Passe
                 </Link>
@@ -850,6 +858,9 @@ function Profil() {
             ))}
           </div>
         </div>
+
+        <Outlet />
+
       </div>
     </>
   );
