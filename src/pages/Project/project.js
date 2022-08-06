@@ -43,6 +43,7 @@ import mockAvatar from "./../../assets/images/user-avatar.png";
 //React Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import Loader2 from "./../../components/Loader2/loader2";
 
 function Project() {
