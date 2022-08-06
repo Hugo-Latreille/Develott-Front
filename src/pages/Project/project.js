@@ -43,6 +43,7 @@ import mockAvatar from "./../../assets/images/user-avatar.png";
 //React Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import Loader2 from "./../../components/Loader2/loader2";
 
 function Project() {
@@ -389,6 +390,7 @@ function Project() {
 												</span>
 											)}
 										</div>
+
 										<div className="project-jobs-container">
 											{filterJobs?.map((job) => (
 												<p key={job.id_project_has_job}>
@@ -404,7 +406,7 @@ function Project() {
 																	checkHowManyParticipantsPerDuplicate(
 																		job.job_id
 																	)[job.job_id]
-																}
+																}{" "}
 																place(s) restante(s)
 															</p>
 														</>
