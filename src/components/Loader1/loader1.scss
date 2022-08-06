@@ -3,12 +3,13 @@
     margin: 0;
     padding: 0;
     position: relative;
+    width:60vw;
 }
 
 .loader1 {
     position: relative;
-    width: 100%;
-    height: 100vh;
+    width:  75vw;
+    height: 60vh;
     background-color: vars.$backgroundLight ;
     display: flex;
     flex-direction: column;
@@ -22,7 +23,7 @@
     display: flex;
     padding: 12px 0px;
     white-space: nowrap;
-    font-size: 5.6rem;
+    font-size: 1.6rem;
     transform: rotate(-30deg);
 }
 
@@ -53,8 +54,8 @@
 .v2 {
     position:absolute;
     display: flex;
-    top: 17rem;
-    left: 47rem;
+    top: 12%;
+    left: 35%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -68,13 +69,13 @@
 
     &_incoming{
         font-weight: bold;
-        font-size: 1.8rem;
+        font-size: 1.1rem;
         margin-top: 3rem;
     }
 
     &_message {
         font-weight: bold;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 }
 
