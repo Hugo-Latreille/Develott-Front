@@ -60,18 +60,14 @@ function Dashboard() {
 
 	console.log(myProject);
 
-	// const isUserAdmin = myProject?.teams?.find(
-	// 	(member) => member.customer_id === user?.id && member.role === "admin"
-	// );
+	const isUserAdmin = myProject?.teams?.find(
+		(member) => member.customer_id === user?.id && member.role === "admin"
+	);
 
-	// const isUserParticipant = myProject?.teams?.find(
-	// 	(member) =>
-	// 		member.customer_id === user?.id && member.role === "participants"
-	// );
-
-	const isUserAdmin = false;
-
-	const isUserParticipant = true;
+	const isUserParticipant = myProject?.teams?.find(
+		(member) =>
+			member.customer_id === user?.id && member.role === "participants"
+	);
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"

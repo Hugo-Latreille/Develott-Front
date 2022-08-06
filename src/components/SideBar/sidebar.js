@@ -19,8 +19,9 @@ import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import { toggleOpenIntro } from "./sidebarSlice";
 
 import { Steps } from "intro.js-react";
+import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
 
-const routes = [
+let routes = [
 	{
 		path: "/dashboard",
 		name: "Dashboard",
@@ -55,8 +56,18 @@ function Sidebar({ children, isVisible }) {
 	const [userLogout] = useUserLogoutMutation();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
-
+	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
+
+	const showDashboard = projectsTeams?.teams?.find(
+		(team) =>
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
+	);
+
+	if (!showDashboard) {
+		routes = routes.filter((route) => route.name !== "Dashboard");
+	}
 
 	const onExit = () => {
 		dispatch(toggleOpenIntro());
