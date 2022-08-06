@@ -404,7 +404,7 @@ function Project() {
 																	checkHowManyParticipantsPerDuplicate(
 																		job.job_id
 																	)[job.job_id]
-																}
+																}{" "}
 																place(s) restante(s)
 															</p>
 														</>
