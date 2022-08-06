@@ -20,11 +20,15 @@ function TeamCreation() {
   const projectTeam = projectWithTeam?.teams;
   const projectJobs = projectWithTeam?.jobByProject;
 
+
   const isUserProjectAdmin = projectTeam?.some(
     (team) => team.customer_id === user?.id && team.role === "admin"
   );
   // const isUserProjectAdmin = false;
   const candidates = projectTeam?.filter((team) => team.role === "candidates");
+  const participants = projectTeam?.filter(
+		(team) => team.role === "participants"
+	);
   const displayProductOwner = projectTeam
     ?.filter((team) => team.role === "admin")
     .map((po) => `${po.firstname} ${po.lastname}`)[0];
@@ -76,6 +80,7 @@ function TeamCreation() {
               userId={user?.id}
               projectId={projectId}
               candidates={candidates}
+              participants={participants}
             />
           )}
         </div>
@@ -94,6 +99,7 @@ function TeamCreation() {
               userId={user?.id}
               projectId={projectId}
               candidates={candidates}
+              participants={participants}
             />
           )}
         </div>
@@ -110,6 +116,7 @@ function TeamCreation() {
     </div>,
     document.getElementById("modal-root")
   );
+
 }
 
 export default TeamCreation;

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../pages/Login/authSlice";
+import Loader2 from "./../components/Loader2/loader2";
 
 const PersistLogin = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +53,6 @@ const PersistLogin = () => {
 	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	// }, [isLoading]);
 
-	return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
+	return <>{isLoading ? <Loader2 /> : <Outlet />}</>;
 };
 export default PersistLogin;
