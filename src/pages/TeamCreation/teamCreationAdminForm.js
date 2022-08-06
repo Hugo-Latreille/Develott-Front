@@ -49,7 +49,7 @@ function TeamCreationAdminForm({ projectId, candidates }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-admin-container">
       <h3>Sélectionnes tes co-équipiers :</h3>
       <div className="team-creation-admin-form">
         {candidates?.map((candidate, index) => (
