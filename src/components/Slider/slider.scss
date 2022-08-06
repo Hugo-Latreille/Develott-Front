@@ -170,3 +170,15 @@
 }
 
 
+
+
+// RESPONSIVE 
+
+@media screen and (width < 600px) {
+
+  .slider-container {
+    & .container {
+      width: 100%;
+    }
+  }
+}
