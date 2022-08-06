@@ -141,7 +141,13 @@ function Dashboard() {
               className="dashboard-main-navigation-messagerie"
               onClick={() => dispatch(setDisplayMaincontent("messagerie"))}
             >
-              <div className="dashboard-main-navigation-messagerie-content">
+              <div
+                className={
+                  displayMaincontent === "messagerie"
+                    ? "dashboard-main-navigation-messagerie-content bg-colored"
+                    : "dashboard-main-navigation-messagerie-content "
+                }
+              >
                 <h3>
                   <i className="far fa-comment-alt-dots"></i>Messagerie
                 </h3>
