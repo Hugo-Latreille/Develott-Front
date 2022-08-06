@@ -13,6 +13,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import sanitizeHtml from "sanitize-html";
 import moment from "moment/min/moment-with-locales";
 import { useSelector, useDispatch } from "react-redux";
+import { store } from "./../../store/store";
 import {
   setDisplayEdit,
   setUserDescription,
@@ -25,15 +26,22 @@ import {
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
-import { Link, useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
+import { toggleCharteModalOpen } from "./../Modal-Charte/modalSlice";
 
 function Profil() {
   const dispatch = useDispatch();
-  const { profilId } = useParams();
+  const navigate = useNavigate();
   const location = useLocation();
+  const { profilId } = useParams();
   const { email } = useSelector((state) => state.auth);
   const { data: user } = useFindUserByIdQuery(profilId);
   const { data: projectsTeams } = useGetAllProjectsQuery();
@@ -88,6 +96,12 @@ function Profil() {
       setEditorState(EditorState.createWithContent(contentState));
     }
   }, [user?.description]);
+
+  //   useEffect(() => {
+  //     window.scrollTo(0, 0);
+  //     navigate("/modal-charte", { replace: true });
+  //     dispatch(toggleCharteModalOpen());
+  //   }, [location.pathname, dispatch, navigate]);
 
   const handleEditorChange = (editorState) => {
     setEditorState(editorState);
@@ -815,6 +829,7 @@ function Profil() {
             ))}
           </div>
         </div>
+        <Outlet />
       </div>
     </>
   );
