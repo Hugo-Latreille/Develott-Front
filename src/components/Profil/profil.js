@@ -307,8 +307,12 @@ function Profil() {
 											<p className="desc_container_title">
 												<i className="fab fa-github color-secondary"></i>
 												{user?.url_github ? (
-													<a href={user?.url_github} target="_blank">
-														Profile Github
+													<a
+														href={`https://github.com/${user?.url_github}`}
+														target="_blank"
+														rel="noreferrer"
+													>
+														{user?.url_github}
 													</a>
 												) : (
 													"GitHub"
@@ -318,8 +322,12 @@ function Profil() {
 												<i className="fab fa-linkedin color-secondary"></i>
 												<a href="#">
 													{user?.url_linkedin ? (
-														<a href={user?.url_linkedin} target="_blank">
-															Profile Linkedin
+														<a
+															href={`https://www.linkedin.com/in/${user?.url_linkedin}`}
+															target="_blank"
+															rel="noreferrer"
+														>
+															{user?.url_linkedin}
 														</a>
 													) : (
 														"Linkedin"
@@ -329,7 +337,11 @@ function Profil() {
 											<p className="desc_container_title">
 												<i className="fas fa-globe color-secondary"></i>
 												{user?.url_portfolio ? (
-													<a href={user?.url_portfolio} target="_blank">
+													<a
+														href={user?.url_portfolio}
+														target="_blank"
+														rel="noreferrer"
+													>
 														{user?.url_portfolio}
 													</a>
 												) : (
