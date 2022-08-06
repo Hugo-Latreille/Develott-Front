@@ -14,13 +14,13 @@ import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import {
 	useDeleteProjectMutation,
 	useGetAllProjectsQuery,
-	useGetOneProjectCompleteQuery,
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
 import { Link } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import technologiesJson from "./../../assets/data/technologiesData.json";
+import Loader2 from "../../components/Loader2/loader2";
 
 function Dashboard() {
 	const dispatch = useDispatch();
@@ -39,9 +39,9 @@ function Dashboard() {
 	} = useSelector((state) => state.dashboard);
 
 	const { email } = useSelector((state) => state.auth);
-	const { data: user } = useFindUserByEmailQuery(email);
-	const { data: projectsTeams } = useGetAllProjectsQuery();
-	const [deleteProject] = useDeleteProjectMutation();
+	const { data: user, isLoading: userLoading } = useFindUserByEmailQuery(email);
+	const { data: projectsTeams, isLoading: projectsLoading } =
+		useGetAllProjectsQuery();
 
 	const findMyProjectId = projectsTeams?.teams?.find(
 		(team) =>
@@ -49,15 +49,19 @@ function Dashboard() {
 			(team.role === "admin" || team.role === "participants")
 	)?.project_id;
 
-	console.log(findMyProjectId);
+	const { data: myProject, isLoading: teamLoading } =
+		useGetOneProjectQuery(findMyProjectId);
 
-	const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
-	// const { data: myProjectLinks } =
-	// 	useGetOneProjectCompleteQuery(findMyProjectId);
 	const [updateProject] = useUpdateProjectMutation();
+	const [deleteProject] = useDeleteProjectMutation();
 
 	const isUserAdmin = myProject?.teams?.find(
 		(member) => member.customer_id === user?.id && member.role === "admin"
+	);
+
+	const isUserParticipant = myProject?.teams?.find(
+		(member) =>
+			member.customer_id === user?.id && member.role === "participants"
 	);
 
 	const myTeam = myProject?.teams.filter(
@@ -86,6 +90,7 @@ function Dashboard() {
 
 	return (
 		<Sidebar>
+			{userLoading || projectsLoading || (teamLoading && <Loader2 />)}
 			<div className="dashboard">
 				<div className="dashboard-main">
 					<div className="dashboard-main-header">
@@ -105,7 +110,7 @@ function Dashboard() {
 							onClick={() => {
 								const confirm = window.confirm("test");
 								if (confirm) {
-									deleteProject({ findMyProjectId });
+									findMyProjectId && deleteProject(findMyProjectId);
 								}
 							}}
 						>

@@ -24,12 +24,16 @@ function CreateProject() {
 
 	const isUserAlreadyParticipant = projectsTeams?.teams.some(
 		(team) =>
-			(team?.customer_id === userInfos?.id && team?.role === "participants") ||
-			team?.role === "candidates"
+			team?.customer_id === userInfos?.id &&
+			(team?.role === "participants" || team?.role === "admin")
 	);
 
 	useEffect(() => {
-		if (isUserAlreadyParticipant && userInfos?.id !== 16) {
+		if (
+			isUserAlreadyParticipant &&
+			userInfos?.id !== 16 &&
+			activeForm === "informations"
+		) {
 			toast.error("Vous ne pouvez participer qu'à un seul projet");
 		}
 	}, [isUserAlreadyParticipant]);

@@ -75,8 +75,8 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			invalidatesTags: ["Project"],
 		}),
 		deleteProject: builder.mutation({
-			query: ({ projectId }) => ({
-				url: `project/${projectId}`,
+			query: () => ({
+				url: "project/15",
 				method: "DELETE",
 			}),
 			invalidatesTags: ["Project"],

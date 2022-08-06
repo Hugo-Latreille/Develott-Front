@@ -97,6 +97,7 @@ function Connexion() {
 					}
 				})
 				.catch((err) => {
+					console.log(err);
 					if (err?.data.message === "This email already use") {
 						return toast.error(
 							"Cet email existe déjà, vous pouvez renouveler votre mot de passe dans l'onglet 'Connexion' en cas d'oubli",
