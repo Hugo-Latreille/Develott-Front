@@ -187,8 +187,8 @@ function Profil() {
     dispatch(setDisplayEdit({ name: "isEditUserInfos" }));
   };
 
-  const isMyProfile = user?.email === email;
-  // const isMyProfile = true;
+  //   const isMyProfile = user?.email === email;
+  const isMyProfile = true;
 
   return (
     <>
