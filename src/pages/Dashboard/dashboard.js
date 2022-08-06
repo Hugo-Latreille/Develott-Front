@@ -502,6 +502,7 @@ function Dashboard() {
 														url_trello: projectTrello,
 													});
 
+
 													dispatch(
 														setDisplayEdit({ name: "displayEditTrelloLink" })
 													);
@@ -516,7 +517,7 @@ function Dashboard() {
 						)}
 						{displayMaincontent === "calendar" && <Calendar />}
 						{displayMaincontent === "messagerie" && (
-							<div className="container-scheduler-component">
+							<div className="container-loader-component">
 								<Loader1 />
 							</div>
 						)}
@@ -593,6 +594,7 @@ function Dashboard() {
 			<Footer />
 		</Sidebar>
 	);
+
 }
 
 export default Dashboard;
