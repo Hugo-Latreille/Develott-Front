@@ -3,6 +3,7 @@ import "./dashboard.scss";
 import Sidebar from "../../components/SideBar/sidebar";
 import Calendar from "../../components/Calendar/calendar";
 import CalendarSmall from "../../components/Calendar/calendarSmall";
+import Loader1 from "../../components/Loader1/loader1";
 import Footer from "../../components/Footer/footerColored";
 import { useSelector, useDispatch } from "react-redux";
 import ReactTooltip from "react-tooltip";
@@ -136,8 +137,17 @@ function Dashboard() {
                 />
               </div>
             </div>
-            <div className="dashboard-main-navigation-messagerie">
-              <div className="dashboard-main-navigation-messagerie-content">
+            <div
+              className="dashboard-main-navigation-messagerie"
+              onClick={() => dispatch(setDisplayMaincontent("messagerie"))}
+            >
+              <div
+                className={
+                  displayMaincontent === "messagerie"
+                    ? "dashboard-main-navigation-messagerie-content bg-colored"
+                    : "dashboard-main-navigation-messagerie-content "
+                }
+              >
                 <h3>
                   <i className="far fa-comment-alt-dots"></i>Messagerie
                 </h3>
@@ -449,6 +459,11 @@ function Dashboard() {
               </>
             )}
             {displayMaincontent === "calendar" && <Calendar />}
+            {displayMaincontent === "messagerie" && (
+              <div className="container-scheduler-component">
+                <Loader1 />
+              </div>
+            )}
           </div>
           {displayMaincontent === "main" && (
             <div className="dashboard-main-technologies">
