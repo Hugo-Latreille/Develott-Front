@@ -4,7 +4,7 @@ import { setCredentials } from "./authSlice";
 const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		createUser: builder.mutation({
-			query: ({ firstname, lastname, email, password }) => {
+			query: ({ firstname, lastname, email, password, gitHubUsername }) => {
 				return {
 					url: "user/create",
 					method: "POST",
@@ -14,6 +14,7 @@ const authAPI = emptySplitApi.injectEndpoints({
 						lastname,
 						email,
 						password,
+						username_gith: gitHubUsername,
 					},
 				};
 			},

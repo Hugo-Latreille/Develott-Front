@@ -7,6 +7,7 @@ const initialState = {
 	password: "",
 	passwordConfirm: "",
 	email: "",
+	gitHubUsername: "",
 	isLogged: false,
 	isLoggingActive: true,
 	token: "",

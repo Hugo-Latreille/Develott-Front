@@ -24,29 +24,45 @@ function Connexion() {
 
 	const [userLogin] = useUserLoginMutation();
 	const [createUser] = useCreateUserMutation();
-	const { firstname, lastname, email, password, passwordConfirm } = useSelector(
-		(state) => state.auth
-	);
+	const {
+		firstname,
+		lastname,
+		email,
+		password,
+		passwordConfirm,
+		gitHubUsername,
+	} = useSelector((state) => state.auth);
 	const isLoggingActive = useSelector((state) => state.auth.isLoggingActive);
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
-			const userData = await userLogin({ email, password }).unwrap();
-			console.log(userData);
-
-			if (userData.foundUser.validate === false) {
-				return toast.error(
-					"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
-					toastOptions
-				);
-			}
-
-			dispatch(
-				setCredentials({ accessToken: userData.accessToken, email: email })
-			);
-			dispatch(toggleLoggingModalOpen());
-			navigate("/projets");
+			const userData = await userLogin({ email, password })
+				.unwrap()
+				.then(() => {
+					if (userData.foundUser.validate === false) {
+						return toast.error(
+							"Vous devez valider votre lien d'activation reçu par mail pour pouvoir vous connecter",
+							toastOptions
+						);
+					}
+					dispatch(
+						setCredentials({ accessToken: userData.accessToken, email: email })
+					);
+					dispatch(toggleLoggingModalOpen());
+					navigate("/projets");
+				})
+				.catch((err) => {
+					if (err.data.message === "le mail n'existe pas") {
+						return toast.error(
+							"L'email entré ne correspond à aucun utilisateur",
+							toastOptions
+						);
+					}
+					if (err.data.message === "Wrong password") {
+						return toast.error("Le mot de passe est incorrect", toastOptions);
+					}
+				});
 		} catch (err) {
 			if (!err?.originalStatus) {
 				console.log("No Server Response");
@@ -65,17 +81,27 @@ function Connexion() {
 		e.preventDefault();
 
 		if (handleValidation()) {
-			toast.success(
-				"On y est presque ! Vérifiez vos emails pour valider votre inscription",
-				toastOptions
-			);
-			createUser({ firstname, lastname, email, password });
-			dispatch(clearInputs());
+			createUser({ firstname, lastname, email, password, gitHubUsername })
+				.unwrap()
+				.then(() => {
+					toast.success(
+						"On y est presque ! Vérifiez vos emails pour valider votre inscription",
+						toastOptions
+					);
+					dispatch(clearInputs());
+				})
+				.catch((err) => {
+					if (err.data.message === "This email already use") {
+						return toast.error(
+							"Cet email existe déjà, vous pouvez renouveler votre mot de passe dans l'onglet 'Connexion' en cas d'oubli",
+							toastOptions
+						);
+					}
+				});
 		}
 	};
 
 	const handleValidation = () => {
-		//* TODO verification password regex
 		if (password !== passwordConfirm) {
 			toast.error("Les mots de passe ne correspondent pas", toastOptions);
 			return false;

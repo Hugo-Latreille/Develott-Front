@@ -3,10 +3,7 @@ import Input from "../../components/Input/Input";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 
 import "./register.scss";
-import {
-	togglePasswordVisibility,
-	toggleRegisterVisibility,
-} from "./authSlice";
+import { toggleRegisterVisibility } from "./authSlice";
 
 function Register({ onSubmit }) {
 	const {
@@ -16,6 +13,7 @@ function Register({ onSubmit }) {
 		password,
 		passwordConfirm,
 		registerPasswordVisibility,
+		gitHubUsername,
 	} = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
 	return (
@@ -38,6 +36,13 @@ function Register({ onSubmit }) {
 							required={true}
 						/>
 					</div>
+					<Input
+						name="gitHubUsername"
+						value={gitHubUsername}
+						label="Nom d'utilisateur GitHub"
+						type="text"
+						required={false}
+					/>
 
 					<Input
 						name="email"
