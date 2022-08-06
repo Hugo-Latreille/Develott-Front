@@ -3,7 +3,7 @@ import Input from "../../components/Input/Input";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 
 import "./register.scss";
-import { toggleRegisterVisibility } from "./authSlice";
+import { toggleLoggingActive, toggleRegisterVisibility } from "./authSlice";
 
 function Register({ onSubmit }) {
 	const {
@@ -75,9 +75,12 @@ function Register({ onSubmit }) {
 					<button type="submit" className="main-button-colored">
 						S'inscrire
 					</button>
-					<a href="#" className="third-button-colored width-100">
+					<span
+						className="third-button-colored width-100"
+						onClick={() => dispatch(toggleLoggingActive())}
+					>
 						Déjà inscrit ?
-					</a>
+					</span>
 				</form>
 			</div>
 		</div>
