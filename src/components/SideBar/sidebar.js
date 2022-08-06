@@ -21,6 +21,7 @@ import { toggleOpenIntro } from "./sidebarSlice";
 import { Steps } from "intro.js-react";
 
 const routes = [
+
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -57,6 +58,7 @@ function Sidebar({ children, isVisible }) {
   const { data: user } = useGetOneUserQuery(email);
 
   const [initialStep, setInitialStep] = useState(0);
+
 
   const onExit = () => {
     dispatch(toggleOpenIntro());
@@ -191,6 +193,7 @@ function Sidebar({ children, isVisible }) {
         steps={steps}
         initialStep={initialStep}
         onComplete={onExit}
+onExit={() => ""}
       />
       <motion.div
         id="sideok"
@@ -313,6 +316,7 @@ function Sidebar({ children, isVisible }) {
             onClick={() => dispatch(toggleSideBar())}
             className="active_toggle"
           ></motion.div>
+
 
           <div className="bottom_container">
             <div className="toggle_pic_container">

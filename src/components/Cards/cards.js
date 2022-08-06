@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import Skeleton from "./../Skeletron/skeleton";
 
 function ProjectList() {
+
   const dispatch = useDispatch();
 
   const { searchTechnology, searchJob, searchProjectName, searchDate } =
@@ -37,11 +38,11 @@ function ProjectList() {
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
 
   //! conserver
-  const findTeamByProject = (projectId) => {
-    return projectsTeams?.teams?.filter(
-      (team) => team?.project_id === projectId
-    );
-  };
+const findTeamByProject = (projectId) => {
+		return projectsTeams?.teams?.filter(
+			(team) => team?.project_id === projectId && team?.role === "participants"
+		);
+	};
 
   const findJobsByProject = (projectId) => {
     return projectsTeams?.jobByProject?.filter(
@@ -300,7 +301,7 @@ function ProjectList() {
                     className="span-strong"
                   >
                     {findJobsByProject(project?.id).length -
-                      (findTeamByProject(project?.id).length - 1)}
+                      	findTeamByProject(project?.id).length}
                   </span>
                   {!displayDarkMode && (
                     <ReactTooltip
@@ -360,6 +361,7 @@ function ProjectList() {
         ))}
     </div>
   );
+
 }
 
 export default ProjectList;

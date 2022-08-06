@@ -16,97 +16,100 @@ import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import { useUpdateUserMutation } from "../Profiles/userAPISlice";
 
 function CreateProjectInformationsForm() {
-  const dispatch = useDispatch();
-  const { picture_project, name, exerpt, description, start_date, end_date } =
-    useSelector((state) => state.createProject);
-  const { email } = useSelector((state) => state.auth);
-  const { data: userInfos } = useFindUserByEmailQuery(email);
-  const [postProject] = usePostProjectMutation();
-  const [UpdateUserActiveAndJob] = useUpdateUserMutation();
+	const dispatch = useDispatch();
+	const { picture_project, name, exerpt, description, start_date, end_date } =
+		useSelector((state) => state.createProject);
+	const { email } = useSelector((state) => state.auth);
+	const { data: userInfos } = useFindUserByEmailQuery(email);
+	const [postProject] = usePostProjectMutation();
+	const [UpdateUserActiveAndJob] = useUpdateUserMutation();
 
-  const html = description;
-  const contentBlock = htmlToDraft(html);
-  const contentState = ContentState.createFromBlockArray(
-    contentBlock.contentBlocks
-  );
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(contentState)
-  );
-  const handleEditorChange = (editorState) => {
-    setEditorState(editorState);
-  };
+	const html = description;
+	const contentBlock = htmlToDraft(html);
+	const contentState = ContentState.createFromBlockArray(
+		contentBlock.contentBlocks
+	);
+	const [editorState, setEditorState] = useState(
+		EditorState.createWithContent(contentState)
+	);
+	const handleEditorChange = (editorState) => {
+		setEditorState(editorState);
+	};
 
-  const showCloudinaryWidget = () => {
-    let widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: `develott`,
-        uploadPreset: `develott`,
-        sources: ["local", "url"],
-        showAdvancedOptions: true,
-        cropping: true,
-        multiple: false,
-        defaultSource: "local",
-        styles: {
-          palette: {
-            window: "#FFFFFF",
-            windowBorder: "#90A0B3",
-            tabIcon: "#9B72F1",
-            menuIcons: "#5A616A",
-            textDark: "#000000",
-            textLight: "#FFFFFF",
-            link: "#9B72F1",
-            action: "#FF620C",
-            inactiveTabIcon: "#7288E4",
-            error: "#F44235",
-            inProgress: "#0078FF",
-            complete: "#20B832",
-            sourceBg: "#E4EBF1",
-          },
-          fonts: {
-            default: null,
-            "'Fira Sans', sans-serif": {
-              url: "https://fonts.googleapis.com/css?family=Fira+Sans",
-              active: true,
-            },
-          },
-        },
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          console.log(result.info.url);
-          const newImg = result.info.url;
-          dispatch(setNewImg(newImg));
-        }
-      }
-    );
-    widget.open();
-  };
+	const today = new Date();
 
-  const postNewProject = (e) => {
-    e.preventDefault();
-    dispatch(
-      handleChange({
-        name: "description",
-        value: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-      })
-    );
-    UpdateUserActiveAndJob({ id: userInfos?.id, is_active: true, job_id: 1 });
-    postProject({
-      userId: userInfos?.id,
-      name,
-      exerpt,
-      description,
-      picture_project,
-      start_date,
-      end_date,
-    })
-      .unwrap()
-      .then((data) => {
-        console.log(data);
-        dispatch(handleChange({ name: "projectId", value: data }));
-        dispatch(setActiveForm("technologies"));
-      });
-  };
+	const showCloudinaryWidget = () => {
+		let widget = window.cloudinary.createUploadWidget(
+			{
+				cloudName: `develott`,
+				uploadPreset: `develott`,
+				sources: ["local", "url"],
+				showAdvancedOptions: true,
+				cropping: true,
+				multiple: false,
+				defaultSource: "local",
+				styles: {
+					palette: {
+						window: "#FFFFFF",
+						windowBorder: "#90A0B3",
+						tabIcon: "#9B72F1",
+						menuIcons: "#5A616A",
+						textDark: "#000000",
+						textLight: "#FFFFFF",
+						link: "#9B72F1",
+						action: "#FF620C",
+						inactiveTabIcon: "#7288E4",
+						error: "#F44235",
+						inProgress: "#0078FF",
+						complete: "#20B832",
+						sourceBg: "#E4EBF1",
+					},
+					fonts: {
+						default: null,
+						"'Fira Sans', sans-serif": {
+							url: "https://fonts.googleapis.com/css?family=Fira+Sans",
+							active: true,
+						},
+					},
+				},
+			},
+			(error, result) => {
+				if (!error && result && result.event === "success") {
+					console.log(result.info.url);
+					const newImg = result.info.url;
+					dispatch(setNewImg(newImg));
+				}
+			}
+		);
+		widget.open();
+	};
+
+
+	const postNewProject = (e) => {
+		e.preventDefault();
+		dispatch(
+			handleChange({
+				name: "description",
+				value: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+			})
+		);
+		UpdateUserActiveAndJob({ id: userInfos?.id, is_active: true, job_id: 1 });
+		postProject({
+			userId: userInfos?.id,
+			name,
+			exerpt,
+			description,
+			picture_project,
+			start_date,
+			end_date,
+		})
+			.unwrap()
+			.then((data) => {
+				console.log(data);
+				dispatch(handleChange({ name: "projectId", value: data }));
+				dispatch(setActiveForm("technologies"));
+			});
+	};
 
   return (
     <form onSubmit={postNewProject}>
@@ -196,14 +199,15 @@ function CreateProjectInformationsForm() {
         }}
       />
 
-      <button
-        type="submit"
-        className="main-button-colored create-project-button"
-      >
-        Valider
-      </button>
-    </form>
-  );
+
+			<button
+				type="submit"
+				className="main-button-colored create-project-button"
+			>
+				Valider
+			</button>
+		</form>
+	);
 }
 
 export default CreateProjectInformationsForm;

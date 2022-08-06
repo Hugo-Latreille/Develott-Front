@@ -43,71 +43,93 @@ import mockAvatar from "./../../assets/images/user-avatar.png";
 //React Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader2 from "./../../components/Loader2/loader2";
 
 function Project() {
-  const { projectId } = useParams();
-  const {
-    data: projectWithTeam,
-    refetch,
-    isLoading,
-  } = useGetOneProjectQuery(projectId);
-  const [updateProject] = useUpdateProjectMutation();
-  const [deleteJobProject] = useDeleteProjectJobMutation();
-  const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
-  console.log(projectWithTeam);
-  const project = projectWithTeam?.project;
-  const projectJobs = projectWithTeam?.jobByProject;
-  const projectTeam = projectWithTeam?.teams;
-  const { email } = useSelector((state) => state.auth);
-  const { data: user } = useGetOneUserQuery(email);
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const {
-    displayEditDescriptionForm,
-    displayEditTechnologies,
-    displayEditJobForm,
-    displayEditDates,
-    displayImgEdit,
-    adaptDescriptionContainer,
-    startDate,
-    endDate,
-    description,
-    projectTitle,
-    projectExcerpt,
-  } = useSelector((state) => state.project);
-  const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
 
+	const { projectId } = useParams();
+	const {
+		data: projectWithTeam,
+		refetch,
+		isLoading,
+	} = useGetOneProjectQuery(projectId);
+	const [updateProject] = useUpdateProjectMutation();
+	const [deleteJobProject] = useDeleteProjectJobMutation();
+	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
+	console.log(projectWithTeam);
+	const project = projectWithTeam?.project;
+	const projectJobs = projectWithTeam?.jobByProject;
+	const projectTeam = projectWithTeam?.teams;
+	const { email } = useSelector((state) => state.auth);
+	const { data: user } = useGetOneUserQuery(email);
+	const dispatch = useDispatch();
+	const location = useLocation();
+	const {
+		displayEditDescriptionForm,
+		displayEditTechnologies,
+		displayEditJobForm,
+		displayEditDates,
+		displayImgEdit,
+		adaptDescriptionContainer,
+		startDate,
+		endDate,
+		description,
+		projectTitle,
+		projectExcerpt,
+	} = useSelector((state) => state.project);
+	const today = new Date();
+
+	const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
   const isUserTeamMember = projectTeam?.some(
     (team) => team.customer_id === user?.id
   );
 
-  const isUserParticipant = projectTeam?.some(
-    (team) => team.customer_id === user?.id && team.role === "participants"
-  );
-  const isUserCandidate = projectTeam?.some(
-    (team) => team.customer_id === user?.id && team.role === "candidates"
-  );
-  const displayParticipants = projectTeam?.filter(
-    (participant) => participant.role === "participants"
-  );
-  const doesJobHaveParticipant = (jobName) => {
-    return displayParticipants?.find(
-      (participant) => participant.job === jobName
-    );
-  };
-  const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
-  useEffect(() => {
-    if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
-      toast.info("Ce projet est complet");
-    }
-    if (!isLoading && isUserParticipant && teamModalIsOpen === false) {
-      toast.success("Vous avez été sélectionné pour participer à ce projet");
-    }
-    if (!isLoading && isUserCandidate && teamModalIsOpen === false) {
-      toast.success("Vous êtes candidat pour participer à ce projet");
-    }
-  }, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
+	const isUserParticipant = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "participants"
+	);
+	const isUserCandidate = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "candidates"
+	);
+	const isUserProjectAdmin = projectTeam?.some(
+		(team) => team.customer_id === user?.id && team.role === "admin"
+	);
+	// const isUserProjectAdmin = true;
+
+	const displayParticipants = projectTeam?.filter(
+		(participant) => participant.role === "participants"
+	);
+	const doesJobHaveParticipant = (jobName) => {
+		return displayParticipants?.find(
+			(participant) => participant.job === jobName
+		);
+	};
+
+	const doesJobHaveCandidates = projectTeam?.filter(
+		(candidate) => candidate.role === "candidates"
+	);
+
+	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
+
+	useEffect(() => {
+		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
+			toast.info("Ce projet est complet");
+		}
+		if (isUserParticipant && teamModalIsOpen === false) {
+			toast.success("Vous avez été sélectionné pour participer à ce projet");
+		}
+		if (isUserCandidate && teamModalIsOpen === false) {
+			toast.success("Vous êtes candidat pour participer à ce projet");
+		}
+		if (
+			doesJobHaveCandidates?.length > 0 &&
+			isUserProjectAdmin &&
+			teamModalIsOpen === false
+		) {
+			toast.info("Un candidat en attente de validation");
+		}
+	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
+
 
   const findProjectTechnosFromDatabase = project?.techno?.map(
     (techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
@@ -225,44 +247,90 @@ function Project() {
     );
   };
 
-  const isUserProjectAdmin = projectTeam?.some(
-    (team) => team.customer_id === user?.id && team.role === "admin"
-  );
-  // const isUserProjectAdmin = true;
+	const jobNames = projectJobs?.map((job) => job.job);
+	const filterJobs = projectJobs?.filter(
+		({ job }, index) => !jobNames.includes(job, index + 1)
+	);
+	const participants = projectTeam?.filter(
+		(team) => team.role === "participants"
+	);
 
-  return (
-    <>
-      <Sidebar>
-        <div className="project">
-          <div className="project-container ">
-            <div className="project-container-left">
-              {!displayImgEdit && (
-                <div className="project-img-container">
-                  <img
-                    src={project?.picture}
-                    className="project-img"
-                    alt="Projet image"
-                  />
-                  {isUserProjectAdmin && (
-                    <span
-                      className="project-img-container-edit-btn"
-                      onClick={() =>
-                        dispatch(setDisplayEdit({ name: "displayImgEdit" }))
-                      }
-                    >
-                      Modifier
-                    </span>
-                  )}
-                </div>
-              )}
-              {displayImgEdit && (
-                <div className="project-edit-img-container">
-                  <button
-                    className="project-edit-img-input"
-                    onClick={() => showCloudinaryWidget()}
-                  >
-                    Uploader une nouvelle image
-                  </button>
+	const countDuplicates = (jobId) => {
+		const count = {};
+		projectJobs?.forEach((element) => {
+			if (element.job_id === jobId) {
+				var key = JSON.stringify(element.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+
+	const countParticipantsSameJob = (jobId) => {
+		const count = {};
+		participants?.forEach((participant) => {
+			if (participant.job_id === jobId) {
+				var key = JSON.stringify(participant.job_id);
+				count[key] = (count[key] || 0) + 1;
+			}
+		});
+		return count;
+	};
+	const checkHowManyParticipantsPerDuplicate = (jobId) => {
+		const candidatesSameJob = countParticipantsSameJob(jobId);
+		const howManySameJob = countDuplicates(jobId);
+
+		if (Object.keys(candidatesSameJob).length === 0) {
+			return howManySameJob;
+		} else {
+			for (const candidate in candidatesSameJob) {
+				for (const sameJob in howManySameJob) {
+					if (candidate === sameJob) {
+						return {
+							[candidate]:
+								howManySameJob[sameJob] - candidatesSameJob[candidate],
+						};
+					}
+				}
+			}
+		}
+	};
+
+	return (
+		<>
+			{isLoading && <Loader2 />}
+			<Sidebar>
+				<div className="project">
+					<div className="project-container ">
+						<div className="project-container-left">
+							{!displayImgEdit && (
+								<div className="project-img-container">
+									<img
+										src={project?.picture}
+										className="project-img"
+										alt="Projet image"
+									/>
+									{isUserProjectAdmin && (
+										<span
+											className="project-img-container-edit-btn"
+											onClick={() =>
+												dispatch(setDisplayEdit({ name: "displayImgEdit" }))
+											}
+										>
+											Modifier
+										</span>
+									)}
+								</div>
+							)}
+							{displayImgEdit && (
+								<div className="project-edit-img-container">
+									<button
+										className="project-edit-img-input"
+										onClick={() => showCloudinaryWidget()}
+									>
+										Uploader une nouvelle image
+									</button>
+
 
                   <p
                     className="secondary-button-colored validation-edit-btn"
@@ -292,130 +360,303 @@ function Project() {
 
                 {/* //TODO connecter les liens RS */}
 
-                <div className="project-user-links">
-                  <p>
-                    <i className="fab fa-github"></i>
-                  </p>
-                  <p>
-                    <i className="fab fa-linkedin"></i>
-                  </p>
-                  <p>
-                    <i className="fas fa-laptop-code"></i>
-                  </p>
-                </div>
-              </div>
-              <div className="project-jobs">
-                {displayEditJobForm === false && (
-                  <>
-                    <div className="project-description-container">
-                      <h3 className="project-jobs-title">
-                        Profil(s) recherché(s)
-                      </h3>
-                      {isUserProjectAdmin && (
-                        <span
-                          className="edit-btn-main"
-                          onClick={() =>
-                            dispatch(
-                              setDisplayEdit({ name: "displayEditJobForm" })
-                            )
-                          }
-                        >
-                          Modifier
-                        </span>
-                      )}
-                    </div>
-                    <div className="project-jobs-container">
-                      {projectJobs?.map((job) => (
-                        <p key={job.id_project_has_job}>
-                          {doesJobHaveParticipant(job.job) ? (
-                            <i className="fas fa-check-circle error'"></i>
-                          ) : (
-                            <i className="fas fa-check-circle success"></i>
-                          )}{" "}
-                          {job.job}
-                        </p>
-                      ))}
-                    </div>
-                  </>
-                )}
-                {displayEditJobForm === true && (
-                  <div className="project-jobs-container">
-                    <div className="jobs-searchbar-container">
-                      <SearchBarJobsProject projectId={projectId} />
-                    </div>
-                    {projectJobs?.map((job) => (
-                      <div
-                        key={job.id_project_has_job}
-                        className="project-jobs-container-job"
-                      >
-                        <p>
-                          <i className="fas fa-check-circle success"></i>
-                          {job.job}
-                        </p>
-                        <span
-                          onClick={() =>
-                            deleteJobProject({
-                              id: projectId,
-                              id_project_has_job: job.id_project_has_job,
-                            })
-                          }
-                        >
-                          <i className="far fa-backspace cursor-pointer"></i>
-                        </span>
-                      </div>
-                    ))}
-                    <span>
-                      <p
-                        className="secondary-button-colored validation-edit-btn"
-                        onClick={() =>
-                          dispatch(
-                            setDisplayEdit({ name: "displayEditJobForm" })
-                          )
-                        }
-                      >
-                        Valider
-                      </p>
-                    </span>
-                  </div>
-                )}
-              </div>
-              {!displayEditDates && (
-                <div className="project-dates">
-                  <div className="project-jobs-title-container">
-                    <h3 className="project-jobs-title">Dates du projet</h3>
 
-                    {isUserProjectAdmin && (
-                      <p
-                        className="edit-btn-main"
-                        onClick={() =>
-                          dispatch(setDisplayEdit({ name: "displayEditDates" }))
-                        }
-                      >
-                        Modifier
-                      </p>
-                    )}
-                  </div>
-                  <p>
-                    <i className="far fa-calendar-check success margin-right05"></i>
-                    Début :{" "}
-                    {moment(project?.start_date).locale("fr").format("LL")}
-                  </p>
-                  <p>
-                    <i className="far fa-calendar-exclamation warning margin-right05"></i>
-                    Durée :{" "}
-                    {moment(project?.end_date)
-                      .locale("fr")
-                      .diff(
-                        moment(project?.start_date).locale("fr"),
-                        "weeks"
-                      )}{" "}
-                    semaines
-                  </p>
-                </div>
-              )}
-              {displayEditDates && (
-                <div className="project-dates">
-                  <div className="project-dates-inputs">
+								<div className="project-user-links">
+									<p>
+										<i className="fab fa-github"></i>
+									</p>
+									<p>
+										<i className="fab fa-linkedin"></i>
+									</p>
+									<p>
+										<i className="fas fa-laptop-code"></i>
+									</p>
+								</div>
+							</div>
+							<div className="project-jobs">
+								{displayEditJobForm === false && (
+									<>
+										<div className="project-description-container">
+											<h3 className="project-jobs-title">
+												Profil(s) recherché(s)
+											</h3>
+											{isUserProjectAdmin && (
+												<span
+													className="edit-btn-main"
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({ name: "displayEditJobForm" })
+														)
+													}
+												>
+													Modifier
+												</span>
+											)}
+										</div>
+										<div className="project-jobs-container">
+											{filterJobs?.map((job) => (
+												<p key={job.id_project_has_job}>
+													{checkHowManyParticipantsPerDuplicate(job.job_id)[
+														job.job_id
+													] === 0 ? (
+														<i className="fas fa-check-circle error'"></i>
+													) : (
+														<>
+															<i className="fas fa-check-circle success"></i>
+															<p>
+																{
+																	checkHowManyParticipantsPerDuplicate(
+																		job.job_id
+																	)[job.job_id]
+																}
+																place(s) restante(s)
+															</p>
+														</>
+													)}{" "}
+													{job.job}
+												</p>
+											))}
+										</div>
+									</>
+								)}
+								{displayEditJobForm === true && (
+									<div className="project-jobs-container">
+										<div className="jobs-searchbar-container">
+											<SearchBarJobsProject projectId={projectId} />
+										</div>
+										{projectJobs?.map((job) => (
+											<div
+												key={job.id_project_has_job}
+												className="project-jobs-container-job"
+											>
+												<p>
+													<i className="fas fa-check-circle success"></i>
+													{job.job}
+												</p>
+												<span
+													onClick={() =>
+														deleteJobProject({
+															id: projectId,
+															id_project_has_job: job.id_project_has_job,
+														})
+													}
+												>
+													<i className="far fa-backspace cursor-pointer"></i>
+												</span>
+											</div>
+										))}
+										<span>
+											<p
+												className="secondary-button-colored validation-edit-btn"
+												onClick={() =>
+													dispatch(
+														setDisplayEdit({ name: "displayEditJobForm" })
+													)
+												}
+											>
+												Valider
+											</p>
+										</span>
+									</div>
+								)}
+							</div>
+							{!displayEditDates && (
+								<div className="project-dates">
+									<div className="project-jobs-title-container">
+										<h3 className="project-jobs-title">Dates du projet</h3>
+
+										{isUserProjectAdmin && (
+											<p
+												className="edit-btn-main"
+												onClick={() =>
+													dispatch(setDisplayEdit({ name: "displayEditDates" }))
+												}
+											>
+												Modifier
+											</p>
+										)}
+									</div>
+									<p>
+										<i className="far fa-calendar-check success margin-right05"></i>
+										Début :{" "}
+										{moment(project?.start_date).locale("fr").format("LL")}
+									</p>
+									<p>
+										<i className="far fa-calendar-exclamation warning margin-right05"></i>
+										Durée :{" "}
+										{moment(project?.end_date)
+											.locale("fr")
+											.diff(
+												moment(project?.start_date).locale("fr"),
+												"weeks"
+											)}{" "}
+										semaines
+									</p>
+								</div>
+							)}
+							{displayEditDates && (
+								<div className="project-dates">
+									<div className="project-dates-inputs">
+										<LocalizationProvider
+											dateAdapter={AdapterMoment}
+											adapterLocale="fr"
+										>
+											<DatePicker
+												disablePast
+												label="Date de début"
+												value={startDate}
+												className="date-picker-color"
+												onChange={(newValue) => {
+													dispatch(
+														changeDate({
+															name: "startDate",
+															value: newValue._d,
+														})
+													);
+													updateProject({
+														id: projectId,
+														start_date: newValue._d,
+													});
+												}}
+												renderInput={(params) => <TextField {...params} />}
+											/>
+										</LocalizationProvider>
+									</div>
+									<div className="project-dates-inputs">
+										<LocalizationProvider
+											dateAdapter={AdapterMoment}
+											adapterLocale="fr"
+										>
+											<DatePicker
+												disablePast
+												label="Date de fin"
+												value={endDate}
+												onChange={(newValue) => {
+													dispatch(
+														changeDate({
+															name: "endDate",
+															value: newValue._d,
+														})
+													);
+													updateProject({
+														id: projectId,
+														end_date: newValue._d,
+													});
+												}}
+												renderInput={(params) => <TextField {...params} />}
+											/>
+										</LocalizationProvider>
+									</div>
+									<p
+										className="secondary-button-colored validation-edit-btn"
+										onClick={() =>
+											dispatch(setDisplayEdit({ name: "displayEditDates" }))
+										}
+									>
+										Valider
+									</p>
+								</div>
+							)}
+						</div>
+						<div className="project-container-right">
+							<div className="project-header">
+								<div className="project-header-left">
+									<h1 className="project-header-title">{project?.project}</h1>
+									<p className="project-header-short-desc">
+										{project?.excerpt}
+									</p>
+								</div>
+								<div className="project-header-right">
+									{isProjectComplete ? (
+										isUserTeamMember ? (
+											<Link to={`/dashboard`} className="main-button-bg-white">
+												Accéder au Dashboard <i className="far fa-rocket"></i>
+											</Link>
+										) : (
+											<Link to={`/projets`} className="main-button-bg-white">
+												Complet - revenir aux projets{" "}
+												<i className="far fa-rocket"></i>
+											</Link>
+										)
+									) : isUserProjectAdmin ? (
+										doesJobHaveCandidates.length === 0 ? (
+											<div className="main-button-bg-white">Aucun candidat</div>
+										) : (
+											<Link
+												to={`/postuler`}
+												state={{ background: location }}
+												onClick={() => {
+													dispatch(toggleTeamCreationModalOpen());
+													dispatch(setProjectId(projectId));
+												}}
+												className={"main-button-bg-white"}
+											>
+												Sélectionner l'équipe <i className="far fa-rocket"></i>
+											</Link>
+										)
+									) : (
+										<Link
+											to={`/postuler`}
+											state={{ background: location }}
+											onClick={() => {
+												dispatch(toggleTeamCreationModalOpen());
+												dispatch(setProjectId(projectId));
+											}}
+											className="main-button-bg-white"
+										>
+											Postuler <i className="far fa-rocket"></i>
+										</Link>
+									)}
+								</div>
+							</div>
+							<div
+								className="project-description"
+								style={
+									adaptDescriptionContainer === true
+										? { minHeight: "39vh", overflowY: "scroll" }
+										: {}
+								}
+							>
+								{displayEditDescriptionForm === false && (
+									<>
+										<div className="project-description-container">
+											<h2 className="project-description-title">
+												Description du projet
+											</h2>
+											{isUserProjectAdmin && (
+												<span
+													className="edit-btn-main"
+													onClick={() =>
+														dispatch(
+															setDisplayEdit({
+																name: "displayEditDescriptionForm",
+															})
+														)
+													}
+												>
+													Modifier
+												</span>
+											)}
+										</div>
+										{adaptDescriptionContainer === false && (
+											<p
+												className="project-description-desc"
+												dangerouslySetInnerHTML={{
+													__html: DisplayShowMoreDescription(
+														project?.description
+													),
+												}}
+											/>
+										)}
+										{adaptDescriptionContainer === true && (
+											<p
+												className="project-description-desc"
+												dangerouslySetInnerHTML={{
+													__html: project?.description,
+												}}
+											/>
+										)}
+
 
                     <span className="hour_modifstart hour_style">
                       Date de début

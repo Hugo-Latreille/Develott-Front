@@ -11,12 +11,14 @@ import TextField from "@mui/material/TextField";
 function InputProject({ name, value, label }) {
   const dispatch = useDispatch();
 
+
   return (
     <div className="pick-group-project">
       <div className="pick-group-project-label">{label}</div>
       {name === "start_date" ? (
         <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="fr">
           <DatePicker
+       disablePast
             label="Date de début"
             value={value}
             onChange={(newValue) =>
@@ -40,6 +42,7 @@ function InputProject({ name, value, label }) {
       ) : name === "end_date" ? (
         <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="fr">
           <DatePicker
+disablePast
             label="Date de fin"
             value={value}
             onChange={(newValue) =>
@@ -73,5 +76,6 @@ function InputProject({ name, value, label }) {
       )}
     </div>
   );
+
 }
 export default InputProject;

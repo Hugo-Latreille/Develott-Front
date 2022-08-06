@@ -24,6 +24,9 @@ function TeamCreation() {
 	);
 	// const isUserProjectAdmin = false;
 	const candidates = projectTeam?.filter((team) => team.role === "candidates");
+	const participants = projectTeam?.filter(
+		(team) => team.role === "participants"
+	);
 	const displayProductOwner = projectTeam
 		?.filter((team) => team.role === "admin")
 		.map((po) => `${po.firstname} ${po.lastname}`)[0];
@@ -52,6 +55,7 @@ function TeamCreation() {
 							userId={user?.id}
 							projectId={projectId}
 							candidates={candidates}
+							participants={participants}
 						/>
 					)}
 				</div>
