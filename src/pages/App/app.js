@@ -41,6 +41,9 @@ function App() {
   const charteModalIsOpen = useSelector(
     (state) => state.modal.charteModalIsOpen
   );
+  const toggleChangePasswordModal = useSelector(
+    (state) => state.app.toggleChangePasswordModal
+  );
 
   useEffect(() => {
     if (modalIsOpen) {
@@ -66,6 +69,14 @@ function App() {
     }
   }, [charteModalIsOpen]);
 
+  useEffect(() => {
+    if (toggleChangePasswordModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [toggleChangePasswordModal]);
+
   return (
     <div id={displayDarkMode === true ? "dark" : "light"}>
       <div className="app">
@@ -87,14 +98,10 @@ function App() {
                 </Route>
                 <Route path="projet/create" element={<CreateProject />} />
                 <Route path="charte" element={<Charte />} />
-                <Route
-                  path="modal-charte"
-                  element={<CharteModal />}
-                  background={<Profil />}
-                />
+                <Route path="modal-charte" element={<CharteModal />} />
                 <Route path="about" element={<About />} />
                 <Route path="profil/:profilId" element={<Profil />}>
-                  {/* <Route path="modal-charte" element={<CharteModal />} /> */}
+                  <Route path="newpassword/:userId" element={<NewPassword />} />
                 </Route>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
