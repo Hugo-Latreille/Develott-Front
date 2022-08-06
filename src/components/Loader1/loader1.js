@@ -3,6 +3,11 @@ import "./loader1.scss";
 function Loader1() {
   return (
     <div className="loader_container">
+      <div className="v2">
+        <div className="v2_message">La " Messagerie " arrive </div>
+        <div className="v2_message">dans quelques semaines... </div>
+        <div className="v2_incoming">🚀 V2 Incoming 🚀</div>
+      </div>
       <section className="loader1">
         <div className="row">
           <div>

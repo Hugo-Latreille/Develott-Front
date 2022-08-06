@@ -1,10 +1,12 @@
 @use "../../styles/vars";
 
 .sidebar_container {
+
 	display: flex;
 	height: 100%;
 	z-index: 999;
 	position: fixed;
+
 }
 
 .sidebar {
@@ -233,9 +235,7 @@
 	width: 100%;
 }
 
-.tooltips_side {
-	font-weight: bolder;
-}
+
 
 // DARK MODE
 

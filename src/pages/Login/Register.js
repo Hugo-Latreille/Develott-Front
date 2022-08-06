@@ -3,6 +3,7 @@ import Input from "../../components/Input/Input";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 
 import "./register.scss";
+
 import { toggleLoggingActive, toggleRegisterVisibility } from "./authSlice";
 
 function Register({ onSubmit }) {
@@ -67,13 +68,26 @@ function Register({ onSubmit }) {
 						type={registerPasswordVisibility ? "text" : "password"}
 						required={true}
 					/>
-					<div onClick={() => dispatch(toggleRegisterVisibility())}>
-						{registerPasswordVisibility ? (
-							<MdOutlineVisibility />
-						) : (
-							<MdOutlineVisibilityOff />
-						)}
-					</div>
+					<div
+            className="eye_register_pass"
+            onClick={() => dispatch(toggleRegisterVisibility())}
+          >
+            {registerPasswordVisibility ? (
+              <MdOutlineVisibility />
+            ) : (
+              <MdOutlineVisibilityOff />
+            )}
+          </div>
+          <div
+            className="eye_register_confirm"
+            onClick={() => dispatch(toggleRegisterVisibility())}
+          >
+            {registerPasswordVisibility ? (
+              <MdOutlineVisibility />
+            ) : (
+              <MdOutlineVisibilityOff />
+            )}
+          </div>
 					{passwordFocus && (
 						<div>
 							Le mot de passe doit contenir :
@@ -106,5 +120,6 @@ function Register({ onSubmit }) {
 			</div>
 		</div>
 	);
+
 }
 export default Register;

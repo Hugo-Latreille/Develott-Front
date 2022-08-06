@@ -7,11 +7,12 @@ import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 import { togglePasswordVisibility } from "./authSlice";
 
 function Login({ onSubmit }) {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const github = () => {
-		window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
-	};
+  const github = () => {
+    window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
+  };
+
 
 	const {
 		email,
@@ -41,14 +42,18 @@ function Login({ onSubmit }) {
 							type={passwordVisibility ? "text" : "password"}
 							required={true}
 						/>
+             <div
+              className="toogle_eye"
+              onClick={() => dispatch(togglePasswordVisibility())}
+            >
+              {passwordVisibility ? (
+                <MdOutlineVisibility />
+              ) : (
+                <MdOutlineVisibilityOff />
+              )}
+            </div>
 					</div>
-					<div onClick={() => dispatch(togglePasswordVisibility())}>
-						{passwordVisibility ? (
-							<MdOutlineVisibility />
-						) : (
-							<MdOutlineVisibilityOff />
-						)}
-					</div>
+					
 					{passwordFocus && (
 						<div>
 							Le mot de passe doit contenir :
@@ -86,5 +91,6 @@ function Login({ onSubmit }) {
 			</form>
 		</div>
 	);
+
 }
 export default Login;

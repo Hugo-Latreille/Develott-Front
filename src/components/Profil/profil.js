@@ -13,25 +13,35 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // import sanitizeHtml from "sanitize-html";
 import moment from "moment/min/moment-with-locales";
 import { useSelector, useDispatch } from "react-redux";
+import { store } from "./../../store/store";
 import {
-	setDisplayEdit,
-	setUserDescription,
-	setUserData,
+  setDisplayEdit,
+  setUserDescription,
+  setUserData,
 } from "./../../pages/Profiles/userProfileSlice";
 import {
-	useDeleteUserTechnoMutation,
-	useUpdateUserMutation,
+  useDeleteUserTechnoMutation,
+  useUpdateUserMutation,
 } from "../../pages/Profiles/userAPISlice";
 import SearchBarJobsUser from "./../SearchBar/SearchBarJobsUser";
 import { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import technologiesJson from "./../../assets/data/technologiesData.json";
-import { Link, useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import { useFindUserByIdQuery } from "../../pages/Login/authAPISlice";
 import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
+import { setToggleChangePasswordModal } from "./../../pages/App/appSlice";
+
 import Loader2 from "./../Loader2/loader2";
 
 function Profil() {
+
 	const dispatch = useDispatch();
 	const { profilId } = useParams();
 	const location = useLocation();
@@ -40,6 +50,8 @@ function Profil() {
 	const { data: projectsTeams } = useGetAllProjectsQuery();
 	const [updateUser] = useUpdateUserMutation();
 	const [deleteUserTechno] = useDeleteUserTechnoMutation();
+   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+    const { toggleChangePasswordModal } = useSelector((state) => state.app);
 
 	const findMyProjectsId = projectsTeams?.teams?.filter(
 		(team) => team.customer_id === user?.id
@@ -194,6 +206,29 @@ function Profil() {
 	return (
 		<>
 			{isLoading && <Loader2 />}
+      {!displayDarkMode && (
+        <ReactTooltip
+          className="tooltips_cards"
+          place="right"
+          effect="solid"
+          border
+          textColor="#272727"
+          backgroundColor="#FFFFFF"
+          borderColor="#272727"
+        />
+      )}
+      {displayDarkMode && (
+        <ReactTooltip
+          className="tooltips_cards"
+          place="right"
+          type="light"
+          effect="solid"
+          border
+          textColor="#FFFFFF"
+          borderColor="#FFFFFF"
+          backgroundColor="#231661"
+        />
+      )}
 			<div className="profil ">
 				<div className="profil_desc">
 					<div className="desc_container_description">
@@ -436,10 +471,12 @@ function Profil() {
 
 							<p className="desc_container_title user-password">
 								<Link
-									to={`/changePassword/${user?.id}`}
-									state={{ background: location }}
-									// onClick={() => dispatch(toggleTeamCreationModalOpen())}
-								>
+
+                  to={`/newpassword/${user?.id}`}
+                  state={{ background: location }}
+                  onClick={() => dispatch(setToggleChangePasswordModal())}
+
+                >
 									<i className="fal fa-key"></i> Mot de Passe
 								</Link>
 							</p>
@@ -830,9 +867,11 @@ function Profil() {
 						))}
 					</div>
 				</div>
+         <Outlet />
 			</div>
 		</>
 	);
+
 }
 
 export default Profil;
