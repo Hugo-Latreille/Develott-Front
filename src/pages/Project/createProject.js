@@ -8,10 +8,31 @@ import CreateProjectTechnologiesForm from "./createProjectTechnologiesForm";
 import CreateProjectJobsForm from "./createProjectJobsForm";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveForm } from "./createProjectSlice";
+//React Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useFindUserByEmailQuery } from "../Login/authAPISlice";
+import { useGetAllProjectsQuery } from "../Projects/projectsAPISlice";
+import { useEffect } from "react";
 
 function CreateProject() {
 	const dispatch = useDispatch();
 	const { activeForm } = useSelector((state) => state.createProject);
+	const { email } = useSelector((state) => state.auth);
+	const { data: userInfos } = useFindUserByEmailQuery(email);
+	const { data: projectsTeams } = useGetAllProjectsQuery();
+
+	const isUserAlreadyParticipant = projectsTeams?.teams.some(
+		(team) =>
+			(team?.customer_id === userInfos?.id && team?.role === "participants") ||
+			team?.role === "candidates"
+	);
+
+	useEffect(() => {
+		if (isUserAlreadyParticipant) {
+			toast.error("Vous ne pouvez participer qu'à un seul projet");
+		}
+	}, [isUserAlreadyParticipant]);
 
 	return (
 		<Sidebar>
@@ -69,7 +90,9 @@ function CreateProject() {
 						</div>
 						<div className="create-project-right">
 							{activeForm === "informations" && (
-								<CreateProjectInformationsForm />
+								<CreateProjectInformationsForm
+									isUserAlreadyParticipant={isUserAlreadyParticipant}
+								/>
 							)}
 							{activeForm === "technologies" && (
 								<CreateProjectTechnologiesForm />
@@ -80,6 +103,17 @@ function CreateProject() {
 				</div>
 			</div>
 			<FooterColored />
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 		</Sidebar>
 	);
 }

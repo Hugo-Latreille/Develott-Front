@@ -389,6 +389,7 @@ function Project() {
 												</span>
 											)}
 										</div>
+
 										<div className="project-jobs-container">
 											{filterJobs?.map((job) => (
 												<p key={job.id_project_has_job}>
