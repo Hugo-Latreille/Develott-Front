@@ -524,7 +524,7 @@ const { email } = useSelector((state) => state.auth);
             )}
             {displayMaincontent === "calendar" && <Calendar />}
             {displayMaincontent === "messagerie" && (
-              <div className="container-scheduler-component">
+              <div className="container-loader-component">
                 <Loader1 />
               </div>
             )}
