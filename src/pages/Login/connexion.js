@@ -17,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useCreateUserMutation, useUserLoginMutation } from "./authAPISlice";
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { useState } from "react";
 
 function Connexion() {
 	const navigate = useNavigate();

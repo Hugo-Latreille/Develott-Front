@@ -40,9 +40,13 @@ function Dashboard() {
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useFindUserByEmailQuery(email);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
-	const findMyProjectId = projectsTeams?.teams?.filter(
-		(team) => team.customer_id === user?.id
-	)[0]?.project_id;
+
+	const findMyProjectId = projectsTeams?.teams?.find(
+		(team) =>
+			(team.customer_id === user?.id && team.role === "admin") ||
+			team.role === "participants"
+	)?.project_id;
+
 	const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
 	// const { data: myProjectLinks } =
 	// 	useGetOneProjectCompleteQuery(findMyProjectId);

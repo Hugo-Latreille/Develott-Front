@@ -79,7 +79,10 @@ function Register({ onSubmit }) {
 							Le mot de passe doit contenir :
 							<ul>
 								<li className={passwordValidity.minChar ? "" : ""}>
-									Au moins 8 caractères, dont une majuscule
+									Au moins 8 caractères
+								</li>
+								<li className={passwordValidity.uppercase ? "" : ""}>
+									Au moins une majuscule
 								</li>
 								<li className={passwordValidity.number ? "" : ""}>
 									Un chiffre
