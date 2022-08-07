@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+const today = new Date();
 
 const initialState = {
 	activeForm: "informations",
@@ -6,8 +7,8 @@ const initialState = {
 	exerpt: "",
 	description: "",
 	picture_project: "",
-	start_date: "",
-	end_date: "",
+	start_date: today,
+	end_date: today,
 	technologiesData: [],
 	jobsData: [],
 	projectId: "",
