@@ -68,7 +68,7 @@ function Dashboard() {
 	const [deleteFromTeam] = useDeleteUserRoleMutation();
 	const [UpdateUserActive] = useUpdateUserMutation();
 
-	console.log(myProject);
+	// console.log(myProject);
 
 	const isUserAdmin = myProject?.teams?.find(
 		(member) => member.customer_id === user?.id && member.role === "admin"

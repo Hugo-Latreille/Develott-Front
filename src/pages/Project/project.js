@@ -62,7 +62,7 @@ function Project() {
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteJobProject] = useDeleteProjectJobMutation();
 	const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
-	console.log(projectWithTeam);
+	// console.log(projectWithTeam);
 
 	const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
 
@@ -116,7 +116,7 @@ function Project() {
 		(candidate) => candidate.role === "candidates"
 	);
 
-	console.log(user);
+	// console.log(user);
 
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
@@ -151,7 +151,7 @@ function Project() {
 		.map((po) => po.customer_id)[0];
 
 	const { data: productOwner } = useFindUserByIdQuery(productOwnerId);
-	console.log(productOwner);
+	// console.log(productOwner);
 
 	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
@@ -206,7 +206,7 @@ function Project() {
 			},
 			(error, result) => {
 				if (!error && result && result.event === "success") {
-					console.log(result.info.url);
+					// console.log(result.info.url);
 					const newImg = result.info.url;
 					updateProject({ id: projectId, picture_project: newImg });
 					refetch();
