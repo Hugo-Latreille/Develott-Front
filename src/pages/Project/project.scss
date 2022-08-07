@@ -145,11 +145,12 @@
     color:white;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 
 
     &-left {
-      width:80%;
+      width:65%;
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -16,6 +16,10 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+
+            & a {
+                color:white;
+            }
         }
 
         &-titles {
@@ -257,6 +261,15 @@
     color:white;
 }
 
+.dashboard-delete-project {
+    color:white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-decoration: underline;
+}
+ 
+
 
 
 @media screen and (width < 600px) {
@@ -321,6 +334,7 @@
         }
     }
   }
+
 
 
   @media screen and (width < 400px) {

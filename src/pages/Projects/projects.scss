@@ -27,8 +27,17 @@
 
 
 
+@media screen and (width > 2000px) {
 
-@media screen and (width < 1000px) {
+  .projects_hero {
+    background-position: center top;
+  }
+
+
+}
+
+
+@media screen and (width < 1200px) {
 
   .projects_hero {
     background-position: center top;

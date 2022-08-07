@@ -32,6 +32,7 @@ function TeamCreation() {
 		?.filter((team) => team.role === "admin")
 		.map((po) => `${po.firstname} ${po.lastname}`)[0];
 
+
 	return ReactDOM.createPortal(
 		<div className="team-creation">
 			<div className="team-creation-container">
@@ -103,6 +104,7 @@ function TeamCreation() {
 		</div>,
 		document.getElementById("modal-root")
 	);
+
 }
 
 export default TeamCreation;

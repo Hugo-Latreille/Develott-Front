@@ -26,6 +26,7 @@ import Loader2 from "../../components/Loader2/loader2";
 import { useDeleteUserRoleMutation } from "../Profiles/userAPISlice";
 
 function Dashboard() {
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
@@ -48,39 +49,42 @@ function Dashboard() {
 	const { data: projectsTeams, isLoading: projectsLoading } =
 		useGetAllProjectsQuery();
 
-	const findMyProjectId = projectsTeams?.teams?.find(
-		(team) =>
-			team.customer_id === user?.id &&
-			(team.role === "admin" || team.role === "participants")
-	)?.project_id;
 
-	const { data: myProject, isLoading: teamLoading } =
-		useGetOneProjectQuery(findMyProjectId);
+  const findMyProjectId = projectsTeams?.teams?.find(
+    (team) =>
+      team.customer_id === user?.id &&
+      (team.role === "admin" || team.role === "participants")
+  )?.project_id;
 
-	const [updateProject] = useUpdateProjectMutation();
-	const [deleteProject] = useDeleteProjectMutation();
-	const [deleteFromTeam] = useDeleteUserRoleMutation();
+  const { data: myProject, isLoading: teamLoading } =
+    useGetOneProjectQuery(findMyProjectId);
 
-	console.log(myProject);
+  const [updateProject] = useUpdateProjectMutation();
+  const [deleteProject] = useDeleteProjectMutation();
+  const [deleteFromTeam] = useDeleteUserRoleMutation();
 
-	const isUserAdmin = myProject?.teams?.find(
-		(member) => member.customer_id === user?.id && member.role === "admin"
-	);
+  console.log(myProject);
 
-	const isUserParticipant = myProject?.teams?.find(
-		(member) =>
-			member.customer_id === user?.id && member.role === "participants"
-	);
+  const isUserAdmin = myProject?.teams?.find(
+    (member) => member.customer_id === user?.id && member.role === "admin"
+  );
+
+
+  const isUserParticipant = myProject?.teams?.find(
+    (member) =>
+      member.customer_id === user?.id && member.role === "participants"
+  );
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"
 	);
 
+
 	const findProjectTechnosFromDatabase = myProject?.project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
 	);
-
-	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
+  
+  	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
 	);
 	const frameworksData = findProjectTechnosFromDatabase?.filter((technology) =>
@@ -138,7 +142,8 @@ function Dashboard() {
 							</Link>
 						</div>
 						{isUserAdmin && (
-							<button
+							<span
+              className="dashboard-delete-project"
 								onClick={() => {
 									const confirm = window.confirm(
 										"Voulez-vous vraiment supprimer le projet ?"
@@ -150,10 +155,11 @@ function Dashboard() {
 								}}
 							>
 								/!\ Supprimer le projet
-							</button>
+							</span>
 						)}
 						{isUserParticipant && (
-							<button
+							<span
+              className="dashboard-delete-project"
 								onClick={() => {
 									const confirm = window.confirm(
 										"Voulez-vous vraiment vous retirer de l'équipe ?"
@@ -169,30 +175,36 @@ function Dashboard() {
 								}}
 							>
 								/!\ Se retirer de l'équipe
-							</button>
+							</span>
 						)}
 					</div>
-					<div className="dashboard-main-navigation">
-						<div
-							className="dashboard-main-navigation-accueil"
-							onClick={() => dispatch(setDisplayMaincontent("main"))}
-						>
-							<div
-								className={
-									displayMaincontent === "main"
-										? "dashboard-main-navigation-accueil-content bg-colored"
-										: "dashboard-main-navigation-accueil-content "
-								}
-							>
-								<h3>
-									<i className="far fa-rocket"></i>Accueil
-								</h3>
-								<img
-									src={require("./../../assets/images/dashboard-accueil.png")}
-									alt="icon accueil dashboard"
-								/>
-							</div>
-						</div>
+					 <div className="dashboard-main-cta">
+              <Link to={`/projet/${myProject?.project.id}`}>
+                Présentation du projet <i className="fas fa-chevron-right"></i>
+              </Link>
+            </div>
+          </div>
+          <div className="dashboard-main-navigation">
+            <div
+              className="dashboard-main-navigation-accueil"
+              onClick={() => dispatch(setDisplayMaincontent("main"))}
+            >
+              <div
+                className={
+                  displayMaincontent === "main"
+                    ? "dashboard-main-navigation-accueil-content bg-colored"
+                    : "dashboard-main-navigation-accueil-content "
+                }
+              >
+                <h3>
+                  <i className="far fa-rocket"></i>Accueil
+                </h3>
+                <img
+                  src={require("./../../assets/images/dashboard-accueil.png")}
+                  alt="icon accueil dashboard"
+                />
+              </div>
+            </div>
 						<div
 							className="dashboard-main-navigation-messagerie"
 							onClick={() => dispatch(setDisplayMaincontent("messagerie"))}
@@ -440,6 +452,7 @@ function Dashboard() {
 														id: findMyProjectId,
 														url_slack_server: projectSlack,
 													});
+
 
 													dispatch(
 														setDisplayEdit({ name: "displayEditSlackLink" })
