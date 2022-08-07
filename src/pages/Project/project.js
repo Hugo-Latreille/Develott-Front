@@ -363,17 +363,17 @@ function Project() {
 
                 <div className="project-user-links">
                   <p>
-                    <a href={user.url_github} target="_blank">
+                    <a href={user?.url_github} target="_blank">
                       <i className="fab fa-github"></i>
                     </a>
                   </p>
                   <p>
-                    <a href={user.url_linkedin} target="_blank">
+                    <a href={user?.url_linkedin} target="_blank">
                       <i className="fab fa-linkedin"></i>
                     </a>
                   </p>
                   <p>
-                    <a href={user.url_portfolio} target="_blank">
+                    <a href={user?.url_portfolio} target="_blank">
                       <i className="fas fa-laptop-code"></i>
                     </a>
                   </p>
