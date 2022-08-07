@@ -213,7 +213,9 @@
             border-bottom: solid 1px  hsl(207, 67%, 78%, 50%);;
 
             & img {
-                width:12%;
+                width:4rem;
+                height:4rem;
+                object-fit: cover;
                 margin-right: 1rem;
                 border-radius: 50%;
             }
@@ -224,9 +226,15 @@
                 & p {
                     margin:0;
                     font-weight: bolder;
+                    color: black;
                 }
 
                 & span {
+                    color: vars.$darkGrey;
+                    padding-top: 0.2rem;
+                }
+
+                & a {
                     color: vars.$darkGrey;
                     padding-top: 0.2rem;
                 }
@@ -262,7 +270,6 @@
 }
 
 .dashboard-delete-project {
-    color:white;
     font-size: 0.8rem;
     cursor: pointer;
     margin-top: 1.5rem;
@@ -398,6 +405,11 @@
         color:white;
         font-weight: lighter;
     }
+
+    & a {
+        color:white;
+        font-weight: lighter;
+    }
   }
 
   #dark .dashboard-main-content-team {
@@ -438,4 +450,11 @@
 
   #dark .dashboard-main-content-team-users:hover {
     background: vars.$linearGradientDarkMode;
+  }
+
+  #dark .dashboard-main-content-team-users-details {
+
+    & p {
+        color:white;
+    }
   }

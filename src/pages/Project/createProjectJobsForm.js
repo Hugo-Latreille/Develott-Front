@@ -24,7 +24,7 @@ function CreateProjectJobsForm() {
   const jobsDataElse = [];
 
   projectJobs?.forEach((element, index) => {
-    if (index < 3) {
+    if (index < 4) {
       jobsDataFirst.push(element);
     } else {
       jobsDataElse.push(element);
@@ -54,7 +54,7 @@ function CreateProjectJobsForm() {
           {projectJobs?.map.length === 0 && (
             <span className="form-technologies-empty">vide...</span>
           )}
-          {projectJobs?.map((job) => (
+          {jobsDataFirst?.map((job) => (
             <div
               key={job.id_project_has_job}
               className="form-technologies-items"
