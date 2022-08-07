@@ -34,6 +34,8 @@ function Sidebar({ children, isVisible }) {
 	const { data: projectsTeams, refetch } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
 
+	console.log(user);
+
 	let routes = [
 		{
 			path: "/dashboard",
@@ -67,11 +69,8 @@ function Sidebar({ children, isVisible }) {
 			(team.role === "admin" || team.role === "participants")
 	);
 
-	console.log(showDashboard);
-
 	if (showDashboard === false) {
 		routes = routes.filter((route) => route.name !== "Dashboard");
-		console.log("ici filter routes sidebar");
 	}
 
 	const onExit = () => {
