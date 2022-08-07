@@ -8,5 +8,5 @@ export default (props) => {
     top: `${props.dot[1]}%`,
   };
 
-  return <img className="snake-food" style={style} src={Logo} />;
+  return <img className="snake-food" style={style} src={Logo} alt="Logo" />;
 };
