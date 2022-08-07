@@ -110,7 +110,7 @@ function Project() {
     (candidate) => candidate.role === "candidates"
   );
 
-  console.log(doesJobHaveCandidates);
+  console.log(user);
 
   const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
@@ -363,13 +363,19 @@ function Project() {
 
                 <div className="project-user-links">
                   <p>
-                    <i className="fab fa-github"></i>
+                    <a href={user.url_github} target="_blank">
+                      <i className="fab fa-github"></i>
+                    </a>
                   </p>
                   <p>
-                    <i className="fab fa-linkedin"></i>
+                    <a href={user.url_linkedin} target="_blank">
+                      <i className="fab fa-linkedin"></i>
+                    </a>
                   </p>
                   <p>
-                    <i className="fas fa-laptop-code"></i>
+                    <a href={user.url_portfolio} target="_blank">
+                      <i className="fas fa-laptop-code"></i>
+                    </a>
                   </p>
                 </div>
               </div>
