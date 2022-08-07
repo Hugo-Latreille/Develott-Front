@@ -24,6 +24,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 						const projectDescription = result.data.project.description;
 						const projectTitle = result.data.project.project;
 						const projectExcerpt = result.data.project.excerpt;
+
 						dispatch(changeDate({ name: "startDate", value: startDate }));
 						dispatch(
 							changeDate({ name: "description", value: projectDescription })
@@ -46,7 +47,7 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 					.then((result) => {
 						console.log(result);
 						const projectGithub = result.data.url_github_repo;
-						const projectDiscord = result.data.url_github_project;
+						const projectDiscord = result.data.url_github_projet;
 						const projectSlack = result.data.url_slack_server;
 						const projectTrello = result.data.url_trello;
 
