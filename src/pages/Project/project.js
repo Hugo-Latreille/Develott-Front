@@ -15,6 +15,7 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
+import ReactTooltip from "react-tooltip";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import FooterColored from "./../../components/Footer/footerColored";
@@ -62,6 +63,9 @@ function Project() {
   const [deleteJobProject] = useDeleteProjectJobMutation();
   const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
   console.log(projectWithTeam);
+
+  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+
   const project = projectWithTeam?.project;
   const projectJobs = projectWithTeam?.jobByProject;
   const projectTeam = projectWithTeam?.teams;
@@ -83,6 +87,7 @@ function Project() {
     projectTitle,
     projectExcerpt,
   } = useSelector((state) => state.project);
+
 
   const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
   const isUserTeamMember = projectTeam?.some(
@@ -148,6 +153,7 @@ function Project() {
 
   const { data: productOwner } = useFindUserByIdQuery(productOwnerId);
   console.log(productOwner);
+
 
   const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
     technology.tags.includes("language")
@@ -307,6 +313,31 @@ function Project() {
     <>
       {isLoading && <Loader2 />}
       <Sidebar>
+
+        {!displayDarkMode && (
+          <ReactTooltip
+            className="tooltips_cards"
+            place="right"
+            effect="solid"
+            border
+            textColor="#272727"
+            backgroundColor="#FFFFFF"
+            borderColor="#272727"
+          />
+        )}
+        {displayDarkMode && (
+          <ReactTooltip
+            className="tooltips_cards"
+            place="right"
+            type="light"
+            effect="solid"
+            border
+            textColor="#FFFFFF"
+            borderColor="#FFFFFF"
+            backgroundColor="#231661"
+          />
+        )}
+
         <div className="project">
           <div className="project-container ">
             <div className="project-container-left">
@@ -368,6 +399,7 @@ function Project() {
 
                 <div className="project-user-links">
                   <p>
+
                     <a href={productOwner?.url_github} target="_blank">
                       <i className="fab fa-github"></i>
                     </a>
@@ -381,6 +413,7 @@ function Project() {
                     <a href={productOwner?.url_portfolio} target="_blank">
                       <i className="fas fa-laptop-code"></i>
                     </a>
+
                   </p>
                 </div>
               </div>
@@ -411,6 +444,7 @@ function Project() {
                           {checkHowManyParticipantsPerDuplicate(job.job_id)[
                             job.job_id
                           ] === 0 ? (
+
                             <>
                               <i className="fas fa-times-circle error"></i>{" "}
                               {job.job}
@@ -418,6 +452,7 @@ function Project() {
                           ) : (
                             <>
                               <i className="fas fa-check-circle success"></i>{" "}
+
                               {job.job}
                               <p className="project-jobs-span">
                                 {

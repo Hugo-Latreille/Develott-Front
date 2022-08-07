@@ -299,7 +299,7 @@ function ProjectList() {
                 <div className="card_main_profiles">
                   <span
                     data-tip={findJobsByProject(project?.id).map(
-                      (job) => job.job
+                      (job) => ` ${job.job} `
                     )}
                     className="span-strong"
                   >

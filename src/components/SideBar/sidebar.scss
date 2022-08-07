@@ -107,6 +107,7 @@
 .bottom_container {
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	color: white;
 	gap: 12px;
 	transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
@@ -141,7 +142,7 @@
 	}
 
 	&_img {
-		margin-right: 1em;
+		margin-right: 1rem;
 		border-radius: 50%;
 		width: 1.8rem;
 		height: 1.8rem;
@@ -233,6 +234,11 @@
 .active_toggle {
 	padding-bottom: 20em;
 	width: 100%;
+}
+
+.customTooltip {
+	color: #6c68f5;
+	font-size: 1.1rem;
 }
 
 
