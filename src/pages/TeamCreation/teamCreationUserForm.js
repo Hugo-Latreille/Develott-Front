@@ -127,8 +127,8 @@ function TeamCreationUserForm({
 							role_id: 3,
 						});
 					}
-					dispatch(toggleTeamCreationModalOpen());
 					refetch();
+					dispatch(toggleTeamCreationModalOpen());
 					navigate(`/projet/${projectId}`, { replace: true });
 				} else {
 					toast.error("Vous faites déjà partie de l'équipe d'un projet");

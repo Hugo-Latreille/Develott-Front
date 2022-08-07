@@ -50,8 +50,8 @@ function TeamCreationAdminForm({ projectId, candidates, refetch }) {
 			UpdateUserActive({ id: thisCandidate[0].customer_id, is_active: true });
 		});
 		dispatch(resetTeam());
-		dispatch(toggleTeamCreationModalOpen());
 		refetch();
+		dispatch(toggleTeamCreationModalOpen());
 		navigate(`/projet/${projectId}`, { replace: true });
 	};
 

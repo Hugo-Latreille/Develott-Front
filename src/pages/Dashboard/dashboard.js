@@ -24,7 +24,10 @@ import { Link, useNavigate } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 import Loader2 from "../../components/Loader2/loader2";
-import { useDeleteUserRoleMutation } from "../Profiles/userAPISlice";
+import {
+	useDeleteUserRoleMutation,
+	useUpdateUserMutation,
+} from "../Profiles/userAPISlice";
 
 function Dashboard() {
 	const dispatch = useDispatch();
@@ -63,6 +66,7 @@ function Dashboard() {
 	const [updateProject] = useUpdateProjectMutation();
 	const [deleteProject] = useDeleteProjectMutation();
 	const [deleteFromTeam] = useDeleteUserRoleMutation();
+	const [UpdateUserActive] = useUpdateUserMutation();
 
 	console.log(myProject);
 
@@ -143,6 +147,7 @@ function Dashboard() {
 										);
 										if (confirm) {
 											deleteProject(findMyProjectId);
+											UpdateUserActive({ id: user?.id, is_active: false });
 											navigate("/projets", { replace: true });
 										}
 									}}
@@ -163,6 +168,7 @@ function Dashboard() {
 												role_id: 2,
 												customer_id: user?.id,
 											});
+											UpdateUserActive({ id: user?.id, is_active: false });
 											navigate("/projets", { replace: true });
 										}
 									}}
