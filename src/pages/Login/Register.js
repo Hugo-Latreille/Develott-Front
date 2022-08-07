@@ -165,8 +165,26 @@ function Register({ onSubmit }) {
                 )}
               </div>
               <span>
-                Au moins 8 caractères, dont une majuscule, un chiffre, et un
-                caractère spécial.
+                Au moins{" "}
+                <span className={passwordValidity.minChar ? "success" : ""}>
+                  8 caractères
+                </span>
+                , dont une{" "}
+                <span className={passwordValidity.uppercase ? "success" : ""}>
+                  {" "}
+                  majuscule
+                </span>
+                , un{" "}
+                <span className={passwordValidity.number ? "success" : ""}>
+                  {" "}
+                  chiffre
+                </span>
+                , et un
+                <span className={passwordValidity.specialChar ? "success" : ""}>
+                  {" "}
+                  caractère spécial
+                </span>
+                .
               </span>
             </div>
             {/* <div className="password-safety-container"> */}
