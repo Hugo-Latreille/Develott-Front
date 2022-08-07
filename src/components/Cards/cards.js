@@ -19,7 +19,6 @@ import { useEffect } from "react";
 import Skeleton from "./../Skeletron/skeleton";
 
 function ProjectList() {
-
   const dispatch = useDispatch();
 
   const { searchTechnology, searchJob, searchProjectName, searchDate } =
@@ -38,11 +37,11 @@ function ProjectList() {
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
 
   //! conserver
-const findTeamByProject = (projectId) => {
-		return projectsTeams?.teams?.filter(
-			(team) => team?.project_id === projectId && team?.role === "participants"
-		);
-	};
+  const findTeamByProject = (projectId) => {
+    return projectsTeams?.teams?.filter(
+      (team) => team?.project_id === projectId && team?.role === "participants"
+    );
+  };
 
   const findJobsByProject = (projectId) => {
     return projectsTeams?.jobByProject?.filter(
@@ -269,12 +268,16 @@ const findTeamByProject = (projectId) => {
                   variants={inputAnimation}
                   className="card_technologies_container_icons"
                 >
-                  {project?.techno?.map((techno) => (
-                    <i
-                      className={`devicon-${techno}-plain colored icon-techno mini_icon`}
-                      key={techno}
-                    ></i>
-                  ))}
+                  {project?.techno?.map((techno, index) =>
+                    index < 6 ? (
+                      <i
+                        className={`devicon-${techno}-plain colored icon-techno mini_icon`}
+                        key={techno}
+                      ></i>
+                    ) : (
+                      ""
+                    )
+                  )}
                   <i className="fal fa-chevron-right icon-next"></i>{" "}
                 </motion.div>
               )}
@@ -296,12 +299,12 @@ const findTeamByProject = (projectId) => {
                 <div className="card_main_profiles">
                   <span
                     data-tip={findJobsByProject(project?.id).map(
-                      (job) => job.job
+                      (job) => ` ${job.job} `
                     )}
                     className="span-strong"
                   >
                     {findJobsByProject(project?.id).length -
-                      	findTeamByProject(project?.id).length}
+                      findTeamByProject(project?.id).length}
                   </span>
                   {!displayDarkMode && (
                     <ReactTooltip
@@ -361,7 +364,6 @@ const findTeamByProject = (projectId) => {
         ))}
     </div>
   );
-
 }
 
 export default ProjectList;

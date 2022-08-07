@@ -111,7 +111,7 @@ function Slider() {
 				>
 					{/* ***************************************PARAMETRES EFFET************************************ */}
 					{isSuccess &&
-						allProjects.map((project, index) => (
+						allProjects?.map((project, index) => (
 							<SwiperSlide key={index}>
 								<div className="slide_home">
 									<img

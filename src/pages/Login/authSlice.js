@@ -7,13 +7,27 @@ const initialState = {
 	password: "",
 	passwordConfirm: "",
 	email: "",
+	username_gith: "",
 	isLogged: false,
 	isLoggingActive: true,
 	token: "",
 	loggingModalOpen: false,
 	passwordVisibility: false,
 	registerPasswordVisibility: false,
+	passwordValidity: {
+		minChar: null,
+		number: null,
+		uppercase: null,
+		specialChar: null,
+	},
+	passwordFocus: false,
+	passwordValidationWidth: 0,
+	newPasswordValidationWidth: 0,
 };
+
+const isNumberRegex = /\d/;
+const specialCharacterRegex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+const oneUppercase = /[A-Z]/;
 
 export const authSlice = createSlice({
 	name: "login",
@@ -28,6 +42,7 @@ export const authSlice = createSlice({
 			state.password = "";
 			state.passwordConfirm = "";
 			state.email = "";
+			state.username_gith = "";
 		},
 		toggleLoggingActive: (state) => {
 			state.isLoggingActive = !state.isLoggingActive;
@@ -52,6 +67,20 @@ export const authSlice = createSlice({
 		toggleRegisterVisibility: (state) => {
 			state.registerPasswordVisibility = !state.registerPasswordVisibility;
 		},
+		setPasswordValidity: (state) => {
+			state.passwordValidity = {
+				minChar: state.password.length >= 8 ? true : false,
+				number: isNumberRegex.test(state.password) ? true : false,
+				uppercase: oneUppercase.test(state.password) ? true : false,
+				specialChar: specialCharacterRegex.test(state.password) ? true : false,
+			};
+		},
+		setPasswordValidationWidth: (state, action) => {
+			state.passwordValidationWidth = Number(action.payload);
+		},
+		setNewPasswordValidationWidth: (state, action) => {
+			state.newPasswordValidationWidth = Number(action.payload);
+		},
 	},
 });
 
@@ -65,6 +94,9 @@ export const {
 	toggleLoggingModalOpen,
 	togglePasswordVisibility,
 	toggleRegisterVisibility,
+	setPasswordValidity,
+	setPasswordValidationWidth,
+	setNewPasswordValidationWidth,
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -69,14 +69,27 @@
       padding-right: 0;
     }
 
+	&-right {
+		width: 80%;
+		margin: 4rem auto 4rem auto;
 
-		&-right {
-			width: 80%;
-			margin: 4rem auto 0 auto;
-		}
-
-		&-title {
-			padding-bottom: 1rem;
+		& img {
+			margin-bottom: 2rem;
 		}
 	}
+
+	&-title {
+		padding-bottom: 1rem;
+	}
+	}
+}
+
+
+
+#dark .hero .main-button-bg-white {
+	color:#7186DC;
+}
+
+#dark .presentation .main-button-bg-white {
+	color:#7186DC;
 }

@@ -3,8 +3,10 @@ import "./dashboard.scss";
 import Sidebar from "../../components/SideBar/sidebar";
 import Calendar from "../../components/Calendar/calendar";
 import CalendarSmall from "../../components/Calendar/calendarSmall";
+import Loader1 from "../../components/Loader1/loader1";
 import Footer from "../../components/Footer/footerColored";
 import { useSelector, useDispatch } from "react-redux";
+import ReactTooltip from "react-tooltip";
 import {
 	setDisplayEdit,
 	setDisplayMaincontent,
@@ -12,17 +14,22 @@ import {
 } from "./dashboardSlice";
 import { useFindUserByEmailQuery } from "../Login/authAPISlice";
 import {
+	useDeleteProjectMutation,
 	useGetAllProjectsQuery,
 	useGetOneProjectCompleteQuery,
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mockAvatar from "./../../assets/images/user-avatar.png";
 import technologiesJson from "./../../assets/data/technologiesData.json";
+import Loader2 from "../../components/Loader2/loader2";
+import { useDeleteUserRoleMutation } from "../Profiles/userAPISlice";
 
 function Dashboard() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
 
 	const {
 		displayEditGitLink,
@@ -38,15 +45,35 @@ function Dashboard() {
 	} = useSelector((state) => state.dashboard);
 
 	const { email } = useSelector((state) => state.auth);
-	const { data: user } = useFindUserByEmailQuery(email);
-	const { data: projectsTeams } = useGetAllProjectsQuery();
-	const findMyProjectId = projectsTeams?.teams?.filter(
-		(team) => team.customer_id === user?.id
-	)[0]?.project_id;
-	const { data: myProject } = useGetOneProjectQuery(findMyProjectId);
-	// const { data: myProjectLinks } =
-	// 	useGetOneProjectCompleteQuery(findMyProjectId);
+	const { data: user, isLoading: userLoading } = useFindUserByEmailQuery(email);
+	const { data: projectsTeams, isLoading: projectsLoading } =
+		useGetAllProjectsQuery();
+
+	const findMyProjectId = projectsTeams?.teams?.find(
+		(team) =>
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
+	)?.project_id;
+
+	const { data: myProject, isLoading: teamLoading } =
+		useGetOneProjectQuery(findMyProjectId);
+	const { data: myProjectLinks } =
+		useGetOneProjectCompleteQuery(findMyProjectId);
+
 	const [updateProject] = useUpdateProjectMutation();
+	const [deleteProject] = useDeleteProjectMutation();
+	const [deleteFromTeam] = useDeleteUserRoleMutation();
+
+	console.log(myProject);
+
+	const isUserAdmin = myProject?.teams?.find(
+		(member) => member.customer_id === user?.id && member.role === "admin"
+	);
+
+	const isUserParticipant = myProject?.teams?.find(
+		(member) =>
+			member.customer_id === user?.id && member.role === "participants"
+	);
 
 	const myTeam = myProject?.teams.filter(
 		(team) => team.role === "admin" || team.role === "participants"
@@ -74,6 +101,30 @@ function Dashboard() {
 
 	return (
 		<Sidebar>
+			{!displayDarkMode && (
+				<ReactTooltip
+					className="tooltips_cards"
+					place="right"
+					effect="solid"
+					border
+					textColor="#272727"
+					backgroundColor="#FFFFFF"
+					borderColor="#272727"
+				/>
+			)}
+			{displayDarkMode && (
+				<ReactTooltip
+					className="tooltips_cards"
+					place="right"
+					type="light"
+					effect="solid"
+					border
+					textColor="#FFFFFF"
+					borderColor="#FFFFFF"
+					backgroundColor="#231661"
+				/>
+			)}
+			{userLoading || projectsLoading || (teamLoading && <Loader2 />)}
 			<div className="dashboard">
 				<div className="dashboard-main">
 					<div className="dashboard-main-header">
@@ -83,6 +134,42 @@ function Dashboard() {
 								Bienvenue sur le dashboard du projet{" "}
 								{myProject?.project.project}
 							</h1>
+							{isUserAdmin && (
+								<span
+									className="dashboard-delete-project danger"
+									onClick={() => {
+										const confirm = window.confirm(
+											"Voulez-vous vraiment supprimer le projet ?"
+										);
+										if (confirm) {
+											deleteProject(findMyProjectId);
+											navigate("/projets", { replace: true });
+										}
+									}}
+								>
+									Supprimer le projet
+								</span>
+							)}
+							{isUserParticipant && (
+								<span
+									className="dashboard-delete-project"
+									onClick={() => {
+										const confirm = window.confirm(
+											"Voulez-vous vraiment vous retirer de l'équipe ?"
+										);
+										if (confirm) {
+											deleteFromTeam({
+												projectId: findMyProjectId,
+												role_id: 2,
+												customer_id: user?.id,
+											});
+											navigate("/projets", { replace: true });
+										}
+									}}
+								>
+									/!\ Se retirer de l'équipe
+								</span>
+							)}
 						</div>
 						<div className="dashboard-main-cta">
 							<Link to={`/projet/${myProject?.project.id}`}>
@@ -111,8 +198,17 @@ function Dashboard() {
 								/>
 							</div>
 						</div>
-						<div className="dashboard-main-navigation-messagerie">
-							<div className="dashboard-main-navigation-messagerie-content">
+						<div
+							className="dashboard-main-navigation-messagerie"
+							onClick={() => dispatch(setDisplayMaincontent("messagerie"))}
+						>
+							<div
+								className={
+									displayMaincontent === "messagerie"
+										? "dashboard-main-navigation-messagerie-content bg-colored"
+										: "dashboard-main-navigation-messagerie-content "
+								}
+							>
 								<h3>
 									<i className="far fa-comment-alt-dots"></i>Messagerie
 								</h3>
@@ -185,7 +281,11 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Github / Gitlab</p>
-												<span>{projectGithub}</span>
+												<span>
+													<a href={projectGithub} target="_blank">
+														{projectGithub}
+													</a>
+												</span>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -246,7 +346,13 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Discord</p>
-												<span>{projectDiscord}</span>
+												<a
+													href={projectDiscord}
+													target="_blank"
+													rel="noreferrer"
+												>
+													{projectDiscord}
+												</a>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -287,7 +393,7 @@ function Dashboard() {
 												onClick={() => {
 													updateProject({
 														id: findMyProjectId,
-														url_github_project: projectDiscord,
+														url_github_projet: projectDiscord,
 													});
 													dispatch(
 														setDisplayEdit({ name: "displayEditDiscordLink" })
@@ -306,7 +412,9 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Slack</p>
-												<span>{projectSlack}</span>
+												<a href={projectSlack} target="_blank">
+													{projectSlack}
+												</a>
 											</div>
 											<span
 												className="edit-btn-main"
@@ -367,7 +475,9 @@ function Dashboard() {
 											/>
 											<div className="dashboard-main-content-team-users-details">
 												<p>Trello</p>
-												<span>{projectTrello}</span>
+												<a href={projectTrello} target="_blank">
+													{projectTrello}
+												</a>{" "}
 											</div>
 											<span
 												className="edit-btn-main"
@@ -424,6 +534,11 @@ function Dashboard() {
 							</>
 						)}
 						{displayMaincontent === "calendar" && <Calendar />}
+						{displayMaincontent === "messagerie" && (
+							<div className="container-loader-component">
+								<Loader1 />
+							</div>
+						)}
 					</div>
 					{displayMaincontent === "main" && (
 						<div className="dashboard-main-technologies">

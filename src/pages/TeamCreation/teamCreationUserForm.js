@@ -4,7 +4,10 @@ import {
 } from "../Profiles/userAPISlice";
 import "./teamCreation.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserChoice } from "./teamCreationSlice";
+import {
+	setUserChoice,
+	toggleTeamCreationModalOpen,
+} from "./teamCreationSlice";
 import { useNavigate } from "react-router-dom";
 import { useGetAllProjectsQuery } from "../Projects/projectsAPISlice";
 //React Toastify
@@ -18,6 +21,7 @@ function TeamCreationUserForm({
 	candidates,
 	projectTeam,
 	participants,
+	refetch,
 }) {
 	const { userJobChoice } = useSelector((state) => state.teamCreation);
 	const { data: projectsTeams } = useGetAllProjectsQuery();
@@ -108,6 +112,7 @@ function TeamCreationUserForm({
 
 	return (
 		<form
+			className="form-user-container"
 			onSubmit={(e) => {
 				e.preventDefault();
 				if (!isUserAlreadyParticipant) {
@@ -122,6 +127,8 @@ function TeamCreationUserForm({
 							role_id: 3,
 						});
 					}
+					dispatch(toggleTeamCreationModalOpen());
+					refetch();
 					navigate(`/projet/${projectId}`, { replace: true });
 				} else {
 					toast.error("Vous faites déjà partie de l'équipe d'un projet");
@@ -139,13 +146,19 @@ function TeamCreationUserForm({
 						<>
 							<input type="radio" name="selectJob" value={job.job_id} />
 							<label>{job.job}</label>
-							<div>{isThereCandidates(job.job_id)} candidat(s)</div>
-							{checkHowManyParticipantsPerDuplicate(job.job_id) && (
-								<div>
-									{checkHowManyParticipantsPerDuplicate(job.job_id)[job.job_id]}
-									place(s) restante(s)
-								</div>
-							)}
+							<div className="form-user-container-spans">
+								<span>{isThereCandidates(job.job_id)} candidat(s)</span>
+								{checkHowManyParticipantsPerDuplicate(job.job_id) && (
+									<span>
+										{
+											checkHowManyParticipantsPerDuplicate(job.job_id)[
+												job.job_id
+											]
+										}
+										place(s) restante(s)
+									</span>
+								)}
+							</div>
 						</>
 					) : (
 						<>

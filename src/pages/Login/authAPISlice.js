@@ -4,16 +4,17 @@ import { setCredentials } from "./authSlice";
 const authAPI = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
 		createUser: builder.mutation({
-			query: ({ firstname, lastname, email, password }) => {
+			query: ({ firstname, lastname, email, password, username_gith }) => {
 				return {
 					url: "user/create",
 					method: "POST",
-					header: "Content-Type: application/x-www-form-urlencoded",
+					// header: "Content-Type: application/x-www-form-urlencoded",
 					body: {
 						firstname,
 						lastname,
 						email,
 						password,
+						username_gith,
 					},
 				};
 			},

@@ -9,7 +9,7 @@
     justify-content: center;
     position:absolute;
     top:0;
-    z-index:1000;
+    z-index:1000 !important;
 
     &-container {
         background-color: #fff;
@@ -57,6 +57,33 @@
     }
 
    
+}
+
+.form-admin-container {
+    margin : 2rem 0rem;
+}
+
+.form-user-container {
+    margin : 2rem 0rem;
+
+    & input {
+        margin-top: 1rem;
+    }
+
+    &-spans {
+        color:grey;
+        font-size: 0.8rem;
+        display: block;
+        margin-left: 1.5rem;
+
+        & span {
+            margin-left: 0.5rem;
+        }
+    }
+
+    & button {
+        margin-top: 2rem;
+    }
 }
 
 .team-user-form-input-container {

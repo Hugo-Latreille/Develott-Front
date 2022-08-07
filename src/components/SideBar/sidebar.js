@@ -9,7 +9,7 @@ import Toggle from "../ToggleDarkmode/toggle";
 import LogoW from "../../assets/images/v3-logo-white.png";
 import "./sidebar.scss";
 import "intro.js/introjs.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserLogoutMutation } from "../../pages/Login/authAPISlice";
 import { logOut } from "../../pages/Login/authSlice";
@@ -18,34 +18,10 @@ import { setDisplayDarkMode } from "../../pages/App/appSlice";
 import { useGetOneUserQuery } from "../../pages/Profiles/userAPISlice";
 import { toggleOpenIntro } from "./sidebarSlice";
 
-import { Steps } from "intro.js-react";
+import Logo from "../../assets/images/Dashborad.png";
 
-const routes = [
-	{
-		path: "/dashboard",
-		name: "Dashboard",
-		icon: <AiOutlineDashboard />,
-		tooltip: "Dashboard",
-	},
-	{
-		path: "/projets",
-		name: "Projets",
-		icon: <FaProjectDiagram />,
-		tooltip: "Les Projets",
-	},
-	{
-		path: "/projet/create",
-		name: "Créer Projet",
-		icon: <FaPlusSquare />,
-		tooltip: "Créer un projet",
-	},
-	{
-		path: "/game",
-		name: "Detente",
-		icon: <BiGame />,
-		tooltip: "Detente",
-	},
-];
+import { Steps } from "intro.js-react";
+import { useGetAllProjectsQuery } from "../../pages/Projects/projectsAPISlice";
 
 function Sidebar({ children, isVisible }) {
 	const introIsOpen = useSelector((state) => state.sidebarintro.introIsOpen);
@@ -55,8 +31,47 @@ function Sidebar({ children, isVisible }) {
 	const [userLogout] = useUserLogoutMutation();
 	const { email } = useSelector((state) => state.auth);
 	const { data: user } = useGetOneUserQuery(email);
-
+	const { data: projectsTeams, refetch } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
+
+	console.log(user);
+
+	let routes = [
+		{
+			path: "/dashboard",
+			name: "Dashboard",
+			icon: <AiOutlineDashboard />,
+			tooltip: "Dashboard",
+		},
+		{
+			path: "/projets",
+			name: "Projets",
+			icon: <FaProjectDiagram />,
+			tooltip: "Les Projets",
+		},
+		{
+			path: "/projet/create",
+			name: "Créer Projet",
+			icon: <FaPlusSquare />,
+			tooltip: "Créer un projet",
+		},
+		{
+			path: "/game",
+			name: "Detente",
+			icon: <BiGame />,
+			tooltip: "Detente",
+		},
+	];
+
+	const showDashboard = projectsTeams?.teams?.some(
+		(team) =>
+			team.customer_id === user?.id &&
+			(team.role === "admin" || team.role === "participants")
+	);
+
+	if (showDashboard === false) {
+		routes = routes.filter((route) => route.name !== "Dashboard");
+	}
 
 	const onExit = () => {
 		dispatch(toggleOpenIntro());
@@ -66,48 +81,55 @@ function Sidebar({ children, isVisible }) {
 			element: "#intromain",
 			intro:
 				"Bienvenue sur Develott ! Nous sommes heureux de te connaitre. Suis moi, je vais t'expliquer comment ça marche...",
+			tooltipClass: "customTooltip",
 			position: "center",
 		},
 		{
 			element: "#sideok",
 			intro:
 				"Ici c'est votre Sidebar elle est cool hein ? Elle deviendra vite votre meilleure amie. Tu y retrouveras tous les liens utiles. Utilise notre logo pour l'ouvrir ou la fermer.",
+			tooltipClass: "customTooltip",
+			position: "right",
+		},
+		{
+			element: "#sideok",
+			intro: `<img src=${Logo} /><p>Quand tu auras rejoint un projet le Dashboard apparaitra, il te permettra de retrouver toutes les infos utiles à la bonne réalisation de votre application (qui va revolutionner le monde, on croise les doigts !)</p>`,
+			tooltipClass: "customTooltip",
 			position: "right",
 		},
 		{
 			element: "#step-0",
 			intro:
-				"Voici le Dashboard, quand tu auras rejoint un projet il te permettra de retrouver toutes les infos utiles à la bonne réalisation de votre application (qui va revolutionner le monde, on croise les doigts !)",
+				"Ici, tu retouveras tous les projets proposés par notre IMMENSE communauté. Y'a le choix, choisis le bien et postule (qui ne tente rien..)",
+			tooltipClass: "customTooltip",
 			position: "right",
 		},
 		{
 			element: "#step-1",
 			intro:
-				"Ici, tu retouveras tous les projets proposés par notre IMMENSE communauté. Y'a le choix, choisis le bien et postule (qui ne tente rien..)",
+				"Là c'est la création de projet. Tu as des idées, l'âme d'un artiste ou l'envie de progresser ? Crée ton projet, choisis ton équipe et fais de tes réves une réalité (on croit en toi !)",
+			tooltipClass: "customTooltip",
 			position: "right",
 		},
 		{
 			element: "#step-2",
 			intro:
-				"Là c'est la création de projet. Tu as des idées, l'âme d'un artiste ou l'envie de progresser ? Crée ton projet, choisis ton équipe et fais de tes réves une réalité (on croit en toi !)",
-			position: "right",
-		},
-		{
-			element: "#step-3",
-			intro:
 				"Ah ! Besoin de décompresser ? ou juste d'attendre que ton équipe soit connectée ? Detend toi avec notre jeu Snake fait maison",
+			tooltipClass: "customTooltip",
 			position: "right",
 		},
 		{
 			element: "#profil",
 			intro:
 				"Ici tu retrouveras ton profil, tu peux ajouter ou modifier ta photo de profil, ta description et tes liens personnels. C'est ta petite bulle à toi !",
+			tooltipClass: "customTooltip",
 			position: "right",
 		},
 		{
 			element: "#navbar",
 			intro:
 				"On à bientôt fini...  Utilise cette barre de recherche pour trouver des projets en fonction de plusieurs critéres (Technologies / Metier / Date) ou par titre de projet. Hésite pas à ajouter tes projets préférés en Favoris pour les retrouver facilement... C'est tout pour moi ! Bienvenue dans l'équipe de Develott",
+			tooltipClass: "customTooltip",
 			position: "center",
 		},
 	];
@@ -167,6 +189,24 @@ function Sidebar({ children, isVisible }) {
 			},
 		},
 	};
+	const picPictureAnimation = {
+		hidden: {
+			width: 0,
+			opacity: 0,
+			transition: {
+				duration: 0,
+			},
+		},
+		show: {
+			width: "1.7rem",
+			rotate: 360,
+			scale: 1,
+			opacity: 1,
+			transition: {
+				duration: 0.3,
+			},
+		},
+	};
 	const profilAnimation = {
 		hidden: {
 			width: 0,
@@ -188,6 +228,7 @@ function Sidebar({ children, isVisible }) {
 		<div className="sidebar_container">
 			<Steps
 				enabled={introIsOpen}
+				options={{ showProgress: true, keyboardNavigation: true }}
 				steps={steps}
 				initialStep={initialStep}
 				onComplete={onExit}
@@ -372,7 +413,7 @@ function Sidebar({ children, isVisible }) {
 												stiffness: 260,
 												damping: 20,
 											}}
-											variants={logAnimation}
+											variants={picPictureAnimation}
 											src={
 												user?.profil_picture
 													? user?.profil_picture
@@ -382,13 +423,29 @@ function Sidebar({ children, isVisible }) {
 											className="profile_img_close"
 											data-tip="Profil"
 										></motion.img>
-										<ReactTooltip
-											className="tooltips_side"
-											place="right"
-											type="light"
-											effect="solid"
-											arrowColor="white"
-										/>
+										{!displayDarkMode && (
+											<ReactTooltip
+												className="tooltips_cards"
+												place="right"
+												effect="solid"
+												border
+												textColor="#272727"
+												backgroundColor="#FFFFFF"
+												borderColor="#272727"
+											/>
+										)}
+										{displayDarkMode && (
+											<ReactTooltip
+												className="tooltips_cards"
+												place="right"
+												type="light"
+												effect="solid"
+												border
+												textColor="#FFFFFF"
+												borderColor="#FFFFFF"
+												backgroundColor="#231661"
+											/>
+										)}
 									</NavLink>
 								)}
 							</AnimatePresence>

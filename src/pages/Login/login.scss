@@ -24,6 +24,7 @@
 
 .form {
   width: 80%;
+  position: relative;
   margin: auto;
   .form-group {
     position: relative;
@@ -54,7 +55,7 @@
 
       &:focus ~ .label {
         color: vars.$primaryColor;
-        transform: translateX(15px) translateY(15px);
+        transform: translateX(15px) translateY(10px);
         font-size: 1rem;
         padding: 0;
         background-color: transparent;
@@ -67,4 +68,10 @@
       }
     }
   }
+}
+
+.toogle_eye {
+  position: absolute;
+  top: 5.5rem;
+  right: 0.1rem;
 }

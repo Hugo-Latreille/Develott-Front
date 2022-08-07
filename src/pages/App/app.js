@@ -12,7 +12,7 @@ import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
 import PersistLogin from "../../utils/PersistLogin";
@@ -41,6 +41,9 @@ function App() {
   const charteModalIsOpen = useSelector(
     (state) => state.modal.charteModalIsOpen
   );
+  const toggleChangePasswordModal = useSelector(
+    (state) => state.app.toggleChangePasswordModal
+  );
 
   useEffect(() => {
     if (modalIsOpen) {
@@ -66,6 +69,14 @@ function App() {
     }
   }, [charteModalIsOpen]);
 
+  useEffect(() => {
+    if (toggleChangePasswordModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [toggleChangePasswordModal]);
+
   return (
     <div id={displayDarkMode === true ? "dark" : "light"}>
       <div className="app">
@@ -89,11 +100,13 @@ function App() {
                 <Route path="charte" element={<Charte />} />
                 <Route path="modal-charte" element={<CharteModal />} />
                 <Route path="about" element={<About />} />
-                <Route path="profil/:profilId" element={<Profil />} />
+                <Route path="profil/:profilId" element={<Profil />}>
+                  <Route path="newpassword/:userId" element={<NewPassword />} />
+                </Route>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="calendar" element={<Calendar />} />
                 <Route path="game" element={<Game />} />
-                <Route path="500" element={<Loader1 />} />
+                <Route path="V2" element={<Loader1 />} />
               </Route>
               <Route
                 path="*"

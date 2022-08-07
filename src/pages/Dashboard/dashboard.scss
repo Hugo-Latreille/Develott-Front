@@ -16,6 +16,10 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+
+            & a {
+                color:white;
+            }
         }
 
         &-titles {
@@ -47,6 +51,7 @@
     &-right {
         width:21%;
         background-color: #fff;
+        z-index: 2;
     }
 
     &-edit-input {
@@ -208,7 +213,9 @@
             border-bottom: solid 1px  hsl(207, 67%, 78%, 50%);;
 
             & img {
-                width:12%;
+                width:4rem;
+                height:4rem;
+                object-fit: cover;
                 margin-right: 1rem;
                 border-radius: 50%;
             }
@@ -219,9 +226,15 @@
                 & p {
                     margin:0;
                     font-weight: bolder;
+                    color: black;
                 }
 
                 & span {
+                    color: vars.$darkGrey;
+                    padding-top: 0.2rem;
+                }
+
+                & a {
                     color: vars.$darkGrey;
                     padding-top: 0.2rem;
                 }
@@ -255,6 +268,15 @@
     background-position: bottom center;
     color:white;
 }
+
+.dashboard-delete-project {
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-decoration: underline;
+}
+ 
+
 
 
 @media screen and (width < 600px) {
@@ -321,6 +343,7 @@
   }
 
 
+
   @media screen and (width < 400px) {
 
     .dashboard {
@@ -341,6 +364,11 @@
     color:white;
 
 
+  }
+
+
+  #dark .main-button-bg-white {
+    color:white;
   }
 
   #dark .dashboard-main-header {
@@ -374,6 +402,11 @@
     color:white;
 
     & span {
+        color:white;
+        font-weight: lighter;
+    }
+
+    & a {
         color:white;
         font-weight: lighter;
     }
@@ -417,4 +450,11 @@
 
   #dark .dashboard-main-content-team-users:hover {
     background: vars.$linearGradientDarkMode;
+  }
+
+  #dark .dashboard-main-content-team-users-details {
+
+    & p {
+        color:white;
+    }
   }
