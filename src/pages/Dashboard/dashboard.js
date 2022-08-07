@@ -128,12 +128,12 @@ function Dashboard() {
             <div className="dashboard-main-titles">
               <h2 className="dashboard-main-title">Hi {user?.firstname},</h2>
               <h1 className="dashboard-main-subtitle">
-                Bienvenue sur le dashboard du projet
+                Bienvenue sur le dashboard du projet{" "}
                 {myProject?.project.project}
               </h1>
               {isUserAdmin && (
                 <span
-                  className="dashboard-delete-project"
+                  className="dashboard-delete-project danger"
                   onClick={() => {
                     const confirm = window.confirm(
                       "Voulez-vous vraiment supprimer le projet ?"
@@ -278,7 +278,11 @@ function Dashboard() {
                       />
                       <div className="dashboard-main-content-team-users-details">
                         <p>Github / Gitlab</p>
-                        <span>{projectGithub}</span>
+                        <span>
+                          <a href={projectGithub} target="_blank">
+                            {projectGithub}
+                          </a>
+                        </span>
                       </div>
                       <span
                         className="edit-btn-main"
@@ -339,7 +343,9 @@ function Dashboard() {
                       />
                       <div className="dashboard-main-content-team-users-details">
                         <p>Discord</p>
-                        <span>{projectDiscord}</span>
+                        <a href={projectDiscord} target="_blank">
+                          {projectDiscord}
+                        </a>
                       </div>
                       <span
                         className="edit-btn-main"
@@ -399,7 +405,9 @@ function Dashboard() {
                       />
                       <div className="dashboard-main-content-team-users-details">
                         <p>Slack</p>
-                        <span>{projectSlack}</span>
+                        <a href={projectSlack} target="_blank">
+                          {projectSlack}
+                        </a>
                       </div>
                       <span
                         className="edit-btn-main"
@@ -460,7 +468,9 @@ function Dashboard() {
                       />
                       <div className="dashboard-main-content-team-users-details">
                         <p>Trello</p>
-                        <span>{projectTrello}</span>
+                        <a href={projectTrello} target="_blank">
+                          {projectTrello}
+                        </a>{" "}
                       </div>
                       <span
                         className="edit-btn-main"
