@@ -49,6 +49,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Loader2 from "./../../components/Loader2/loader2";
 
+import { useFindUserByIdQuery } from "../Login/authAPISlice";
+
 function Project() {
   const { projectId } = useParams();
   const {
@@ -143,6 +145,9 @@ function Project() {
   const productOwnerId = projectTeam
     ?.filter((team) => team.role === "admin")
     .map((po) => po.customer_id)[0];
+
+  const { data: productOwner } = useFindUserByIdQuery(productOwnerId);
+  console.log(productOwner);
 
   const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
     technology.tags.includes("language")
@@ -363,17 +368,17 @@ function Project() {
 
                 <div className="project-user-links">
                   <p>
-                    <a href={user?.url_github} target="_blank">
+                    <a href={productOwner?.url_github} target="_blank">
                       <i className="fab fa-github"></i>
                     </a>
                   </p>
                   <p>
-                    <a href={user?.url_linkedin} target="_blank">
+                    <a href={productOwner?.url_linkedin} target="_blank">
                       <i className="fab fa-linkedin"></i>
                     </a>
                   </p>
                   <p>
-                    <a href={user?.url_portfolio} target="_blank">
+                    <a href={productOwner?.url_portfolio} target="_blank">
                       <i className="fas fa-laptop-code"></i>
                     </a>
                   </p>
