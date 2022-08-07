@@ -55,11 +55,6 @@ function ProjectList() {
 		)[0];
 	};
 
-	//! conserver ? @Léa
-	// const handleToggleJobs = () => {
-	// 	setToggleJobs(!toggleJobs);
-	// };
-
 	const [selected, setSelected] = useState(false);
 	const handleToggleTechnos = (index) => {
 		setSelected((prevState) => ({
@@ -78,19 +73,16 @@ function ProjectList() {
 	const isFavorite = (projectId) => {
 		return userFavorites?.find((fav) => fav === projectId);
 	};
-
 	const findFavoritesInfos = () => {
 		return allProjects.filter((project) =>
 			userFavorites.some((fav) => fav === project.id)
 		);
 	};
-
 	const findProjectByName = (id) => {
 		const foundProject = allProjects?.filter((element) => element.id === id);
 		console.log(foundProject);
 		return foundProject;
 	};
-
 	const findProjectsByTechnologyName = (technology) => {
 		const filteredProjects = allProjects?.filter((project) =>
 			project?.techno?.includes(technology)

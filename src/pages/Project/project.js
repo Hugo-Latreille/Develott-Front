@@ -116,7 +116,7 @@ function Project() {
 		(candidate) => candidate.role === "candidates"
 	);
 
-	// console.log(user);
+	console.log(doesJobHaveCandidates);
 
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
@@ -131,7 +131,7 @@ function Project() {
 			toast.success("Vous êtes candidat(e) pour participer à ce projet");
 		}
 		if (
-			doesJobHaveCandidates &&
+			doesJobHaveCandidates?.length > 0 &&
 			isUserProjectAdmin &&
 			teamModalIsOpen === false
 		) {
@@ -151,7 +151,6 @@ function Project() {
 		.map((po) => po.customer_id)[0];
 
 	const { data: productOwner } = useFindUserByIdQuery(productOwnerId);
-	// console.log(productOwner);
 
 	const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
 		technology.tags.includes("language")
@@ -276,7 +275,6 @@ function Project() {
 		});
 		return count;
 	};
-
 	const countParticipantsSameJob = (jobId) => {
 		const count = {};
 		participants?.forEach((participant) => {
@@ -392,21 +390,31 @@ function Project() {
 									<p className="project-user-name">{displayProductOwner}</p>
 								</Link>
 
-								{/* //TODO connecter les liens RS */}
-
 								<div className="project-user-links">
 									<p>
-										<a href={productOwner?.url_github} target="_blank">
+										<a
+											href={productOwner?.url_github}
+											target="_blank"
+											rel="noreferrer"
+										>
 											<i className="fab fa-github"></i>
 										</a>
 									</p>
 									<p>
-										<a href={productOwner?.url_linkedin} target="_blank">
+										<a
+											href={productOwner?.url_linkedin}
+											target="_blank"
+											rel="noreferrer"
+										>
 											<i className="fab fa-linkedin"></i>
 										</a>
 									</p>
 									<p>
-										<a href={productOwner?.url_portfolio} target="_blank">
+										<a
+											href={productOwner?.url_portfolio}
+											target="_blank"
+											rel="noreferrer"
+										>
 											<i className="fas fa-laptop-code"></i>
 										</a>
 									</p>
@@ -829,6 +837,7 @@ function Project() {
 														"inline",
 														"blockType",
 														"fontSize",
+														"fontFamily",
 														"list",
 														"textAlign",
 														"colorPicker",
