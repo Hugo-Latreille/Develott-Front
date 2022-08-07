@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { logOut, setCredentials } from "../pages/Login/authSlice";
 
 const baseQuery = fetchBaseQuery({
-	// baseUrl: "https://develott.herokuapp.com/v1/",
-	baseUrl: "http://localhost:3002/v1/",
+	baseUrl: "https://develott.herokuapp.com/v1/",
+	// baseUrl: "http://localhost:3002/v1/",
 
 	credentials: "include",
 	tagTypes: ["Project", "User"],
