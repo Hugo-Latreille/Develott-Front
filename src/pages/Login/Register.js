@@ -181,6 +181,7 @@ function Register({ onSubmit }) {
                 </span>
                 , et un
                 <span className={passwordValidity.specialChar ? "success" : ""}>
+                  {" "}
                   caractère spécial
                 </span>
                 .
