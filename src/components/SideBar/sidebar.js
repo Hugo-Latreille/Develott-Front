@@ -34,8 +34,6 @@ function Sidebar({ children, isVisible }) {
 	const { data: projectsTeams, refetch } = useGetAllProjectsQuery();
 	const [initialStep, setInitialStep] = useState(0);
 
-	console.log(user);
-
 	let routes = [
 		{
 			path: "/dashboard",
@@ -82,7 +80,7 @@ function Sidebar({ children, isVisible }) {
 			intro:
 				"Bienvenue sur Develott ! Nous sommes heureux de te connaitre. Suis moi, je vais t'expliquer comment ça marche...",
 			tooltipClass: "customTooltip",
-			position: "center",
+			position: "auto",
 		},
 		{
 			element: "#sideok",
@@ -130,7 +128,7 @@ function Sidebar({ children, isVisible }) {
 			intro:
 				"On à bientôt fini...  Utilise cette barre de recherche pour trouver des projets en fonction de plusieurs critéres (Technologies / Metier / Date) ou par titre de projet. Hésite pas à ajouter tes projets préférés en Favoris pour les retrouver facilement... C'est tout pour moi ! Bienvenue dans l'équipe de Develott",
 			tooltipClass: "customTooltip",
-			position: "center",
+			position: "auto",
 		},
 	];
 
