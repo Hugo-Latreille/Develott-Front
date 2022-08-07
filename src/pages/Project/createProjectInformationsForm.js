@@ -177,6 +177,7 @@ function CreateProjectInformationsForm({ isUserAlreadyParticipant }) {
 							"inline",
 							"blockType",
 							"fontSize",
+							"fontFamily",
 							"list",
 							"textAlign",
 							"colorPicker",
