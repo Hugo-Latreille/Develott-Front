@@ -50,6 +50,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Loader2 from "./../../components/Loader2/loader2";
 
+import { useFindUserByIdQuery } from "../Login/authAPISlice";
+
 function Project() {
   const { projectId } = useParams();
   const {
@@ -61,7 +63,9 @@ function Project() {
   const [deleteJobProject] = useDeleteProjectJobMutation();
   const [deleteTechnoProject] = useDeleteProjectTechnoMutation();
   console.log(projectWithTeam);
+
   const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+
   const project = projectWithTeam?.project;
   const projectJobs = projectWithTeam?.jobByProject;
   const projectTeam = projectWithTeam?.teams;
@@ -83,6 +87,7 @@ function Project() {
     projectTitle,
     projectExcerpt,
   } = useSelector((state) => state.project);
+
 
   const { teamModalIsOpen } = useSelector((state) => state.teamCreation);
   const isUserTeamMember = projectTeam?.some(
@@ -112,7 +117,7 @@ function Project() {
     (candidate) => candidate.role === "candidates"
   );
 
-  console.log(doesJobHaveCandidates);
+  console.log(user);
 
   const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
@@ -145,6 +150,10 @@ function Project() {
   const productOwnerId = projectTeam
     ?.filter((team) => team.role === "admin")
     .map((po) => po.customer_id)[0];
+
+  const { data: productOwner } = useFindUserByIdQuery(productOwnerId);
+  console.log(productOwner);
+
 
   const languagesData = findProjectTechnosFromDatabase?.filter((technology) =>
     technology.tags.includes("language")
@@ -304,6 +313,7 @@ function Project() {
     <>
       {isLoading && <Loader2 />}
       <Sidebar>
+
         {!displayDarkMode && (
           <ReactTooltip
             className="tooltips_cards"
@@ -327,6 +337,7 @@ function Project() {
             backgroundColor="#231661"
           />
         )}
+
         <div className="project">
           <div className="project-container ">
             <div className="project-container-left">
@@ -388,13 +399,21 @@ function Project() {
 
                 <div className="project-user-links">
                   <p>
-                    <i className="fab fa-github"></i>
+
+                    <a href={productOwner?.url_github} target="_blank">
+                      <i className="fab fa-github"></i>
+                    </a>
                   </p>
                   <p>
-                    <i className="fab fa-linkedin"></i>
+                    <a href={productOwner?.url_linkedin} target="_blank">
+                      <i className="fab fa-linkedin"></i>
+                    </a>
                   </p>
                   <p>
-                    <i className="fas fa-laptop-code"></i>
+                    <a href={productOwner?.url_portfolio} target="_blank">
+                      <i className="fas fa-laptop-code"></i>
+                    </a>
+
                   </p>
                 </div>
               </div>
@@ -425,10 +444,15 @@ function Project() {
                           {checkHowManyParticipantsPerDuplicate(job.job_id)[
                             job.job_id
                           ] === 0 ? (
-                            <i className="fas fa-check-circle error'"></i>
+
+                            <>
+                              <i className="fas fa-times-circle error"></i>{" "}
+                              {job.job}
+                            </>
                           ) : (
                             <>
-                              <i className="fas fa-check-circle success"></i>
+                              <i className="fas fa-check-circle success"></i>{" "}
+
                               {job.job}
                               <p className="project-jobs-span">
                                 {
