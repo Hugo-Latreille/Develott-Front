@@ -45,7 +45,6 @@ const projectsAPISlice = emptySplitApi.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
-						console.log(result);
 						const projectGithub = result.data.url_github_repo;
 						const projectDiscord = result.data.url_github_projet;
 						const projectSlack = result.data.url_slack_server;

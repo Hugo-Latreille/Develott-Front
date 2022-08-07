@@ -116,28 +116,40 @@ function Project() {
 		(candidate) => candidate.role === "candidates"
 	);
 
-	console.log(doesJobHaveCandidates);
+	const doesJobHaveCandidatesBool = projectTeam?.some(
+		(candidate) => candidate.role === "candidates"
+	);
 
 	const isProjectComplete = displayParticipants?.length === projectJobs?.length;
 
 	useEffect(() => {
-		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
-			toast.info("Ce projet est complet");
+		if (teamModalIsOpen === false) {
+			refetch();
 		}
-		if (isUserParticipant && teamModalIsOpen === false) {
+		if (isUserParticipant === true && teamModalIsOpen === false) {
 			toast.success("Vous avez été sélectionné(e) pour participer à ce projet");
 		}
-		if (isUserCandidate && teamModalIsOpen === false) {
+		if (isUserCandidate === true && teamModalIsOpen === false) {
 			toast.success("Vous êtes candidat(e) pour participer à ce projet");
 		}
+	}, [teamModalIsOpen, isUserParticipant, isUserCandidate, projectWithTeam]);
+
+	useEffect(() => {
 		if (
-			doesJobHaveCandidates?.length > 0 &&
+			!isLoading &&
+			doesJobHaveCandidatesBool &&
 			isUserProjectAdmin &&
 			teamModalIsOpen === false
 		) {
 			toast.info("Un candidat en attente de validation");
 		}
-	}, [teamModalIsOpen, isProjectComplete, isUserParticipant, isUserCandidate]);
+	}, [doesJobHaveCandidatesBool]);
+
+	useEffect(() => {
+		if (!isLoading && isProjectComplete && teamModalIsOpen === false) {
+			toast.info("Ce projet est complet");
+		}
+	}, [isProjectComplete, projectWithTeam]);
 
 	const findProjectTechnosFromDatabase = project?.techno?.map(
 		(techno) => technologiesJson.filter((tech) => tech.name === techno)[0]
