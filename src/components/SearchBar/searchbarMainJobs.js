@@ -13,7 +13,6 @@ function SearchbarMainJobs() {
 
 	const handleOnSelect = (item) => {
 		// the item selected
-		// console.log(item);
 		dispatch(setSearchJob(item.id));
 	};
 
