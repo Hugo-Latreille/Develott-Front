@@ -1,4 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
+import { setUserData } from "../Profiles/userProfileSlice";
 import { setCredentials } from "./authSlice";
 
 const authAPI = emptySplitApi.injectEndpoints({
@@ -83,6 +84,25 @@ const authAPI = emptySplitApi.injectEndpoints({
 		findUserById: builder.query({
 			query: (id) => `user/findById/${id}`,
 			providesTags: ["User"],
+			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+				queryFulfilled
+					.then((result) => {
+						console.log(result);
+						const userCity = result.data.city;
+						const userGithub = result.data.url_github;
+						const userLinkedin = result.data.url_linkedin;
+						const userPortfolio = result.data.url_portfolio;
+						dispatch(setUserData({ name: "userCity", value: userCity }));
+						dispatch(setUserData({ name: "userGitHub", value: userGithub }));
+						dispatch(
+							setUserData({ name: "userLinkedin", value: userLinkedin })
+						);
+						dispatch(
+							setUserData({ name: "userPortfolio", value: userPortfolio })
+						);
+					})
+					.catch(({ error }) => {});
+			},
 		}),
 		// getRefreshToken: builder.query({
 		// 	query: () => "user/refreshToken",

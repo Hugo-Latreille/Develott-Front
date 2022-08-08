@@ -1,5 +1,5 @@
 import { emptySplitApi } from "../../API/APIslice";
-import { setNewUserImg, setUserData } from "./userProfileSlice";
+import { setNewUserImg } from "./userProfileSlice";
 
 const userAPISlice = emptySplitApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -11,19 +11,7 @@ const userAPISlice = emptySplitApi.injectEndpoints({
 					.then((result) => {
 						console.log(result);
 						const userImg = result.data.picture_project;
-						const userCity = result.data.city;
-						const userGithub = result.data.url_github;
-						const userLinkedin = result.data.url_linkedin;
-						const userPortfolio = result.data.url_portfolio;
 						dispatch(setNewUserImg(userImg));
-						dispatch(setUserData({ name: "userCity", value: userCity }));
-						dispatch(setUserData({ name: "userGitHub", value: userGithub }));
-						dispatch(
-							setUserData({ name: "userLinkedin", value: userLinkedin })
-						);
-						dispatch(
-							setUserData({ name: "userPortfolio", value: userPortfolio })
-						);
 					})
 					.catch(({ error }) => {});
 			},
