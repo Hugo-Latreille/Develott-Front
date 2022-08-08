@@ -80,7 +80,7 @@ function ProjectList() {
 	};
 	const findProjectByName = (id) => {
 		const foundProject = allProjects?.filter((element) => element.id === id);
-		console.log(foundProject);
+		// console.log(foundProject);
 		return foundProject;
 	};
 	const findProjectsByTechnologyName = (technology) => {

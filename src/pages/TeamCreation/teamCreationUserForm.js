@@ -80,8 +80,9 @@ function TeamCreationUserForm({
 		});
 		return count;
 	};
-	console.log(countParticipantsSameJob(2));
-	console.log(countDuplicates(2));
+
+	// console.log(countParticipantsSameJob(2));
+	// console.log(countDuplicates(2));
 
 	const checkHowManyParticipantsPerDuplicate = (jobId) => {
 		const candidatesSameJob = countParticipantsSameJob(jobId);
@@ -102,7 +103,7 @@ function TeamCreationUserForm({
 			}
 		}
 	};
-	console.log(checkHowManyParticipantsPerDuplicate(2));
+	// console.log(checkHowManyParticipantsPerDuplicate(2));
 
 	// const findJobIdByIdProjectHasJob = (idProjectHasJob) => {
 	// 	return projectJobs?.find(

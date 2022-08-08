@@ -128,7 +128,8 @@ function Dashboard() {
 					backgroundColor="#231661"
 				/>
 			)}
-			{userLoading || projectsLoading || (teamLoading && <Loader2 />)}
+			{/* {userLoading || projectsLoading || (teamLoading && <Loader2 />)} */}
+			{userLoading && <Loader2 />}
 			<div className="dashboard">
 				<div className="dashboard-main">
 					<div className="dashboard-main-header">

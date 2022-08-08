@@ -75,7 +75,7 @@ function CreateProjectInformationsForm({ isUserAlreadyParticipant }) {
 			},
 			(error, result) => {
 				if (!error && result && result.event === "success") {
-					console.log(result.info.url);
+					// console.log(result.info.url);
 					const newImg = result.info.url;
 					dispatch(setNewImg(newImg));
 				}
@@ -104,7 +104,7 @@ function CreateProjectInformationsForm({ isUserAlreadyParticipant }) {
 		})
 			.unwrap()
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				dispatch(handleChange({ name: "projectId", value: data }));
 				dispatch(setActiveForm("technologies"));
 			});

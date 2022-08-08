@@ -83,7 +83,7 @@ function SearchBar() {
 								value={searchDate ? searchDate : today}
 								className="date-picker-color"
 								onChange={(newValue) => {
-									console.log(newValue.format());
+									// console.log(newValue.format());
 									dispatch(setSearchProjectDate(newValue.format()));
 								}}
 								// renderInput={(params) => <TextField {...params} />}

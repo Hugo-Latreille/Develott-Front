@@ -18,7 +18,7 @@ function TeamCreationAdminForm({ projectId, candidates, refetch }) {
 	const { selectTeam } = useSelector((state) => state.teamCreation);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	console.log(candidates);
+	// console.log(candidates);
 	const [updateCandidateToParticipant] = useUpdateUserRoleMutation();
 	const [UpdateUserActive] = useUpdateUserMutation();
 	const [deleteUserRole] = useDeleteUserRoleMutation();
