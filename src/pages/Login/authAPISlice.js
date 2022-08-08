@@ -87,7 +87,7 @@ const authAPI = emptySplitApi.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				queryFulfilled
 					.then((result) => {
-						console.log(result);
+						// console.log(result);
 						const userCity = result.data.city;
 						const userGithub = result.data.url_github;
 						const userLinkedin = result.data.url_linkedin;

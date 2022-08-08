@@ -97,8 +97,23 @@ function ProjectList() {
 		return filteredProjects;
 	};
 
+	// console.log(projectsTeams);
+
+	// const projects1 = projectsTeams?.jobByProject?.map(
+	// 	(project) => project.project_id
+	// );
+	// const filterJobsByProject = projectsTeams?.jobByProject?.filter(
+	// 	({ project_id }, index) => !projects1.includes(project_id, index + 1)
+	// );
+
+	// console.log(filterJobsByProject);
+
+	// const participants = projectTeam?.filter(
+	// 	(team) => team.role === "participants"
+	// );
+
 	const findProjectsByJobName = (id) => {
-		const projectHasJobData = projectsTeams?.jobByProject.filter(
+		const projectHasJobData = projectsTeams?.jobByProject?.filter(
 			(job) => job?.job_id === parseInt(id)
 		);
 
@@ -116,7 +131,7 @@ function ProjectList() {
 
 	const findProject = (technoName, jobId) => {
 		if (jobId !== "" && technoName !== "") {
-			const projectHasJobData = projectsTeams?.jobByProject.filter(
+			const projectHasJobData = projectsTeams?.jobByProject?.filter(
 				(job) => job?.job_id === parseInt(jobId)
 			);
 
