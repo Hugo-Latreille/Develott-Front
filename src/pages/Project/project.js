@@ -455,7 +455,7 @@ function Project() {
 
 										<div className="project-jobs-container">
 											{filterJobs?.map((job) => (
-												<p key={job.id_project_has_job}>
+												<div key={job.id_project_has_job}>
 													{checkHowManyParticipantsPerDuplicate(job.job_id)[
 														job.job_id
 													] === 0 ? (
@@ -477,7 +477,7 @@ function Project() {
 															</p>
 														</>
 													)}{" "}
-												</p>
+												</div>
 											))}
 										</div>
 									</>
