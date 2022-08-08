@@ -22,7 +22,7 @@ function SearchBarJobsProject({ projectId }) {
 
 	const handleOnSelect = (item) => {
 		// the item selected
-		console.log(item.name);
+		// console.log(item.name);
 		postProjectJob({ id: projectId, job: item.name });
 		// dispatch(setData({ name: "jobsData", data: item }));
 	};
