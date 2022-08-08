@@ -70,9 +70,9 @@ function Profil() {
 			return { myProject, myRole, projectTeam, projectJobs };
 		});
 	};
-	console.log(findMyProjects());
+	// console.log(findMyProjects());
 
-	console.log(user);
+	// console.log(user);
 	const {
 		isEditDescriptionActive,
 		isEditTechnologiesActive,
