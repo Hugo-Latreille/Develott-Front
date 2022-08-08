@@ -354,19 +354,18 @@ function Profil() {
 											</p>
 											<p className="desc_container_title">
 												<i className="fab fa-linkedin color-secondary"></i>
-												<a href="#">
-													{user?.url_linkedin ? (
-														<a
-															href={`${user?.url_linkedin}`}
-															target="_blank"
-															rel="noreferrer"
-														>
-															{user?.url_linkedin}
-														</a>
-													) : (
-														"Linkedin"
-													)}
-												</a>
+
+												{user?.url_linkedin ? (
+													<a
+														href={`${user?.url_linkedin}`}
+														target="_blank"
+														rel="noreferrer"
+													>
+														{user?.url_linkedin}
+													</a>
+												) : (
+													"Linkedin"
+												)}
 											</p>
 											<p className="desc_container_title">
 												<i className="fas fa-globe color-secondary"></i>
