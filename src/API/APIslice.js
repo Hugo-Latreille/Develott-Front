@@ -20,14 +20,14 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 	let result = await baseQuery(args, api, extraOptions);
 	// console.log(result);
 	if (result.error && result.error.originalStatus === 403) {
-		console.log("on envoie le refresh token");
+		// console.log("on envoie le refresh token");
 		//envoyer le refresh token pour renouveler l'access token
 		const refreshResult = await baseQuery(
 			"user/refreshToken",
 			api,
 			extraOptions
 		);
-		console.log("refreshResult", refreshResult);
+		// console.log("refreshResult", refreshResult);
 		if (refreshResult?.data) {
 			const email = api.getState().auth.email;
 			//on enregistre le nouveau token

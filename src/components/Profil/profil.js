@@ -336,17 +336,17 @@ function Profil() {
 										<div className="desc_container_user-links-dark">
 											<p className="desc_container_title">
 												<i className="fas fa-map-marker color-secondary"></i>
-												{user?.city ? user?.city : "Ville"}
+												{userCity ? user?.city : "Ville"}
 											</p>
 											<p className="desc_container_title">
 												<i className="fab fa-github color-secondary"></i>
-												{user?.url_github ? (
+												{userGitHub ? (
 													<a
-														href={`https://github.com/${user?.username_gith}`}
+														href={`https://github.com/${userGitHub}`}
 														target="_blank"
 														rel="noreferrer"
 													>
-														{user?.username_gith}
+														{userGitHub}
 													</a>
 												) : (
 													"GitHub"
@@ -355,13 +355,13 @@ function Profil() {
 											<p className="desc_container_title">
 												<i className="fab fa-linkedin color-secondary"></i>
 
-												{user?.url_linkedin ? (
+												{userLinkedin ? (
 													<a
-														href={`${user?.url_linkedin}`}
+														href={`${userLinkedin}`}
 														target="_blank"
 														rel="noreferrer"
 													>
-														{user?.url_linkedin}
+														{userLinkedin}
 													</a>
 												) : (
 													"Linkedin"
@@ -369,13 +369,13 @@ function Profil() {
 											</p>
 											<p className="desc_container_title">
 												<i className="fas fa-globe color-secondary"></i>
-												{user?.url_portfolio ? (
+												{userPortfolio ? (
 													<a
-														href={user?.url_portfolio}
+														href={userPortfolio}
 														target="_blank"
 														rel="noreferrer"
 													>
-														{user?.url_portfolio}
+														{userPortfolio}
 													</a>
 												) : (
 													"Portfolio"
