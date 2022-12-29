@@ -1,0 +1,71 @@
+.login-container {
+  margin: 3.4rem;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form {
+  padding-top: 3rem;
+  margin: auto;
+}
+.login-form-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  width: 80%;
+  margin: auto;
+}
+
+.form {
+  width: 80%;
+  position: relative;
+  margin: auto;
+}
+.form .form-group {
+  position: relative;
+}
+.form .form-group .label {
+  color: grey;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -17px;
+  left: 8px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.form .form-group input {
+  width: 100%;
+  margin-top: 0.1rem;
+  height: 2.5rem;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  background-color: #f3f3f3;
+  border: 0;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid white;
+  margin-bottom: 31px;
+  transition: 0.5s;
+}
+.form .form-group input:focus ~ .label {
+  color: #32518d;
+  transform: translateX(15px) translateY(10px);
+  font-size: 1rem;
+  padding: 0;
+  background-color: transparent;
+  border-left: 1px solid #33658f;
+  border-right: 1px solid #33658f;
+}
+.form .form-group input:focus {
+  border-bottom: 2px solid #33658f;
+}
+
+.toogle_eye {
+  position: absolute;
+  top: 5.5rem;
+  right: 0.1rem;
+}/*# sourceMappingURL=login.css.map */

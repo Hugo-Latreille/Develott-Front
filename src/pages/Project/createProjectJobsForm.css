@@ -1,0 +1,71 @@
+.form-jobs {
+  display: flex;
+  height: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.form-jobs-title {
+  color: rgb(99, 98, 98);
+  margin-bottom: 2rem;
+}
+.form-jobs-title-2 {
+  color: rgb(99, 98, 98);
+  margin-bottom: 4.7rem;
+}
+.form-jobs-disclaimer {
+  color: rgb(99, 98, 98);
+  font-size: 0.8rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  line-height: 1.1rem;
+}
+.form-jobs-empty {
+  color: grey;
+  font-size: 0.8rem;
+}
+.form-jobs-items {
+  display: flex;
+}
+.form-jobs-items i {
+  padding-right: 0.5rem;
+}
+.form-jobs-items p {
+  width: 80%;
+  font-size: 0.9rem;
+}
+.form-jobs-delete {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.form-jobs .input-container {
+  width: 100%;
+}
+
+.form-jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.form-jobs-container-content {
+  width: 50%;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+.form-jobs-container-content p {
+  padding-bottom: 0rem;
+}
+.form-jobs-container-70 {
+  height: 80%;
+  margin-bottom: 2rem;
+}
+
+#dark .form-jobs-title {
+  color: white;
+}
+#dark .form-jobs-title-2 {
+  color: white;
+}
+#dark .form-jobs-disclaimer {
+  color: white;
+}/*# sourceMappingURL=createProjectJobsForm.css.map */

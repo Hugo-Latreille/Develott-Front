@@ -1,0 +1,470 @@
+.project {
+  height: 100vh;
+  width: 96vw;
+  margin: 2rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
+}
+.project a {
+  color: rgb(73, 73, 73);
+}
+.project-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  min-height: 90vh;
+}
+.project-container-left {
+  margin-right: 1rem;
+  width: 26vw;
+  height: 92vh;
+  min-height: 600px;
+  max-width: 400px;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.project-container-right {
+  width: 65vw !important;
+  height: 92vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-img {
+  width: 100%;
+  height: 15rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.project-img-container {
+  position: relative;
+}
+.project-img-container-edit-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #32518d;
+  cursor: pointer;
+}
+.project-user {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.project-user-avatar {
+  width: 3rem;
+}
+.project-user-name {
+  padding: 0.5rem 1rem;
+  text-decoration: underline;
+  margin-right: 3rem;
+}
+.project-user-links {
+  display: flex;
+  justify-content: flex-end;
+}
+.project-user-links p {
+  padding: 0 0.4rem;
+  color: grey;
+  cursor: pointer;
+}
+.project-user-links p:hover {
+  color: rgb(87, 86, 86);
+}
+.project-jobs {
+  padding: 0rem 2rem 0 2rem;
+}
+.project-jobs-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.project-jobs-title {
+  width: 80%;
+  margin-bottom: -1rem;
+}
+.project-jobs-span {
+  margin-top: 0rem;
+  margin-left: 1.2rem;
+  color: grey;
+  font-size: 0.7rem;
+}
+.project-jobs-container {
+  margin-top: 1.5rem;
+}
+.project-jobs-container-job {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.project-jobs p {
+  color: #696969;
+}
+.project-dates {
+  padding: 0rem 2rem;
+}
+.project-header {
+  background-color: hsla(234deg, 85%, 74%, 0.7);
+  height: 24vh;
+  min-height: 100px;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem 1rem 2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.project-header-left {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-header-title {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+.project-header-short-desc {
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+.project-description {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  min-height: 28vh;
+  margin-bottom: 1rem;
+  overflow-y: scroll;
+}
+.project-description-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.project-description-see-more {
+  text-align: right;
+  color: #32518d;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.project-description-title {
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+  font-size: 1.3rem;
+  width: 90%;
+}
+.project-description-subDesc {
+  margin-bottom: 1rem;
+}
+.project-description-desc {
+  color: grey;
+  margin-bottom: 1rem;
+}
+.project-technologies {
+  min-height: 31vh;
+  background-color: #fff;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.project-technologies-title {
+  width: 100%;
+}
+.project-technologies-languages {
+  width: 24%;
+}
+.project-technologies-languages h4 {
+  font-size: 1.2rem;
+  color: grey;
+  margin-bottom: 1rem;
+}
+.project-technologies-languages p {
+  padding: 0.5rem 1rem;
+}
+.project-technologies-languages p i {
+  padding-right: 0.5rem;
+}
+.project-technologies-frameworks {
+  width: 24%;
+}
+.project-technologies-frameworks h4 {
+  font-size: 1.2rem;
+  color: grey;
+  margin-bottom: 1rem;
+}
+.project-technologies-frameworks p {
+  padding: 0.5rem 1rem;
+}
+.project-technologies-database {
+  width: 24%;
+}
+.project-technologies-database h4 {
+  font-size: 1.2rem;
+  color: grey;
+  margin-bottom: 1rem;
+}
+.project-technologies-database p {
+  padding: 0.5rem 1rem;
+}
+.project-technologies-database p i {
+  padding-right: 0.5rem;
+}
+.project-technologies-others {
+  width: 24%;
+}
+.project-technologies-others h4 {
+  font-size: 1.2rem;
+  color: grey;
+  margin-bottom: 1rem;
+}
+.project-technologies-others p {
+  padding: 0.5rem 1rem;
+}
+.project-technologies-others p i {
+  padding-right: 0.5rem;
+}
+.project-technologies-edit {
+  width: 2%;
+}
+
+.project-texte-editor {
+  width: 100%;
+  margin-right: 0;
+}
+
+.searchbar-project-container {
+  display: flex;
+}
+
+.validation-edit-btn {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.project-edit-img-container {
+  margin: 4rem 2rem 7.75rem 2rem;
+}
+
+.project-edit-img-input {
+  background-color: #f9f8fe;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.edit-btn-main {
+  color: #32518d;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.technologies-icon-container2 {
+  background-color: #f9f8fe;
+  display: flex;
+  align-items: center;
+  border-radius: 5px 8px 8px 5px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  width: 90%;
+}
+.technologies-icon-container2 i {
+  margin-right: 0.6rem;
+  color: white;
+  padding: 0.6rem 0.7rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.jobs-searchbar-container .input-container {
+  width: 100%;
+  margin-top: -4rem;
+}
+
+.project .project-jobs-container-job p {
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+
+.project-dates-inputs {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.hour_modifstart {
+  position: absolute;
+  top: -0.5rem;
+  left: 4.5rem;
+  background-color: white;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  z-index: 1;
+}
+
+.hour_modifend {
+  position: absolute;
+  top: 4.25rem;
+  left: 4.5rem;
+  background-color: white;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  z-index: 1;
+}
+
+.searchbar-project-page {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (width < 1600px) {
+  .project {
+    width: 93vw;
+  }
+}
+@media screen and (width < 600px) {
+  .project {
+    height: auto;
+    margin: 0;
+    width: 90vw;
+  }
+  .project-container {
+    flex-wrap: wrap;
+  }
+  .project-container-left {
+    width: 100%;
+    height: auto;
+  }
+  .project-container-right {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    margin: 2rem 0;
+    padding: 0;
+  }
+  .project-header {
+    height: auto !important;
+    padding: 2rem;
+  }
+  .project-header-left {
+    margin-bottom: 3rem;
+  }
+  .project-header-right a {
+    font-size: 0.7rem;
+  }
+  .project-jobs {
+    width: 85%;
+  }
+  .project-dates {
+    width: 85%;
+  }
+  .project-description {
+    margin-top: 2rem;
+  }
+  .project-description-technologies {
+    flex-wrap: wrap;
+  }
+  .project-technologies {
+    height: auto;
+  }
+  .project-technologies-languages {
+    width: 100%;
+  }
+  .project-technologies-frameworks {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .project-technologies-others {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .project-technologies-database {
+    margin-top: 2rem;
+    width: 100%;
+  }
+}
+#dark .dark-white {
+  color: white;
+}
+
+#dark .project {
+  color: white;
+}
+
+#dark .project-user i {
+  color: white;
+}
+
+#dark .project-description {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+}
+
+#dark .project-container-left {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+}
+
+#dark .project-technologies {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .project-technologies h4 {
+  color: white;
+}
+
+#dark .technologies-icon-container2 {
+  background: linear-gradient(to left top, #404C70 0%, #191E33 100%);
+}
+
+#dark .edit-btn-main {
+  color: #30cfd0;
+}
+
+#dark .project-header {
+  background: linear-gradient(to top left, rgba(33, 152, 152, 0.6901960784), #24085c);
+}
+
+#dark .project-img-container-edit-btn {
+  color: white;
+  background: linear-gradient(to top left, rgba(33, 152, 152, 0.6901960784), #24085c);
+}
+
+#dark .project-description-see-more {
+  color: #30cfd0;
+}
+
+#dark .project-description-desc {
+  color: rgba(255, 255, 255, 0.852);
+}
+
+#dark .project a {
+  color: white;
+}
+
+#dark .main-button-bg-white {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+}
+
+#dark .hour_modifstart {
+  top: -0.9rem;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#dark .hour_modifend {
+  top: 3.9rem;
+  background-color: rgba(255, 255, 255, 0);
+}/*# sourceMappingURL=project.css.map */

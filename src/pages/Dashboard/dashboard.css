@@ -1,0 +1,367 @@
+.dashboard {
+  width: 96%;
+  margin: 1rem auto 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.dashboard-main {
+  width: 78%;
+}
+.dashboard-main-header {
+  background-color: #838FF5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.dashboard-main-header a {
+  color: white;
+}
+.dashboard-main-titles {
+  width: 70%;
+  padding: 2rem;
+  color: white;
+}
+.dashboard-main-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.dashboard-main-subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+.dashboard-main-cta {
+  margin-right: 2rem;
+  color: white;
+  cursor: pointer;
+}
+.dashboard-right {
+  width: 21%;
+  background-color: #fff;
+  z-index: 2;
+}
+.dashboard-edit-input {
+  background-color: #f9f8fe;
+  padding: 0.6rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid #32518d;
+  width: 80%;
+}
+
+.dashboard-main-navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 1rem 0;
+}
+.dashboard-main-navigation-accueil {
+  width: 26%;
+  cursor: pointer;
+}
+.dashboard-main-navigation-accueil-content {
+  background-color: hsla(207deg, 67%, 88%, 0.5);
+  background-position: bottom right;
+  background-size: cover;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  padding: 0 2rem;
+  color: #32518d;
+  position: relative;
+}
+.dashboard-main-navigation-accueil-content h3 {
+  margin: 0 0 1.2rem 0;
+  font-weight: bolder;
+}
+.dashboard-main-navigation-accueil-content p {
+  margin-top: 0;
+}
+.dashboard-main-navigation-accueil-content i {
+  padding-right: 0.5rem;
+}
+.dashboard-main-navigation-accueil-content img {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 30%;
+}
+.dashboard-main-navigation-messagerie {
+  width: 26%;
+  cursor: pointer;
+}
+.dashboard-main-navigation-messagerie-content {
+  background-color: hsla(207deg, 67%, 88%, 0.5);
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  padding: 0 2rem;
+  position: relative;
+  color: #32518d;
+}
+.dashboard-main-navigation-messagerie-content h3 {
+  margin: 0 0 1.2rem 0;
+  font-weight: bolder;
+}
+.dashboard-main-navigation-messagerie-content p {
+  margin-top: 0;
+}
+.dashboard-main-navigation-messagerie-content i {
+  padding-right: 0.5rem;
+}
+.dashboard-main-navigation-messagerie-content img {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 30%;
+}
+.dashboard-main-navigation-calendrier {
+  width: 26%;
+  cursor: pointer;
+}
+.dashboard-main-navigation-calendrier-content {
+  background-color: hsla(207deg, 67%, 88%, 0.5);
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 10px;
+  padding: 0 2rem;
+  position: relative;
+  color: #32518d;
+}
+.dashboard-main-navigation-calendrier-content h3 {
+  margin: 0 0 1.2rem 0;
+  font-weight: bolder;
+}
+.dashboard-main-navigation-calendrier-content p {
+  margin-top: 0;
+}
+.dashboard-main-navigation-calendrier-content i {
+  padding-right: 0.5rem;
+}
+.dashboard-main-navigation-calendrier-content img {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 30%;
+}
+
+.dashboard-main-content {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.dashboard-main-content-team {
+  width: 43%;
+  background-color: #fff;
+  padding: 1rem 2rem;
+}
+.dashboard-main-content-team-users:hover {
+  background-color: #f9f8fe;
+  transition-duration: 1s;
+}
+.dashboard-main-content-team-users {
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px hsla(207deg, 67%, 78%, 0.5);
+}
+.dashboard-main-content-team-users img {
+  width: 4rem;
+  height: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+.dashboard-main-content-team-users-details {
+  width: 80%;
+}
+.dashboard-main-content-team-users-details p {
+  margin: 0;
+  font-weight: bolder;
+  color: black;
+}
+.dashboard-main-content-team-users-details span {
+  color: rgb(99, 98, 98);
+  padding-top: 0.2rem;
+}
+.dashboard-main-content-team-users-details a {
+  color: rgb(99, 98, 98);
+  padding-top: 0.2rem;
+}
+.dashboard-main-content-links {
+  width: 43%;
+  background-color: #fff;
+  padding: 1rem 2rem;
+}
+
+.dashboard-main-technologies {
+  margin-top: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.dashboard-main-technologies span {
+  width: 80%;
+  text-transform: capitalize;
+}
+
+.bg-colored {
+  background-image: url("./../../assets/images/footer-bg2.png");
+  background-position: bottom center;
+  color: white;
+}
+
+.dashboard-delete-project {
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  text-decoration: underline;
+}
+
+@media screen and (width < 600px) {
+  .dashboard {
+    width: 80%;
+    margin: 0;
+    padding: 0rem;
+  }
+  .dashboard-main {
+    width: 100%;
+  }
+  .dashboard-right {
+    width: 100%;
+  }
+  .dashboard .project-technologies-database {
+    width: 100% !important;
+  }
+  .dashboard-main-navigation-accueil {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .dashboard-main-navigation-messagerie {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .dashboard-main-navigation-calendrier {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .dashboard-main-content {
+    flex-wrap: wrap;
+  }
+  .dashboard-main-content-team {
+    width: 100%;
+  }
+  .dashboard-main-content-links {
+    width: 100%;
+  }
+  .dashboard-main-header-titles {
+    width: 100%;
+  }
+  .dashboard-main-cta {
+    width: 100%;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (width < 400px) {
+  .dashboard {
+    width: 70%;
+  }
+}
+#dark .bg-colored {
+  background: linear-gradient(to top left, rgba(33, 152, 152, 0.6901960784), #24085c);
+  color: white;
+}
+
+#dark .main-button-bg-white {
+  color: white;
+}
+
+#dark .dashboard-main-header {
+  background: linear-gradient(to top left, rgba(33, 152, 152, 0.6901960784), #24085c);
+  color: white;
+}
+#dark .dashboard-main-header a {
+  color: white;
+}
+
+#dark .dashboard-main-navigation {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .dashboard-main-navigation-accueil-content {
+  color: white;
+}
+#dark .dashboard-main-navigation-messagerie-content {
+  color: white;
+}
+#dark .dashboard-main-navigation-calendrier-content {
+  color: white;
+}
+
+#dark .dashboard-main-content-links {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .dashboard-main-content-links span {
+  color: white;
+  font-weight: lighter;
+}
+#dark .dashboard-main-content-links a {
+  color: white;
+  font-weight: lighter;
+}
+
+#dark .dashboard-main-content-team {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .dashboard-main-content-team span {
+  color: white;
+  font-weight: lighter;
+}
+
+#dark .dashboard-main-technologies {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .dashboard-main-technologies h4 {
+  color: white;
+}
+#dark .dashboard-main-technologies span {
+  background: linear-gradient(to left top, #404C70 0%, #191E33 100%);
+}
+
+#dark .dashboard-main-navigation-accueil-content {
+  background-color: hsla(207deg, 67%, 88%, 0.2);
+}
+
+#dark .dashboard-main-navigation-calendrier-content {
+  background-color: hsla(207deg, 67%, 88%, 0.2);
+}
+
+#dark .dashboard-main-navigation-messagerie-content {
+  background-color: hsla(207deg, 67%, 88%, 0.2);
+}
+
+#dark .dashboard-main-content-team-users:hover {
+  background: linear-gradient(to left top, #404C70 0%, #191E33 100%);
+}
+
+#dark .dashboard-main-content-team-users-details p {
+  color: white;
+}/*# sourceMappingURL=dashboard.css.map */

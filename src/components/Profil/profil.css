@@ -1,0 +1,461 @@
+.profil {
+  width: 94%;
+  height: 100vh;
+  margin: 2rem 2rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.profil a {
+  color: black;
+}
+.profil_desc {
+  width: 22%;
+  height: 55%;
+}
+.profil_projets {
+  margin-bottom: 5%;
+  width: 22%;
+}
+.profil-middle {
+  width: 54%;
+  height: 86vh;
+}
+
+.name_container_user {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.name_container_avatar {
+  width: 10rem;
+  height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 2rem auto 1rem auto;
+  border-radius: 50%;
+  border: solid 6px #838FF5;
+}
+
+.desc_container2 {
+  height: auto;
+}
+
+.desc_container {
+  background-color: #fff;
+  height: 40vh;
+  padding: 0 1rem 2rem 1rem;
+}
+.desc_container_main {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.desc_container p {
+  margin: 0 1rem;
+  font-size: 1rem;
+  color: rgb(99, 98, 98);
+  line-height: 1.3rem;
+}
+.desc_container_title {
+  font-size: 0.9rem;
+  color: rgb(78, 78, 78);
+}
+.desc_container_title i {
+  padding-right: 0.5rem;
+}
+.desc_container_titlefirst {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 5%;
+}
+.desc_container_email {
+  font-size: 1rem;
+}
+.desc_container_password {
+  color: rgb(0, 30, 255);
+  text-decoration: underline;
+}
+.desc_container_password:hover {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.desc_container_github {
+  font-size: large;
+  color: rgb(0, 30, 255);
+  text-decoration: underline;
+}
+.desc_container_github:hover {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.desc_container_linkedin {
+  font-size: large;
+  color: rgb(0, 30, 255);
+  text-decoration: underline;
+}
+.desc_container_linkedin:hover {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.desc_container_role {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+.desc_container_role-edition {
+  color: grey;
+  margin-top: -1rem;
+}
+.desc_container_technos {
+  background-color: #fff;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+.desc_container_description {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.desc_container_description-username {
+  padding: 2rem 2rem 0 2rem;
+  height: 40vh;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+.desc_container_description-links-informations {
+  background-color: #fff;
+  padding: 2rem;
+  min-height: 40vh;
+  position: relative;
+  word-break: break-all;
+}
+.desc_container_project {
+  background-color: #fff;
+  padding: 3rem 0rem 0.5rem 0rem;
+  margin-bottom: 5%;
+  height: 87vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.project-list-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.project-list-paragraph {
+  margin: 0rem;
+  font-size: 0.7rem;
+}
+.project-list-paragraph-desc {
+  margin: 0rem;
+  font-size: 0.8rem;
+  color: grey;
+  margin-bottom: 0.2rem;
+}
+.project-list-paragraph-grey {
+  color: grey;
+  margin: 0rem;
+  font-size: 0.7rem;
+}
+
+.technos_logo {
+  font-size: 5em;
+  margin: 1rem;
+}
+
+.icone_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.icone_container_text {
+  text-align: center;
+  font-size: 1rem;
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project_container {
+  text-align: center;
+}
+.project_container_main {
+  background-color: aliceblue;
+  border-radius: 5%;
+}
+
+.card_project {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgba(65, 70, 245, 0.08) 0px 15px 10px -5px, rgba(113, 73, 245, 0.04) 0px 10px 10px -5px;
+  position: relative;
+}
+.card_project_role {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: bolder;
+}
+.card_project_role-admin {
+  background-color: rgb(126, 98, 241);
+}
+.card_project_role-candidat {
+  background-color: rgb(29, 0, 144);
+}
+.card_project_role-participant {
+  background-color: rgb(0, 144, 127);
+}
+
+.user-technologies {
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.card_main_title-project {
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.card_img {
+  height: 10rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.profile-edition-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 3rem;
+}
+.profile-edition-btns-container i {
+  cursor: pointer;
+  color: grey;
+}
+.profile-edition-btns-container i:hover {
+  cursor: pointer;
+  color: rgb(78, 78, 78);
+}
+
+.margin0 {
+  margin: 0;
+}
+
+.padding-on-edition {
+  padding-top: 2rem;
+  overflow-y: scroll;
+}
+
+.min-height-technos-container {
+  height: 46vh;
+  overflow-y: scroll;
+  padding-bottom: 1rem;
+}
+
+.user-available {
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.user-password {
+  margin-top: 2rem;
+}
+
+.technologies-icon-container {
+  background-color: #f9f8fe;
+  display: flex;
+  align-items: center;
+  border-radius: 5px 8px 8px 5px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+}
+.technologies-icon-container i {
+  margin-right: 0.6rem;
+  color: white;
+  padding: 0.6rem 0.7rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.user_desc_link {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.user-info-input-edition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (width < 1600px) {
+  .profil {
+    width: 93vw;
+  }
+}
+@media screen and (width < 600px) {
+  .profil {
+    width: 88%;
+    height: auto;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .profil_desc {
+    width: 100%;
+    height: auto !important;
+  }
+  .profil_projets {
+    width: 100%;
+  }
+  .profil-middle {
+    width: 100%;
+    margin-top: 1rem;
+    height: auto;
+  }
+  .profil .desc_container {
+    height: auto !important;
+    padding: 0;
+  }
+  .profil .desc_container_main {
+    padding: 1rem;
+  }
+  .profil .desc_container_role {
+    margin-bottom: 1rem;
+  }
+  .profil .desc_container_description {
+    height: auto;
+  }
+  .profil .desc_container_description-username {
+    height: auto;
+  }
+  .profil .desc_container_description-links-informations {
+    padding: 2rem 1rem;
+  }
+  .profil .min-height-technos-container {
+    min-height: auto;
+    max-height: auto;
+    height: 100%;
+    overflow-y: auto;
+  }
+  .profil .user-description-texte {
+    margin-bottom: 2rem;
+    text-align: justify;
+    padding-bottom: 2rem;
+    height: auto !important;
+  }
+  .technologies-icon-container {
+    width: 80%;
+  }
+}
+#dark .desc_container {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .desc_container p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#dark .desc_container_description-username {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .desc_container_description-links-informations {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .desc_container_technos {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .user-technologies {
+  background: transparent;
+  color: white;
+}
+#dark .user-technologies h4 {
+  color: white;
+}
+#dark .user-technologies span {
+  background: linear-gradient(to left top, #404C70 0%, #191E33 100%);
+}
+
+#dark .desc_container_project {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .card_project {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .desc_container_title {
+  color: white;
+}
+#dark .desc_container_title a {
+  color: white;
+}
+
+#dark .desc_container_role {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .dashboard-edit-input {
+  background-color: #323c5a;
+  color: white;
+}
+
+#dark .form-technologies-empty {
+  background-color: transparent;
+}
+
+#dark .desc_container_user-links-dark i {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dark .user_desc_link {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 1rem;
+}
+
+#dark .name_container_avatar {
+  border: solid 6px #3c24b1;
+}
+
+#dark .card_main_title-project {
+  color: white;
+}/*# sourceMappingURL=profil.css.map */

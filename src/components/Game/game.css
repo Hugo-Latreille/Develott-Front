@@ -1,0 +1,36 @@
+.game-area {
+  position: relative;
+  margin: 10rem auto;
+  width: 600px;
+  height: 600px;
+  border: 2px solid rgba(255, 255, 255, 0.404);
+  box-shadow: rgba(52, 52, 56, 0.2) 0px 7px 29px 0px;
+  background: linear-gradient(to left top, rgba(40, 174, 174, 0.9529411765) 0%, rgba(60, 10, 121, 0.9529411765) 130%);
+  z-index: 2000;
+}
+
+.snake-dot {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background: linear-gradient(to right bottom, rgba(53, 57, 80, 0.8666666667) 0%, rgba(26, 29, 71, 0.9490196078) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.711);
+  z-index: 2;
+}
+
+.snake-food {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background: #fefdff;
+  padding: 0.3%;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.score_game {
+  position: absolute;
+  top: 5rem;
+  right: 55.6rem;
+  font-size: 2rem;
+}/*# sourceMappingURL=game.css.map */

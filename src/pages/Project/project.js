@@ -98,6 +98,8 @@ function Project() {
 	const isUserCandidate = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "candidates"
 	);
+
+	//! change isUserProjectAdmin to true to edit
 	const isUserProjectAdmin = projectTeam?.some(
 		(team) => team.customer_id === user?.id && team.role === "admin"
 	);

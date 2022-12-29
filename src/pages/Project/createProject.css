@@ -1,0 +1,141 @@
+.create-project {
+  background-color: #fff;
+  min-height: 700px;
+  height: auto;
+  width: 94%;
+  margin: 3.5rem auto;
+}
+.create-project-container {
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.create-project-title {
+  font-weight: lighter;
+  font-size: 1.4rem;
+  color: grey;
+  margin-bottom: 0.5rem;
+}
+.create-project-desc {
+  padding-right: 2rem;
+  color: rgb(99, 98, 98);
+}
+.create-project-left {
+  width: 24%;
+  border-right: solid 1px #32518d;
+}
+.create-project-step {
+  margin-bottom: 4rem;
+  color: grey;
+  cursor: pointer;
+}
+.create-project-right {
+  width: 70%;
+  height: auto;
+  padding: 0rem;
+}
+.create-project-right-container {
+  display: flex;
+  margin-top: 1rem;
+}
+.create-project-right-container-left {
+  width: 50%;
+}
+.create-project-right-container-right .form-group-project {
+  width: 50%;
+}
+
+.DraftEditor-editorContainer {
+  min-height: 10rem;
+}
+
+.public-DraftEditor-content {
+  max-height: 14rem;
+  overflow-y: scroll;
+  background-color: #f9f8fe;
+  padding: 1rem 2rem 4rem 1rem;
+}
+
+.create-project-button {
+  width: 100%;
+}
+
+.step-active {
+  font-weight: bold;
+}
+.step-active h2 {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.step-inactive {
+  opacity: 0.7;
+}
+
+.project-create {
+  min-height: 100vh;
+  width: 96.4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-project-step-mobile {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+#dark .create-project {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+#dark .create-project-title {
+  color: white;
+}
+#dark .create-project-desc {
+  color: white;
+  font-weight: lighter;
+}
+#dark .create-project-inputs-container input {
+  color: white;
+}
+
+#dark .project-information-form-dark input {
+  background: #2A314C;
+  color: white;
+}
+
+#dark .form-group-project-label {
+  color: white;
+}
+
+@media screen and (width < 600px) {
+  .create-project {
+    margin: 1rem 0;
+    width: 100%;
+  }
+  .create-project-left {
+    display: none;
+  }
+  .create-project-right {
+    width: 95%;
+  }
+  .create-project-container {
+    padding: 0rem;
+    margin: 0.7rem;
+  }
+  .create-project-step-mobile {
+    display: block;
+  }
+  .form-technologies-container {
+    height: auto !important;
+  }
+  .form-technologies-container-content {
+    width: 100% !important;
+  }
+  .form-jobs-container-content {
+    width: 100% !important;
+  }
+}/*# sourceMappingURL=createProject.css.map */

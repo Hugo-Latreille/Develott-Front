@@ -1,0 +1,34 @@
+.footer {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.footer-container {
+  padding: 5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  color: white;
+}
+.footer-container-column {
+  width: 24%;
+  text-align: left;
+}
+.footer-logo {
+  height: 4rem;
+  width: auto;
+  margin-left: -1.5rem;
+  margin-top: -1.2rem;
+}
+.footer p {
+  padding: 0.2rem;
+}
+.footer a {
+  color: white;
+}
+
+@media screen and (width < 600px) {
+  .footer-container-column {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}/*# sourceMappingURL=footer.css.map */

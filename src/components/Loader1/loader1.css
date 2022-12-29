@@ -1,0 +1,145 @@
+.loader_container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.loader1 {
+  position: relative;
+  width: 72vw;
+  height: 60vh;
+  background-color: #f9f8fe;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.loader1 .row {
+  position: relative;
+  top: -50%;
+  width: 100%;
+  display: flex;
+  padding: 12px 0px;
+  white-space: nowrap;
+  font-size: 1rem;
+  transform: rotate(-30deg);
+}
+
+.icon_loader1 {
+  transition: 1s;
+  padding: 0 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 2rem;
+  cursor: default;
+}
+
+.icon_loader1:hover {
+  transition: 0s;
+  color: #7708ff;
+  text-shadow: 0 0 120px #7200fd;
+}
+
+.loader1 .row div {
+  -webkit-animation: animate1 80s linear infinite;
+          animation: animate1 80s linear infinite;
+  -webkit-animation-delay: -80s;
+          animation-delay: -80s;
+}
+
+.loader1 .row div:nth-child(2) {
+  -webkit-animation: animate2 80s linear infinite;
+          animation: animate2 80s linear infinite;
+  -webkit-animation-delay: -40s;
+          animation-delay: -40s;
+}
+
+.v2_incoming {
+  background-color: #7C97F6;
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  z-index: 1;
+  color: white;
+}
+.v2_message {
+  position: absolute;
+  padding: 8% 17% 19% 17%;
+  background-color: #7C97F6;
+  top: 30%;
+  left: 23%;
+  right: -23%;
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 1;
+}
+
+.container-loader-component {
+  position: relative;
+  width: 50vw;
+}
+
+@-webkit-keyframes animate1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes animate2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+@media screen and (width < 1000px) {
+  .v2_incoming {
+    font-size: 1rem;
+  }
+  .v2_message {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (width < 700px) {
+  .v2_incoming {
+    font-size: 0.8rem;
+  }
+  .v2_message {
+    font-size: 1rem;
+  }
+}
+@media screen and (width < 450px) {
+  .v2_incoming {
+    font-size: 0.6rem;
+  }
+  .v2_message {
+    font-size: 0.9rem;
+  }
+}/*# sourceMappingURL=loader1.css.map */

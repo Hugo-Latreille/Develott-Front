@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "navbarColor.scss"
-    ],
-    "names": [],
-    "file": "navbarColor.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"navbarColor.css"}

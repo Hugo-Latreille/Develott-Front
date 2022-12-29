@@ -1,0 +1,148 @@
+.team-creation {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  z-index: 1000 !important;
+}
+.team-creation-container {
+  background-color: #fff;
+  width: 40%;
+  margin: auto;
+  position: relative;
+}
+.team-creation-container-header {
+  margin: 1rem;
+  padding: 2rem;
+  background: url("./../../assets/images/footer-bg2.png");
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.team-creation-container-header h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+}
+.team-creation-container-main {
+  margin: 3rem;
+}
+.team-creation-container-main h3 {
+  margin-bottom: 2rem;
+}
+.team-creation-container-main input {
+  margin-bottom: 1rem;
+}
+.team-creation-container-main label {
+  margin-left: 1rem;
+}
+.team-creation-container-main button {
+  width: 100%;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.form-admin-container {
+  margin: 2rem 0rem;
+}
+
+.form-user-container {
+  margin: 2rem 0rem;
+}
+.form-user-container input {
+  margin-top: 1rem;
+}
+.form-user-container-spans {
+  color: grey;
+  font-size: 0.8rem;
+  display: block;
+  margin-left: 1.5rem;
+}
+.form-user-container-spans span {
+  margin-left: 0.5rem;
+}
+.form-user-container button {
+  margin-top: 2rem;
+}
+
+.team-user-form-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.team-user-form-input-container-right {
+  color: grey;
+}
+
+.close-modal-button {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.39rem;
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.team-creation-admin-form {
+  height: 14rem;
+  overflow-y: scroll;
+}
+.team-creation-admin-form-input-container {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.team-creation-admin-form-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+}
+.team-creation-admin-form-label p {
+  font-weight: bolder;
+  margin: 0;
+}
+
+.team-creation-container-main button:hover {
+  color: #23055e;
+  border: 2px solid #24085c;
+  transition: 2s ease-in-out linear;
+}
+
+#dark .team-creation-container-header {
+  background: linear-gradient(to top left, rgba(33, 152, 152, 0.6901960784), #24085c);
+}
+
+#dark .team-creation-container {
+  background: linear-gradient(to left top, rgba(35, 40, 67, 0.7960784314) 0%, #14162a 100%);
+  color: white;
+}
+
+#dark .close-modal-button {
+  background: #30cfd0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media screen and (width < 600px) {
+  .team-creation-container {
+    width: 85%;
+    margin: auto;
+  }
+  .team-user-form-input-container-right {
+    width: 100%;
+    color: grey;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 2.5rem;
+  }
+  .team-user-form-input-container-left {
+    width: 100%;
+  }
+}/*# sourceMappingURL=teamCreation.css.map */

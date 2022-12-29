@@ -1,0 +1,71 @@
+.form-technologies {
+  display: flex;
+  height: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.form-technologies-title {
+  color: rgb(99, 98, 98);
+  margin-bottom: 2rem;
+}
+.form-technologies-disclaimer {
+  color: rgb(99, 98, 98);
+  font-size: 0.8rem;
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  line-height: 1.1rem;
+}
+.form-technologies-empty {
+  color: grey;
+  font-size: 0.8rem;
+}
+.form-technologies-items {
+  display: flex;
+  align-items: baseline;
+}
+.form-technologies-items i {
+  padding-right: 0.5rem;
+}
+.form-technologies-items p {
+  width: 70%;
+  font-size: 0.8rem;
+}
+.form-technologies-delete {
+  cursor: pointer;
+}
+
+.form-technologies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow-y: scroll;
+  height: 20rem;
+}
+.form-technologies-container-content {
+  width: 25%;
+}
+.form-technologies-container-70 {
+  min-height: 60%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+#dark .form-technologies-title {
+  color: white;
+}
+#dark .form-technologies-disclaimer {
+  color: white;
+}
+
+#dark .form-technologies-container-content h4 {
+  color: white;
+}
+#dark .form-technologies-container-content span {
+  background: linear-gradient(to left top, #404C70 0%, #191E33 100%);
+}
+
+#dark .form-technologies-empty {
+  background-color: none;
+}/*# sourceMappingURL=createProjectTechnologiesForm.css.map */

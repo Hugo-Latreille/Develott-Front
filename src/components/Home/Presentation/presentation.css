@@ -1,0 +1,44 @@
+.presentation {
+  background-image: url("./../../../assets/images/footer-bg2.png");
+  background-size: cover;
+}
+.presentation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4rem 0;
+  color: white;
+}
+.presentation-container-left {
+  width: 42%;
+  padding-right: 5rem;
+}
+.presentation-container-right {
+  width: 50%;
+}
+.presentation-img {
+  width: 100%;
+}
+.presentation-text {
+  padding-bottom: 4rem;
+}
+
+.main-button-white a {
+  color: white;
+}
+
+@media screen and (width < 600px) {
+  .presentation-container-left {
+    width: 100%;
+    padding-right: 0;
+  }
+  .presentation-container-right {
+    width: 100%;
+  }
+  .presentation-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}/*# sourceMappingURL=presentation.css.map */

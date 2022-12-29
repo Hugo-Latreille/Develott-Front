@@ -10,8 +10,8 @@ function Login({ onSubmit }) {
 	const dispatch = useDispatch();
 
 	const github = () => {
-		window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
-		// window.open("http://localhost:3002/v1/auth/github", "_self");
+		// window.open("https://develott.herokuapp.com/v1/auth/github", "_self");
+		window.open("http://localhost:3002/v1/auth/github", "_self");
 	};
 
 	const {

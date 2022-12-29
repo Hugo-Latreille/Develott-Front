@@ -1,0 +1,244 @@
+.sidebar_container {
+  display: flex;
+  height: 100%;
+  z-index: 999;
+  position: fixed;
+}
+
+.sidebar {
+  background-image: url("./../../assets/images/footer-bg2.png");
+  opacity: 0.9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100%;
+  width: 100%;
+  border-right: solid 1px rgba(0, 0, 0, 0.487);
+}
+.sidebar_icon {
+  color: white;
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 7px;
+}
+
+.logo_nav {
+  color: white;
+  font-size: 1.7em;
+  line-height: 0;
+  margin-right: 4rem;
+  margin-left: 0.6rem;
+  text-decoration: none;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.anim {
+  margin-left: 4rem;
+}
+
+.space {
+  padding-top: 1.5rem;
+}
+
+.search_dashbar input {
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.sidebar_navlink {
+  margin-bottom: 1.2em;
+  line-height: 35px;
+  display: flex;
+  color: white;
+  gap: 12px;
+  padding: 7px 16px;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.sidebar_navlink:hover {
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
+.activesidebar {
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
+.side_icon {
+  font-size: 1.4rem;
+  margin-top: 0.1em;
+}
+
+.side_text {
+  white-space: nowrap;
+  font-size: 1.3em;
+}
+.side_text_darkmode {
+  font-size: 1.2em;
+}
+
+.side_main {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.bars_logo {
+  cursor: pointer;
+}
+
+.bottom_container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  gap: 12px;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.toggle_pic_container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-bottom: 0.5em;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.profile_details {
+  background-color: rgba(255, 255, 255, 0.605);
+  max-width: 11em;
+  display: flex;
+  padding: 15px;
+  border-radius: 0px 12px 12px 0px;
+}
+.profile_details:hover {
+  cursor: pointer;
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 12px 12px 0px;
+}
+.profile_img {
+  margin-right: 1rem;
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile_img_close {
+  border-radius: 50%;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid #223ffa;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 1.5em;
+  margin-right: 0.1em;
+}
+
+.job {
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.8em;
+}
+
+.name {
+  color: black;
+  font-size: 0.9em;
+}
+
+.logo_unlog {
+  font-size: 1.7rem;
+  margin-top: 0.2em;
+  margin-left: 0.55em;
+  color: white;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.logo_unlog_big {
+  font-size: 1.7rem;
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  color: white;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.logo_unlog:hover {
+  color: black;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  font-size: 1.7em;
+}
+
+.logo_unlog_big:hover {
+  color: black;
+  margin-top: 0.5em;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.toggle_dark {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  margin-right: 3em;
+}
+
+.sun {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.1em;
+  color: yellow;
+  background-color: rgba(255, 255, 0, 0.186);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.5, -0.1, 0.72, 0.03);
+}
+
+.moon {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.1em;
+  color: rgba(60, 9, 123, 0.8941176471);
+  background-color: rgba(255, 255, 255, 0.068);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.5, -0.1, 0.72, 0.03);
+}
+
+.active_toggle {
+  padding-bottom: 20em;
+  width: 100%;
+}
+
+.customTooltip {
+  color: #6c68f5;
+  font-size: 1.1rem;
+}
+
+#dark .sidebar {
+  background: linear-gradient(to top, #219898, #24085c);
+  opacity: 1;
+  transition: opacity 0.9s ease;
+}
+
+#dark .profile_img_close {
+  border: 1px solid #093737;
+  transition: border 0.5s ease;
+}/*# sourceMappingURL=sidebar.css.map */

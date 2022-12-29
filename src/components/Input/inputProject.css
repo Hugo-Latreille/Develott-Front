@@ -1,0 +1,31 @@
+.pick-group-project {
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+.pick-group-project-label {
+  color: rgb(99, 99, 99);
+  font-size: 0.8rem;
+}
+.pick-group-project-input {
+  padding: 0.5rem;
+  background-color: #fff;
+  border: none;
+  border-bottom: solid 1px #32518d;
+  width: 100%;
+}
+
+.css-gmuwbf input {
+  border-radius: 5px;
+  height: 3.5rem;
+  padding-left: 1rem;
+  color: rgb(0, 0, 0);
+  border: 1px solid #5d5d5d;
+}
+
+#dark .pick-group-project-label {
+  color: rgb(255, 255, 255);
+}
+
+.css-gmuwbf input {
+  border: 1px solid #32518D;
+}/*# sourceMappingURL=inputProject.css.map */
