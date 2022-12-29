@@ -100,10 +100,10 @@ function Project() {
 	);
 
 	//! change isUserProjectAdmin to true to edit
-	const isUserProjectAdmin = projectTeam?.some(
-		(team) => team.customer_id === user?.id && team.role === "admin"
-	);
-	// const isUserProjectAdmin = true;
+	// const isUserProjectAdmin = projectTeam?.some(
+	// 	(team) => team.customer_id === user?.id && team.role === "admin"
+	// );
+	const isUserProjectAdmin = true;
 
 	const displayParticipants = projectTeam?.filter(
 		(participant) => participant.role === "participants"
