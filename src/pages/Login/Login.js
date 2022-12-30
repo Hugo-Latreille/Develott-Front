@@ -14,7 +14,7 @@ function Login({ onSubmit }) {
 		// window.open("http://localhost:3002/v1/auth/github", "_self");
 		// window.open("https://api.develott.fr/v1/auth/github", "_self");
 		// window.open("https://develottapi.fly.dev/v1/auth/github", "_self");
-		window.open("http://develott.quasiquiz.fr/auth/github", "_self");
+		window.open("https://develott.quasiquiz.fr/auth/github", "_self");
 	};
 
 	const {
