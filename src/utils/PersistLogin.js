@@ -15,7 +15,8 @@ const PersistLogin = () => {
 			// "https://develott.herokuapp.com/v1/user/refreshToken",
 			// "http://localhost:3002/v1/user/refreshToken",
 			// "https://api.develott.fr/v1/user/refreshToken",
-			"https://develottapi.fly.dev/v1/user/refreshToken",
+			// "https://develottapi.fly.dev/v1/user/refreshToken",
+			"http://develott.quasiquiz.fr/v1/user/refreshToken",
 			{
 				withCredentials: true,
 			}

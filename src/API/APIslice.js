@@ -5,7 +5,8 @@ const baseQuery = fetchBaseQuery({
 	// baseUrl: "https://develott.herokuapp.com/v1/",
 	// baseUrl: "http://localhost:3002/v1/",
 	// baseUrl: "https://api.develott.fr/v1/",
-	baseUrl: "https://develottapi.fly.dev/v1/",
+	// baseUrl: "https://develottapi.fly.dev/v1/",
+	baseUrl: "http://develott.quasiquiz.fr/v1/",
 
 	credentials: "include",
 	tagTypes: ["Project", "User"],
