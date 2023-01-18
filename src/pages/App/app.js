@@ -11,7 +11,7 @@ import Layout from "../../utils/Layout/Layout";
 import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
@@ -29,108 +29,129 @@ import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
 
 import Game from "../../components/Game/game";
+//*SOCKET TEST
+import { io } from "socket.io-client";
 
 function App() {
-  const location = useLocation();
-  const background = location.state && location.state.background;
-  const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
-  const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
-  const teamModalIsOpen = useSelector(
-    (state) => state.teamCreation.teamModalIsOpen
-  );
-  const charteModalIsOpen = useSelector(
-    (state) => state.modal.charteModalIsOpen
-  );
-  const toggleChangePasswordModal = useSelector(
-    (state) => state.app.toggleChangePasswordModal
-  );
+	//!SOCKET TEST
 
-  useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [modalIsOpen]);
+	useEffect(() => {
+		const socket = io("http://localhost:3002");
+		socket.on("connect", (socket) => {
+			console.log("front connecté", socket);
+		});
 
-  useEffect(() => {
-    if (teamModalIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [teamModalIsOpen]);
+		socket.emit("chat message", "1234");
 
-  useEffect(() => {
-    if (charteModalIsOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [charteModalIsOpen]);
+		socket.on("test", (msg) => {
+			console.log(msg);
+		});
 
-  useEffect(() => {
-    if (toggleChangePasswordModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [toggleChangePasswordModal]);
+		return () => {
+			socket.off("connect");
+		};
+	}, []);
 
-  return (
-    <div id={displayDarkMode === true ? "dark" : "light"}>
-      <div className="app">
-        <Routes location={background || location}>
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />}>
-              <Route path="connexion" element={<Connexion />} />
-              <Route path="newpassword/:userId" element={<NewPassword />} />
-              <Route path="forgotpassword" element={<ForgotPassword />} />
-            </Route>
+	const location = useLocation();
+	const background = location.state && location.state.background;
+	const modalIsOpen = useSelector((state) => state.auth.loggingModalOpen);
+	const displayDarkMode = useSelector((state) => state.app.displayDarkMode);
+	const teamModalIsOpen = useSelector(
+		(state) => state.teamCreation.teamModalIsOpen
+	);
+	const charteModalIsOpen = useSelector(
+		(state) => state.modal.charteModalIsOpen
+	);
+	const toggleChangePasswordModal = useSelector(
+		(state) => state.app.toggleChangePasswordModal
+	);
 
-            <Route element={<PersistLogin />}>
-              <Route element={<RequireAuth />}>
-                <Route path="welcome" element={<Welcome />} />
-                <Route path="authTest" element={<AuthTest />} />
-                <Route path="projets" element={<Projects />} />
-                <Route path="projet/:projectId" element={<Project />}>
-                  <Route path="postuler" element={<TeamCreation />} />
-                </Route>
-                <Route path="projet/create" element={<CreateProject />} />
-                <Route path="charte" element={<Charte />} />
-                <Route path="modal-charte" element={<CharteModal />} />
-                <Route path="about" element={<About />} />
-                <Route path="profil/:profilId" element={<Profil />}>
-                  <Route path="newpassword/:userId" element={<NewPassword />} />
-                </Route>
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="calendar" element={<Calendar />} />
-                <Route path="game" element={<Game />} />
-                <Route path="V2" element={<Loader1 />} />
-              </Route>
-              <Route
-                path="*"
-                element={
-                  <ReactCursorPosition>
-                    <Erreur />
-                  </ReactCursorPosition>
-                }
-              />
-            </Route>
-          </Route>
-        </Routes>
+	useEffect(() => {
+		if (modalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [modalIsOpen]);
 
-        {background && (
-          <Routes>
-            <Route path="connexion" element={<Connexion />} />
-            <Route path="postuler" element={<TeamCreation />} />
-            <Route path="modal-charte" element={<CharteModal />} />
-            <Route path="newpassword/:userId" element={<NewPassword />} />
-          </Routes>
-        )}
-      </div>
-    </div>
-  );
+	useEffect(() => {
+		if (teamModalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [teamModalIsOpen]);
+
+	useEffect(() => {
+		if (charteModalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [charteModalIsOpen]);
+
+	useEffect(() => {
+		if (toggleChangePasswordModal) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [toggleChangePasswordModal]);
+
+	return (
+		<div id={displayDarkMode === true ? "dark" : "light"}>
+			<div className="app">
+				<Routes location={background || location}>
+					<Route path="/" element={<Layout />}>
+						<Route path="/" element={<Home />}>
+							<Route path="connexion" element={<Connexion />} />
+							<Route path="newpassword/:userId" element={<NewPassword />} />
+							<Route path="forgotpassword" element={<ForgotPassword />} />
+						</Route>
+
+						<Route element={<PersistLogin />}>
+							<Route element={<RequireAuth />}>
+								<Route path="welcome" element={<Welcome />} />
+								<Route path="authTest" element={<AuthTest />} />
+								<Route path="projets" element={<Projects />} />
+								<Route path="projet/:projectId" element={<Project />}>
+									<Route path="postuler" element={<TeamCreation />} />
+								</Route>
+								<Route path="projet/create" element={<CreateProject />} />
+								<Route path="charte" element={<Charte />} />
+								<Route path="modal-charte" element={<CharteModal />} />
+								<Route path="about" element={<About />} />
+								<Route path="profil/:profilId" element={<Profil />}>
+									<Route path="newpassword/:userId" element={<NewPassword />} />
+								</Route>
+								<Route path="dashboard" element={<Dashboard />} />
+								<Route path="calendar" element={<Calendar />} />
+								<Route path="game" element={<Game />} />
+								<Route path="V2" element={<Loader1 />} />
+							</Route>
+							<Route
+								path="*"
+								element={
+									<ReactCursorPosition>
+										<Erreur />
+									</ReactCursorPosition>
+								}
+							/>
+						</Route>
+					</Route>
+				</Routes>
+
+				{background && (
+					<Routes>
+						<Route path="connexion" element={<Connexion />} />
+						<Route path="postuler" element={<TeamCreation />} />
+						<Route path="modal-charte" element={<CharteModal />} />
+						<Route path="newpassword/:userId" element={<NewPassword />} />
+					</Routes>
+				)}
+			</div>
+		</div>
+	);
 }
 
 export default App;
