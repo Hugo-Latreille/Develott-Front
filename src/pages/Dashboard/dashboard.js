@@ -28,6 +28,7 @@ import {
 	useDeleteUserRoleMutation,
 	useUpdateUserMutation,
 } from "../Profiles/userAPISlice";
+import Chat from "../../components/Chat/Chat";
 
 function Dashboard() {
 	const dispatch = useDispatch();
@@ -542,9 +543,10 @@ function Dashboard() {
 						)}
 						{displayMaincontent === "calendar" && <Calendar />}
 						{displayMaincontent === "messagerie" && (
-							<div className="container-loader-component">
-								<Loader1 />
-							</div>
+							// <div className="container-loader-component">
+							// 	<Loader1 />
+							// </div>
+							<Chat users={myTeam} user={user} />
 						)}
 					</div>
 					{displayMaincontent === "main" && (
@@ -612,9 +614,9 @@ function Dashboard() {
 						</div>
 					)}
 				</div>
-				<div className="dashboard-right">
+				{/* <div className="dashboard-right">
 					<CalendarSmall />
-				</div>
+				</div> */}
 			</div>
 			<Footer />
 		</Sidebar>

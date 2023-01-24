@@ -11,7 +11,7 @@ import Layout from "../../utils/Layout/Layout";
 import RequireAuth from "../../utils/RequireAuth";
 import Welcome from "./../Login/WelcomeTest";
 import AuthTest from "./../Login/AuthTest";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewPassword from "../Login/NewPassword";
 import ForgotPassword from "../Login/ForgotPassword";
@@ -27,30 +27,18 @@ import Loader1 from "../../components/Loader1/loader1";
 import TeamCreation from "../TeamCreation/teamCreation";
 import CharteModal from "../../components/Modal-Charte/modalcharte";
 import Calendar from "../../components/Calendar/calendar";
-
 import Game from "../../components/Game/game";
-//*SOCKET TEST
-import { io } from "socket.io-client";
+import { SocketContext } from "../../utils/SocketContext";
 
 function App() {
 	//!SOCKET TEST
+	const socket = useContext(SocketContext);
 
 	useEffect(() => {
-		const socket = io("http://localhost:3002");
-		socket.on("connect", (socket) => {
-			console.log("front connecté", socket);
-		});
-
-		socket.emit("chat message", "1234");
-
-		socket.on("test", (msg) => {
-			console.log(msg);
-		});
-
 		return () => {
-			socket.off("connect");
+			socket.disconnect();
 		};
-	}, []);
+	}, [socket]);
 
 	const location = useLocation();
 	const background = location.state && location.state.background;

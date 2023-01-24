@@ -12,23 +12,25 @@ import teamCreationSlice from "../pages/TeamCreation/teamCreationSlice";
 import modalSlice from "../components/Modal-Charte/modalSlice";
 import searchbarSlice from "../components/SearchBar/searchbarSlice";
 import sidebarSlice from "../components/SideBar/sidebarSlice";
+import chatSlice from "../components/Chat/ChatSlice";
 
 export const store = configureStore({
-  reducer: {
-    [emptySplitApi.reducerPath]: emptySplitApi.reducer,
-    app: appSlice,
-    auth: loginReducer,
-    createProject: createProjectSlice,
-    project: projectSlice,
-    dashboard: dashboardSlice,
-    userProfile: userProfileSlice,
-    teamCreation: teamCreationSlice,
-    modal: modalSlice,
-    searchbar: searchbarSlice,
-    sidebarintro: sidebarSlice,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(
-      emptySplitApi.middleware
-    ),
+	reducer: {
+		[emptySplitApi.reducerPath]: emptySplitApi.reducer,
+		app: appSlice,
+		auth: loginReducer,
+		createProject: createProjectSlice,
+		project: projectSlice,
+		dashboard: dashboardSlice,
+		userProfile: userProfileSlice,
+		teamCreation: teamCreationSlice,
+		chat: chatSlice,
+		modal: modalSlice,
+		searchbar: searchbarSlice,
+		sidebarintro: sidebarSlice,
+	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({ serializableCheck: false }).concat(
+			emptySplitApi.middleware
+		),
 });

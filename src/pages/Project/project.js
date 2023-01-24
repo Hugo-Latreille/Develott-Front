@@ -31,7 +31,7 @@ import {
 	useGetOneProjectQuery,
 	useUpdateProjectMutation,
 } from "../Projects/projectsAPISlice";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import technologiesJson from "./../../assets/data/technologiesData.json";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import {
@@ -49,7 +49,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Loader2 from "./../../components/Loader2/loader2";
-
 import { useFindUserByIdQuery } from "../Login/authAPISlice";
 
 function Project() {

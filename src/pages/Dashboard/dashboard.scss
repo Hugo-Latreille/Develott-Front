@@ -1,460 +1,434 @@
 @use "./../../styles/vars";
 
 .dashboard {
-    width:96%;
-    margin:1rem auto 2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+	width: 96%;
+	margin: 1rem auto 2rem 2rem;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 
-    &-main {
-        width: 78%;
+	&-main {
+		width: 95%;
 
-        &-header {
-            background-color: #838FF5;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+		&-header {
+			background-color: #838ff5;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
 
-            & a {
-                color:white;
-            }
-        }
+			& a {
+				color: white;
+			}
+		}
 
-        &-titles {
-            width:70%;
-            padding: 2rem;
-            color:white;
-        }
+		&-titles {
+			width: 70%;
+			padding: 2rem;
+			color: white;
+		}
 
-        &-title {
-            margin:0;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
+		&-title {
+			margin: 0;
+			font-size: 1.5rem;
+			font-weight: normal;
+		}
 
-        &-subtitle {
-            margin:0;
-            font-size: 1.2rem;
-            font-weight: normal;
-        }
+		&-subtitle {
+			margin: 0;
+			font-size: 1.2rem;
+			font-weight: normal;
+		}
 
-        &-cta {
-            margin-right: 2rem;
-            color:white;
-            cursor: pointer;
-        }
+		&-cta {
+			margin-right: 2rem;
+			color: white;
+			cursor: pointer;
+		}
+	}
 
-    }
+	&-right {
+		width: 21%;
+		background-color: #fff;
+		z-index: 2;
+	}
 
-    &-right {
-        width:21%;
-        background-color: #fff;
-        z-index: 2;
-    }
-
-    &-edit-input {
-        background-color: vars.$backgroundLight;
-        padding: 0.6rem 0.5rem ;
-        border:none;
-        border-bottom: 1px solid vars.$primaryColor;
-        width:80%;
-    }
+	&-edit-input {
+		background-color: vars.$backgroundLight;
+		padding: 0.6rem 0.5rem;
+		border: none;
+		border-bottom: 1px solid vars.$primaryColor;
+		width: 80%;
+	}
 }
 
-
 .dashboard-main-navigation {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: #fff;
-    margin-top: 1rem;
-    padding:1rem 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #fff;
+	margin-top: 1rem;
+	padding: 1rem 0;
 
-    &-accueil {
-        width:26%;
-        cursor: pointer;
+	&-accueil {
+		width: 26%;
+		cursor: pointer;
 
-        &-content {
-            background-color: hsl(207, 67%, 88%, 50%);
-            background-position: bottom right;
-            background-size: cover;
-            height:7rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-radius: 10px;
-            padding: 0 2rem;
-            color:vars.$primaryColor;
-            position:relative;
+		&-content {
+			background-color: hsl(207, 67%, 88%, 50%);
+			background-position: bottom right;
+			background-size: cover;
+			height: 7rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			border-radius: 10px;
+			padding: 0 2rem;
+			color: vars.$primaryColor;
+			position: relative;
 
-            & h3 {
-                margin:0 0 1.2rem 0;
-                font-weight: bolder;
-            }
+			& h3 {
+				margin: 0 0 1.2rem 0;
+				font-weight: bolder;
+			}
 
-            & p {
-                margin-top:0;
-            }
+			& p {
+				margin-top: 0;
+			}
 
-            & i {
-                padding-right: 0.5rem;
-            }
+			& i {
+				padding-right: 0.5rem;
+			}
 
-            & img {
-                position:absolute;
-                top:0.5rem;
-                right:0.5rem;
-                width:30%;
-            }
-        }
-    }
+			& img {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.5rem;
+				width: 30%;
+			}
+		}
+	}
 
-    &-messagerie {
-        width:26%;
-        cursor: pointer;
+	&-messagerie {
+		width: 26%;
+		cursor: pointer;
 
-        &-content {
-            background-color: hsl(207, 67%, 88%, 50%);
-            height:7rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-radius: 10px;
-            padding: 0 2rem;
-            position:relative;
-            color:vars.$primaryColor;
+		&-content {
+			background-color: hsl(207, 67%, 88%, 50%);
+			height: 7rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			border-radius: 10px;
+			padding: 0 2rem;
+			position: relative;
+			color: vars.$primaryColor;
 
-            & h3 {
-                margin:0 0 1.2rem 0;
-                font-weight: bolder;
-            }
+			& h3 {
+				margin: 0 0 1.2rem 0;
+				font-weight: bolder;
+			}
 
-            & p {
-                margin-top:0;
-            }
+			& p {
+				margin-top: 0;
+			}
 
-            & i {
-                padding-right: 0.5rem;
-            }
+			& i {
+				padding-right: 0.5rem;
+			}
 
-            & img {
-                position:absolute;
-                top:0.5rem;
-                right:0.5rem;
-                width:30%;
-            }
-        }
-    }
+			& img {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.5rem;
+				width: 30%;
+			}
+		}
+	}
 
-    &-calendrier {
-        width:26%;
-        cursor: pointer;
+	&-calendrier {
+		width: 26%;
+		cursor: pointer;
 
-        &-content {
-            background-color: hsl(207, 67%, 88%, 50%);
-            height:7rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-radius: 10px;
-            padding: 0 2rem;
-            position:relative;
-            color:vars.$primaryColor;
+		&-content {
+			background-color: hsl(207, 67%, 88%, 50%);
+			height: 7rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			border-radius: 10px;
+			padding: 0 2rem;
+			position: relative;
+			color: vars.$primaryColor;
 
+			& h3 {
+				margin: 0 0 1.2rem 0;
+				font-weight: bolder;
+			}
 
-            & h3 {
-                margin:0 0 1.2rem 0;
-                font-weight: bolder;
-            }
+			& p {
+				margin-top: 0;
+			}
 
-            & p {
-                margin-top:0;
-            }
+			& i {
+				padding-right: 0.5rem;
+			}
 
-            & i {
-                padding-right: 0.5rem;
-            }
-
-            & img {
-                position:absolute;
-                top:0.5rem;
-                right:0.5rem;
-                width:30%;
-            }
-        }
-    }
-
-
+			& img {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.5rem;
+				width: 30%;
+			}
+		}
+	}
 }
 
 .dashboard-main-content {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
 
-    &-team {
-        width:43%;
-        background-color: #fff;
-        padding:1rem 2rem;
+	&-team {
+		width: 43%;
+		background-color: #fff;
+		padding: 1rem 2rem;
 
-        &-users:hover {
-            background-color: vars.$backgroundLight;
-            transition-duration: 1s;
-        }
+		&-users:hover {
+			background-color: vars.$backgroundLight;
+			transition-duration: 1s;
+		}
 
-        &-users {
-            padding: 0.8rem 1rem;
-            display: flex;
-            align-items: center;
-            border-bottom: solid 1px  hsl(207, 67%, 78%, 50%);;
+		&-users {
+			padding: 0.8rem 1rem;
+			display: flex;
+			align-items: center;
+			border-bottom: solid 1px hsl(207, 67%, 78%, 50%);
 
-            & img {
-                width:4rem;
-                height:4rem;
-                object-fit: cover;
-                margin-right: 1rem;
-                border-radius: 50%;
-            }
+			& img {
+				width: 4rem;
+				height: 4rem;
+				object-fit: cover;
+				margin-right: 1rem;
+				border-radius: 50%;
+			}
 
-            &-details {
-                width:80%;
+			&-details {
+				width: 80%;
 
-                & p {
-                    margin:0;
-                    font-weight: bolder;
-                    color: black;
-                }
+				& p {
+					margin: 0;
+					font-weight: bolder;
+					color: black;
+				}
 
-                & span {
-                    color: vars.$darkGrey;
-                    padding-top: 0.2rem;
-                }
+				& span {
+					color: vars.$darkGrey;
+					padding-top: 0.2rem;
+				}
 
-                & a {
-                    color: vars.$darkGrey;
-                    padding-top: 0.2rem;
-                }
-            }
-        }
-    }
+				& a {
+					color: vars.$darkGrey;
+					padding-top: 0.2rem;
+				}
+			}
+		}
+	}
 
-    &-links {
-        width:43%;
-        background-color: #fff;
-        padding:1rem 2rem;
-    }
+	&-links {
+		width: 43%;
+		background-color: #fff;
+		padding: 1rem 2rem;
+	}
 }
 
 .dashboard-main-technologies {
-    margin-top: 1rem;
-    background-color: #fff;
-    padding: 2rem;
-    display:flex;
-    flex-wrap: wrap;
+	margin-top: 1rem;
+	background-color: #fff;
+	padding: 2rem;
+	display: flex;
+	flex-wrap: wrap;
 
-    & span {
-        width:80%;
-        text-transform: capitalize;
-    }
+	& span {
+		width: 80%;
+		text-transform: capitalize;
+	}
 }
 
-
 .bg-colored {
-    background-image: url('./../../assets/images/footer-bg2.png');
-    background-position: bottom center;
-    color:white;
+	background-image: url("./../../assets/images/footer-bg2.png");
+	background-position: bottom center;
+	color: white;
 }
 
 .dashboard-delete-project {
-    font-size: 0.8rem;
-    cursor: pointer;
-    margin-top: 1.5rem;
-    text-decoration: underline;
+	font-size: 0.8rem;
+	cursor: pointer;
+	margin-top: 1.5rem;
+	text-decoration: underline;
 }
- 
-
-
 
 @media screen and (width < 600px) {
-    .dashboard {
-        width:80%;
-        margin:0;
-        padding:0rem;
-        &-main {
-            width:100%;
-        }
+	.dashboard {
+		width: 80%;
+		margin: 0;
+		padding: 0rem;
+		&-main {
+			width: 100%;
+		}
 
-        &-right {
-            width: 100%;
-        }
-    }
+		&-right {
+			width: 100%;
+		}
+	}
 
-    .dashboard .project-technologies-database {
+	.dashboard .project-technologies-database {
+		width: 100% !important;
+	}
 
-            width:100% !important;
-        
-    }
+	.dashboard-main-navigation {
+		&-accueil {
+			width: 100%;
+			margin-bottom: 1rem;
+		}
 
-    .dashboard-main-navigation  {
-        &-accueil {
-            width:100%;
-            margin-bottom: 1rem;
-        }
+		&-messagerie {
+			width: 100%;
+			margin-bottom: 1rem;
+		}
 
-        &-messagerie {
-            width:100%;
-            margin-bottom: 1rem;
-        }
+		&-calendrier {
+			width: 100%;
+			margin-bottom: 1rem;
+		}
+	}
 
-        &-calendrier {
-            width:100%;
-            margin-bottom: 1rem;
-        }
-    }
+	.dashboard-main-content {
+		flex-wrap: wrap;
 
-    .dashboard-main-content {
-        flex-wrap: wrap;
+		&-team {
+			width: 100%;
+		}
 
-        &-team {
-            width: 100%;
-        }
+		&-links {
+			width: 100%;
+		}
+	}
 
-        &-links {
-            width: 100%;
-        }
-    }
+	.dashboard-main {
+		&-header-titles {
+			width: 100%;
+		}
 
-    .dashboard-main {
+		&-cta {
+			width: 100%;
+			margin-left: 2rem;
+			margin-bottom: 1rem;
+		}
+	}
+}
 
-        &-header-titles {
-            width: 100%;
-        }
+@media screen and (width < 400px) {
+	.dashboard {
+		width: 70%;
+	}
+}
 
-        &-cta {
-            width:100%;
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-    }
-  }
+// DARK MODE
 
+#dark .bg-colored {
+	background: linear-gradient(to top left, #219898b0, #24085c);
+	color: white;
+}
 
+#dark .main-button-bg-white {
+	color: white;
+}
 
-  @media screen and (width < 400px) {
+#dark .dashboard-main-header {
+	background: linear-gradient(to top left, #219898b0, #24085c);
+	color: white;
 
-    .dashboard {
-        width:70%;
-    }
+	& a {
+		color: white;
+	}
+}
 
-  }
+#dark .dashboard-main-navigation {
+	background: vars.$linearGradientDarkModeCards;
+	color: white;
 
+	&-accueil-content {
+		color: white;
+	}
 
+	&-messagerie-content {
+		color: white;
+	}
 
+	&-calendrier-content {
+		color: white;
+	}
+}
 
+#dark .dashboard-main-content-links {
+	background: vars.$linearGradientDarkModeCards;
+	color: white;
 
+	& span {
+		color: white;
+		font-weight: lighter;
+	}
 
-  // DARK MODE 
+	& a {
+		color: white;
+		font-weight: lighter;
+	}
+}
 
-  #dark .bg-colored {
-    background: linear-gradient(to top left ,  #219898b0, #24085c  );
-    color:white;
+#dark .dashboard-main-content-team {
+	background: vars.$linearGradientDarkModeCards;
+	color: white;
 
+	& span {
+		color: white;
+		font-weight: lighter;
+	}
+}
 
-  }
+#dark .dashboard-main-technologies {
+	background: vars.$linearGradientDarkModeCards;
+	color: white;
 
+	& h4 {
+		color: white;
+	}
 
-  #dark .main-button-bg-white {
-    color:white;
-  }
+	& span {
+		background: vars.$linearGradientDarkMode;
+	}
+}
 
-  #dark .dashboard-main-header {
-    background: linear-gradient(to top left ,  #219898b0, #24085c  );
-    color:white;
+#dark .dashboard-main-navigation-accueil-content {
+	background-color: hsla(207deg, 67%, 88%, 0.2);
+}
 
-    & a {
-        color:white;
-    }
-  }
+#dark .dashboard-main-navigation-calendrier-content {
+	background-color: hsla(207deg, 67%, 88%, 0.2);
+}
 
-  #dark .dashboard-main-navigation {
-    background: vars.$linearGradientDarkModeCards;
-    color:white;
+#dark .dashboard-main-navigation-messagerie-content {
+	background-color: hsla(207deg, 67%, 88%, 0.2);
+}
 
-    &-accueil-content {
-        color:white;
-    }
+#dark .dashboard-main-content-team-users:hover {
+	background: vars.$linearGradientDarkMode;
+}
 
-    &-messagerie-content {
-        color:white;
-    }
-
-    &-calendrier-content {
-        color:white;
-    }
-  }
-
-  #dark .dashboard-main-content-links {
-    background: vars.$linearGradientDarkModeCards;
-    color:white;
-
-    & span {
-        color:white;
-        font-weight: lighter;
-    }
-
-    & a {
-        color:white;
-        font-weight: lighter;
-    }
-  }
-
-  #dark .dashboard-main-content-team {
-    background: vars.$linearGradientDarkModeCards;
-    color:white;
-
-    & span {
-        color:white;
-        font-weight: lighter;
-    }
-  }
-
-  #dark .dashboard-main-technologies {
-    background: vars.$linearGradientDarkModeCards;
-    color:white;
-
-    & h4 {
-        color:white;
-      }
-    
-      & span {
-        background: vars.$linearGradientDarkMode;
-      }
-
-  }
-
-  #dark .dashboard-main-navigation-accueil-content {
-    background-color: hsla(207deg, 67%, 88%, 0.2);
-  }
-
-  #dark .dashboard-main-navigation-calendrier-content {
-    background-color: hsla(207deg, 67%, 88%, 0.2);
-  }
-
-  #dark .dashboard-main-navigation-messagerie-content {
-    background-color: hsla(207deg, 67%, 88%, 0.2);
-  }
-
-  #dark .dashboard-main-content-team-users:hover {
-    background: vars.$linearGradientDarkMode;
-  }
-
-  #dark .dashboard-main-content-team-users-details {
-
-    & p {
-        color:white;
-    }
-  }
+#dark .dashboard-main-content-team-users-details {
+	& p {
+		color: white;
+	}
+}
